@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 import {
+  generateCardId,
   validateCard
-} from "./chunk-CWNHIK64.js";
+} from "./chunk-KJEDYEFE.js";
 import {
   appendTrace,
   isSupabaseEnabled,
   redactText,
+  saveCard,
   searchKnownFix,
   submitCard,
   syncFromSupabase
-} from "./chunk-7NZIZVQN.js";
+} from "./chunk-H5DBXSUI.js";
 
 // src/mcp-server.ts
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
@@ -110,7 +112,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     },
     {
       name: "submit_fix_card",
-      description: "Submit a new fix card to the AgentCommunity community knowledge base for moderation review.",
+      description: "Create a new fix card and save it locally. Optionally submits to the cloud knowledge base if configured.",
       inputSchema: {
         type: "object",
         properties: {
@@ -161,6 +163,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
           "error_signature",
           "title",
           "symptom",
+          "root_cause",
           "fix_steps",
           "agent_instruction"
         ]
@@ -235,19 +238,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
     case "submit_fix_card": {
-      if (!isSupabaseEnabled()) {
-        return {
-          content: [
-            {
-              type: "text",
-              text: JSON.stringify({
-                error: "Supabase is not configured. Set SUPABASE_URL and SUPABASE_ANON_KEY."
-              })
-            }
-          ],
-          isError: true
-        };
-      }
       const cardData = {
         tool: args?.tool,
         error_signature: args?.error_signature,
@@ -278,14 +268,35 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           isError: true
         };
       }
-      const submissionId = await submitCard(cardData);
+      const fullCard = {
+        ...cardData,
+        id: generateCardId(cardData.tool, cardData.error_signature, cardData.context_key),
+        fix_type: "workaround",
+        severity: "blocks_execution",
+        confidence: 0.5,
+        quality_score: validation.quality_score,
+        source_type: "agent-discovered",
+        verified_on: "",
+        created: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10),
+        version_notes: []
+      };
+      saveCard(fullCard);
+      let submissionId = null;
+      if (isSupabaseEnabled()) {
+        try {
+          submissionId = await submitCard(cardData);
+        } catch {
+        }
+      }
       return {
         content: [
           {
             type: "text",
             text: JSON.stringify({
+              card_id: fullCard.id,
+              saved_locally: true,
+              submitted_to_cloud: submissionId !== null,
               submission_id: submissionId,
-              status: "pending",
               quality_score: validation.quality_score,
               warnings: validation.warnings
             })

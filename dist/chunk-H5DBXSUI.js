@@ -176,6 +176,24 @@ function loadCard(tool, id, dataDir) {
   if (!existsSync(cardPath)) return null;
   return JSON.parse(readFileSync(cardPath, "utf-8"));
 }
+function saveCard(card, dataDir) {
+  const base = dataDir ?? getDataDir();
+  const toolDir = join(base, "tools", card.tool);
+  const cardsDir = join(toolDir, "cards");
+  mkdirSync(cardsDir, { recursive: true });
+  writeFileSync(join(cardsDir, `${card.id}.json`), JSON.stringify(card, null, 2) + "\n");
+  const indexEntry = {
+    id: card.id,
+    tool: card.tool,
+    error_signature: card.error_signature,
+    context_key: card.context_key,
+    title: card.title,
+    symptom: card.symptom,
+    tags: card.tags
+  };
+  appendFileSync(join(toolDir, "index.jsonl"), JSON.stringify(indexEntry) + "\n");
+  indexCache.delete(`${base}:${card.tool}`);
+}
 function appendTrace(trace, dataDir) {
   const base = dataDir ?? getDataDir();
   mkdirSync(base, { recursive: true });
@@ -291,9 +309,12 @@ function scoreEntry(entry, errorText, errorTokens, toolName) {
     signatureScore = 0.5;
     matched_on.push("error_signature");
   }
-  if (toolName && entry.tool.toLowerCase() === toolName.toLowerCase()) {
-    toolScore = 0.2;
-    matched_on.push("tool");
+  if (toolName) {
+    const normalized = normalizeToolName(toolName) ?? toolName.toLowerCase();
+    if (entry.tool.toLowerCase() === normalized) {
+      toolScore = 0.2;
+      matched_on.push("tool");
+    }
   }
   const tagTokens = entry.tags.map((t) => t.toLowerCase());
   const tagOverlap = errorTokens.filter((t) => tagTokens.includes(t)).length;
@@ -310,17 +331,34 @@ function scoreEntry(entry, errorText, errorTokens, toolName) {
   const total = Math.min(1, signatureScore + toolScore + tagScore + titleScore);
   return { signatureScore, toolScore, tagScore, titleScore, total, matched_on };
 }
+function normalizeToolName(raw) {
+  const lower = raw.toLowerCase();
+  const pluginMatch = lower.match(/^mcp__plugin_[^_]+_([^_]+)__/);
+  if (pluginMatch) return pluginMatch[1];
+  const cloudMatch = lower.match(/^mcp__claude_ai_([^_]+)__/);
+  if (cloudMatch) return cloudMatch[1];
+  const simpleMatch = lower.match(/^mcp__([^_]+)__/);
+  if (simpleMatch) return simpleMatch[1];
+  if (!lower.startsWith("mcp__")) return null;
+  return null;
+}
 function searchKnownFix(params, dataDir) {
   const { tool, error, task, context } = params;
   const errorTokens = tokenize(
     [error, task, context].filter(Boolean).join(" ")
   );
   const errorText = [error, task, context].filter(Boolean).join(" ");
+  const availableTools = listTools(dataDir);
   const toolsToSearch = [];
   if (tool) {
-    toolsToSearch.push(tool.toLowerCase());
+    const normalized = normalizeToolName(tool) ?? tool.toLowerCase();
+    if (availableTools.includes(normalized)) {
+      toolsToSearch.push(normalized);
+    } else {
+      toolsToSearch.push(...availableTools);
+    }
   } else {
-    toolsToSearch.push(...listTools(dataDir));
+    toolsToSearch.push(...availableTools);
   }
   if (!toolsToSearch.includes("_general")) {
     toolsToSearch.push("_general");
@@ -360,6 +398,7 @@ export {
   isSupabaseEnabled,
   submitCard,
   loadToolIndex,
+  saveCard,
   appendTrace,
   syncFromSupabase,
   searchKnownFix

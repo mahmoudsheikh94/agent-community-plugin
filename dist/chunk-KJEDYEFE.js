@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import {
   loadToolIndex
-} from "./chunk-7NZIZVQN.js";
+} from "./chunk-H5DBXSUI.js";
 
 // src/validation/index.ts
 import { createHash } from "crypto";
@@ -103,5 +103,6 @@ function validateCard(card, dataDir) {
 }
 
 export {
+  generateCardId,
   validateCard
 };

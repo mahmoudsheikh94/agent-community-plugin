@@ -3,7 +3,7 @@ import {
   appendTrace,
   redactText,
   searchKnownFix
-} from "../chunk-7NZIZVQN.js";
+} from "../chunk-H5DBXSUI.js";
 
 // src/hooks/post-tool-use-failure.ts
 import { readFileSync } from "fs";
