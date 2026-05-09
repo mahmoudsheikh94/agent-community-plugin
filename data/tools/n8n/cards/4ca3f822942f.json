@@ -1,0 +1,40 @@
+{
+  "id": "4ca3f822942f",
+  "tool": "n8n",
+  "error_signature": "workflow is not active",
+  "context_key": "workflow-activation",
+  "title": "n8n workflow created but not activated",
+  "symptom": "Webhook or schedule trigger does not fire. Workflow exists but does not respond to incoming events.",
+  "applies_when": [
+    "Workflow uses Webhook, Schedule, or event-based trigger nodes",
+    "Workflow was recently created or updated"
+  ],
+  "not_this_if": [
+    "Using manual execution (Test Workflow button)",
+    "Trigger node is missing entirely"
+  ],
+  "root_cause": "n8n workflows must be explicitly activated (toggled ON) before they respond to triggers. A newly created or recently edited workflow defaults to inactive state. The webhook URL is only registered when the workflow is active.",
+  "fix_steps": [
+    "Open the workflow in the n8n editor",
+    "Toggle the 'Active' switch in the top-right corner to ON",
+    "Verify the webhook URL is registered by checking the Webhook node's URL display",
+    "Test by sending a request to the webhook URL"
+  ],
+  "agent_instruction": "Activate the n8n workflow by toggling the Active switch ON in the top-right corner of the editor. Webhook URLs are only registered when the workflow is active.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "trigger",
+    "activation",
+    "schedule"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.95,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "n8n v1.48+, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [],
+  "updated_at": "2026-05-08T22:01:53.781+00:00"
+}

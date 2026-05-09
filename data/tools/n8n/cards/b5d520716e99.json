@@ -1,0 +1,42 @@
+{
+  "id": "b5d520716e99",
+  "tool": "n8n",
+  "error_signature": "Invalid expression",
+  "context_key": "expression-syntax",
+  "title": "n8n node expression syntax error",
+  "symptom": "A node fails with 'Invalid expression' or 'Expression evaluation error' when referencing data from previous nodes.",
+  "applies_when": [
+    "Using {{ }} expressions in node fields",
+    "Referencing output from previous nodes"
+  ],
+  "not_this_if": [
+    "Error is about missing node (node was deleted)",
+    "Expression uses valid JS but n8n doesn't support it"
+  ],
+  "root_cause": "n8n expressions use a specific syntax: {{ $json.fieldName }} for the current item, {{ $node['NodeName'].json.fieldName }} for other nodes. Common mistakes include using dot notation on the $node shorthand, forgetting quotes around node names with spaces, or using JavaScript methods not available in the expression sandbox.",
+  "fix_steps": [
+    "Check expression syntax: use {{ $json.fieldName }} for current node data",
+    "For other nodes: {{ $node['Node Name'].json.fieldName }}",
+    "Avoid JS methods like .map() or .filter() in simple expressions — use a Code node instead",
+    "Test expressions in the expression editor (click the expression toggle on the field)"
+  ],
+  "agent_instruction": "Fix the n8n expression syntax. Use {{ $json.fieldName }} for current node, {{ $node['Node Name'].json.fieldName }} for other nodes. Complex JS logic should be in a Code node, not in field expressions.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "expression",
+    "syntax",
+    "template",
+    "data-mapping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.85,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "n8n v1.50+, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [
+    "Expression syntax is stable across n8n versions"
+  ],
+  "updated_at": "2026-05-08T22:01:53.781+00:00"
+}

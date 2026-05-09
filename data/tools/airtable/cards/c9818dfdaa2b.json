@@ -1,0 +1,43 @@
+{
+  "id": "c9818dfdaa2b",
+  "tool": "airtable",
+  "error_signature": "UNKNOWN_FIELD_NAME",
+  "context_key": "field-name-mismatch",
+  "title": "Airtable field name mismatch",
+  "symptom": "API call to create or update records fails with 'UNKNOWN_FIELD_NAME'. The field exists visually in the Airtable base but the API rejects it.",
+  "applies_when": [
+    "Creating or updating records via Airtable API",
+    "Field was recently renamed or has special characters"
+  ],
+  "not_this_if": [
+    "Field does not exist in the table at all",
+    "Error is about the table name, not field name"
+  ],
+  "root_cause": "Airtable API uses exact field names as they appear in the table header, including case sensitivity and special characters. A common mistake is using the field's internal ID instead of its display name, or using a stale cached name after renaming a field.",
+  "fix_steps": [
+    "Open the Airtable base and verify the exact field name (case-sensitive)",
+    "Check for hidden characters: copy the field name directly from Airtable",
+    "Use the Airtable API 'list fields' endpoint to get exact field names: GET /v0/meta/bases/{baseId}/tables",
+    "Update your code/config to use the exact field name string"
+  ],
+  "agent_instruction": "Verify the exact field name (case-sensitive) in Airtable. Use the metadata API (GET /v0/meta/bases/{baseId}/tables) to list all field names. Update the API call to use the exact name.",
+  "safety_notes": [
+    "Do not log Airtable API keys in error output"
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "field",
+    "schema",
+    "case-sensitive",
+    "rename",
+    "metadata"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "Airtable API v0, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [],
+  "updated_at": "2026-05-08T22:01:53.538+00:00"
+}

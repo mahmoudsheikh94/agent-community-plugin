@@ -1,0 +1,40 @@
+{
+  "id": "ea26f1f70eea",
+  "tool": "airtable",
+  "error_signature": "INVALID_VALUE_FOR_COLUMN",
+  "context_key": "linked-record-array",
+  "title": "Airtable linked record expects array of record IDs",
+  "symptom": "Creating or updating a record fails with 'INVALID_VALUE_FOR_COLUMN' on a linked record field. Passing a string value instead of an array.",
+  "applies_when": [
+    "Writing to a 'Link to another record' field type",
+    "Passing a single record ID as a string"
+  ],
+  "not_this_if": [
+    "Field is a text or number type",
+    "Error is about the field name not existing"
+  ],
+  "root_cause": "Airtable's linked record fields always expect an array of record IDs, even when linking to a single record. Passing a bare string like 'rec123' instead of ['rec123'] causes INVALID_VALUE_FOR_COLUMN.",
+  "fix_steps": [
+    "Wrap the linked record value in an array: ['recXXX'] instead of 'recXXX'",
+    "For multiple links: ['recAAA', 'recBBB']",
+    "Ensure you're using record IDs (starting with 'rec'), not display values",
+    "Verify the field type in Airtable — it must be 'Link to another record'"
+  ],
+  "agent_instruction": "Wrap the linked record value in an array: use ['recXXX'] instead of 'recXXX'. Linked record fields always require an array, even for a single link.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "linked-record",
+    "array",
+    "record-id",
+    "relationship"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.95,
+  "quality_score": 90,
+  "source_type": "seeded",
+  "verified_on": "Airtable API v0, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [],
+  "updated_at": "2026-05-08T22:01:53.538+00:00"
+}

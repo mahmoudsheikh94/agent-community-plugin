@@ -1,0 +1,45 @@
+{
+  "id": "1c9354a018fe",
+  "tool": "supabase",
+  "error_signature": "42501",
+  "context_key": "rls-insert-blocked",
+  "title": "Supabase RLS blocking inserts",
+  "symptom": "INSERT operation fails with error code 42501 (insufficient_privilege). The table exists and the query syntax is correct, but RLS policies prevent the insert.",
+  "applies_when": [
+    "RLS is enabled on the target table",
+    "Using anon or authenticated role (not service_role)"
+  ],
+  "not_this_if": [
+    "Using service_role key (bypasses RLS)",
+    "Error code is 42P01 (table doesn't exist)"
+  ],
+  "root_cause": "Supabase enables Row Level Security (RLS) by default on new tables. Without an explicit INSERT policy, all inserts are denied for non-service-role connections. The anon and authenticated roles need explicit RLS policies to allow inserts.",
+  "fix_steps": [
+    "Check current RLS policies: SELECT * FROM pg_policies WHERE tablename = 'your_table'",
+    "Add an INSERT policy: CREATE POLICY \"Allow inserts\" ON your_table FOR INSERT WITH CHECK (true) -- or a more restrictive check",
+    "For authenticated users only: WITH CHECK (auth.uid() = user_id)",
+    "Verify with: INSERT INTO your_table (...) VALUES (...) -- as the appropriate role"
+  ],
+  "agent_instruction": "Add an RLS INSERT policy to the table. For authenticated users: CREATE POLICY \"allow_insert\" ON table_name FOR INSERT TO authenticated WITH CHECK (auth.uid() = user_id). For public inserts, use WITH CHECK (true) but consider security implications.",
+  "safety_notes": [
+    "Never use service_role key in client-side code",
+    "WITH CHECK (true) allows anyone to insert — only use for truly public tables",
+    "Use auth.jwt()->'user_metadata'->>'role' for admin checks, never subquery the profiles table (causes 42P17 recursion)"
+  ],
+  "fix_type": "code_change",
+  "tags": [
+    "rls",
+    "insert",
+    "policy",
+    "permissions",
+    "42501"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "Supabase PostgreSQL 15, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [],
+  "updated_at": "2026-05-08T22:01:53.995+00:00"
+}

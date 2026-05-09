@@ -1,0 +1,43 @@
+{
+  "id": "18b50df84809",
+  "tool": "hubspot",
+  "error_signature": "429",
+  "context_key": "rate-limit",
+  "title": "HubSpot API rate limit exceeded",
+  "symptom": "API calls return HTTP 429 Too Many Requests. Batch operations or rapid sequential calls fail after initial successes.",
+  "applies_when": [
+    "Making many API calls in a short period",
+    "Using batch endpoints or looping over records"
+  ],
+  "not_this_if": [
+    "Error is 403 (scope/permission issue, not rate limit)",
+    "Only a single API call fails"
+  ],
+  "root_cause": "HubSpot enforces rate limits: 100 requests per 10 seconds for OAuth apps, 200 for private apps. Burst operations like syncing many records or creating deals in a loop quickly hit this limit.",
+  "fix_steps": [
+    "Add retry logic with exponential backoff (start at 1s, max 30s)",
+    "Check the Retry-After header in the 429 response for exact wait time",
+    "Batch operations: use HubSpot batch endpoints instead of individual calls",
+    "Reduce concurrency to 5-10 parallel requests maximum"
+  ],
+  "agent_instruction": "Implement exponential backoff retry logic for the HubSpot API call. Use the Retry-After header value. If doing bulk operations, switch to HubSpot batch endpoints.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "rate-limit",
+    "429",
+    "throttling",
+    "batch",
+    "retry"
+  ],
+  "severity": "degraded",
+  "confidence": 0.95,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "HubSpot API v3, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [
+    "Rate limits differ between OAuth apps (100/10s) and private apps (200/10s)"
+  ],
+  "updated_at": "2026-05-08T22:01:53.706+00:00"
+}

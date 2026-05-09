@@ -1,0 +1,46 @@
+{
+  "id": "199c6dabdaa3",
+  "tool": "n8n",
+  "error_signature": "credentials not available",
+  "context_key": "manual-execution-mode",
+  "title": "n8n credentials unavailable in manual execution mode",
+  "symptom": "When manually executing an n8n workflow, nodes that require OAuth credentials fail with 'credentials not available' or 'OAuth credentials unavailable'.",
+  "applies_when": [
+    "Using manual execution (Test Workflow button)",
+    "Node uses OAuth-based credentials (HubSpot, Google, etc.)"
+  ],
+  "not_this_if": [
+    "Error occurs during production/webhook execution",
+    "Credentials are not configured at all"
+  ],
+  "root_cause": "n8n's manual execution mode runs in a different context than production. OAuth credentials that were authorized in the main process may not be accessible in the manual execution sandbox. This is especially common after n8n restarts or when using external credential stores.",
+  "fix_steps": [
+    "Open the credential in n8n Settings > Credentials",
+    "Re-authenticate the OAuth credential (click 'Connect' again)",
+    "Save the credential, then retry manual execution",
+    "If still failing, try activating the workflow and triggering via webhook instead of manual execution"
+  ],
+  "agent_instruction": "Re-authenticate the OAuth credential in n8n Settings > Credentials. If manual execution still fails, activate the workflow and trigger via webhook instead.",
+  "safety_notes": [
+    "Never expose OAuth tokens in workflow JSON exports",
+    "Do not log credential IDs in error reports"
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "oauth",
+    "credentials",
+    "manual-execution",
+    "hubspot",
+    "google"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "n8n v1.52 + HubSpot OAuth, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [
+    "Verify n8n execution mode and credential access method"
+  ],
+  "updated_at": "2026-05-08T22:01:53.781+00:00"
+}

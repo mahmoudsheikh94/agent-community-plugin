@@ -1,0 +1,43 @@
+{
+  "id": "f1e10b56aca7",
+  "tool": "slack",
+  "error_signature": "webhook",
+  "context_key": "url-in-workflow-json",
+  "title": "Slack webhook URL accidentally pasted into workflow JSON",
+  "symptom": "A Slack webhook URL appears in workflow configuration, exported JSON, or version control. This exposes the ability for anyone to post messages to the Slack channel.",
+  "applies_when": [
+    "Workflow JSON was exported or committed to git",
+    "Slack Incoming Webhook URL is hardcoded in a node configuration"
+  ],
+  "not_this_if": [
+    "URL is stored in credentials/environment variables",
+    "URL is already redacted"
+  ],
+  "root_cause": "Slack Incoming Webhook URLs are secret — anyone with the URL can post messages to the channel. When users paste the URL directly into n8n node fields, it gets embedded in the workflow JSON and can leak via git commits, exports, or logs.",
+  "fix_steps": [
+    "Remove the webhook URL from the workflow JSON immediately",
+    "Rotate the Slack webhook URL in Slack admin > Apps > Incoming Webhooks",
+    "Store the URL in n8n credentials or environment variables instead",
+    "Check git history for the leaked URL and consider it compromised"
+  ],
+  "agent_instruction": "The Slack webhook URL is exposed in the workflow. Move it to n8n credentials or environment variables. Rotate the compromised URL in Slack admin. Check git history for the leak.",
+  "safety_notes": [
+    "Treat webhook URLs as secrets — they grant write access to Slack channels",
+    "A leaked URL must be rotated, not just removed from current files"
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "secret-leak",
+    "security",
+    "incoming-webhook"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.85,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "Slack Incoming Webhooks, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [],
+  "updated_at": "2026-05-08T22:01:53.912+00:00"
+}

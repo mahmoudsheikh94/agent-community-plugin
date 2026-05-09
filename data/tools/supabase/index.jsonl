@@ -1,0 +1,1 @@
+{"id":"1c9354a018fe","tool":"supabase","error_signature":"42501","context_key":"rls-insert-blocked","title":"Supabase RLS blocking inserts","symptom":"INSERT operation fails with error code 42501 (insufficient_privilege). The table exists and the query syntax is correct, but RLS policies prevent the insert.","tags":["rls","insert","policy","permissions","42501"]}

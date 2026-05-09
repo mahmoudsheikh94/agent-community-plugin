@@ -1,0 +1,43 @@
+{
+  "id": "8cb0319f2984",
+  "tool": "_general",
+  "error_signature": "output too large",
+  "context_key": "mcp-tool-output-truncated",
+  "title": "MCP tool output too large — summarize before retrying",
+  "symptom": "An MCP tool call returns an error about output being too large, truncated, or exceeding maximum response size. The tool may have succeeded but the result cannot be fully returned.",
+  "applies_when": [
+    "MCP tool returned a large result (>100KB)",
+    "Tool output was truncated or caused a context overflow"
+  ],
+  "not_this_if": [
+    "Tool actually failed (not an output size issue)",
+    "Error is about input being too large"
+  ],
+  "root_cause": "MCP tools have output size limits. When a tool returns a very large result (e.g., listing all files in a large directory, fetching a full database table, or reading a very long file), the output may be truncated or rejected entirely.",
+  "fix_steps": [
+    "Add filters or limits to the tool call to reduce output size",
+    "Use pagination if the tool supports it",
+    "Request a summary or count instead of full data",
+    "If reading a file, use offset/limit parameters to read a specific section"
+  ],
+  "agent_instruction": "The MCP tool output was too large. Retry with filters, limits, or pagination to reduce output size. Request only the specific data needed, not the full result.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "mcp",
+    "output-size",
+    "truncation",
+    "context-overflow",
+    "pagination"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "Claude Code MCP, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [
+    "Output size limits may vary by MCP server implementation"
+  ],
+  "updated_at": "2026-05-08T22:01:52.992+00:00"
+}

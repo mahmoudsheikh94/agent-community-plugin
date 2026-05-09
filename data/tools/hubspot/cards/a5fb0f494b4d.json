@@ -1,0 +1,46 @@
+{
+  "id": "a5fb0f494b4d",
+  "tool": "hubspot",
+  "error_signature": "SCOPE_MISSING",
+  "context_key": "deals-scope",
+  "title": "HubSpot OAuth scope missing for deals",
+  "symptom": "API calls to HubSpot deals endpoint return 403 or 'SCOPE_MISSING' error. Other HubSpot API calls may work fine.",
+  "applies_when": [
+    "Using HubSpot OAuth (not API key)",
+    "Accessing deals, pipelines, or deal-related endpoints"
+  ],
+  "not_this_if": [
+    "Using a HubSpot private app API key",
+    "Error is 401 (authentication, not authorization)"
+  ],
+  "root_cause": "HubSpot OAuth apps must request specific scopes during authorization. The deals scope (crm.objects.deals.read / crm.objects.deals.write) is not included by default. If the OAuth app was authorized without deal scopes, all deal-related API calls fail with SCOPE_MISSING.",
+  "fix_steps": [
+    "Check your OAuth app's required scopes in HubSpot Developer portal",
+    "Add 'crm.objects.deals.read' and/or 'crm.objects.deals.write' scopes",
+    "Re-authorize the integration (users must re-connect to grant new scopes)",
+    "Verify by calling GET /crm/v3/objects/deals"
+  ],
+  "agent_instruction": "Add the missing deal scopes (crm.objects.deals.read, crm.objects.deals.write) to the HubSpot OAuth app configuration, then re-authorize the integration.",
+  "safety_notes": [
+    "Never log HubSpot OAuth tokens",
+    "Re-authorization requires user action — cannot be done programmatically"
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "oauth",
+    "scope",
+    "deals",
+    "permissions",
+    "authorization"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "seeded",
+  "verified_on": "HubSpot API v3, 2026-05",
+  "created": "2026-05-08",
+  "version_notes": [
+    "Scope names changed in HubSpot API v3 — verify current scope names in docs"
+  ],
+  "updated_at": "2026-05-08T22:01:53.706+00:00"
+}
