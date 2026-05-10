@@ -1,0 +1,38 @@
+{
+  "id": "610a03cf9bb5",
+  "tool": "n8n",
+  "error_signature": "cannot have a node in between the webhook and Extract from File",
+  "context_key": "extractFromFile-node",
+  "title": "Error when placing a node between webhook and Extract from File",
+  "symptom": "When a node is placed between the webhook and the Extract from File node, an error occurs when trying to access the binary file.",
+  "applies_when": [
+    "Using a webhook to receive a file",
+    "Trying to process the file with Extract from File node"
+  ],
+  "not_this_if": [
+    "No node is placed between the webhook and Extract from File"
+  ],
+  "root_cause": "The Extract from File node expects the binary data directly from the webhook node. If another node is placed in between, it disrupts the flow of binary data, leading to errors when trying to access the file.",
+  "fix_steps": [
+    "Remove any nodes placed between the webhook and the Extract from File node.",
+    "Ensure that the binary data is passed directly from the webhook to the Extract from File node."
+  ],
+  "agent_instruction": "Ensure the Extract from File node is directly connected to the webhook node without any intermediary nodes.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "webhook",
+    "extractFromFile",
+    "binary-data",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/in-n8n-pass-through-a-binary-file-form-the-first-step/142969"
+  ]
+}

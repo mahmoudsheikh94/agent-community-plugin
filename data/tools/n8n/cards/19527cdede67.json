@@ -1,0 +1,42 @@
+{
+  "id": "19527cdede67",
+  "tool": "n8n",
+  "error_signature": "ERR_SSL_PROTOCOL_ERROR",
+  "context_key": "n8n-ssl-configuration",
+  "title": "SSL Protocol Error when setting Google Sheets credentials",
+  "symptom": "When attempting to set Google Sheets credentials, n8n displays 'ERR_SSL_PROTOCOL_ERROR' indicating a secure connection issue.",
+  "applies_when": [
+    "Using n8n on a VPS",
+    "Attempting to configure Google Sheets credentials"
+  ],
+  "not_this_if": [
+    "Using HTTP instead of HTTPS",
+    "SSL certificate is correctly configured"
+  ],
+  "root_cause": "The error occurs when the SSL certificate is not properly configured on the server, leading to an inability to establish a secure HTTPS connection. This can happen if the certificate is missing, expired, or incorrectly set up in the web server configuration.",
+  "fix_steps": [
+    "Ensure that an SSL certificate is installed on your VPS using nginx or caddy.",
+    "Configure your web server to redirect HTTP traffic to HTTPS.",
+    "Add the callback URL in your Google OAuth settings.",
+    "Add your domain as a trusted domain in the Google Cloud Console App."
+  ],
+  "agent_instruction": "Configure the SSL certificate on your VPS and update your Google Cloud settings accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ssl",
+    "google-sheets",
+    "credentials",
+    "n8n",
+    "vps"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ssl-error-during-g-sheet-credential-set/155469"
+  ]
+}

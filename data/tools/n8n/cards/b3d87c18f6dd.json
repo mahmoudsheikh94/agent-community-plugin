@@ -1,0 +1,41 @@
+{
+  "id": "b3d87c18f6dd",
+  "tool": "n8n",
+  "error_signature": "400 - \"{\\\"error\\\":\\\"Accept type \\\"application/json,text/html,... not supported.",
+  "context_key": "http-request-node",
+  "title": "Hugging Face API returns 400 error due to unsupported Accept type",
+  "symptom": "When making a POST request to the Hugging Face API, n8n returns a 400 error indicating that the Accept type is not supported.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending a POST request to Hugging Face API"
+  ],
+  "not_this_if": [
+    "Using a different API",
+    "Accept type is correctly set"
+  ],
+  "root_cause": "The error occurs because the Accept header in the request includes unsupported types. The Hugging Face API expects specific Accept types, and if the request includes any unsupported types, it will return a 400 error.",
+  "fix_steps": [
+    "Open the HTTP Request node settings",
+    "Add an Accept header with a valid value, e.g., 'application/json'",
+    "Remove any unsupported types from the Accept header",
+    "Save the workflow and try the request again"
+  ],
+  "agent_instruction": "Set the Accept header to 'application/json' in the HTTP Request node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "huggingface",
+    "http-request",
+    "400-error",
+    "api-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-axioserror-request-failed-with-status-code-400-when-request-huggingface-api/144074"
+  ]
+}

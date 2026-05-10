@@ -1,0 +1,40 @@
+{
+  "id": "00a887ac9ea8",
+  "tool": "n8n",
+  "error_signature": "missing file-name parameter",
+  "context_key": "custom-node-eulerian",
+  "title": "Custom node fails to upload file due to missing parameter",
+  "symptom": "The custom node for uploading a CSV file returns an error stating 'missing file-name parameter'. This occurs even though the same parameters work in the HTTP Request node.",
+  "applies_when": [
+    "Using a custom node to upload files",
+    "File upload is configured as multipart/form-data"
+  ],
+  "not_this_if": [
+    "Using the standard HTTP Request node",
+    "File upload works without errors"
+  ],
+  "root_cause": "The custom node was manually constructing the multipart/form-data request, which conflicted with n8n's HTTP proxy/wrapper. This led to malformed requests that did not include the correct Content-Length or had chunking issues, causing the API to not recognize the file parameter.",
+  "fix_steps": [
+    "Set a flag to indicate that the request is form data (isFormData = true).",
+    "Use the correct method to retrieve the binary data stream instead of forcing manual import.",
+    "Construct the body correctly with the file-name parameter and ensure it is assigned to the formData option."
+  ],
+  "agent_instruction": "Ensure the request is properly configured to use formData for file uploads in the custom node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "custom-node",
+    "file-upload",
+    "multipart/form-data",
+    "eulerian"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/custom-node-multipart-form-data-upload-fails-with-missing-parameter-works-in-http-request-node/234853"
+  ]
+}

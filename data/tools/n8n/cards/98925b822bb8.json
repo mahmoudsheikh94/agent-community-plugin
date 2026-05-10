@@ -1,0 +1,39 @@
+{
+  "id": "98925b822bb8",
+  "tool": "n8n",
+  "error_signature": "Execute this node to view data",
+  "context_key": "if-node",
+  "title": "If node not receiving data from Google Drive node",
+  "symptom": "The If node displays 'Execute this node to view data' when the Google Drive folder does not exist, preventing further workflow execution.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Checking for folder existence with If node"
+  ],
+  "not_this_if": [
+    "Folder exists and data is outputted correctly"
+  ],
+  "root_cause": "The Google Drive node does not output any data when the specified folder does not exist, which leads to the If node not receiving any input data to evaluate.",
+  "fix_steps": [
+    "Open the Google Drive node settings and activate the 'always output data' option.",
+    "In the If node, change the expression from '{{ $json.id }}' to '{{ $json }}'.",
+    "Change the input type from 'String > is empty' to 'Object > is empty'."
+  ],
+  "agent_instruction": "Activate 'always output data' in the Google Drive node and adjust the If node settings as specified.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "if-node",
+    "data-output",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/if-node-while-searching-for-google-drive-folder/144543"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "4255efdc0a0c",
+  "tool": "weweb",
+  "error_signature": "SVG images become blurry in mobile mode",
+  "context_key": "Image element",
+  "title": "Blurry SVG images in mobile mode",
+  "symptom": "When viewing the web app on mobile, some SVG images appear blurry, while others do not. This issue does not occur when viewed in mobile mode from the Google Console.",
+  "applies_when": [
+    "Using the Image element for SVGs",
+    "Viewing the web app on mobile"
+  ],
+  "not_this_if": [
+    "SVGs are embedded using HTML",
+    "Issue does not occur on desktop or Google Console"
+  ],
+  "root_cause": "The Image element in the web app does not handle SVG images properly, leading to rendering issues that cause blurriness on mobile devices. This can happen due to scaling or resolution differences between the mobile display and the SVG rendering.",
+  "fix_steps": [
+    "Replace the Image element with an HTML embed element",
+    "Paste the SVG code directly into the HTML embed",
+    "Save the changes and test the web app on mobile again"
+  ],
+  "agent_instruction": "Use an HTML embed to insert SVG images instead of the Image element.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "SVG",
+    "mobile",
+    "blurry-images",
+    "HTML-embed"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/blurry-svg-images-in-mobile-mode/18082"
+  ]
+}

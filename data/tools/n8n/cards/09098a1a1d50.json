@@ -1,0 +1,40 @@
+{
+  "id": "09098a1a1d50",
+  "tool": "n8n",
+  "error_signature": "data not saved in accumulator",
+  "context_key": "function-node",
+  "title": "Data not saved in accumulator function",
+  "symptom": "The accumulator function does not retain data across iterations, resulting in an empty output for allData.",
+  "applies_when": [
+    "Using a Function node to accumulate data",
+    "Looping through API responses"
+  ],
+  "not_this_if": [
+    "Data is correctly accumulated in a previous run",
+    "No looping is involved"
+  ],
+  "root_cause": "The accumulator function is not correctly referencing the previous state of allData, leading to it being reset on each iteration. This often occurs when the wrong input reference is used or when the function is not properly structured to maintain state.",
+  "fix_steps": [
+    "Ensure the accumulator function correctly retrieves previous data using $input.first().json.allData.",
+    "Accumulate new data by pushing it into the allData array and return the updated array.",
+    "Validate the logic for determining if there are more pages to process."
+  ],
+  "agent_instruction": "Modify the accumulator function to correctly reference and update allData.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "function-node",
+    "accumulation",
+    "API",
+    "looping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/merge-branches-for-looping-switch-node/129585"
+  ]
+}

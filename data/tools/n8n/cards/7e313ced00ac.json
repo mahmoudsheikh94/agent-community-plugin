@@ -1,0 +1,39 @@
+{
+  "id": "7e313ced00ac",
+  "tool": "n8n",
+  "error_signature": "Read timeout expired",
+  "context_key": "telegram-trigger-webhook",
+  "title": "Telegram webhook not receiving messages due to timeout",
+  "symptom": "The Telegram Trigger in n8n shows 'Waiting for trigger events' and Telegram's `getWebhookInfo` indicates a 'Read timeout expired'.",
+  "applies_when": [
+    "Using Telegram Trigger node",
+    "Webhook is set correctly"
+  ],
+  "not_this_if": [
+    "Webhook is functioning on a different domain"
+  ],
+  "root_cause": "Telegram may have blacklisted the hosting provider's URLs, preventing it from reaching the n8n instance. This can occur if the hosting provider has a poor reputation or has been flagged for abuse.",
+  "fix_steps": [
+    "Change the webhook URL to a different domain that is not blacklisted",
+    "Update the Telegram bot settings with the new webhook URL",
+    "Test the webhook to ensure it is receiving messages"
+  ],
+  "agent_instruction": "Switch to a new domain for the Telegram webhook and update the settings accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "webhook",
+    "timeout",
+    "blacklist"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.0.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-webhook-stops-receiving-messages/239239"
+  ]
+}

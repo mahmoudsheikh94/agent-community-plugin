@@ -1,0 +1,40 @@
+{
+  "id": "1da92f1349cd",
+  "tool": "n8n",
+  "error_signature": "localhost not allowed as redirect hostname",
+  "context_key": "google-oauth",
+  "title": "Google OAuth redirect URL issue with localhost",
+  "symptom": "The OAuth Redirect URL for Google Drive setup in n8n is set to localhost, which is not accepted by Google. This prevents successful OAuth authentication.",
+  "applies_when": [
+    "Using Google Drive with OAuth",
+    "n8n is self-hosted"
+  ],
+  "not_this_if": [
+    "Using a valid domain for OAuth setup",
+    "Not using Google Drive"
+  ],
+  "root_cause": "Google's OAuth implementation requires a publicly accessible domain for redirect URLs. Using 'localhost' means the redirect cannot be recognized by Google's servers, leading to authentication failures.",
+  "fix_steps": [
+    "Change the redirect URL in your Google Cloud Console to a publicly accessible domain.",
+    "If using Docker, set the WEBHOOK_URL environment variable to your domain.",
+    "Restart the n8n Docker container to apply the changes."
+  ],
+  "agent_instruction": "Update the redirect URL in Google Cloud Console and set the WEBHOOK_URL in your n8n Docker configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "oauth",
+    "redirect-url",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/setting-up-google-cloud-issue/125806"
+  ]
+}

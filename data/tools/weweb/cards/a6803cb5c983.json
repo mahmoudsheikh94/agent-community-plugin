@@ -1,0 +1,39 @@
+{
+  "id": "a6803cb5c983",
+  "tool": "weweb",
+  "error_signature": "white space on the top of PWA",
+  "context_key": "PWA installation",
+  "title": "White space issue in PWA on Android",
+  "symptom": "When the PWA is installed on Android, there is an unwanted white space at the top of the app interface.",
+  "applies_when": [
+    "PWA is installed on Android",
+    "App is in dark mode"
+  ],
+  "not_this_if": [
+    "The app is not installed as a PWA",
+    "The issue occurs only in web view and not in PWA"
+  ],
+  "root_cause": "The white space issue may arise due to the default theme color settings not being properly configured for the PWA, leading to rendering inconsistencies in the app's appearance.",
+  "fix_steps": [
+    "Add a JavaScript Action on App Load in your WeWeb project.",
+    "Use the provided code snippet to set the theme color appropriately."
+  ],
+  "agent_instruction": "Implement the JavaScript Action to set the theme color and remove the white space.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "PWA",
+    "theme-color",
+    "Android",
+    "white-space"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/white-space-in-pwa-installed-on-the-top/19646"
+  ]
+}

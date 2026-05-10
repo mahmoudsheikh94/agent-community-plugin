@@ -1,0 +1,40 @@
+{
+  "id": "a9a6e17b2983",
+  "tool": "weweb",
+  "error_signature": "TypeError: Cannot read properties of undefined (reading ‘RetellWebClient’)",
+  "context_key": "retell-client-js-sdk",
+  "title": "Retell SDK fails to initialize due to CSP restrictions",
+  "symptom": "When attempting to load the Retell SDK, the console shows a TypeError indicating that the RetellWebClient property is undefined. This occurs because the SDK is not loaded correctly due to CSP blocking eval.",
+  "applies_when": [
+    "Using the Retell AI SDK",
+    "Content Security Policy is restrictive"
+  ],
+  "not_this_if": [
+    "CSP allows eval or similar functions",
+    "SDK loads successfully without errors"
+  ],
+  "root_cause": "The WeWeb platform's Content Security Policy blocks the use of 'eval', which is required by the NPM plugin to load the Retell SDK from UNPKG. This results in the SDK not being properly initialized, leading to undefined properties.",
+  "fix_steps": [
+    "Create a function to load scripts dynamically by appending them to the document body.",
+    "Load all necessary dependencies before loading the Retell SDK.",
+    "Verify that the SDK object has initialized correctly after loading."
+  ],
+  "agent_instruction": "Implement the provided script loading function to dynamically load the Retell SDK and its dependencies.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "retell-sdk",
+    "CSP",
+    "dynamic-script-loading",
+    "javascript"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/blocked-integrating-external-js-sdk-retell-ai-due-to-content-security-policy-csp-blocking-the-npm-plugin/19451"
+  ]
+}

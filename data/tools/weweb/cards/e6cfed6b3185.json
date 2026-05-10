@@ -1,0 +1,40 @@
+{
+  "id": "e6cfed6b3185",
+  "tool": "weweb",
+  "error_signature": "always getting the same element from the collection",
+  "context_key": "dynamic page/popup",
+  "title": "Dynamic page/popup returns the same element",
+  "symptom": "When trying to display filtered values from a dynamic collection, the same element is returned regardless of variable changes. This occurs even after following the tutorial steps.",
+  "applies_when": [
+    "Using dynamic pages or popups",
+    "Filtering collections based on variables"
+  ],
+  "not_this_if": [
+    "The filtering works correctly in other instances",
+    "No variable changes are detected"
+  ],
+  "root_cause": "The issue arises because the filtering is not applied at the moment of the click. Without a proper fetch operation, the previously cached or default data is returned instead of the newly filtered data.",
+  "fix_steps": [
+    "Add a 'Fetch collection' step at the end of your workflow",
+    "Ensure that the workflow is saved and re-run it"
+  ],
+  "agent_instruction": "Add a 'Fetch collection' step to your workflow to ensure the latest filtered data is retrieved.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "dynamic-page",
+    "popup",
+    "Airtable",
+    "filtering",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/dynamic-page-popup-always-getting-the-same-element/278"
+  ]
+}

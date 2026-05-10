@@ -1,0 +1,38 @@
+{
+  "id": "98d44bf8b8db",
+  "tool": "n8n",
+  "error_signature": "You don’t have permission to publish this workflow",
+  "context_key": "n8n Docker setup",
+  "title": "Permission error when publishing workflows in Docker",
+  "symptom": "Users encounter a message stating 'You don’t have permission to publish this workflow' when attempting to publish new workflows in n8n.",
+  "applies_when": [
+    "Using n8n in Docker",
+    "Different versions of n8n image in main service and worker"
+  ],
+  "not_this_if": [
+    "Using the same version for both main service and worker"
+  ],
+  "root_cause": "The error occurs because the main n8n service and the worker are running different versions of the n8n image, leading to inconsistencies in permissions and functionality.",
+  "fix_steps": [
+    "Ensure both the main n8n service and the worker are using the same version of the n8n image",
+    "Restart the Docker container after making changes"
+  ],
+  "agent_instruction": "Align the n8n image versions in the main service and worker, then restart the Docker container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "Docker",
+    "permissions",
+    "workflow-publishing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.2.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-publish-new-workflows-in-community-version/248302"
+  ]
+}

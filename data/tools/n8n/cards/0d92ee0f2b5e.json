@@ -1,0 +1,41 @@
+{
+  "id": "0d92ee0f2b5e",
+  "tool": "n8n",
+  "error_signature": "Received SIGTERM. Shutting down...",
+  "context_key": "ECS health check",
+  "title": "n8n shutting down due to ECS health check failures",
+  "symptom": "n8n logs show repeated 'Database connection timed out' messages followed by 'Received SIGTERM. Shutting down...'. This indicates that ECS is marking the task as unhealthy and restarting it.",
+  "applies_when": [
+    "Using n8n on AWS ECS",
+    "Experiencing database connection timeouts"
+  ],
+  "not_this_if": [
+    "n8n is running without ECS",
+    "No database connection issues are present"
+  ],
+  "root_cause": "The ECS health check is likely configured to monitor a database-dependent endpoint. If the database experiences brief hiccups, the health check fails, causing ECS to restart the n8n container. This creates a cycle of restarts during temporary database unavailability.",
+  "fix_steps": [
+    "Review the ALB/ECS health check path and thresholds.",
+    "Change the health check to a basic 'service is up' endpoint or relax the timeout/unhealthy threshold.",
+    "Add a grace period to the health check settings.",
+    "Tune the n8n Postgres connection/pool timeout environment variables."
+  ],
+  "agent_instruction": "Adjust the ECS health check settings to prevent unnecessary restarts of the n8n container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ECS",
+    "health-check",
+    "database-timeout",
+    "n8n-shutdown"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.4.8",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/database-connection-lost-n8n-shutdown-after-sftp-timeout/266482"
+  ]
+}

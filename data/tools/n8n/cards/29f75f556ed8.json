@@ -1,0 +1,42 @@
+{
+  "id": "29f75f556ed8",
+  "tool": "n8n",
+  "error_signature": "cannot see the credentials parameters",
+  "context_key": "n8n-docker",
+  "title": "Credentials parameters not visible in Docker setup",
+  "symptom": "After updating n8n, the user cannot see the credentials parameters in the interface. This issue is specific to the Docker setup.",
+  "applies_when": [
+    "Using n8n version 1.112.4",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Using a different version of n8n",
+    "Running n8n outside of Docker"
+  ],
+  "root_cause": "A bug in the current version of n8n causes issues with the visibility of credentials parameters when the N8N_DEFAULT_LOCALE environment variable is set. This can lead to unexpected behavior in the user interface.",
+  "fix_steps": [
+    "Open your Docker run command",
+    "Remove the '-e N8N_DEFAULT_LOCALE=\"it\"' part",
+    "Restart the n8n container",
+    "Check if the credentials parameters are now visible"
+  ],
+  "agent_instruction": "Remove the N8N_DEFAULT_LOCALE environment variable from your Docker command and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "credentials",
+    "n8n",
+    "bug",
+    "locale"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.112.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-see-credentials-parameters/193460"
+  ]
+}

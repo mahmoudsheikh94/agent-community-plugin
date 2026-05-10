@@ -1,0 +1,38 @@
+{
+  "id": "42114f801308",
+  "tool": "n8n",
+  "error_signature": "input value not updating in sub-workflow",
+  "context_key": "execute-sub-workflow-node",
+  "title": "Input value not updating in sub-workflow execution",
+  "symptom": "The input value 'richting' remains 'stadteinwärts' in the sub-workflow execution, even when changed in the main workflow.",
+  "applies_when": [
+    "Using 'Execute sub-workflow' node",
+    "Input values are dynamically set"
+  ],
+  "not_this_if": [
+    "The issue does not occur when recreating the workflows from scratch"
+  ],
+  "root_cause": "The issue arises when the workflow retains stale input values due to internal caching or state management issues in n8n. This can happen if the workflow is copied or modified without fully refreshing the input parameters.",
+  "fix_steps": [
+    "Re-create the workflows from scratch, node by node",
+    "Only copy/paste the node parameters if necessary",
+    "Test the sub-workflow execution again"
+  ],
+  "agent_instruction": "Re-create the workflows from scratch to resolve the input value issue.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "execute-sub-workflow",
+    "input-value",
+    "workflow-recreation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sub-workflow-trigger-has-different-inputs-than-execute-workflow-node/267780"
+  ]
+}

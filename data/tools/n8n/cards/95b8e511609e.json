@@ -1,0 +1,40 @@
+{
+  "id": "95b8e511609e",
+  "tool": "n8n",
+  "error_signature": "all files are written to the same filename",
+  "context_key": "file-writing-node",
+  "title": "Multiple files overwrite each other during write operation",
+  "symptom": "When attempting to save multiple files, all files are written with the same filename, causing overwrites. This occurs because the filename references the first item in the array for all files.",
+  "applies_when": [
+    "Using a file writing node",
+    "Submitting multiple files as an array"
+  ],
+  "not_this_if": [
+    "Files are already separate items before writing"
+  ],
+  "root_cause": "The filename is being set using a static reference to the first item in the array, which results in all files being saved with the same name. This happens because the expression does not account for the current item's index in the array.",
+  "fix_steps": [
+    "Add an 'Item Lists → Split Out Items' node right after the form submission node.",
+    "Configure it to split the field 'data' so that each file becomes a separate item.",
+    "In the file writing node, set the filename to '/files/test/{{$json.filename}}.txt'.",
+    "Alternatively, if keeping the current flow, change the filename expression to '/files/test/{{$json.data[$itemIndex].filename}}.txt'."
+  ],
+  "agent_instruction": "Use the correct indexing in the filename expression to avoid overwriting files.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "file-writing",
+    "multiple-files",
+    "array-handling",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-submit-multiple-files-via-form-and-save-them-with-their-original-filenames/119549"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "03b3474616c1",
+  "tool": "weweb",
+  "error_signature": "Cannot read properties of null (reading ‘reduce’)",
+  "context_key": "voiceflow-api-integration",
+  "title": "Error reading properties of null in Voiceflow API integration",
+  "symptom": "When attempting to connect Voiceflow to WeWeb via a POST API call, an error occurs stating 'Cannot read properties of null (reading ‘reduce’)'. This indicates a failure in processing the API response or request data.",
+  "applies_when": [
+    "Using Voiceflow API",
+    "Making a POST request with JSON data"
+  ],
+  "not_this_if": [
+    "The API call is successful without errors"
+  ],
+  "root_cause": "This error typically occurs when the API response is not as expected, leading to attempts to access properties of a null object. This can happen if the request body is not formatted correctly or if the API does not return the expected data structure.",
+  "fix_steps": [
+    "Ensure the request body is set to raw JSON format",
+    "Double-check the structure of the JSON data being sent",
+    "Test the API call again"
+  ],
+  "agent_instruction": "Set the request body to raw JSON format and verify the JSON structure before retrying the API call.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "voiceflow",
+    "api",
+    "post-request",
+    "json",
+    "integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/rest-api-query/5180"
+  ]
+}

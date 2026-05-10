@@ -1,0 +1,40 @@
+{
+  "id": "1b2324629da6",
+  "tool": "n8n",
+  "error_signature": "Connection lost",
+  "context_key": "extract-from-pdf-node",
+  "title": "Connection lost during PDF extraction",
+  "symptom": "The n8n service loses connection and restarts when attempting to extract text from a PDF file using the Extract from PDF node.",
+  "applies_when": [
+    "Using Extract from PDF node",
+    "Self-hosted n8n service"
+  ],
+  "not_this_if": [
+    "Error does not occur with smaller PDF files",
+    "Running in a different execution mode"
+  ],
+  "root_cause": "The error occurs due to an out-of-memory condition when processing larger PDF files, causing the n8n service to crash and restart without logging the error, making it difficult to diagnose.",
+  "fix_steps": [
+    "Check the size of the PDF files being processed and reduce them if necessary.",
+    "Increase the memory allocation for the n8n Docker container.",
+    "Monitor the logs for any additional errors after making these changes."
+  ],
+  "agent_instruction": "Reduce the size of the PDF files or increase the memory allocation for the n8n Docker container.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "extract-from-pdf",
+    "out-of-memory",
+    "docker",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.112.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-lost-in-self-host-when-extract-from-pdf/193942"
+  ]
+}

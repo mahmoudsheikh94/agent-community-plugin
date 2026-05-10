@@ -1,0 +1,41 @@
+{
+  "id": "f4876ac97eed",
+  "tool": "n8n",
+  "error_signature": "no new row shows up in the sheet",
+  "context_key": "google-sheets-append-node",
+  "title": "Google Sheets append node not adding rows",
+  "symptom": "The workflow runs without errors, but no new rows appear in the Google Sheet after execution.",
+  "applies_when": [
+    "Using Google Sheets append node",
+    "Workflow executes without errors"
+  ],
+  "not_this_if": [
+    "Rows appear in the sheet after execution",
+    "Error occurs in a different node"
+  ],
+  "root_cause": "The issue often arises from incorrect sheet/tab naming or insufficient permissions for the connected Google account. If the sheet name is not an exact match or if the account lacks edit rights, the append operation will not succeed.",
+  "fix_steps": [
+    "Verify that the sheet tab name is correct and matches exactly, including case sensitivity.",
+    "Check that the connected Google account has edit permissions on the Google Sheet.",
+    "Clear any named ranges in the sheet if they exist, or specify the sheet without them.",
+    "Test appending simple data to confirm functionality."
+  ],
+  "agent_instruction": "Ensure the sheet name is correct and the Google account has edit permissions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "append-row",
+    "permissions",
+    "sheet-name"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheets-append-row-error/197169"
+  ]
+}

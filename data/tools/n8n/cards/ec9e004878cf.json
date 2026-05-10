@@ -1,0 +1,40 @@
+{
+  "id": "ec9e004878cf",
+  "tool": "n8n",
+  "error_signature": "Unknown execution mode",
+  "context_key": "MCP integration",
+  "title": "Unknown execution mode error in MCP workflow execution",
+  "symptom": "When executing a workflow via the MCP integration, an error 'Unknown execution mode' is returned, and the execution remains queued with no input data.",
+  "applies_when": [
+    "Using MCP integration to execute workflows",
+    "Multiple triggers are configured in the workflow"
+  ],
+  "not_this_if": [
+    "Only one trigger is used in the workflow"
+  ],
+  "root_cause": "The MCP integration requires that each workflow has only one trigger. When multiple triggers are present, the execution mode cannot be determined, leading to the 'Unknown execution mode' error and causing the execution to hang in the queue without input data.",
+  "fix_steps": [
+    "Edit the workflow to use only one trigger",
+    "Choose the most appropriate trigger for your use case",
+    "Save the workflow",
+    "Retry executing the workflow via the MCP integration"
+  ],
+  "agent_instruction": "Ensure the workflow has only one trigger before executing it via the MCP integration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "MCP",
+    "workflow-execution",
+    "unknown-execution-mode",
+    "triggers"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-workflow-execution-via-claude-desktop-creates-queued-executions-with-no-input-data/231984"
+  ]
+}

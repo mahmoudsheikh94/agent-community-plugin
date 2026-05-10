@@ -1,0 +1,39 @@
+{
+  "id": "886ec1f15e89",
+  "tool": "n8n",
+  "error_signature": "column does not exist",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets column does not exist error",
+  "symptom": "When executing a workflow that interacts with Google Sheets, n8n throws an error stating that a specific column does not exist. This prevents the workflow from completing successfully.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Referencing a column that may not exist"
+  ],
+  "not_this_if": [
+    "The column exists in the Google Sheet",
+    "The error is unrelated to column references"
+  ],
+  "root_cause": "This error occurs when the specified column in the Google Sheet is either misspelled, deleted, or never existed. It can also happen if the sheet structure has changed after the workflow was created.",
+  "fix_steps": [
+    "Verify the column name in the Google Sheet matches the one referenced in n8n.",
+    "Update the Google Sheets node configuration to reflect the correct column name.",
+    "Save the workflow and re-execute it."
+  ],
+  "agent_instruction": "Check the column names in your Google Sheet and update the Google Sheets node accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "column-error",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/my-google-credentials-keep-disconnecting/188397"
+  ]
+}

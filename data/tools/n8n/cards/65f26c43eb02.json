@@ -1,0 +1,40 @@
+{
+  "id": "65f26c43eb02",
+  "tool": "n8n",
+  "error_signature": "404 Not Found",
+  "context_key": "gitlab-node",
+  "title": "GitLab repository returns 404 error",
+  "symptom": "When attempting to get a GitLab repository, n8n returns a '404 Not Found' error. This indicates that the specified repository could not be found.",
+  "applies_when": [
+    "Using GitLab node",
+    "Repository path is incorrectly configured"
+  ],
+  "not_this_if": [
+    "Correct repository path is used",
+    "GitLab API is accessible"
+  ],
+  "root_cause": "The 404 error occurs when the repository path is not correctly specified in the n8n GitLab node settings. This can happen if the project owner and project name are not formatted correctly, or if there are network configuration issues with GitLab.",
+  "fix_steps": [
+    "Check the repository path in GitLab and ensure it is correct.",
+    "In the n8n GitLab node, set the 'Project Owner' field to the correct format (e.g., 'owner/project').",
+    "Ensure that GitLab is properly configured to allow access through the network settings."
+  ],
+  "agent_instruction": "Verify and correct the repository path in the GitLab node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gitlab",
+    "404",
+    "repository",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gitlab-get-repository-404-page/76026"
+  ]
+}

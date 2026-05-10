@@ -1,0 +1,39 @@
+{
+  "id": "624c047cf3aa",
+  "tool": "n8n",
+  "error_signature": "Node has no access to credential",
+  "context_key": "telegram-trigger-node",
+  "title": "Telegram Trigger node lacks access to credentials",
+  "symptom": "The Telegram Trigger node receives messages but fails with 'Node has no access to credential', halting workflow execution.",
+  "applies_when": [
+    "Using Telegram Trigger node",
+    "Workflow is set up with credentials"
+  ],
+  "not_this_if": [
+    "Credentials are correctly shared with the workflow's project"
+  ],
+  "root_cause": "The error occurs when the workflow and the credential are in different projects, preventing the node from accessing the specified credential. This can happen if the credential was created in a project that the workflow does not have access to.",
+  "fix_steps": [
+    "Check the sharing settings of the Telegram credential",
+    "Ensure the credential is shared with the project containing the workflow",
+    "Re-test the workflow execution"
+  ],
+  "agent_instruction": "Verify and adjust the sharing settings of the Telegram credential to ensure access from the workflow's project.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "trigger-node",
+    "credentials",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-node-receives-messages-but-fails-due-to-no-access-to-credential-error/82118"
+  ]
+}

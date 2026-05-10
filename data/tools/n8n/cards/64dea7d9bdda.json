@@ -1,0 +1,40 @@
+{
+  "id": "64dea7d9bdda",
+  "tool": "n8n",
+  "error_signature": "Authorization failed - please check your credentials",
+  "context_key": "httpRequest-node",
+  "title": "Authorization failure with Crawl4AI in HTTP Request node",
+  "symptom": "When attempting to authenticate to Crawl4AI using the HTTP Request node, the error 'Authorization failed - please check your credentials' is returned. This indicates that the provided token is invalid or the service is unreachable.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Crawl4AI service is running"
+  ],
+  "not_this_if": [
+    "Crawl4AI service is not running",
+    "Token is valid and correctly formatted"
+  ],
+  "root_cause": "The error occurs when the HTTP Request node cannot authenticate with the Crawl4AI service due to an invalid token or incorrect URL. This can happen if the service is not reachable or if the token contains special characters that are not handled properly.",
+  "fix_steps": [
+    "Ensure the Crawl4AI service is running and accessible.",
+    "Use the correct container name as the URL in the HTTP Request node, e.g., 'http://crawl4ai-crawl4ai-1:11235/crawl'.",
+    "Set the Authorization header value using the correct token format, ensuring no special characters cause issues."
+  ],
+  "agent_instruction": "Check the Crawl4AI service status and update the HTTP Request node with the correct URL and token.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "httpRequest",
+    "Crawl4AI",
+    "authorization",
+    "Docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/header-auth-failure-with-crawl4ai-on-local-macos-install/92578"
+  ]
+}

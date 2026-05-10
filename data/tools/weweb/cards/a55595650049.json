@@ -1,0 +1,41 @@
+{
+  "id": "a55595650049",
+  "tool": "weweb",
+  "error_signature": "table element not honoring pagination",
+  "context_key": "table-element",
+  "title": "Table element not respecting pagination settings",
+  "symptom": "The table element displays more rows than the specified max returned items, ignoring pagination settings. The pagination widget does not function as expected.",
+  "applies_when": [
+    "Using a table element",
+    "Pagination is set up with a data source"
+  ],
+  "not_this_if": [
+    "Pagination works correctly with other data sources",
+    "No rows are displayed"
+  ],
+  "root_cause": "The issue arises when the pagination is incorrectly bound to the data source. Instead of binding to the collection name directly, it may be mistakenly bound to a sub-property like 'data', which causes the pagination to malfunction.",
+  "fix_steps": [
+    "Open the settings for the table element",
+    "Ensure the pagination is bound to the collection name directly",
+    "Save the changes",
+    "Test the pagination functionality again"
+  ],
+  "agent_instruction": "Bind the pagination to the collection name directly in the table element settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "table-element",
+    "pagination",
+    "data-binding",
+    "xano"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/table-element-not-honoring-pagination/700"
+  ]
+}

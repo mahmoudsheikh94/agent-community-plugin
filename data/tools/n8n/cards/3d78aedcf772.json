@@ -1,0 +1,40 @@
+{
+  "id": "3d78aedcf772",
+  "tool": "n8n",
+  "error_signature": "no option to change the branch",
+  "context_key": "github-list-files-node",
+  "title": "No option to change branch in GitHub List Files Node",
+  "symptom": "The GitHub List Files Node does not provide an option to select a specific branch for listing files and directories.",
+  "applies_when": [
+    "Using GitHub List Files Node",
+    "Need to list files from a specific branch"
+  ],
+  "not_this_if": [
+    "Branch selection is available in the node settings"
+  ],
+  "root_cause": "The GitHub List Files Node currently lacks a feature to specify a branch directly within its configuration, limiting its functionality for users needing to access files from branches other than the default.",
+  "fix_steps": [
+    "Use an HTTP Request node instead of the GitHub List Files Node",
+    "Set the method to GET",
+    "Use the URL format: https://api.github.com/repos/{owner}/{repo}/contents/{path}?ref={branch}",
+    "Replace {owner}, {repo}, {path}, and {branch} with your specific values"
+  ],
+  "agent_instruction": "Use an HTTP Request node to access files from a specific branch using the GitHub API.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "github",
+    "list-files",
+    "branch-selection",
+    "http-request"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.117.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/github-list-files-node-how-to-change-branch/212870"
+  ]
+}

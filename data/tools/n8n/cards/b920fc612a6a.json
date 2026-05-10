@@ -1,0 +1,40 @@
+{
+  "id": "b920fc612a6a",
+  "tool": "n8n",
+  "error_signature": "Read/Write Files from Disk not outputting anything",
+  "context_key": "read-write-files-node",
+  "title": "Read/Write Files node fails to output data in background execution",
+  "symptom": "The Read/Write Files from Disk node does not output any data when running in the background, despite working fine during manual execution.",
+  "applies_when": [
+    "Using Read/Write Files from Disk node",
+    "Running in background execution mode"
+  ],
+  "not_this_if": [
+    "Manual execution works without issues",
+    "No file path issues"
+  ],
+  "root_cause": "When running in Docker, relative paths may not resolve correctly, leading to the Read/Write Files from Disk node failing to find the specified files. Additionally, file permissions and the existence of the files can affect output.",
+  "fix_steps": [
+    "Validate the file path explicitly using a Code node to check if the file exists.",
+    "Use absolute paths instead of relative paths in the Read/Write Files from Disk node.",
+    "Confirm that the Docker volume is correctly mounted and that the files are readable by the user running n8n inside the container."
+  ],
+  "agent_instruction": "Ensure you are using absolute paths and validate file existence before the Read/Write Files node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "read-write-files",
+    "docker",
+    "file-path",
+    "background-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.X",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-not-running-in-the-background-onprem/260723"
+  ]
+}

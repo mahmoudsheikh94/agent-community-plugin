@@ -1,0 +1,41 @@
+{
+  "id": "838671831160",
+  "tool": "weweb",
+  "error_signature": "created_formated not displayed",
+  "context_key": "DataGrid element",
+  "title": "DataGrid displaying created_at instead of created_formated",
+  "symptom": "The 'created_formated' field is not displayed, and instead, the 'created_at' value appears.",
+  "applies_when": [
+    "Using DataGrid to display data from Xano",
+    "Page is refreshed or data is reloaded"
+  ],
+  "not_this_if": [
+    "Data is displayed correctly without refresh",
+    "Issue occurs in a different component"
+  ],
+  "root_cause": "The 'created_formated' field is not being set correctly in the DataGrid settings, leading to the fallback display of 'created_at' instead. This typically happens when the configuration is not properly aligned with the data source.",
+  "fix_steps": [
+    "Open the DataGrid element settings",
+    "Navigate to the column settings for 'created_formated'",
+    "Ensure the correct value is set for 'created_formated'",
+    "Save the changes and refresh the page"
+  ],
+  "agent_instruction": "Ensure the 'created_formated' value is correctly configured in the DataGrid column settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "DataGrid",
+    "Xano",
+    "data-display",
+    "created_formated"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/data-from-xano-not-displayed-correctly/5238"
+  ]
+}

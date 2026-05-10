@@ -1,0 +1,42 @@
+{
+  "id": "132ab5660a11",
+  "tool": "n8n",
+  "error_signature": "Workflow Not Found",
+  "context_key": "n8n UI",
+  "title": "Workflows missing in UI after PostgreSQL instability",
+  "symptom": "Users see 'Workflow Not Found' when trying to access workflows in the UI, despite them running in the background.",
+  "applies_when": [
+    "Using n8n with PostgreSQL",
+    "PostgreSQL instability occurred after an update"
+  ],
+  "not_this_if": [
+    "Workflows are accessible in the UI",
+    "No PostgreSQL instability prior to the issue"
+  ],
+  "root_cause": "The issue arises from an incompatibility in the metadata reading/indexing layer of the n8n application after a PostgreSQL update, which prevents the UI from retrieving existing workflows stored in the database.",
+  "fix_steps": [
+    "Copy the workflow JSON from the 'workflow_entity' table in PostgreSQL.",
+    "Paste the JSON into the n8n UI to create a new workflow.",
+    "Save the workflow in the UI."
+  ],
+  "agent_instruction": "Copy the workflow JSON from the database and import it into the n8n UI.",
+  "safety_notes": [
+    "Ensure to back up the database before making changes."
+  ],
+  "fix_type": "workaround",
+  "tags": [
+    "n8n",
+    "postgresql",
+    "workflow-not-found",
+    "metadata"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflows-missing-in-ui-but-still-executing-in-the-background/227941"
+  ]
+}

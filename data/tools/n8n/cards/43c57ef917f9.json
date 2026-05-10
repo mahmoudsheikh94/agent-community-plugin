@@ -1,0 +1,40 @@
+{
+  "id": "43c57ef917f9",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "openai-chat-model-node",
+  "title": "OpenAI Chat Model node parameters issue",
+  "symptom": "When using the OpenAI Chat Model node with the model 'gpt-4o-search-preview', an error occurs stating 'Bad request - please check your parameters'. This indicates that incompatible request arguments are being supplied.",
+  "applies_when": [
+    "Using OpenAI Chat Model node",
+    "Model set to 'gpt-4o-search-preview'"
+  ],
+  "not_this_if": [
+    "Parameters are explicitly set to compatible values"
+  ],
+  "root_cause": "The 'gpt-4o-search-preview' model does not support certain default parameters like frequency_penalty, n, presence_penalty, temperature, and top_p. When these parameters are included in the request, it results in a bad request error.",
+  "fix_steps": [
+    "Add an HTTP Request Node to your workflow.",
+    "Configure the node with Method: POST and URL: 'https://api.openai.com/v1/chat/completions'.",
+    "Set the Headers: 'Content-Type: application/json' and 'Authorization: Bearer YOUR_OPENAI_API_KEY'.",
+    "In the Body field, add the appropriate JSON structure without the unsupported parameters."
+  ],
+  "agent_instruction": "Use an HTTP Request Node to call the OpenAI API directly with the correct parameters.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "openai",
+    "gpt-4o-search-preview",
+    "http-request",
+    "api-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-with-gpt-4o-search-preview-and-request-for-a-complete-langchain-code-example/92124"
+  ]
+}

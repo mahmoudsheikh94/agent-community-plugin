@@ -1,0 +1,39 @@
+{
+  "id": "eb1252c11938",
+  "tool": "n8n",
+  "error_signature": "OAuth callback failed because of insufficient permissions",
+  "context_key": "OAuth configuration",
+  "title": "Insufficient permissions for OAuth callback",
+  "symptom": "When attempting to link to Google OAuth, the user receives an error stating 'OAuth callback failed because of insufficient permissions'. The callback URL does not reflect the updated port number.",
+  "applies_when": [
+    "Using Google OAuth",
+    "Configured n8n with Docker"
+  ],
+  "not_this_if": [
+    "OAuth works with default port 5678",
+    "No changes made to environment variables"
+  ],
+  "root_cause": "The error occurs because the OAuth redirect URL is not updated to reflect the new port number set in the Docker configuration. The environment variable for the webhook URL must be explicitly set to ensure the correct port is used.",
+  "fix_steps": [
+    "Add the environment variable WEBHOOK_URL with the value http://localhost:15678 to your docker-compose.yml",
+    "Restart the n8n Docker container to apply the changes"
+  ],
+  "agent_instruction": "Set the WEBHOOK_URL environment variable to include the new port and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "oauth",
+    "google",
+    "docker",
+    "port-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-can-i-change-the-port-number-in-the-oauth-redirect-url-to-15678/111572"
+  ]
+}

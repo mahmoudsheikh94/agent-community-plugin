@@ -1,0 +1,40 @@
+{
+  "id": "4c2cebcee632",
+  "tool": "weweb",
+  "error_signature": "TypeError: supabase.auth.updateUser is not a function",
+  "context_key": "supabase-auth-plugin",
+  "title": "Supabase Auth updateUser function not found",
+  "symptom": "When attempting to update a user's email using the Supabase Auth plugin, a TypeError occurs indicating that 'updateUser' is not a function.",
+  "applies_when": [
+    "Using Supabase Auth plugin",
+    "Attempting to update user email"
+  ],
+  "not_this_if": [
+    "Using a different version of the Supabase SDK",
+    "Using a different method to update user"
+  ],
+  "root_cause": "The error occurs because the method 'updateUser' does not exist in the current version of the Supabase SDK being used. The correct method to update user information has changed in the SDK, and the user is likely referencing outdated documentation.",
+  "fix_steps": [
+    "Refer to the Supabase SDK v1 documentation for the correct method",
+    "Use the method supabase.auth.update instead of updateUser",
+    "Call supabase.auth.update({email: 'new@email.com'}) to update the email"
+  ],
+  "agent_instruction": "Update the user email using the correct method from the Supabase SDK v1 documentation.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "supabase",
+    "auth",
+    "update-user",
+    "sdk-version"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/using-supabase-auth-to-update-users-email-address/6173"
+  ]
+}

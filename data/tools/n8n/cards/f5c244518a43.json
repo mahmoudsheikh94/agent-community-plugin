@@ -1,0 +1,39 @@
+{
+  "id": "f5c244518a43",
+  "tool": "n8n",
+  "error_signature": "legacy expression syntax used",
+  "context_key": "Postgres Chat Memory",
+  "title": "Error due to legacy expression syntax in AI agent workflow",
+  "symptom": "The workflow fails when connecting the 'Postgres Chat Memory' to 'set_params', indicating an issue with the expression syntax used for sessionId.",
+  "applies_when": [
+    "Using AI agent with Postgres Chat Memory",
+    "Legacy expression syntax is present"
+  ],
+  "not_this_if": [
+    "All expressions are using the current standard syntax"
+  ],
+  "root_cause": "The error occurs because the user is utilizing an outdated expression syntax for referencing node data. n8n has transitioned to a new syntax that must be used to ensure proper data mapping and functionality.",
+  "fix_steps": [
+    "Identify all nodes using the legacy syntax in the workflow",
+    "Update the syntax to the current standard format, e.g., use `{{ $('set_params').item.json.sessionId }}`",
+    "Test the workflow again to ensure it executes without errors"
+  ],
+  "agent_instruction": "Update all legacy expression syntax in your workflow to the current standard syntax.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "AI agent",
+    "Postgres",
+    "legacy syntax",
+    "workflow error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.9.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-chat-history-error-on-using-sessionid-from-previous-node/113265"
+  ]
+}

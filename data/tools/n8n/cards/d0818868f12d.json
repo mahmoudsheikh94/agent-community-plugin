@@ -1,0 +1,41 @@
+{
+  "id": "d0818868f12d",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading ‘_’)",
+  "context_key": "s3-node",
+  "title": "Minio S3 Node connection error",
+  "symptom": "When attempting to upload to Minio using the S3 node, an error occurs stating 'Cannot read properties of undefined (reading ‘_)'.",
+  "applies_when": [
+    "Using S3 node with Minio",
+    "Uploading files to Minio"
+  ],
+  "not_this_if": [
+    "Using a different storage service",
+    "No error occurs during uploads"
+  ],
+  "root_cause": "The error arises because the S3 node is not configured correctly for Minio. Specifically, the 'Force Path Style' setting is not enabled, which is required for proper communication with Minio's S3-compatible API.",
+  "fix_steps": [
+    "Go to the S3 Credential settings in n8n",
+    "Enable the 'Force Path Style' option",
+    "Save the changes",
+    "Retry the upload operation"
+  ],
+  "agent_instruction": "Enable 'Force Path Style' in the S3 Credential settings for Minio.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "minio",
+    "s3",
+    "upload",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/minio-connection-error/87180"
+  ]
+}

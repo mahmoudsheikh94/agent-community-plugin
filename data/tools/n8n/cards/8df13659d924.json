@@ -1,0 +1,41 @@
+{
+  "id": "8df13659d924",
+  "tool": "n8n",
+  "error_signature": "storewindow.crypto.randomUUID is not a function",
+  "context_key": "n8n-HTTPS-configuration",
+  "title": "Error accessing N8N due to HTTP instead of HTTPS",
+  "symptom": "When trying to create a new workflow and add a trigger, the error 'storewindow.crypto.randomUUID is not a function' appears.",
+  "applies_when": [
+    "N8N is accessed via HTTP",
+    "TrueNAS server is configured for HTTPS"
+  ],
+  "not_this_if": [
+    "N8N is already configured to run on HTTPS"
+  ],
+  "root_cause": "The error occurs because the n8n application relies on secure context features that are only available when accessed over HTTPS. If n8n is running over HTTP, certain JavaScript functions, like crypto.randomUUID, may not be available, leading to this error.",
+  "fix_steps": [
+    "Access the n8n settings",
+    "Select the 'truenas_default' Certificate for HTTPS",
+    "Save the settings",
+    "Restart the n8n application"
+  ],
+  "agent_instruction": "Select the 'truenas_default' Certificate in n8n settings to enable HTTPS.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "HTTPS",
+    "TrueNAS",
+    "configuration",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.6.69",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-on-truenas-scale/221779"
+  ]
+}

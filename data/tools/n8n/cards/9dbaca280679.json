@@ -1,0 +1,41 @@
+{
+  "id": "9dbaca280679",
+  "tool": "n8n",
+  "error_signature": "403 Forbidden",
+  "context_key": "google-bigquery-node",
+  "title": "Google BigQuery access denied due to IP blocking",
+  "symptom": "When trying to authorize the Google BigQuery node, a '403 Forbidden' error is returned, indicating permission issues. The same workflow works in the cloud version but fails in the self-hosted instance.",
+  "applies_when": [
+    "Using Google BigQuery node",
+    "Self-hosted N8N on Hetzner VPS"
+  ],
+  "not_this_if": [
+    "Workflow works in cloud version",
+    "Using a different hosting provider"
+  ],
+  "root_cause": "Google has blocked access from certain IP addresses associated with Hetzner, leading to authorization failures for services like BigQuery. This is a known issue affecting multiple users with similar setups.",
+  "fix_steps": [
+    "Disable IPv6 on your server",
+    "Reserve a floating IPv4 address",
+    "Alternatively, migrate your N8N instance to a different hosting provider like AWS"
+  ],
+  "agent_instruction": "Disable IPv6 and reserve a floating IPv4 address or migrate to a different hosting provider.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "google-bigquery",
+    "403",
+    "hetzner",
+    "ip-blocking",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/self-hosted-n8n-on-coolify-in-a-hetzner-vps-cant-connect-to-google-services/83245"
+  ]
+}

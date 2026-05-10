@@ -1,0 +1,40 @@
+{
+  "id": "112fd046cdb0",
+  "tool": "n8n",
+  "error_signature": "stuck at initialization when using port 80",
+  "context_key": "docker-configuration",
+  "title": "n8n fails to initialize on port 80",
+  "symptom": "The n8n container fails to initialize when configured to use port 80, while it works on port 5678. The logs do not provide helpful information for debugging.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Configured to use port 80"
+  ],
+  "not_this_if": [
+    "Running on a non-root user",
+    "Using port 5678"
+  ],
+  "root_cause": "Binding to port 80 requires root privileges. If the Docker container is not running as root, it will fail to initialize when trying to bind to this privileged port. This is a common restriction in Unix-like operating systems.",
+  "fix_steps": [
+    "Change the N8N_PORT environment variable back to 5678",
+    "Use a reverse proxy or load balancer to forward traffic from port 80 to port 5678",
+    "Ensure the reverse proxy is configured correctly to handle incoming requests."
+  ],
+  "agent_instruction": "Revert the N8N_PORT to 5678 and set up a reverse proxy to handle port 80 traffic.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "docker",
+    "n8n",
+    "port-configuration",
+    "initialization-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/stuck-at-initialization-for-self-hosted-version-when-using-port-80/76627"
+  ]
+}

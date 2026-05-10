@@ -1,0 +1,41 @@
+{
+  "id": "7da9f5036381",
+  "tool": "n8n",
+  "error_signature": "only returns non-active workflows",
+  "context_key": "n8n-node",
+  "title": "n8n node only retrieves non-active workflows",
+  "symptom": "The n8n node is only pulling a subset of workflows, specifically non-active ones, leading to missing workflows during backup.",
+  "applies_when": [
+    "Using the n8n node to retrieve workflows",
+    "Some workflows are active"
+  ],
+  "not_this_if": [
+    "All workflows are inactive",
+    "No filters are applied in the node settings"
+  ],
+  "root_cause": "The n8n node has a filter option that defaults to only returning non-active workflows. This behavior can lead to confusion when users expect to retrieve all workflows regardless of their active status.",
+  "fix_steps": [
+    "Open the n8n node settings",
+    "Locate the filter option",
+    "Remove or adjust the filter to include active workflows",
+    "Save the changes and run the node again"
+  ],
+  "agent_instruction": "Adjust the filter settings in the n8n node to include active workflows.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "workflows",
+    "node-configuration",
+    "backup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-node-not-getting-all-workflows/127709"
+  ]
+}

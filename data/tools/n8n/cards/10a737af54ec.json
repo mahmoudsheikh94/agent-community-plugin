@@ -1,0 +1,38 @@
+{
+  "id": "10a737af54ec",
+  "tool": "n8n",
+  "error_signature": "No results loading Excel workbooks",
+  "context_key": "excel-node",
+  "title": "Excel Node not loading workbooks from OneDrive",
+  "symptom": "When trying to select a workbook in the Excel node, it shows 'No results' despite files being present in OneDrive.",
+  "applies_when": [
+    "Using Excel node",
+    "Connected to OneDrive"
+  ],
+  "not_this_if": [
+    "Using the 'By ID' method to access workbooks"
+  ],
+  "root_cause": "The Excel node may have issues loading workbook files directly from OneDrive due to how the API interacts with file identifiers. The node requires a specific Graph DriveItem ID to access the workbook correctly.",
+  "fix_steps": [
+    "Obtain the Microsoft Graph DriveItem ID for the desired workbook.",
+    "Use the 'By ID' option in the Excel node to access the workbook using this ID."
+  ],
+  "agent_instruction": "Use the Microsoft Graph DriveItem ID to access the workbook in the Excel node.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "excel",
+    "onedrive",
+    "microsoft-graph",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/excel-node-is-not-loading-any-files/258032"
+  ]
+}

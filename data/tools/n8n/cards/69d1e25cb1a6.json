@@ -1,0 +1,39 @@
+{
+  "id": "69d1e25cb1a6",
+  "tool": "n8n",
+  "error_signature": "empty strings clear corresponding sheet cells",
+  "context_key": "google-sheets-node",
+  "title": "Empty strings clear Google Sheets cell values",
+  "symptom": "When sending empty strings to a Google Sheets node, the corresponding cells are cleared instead of retaining their original values.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Sending data with potential empty values"
+  ],
+  "not_this_if": [
+    "All values being sent are non-empty",
+    "Using a different method to handle empty values"
+  ],
+  "root_cause": "The Google Sheets node in n8n does not differentiate between an empty string and a null value when updating cells. As a result, sending an empty string will clear the cell's content instead of leaving it unchanged.",
+  "fix_steps": [
+    "Implement a JavaScript function to filter out empty keys from the input data before it reaches the Google Sheets node.",
+    "Configure the Google Sheets node to 'Map Automatically' to ensure only non-empty values are sent."
+  ],
+  "agent_instruction": "Use the provided JavaScript script to drop empty keys before sending data to the Google Sheets node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "google-sheets",
+    "empty-values",
+    "data-mapping",
+    "javascript"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "latest",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/dont-override-google-sheets-cell-if-output-cell-is-empty/92997"
+  ]
+}

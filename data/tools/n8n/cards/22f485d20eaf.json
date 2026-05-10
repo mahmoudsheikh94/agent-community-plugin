@@ -1,0 +1,40 @@
+{
+  "id": "22f485d20eaf",
+  "tool": "n8n",
+  "error_signature": "Forbidden: bot can’t initiate conversation with a user",
+  "context_key": "telegram-node",
+  "title": "Telegram bot cannot initiate conversation",
+  "symptom": "When trying to send a message using the Telegram node, n8n returns 'Forbidden: bot can’t initiate conversation with a user'.",
+  "applies_when": [
+    "Using Telegram bot in business mode",
+    "Sending messages to users in private chats"
+  ],
+  "not_this_if": [
+    "Using a regular chat without business connection"
+  ],
+  "root_cause": "Telegram's API restricts bots from initiating conversations with users unless they are connected through a business account. The bot must use a valid `business_connection_id` to send messages in this context.",
+  "fix_steps": [
+    "Extract the `business_connection_id` and `chat.id` from the JSON response received from Telegram.",
+    "Add an HTTP Request node to your workflow.",
+    "Set the request method to POST and specify the Telegram API endpoint for sending messages.",
+    "In the Body Parameters, include `chat_id`, `text`, and `business_connection_id` with the appropriate values."
+  ],
+  "agent_instruction": "Configure the HTTP Request node to include the business_connection_id when sending messages.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "telegram",
+    "business-connection",
+    "api",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/send-telegram-business-msg-in-business-mode/89521"
+  ]
+}

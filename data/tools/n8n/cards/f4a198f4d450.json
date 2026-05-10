@@ -1,0 +1,44 @@
+{
+  "id": "f4a198f4d450",
+  "tool": "n8n",
+  "error_signature": "webhook and callback URLs missing https://",
+  "context_key": "webhook-callback-configuration",
+  "title": "Webhook and callback URLs missing HTTPS prefix",
+  "symptom": "After updating n8n, new webhook and callback URLs are generated without the 'https://' prefix, causing failures in OAuth connections.",
+  "applies_when": [
+    "Self-hosted n8n instance",
+    "Updated from an older version"
+  ],
+  "not_this_if": [
+    "Existing connections are working fine",
+    "No update was performed"
+  ],
+  "root_cause": "The update to n8n changed how certain environment variables are handled, leading to the omission of the 'https://' prefix in newly generated URLs. Some environment variables are no longer necessary and need to be adjusted.",
+  "fix_steps": [
+    "Update the environment variables to remove unnecessary ones and ensure correct settings:",
+    "N8N_HOST=mydomain.tld",
+    "N8N_PORT=5678",
+    "N8N_PROTOCOL=https",
+    "N8N_EDITOR_BASE_URL=https://mydomain.tld",
+    "Restart the n8n container or host."
+  ],
+  "agent_instruction": "Update the environment variables and restart your n8n instance.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "callback",
+    "https",
+    "environment-variables",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/https-suddenly-missing-from-webhook-and-callback-urls/180860"
+  ]
+}

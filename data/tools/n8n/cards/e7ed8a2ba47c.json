@@ -1,0 +1,39 @@
+{
+  "id": "e7ed8a2ba47c",
+  "tool": "n8n",
+  "error_signature": "the 'JSON Output' in item 0 contains invalid JSON",
+  "context_key": "edit-fields-node",
+  "title": "Invalid JSON output in Edit Fields Node",
+  "symptom": "The Edit Fields Node throws an error stating that the JSON output in item 0 contains invalid JSON. This occurs when certain fields are improperly formatted.",
+  "applies_when": [
+    "Using Edit Fields Node",
+    "JSON output contains text with formatting"
+  ],
+  "not_this_if": [
+    "All fields are properly formatted without extra quotes",
+    "No text formatting is required"
+  ],
+  "root_cause": "The error occurs due to improperly formatted JSON strings, specifically when double quotes are added around values that should not have them. This can happen when copying and pasting text that includes formatting characters like newlines.",
+  "fix_steps": [
+    "Remove any unnecessary double quotes around the values in the JSON structure.",
+    "Use JSON.stringify() for any text fields that require formatting, such as newlines."
+  ],
+  "agent_instruction": "Ensure that text fields in the JSON output are correctly formatted without extra quotes and use JSON.stringify() where necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "edit-fields",
+    "json",
+    "formatting",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.95.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-json-output-in-item-0-contains-invalid-json-in-the-edit-fields-node/128422"
+  ]
+}

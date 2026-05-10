@@ -1,0 +1,40 @@
+{
+  "id": "3bd9cef8b484",
+  "tool": "n8n",
+  "error_signature": "JSON is not valid",
+  "context_key": "Ideogram integration",
+  "title": "Invalid JSON format for Ideogram",
+  "symptom": "When copying a process for posting on Instagram, one variable is recognized as an object instead of valid JSON, causing errors in the Ideogram integration.",
+  "applies_when": [
+    "Copying a process for Instagram posting",
+    "Using Ideogram integration"
+  ],
+  "not_this_if": [
+    "The original process works without issues",
+    "No JSON formatting is required"
+  ],
+  "root_cause": "The copied process may have altered the structure of the JSON, leading to invalid formatting. This can happen if the variable is not properly serialized or if the expression used does not match the expected JSON structure.",
+  "fix_steps": [
+    "Identify the variable that is being recognized as an object",
+    "Use the expression: {\"image_request\": {{ JSON.stringify( $json.image_request ) }}}",
+    "Test the modified process to ensure it works correctly"
+  ],
+  "agent_instruction": "Modify the variable to ensure it is formatted as valid JSON using the provided expression.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "ideogram",
+    "json",
+    "instagram",
+    "variable-formatting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/when-copying-the-input-is-recognized-as-object-and-not-json/119371"
+  ]
+}

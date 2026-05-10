@@ -1,0 +1,39 @@
+{
+  "id": "1a9eeb28fec3",
+  "tool": "n8n",
+  "error_signature": "The value in \"Hello again! How can I help you?\" is not set",
+  "context_key": "convertToFile-node",
+  "title": "Value not set error in Convert to File node",
+  "symptom": "The Convert to File node throws an error stating that the value is not set when trying to convert the output of the AI agent into a file.",
+  "applies_when": [
+    "Using Convert to File node",
+    "Output from AI agent is expected"
+  ],
+  "not_this_if": [
+    "Output is correctly set in the node parameters"
+  ],
+  "root_cause": "The error occurs because the parameter for the source property in the Convert to File node is incorrectly set. Instead of referencing the output with `{{ $json.output }}`, it should directly reference the property name without the JSON path syntax.",
+  "fix_steps": [
+    "Open the Convert to File node settings",
+    "Replace `{{ $json.output }}` with `output` in the source property",
+    "Save the workflow",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Update the source property in the Convert to File node to reference 'output' directly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "convertToFile",
+    "node-configuration",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-value-in-text-not-set-for-file-convert/114266"
+  ]
+}

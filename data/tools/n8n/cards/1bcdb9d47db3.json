@@ -1,0 +1,39 @@
+{
+  "id": "1bcdb9d47db3",
+  "tool": "n8n",
+  "error_signature": "Bad Request: bad webhook: Failed to resolve host: Name or service not known",
+  "context_key": "telegram-node",
+  "title": "Telegram webhook fails to resolve host",
+  "symptom": "When trying to use the Telegram node, the error 'Bad Request: bad webhook: Failed to resolve host: Name or service not known' is displayed. This prevents the webhook from functioning correctly.",
+  "applies_when": [
+    "Self-hosting n8n",
+    "Using a placeholder domain in webhook URL"
+  ],
+  "not_this_if": [
+    "Using a valid, reachable domain for webhook"
+  ],
+  "root_cause": "The error occurs because the webhook URL is set to a placeholder domain (e.g., n8n.example.com) that is not a real, reachable domain. Telegram cannot resolve this domain, leading to the failure.",
+  "fix_steps": [
+    "Open your docker-compose.yml file where n8n is configured.",
+    "Set the WEBHOOK_URL environment variable to your actual domain (e.g., WEBHOOK_URL=https://your.actual-domain.com).",
+    "Recreate your n8n container by running 'docker-compose down' followed by 'docker-compose up -d'."
+  ],
+  "agent_instruction": "Update the WEBHOOK_URL in your Docker configuration to your actual domain and recreate the n8n container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "webhook",
+    "docker",
+    "self-hosting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/trying-to-make-a-basic-telegram-integration-error-with-webhook/139433"
+  ]
+}

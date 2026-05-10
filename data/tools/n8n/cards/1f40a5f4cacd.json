@@ -1,0 +1,39 @@
+{
+  "id": "1f40a5f4cacd",
+  "tool": "n8n",
+  "error_signature": "UI always shows an 'Offline' status",
+  "context_key": "Google Cloud Run",
+  "title": "n8n UI shows Offline status after upgrade",
+  "symptom": "After upgrading to version 2.7.0, the n8n UI displays an 'Offline' status, preventing publishing or saving changes. The interface also becomes sluggish and unresponsive.",
+  "applies_when": [
+    "Using n8n version 2.7.0 or 2.8.2",
+    "Running on Google Cloud Run"
+  ],
+  "not_this_if": [
+    "Using n8n version 2.7.5 or later"
+  ],
+  "root_cause": "The issue arises from a bug in the health check endpoint configuration in versions 2.7.0 to 2.8.2, which causes the UI to misreport the service status as offline, blocking workflow publishing and causing performance issues.",
+  "fix_steps": [
+    "Upgrade n8n to version 2.7.5 or later",
+    "Set the environment variable N8N_ENDPOINT_HEALTH to 'health' or any value other than 'healthz'",
+    "Update any health checks to reflect the new endpoint"
+  ],
+  "agent_instruction": "Upgrade to n8n version 2.7.5 and change the health check endpoint configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-cloud-run",
+    "offline",
+    "performance-issue",
+    "health-check"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.7.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/critical-ui-always-offline-issue-so-cant-publish-lot-of-latency-since-v2-7-0-instance-google-run/265935"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "b8c1823f2db0",
+  "tool": "n8n",
+  "error_signature": "OAuth callback failed because of insufficient permissions",
+  "context_key": "google-calendar-node",
+  "title": "Google Calendar OAuth callback insufficient permissions",
+  "symptom": "When trying to authenticate Google Calendar in n8n, the error 'OAuth callback failed because of insufficient permissions' appears.",
+  "applies_when": [
+    "Using Google Calendar node",
+    "Self-hosted instance on Render"
+  ],
+  "not_this_if": [
+    "Local instance works without issues"
+  ],
+  "root_cause": "The OAuth callback URL is set to localhost, which is often not accepted by Google for OAuth2 authentication. This can lead to insufficient permissions errors when trying to authenticate from a non-localhost environment.",
+  "fix_steps": [
+    "Set the correct environment variable for the OAuth callback URL",
+    "Ensure the URL is accessible and not set to localhost",
+    "Retry the authentication process"
+  ],
+  "agent_instruction": "Update the OAuth callback URL in the environment variables to a valid public URL.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-calendar",
+    "oauth",
+    "authentication",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/please-assist/88343"
+  ]
+}

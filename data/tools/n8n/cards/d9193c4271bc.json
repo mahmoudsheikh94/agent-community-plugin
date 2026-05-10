@@ -1,0 +1,41 @@
+{
+  "id": "d9193c4271bc",
+  "tool": "n8n",
+  "error_signature": "SyntaxError: Error parsing /usr/local/lib/node_modules/n8n/package.json",
+  "context_key": "n8n-import",
+  "title": "Error parsing n8n package.json in n8n-import container",
+  "symptom": "The n8n-import container fails to start with a syntax error related to the package.json file. The file appears to be empty, causing the import process to fail.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "n8n-import container is being used"
+  ],
+  "not_this_if": [
+    "The package.json file is valid and contains data"
+  ],
+  "root_cause": "The error occurs because the package.json file in the n8n container is empty or corrupted. This prevents the n8n-import process from executing properly, as it relies on the package.json for necessary configurations and dependencies.",
+  "fix_steps": [
+    "Pull the latest n8n Docker image using the command: docker pull n8nio/n8n:latest",
+    "Start the n8n-import container separately with: docker compose up -d n8n-import",
+    "SSH into the n8n-import container using: docker exec -it n8n-import /bin/sh",
+    "Check the contents of the package.json file with: cat /usr/local/lib/node_modules/n8n/package.json"
+  ],
+  "agent_instruction": "Pull the latest n8n image and restart the n8n-import container to resolve the package.json issue.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "n8n",
+    "docker",
+    "n8n-import",
+    "package.json",
+    "syntax-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/can-t-run-the-self-hosted-ai-starter-kit/74396"
+  ]
+}

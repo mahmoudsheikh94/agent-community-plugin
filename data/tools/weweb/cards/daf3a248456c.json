@@ -1,0 +1,41 @@
+{
+  "id": "daf3a248456c",
+  "tool": "weweb",
+  "error_signature": "NETWORK ERROR",
+  "context_key": "Xano AUTH app",
+  "title": "Network error when logging into Xano AUTH app",
+  "symptom": "When attempting to log in to the Xano AUTH app using the 'test' data source, a 'NETWORK ERROR' occurs. The logs indicate that the correct data source is being passed.",
+  "applies_when": [
+    "Using Xano AUTH app",
+    "Selecting a specific data source for authentication"
+  ],
+  "not_this_if": [
+    "Error does not occur when using the live data source"
+  ],
+  "root_cause": "The Xano AUTH app requires specific headers to be allowed in CORS management. If the necessary headers, such as 'X-Data-Source', are not included, network errors can occur during authentication attempts.",
+  "fix_steps": [
+    "Access the CORS management settings of your API group",
+    "Add 'X-Data-Source' to the list of allowed headers",
+    "Save the changes",
+    "Retry logging into the Xano AUTH app"
+  ],
+  "agent_instruction": "Add 'X-Data-Source' to the allowed headers in CORS management and save the settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "AUTH",
+    "CORS",
+    "network-error",
+    "data-source"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/xano-auth-data-source-gives-error/20482"
+  ]
+}

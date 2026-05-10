@@ -1,0 +1,41 @@
+{
+  "id": "f20a4a33a9db",
+  "tool": "weweb",
+  "error_signature": "Can't see and edit workflows",
+  "context_key": "NPM plugin conflict",
+  "title": "Unable to see and edit workflows due to NPM plugin",
+  "symptom": "Users are unable to view or edit workflows, and attempts to zoom or fullscreen do not resolve the issue.",
+  "applies_when": [
+    "Using specific NPM plugins",
+    "Experiencing UI issues with workflows"
+  ],
+  "not_this_if": [
+    "No NPM plugins are installed",
+    "Workflows are visible in other environments"
+  ],
+  "root_cause": "Certain NPM plugins can interfere with the WeWeb interface, causing elements like workflows to not render properly. This can lead to a complete inability to interact with the workflow editor.",
+  "fix_steps": [
+    "Identify the NPM plugins currently installed",
+    "Remove the conflicting NPM plugin",
+    "Refresh the WeWeb interface",
+    "Check if workflows are now visible and editable"
+  ],
+  "agent_instruction": "Remove the NPM plugin that is causing the conflict and refresh the interface.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "NPM",
+    "plugin",
+    "workflow",
+    "UI-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/cant-see-and-edit-workflows/19745"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "9415bcbc93d1",
+  "tool": "n8n",
+  "error_signature": "Last session crashed",
+  "context_key": "n8n-docker",
+  "title": "n8n crashing due to low memory",
+  "symptom": "n8n is crashing and restarting in a loop, displaying 'Last session crashed' messages. Logs may not capture the error due to rapid restarts.",
+  "applies_when": [
+    "Running n8n on a low-memory server (e.g., 512MB RAM)",
+    "Using Docker to run n8n"
+  ],
+  "not_this_if": [
+    "Server has at least 1GB RAM",
+    "n8n is not crashing"
+  ],
+  "root_cause": "n8n requires a certain amount of memory to operate effectively, especially with background processes like the task broker. On low-memory servers, it can run out of resources, leading to crashes and restarts.",
+  "fix_steps": [
+    "Upgrade your server to at least 1GB RAM for better stability.",
+    "If upgrading is not possible, add swap memory to your server.",
+    "Consider disabling unused features in n8n to reduce memory usage."
+  ],
+  "agent_instruction": "Upgrade your server to at least 1GB RAM or add swap memory to stabilize n8n.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "n8n",
+    "docker",
+    "memory",
+    "crash",
+    "low-resources"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-me-with-setup-yml-for-using-runners/91350"
+  ]
+}

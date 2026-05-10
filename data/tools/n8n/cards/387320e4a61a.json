@@ -1,0 +1,41 @@
+{
+  "id": "387320e4a61a",
+  "tool": "n8n",
+  "error_signature": "Invalid Scopes: pages_manage_metadata",
+  "context_key": "facebook-leads-ads-node",
+  "title": "Invalid Scopes error when connecting Facebook Leads Ads",
+  "symptom": "When attempting to connect the Facebook Leads Ads account, an error message appears stating 'Invalid Scopes: pages_manage_metadata'. This prevents the connection from being established.",
+  "applies_when": [
+    "Using Facebook Leads Ads node",
+    "Attempting to connect account"
+  ],
+  "not_this_if": [
+    "The app has the required permissions configured correctly"
+  ],
+  "root_cause": "The error occurs because the Facebook app does not have the necessary permissions enabled for the scopes required by the Leads Ads integration. Specifically, the 'pages_manage_metadata' permission must be allowed in the app settings.",
+  "fix_steps": [
+    "Go to the Facebook Developers portal",
+    "Navigate to your app's use cases",
+    "Click on the customize button for 'Capture & manage ad leads with marketing API'",
+    "Enable the 'pages_manage_metadata' permission",
+    "Save the changes"
+  ],
+  "agent_instruction": "Enable the 'pages_manage_metadata' permission in your Facebook app settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook",
+    "leads-ads",
+    "permissions",
+    "api-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/facebook-leads-ads-account-trigger-does-not-connect-to-fb/209121"
+  ]
+}

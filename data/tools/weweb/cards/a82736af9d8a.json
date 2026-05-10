@@ -1,0 +1,40 @@
+{
+  "id": "a82736af9d8a",
+  "tool": "weweb",
+  "error_signature": "products are being skipped over in pagination",
+  "context_key": "paginator-element",
+  "title": "Pagination skips products when using Xano",
+  "symptom": "When navigating through pages in the paginator, products are skipped, leading to unexpected price jumps. The paginator shows incorrect page counts and results.",
+  "applies_when": [
+    "Using paginator element with Xano",
+    "Configured for external pagination"
+  ],
+  "not_this_if": [
+    "Pagination works correctly with other data sources",
+    "No price jumps occur"
+  ],
+  "root_cause": "The paginator is incorrectly configured to use an offset based on the current page, which causes it to skip items. The offset should be calculated based on the current page minus one, multiplied by the number of items per page.",
+  "fix_steps": [
+    "Bind the offset in the paginator settings to be calculated as (current page - 1) * items per page.",
+    "Ensure the paginator variable is updated correctly in the workflow to reflect the current page and offset."
+  ],
+  "agent_instruction": "Adjust the paginator offset calculation to prevent skipping items.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "paginator",
+    "Xano",
+    "pagination",
+    "offset",
+    "data-fetching"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/paginator-element-wont-work-for-external-paging-w-xano/3394"
+  ]
+}

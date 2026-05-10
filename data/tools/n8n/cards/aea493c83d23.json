@@ -1,0 +1,42 @@
+{
+  "id": "aea493c83d23",
+  "tool": "n8n",
+  "error_signature": "Connection lost",
+  "context_key": "nginx-reverse-proxy",
+  "title": "Connection lost after upgrade to n8n 1.98.1 with Nginx",
+  "symptom": "After upgrading to n8n 1.98.1, the editor shows 'Connection lost' immediately after loading. API calls fail silently without visible errors in logs.",
+  "applies_when": [
+    "Using n8n 1.98.1",
+    "Behind Nginx reverse proxy"
+  ],
+  "not_this_if": [
+    "Using n8n version 1.74.0",
+    "No reverse proxy in use"
+  ],
+  "root_cause": "The error occurs because the Nginx configuration does not support WebSocket connections, which are required for the n8n editor to maintain a persistent connection. Without proper WebSocket handling, the connection is lost after the initial load.",
+  "fix_steps": [
+    "Add WebSocket support to the Nginx configuration by including the following lines: 'proxy_http_version 1.1;', 'proxy_set_header Upgrade $http_upgrade;', 'proxy_set_header Connection \"upgrade\";'.",
+    "Disable caching and buffering by adding: 'chunked_transfer_encoding off;', 'proxy_buffering off;', 'proxy_cache off;'.",
+    "Increase timeout settings with: 'proxy_read_timeout 3600;' and 'proxy_send_timeout 3600;'.",
+    "Restart the Nginx service to apply the changes."
+  ],
+  "agent_instruction": "Update the Nginx configuration to support WebSockets and restart the service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "reverse-proxy",
+    "websocket",
+    "connection-lost",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-lost-after-upgrade-to-n8n-1-98-1-using-docker-nginx-ubuntu-24-04/131270"
+  ]
+}

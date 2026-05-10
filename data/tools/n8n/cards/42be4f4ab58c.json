@@ -1,0 +1,41 @@
+{
+  "id": "42be4f4ab58c",
+  "tool": "n8n",
+  "error_signature": "workflow is Executing",
+  "context_key": "workflow-management",
+  "title": "Stopping an executing workflow after deletion",
+  "symptom": "After deleting a workflow, it continues to show as 'Executing' in n8n. Users are unable to stop the execution through normal means.",
+  "applies_when": [
+    "Workflow has been deleted",
+    "Workflow status shows as Executing"
+  ],
+  "not_this_if": [
+    "Workflow is still active and not deleted"
+  ],
+  "root_cause": "When a workflow is deleted in n8n, it may not immediately stop any ongoing executions. This can lead to confusion as the workflow appears to be still running even after deletion.",
+  "fix_steps": [
+    "Navigate to the workflow page in n8n",
+    "Click on the 'Archive' option for the workflow",
+    "Select 'Permanently delete' to stop all executions related to that workflow"
+  ],
+  "agent_instruction": "Archive the workflow and then permanently delete it to stop the execution.",
+  "safety_notes": [
+    "Permanently deleting a workflow cannot be undone."
+  ],
+  "fix_type": "workaround",
+  "tags": [
+    "workflow",
+    "execution",
+    "delete",
+    "archive"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/stop-infinite-loop-execution-from-email-trigger/172749"
+  ]
+}

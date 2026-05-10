@@ -1,0 +1,39 @@
+{
+  "id": "19ab98cbe050",
+  "tool": "weweb",
+  "error_signature": "mouse pointer disappearing on overflowing element",
+  "context_key": "datagrid",
+  "title": "Mouse pointer disappears when hovering over dropdown in datagrid",
+  "symptom": "The mouse pointer disappears when it moves outside the datagrid, affecting interaction with dropdowns.",
+  "applies_when": [
+    "Using a datagrid with dropdowns",
+    "Mouse moves outside the datagrid area"
+  ],
+  "not_this_if": [
+    "Mouse pointer behaves normally within the datagrid"
+  ],
+  "root_cause": "The issue arises due to the stacking context of the elements involved. If the z-index of the datagrid is lower than that of other overlapping elements, it can cause the mouse pointer to not register correctly when hovering over dropdowns.",
+  "fix_steps": [
+    "Select the datagrid element in your CSS or styling panel",
+    "Increase the z-index value of the datagrid to be higher than the elements below it",
+    "Test the dropdown interaction again"
+  ],
+  "agent_instruction": "Increase the z-index of the datagrid to ensure it is above other elements.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "datagrid",
+    "dropdown",
+    "z-index",
+    "mouse-pointer"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/mouse-pointer-disappearing-on-overflowing-element/3566"
+  ]
+}

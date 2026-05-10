@@ -1,0 +1,38 @@
+{
+  "id": "fae7ea24b6a2",
+  "tool": "weweb",
+  "error_signature": "No user found for that email",
+  "context_key": "Xano Auth",
+  "title": "404 error on password reset due to incorrect user table",
+  "symptom": "When attempting to reset a password using Xano Auth, a 404 error occurs with the message 'No user found for that email'. This happens because the API is referencing a new, empty User table instead of the existing Users table.",
+  "applies_when": [
+    "Using Xano Auth for password reset",
+    "Existing Users table is not referenced"
+  ],
+  "not_this_if": [
+    "The correct user table is being referenced in the API"
+  ],
+  "root_cause": "The Xano snippet for password reset creates a new User table that is separate from the existing Users table. The API endpoint for the magic link is configured to look at this new table, which does not contain any users, leading to the 404 error.",
+  "fix_steps": [
+    "Edit the auth/request-magic-link endpoint to reference the existing Users table",
+    "Test the password reset functionality again to ensure it works correctly"
+  ],
+  "agent_instruction": "Update the API endpoint to use the existing Users table for password resets.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "auth",
+    "password-reset",
+    "user-table"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/ugghhh-user-and-users-table-password-reset-with-xano-auth/2419"
+  ]
+}

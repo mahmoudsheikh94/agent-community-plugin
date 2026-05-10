@@ -1,0 +1,41 @@
+{
+  "id": "1180d6861624",
+  "tool": "n8n",
+  "error_signature": "authentication code sent in URL instead of body",
+  "context_key": "oauth2-credentials",
+  "title": "OAuth2 authentication code sent incorrectly",
+  "symptom": "When attempting to authenticate via OAuth2, the application returns a URL with the code in the query string instead of the body. This leads to authentication failures.",
+  "applies_when": [
+    "Using OAuth2 authentication",
+    "Credentials require sending data in the body"
+  ],
+  "not_this_if": [
+    "Authentication works correctly with other applications",
+    "Credentials are set to send data in the body"
+  ],
+  "root_cause": "By default, n8n sends authentication credentials in the header of the request. However, some applications, like Fatture, require the credentials to be sent in the body of the request instead, leading to incorrect handling of the authentication flow.",
+  "fix_steps": [
+    "Open the OAuth2 credentials settings in n8n",
+    "Scroll down to the Authentication section",
+    "Change the Authentication setting from 'Header' to 'Body'",
+    "Save the changes and retry the authentication process"
+  ],
+  "agent_instruction": "Change the Authentication setting to 'Body' in the OAuth2 credentials configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "oauth2",
+    "authentication",
+    "credentials",
+    "body-parameter"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-auth2-flow/188275"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "18ab99684b3c",
+  "tool": "n8n",
+  "error_signature": "Invalid expression",
+  "context_key": "telegram-node",
+  "title": "Invalid expression in Telegram node due to missing trigger",
+  "symptom": "The workflow throws an 'Invalid expression' error when executed, indicating that the expression cannot be resolved.",
+  "applies_when": [
+    "Using Telegram nodes in a subworkflow",
+    "Referencing a value from a trigger node"
+  ],
+  "not_this_if": [
+    "The workflow is executed directly without subworkflows"
+  ],
+  "root_cause": "The error occurs because the Telegram Trigger node is not available in the subworkflow context, leading to unresolved expressions that reference its output.",
+  "fix_steps": [
+    "Open the Telegram node settings in the subworkflow",
+    "Update the expression to reference the correct node output",
+    "Save the workflow",
+    "Test the workflow execution again"
+  ],
+  "agent_instruction": "Change the expression to reference the correct node output in the subworkflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "subworkflow",
+    "invalid-expression",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-workflow-tool-trigger-ouput-invalid-expression/125013"
+  ]
+}

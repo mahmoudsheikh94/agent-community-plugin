@@ -1,0 +1,39 @@
+{
+  "id": "c2f8f74f2ec9",
+  "tool": "n8n",
+  "error_signature": "Google sheet is empty, values not being written",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets not populated with values",
+  "symptom": "The Google Sheets document remains empty after executing the workflow, despite the workflow running successfully and returning results.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Workflow executes without errors"
+  ],
+  "not_this_if": [
+    "Values are being written to the sheet but not visible",
+    "Using the wrong operation type"
+  ],
+  "root_cause": "The user was using the 'Document - Create' operation, which only creates a new document without populating it. To write data to the sheet, an additional operation to append rows is required.",
+  "fix_steps": [
+    "Add an 'Append Row' node to the workflow",
+    "Configure the 'Values to Send' in the Append Row node",
+    "Run the workflow again to see values populated in the sheet"
+  ],
+  "agent_instruction": "Add an 'Append Row' node to your workflow to populate the Google Sheet.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "append-row",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheet-is-empty-values-not-being-written/165072"
+  ]
+}

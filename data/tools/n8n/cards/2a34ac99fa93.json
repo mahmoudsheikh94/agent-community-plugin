@@ -1,0 +1,40 @@
+{
+  "id": "2a34ac99fa93",
+  "tool": "n8n",
+  "error_signature": "authorization failed",
+  "context_key": "HTTP node",
+  "title": "Authorization failure when using HTTP node with fal.ai",
+  "symptom": "When attempting to post to fal.ai using the HTTP node, the error 'authorization failed' is displayed. This prevents successful execution of the request.",
+  "applies_when": [
+    "Using HTTP node",
+    "Posting to fal.ai API"
+  ],
+  "not_this_if": [
+    "Authorization works in curl or other tools",
+    "Different API endpoint is used"
+  ],
+  "root_cause": "The authorization failure typically occurs due to incorrect API key usage or formatting in the HTTP node. If the API key is not correctly set in the headers, or if there are issues with the endpoint URL, the request will fail.",
+  "fix_steps": [
+    "Ensure the API key is correctly set in the HTTP node's header as 'Authorization: Key YOUR_API_KEY'",
+    "Verify the endpoint URL is correct and matches the expected format",
+    "Test the request again in n8n"
+  ],
+  "agent_instruction": "Check and correct the API key and endpoint URL in the HTTP node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "fal.ai",
+    "HTTP node",
+    "authorization",
+    "API key"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/authorization-failed-with-fal-ai/169372"
+  ]
+}

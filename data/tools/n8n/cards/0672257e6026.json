@@ -1,0 +1,38 @@
+{
+  "id": "0672257e6026",
+  "tool": "n8n",
+  "error_signature": "does not use the Data Store",
+  "context_key": "RAG workflow",
+  "title": "RAG workflow not utilizing Data Store",
+  "symptom": "After uploading a PDF and asking a question, the workflow returns random results or states that information is not available.",
+  "applies_when": [
+    "Using the RAG workflow",
+    "Running locally with specific models"
+  ],
+  "not_this_if": [
+    "Using a different model that supports Data Store"
+  ],
+  "root_cause": "The issue arises from using a model that does not properly integrate with the Data Store for retrieving information. In this case, the google/gemma-3-1b model was not compatible, leading to incorrect outputs.",
+  "fix_steps": [
+    "Switch to a compatible model like openai/gpt-oss-29b or google/gemma-3n-e4b",
+    "Test the workflow with proper prompts to ensure it retrieves data correctly"
+  ],
+  "agent_instruction": "Change the model to openai/gpt-oss-29b or google/gemma-3n-e4b and test the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "RAG",
+    "workflow",
+    "data-store",
+    "model-compatibility"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/question-on-demo-rag-in-n8n-workflow/195870"
+  ]
+}

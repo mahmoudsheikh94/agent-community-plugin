@@ -1,0 +1,41 @@
+{
+  "id": "eee01d057190",
+  "tool": "n8n",
+  "error_signature": "socket hang-up",
+  "context_key": "http-request-node",
+  "title": "HTTP Request node fails with socket hang-up",
+  "symptom": "The HTTP Request node fails with a 'socket hang-up' error when trying to connect to an internal service. This issue does not occur when using Postman from the same machine.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Postman works without issues",
+    "Using a different Node.js version"
+  ],
+  "root_cause": "The error occurs due to the Node.js TLS implementation in the n8n Docker container not supporting the required TLS version or cipher suite that the internal service enforces. If the service requires TLS 1.3 or a specific cipher suite, and the Node.js version does not support it, the handshake will fail.",
+  "fix_steps": [
+    "Check the Node.js version used by your n8n Docker image.",
+    "Ensure that the target service supports the TLS version and cipher suite available in your Node.js version.",
+    "If using a custom CA, mount the CA certificates and reference them via NODE_EXTRA_CA_CERTS."
+  ],
+  "agent_instruction": "Verify the Node.js version and TLS settings in your n8n Docker container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "tls",
+    "docker",
+    "nodejs",
+    "socket-hang-up"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-tls/270746"
+  ]
+}

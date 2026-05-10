@@ -1,0 +1,39 @@
+{
+  "id": "23aa225cdffb",
+  "tool": "weweb",
+  "error_signature": "redirecting to default page due to private route",
+  "context_key": "Supabase auth",
+  "title": "Redirecting to default page due to private route access",
+  "symptom": "After clicking the password reset link, users are redirected to the default page instead of the intended confirm-new-password page.",
+  "applies_when": [
+    "Using Supabase for authentication",
+    "User is not logged in during password reset"
+  ],
+  "not_this_if": [
+    "The confirm-new-password page is set to public"
+  ],
+  "root_cause": "The confirm-new-password page is configured as a private route, requiring authentication to access. Since the user is not logged in during the password reset process, they are redirected to the default page instead.",
+  "fix_steps": [
+    "Change the confirm-new-password page settings to public",
+    "Ensure that the page can be accessed without authentication",
+    "Test the password reset flow again"
+  ],
+  "agent_instruction": "Set the confirm-new-password page to public to allow access without authentication.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "authentication",
+    "redirect",
+    "private-route"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/weweb-redirecting-and-adding-source-to-url-causing-page-to-fail/7277"
+  ]
+}

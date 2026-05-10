@@ -1,0 +1,41 @@
+{
+  "id": "5117b33d2218",
+  "tool": "n8n",
+  "error_signature": "MongoDB node receives empty value for email",
+  "context_key": "mongodb-node",
+  "title": "MongoDB node not receiving email data",
+  "symptom": "The MongoDB node receives an empty value for the email field, despite the previous node showing the correct email address.",
+  "applies_when": [
+    "Using a Webhook node to receive data",
+    "Connecting to a MongoDB node"
+  ],
+  "not_this_if": [
+    "Email is hardcoded in the MongoDB query",
+    "Data is correctly passed in other workflows"
+  ],
+  "root_cause": "The MongoDB node may not be configured to interpret the input correctly. If the Query input field is set to Fixed, it will not dynamically use the data passed from the previous node, leading to empty values.",
+  "fix_steps": [
+    "Open the MongoDB node settings",
+    "Change the Query input field type from Fixed to Expression",
+    "Save the workflow",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Change the Query input field type in the MongoDB node to Expression.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mongodb",
+    "webhook",
+    "data-passing",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/data-from-webhook-not-being-passed-to-mongodb-node/162207"
+  ]
+}

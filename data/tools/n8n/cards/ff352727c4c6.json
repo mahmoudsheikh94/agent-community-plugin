@@ -1,0 +1,40 @@
+{
+  "id": "ff352727c4c6",
+  "tool": "n8n",
+  "error_signature": "file not found for script execution",
+  "context_key": "execute-command-node",
+  "title": "File not found for executing script",
+  "symptom": "The script fails to execute because it cannot locate the downloaded PDF file from Google Drive.",
+  "applies_when": [
+    "Using Google Drive node to download files",
+    "Using Execute Command node to run a script"
+  ],
+  "not_this_if": [
+    "The PDF file is already saved to a known location",
+    "The script does not require a file input"
+  ],
+  "root_cause": "When files are downloaded using the Google Drive node, they are stored in memory as binary data and not saved to a physical location. The Execute Command node requires a file path to execute scripts, leading to errors if the file is not accessible.",
+  "fix_steps": [
+    "Add a 'Write Binary File' node to your workflow to save the binary data to a temporary file.",
+    "Set the 'Binary Property' to 'data' and specify a file path like '/tmp/downloaded_file.pdf' or 'C:\\Temp\\downloaded_file.pdf'.",
+    "Connect the 'Write Binary File' node to the 'Execute Command' node to ensure the script can access the temporary file."
+  ],
+  "agent_instruction": "Use the 'Write Binary File' node to save the downloaded PDF to a temporary location before executing your script.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "execute-command",
+    "file-handling",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-drive-download-and-execute-command/81835"
+  ]
+}

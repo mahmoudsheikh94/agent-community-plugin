@@ -1,0 +1,41 @@
+{
+  "id": "f75905f60cef",
+  "tool": "n8n",
+  "error_signature": "pagination not working in http request node",
+  "context_key": "http-request-node",
+  "title": "Pagination not functioning due to nested JSON",
+  "symptom": "The pagination feature in the HTTP Request node does not increment the page number as expected, leading to invalid JSON errors when left empty.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "API requires pagination with pageNumber parameter"
+  ],
+  "not_this_if": [
+    "pageNumber is a direct query parameter",
+    "Using a different API without pagination"
+  ],
+  "root_cause": "The pageNumber parameter is nested within a URL-encoded JSON string in the RequestBody, preventing n8n's pagination feature from accessing and modifying it correctly during execution.",
+  "fix_steps": [
+    "Modify the RequestBody to construct the JSON string dynamically using an expression.",
+    "Set the pageNumber to {{ $pageCount }} within the JSON string.",
+    "URL-encode the entire JSON string for the RequestBody."
+  ],
+  "agent_instruction": "Dynamically construct the RequestBody with the pageNumber set to {{ $pageCount }} and URL-encode it.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "pagination",
+    "API",
+    "JSON",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pagination-not-working-in-http-request-node-for-multi-page-api-request-fetch/267031"
+  ]
+}

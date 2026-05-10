@@ -1,0 +1,41 @@
+{
+  "id": "d71ac7cf3f95",
+  "tool": "n8n",
+  "error_signature": "Validation Failed",
+  "context_key": "GitHub webhook",
+  "title": "GitHub webhook validation failed during workflow test",
+  "symptom": "When testing a workflow that interacts with GitHub, the user encounters a 'Validation Failed' error. This occurs intermittently without any changes made to the workflow.",
+  "applies_when": [
+    "Using GitHub webhooks in the workflow",
+    "Testing the workflow multiple times"
+  ],
+  "not_this_if": [
+    "Error occurs without using GitHub webhooks",
+    "No previous webhook URLs exist"
+  ],
+  "root_cause": "The error occurs because n8n attempts to create a new webhook request to the GitHub repository, but a previous request with the same URL already exists. This conflict leads to the validation failure during the workflow test.",
+  "fix_steps": [
+    "Navigate to the GitHub repository settings",
+    "Locate the existing webhook URLs",
+    "Delete all existing webhook URLs",
+    "Retry testing the workflow"
+  ],
+  "agent_instruction": "Delete existing webhook URLs in the GitHub repository settings before testing the workflow again.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "github",
+    "webhook",
+    "validation-failed",
+    "workflow-testing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/validation-failed/115798"
+  ]
+}

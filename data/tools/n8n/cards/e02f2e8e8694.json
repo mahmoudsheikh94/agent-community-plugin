@@ -1,0 +1,42 @@
+{
+  "id": "e02f2e8e8694",
+  "tool": "n8n",
+  "error_signature": "unable to obtain access token for Shopify",
+  "context_key": "shopify-integration",
+  "title": "Issues obtaining access token for Shopify integration",
+  "symptom": "Users are unable to obtain an access token for Shopify when trying to connect n8n with the new Dev Dashboard setup.",
+  "applies_when": [
+    "Using Shopify Dev Dashboard",
+    "Trying to connect n8n to Shopify"
+  ],
+  "not_this_if": [
+    "Using legacy custom apps",
+    "Already have a valid access token"
+  ],
+  "root_cause": "Shopify has transitioned to a new Dev Dashboard which requires a different method for obtaining access tokens. The previous methods involving legacy custom apps or OAuth redirects are no longer valid.",
+  "fix_steps": [
+    "Log in to dev.shopify.com and navigate to the Apps section.",
+    "Create a new app and configure the necessary permissions.",
+    "Install the app to your target store.",
+    "Go to Settings > Client credentials to obtain your Client ID and Client Secret.",
+    "Make a POST request to the Shopify access token endpoint with the required parameters."
+  ],
+  "agent_instruction": "Follow the steps to create a new app in the Shopify Dev Dashboard and obtain your access token using the Client Credentials Grant flow.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "shopify",
+    "access-token",
+    "dev-dashboard",
+    "n8n-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/new-shopify-dev-dashboard/248912"
+  ]
+}

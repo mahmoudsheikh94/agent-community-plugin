@@ -1,0 +1,39 @@
+{
+  "id": "e6e96ad823e9",
+  "tool": "n8n",
+  "error_signature": "Need admin approval",
+  "context_key": "microsoft-oauth2-credentials",
+  "title": "Admin approval required for Microsoft OAuth2 credentials",
+  "symptom": "When attempting to create Microsoft Outlook OAuth2 credentials, the user receives a 'Need admin approval' message.",
+  "applies_when": [
+    "Using Microsoft Outlook OAuth2 API",
+    "User lacks admin permissions"
+  ],
+  "not_this_if": [
+    "User has the necessary admin permissions",
+    "Application is properly registered"
+  ],
+  "root_cause": "The error occurs because the Microsoft application is not registered or the user does not have the necessary permissions to create OAuth2 credentials. This is common in organizational accounts where admin approval is required for certain actions.",
+  "fix_steps": [
+    "Ensure the user has the necessary admin permissions or use an account that does.",
+    "Provide the OAuth Callback URL: https://targetinstance.app.n8n.cloud/rest/oauth2-credential/callback to the client for application registration."
+  ],
+  "agent_instruction": "Check admin permissions or provide the OAuth Callback URL to the client for registration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "microsoft",
+    "oauth2",
+    "credentials",
+    "admin-approval"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/using-n8n-cloud-with-microsoft-oauth2/229117"
+  ]
+}

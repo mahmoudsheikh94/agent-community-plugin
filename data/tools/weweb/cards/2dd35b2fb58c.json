@@ -1,0 +1,41 @@
+{
+  "id": "2dd35b2fb58c",
+  "tool": "weweb",
+  "error_signature": "drag & drop element stops working when multiple is OFF",
+  "context_key": "drag-drop-file-element",
+  "title": "Drag & Drop File Element Fails with Multiple OFF",
+  "symptom": "When the 'multiple' option is turned off in the drag & drop file element, the element stops functioning properly. Users cannot upload files as expected.",
+  "applies_when": [
+    "Using drag & drop file element",
+    "Multiple option is turned OFF"
+  ],
+  "not_this_if": [
+    "Multiple option is turned ON"
+  ],
+  "root_cause": "The drag & drop file element is designed to handle multiple files, and when the 'multiple' option is disabled, it returns a single object instead of an array. This causes issues with how the uploaded file is processed and displayed in the application.",
+  "fix_steps": [
+    "Ensure the 'multiple' option is turned ON during testing.",
+    "Add a true/false split in the workflow to check if more than one file was uploaded.",
+    "If true, update the variable with the array of uploaded files.",
+    "If false, wrap the single uploaded file object inside an array using 'createArray'.",
+    "Set up similar logic on the container to check the length of the input file variable."
+  ],
+  "agent_instruction": "Wrap the single uploaded file object in an array to ensure proper handling when 'multiple' is OFF.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "drag-drop",
+    "file-upload",
+    "multiple-option",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/drag-drop-file-element-breaks-when-multiple-is-off/4141"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "4db2cdd07026",
+  "tool": "n8n",
+  "error_signature": "JWT verification fails with exp claim",
+  "context_key": "jwt-verify-node",
+  "title": "JWT verification fails due to incorrect exp claim setup",
+  "symptom": "The JWT verification fails when using the exp claim set as a duration instead of a timestamp. The verification succeeds when using the Expires In option but fails with the exp JSON setup.",
+  "applies_when": [
+    "Using JWT Verify node",
+    "Setting exp claim in JSON format"
+  ],
+  "not_this_if": [
+    "Using Expires In option for JWT",
+    "JWT verification succeeds"
+  ],
+  "root_cause": "The exp claim in JWT should be a timestamp indicating the exact expiration time, not a duration from the issued time. When the exp claim is set incorrectly, the verification fails as the token is considered valid beyond its intended expiration.",
+  "fix_steps": [
+    "Calculate the correct exp timestamp based on the issued at (iat) time.",
+    "Set the exp claim in the JWT to this calculated timestamp.",
+    "Retry the verification process."
+  ],
+  "agent_instruction": "Calculate the exp timestamp and update the JWT accordingly before verification.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "jwt",
+    "verification",
+    "exp-claim",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/new-to-n8n-having-issues-validating-jwts/224074"
+  ]
+}

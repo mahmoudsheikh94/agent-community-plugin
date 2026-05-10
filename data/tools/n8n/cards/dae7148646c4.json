@@ -1,0 +1,41 @@
+{
+  "id": "dae7148646c4",
+  "tool": "n8n",
+  "error_signature": "no connection point for nodes",
+  "context_key": "nginx-configuration",
+  "title": "No connection points for Webhook and Basic LLM Chain nodes",
+  "symptom": "The user cannot connect the 'On Webhook call' trigger and 'Basic LLM Chain' node to any other nodes due to missing connection points.",
+  "applies_when": [
+    "Using Docker to host n8n",
+    "Using NGINX as a reverse proxy"
+  ],
+  "not_this_if": [
+    "Using n8n without a reverse proxy",
+    "No issues with other nodes"
+  ],
+  "root_cause": "The absence of connection points for certain nodes can occur due to misconfiguration in the NGINX settings, particularly with SSL and proxy settings that affect WebSocket connections.",
+  "fix_steps": [
+    "Switch to Let's Encrypt SSL for your NGINX configuration",
+    "Rewrite the NGINX config to ensure proper proxy settings for n8n",
+    "Restart the NGINX service to apply changes"
+  ],
+  "agent_instruction": "Update your NGINX configuration to use Let's Encrypt SSL and ensure correct proxy settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "docker",
+    "webhook",
+    "basic-llm-chain",
+    "connection-points"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/some-default-nodes-does-not-provide-connecting-points/179575"
+  ]
+}

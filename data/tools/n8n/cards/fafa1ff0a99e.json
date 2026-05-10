@@ -1,0 +1,42 @@
+{
+  "id": "fafa1ff0a99e",
+  "tool": "n8n",
+  "error_signature": "Code node spins continuously without errors",
+  "context_key": "code-node",
+  "title": "Code node hangs after update to 1.84.1",
+  "symptom": "The Code node spins continuously without providing any error messages. There is also a noticeable slowdown in the interface.",
+  "applies_when": [
+    "Using Code node",
+    "n8n version 1.84.1",
+    "N8N_RUNNERS_ENABLED setting is enabled"
+  ],
+  "not_this_if": [
+    "Code node works in previous versions",
+    "N8N_RUNNERS_ENABLED setting is disabled"
+  ],
+  "root_cause": "The N8N_RUNNERS_ENABLED setting can interfere with the execution of the Code node, causing it to hang indefinitely. This setting is intended for specific use cases and may not be compatible with all workflows.",
+  "fix_steps": [
+    "Open your n8n configuration settings",
+    "Remove or disable the N8N_RUNNERS_ENABLED setting",
+    "Restart your n8n instance",
+    "Test the Code node again"
+  ],
+  "agent_instruction": "Disable the N8N_RUNNERS_ENABLED setting and restart n8n to resolve the hanging issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "n8n-1.84.1",
+    "docker",
+    "performance"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-doesnt-work-after-update-1-84-1/93158"
+  ]
+}

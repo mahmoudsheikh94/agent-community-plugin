@@ -1,0 +1,41 @@
+{
+  "id": "8f619fa8860c",
+  "tool": "n8n",
+  "error_signature": "Cannot access 'arguments' due to security concerns",
+  "context_key": "set-node",
+  "title": "Set node cannot access 'arguments' keyword",
+  "symptom": "The Set node throws an error stating 'Cannot access \"arguments\" due to security concerns' when processing data from Vapi.",
+  "applies_when": [
+    "Using a Set node",
+    "Receiving data from Vapi via webhook"
+  ],
+  "not_this_if": [
+    "Using a different node type",
+    "Error does not mention 'arguments'"
+  ],
+  "root_cause": "The error occurs because 'arguments' is a reserved keyword in JavaScript, and n8n's security measures prevent access to it in certain contexts. This issue may have been exacerbated by a recent security update in n8n.",
+  "fix_steps": [
+    "Replace the Set node with a Code node immediately after the webhook node.",
+    "Use the provided code snippet to safely access the 'arguments' keyword and parse the data.",
+    "Return the desired output from the Code node for use in subsequent nodes."
+  ],
+  "agent_instruction": "Switch to a Code node and use the provided code to handle the 'arguments' keyword safely.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "set-node",
+    "code-node",
+    "arguments",
+    "vapi",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/now-receiving-an-error-in-a-set-node-that-only-days-ago-it-was-working-great/271487"
+  ]
+}

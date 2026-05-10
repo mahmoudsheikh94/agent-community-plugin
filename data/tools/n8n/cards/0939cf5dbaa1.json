@@ -1,0 +1,40 @@
+{
+  "id": "0939cf5dbaa1",
+  "tool": "n8n",
+  "error_signature": "Decompress node silently fails to decompress",
+  "context_key": "decompress-node",
+  "title": "Decompress node fails with missing fileExtension",
+  "symptom": "The Decompress node does not return any files when the input binary data lacks the fileExtension property, even if the filename indicates a compressed format. Execution shows success, but no files are returned and logs show no errors.",
+  "applies_when": [
+    "Using Decompress node",
+    "Input binary data is missing fileExtension"
+  ],
+  "not_this_if": [
+    "FileExtension is correctly set",
+    "Error occurs with non-Gzip files"
+  ],
+  "root_cause": "The Decompress node relies on the fileExtension property to determine the type of compression to apply. If this property is missing, the node does not execute the decompression logic, leading to silent failures without any warnings or errors.",
+  "fix_steps": [
+    "Add a Code node before the Decompress node",
+    "Set the fileExtension property for the binary data, e.g., item.binary.data.fileExtension = 'gz';",
+    "Pass the modified data to the Decompress node"
+  ],
+  "agent_instruction": "Insert a Code node to set the fileExtension for the binary data before the Decompress node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "decompress",
+    "gzip",
+    "fileExtension",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.66.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/decompressing-gzip-from-amazon-sp-api-reports/104927"
+  ]
+}

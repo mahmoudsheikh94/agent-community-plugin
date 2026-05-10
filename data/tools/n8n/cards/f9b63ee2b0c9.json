@@ -1,0 +1,42 @@
+{
+  "id": "f9b63ee2b0c9",
+  "tool": "n8n",
+  "error_signature": "random workflow failures under load",
+  "context_key": "worker memory pressure",
+  "title": "Intermittent workflow failures due to resource saturation",
+  "symptom": "When execution concurrency increases, workflows fail randomly without a clear pattern. This instability is likely linked to resource limitations at the worker level.",
+  "applies_when": [
+    "Using queue mode with Redis",
+    "High execution concurrency"
+  ],
+  "not_this_if": [
+    "Low execution concurrency",
+    "No resource limitations"
+  ],
+  "root_cause": "When the worker processes are under memory pressure, Node.js aggressively triggers garbage collection, which can lead to unstable execution and random failures. Additionally, long-running nodes can block the event loop, exacerbating the issue.",
+  "fix_steps": [
+    "Increase the memory limits for worker processes",
+    "Scale horizontally by adding more worker instances",
+    "Set EXECUTIONS_PROCESS=main only for debugging",
+    "Monitor Redis for stalled jobs and latency"
+  ],
+  "agent_instruction": "Increase worker memory limits and add more workers to handle load.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "worker",
+    "memory",
+    "queue-mode",
+    "redis",
+    "execution-failure"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/intermittent-workflow-execution-failed-under-load/270764"
+  ]
+}

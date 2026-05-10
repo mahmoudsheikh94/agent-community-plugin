@@ -1,0 +1,40 @@
+{
+  "id": "bf398c43a7c5",
+  "tool": "n8n",
+  "error_signature": "webhook returns 404 until I update the workflow on n8n UI",
+  "context_key": "webhook-triggered-workflow",
+  "title": "Webhook returns 404 until workflow is updated in UI",
+  "symptom": "When trying to trigger a workflow via webhook after importing it programmatically, it returns a 404 error until the workflow is manually updated in the n8n UI.",
+  "applies_when": [
+    "Importing a workflow with a webhook programmatically",
+    "Using n8n version 1.84.3"
+  ],
+  "not_this_if": [
+    "Workflow is created and activated via the UI",
+    "Webhook is triggered after manual UI update"
+  ],
+  "root_cause": "The webhook configuration may not be properly initialized when imported programmatically, leading to a 404 error until the workflow is touched in the UI. This can happen if the webhookId is not unique or not set correctly during the import process.",
+  "fix_steps": [
+    "Ensure the webhookId field in the workflow payload is unique and valid",
+    "Re-import the workflow programmatically",
+    "Test the webhook again to see if it triggers correctly"
+  ],
+  "agent_instruction": "Check and ensure the webhookId is unique before importing the workflow programmatically.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "automation",
+    "programmatic-import",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-create-a-webhook-triggered-automation-programatically/98140"
+  ]
+}

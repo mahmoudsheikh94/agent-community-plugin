@@ -1,0 +1,40 @@
+{
+  "id": "1047ed5b3bd9",
+  "tool": "n8n",
+  "error_signature": "production URL shows localhost",
+  "context_key": "ngrok-configuration",
+  "title": "Production URL shows localhost instead of ngrok URL",
+  "symptom": "The production URL for n8n is displaying as 'localhost' instead of the expected ngrok URL, causing issues with external access.",
+  "applies_when": [
+    "Using n8n with Docker",
+    "Configured ngrok for tunneling"
+  ],
+  "not_this_if": [
+    "Using n8n without Docker",
+    "ngrok is not set up"
+  ],
+  "root_cause": "The issue arises when the n8n instance is not correctly configured to read the environment variables from the .env file, particularly the WEBHOOK_URL and WEBHOOK_TUNNEL_URL settings, which are essential for exposing the correct production URL.",
+  "fix_steps": [
+    "Open the .env file located in your n8n directory.",
+    "Ensure that the WEBHOOK_URL is set to your ngrok URL, e.g., 'WEBHOOK_URL=https://thoroughly-macaw.ngrok-free.app'.",
+    "Restart the n8n container using 'docker compose up' to apply the changes."
+  ],
+  "agent_instruction": "Set the WEBHOOK_URL in your .env file to the ngrok URL and restart the n8n container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ngrok",
+    "docker",
+    "webhook",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-docker-localhost-ngrok-question/148563"
+  ]
+}

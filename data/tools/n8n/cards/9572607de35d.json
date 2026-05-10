@@ -1,0 +1,40 @@
+{
+  "id": "9572607de35d",
+  "tool": "n8n",
+  "error_signature": "lost external services credentials after update",
+  "context_key": "docker-configuration",
+  "title": "Credentials lost after updating n8n in Docker",
+  "symptom": "After updating n8n, all credentials for external services are lost, requiring re-entry of information.",
+  "applies_when": [
+    "Using n8n with Docker",
+    "Updating n8n version"
+  ],
+  "not_this_if": [
+    "Using default data folder location",
+    "No updates performed"
+  ],
+  "root_cause": "The credentials are stored in a specific directory that is not correctly mapped in the Docker configuration. If the data folder is not set to persist, updates can overwrite or clear the stored credentials.",
+  "fix_steps": [
+    "Change the volume mapping in your Docker Compose file to use '/home/node/.n8n'",
+    "Ensure that the DATA_FOLDER variable points to a persistent location",
+    "Restart the n8n service to apply changes"
+  ],
+  "agent_instruction": "Update the Docker Compose file to map the correct data folder for n8n credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "credentials",
+    "update",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.101.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-loses-external-services-credentials-after-update/146799"
+  ]
+}

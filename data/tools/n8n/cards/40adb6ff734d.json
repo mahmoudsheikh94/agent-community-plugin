@@ -1,0 +1,39 @@
+{
+  "id": "40adb6ff734d",
+  "tool": "n8n",
+  "error_signature": "connect ECONNREFUSED ::1:25187",
+  "context_key": "AI Agent node",
+  "title": "Connection refused error in AI Agent node with custom LLM API",
+  "symptom": "When trying to connect to a custom LLM API from the AI Agent node, n8n throws a 'connect ECONNREFUSED' error.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Connecting to a custom LLM API on localhost"
+  ],
+  "not_this_if": [
+    "Running n8n directly on the host machine without Docker"
+  ],
+  "root_cause": "Docker containers have their own network stack and cannot access the host's localhost directly. This leads to connection refusals when trying to reach services running on the host machine's localhost.",
+  "fix_steps": [
+    "Change the base URL in the AI Agent node to use the host's IP address instead of 'localhost'",
+    "Find the host's IP address (e.g., using 'ipconfig' on Windows)",
+    "Update the base URL to 'http://<host-ip>:25187/api/v1' and save the workflow"
+  ],
+  "agent_instruction": "Update the base URL to use the host's IP address instead of 'localhost'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "AI Agent",
+    "ECONNREFUSED",
+    "custom API"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-use-custom-llm-api-in-ai-agent-node/77622"
+  ]
+}

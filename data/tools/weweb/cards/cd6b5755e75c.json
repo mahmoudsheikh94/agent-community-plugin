@@ -1,0 +1,39 @@
+{
+  "id": "cd6b5755e75c",
+  "tool": "weweb",
+  "error_signature": "error loading a stylesheet",
+  "context_key": "custom component integration",
+  "title": "Error loading a stylesheet when adding custom component",
+  "symptom": "When trying to add a custom component to a project, an error loading a stylesheet occurs, causing the component to fail. This issue does not appear when using an empty project.",
+  "applies_when": [
+    "Adding a custom component to a non-empty project",
+    "Previous modifications made to the project"
+  ],
+  "not_this_if": [
+    "Using an empty project without previous modifications"
+  ],
+  "root_cause": "The error occurs due to conflicts or issues arising from previous modifications in the project, such as the presence of an NPM plugin that interferes with the loading of stylesheets for the custom component.",
+  "fix_steps": [
+    "Remove any conflicting NPM plugins from the project",
+    "Try adding the custom component again",
+    "Check for any remaining errors in the console"
+  ],
+  "agent_instruction": "Remove the NPM plugin that may be causing conflicts and retry adding the custom component.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "custom-component",
+    "stylesheet-error",
+    "npm-plugin",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/create-custom-component-cant-make-it-work/16877"
+  ]
+}

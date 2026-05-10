@@ -1,0 +1,41 @@
+{
+  "id": "2e6e52a90c2f",
+  "tool": "weweb",
+  "error_signature": "API does not recognize variable in JSON call",
+  "context_key": "OpenAI API integration",
+  "title": "OpenAI API fails to recognize variable in JSON request",
+  "symptom": "When attempting to use a variable in a JSON API call, the API does not recognize the variable, leading to errors. Using a direct link works, but the variable is needed for dynamic content.",
+  "applies_when": [
+    "Using OpenAI API",
+    "Trying to include a variable in a JSON request"
+  ],
+  "not_this_if": [
+    "Using a direct link instead of a variable"
+  ],
+  "root_cause": "The issue arises because the variable must be selected from the explorer rather than manually typed. When typed, the API does not interpret it correctly, leading to recognition failures.",
+  "fix_steps": [
+    "Open the variable explorer in the WeWeb interface",
+    "Click on the desired variable instead of typing it manually",
+    "Ensure the variable appears in blue in the formula builder",
+    "Complete the JSON request and test the API call"
+  ],
+  "agent_instruction": "Select the variable directly from the explorer to ensure it is recognized in the JSON call.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "OpenAI",
+    "API",
+    "JSON",
+    "variables",
+    "integration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/json-open-ai-api-doesnt-recognise-variables/5410"
+  ]
+}

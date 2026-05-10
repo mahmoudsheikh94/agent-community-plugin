@@ -1,0 +1,40 @@
+{
+  "id": "c9895c8dc5f1",
+  "tool": "n8n",
+  "error_signature": "403 - \"Missing Authentication Token\"",
+  "context_key": "aws-polly-http-request-node",
+  "title": "AWS Polly HTTP request returns 'Missing Authentication Token'",
+  "symptom": "When attempting to use the AWS Polly service via the HTTP node, the request fails with a 403 error indicating a missing authentication token.",
+  "applies_when": [
+    "Using AWS Polly service",
+    "HTTP request node configured with valid credentials"
+  ],
+  "not_this_if": [
+    "Using a dedicated AWS Polly node (if available in future versions)"
+  ],
+  "root_cause": "The error occurs because the HTTP request to the AWS Polly service is not properly authenticated. This can happen if the request is missing required authentication headers or if the endpoint is incorrect.",
+  "fix_steps": [
+    "Ensure that the HTTP request node is configured with the correct AWS endpoint for Polly.",
+    "Verify that the authentication headers are correctly set up in the HTTP node.",
+    "Consider using the aws-cli in a command node as a workaround."
+  ],
+  "agent_instruction": "Check the AWS Polly endpoint and authentication headers in the HTTP request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "aws",
+    "polly",
+    "http-request",
+    "authentication",
+    "403-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.92.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/aws-polly-http-request-node-cant-authenticate/115890"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "987f0f075e88",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "openai-transcribe-node",
+  "title": "OpenAI Transcribe node missing file name",
+  "symptom": "When executing the OpenAI Transcribe node, an error occurs stating 'Bad request - please check your parameters'. This indicates that the file input is not being recognized correctly.",
+  "applies_when": [
+    "Using OpenAI Transcribe node",
+    "File is provided as binary data"
+  ],
+  "not_this_if": [
+    "File has a valid name assigned",
+    "Error occurs in a different node"
+  ],
+  "root_cause": "The OpenAI API requires that the uploaded file has a valid name. If the file is provided without a name, it results in a value error, preventing the API from processing the request correctly.",
+  "fix_steps": [
+    "Ensure the previous node provides a valid file name in the output",
+    "Check the configuration of the OpenAI Transcribe node to ensure it references the correct binary property name",
+    "Retry the execution of the workflow"
+  ],
+  "agent_instruction": "Assign a valid file name to the audio file in the previous node's output.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "openai",
+    "transcribe",
+    "audio",
+    "file-upload",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.88.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/openai-transcribe-an-audio-not-working/119131"
+  ]
+}

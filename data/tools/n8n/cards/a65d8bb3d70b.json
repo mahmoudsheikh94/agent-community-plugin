@@ -1,0 +1,40 @@
+{
+  "id": "a65d8bb3d70b",
+  "tool": "n8n",
+  "error_signature": "file name not interpolating correctly in Code node",
+  "context_key": "code-node",
+  "title": "File name not interpolating in Code node",
+  "symptom": "The file downloaded from Google Drive does not have the expected name format when processed in the Code node.",
+  "applies_when": [
+    "Using a Code node to rename a binary file",
+    "Combining JSON and binary data from different nodes"
+  ],
+  "not_this_if": [
+    "File name is set correctly without using a Code node",
+    "No binary file is being processed"
+  ],
+  "root_cause": "The original JavaScript code in the Code node does not correctly interpolate the JSON fields for the file name, leading to the file being saved with an incorrect or default name.",
+  "fix_steps": [
+    "Replace the existing JavaScript code in the Code node with the provided template literal code.",
+    "Ensure the Code node is set to Run Once for Each Item.",
+    "Verify that the next upload node uses 'data' as the Input Data Field Name."
+  ],
+  "agent_instruction": "Update the Code node to use template literals for file name interpolation.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "file-rename",
+    "google-drive",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.2.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-rename-the-downloaded-file/254829"
+  ]
+}

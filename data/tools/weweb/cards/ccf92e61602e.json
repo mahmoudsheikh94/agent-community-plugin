@@ -1,0 +1,41 @@
+{
+  "id": "ccf92e61602e",
+  "tool": "weweb",
+  "error_signature": "Invalid login credentials",
+  "context_key": "supabase-auth",
+  "title": "Invalid login credentials in production",
+  "symptom": "After publishing the application, users receive an 'Invalid login credentials' error when attempting to log in. This issue does not occur in the development environment.",
+  "applies_when": [
+    "Application is published",
+    "Using Supabase for authentication"
+  ],
+  "not_this_if": [
+    "Error occurs in development environment",
+    "Credentials are correct"
+  ],
+  "root_cause": "The credentials saved in the WeWeb editor for development may not match those required for the production environment due to different domain configurations. This can lead to authentication failures when users attempt to log in after publication.",
+  "fix_steps": [
+    "Verify the email and password being used for login in the production environment.",
+    "Ensure that the credentials are correctly set up in Supabase for the published domain.",
+    "Update any necessary environment variables or settings in WeWeb to match the production credentials."
+  ],
+  "agent_instruction": "Check and update the Supabase credentials for the published application to ensure they match the expected values.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "authentication",
+    "login",
+    "production",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/error-after-publication/9923"
+  ]
+}

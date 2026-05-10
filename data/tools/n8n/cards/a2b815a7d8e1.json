@@ -1,0 +1,42 @@
+{
+  "id": "a2b815a7d8e1",
+  "tool": "n8n",
+  "error_signature": "connectors are missing entirely",
+  "context_key": "AI Agent node",
+  "title": "Connectors missing in AI Agent node after update",
+  "symptom": "After updating n8n, all workflows using AI Agent nodes show missing connectors. This affects both existing and new workflows.",
+  "applies_when": [
+    "Updated n8n to the latest version",
+    "Using AI Agent nodes in workflows"
+  ],
+  "not_this_if": [
+    "No update was performed",
+    "Using a different node type"
+  ],
+  "root_cause": "The issue arises from the Content Security Policy (CSP) headers configured in the Caddy server. These headers can restrict the loading of necessary resources, leading to missing connectors in the UI.",
+  "fix_steps": [
+    "Access the Caddy configuration file",
+    "Review and adjust the CSP headers to allow necessary resources",
+    "Restart the Caddy service",
+    "Check the AI Agent nodes in n8n again"
+  ],
+  "agent_instruction": "Adjust the CSP headers in your Caddy configuration to resolve the missing connectors issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "AI Agent",
+    "Caddy",
+    "CSP",
+    "update",
+    "connectors"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/update-broke-ai-agent-node/190031"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "124d522ecc99",
+  "tool": "n8n",
+  "error_signature": "500 - \"Server Error\"",
+  "context_key": "httpRequest-node",
+  "title": "Server Error when uploading binary image to tmpfiles.org",
+  "symptom": "When attempting to upload a binary image to tmpfiles.org using the HTTP Request node, a 500 Server Error is returned.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Uploading binary data to tmpfiles.org"
+  ],
+  "not_this_if": [
+    "Error occurs with a different node or service"
+  ],
+  "root_cause": "The server may not be able to process the request due to an invalid file name or format. If the binary data does not have a proper file name or extension, the server might reject the request, resulting in a 500 error.",
+  "fix_steps": [
+    "Ensure the binary data has a valid file name and extension in the node that generates it.",
+    "If necessary, use a Code node to set the file name before the HTTP Request node."
+  ],
+  "agent_instruction": "Check and set a valid file name for the binary data before uploading.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "httpRequest",
+    "binary-data",
+    "upload",
+    "tmpfiles.org",
+    "server-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.88.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-needed-uploading-binary-image-from-photoroom-to-woocommerce/104474"
+  ]
+}

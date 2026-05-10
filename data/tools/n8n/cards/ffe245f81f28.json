@@ -1,0 +1,40 @@
+{
+  "id": "ffe245f81f28",
+  "tool": "n8n",
+  "error_signature": "sub-workflow finishes immediately without running",
+  "context_key": "sub-workflow-trigger",
+  "title": "Sub-workflow finishes immediately when not waiting for completion",
+  "symptom": "When disabling 'Wait For Sub-Workflow Completion', the sub-workflow is triggered but finishes immediately without executing its tasks.",
+  "applies_when": [
+    "Using sub-workflows in main workflow",
+    "Disabled 'Wait For Sub-Workflow Completion'"
+  ],
+  "not_this_if": [
+    "Sub-workflow runs correctly when 'Wait For Sub-Workflow Completion' is enabled"
+  ],
+  "root_cause": "Disabling the 'Wait For Sub-Workflow Completion' option may lead to the main workflow not properly handling the execution context of the sub-workflow, causing it to finish without executing its intended tasks.",
+  "fix_steps": [
+    "Use a Webhook node to trigger the sub-workflow",
+    "Ensure the sub-workflow is set to active",
+    "From the main workflow, use an HTTP Request node to call the sub-workflow's webhook URL",
+    "Enable 'Respond Immediately' in the sub-workflow's Webhook node"
+  ],
+  "agent_instruction": "Set up a Webhook node to trigger the sub-workflow and ensure it responds immediately.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "sub-workflow",
+    "webhook",
+    "execution",
+    "n8n-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.93.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sub-workflow-does-not-complete-run/122221"
+  ]
+}

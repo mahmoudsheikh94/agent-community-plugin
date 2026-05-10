@@ -1,0 +1,41 @@
+{
+  "id": "a177bec7e971",
+  "tool": "n8n",
+  "error_signature": "first column not resolving in CSV",
+  "context_key": "csv-node",
+  "title": "First column not resolving in CSV input",
+  "symptom": "When reading a CSV file with a semicolon delimiter, the first column fails to resolve correctly, while subsequent columns work as expected.",
+  "applies_when": [
+    "Using CSV node",
+    "First column is in UTF-8-BOM format"
+  ],
+  "not_this_if": [
+    "CSV file is in UTF-8 format",
+    "Different delimiter is used"
+  ],
+  "root_cause": "The issue arises from the CSV file being encoded in UTF-8-BOM format, which can cause parsing issues specifically with the first column. This encoding includes a byte order mark that may interfere with how the CSV node interprets the data.",
+  "fix_steps": [
+    "Open the CSV file in a text editor",
+    "Change the encoding from UTF-8-BOM to UTF-8",
+    "Update the CSV node settings in n8n to reflect the new encoding",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Convert the CSV file encoding from UTF-8-BOM to UTF-8 and update the node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "csv",
+    "encoding",
+    "UTF-8",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/csv-failed-to-resolve-first-column/99284"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "b8ba30e63485",
+  "tool": "n8n",
+  "error_signature": "n8n not working in queue mode",
+  "context_key": "queue-mode-configuration",
+  "title": "n8n fails to operate in queue mode",
+  "symptom": "n8n does not respond when set to queue mode, neither through local IP nor the configured domain. The setup works in normal mode but fails in queue mode.",
+  "applies_when": [
+    "Using n8n in queue mode",
+    "Configured with PostgreSQL and Redis"
+  ],
+  "not_this_if": [
+    "n8n is running in normal mode",
+    "Redis or PostgreSQL is not connected"
+  ],
+  "root_cause": "The issue arises from incorrect environment variable configurations, particularly the N8N_HOST and N8N_EDITOR_BASE_URL settings, which need to be correctly set to ensure proper communication between the editor, webhook, and worker services in a queue setup.",
+  "fix_steps": [
+    "Update the N8N_HOST environment variable to the correct local IP address or domain.",
+    "Ensure that the N8N_EDITOR_BASE_URL is set to the correct URL that matches the N8N_HOST.",
+    "Restart the n8n services to apply the changes."
+  ],
+  "agent_instruction": "Correct the N8N_HOST and N8N_EDITOR_BASE_URL in your configuration and restart the services.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "queue-mode",
+    "configuration",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-with-queue-mode/80409"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "214307ee7597",
+  "tool": "n8n",
+  "error_signature": "form-data payload size exceeds limit",
+  "context_key": "form-data webhook",
+  "title": "Form-data payload size exceeds limit for large files",
+  "symptom": "When uploading PDF files over 200MB, the form and webhook do not show the binary file and do not fail, leading to silent errors.",
+  "applies_when": [
+    "Uploading large files via form-data or webhook",
+    "Environment variables set for payload size"
+  ],
+  "not_this_if": [
+    "Files under 200MB are uploaded successfully",
+    "Using a different method to upload files"
+  ],
+  "root_cause": "The default maximum file size for form-data uploads in n8n is set to 200MiB. If the uploaded file exceeds this limit, it will not be processed correctly, resulting in silent failures without error messages.",
+  "fix_steps": [
+    "Set the environment variable N8N_FORMDATA_FILE_SIZE_MAX to a value greater than the file size you want to upload (e.g., 300MiB).",
+    "Restart the n8n instance to apply the changes."
+  ],
+  "agent_instruction": "Increase the N8N_FORMDATA_FILE_SIZE_MAX environment variable and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "form-data",
+    "webhook",
+    "file-upload",
+    "payload-size"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-upload-large-files-to-n8n/102695"
+  ]
+}

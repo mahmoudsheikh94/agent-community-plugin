@@ -1,0 +1,39 @@
+{
+  "id": "ddb833f600bb",
+  "tool": "n8n",
+  "error_signature": "The input element to parse is empty",
+  "context_key": "http-request-node",
+  "title": "Empty input error for REPORT request in HTTP node",
+  "symptom": "When sending a REPORT request via the HTTP node, n8n returns 'The input element to parse is empty'. This occurs despite the request working in other API testing tools.",
+  "applies_when": [
+    "Using HTTP node to send a REPORT request",
+    "Including a body in the request"
+  ],
+  "not_this_if": [
+    "Using POST, PUT, PATCH, or GET methods"
+  ],
+  "root_cause": "n8n's HTTP Request node currently has a limitation where it does not send request bodies for WebDAV methods like REPORT. As a result, the body is dropped, leading to the server returning an error about empty input.",
+  "fix_steps": [
+    "Replace the HTTP Request node with a Code node",
+    "Use native fetch or the https module to construct and send the REPORT request",
+    "Include the necessary headers and body in your code"
+  ],
+  "agent_instruction": "Use a Code node to send the REPORT request directly with the appropriate body and headers.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "http-request",
+    "webdav",
+    "report",
+    "code-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issues-with-sending-report-http-request-to-caldav-api/268997"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "b73d6e8cc31b",
+  "tool": "n8n",
+  "error_signature": "Gmail tool not sending emails",
+  "context_key": "gmail-node",
+  "title": "Gmail tool not sending emails in workflow",
+  "symptom": "The Gmail tool fails to send emails when used as an agent tool in the workflow.",
+  "applies_when": [
+    "Using Gmail node",
+    "Email sending is part of the workflow"
+  ],
+  "not_this_if": [
+    "Gmail node is configured correctly and used as a standard node"
+  ],
+  "root_cause": "When the Gmail tool is added as an agent tool, it may not function as expected due to context issues. The node needs to be configured properly within the workflow to send emails successfully.",
+  "fix_steps": [
+    "Remove the Gmail tool from the agent configuration",
+    "Add the Gmail tool as a standard node in the workflow",
+    "Configure the Gmail node with the necessary email details",
+    "Test the workflow to ensure emails are sent"
+  ],
+  "agent_instruction": "Reconfigure the Gmail tool as a standard node in your workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "email",
+    "workflow",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/v2v-order-update-workflow-gmail-tool-not-working/107229"
+  ]
+}

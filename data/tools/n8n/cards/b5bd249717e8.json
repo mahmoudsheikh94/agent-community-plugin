@@ -1,0 +1,40 @@
+{
+  "id": "b5bd249717e8",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading ‘Symbol(Symbol.asyncIterator)’)",
+  "context_key": "gemini-3-flash-preview",
+  "title": "Error reading properties of undefined in Gemini 3 Flash Preview",
+  "symptom": "When trying to add the `gemini-3-flash-preview`, n8n throws an error about reading properties of undefined. This indicates a potential issue with the model's region support.",
+  "applies_when": [
+    "Using `gemini-3-flash-preview` or `gemini-3-pro-preview`",
+    "Self-hosted n8n environment"
+  ],
+  "not_this_if": [
+    "Using a different model that is supported"
+  ],
+  "root_cause": "The error occurs because the `gemini-3` models only support the `global` region. When a different region is selected, the model fails to initialize properly, leading to the undefined property error.",
+  "fix_steps": [
+    "Open the settings for the Gemini 3 node",
+    "Switch the region selection to 'global' using an expression",
+    "Save the changes",
+    "Retry adding the model"
+  ],
+  "agent_instruction": "Set the region to 'global' in the Gemini 3 node settings using an expression.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gemini-3",
+    "vertex",
+    "region-issue",
+    "model-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-add-vertex-google-gemini-3-flash-preview/238034"
+  ]
+}

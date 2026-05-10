@@ -1,0 +1,40 @@
+{
+  "id": "cb5fabd276b7",
+  "tool": "n8n",
+  "error_signature": "always returns the first user in Gainsight CC",
+  "context_key": "http-request-node",
+  "title": "Gainsight CC API returns incorrect user data",
+  "symptom": "The HTTP request to Gainsight CC always returns the first user, regardless of the email address provided. This leads to incorrect results when checking for existing contacts.",
+  "applies_when": [
+    "Using HTTP request to Gainsight CC",
+    "Email address is provided as a query parameter"
+  ],
+  "not_this_if": [
+    "The API returns correct results in Postman or curl",
+    "The email address is correctly formatted"
+  ],
+  "root_cause": "The issue arises when the email address contains leading or trailing spaces, which can cause the API to misinterpret the query parameter. This results in the API ignoring the intended email search and returning a default user instead.",
+  "fix_steps": [
+    "Ensure the email address is trimmed of any spaces before sending the request.",
+    "Use the expression `{{ $json['Your email address(private email address preferred)'].trim() }}` to trim the value."
+  ],
+  "agent_instruction": "Trim the email address value in your HTTP request to Gainsight CC.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "gainsight",
+    "http-request",
+    "api",
+    "email",
+    "trim"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-use-the-if-node-when-the-previous-steps-output-is-empty/183204"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "302d6979eab8",
+  "tool": "n8n",
+  "error_signature": "Scheduled workflows not triggered",
+  "context_key": "n8n-scheduling",
+  "title": "Scheduled workflows failing to trigger",
+  "symptom": "Scheduled workflows are not being triggered as expected, leading to missed executions.",
+  "applies_when": [
+    "Using scheduled workflows",
+    "N8N_RUNNERS_ENABLED is set to true"
+  ],
+  "not_this_if": [
+    "Using manual execution",
+    "N8N_RUNNERS_ENABLED is set to false"
+  ],
+  "root_cause": "When N8N_RUNNERS_ENABLED is set to true without proper worker configuration, scheduled workflows may not trigger correctly due to resource constraints and instability in the execution environment.",
+  "fix_steps": [
+    "Set the environment variable N8N_RUNNERS_ENABLED to false",
+    "Verify that the scheduling configuration is correct",
+    "Monitor the system for any further issues"
+  ],
+  "agent_instruction": "Disable N8N_RUNNERS_ENABLED and check the scheduling configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "scheduling",
+    "workflow",
+    "n8n",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "v1.111.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/still-performance-issues-v1-111-1/192117"
+  ]
+}

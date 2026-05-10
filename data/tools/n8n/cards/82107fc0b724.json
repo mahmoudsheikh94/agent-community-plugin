@@ -1,0 +1,39 @@
+{
+  "id": "82107fc0b724",
+  "tool": "n8n",
+  "error_signature": "400 Invalid value for 'content': expected a string, got null",
+  "context_key": "openai-chat-model-node",
+  "title": "OpenAI Chat Model node returns 400 error for null content",
+  "symptom": "The OpenAI Chat Model node throws a 400 error indicating that it received a null value instead of a string for the 'content' parameter after processing a few items.",
+  "applies_when": [
+    "Using OpenAI Chat Model node",
+    "Processing multiple items in a workflow"
+  ],
+  "not_this_if": [
+    "Error occurs with a single item or different node"
+  ],
+  "root_cause": "The error occurs when the OpenAI Chat Model node receives a null value for the 'content' parameter, which can happen if the input data is not properly validated or if there are issues with memory management in the workflow.",
+  "fix_steps": [
+    "Clear the memory associated with the workflow",
+    "Update the key to the attached memory",
+    "Retry processing the items"
+  ],
+  "agent_instruction": "Clear the memory and update the key to the attached memory before reprocessing the items.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "openai",
+    "chat-model",
+    "error-400",
+    "workflow-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.41.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/openai-chat-model-error-400-invalid-value-for-content-expected-a-string-got-null/46309"
+  ]
+}

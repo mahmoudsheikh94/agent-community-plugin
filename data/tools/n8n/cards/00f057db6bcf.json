@@ -1,0 +1,40 @@
+{
+  "id": "00f057db6bcf",
+  "tool": "n8n",
+  "error_signature": "Invalid URL",
+  "context_key": "azure-openai-chat-model",
+  "title": "Azure OpenAI Chat Model returns 'Invalid URL'",
+  "symptom": "When attempting to connect to the Azure OpenAI Chat Model, n8n returns 'Invalid URL'. This occurs despite successful connections using other methods.",
+  "applies_when": [
+    "Using Azure OpenAI Chat Model node",
+    "Correct API configurations"
+  ],
+  "not_this_if": [
+    "Error occurs with other nodes or integrations",
+    "API version is correct and model is deployed"
+  ],
+  "root_cause": "The 'Invalid URL' error typically arises when the API endpoint is incorrectly specified or the model is not properly deployed. This can happen if the API version is outdated or if there are issues with the resource configuration in Azure.",
+  "fix_steps": [
+    "Ensure the API version is set to '2024-05-01-preview'.",
+    "Verify that the model 'gpt-4o' is correctly deployed in Azure.",
+    "Test the connection again."
+  ],
+  "agent_instruction": "Set the API version to '2024-05-01-preview' and confirm the model deployment.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "azure",
+    "openai",
+    "invalid-url",
+    "api-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/azure-openai-chat-model-keeps-returning-invalidurl/83885"
+  ]
+}

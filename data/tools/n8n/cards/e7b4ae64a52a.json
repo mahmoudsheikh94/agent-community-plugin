@@ -1,0 +1,41 @@
+{
+  "id": "e7b4ae64a52a",
+  "tool": "n8n",
+  "error_signature": "SQLITE_FULL: database or disk is full",
+  "context_key": "SQLite database",
+  "title": "SQLite database full error preventing workflow execution",
+  "symptom": "The user is unable to run or save workflows and cannot delete execution records due to the SQLITE_FULL error.",
+  "applies_when": [
+    "Using SQLite as the database",
+    "Cloud-hosted n8n environment"
+  ],
+  "not_this_if": [
+    "Using a different database like Postgres or MySQL"
+  ],
+  "root_cause": "The SQLITE_FULL error occurs when the SQLite database has reached its maximum size limit, often due to excessive historical execution records. In this case, the user has 16,240 finished executions, which likely contributed to the database being full.",
+  "fix_steps": [
+    "Access the n8n Cloud dashboard",
+    "Navigate to the database management section",
+    "Delete unnecessary execution records or increase the database size limit if possible"
+  ],
+  "agent_instruction": "Delete old execution records from the SQLite database to free up space.",
+  "safety_notes": [
+    "Ensure to back up any important data before deleting execution records."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "sqlite",
+    "database-full",
+    "execution-records",
+    "cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.118.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/urgent-sqlite-full-error-on-cloud-hosted-n8n-causing-inability-to-do-anything/225636"
+  ]
+}

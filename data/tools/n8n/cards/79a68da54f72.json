@@ -1,0 +1,39 @@
+{
+  "id": "79a68da54f72",
+  "tool": "n8n",
+  "error_signature": "only one trigger node can be registered in published mode",
+  "context_key": "postgres-trigger-node",
+  "title": "Multiple Postgres Trigger nodes not firing in published mode",
+  "symptom": "When using multiple Postgres Trigger nodes in a published workflow, only one node fires, while others do not execute at all.",
+  "applies_when": [
+    "Using multiple Postgres Trigger nodes",
+    "Workflow is published"
+  ],
+  "not_this_if": [
+    "Only one trigger node is used",
+    "Workflow is executed manually"
+  ],
+  "root_cause": "In n8n's published mode, only one trigger node can be registered for a workflow. This means that when multiple trigger nodes are present, only the first one is activated, causing the others to silently fail to fire.",
+  "fix_steps": [
+    "Split each Postgres Trigger node into its own separate workflow",
+    "Alternatively, use a single trigger node and implement branching logic after it"
+  ],
+  "agent_instruction": "Separate each Postgres Trigger into its own workflow or use one trigger with branching logic.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "postgres",
+    "trigger-node",
+    "workflow-publishing",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.3.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgres-trigger-node-not-firing-when-workflow-is-published/255666"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "2c79ec15b05f",
+  "tool": "n8n",
+  "error_signature": "failed to connect to SMTP server",
+  "context_key": "smtp-node",
+  "title": "Failed to connect to Amazon SES SMTP server",
+  "symptom": "When attempting to connect to the Amazon SES SMTP server, the connection fails, preventing email sending.",
+  "applies_when": [
+    "Using SMTP node",
+    "Configured with Amazon SES credentials"
+  ],
+  "not_this_if": [
+    "Using AWS SES node",
+    "Connection succeeds with other SMTP servers"
+  ],
+  "root_cause": "The connection failure may occur due to incorrect credentials or misconfiguration of the SMTP settings, such as using Access Key and Secret Key instead of the correct SMTP username and password.",
+  "fix_steps": [
+    "Ensure you are using the correct SMTP username and password for Amazon SES.",
+    "Set the host to 'email-smtp.eu-west-2.amazonaws.com'.",
+    "Choose the correct port: 465 for SSL or 587 for STARTTLS.",
+    "Turn on SSL/TLS for port 465 and turn it off for port 587.",
+    "Test the connection again."
+  ],
+  "agent_instruction": "Verify your SMTP credentials and configuration settings for Amazon SES.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "amazon-ses",
+    "smtp",
+    "email",
+    "connection-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/amazon-ses-attachement-support/274003"
+  ]
+}

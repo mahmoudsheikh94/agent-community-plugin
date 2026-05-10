@@ -1,0 +1,41 @@
+{
+  "id": "e63eeafcdda3",
+  "tool": "n8n",
+  "error_signature": "This operation expects the node’s input data to contain a binary file",
+  "context_key": "cloud-storage-node",
+  "title": "Binary file upload error in Cloud Storage node",
+  "symptom": "The Cloud Storage node fails to upload files, returning an error stating it expects binary file input but none was found.",
+  "applies_when": [
+    "Using Cloud Storage node",
+    "Data is merged from previous nodes"
+  ],
+  "not_this_if": [
+    "Files are uploaded successfully without merging",
+    "Using a different upload method"
+  ],
+  "root_cause": "The Merge node combines all attachments into a single data structure, which prevents the Cloud Storage node from recognizing individual binary files. This results in the error when the node attempts to upload the merged data.",
+  "fix_steps": [
+    "Add a Split Out node after the Merge node",
+    "Configure the Split Out node to output individual binary files",
+    "Connect the Split Out node to the Cloud Storage node",
+    "Test the workflow to ensure files upload correctly"
+  ],
+  "agent_instruction": "Insert a Split Out node after the Merge node to handle individual binary file uploads.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "cloud-storage",
+    "binary-file",
+    "merge-node",
+    "split-out-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.111.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/binary-file-upload-problem-this-operation-expects-the-nodes-input-data-to-contain-a-binary-file/190529"
+  ]
+}

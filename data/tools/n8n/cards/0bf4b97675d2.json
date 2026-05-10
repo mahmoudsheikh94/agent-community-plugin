@@ -1,0 +1,39 @@
+{
+  "id": "0bf4b97675d2",
+  "tool": "n8n",
+  "error_signature": "502 Bad Gateway - the service failed to handle your request",
+  "context_key": "HTTP request to n8n B server",
+  "title": "502 Bad Gateway error when calling n8n API",
+  "symptom": "When making an HTTP request to the n8n B server, a '502 Bad Gateway' error is returned. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Making HTTP requests to an n8n server",
+    "n8n server is accessible"
+  ],
+  "not_this_if": [
+    "The error does not occur after upgrading n8n"
+  ],
+  "root_cause": "The 502 Bad Gateway error typically indicates that the server received an invalid response from an upstream server. This can happen due to various reasons, including server overload, misconfiguration, or network issues.",
+  "fix_steps": [
+    "Upgrade n8n to the latest version",
+    "Test the HTTP request again to see if the issue persists"
+  ],
+  "agent_instruction": "Upgrade n8n to the latest version and retry the HTTP request.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "502",
+    "Bad Gateway",
+    "HTTP request",
+    "n8n",
+    "API"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/calls-to-the-n8n-api-now-return-502-bad-gateway-the-service-failed-to-handle-your-request/172518"
+  ]
+}

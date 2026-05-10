@@ -1,0 +1,41 @@
+{
+  "id": "2d0bb61dfa9e",
+  "tool": "n8n",
+  "error_signature": "Error connecting to Canva oauth2",
+  "context_key": "canva-oauth2",
+  "title": "Error connecting to Canva OAuth2",
+  "symptom": "When attempting to connect to Canva using OAuth2, an error occurs during the connection process. The user receives a specific error message indicating a failure to connect.",
+  "applies_when": [
+    "Using Canva OAuth2 for authentication",
+    "Configured with incorrect Access Token URL"
+  ],
+  "not_this_if": [
+    "Using correct Access Token URL",
+    "Error occurs in a different integration"
+  ],
+  "root_cause": "The error arises from an incorrect Access Token URL in the OAuth2 configuration. If the Access Token URL does not match the expected endpoint provided by Canva, the connection will fail, leading to authentication errors.",
+  "fix_steps": [
+    "Open the OAuth2 credentials configuration in n8n.",
+    "Set the Access Token URL to 'https://api.canva.com/rest/v1/oauth/token'.",
+    "Ensure the Authorization URL is set to 'https://www.canva.com/api/oauth/authorize'.",
+    "Save the changes and attempt to connect again."
+  ],
+  "agent_instruction": "Update the Access Token URL in the Canva OAuth2 credentials to the correct endpoint.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "canva",
+    "oauth2",
+    "authentication",
+    "error-connection"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-connecting-to-canva-oauth2/109912"
+  ]
+}

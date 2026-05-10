@@ -1,0 +1,40 @@
+{
+  "id": "aec84bee8abc",
+  "tool": "weweb",
+  "error_signature": "Invalid left-hand side in assignment",
+  "context_key": "component-variable-js",
+  "title": "Error when assigning value to component variable in JS",
+  "symptom": "The user encounters a 'Invalid left-hand side in assignment' error when trying to change a component variable's value using JavaScript.",
+  "applies_when": [
+    "Using JavaScript to assign a value to a component variable",
+    "The variable chain returns undefined"
+  ],
+  "not_this_if": [
+    "The assignment works for non-component variables",
+    "The variable chain returns a valid variable"
+  ],
+  "root_cause": "This error occurs when the JavaScript code attempts to assign a value to an invalid target, often due to the variable being undefined or not properly referenced in the context of component variables.",
+  "fix_steps": [
+    "Ensure the variable being assigned is correctly defined and accessible",
+    "Use the correct method for updating component variables, such as context.component.methods.updateVariable",
+    "Refactor the code to handle cases where the variable may be undefined"
+  ],
+  "agent_instruction": "Check the variable definition and use the appropriate method for component variable assignment.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "javascript",
+    "component-variable",
+    "assignment-error",
+    "syntax-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/setting-component-variable-using-js/7563"
+  ]
+}

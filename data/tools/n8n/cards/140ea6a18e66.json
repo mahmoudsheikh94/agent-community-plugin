@@ -1,0 +1,40 @@
+{
+  "id": "140ea6a18e66",
+  "tool": "n8n",
+  "error_signature": "(#100) The parameter image_url is required",
+  "context_key": "facebook-graph-api-node",
+  "title": "Missing image_url parameter due to typo",
+  "symptom": "The Facebook Graph API node throws an error stating that the 'image_url' parameter is required, despite it being set in the workflow.",
+  "applies_when": [
+    "Using Facebook Graph API node",
+    "image_url parameter is set in the workflow"
+  ],
+  "not_this_if": [
+    "The image_url is correctly spelled and formatted"
+  ],
+  "root_cause": "The error occurs because the parameter name 'image_url' is misspelled in the query parameters. A typo in the parameter name prevents the API from recognizing it, leading to the required parameter error.",
+  "fix_steps": [
+    "Check the spelling of the 'image_url' parameter in the API node settings",
+    "Correct any typos (e.g., change 'imag' to 'image')",
+    "Save the workflow",
+    "Retry the API call"
+  ],
+  "agent_instruction": "Ensure the 'image_url' parameter is spelled correctly in the Facebook Graph API node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook-graph-api",
+    "image_url",
+    "error",
+    "typo"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/instagram-graph-api-image-url-required-error-even-though-it-s-set-correctly/154302"
+  ]
+}

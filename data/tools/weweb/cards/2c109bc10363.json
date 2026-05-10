@@ -1,0 +1,39 @@
+{
+  "id": "2c109bc10363",
+  "tool": "weweb",
+  "error_signature": "THREE is not defined",
+  "context_key": "Three.js integration",
+  "title": "Three.js library not recognized in Weweb",
+  "symptom": "When attempting to use the Three.js library, the error 'THREE is not defined' occurs, indicating that the library has not been properly loaded into the environment.",
+  "applies_when": [
+    "Using Three.js library",
+    "Attempting to access THREE object"
+  ],
+  "not_this_if": [
+    "Three.js is correctly imported and accessible"
+  ],
+  "root_cause": "The error occurs because the Three.js library has not been properly loaded into the global scope of the application. This can happen if the script is not executed or if the library is not imported correctly.",
+  "fix_steps": [
+    "Use the import statement to load Three.js as a module.",
+    "Assign the imported THREE object to the global window object using 'window.THREE = THREE;'.",
+    "Ensure that the script is executed after the DOM is fully loaded."
+  ],
+  "agent_instruction": "Import Three.js as a module and assign it to the global window object.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "three.js",
+    "weweb",
+    "javascript",
+    "library-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/using-three-js-library-in-weweb/8322"
+  ]
+}

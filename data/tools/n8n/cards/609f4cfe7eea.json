@@ -1,0 +1,39 @@
+{
+  "id": "609f4cfe7eea",
+  "tool": "n8n",
+  "error_signature": "no rows returned for date query",
+  "context_key": "data-table-query",
+  "title": "No rows returned when querying Data Tables by date",
+  "symptom": "When querying Data Tables for rows after a specific date, no results are returned despite existing data.",
+  "applies_when": [
+    "Using Data Tables",
+    "Querying with a date filter"
+  ],
+  "not_this_if": [
+    "Date format is correct and UTC is not applied"
+  ],
+  "root_cause": "The Data Tables in n8n require date values to be in UTC format for proper querying. If the dates are not formatted to UTC, the query may not return expected results, leading to confusion about the data's availability.",
+  "fix_steps": [
+    "Use the 'Edit Fields (Set)' node to format the date",
+    "Apply the 'toUTC()' function to the date field",
+    "Re-run the query to check for results"
+  ],
+  "agent_instruction": "Format the date to UTC using the 'toUTC()' function before querying the Data Tables.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "data-tables",
+    "date-query",
+    "UTC",
+    "datetime"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/query-datatables-with-createdat-date/206215"
+  ]
+}

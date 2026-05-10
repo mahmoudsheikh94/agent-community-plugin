@@ -1,0 +1,39 @@
+{
+  "id": "9f9ff372c2ab",
+  "tool": "n8n",
+  "error_signature": "Execution stopped",
+  "context_key": "http-request-node",
+  "title": "HTTP Request node execution timeout",
+  "symptom": "The HTTP Request node shows 'Execution stopped' but continues running, causing the workflow to get stuck in a 'running' state indefinitely.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Long-running HTTP requests (up to 15 minutes)"
+  ],
+  "not_this_if": [
+    "Shorter HTTP requests that complete within the timeout period"
+  ],
+  "root_cause": "The workflow execution times out due to the long duration of the HTTP request, which exceeds the configured timeout settings, leading to the 'Execution stopped' message while the request is still processing.",
+  "fix_steps": [
+    "Increase the workflow timeout settings in n8n",
+    "Ensure the HTTP Request node's timeout is set to accommodate the expected duration of the request",
+    "Save the workflow and re-run it"
+  ],
+  "agent_instruction": "Adjust the workflow timeout settings to allow for longer HTTP requests.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "timeout",
+    "workflow",
+    "execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-shows-execution-stopped-but-continues-running-workflow-stuck-in-running-state/157857"
+  ]
+}

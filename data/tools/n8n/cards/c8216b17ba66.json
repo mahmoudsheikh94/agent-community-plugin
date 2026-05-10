@@ -1,0 +1,41 @@
+{
+  "id": "c8216b17ba66",
+  "tool": "n8n",
+  "error_signature": "no error and no result from Extract From CSV node",
+  "context_key": "extract-from-csv-node",
+  "title": "Extract From CSV node returns no result due to quotes",
+  "symptom": "The Extract From CSV node does not return any error or result when processing a valid CSV file. The expected output is missing.",
+  "applies_when": [
+    "Using Extract From CSV node",
+    "CSV file contains quoted columns"
+  ],
+  "not_this_if": [
+    "CSV file does not contain quotes",
+    "Error occurs in a different node"
+  ],
+  "root_cause": "The Extract From CSV node fails to process CSV files correctly when the columns contain quotes. This can lead to no output being generated, even if the CSV is valid.",
+  "fix_steps": [
+    "Open the settings of the Extract From CSV node",
+    "Enable the 'Preserve Quotes' option",
+    "Save the workflow",
+    "Re-run the workflow with the CSV file"
+  ],
+  "agent_instruction": "Enable the 'Preserve Quotes' option in the Extract From CSV node settings and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "extract-from-csv",
+    "csv",
+    "node-configuration",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.118.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/extract-from-csv-node-did-not-return-any-error-or-result/218936"
+  ]
+}

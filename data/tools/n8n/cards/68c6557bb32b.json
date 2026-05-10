@@ -1,0 +1,39 @@
+{
+  "id": "68c6557bb32b",
+  "tool": "n8n",
+  "error_signature": "MCP settings do not persist",
+  "context_key": "instance-level MCP settings",
+  "title": "MCP settings not persisting in UI after migration",
+  "symptom": "MCP settings toggle resets to off after navigating away from the page. This occurs for both instance-level and workflow-level MCP settings.",
+  "applies_when": [
+    "Using n8n version 2.8.3",
+    "Migrated from n8n Cloud to self-hosted"
+  ],
+  "not_this_if": [
+    "Using n8n version 2.9.0 or later"
+  ],
+  "root_cause": "The issue arises from a bug in the UI handling of MCP settings, which prevents the toggles from retaining their state after navigation. This was identified as a known limitation in the beta version of the instance-level MCP feature.",
+  "fix_steps": [
+    "Upgrade n8n to version 2.9.0 or later",
+    "Verify that the MCP settings persist after toggling"
+  ],
+  "agent_instruction": "Upgrade n8n to version 2.9.0 to resolve the MCP settings persistence issue.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "MCP",
+    "settings",
+    "UI",
+    "migration",
+    "bug"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/instance-level-mcp-settings-not-persisting-via-ui-self-hosted-docker/268806"
+  ]
+}

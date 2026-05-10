@@ -1,0 +1,41 @@
+{
+  "id": "45cad6ce34ee",
+  "tool": "n8n",
+  "error_signature": "MCP error 1004: Network error connecting to n8n API",
+  "context_key": "n8n API URL configuration",
+  "title": "Network error connecting to n8n API due to URL format",
+  "symptom": "When attempting to connect Claude to n8n, the user receives MCP error 1004 indicating a network error. This occurs despite having a valid API key.",
+  "applies_when": [
+    "Using Claude with n8n Cloud",
+    "Configured with a valid API key"
+  ],
+  "not_this_if": [
+    "Error occurs with a different integration or local instance"
+  ],
+  "root_cause": "The error arises because the n8n API URL is incorrectly formatted. The absence of the '/v1/' path in the API URL leads to 404 errors, preventing successful connections.",
+  "fix_steps": [
+    "Open the Claude configuration settings",
+    "Locate the 'N8N_API_URL' field",
+    "Change the URL from 'https://your-instance.app.n8n.cloud/api/' to 'https://your-instance.app.n8n.cloud/api/v1/'",
+    "Save the changes and retry the connection"
+  ],
+  "agent_instruction": "Update the n8n API URL in Claude's configuration to include '/v1/'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "Claude",
+    "API",
+    "MCP error",
+    "network error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-error-1004-network-error-connecting-to-n8n-api/117372"
+  ]
+}

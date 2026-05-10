@@ -1,0 +1,41 @@
+{
+  "id": "cf75be807cee",
+  "tool": "n8n",
+  "error_signature": "Connection terminated unexpectedly",
+  "context_key": "postgres-chat-memory-node",
+  "title": "Postgres chat memory connection issue",
+  "symptom": "When attempting to connect to the Postgres chat memory, n8n returns 'Connection terminated unexpectedly'. This occurs despite various attempts to configure the connection settings.",
+  "applies_when": [
+    "Using Postgres chat memory node",
+    "Configured with Supabase in Docker"
+  ],
+  "not_this_if": [
+    "Connection works with other tools like CLI",
+    "Using a different port than 5432"
+  ],
+  "root_cause": "The default Supabase installation does not expose port 5432, which is required by n8n for Postgres connections. If the port is changed to 8000, it leads to compatibility issues with Kong, resulting in connection errors.",
+  "fix_steps": [
+    "Expose port 5432 in the Supabase Docker container configuration",
+    "Set the correct POSTGRES_PASSWORD in the .env file",
+    "Ensure the column names in the Supabase table match expected names (e.g., 'message' and 'session_id')"
+  ],
+  "agent_instruction": "Expose port 5432 in your Supabase Docker setup and ensure the correct column names are used.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "supabase",
+    "docker",
+    "connection-error",
+    "chat-memory"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.72.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-for-postgres-chat-memory-to-supabase-in-docker-should-work-like-supabase-vector-store/75629"
+  ]
+}

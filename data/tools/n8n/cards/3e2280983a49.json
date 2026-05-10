@@ -1,0 +1,39 @@
+{
+  "id": "3e2280983a49",
+  "tool": "n8n",
+  "error_signature": "workflow not triggered by callback_query",
+  "context_key": "telegram-trigger",
+  "title": "Telegram callback_query not triggering workflow",
+  "symptom": "The workflow does not start when a user pushes an inline button, despite having the callback_query trigger set up.",
+  "applies_when": [
+    "Using Telegram trigger node",
+    "Webhook is set up correctly"
+  ],
+  "not_this_if": [
+    "Workflow is not activated",
+    "Using multiple Telegram triggers for one bot"
+  ],
+  "root_cause": "The Telegram API allows only one webhook per bot, and if the webhook is incorrectly set, the callback_query events will not be received by n8n, preventing the workflow from triggering.",
+  "fix_steps": [
+    "Delete the existing webhook using the Telegram API endpoint: https://api.telegram.org/botTOKEN/deleteWebhook",
+    "Re-activate the workflow in n8n to set the webhook correctly"
+  ],
+  "agent_instruction": "Delete the existing Telegram webhook and re-activate the workflow to ensure proper setup.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "telegram",
+    "callback_query",
+    "webhook",
+    "trigger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.118.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-callback-query-not-working/226392"
+  ]
+}

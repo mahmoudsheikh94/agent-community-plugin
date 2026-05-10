@@ -1,0 +1,42 @@
+{
+  "id": "2a2f48cdb521",
+  "tool": "n8n",
+  "error_signature": "Clipboard API blocked over HTTP",
+  "context_key": "copy-paste functionality",
+  "title": "Clipboard API blocked when accessing n8n over HTTP",
+  "symptom": "When trying to copy nodes from a non-localhost instance of n8n, the clipboard does not capture the content. This issue does not occur when accessing n8n via localhost.",
+  "applies_when": [
+    "Accessing n8n from a different device",
+    "Using HTTP instead of HTTPS"
+  ],
+  "not_this_if": [
+    "Accessing n8n via localhost",
+    "Using HTTPS to access n8n"
+  ],
+  "root_cause": "The Clipboard API, which is necessary for copy-pasting functionality, is restricted by browsers to work only over secure contexts (HTTPS) or localhost. When accessing n8n over plain HTTP from another device, the clipboard operations are blocked.",
+  "fix_steps": [
+    "Open Chrome and navigate to chrome://flags/#unsafely-treat-insecure-origin-as-secure.",
+    "Enable the flag and add your n8n URL to the list.",
+    "Restart Chrome for the changes to take effect."
+  ],
+  "agent_instruction": "Enable the insecure origin flag in Chrome and add your n8n URL to allow clipboard access.",
+  "safety_notes": [
+    "Using this flag can expose your clipboard data to security risks; consider using HTTPS for production."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "clipboard",
+    "copy-paste",
+    "HTTP",
+    "browser-issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.6.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/copy-paste-content-from-nodes-is-not-working/275555"
+  ]
+}

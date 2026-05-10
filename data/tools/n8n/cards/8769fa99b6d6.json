@@ -1,0 +1,41 @@
+{
+  "id": "8769fa99b6d6",
+  "tool": "n8n",
+  "error_signature": "JSON Output in item 0 contains invalid JSON",
+  "context_key": "set-node",
+  "title": "Invalid JSON output due to quotation mark injection",
+  "symptom": "Unexpected quotation marks are injected into the output JSON, causing it to be invalid. This occurs particularly when the input contains colons.",
+  "applies_when": [
+    "Using Set node",
+    "JSON mode with expression interpolation"
+  ],
+  "not_this_if": [
+    "No quotation mark injection occurs",
+    "Using a different node or mode"
+  ],
+  "root_cause": "The Set node's handling of templated strings in JSON mode can lead to incorrect formatting, especially when the input contains special characters like colons. This results in invalid JSON output, which cannot be processed further.",
+  "fix_steps": [
+    "Modify the expression in the Set node to use JSON.stringify()",
+    "For example, change the expression to: 'caption': {{ JSON.stringify($json.caption) }}",
+    "Save the workflow and test the output again."
+  ],
+  "agent_instruction": "Use JSON.stringify() in your Set node expressions to prevent quotation mark injection.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "set-node",
+    "json",
+    "expression",
+    "quotation-mark",
+    "invalid-json"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unexpected-quotation-mark-injection-in-set-node-expressions/103475"
+  ]
+}

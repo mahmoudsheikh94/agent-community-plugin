@@ -1,0 +1,41 @@
+{
+  "id": "72c1bbf2d831",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "http-node",
+  "title": "Invalid DateTime format in HTTP node for Outlook meetings",
+  "symptom": "When attempting to create a meeting in Outlook using the HTTP node, an error occurs stating 'Bad request - please check your parameters' with an invalid DateTime message.",
+  "applies_when": [
+    "Using HTTP node to create Outlook meetings",
+    "DateTime values are in ISO format"
+  ],
+  "not_this_if": [
+    "Using the Outlook Meeting node",
+    "DateTime values are not in ISO format"
+  ],
+  "root_cause": "The HTTP node requires DateTime fields to be set as expressions rather than fixed values. If the expressions are not properly configured, the node will send the literal string instead of the parsed DateTime, leading to a bad request error.",
+  "fix_steps": [
+    "Open the HTTP node settings",
+    "Ensure the DateTime fields are set to 'Expressions' instead of 'Fixed'",
+    "If issues persist, delete the HTTP node and create a new one",
+    "Re-enter the JSON body with the correct expressions"
+  ],
+  "agent_instruction": "Set the DateTime fields in the HTTP node to use expressions and recreate the node if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "outlook",
+    "datetime",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.75.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-set-time-in-http-node-to-create-meetings-in-outlook/77425"
+  ]
+}

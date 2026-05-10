@@ -1,0 +1,39 @@
+{
+  "id": "832fa796703d",
+  "tool": "weweb",
+  "error_signature": "CORS issue",
+  "context_key": "REST API request",
+  "title": "CORS issue when fetching data from JSON API",
+  "symptom": "When trying to fetch data from the specified JSON API, a network error occurs due to CORS restrictions.",
+  "applies_when": [
+    "Making a REST API request",
+    "Fetching data from a different domain"
+  ],
+  "not_this_if": [
+    "CORS issue is resolved by server-side configuration"
+  ],
+  "root_cause": "CORS (Cross-Origin Resource Sharing) is a security feature implemented by browsers to prevent web pages from making requests to a different domain than the one that served the web page. If the API does not allow requests from your domain, the browser will block the request.",
+  "fix_steps": [
+    "Select the option 'Make this request through a server' in your API request settings",
+    "Retry fetching the data from the JSON API"
+  ],
+  "agent_instruction": "Enable the 'Make this request through a server' option to bypass CORS restrictions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "CORS",
+    "REST API",
+    "network error",
+    "JSON",
+    "cross-domain"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-configure-collection-from-json-database/4133"
+  ]
+}

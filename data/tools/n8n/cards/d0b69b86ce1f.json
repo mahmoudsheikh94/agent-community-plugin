@@ -1,0 +1,39 @@
+{
+  "id": "d0b69b86ce1f",
+  "tool": "n8n",
+  "error_signature": "Can't open that file: Is a directory",
+  "context_key": "ftp-node",
+  "title": "FTP upload failure due to missing filename",
+  "symptom": "When attempting to upload a CSV file to an FTP server, n8n returns the error 'Can't open that file: Is a directory'. This indicates that the FTP node is not receiving a valid filename.",
+  "applies_when": [
+    "Using FTP node",
+    "Uploading a file to an FTP server"
+  ],
+  "not_this_if": [
+    "The file path includes a valid filename",
+    "The target folder does not exist"
+  ],
+  "root_cause": "The FTP node requires both the full path and the filename to successfully upload a file. If only a directory path is provided without a filename, the FTP server cannot process the request, resulting in the error message.",
+  "fix_steps": [
+    "Ensure the 'Remote Path' in the FTP node includes both the directory and the filename.",
+    "Verify that the target directory exists on the FTP server."
+  ],
+  "agent_instruction": "Update the 'Remote Path' to include the full path and filename for the upload.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ftp",
+    "upload",
+    "file-path",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ftp-upload-failure-cant-open-that-file-is-a-directory/184963"
+  ]
+}

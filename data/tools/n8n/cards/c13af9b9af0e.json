@@ -1,0 +1,39 @@
+{
+  "id": "c13af9b9af0e",
+  "tool": "n8n",
+  "error_signature": "getaddrinfo ENOTFOUND enterprise.n8n.io",
+  "context_key": "license_registration",
+  "title": "License request failed in airgapped environment",
+  "symptom": "When attempting to apply for a community license in an airgapped environment, the error 'getaddrinfo ENOTFOUND enterprise.n8n.io' occurs.",
+  "applies_when": [
+    "Attempting to register a community license",
+    "Environment is airgapped without Internet access"
+  ],
+  "not_this_if": [
+    "Environment has Internet access",
+    "Using an enterprise license"
+  ],
+  "root_cause": "The error occurs because the license registration process requires access to the n8n server at enterprise.n8n.io, which is not reachable in an airgapped environment. Community licenses are not designed to function without Internet connectivity.",
+  "fix_steps": [
+    "Consider using an enterprise license if available",
+    "Contact n8n support for alternative licensing options for airgapped environments"
+  ],
+  "agent_instruction": "Explore enterprise licensing options for airgapped environments as community licenses are not supported.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "license",
+    "airgapped",
+    "community-edition",
+    "enterprise"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/apply-for-community-license-in-airgapped-env/117622"
+  ]
+}

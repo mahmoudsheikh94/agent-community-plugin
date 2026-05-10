@@ -1,0 +1,40 @@
+{
+  "id": "3e691553dcc6",
+  "tool": "n8n",
+  "error_signature": "permission denied for database VN8N",
+  "context_key": "postgresql-connection",
+  "title": "PostgreSQL permission denied for database on n8n startup",
+  "symptom": "n8n fails to initialize with 'permission denied for database VN8N' despite successful manual connection using the 'mgr' user.",
+  "applies_when": [
+    "Using PostgreSQL as the database",
+    "User has limited privileges"
+  ],
+  "not_this_if": [
+    "User has superuser privileges",
+    "Database is accessible without restrictions"
+  ],
+  "root_cause": "The 'mgr' user lacks sufficient privileges on the 'VN8N' database. While it can create tables, it does not have the necessary permissions to perform all operations required by n8n during initialization.",
+  "fix_steps": [
+    "Connect to the PostgreSQL database as a superuser",
+    "Run the command: GRANT ALL PRIVILEGES ON DATABASE 'VN8N' TO mgr;",
+    "Restart the n8n process"
+  ],
+  "agent_instruction": "Grant all privileges on the VN8N database to the mgr user and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "postgresql",
+    "database-permissions",
+    "n8n-initialization",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-docker-postgresql-permission-denied-for-database-although-manual-connection-works/229157"
+  ]
+}

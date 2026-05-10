@@ -1,0 +1,41 @@
+{
+  "id": "fccd38ee7e7b",
+  "tool": "n8n",
+  "error_signature": "Callback verification failed with the following errors: HTTP Status Code = 408",
+  "context_key": "whatsapp-trigger-node",
+  "title": "WhatsApp Trigger callback verification failed",
+  "symptom": "When verifying the webhook for the WhatsApp Trigger node, n8n returns a 'Callback verification failed' error with a 408 status code, indicating a request timeout.",
+  "applies_when": [
+    "Using WhatsApp Trigger node",
+    "Webhook verification process"
+  ],
+  "not_this_if": [
+    "Webhook verification is successful",
+    "n8n is not hosted on a virtual machine"
+  ],
+  "root_cause": "The error occurs because the firewall settings on the virtual machine are blocking incoming requests to the necessary ports for webhook verification. Without access to these ports, the verification process cannot complete successfully.",
+  "fix_steps": [
+    "Access the firewall settings of your virtual machine",
+    "Create rules to allow incoming traffic on ports 5678, 443, and 80",
+    "Save the changes and retry the webhook verification"
+  ],
+  "agent_instruction": "Create firewall rules to allow access to ports 5678, 443, and 80 on your virtual machine.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "trigger",
+    "webhook",
+    "firewall",
+    "request-timeout"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-with-whatsapp-trigger-callback-verification-failed-2200-request-timeout/87219"
+  ]
+}

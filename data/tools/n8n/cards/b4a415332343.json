@@ -1,0 +1,41 @@
+{
+  "id": "b4a415332343",
+  "tool": "n8n",
+  "error_signature": "Tunnel URL overrides custom webhook URL",
+  "context_key": "n8n-tunnel",
+  "title": "Custom webhook URL not used with --tunnel flag",
+  "symptom": "When starting n8n with the --tunnel flag, it generates a tunnel URL instead of using the specified custom webhook URL.",
+  "applies_when": [
+    "Using n8n with the --tunnel flag",
+    "Setting a custom webhook URL"
+  ],
+  "not_this_if": [
+    "Not using the --tunnel flag",
+    "Webhook URL is not set"
+  ],
+  "root_cause": "The --tunnel flag forces n8n to generate a public tunnel URL for webhooks, which overrides any custom webhook URL specified in the environment variables.",
+  "fix_steps": [
+    "Remove the --tunnel flag from the pm2 start command",
+    "Ensure the WEBHOOK_URL environment variable is set correctly",
+    "Restart the n8n process in pm2"
+  ],
+  "agent_instruction": "Start n8n without the --tunnel flag to use your custom webhook URL.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "webhook",
+    "tunnel",
+    "pm2",
+    "custom-domain"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.85.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-url-with-pm2-setup/96683"
+  ]
+}

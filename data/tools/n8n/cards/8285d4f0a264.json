@@ -1,0 +1,40 @@
+{
+  "id": "8285d4f0a264",
+  "tool": "n8n",
+  "error_signature": "This operation is not supported for this document",
+  "context_key": "googleSlides-node",
+  "title": "Google Slides replace operation fails with unsupported document error",
+  "symptom": "When attempting to use the replace text operation in the Google Slides node, an error message indicates that the operation is not supported for the document.",
+  "applies_when": [
+    "Using Google Slides node",
+    "Attempting to replace text in a specific document"
+  ],
+  "not_this_if": [
+    "The document is compatible with the replace operation"
+  ],
+  "root_cause": "The error occurs because the Google Slides node requires a valid document structure that supports the replace operation. If the document is not properly initialized or lacks the necessary elements, the operation will fail.",
+  "fix_steps": [
+    "Create a new Google Slides document",
+    "Add a 'Get Slides' node before the 'Replace Text' node",
+    "Reconfigure the workflow to use the new document",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Create a new Google Slides document and add a 'Get Slides' node before the 'Replace Text' node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-slides",
+    "replace-text",
+    "node-configuration",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-slides-replace-operation-node-not-working-need-help/115660"
+  ]
+}

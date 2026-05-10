@@ -1,0 +1,40 @@
+{
+  "id": "399735c7e7bb",
+  "tool": "weweb",
+  "error_signature": "Cannot read properties of undefined (reading 'name')",
+  "context_key": "custom-plugin-import",
+  "title": "Error importing custom plugins due to undefined property",
+  "symptom": "When importing a custom plugin, an error occurs stating 'Cannot read properties of undefined (reading 'name')', rendering the plugin unusable.",
+  "applies_when": [
+    "Using custom plugins in local development",
+    "Plugin has an undefined category"
+  ],
+  "not_this_if": [
+    "Error occurs in production environment",
+    "Plugin is correctly defined with a category"
+  ],
+  "root_cause": "The error occurs because the code attempts to access the 'name' property of 'plugin.pluginCategory' without checking if 'plugin.pluginCategory' is defined. If the category is undefined, it leads to a runtime error.",
+  "fix_steps": [
+    "Modify the code to check if 'plugin.pluginCategory' is defined before accessing 'name'.",
+    "Change the line to: 'if (plugin.pluginCategory && plugin.pluginCategory.name === 'auth') {'",
+    "Test the plugin import again to ensure it works without errors."
+  ],
+  "agent_instruction": "Update the plugin code to include a check for 'plugin.pluginCategory' before accessing 'name'.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "custom-plugin",
+    "error-handling",
+    "development",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/error-with-custom-plugins/464"
+  ]
+}

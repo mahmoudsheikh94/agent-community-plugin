@@ -1,0 +1,41 @@
+{
+  "id": "ec12c7e395fa",
+  "tool": "n8n",
+  "error_signature": "starting_after not nested in pagination object",
+  "context_key": "http-request-node",
+  "title": "Intercom pagination fails due to incorrect JSON structure",
+  "symptom": "The HTTP Request node fails to send the 'starting_after' cursor in the correct nested structure, leading to pagination issues. Responses loop with identical data instead of fetching new pages.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Intercom API with cursor-based pagination"
+  ],
+  "not_this_if": [
+    "Pagination works correctly with manual JSON body",
+    "Using a different API that does not require nested pagination"
+  ],
+  "root_cause": "The HTTP Request node in n8n does not correctly format the JSON body for APIs that require specific nesting of parameters. It places 'starting_after' at the root level instead of within the 'pagination' object, causing the API to reject the request.",
+  "fix_steps": [
+    "Create a workflow with two HTTP Request nodes.",
+    "In the first node, send the request without 'starting_after'.",
+    "In the second node, set the body to include 'starting_after' nested within the 'pagination' object, using the expression '{{ $json.pages.next.starting_after }}'.",
+    "Add a conditional check to see if 'next.starting_after' exists before proceeding."
+  ],
+  "agent_instruction": "Set up two HTTP Request nodes to handle pagination correctly by nesting 'starting_after' in the second node's body.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "intercom",
+    "http-request",
+    "pagination",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/intercom-conversations-pagination/99657"
+  ]
+}

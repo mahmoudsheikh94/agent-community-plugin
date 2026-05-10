@@ -1,0 +1,41 @@
+{
+  "id": "6eb517d3b042",
+  "tool": "n8n",
+  "error_signature": "Error 403: access_denied",
+  "context_key": "google-drive-integration",
+  "title": "Google Drive access blocked due to verification process",
+  "symptom": "When attempting to connect Google Drive, the user receives an 'Access blocked: n8n.cloud has not completed the Google verification process' error message.",
+  "applies_when": [
+    "Using n8n.cloud",
+    "Trying to connect Google Drive"
+  ],
+  "not_this_if": [
+    "Google Drive connection works for other users",
+    "Using a different Google account"
+  ],
+  "root_cause": "The error occurs because the n8n application has not been verified by Google, which restricts access to certain users. This is common for applications in development mode that require user consent for access.",
+  "fix_steps": [
+    "Go to the Google Cloud Console",
+    "Navigate to the OAuth consent screen",
+    "Add your Gmail address as a test user",
+    "If necessary, click the 'Publish app' button to make it accessible"
+  ],
+  "agent_instruction": "Add your Gmail address as a test user in the Google Cloud Console for the n8n application.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "oauth",
+    "access-denied",
+    "n8n-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/access-blocked-n8n-cloud-has-not-completed-the-google-verification-process/83176"
+  ]
+}

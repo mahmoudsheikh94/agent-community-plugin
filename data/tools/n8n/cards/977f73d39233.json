@@ -1,0 +1,40 @@
+{
+  "id": "977f73d39233",
+  "tool": "n8n",
+  "error_signature": "DNS_PROBE_FINISHED_NXDOMAIN",
+  "context_key": "google-oauth",
+  "title": "Google OAuth sign-in fails due to DNS error",
+  "symptom": "When attempting to sign in with Google credentials in n8n, the user encounters a 'DNS_PROBE_FINISHED_NXDOMAIN' error instead of being redirected back to n8n.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Hosted n8n on Railway server"
+  ],
+  "not_this_if": [
+    "Using a public domain for n8n",
+    "Error occurs in a different environment"
+  ],
+  "root_cause": "The error occurs because the domain being used for the n8n instance is not publicly accessible. This can happen if the domain settings in Railway are misconfigured or if the wrong domain is being used for OAuth redirection.",
+  "fix_steps": [
+    "Verify the domain settings in Railway",
+    "Ensure you are using the correct public domain for your n8n instance",
+    "Update the OAuth settings in Google Cloud with the correct domain"
+  ],
+  "agent_instruction": "Check and update the domain settings in Railway to ensure they are correct for Google OAuth.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-oauth",
+    "dns-error",
+    "railway",
+    "n8n-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sign-in-google-fails-in-n8n-hosted-in-railway-server/86729"
+  ]
+}

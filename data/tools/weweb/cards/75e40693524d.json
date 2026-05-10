@@ -1,0 +1,40 @@
+{
+  "id": "75e40693524d",
+  "tool": "weweb",
+  "error_signature": "InvalidTokenError: Invalid Compact JWS",
+  "context_key": "Auth0 integration",
+  "title": "Invalid Compact JWS error with Auth0 integration",
+  "symptom": "When attempting to authenticate using Auth0, the error 'InvalidTokenError: Invalid Compact JWS' is displayed. The token also shows as having no payload when checked.",
+  "applies_when": [
+    "Using Auth0 for authentication",
+    "RS256 algorithm is configured"
+  ],
+  "not_this_if": [
+    "Token is valid and has a payload",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The error occurs because the access token provided by WeWeb is an opaque token rather than a JWT. This means it cannot be decoded or validated using standard JWT tools, leading to the 'invalid signature' error when checked against JWT validation services.",
+  "fix_steps": [
+    "Refer to the Auth0 documentation for Single-Page Applications (SPA) with API.",
+    "Ensure that the correct flow (OIDC and OAuth 2.0 Implicit Grant Flow) is implemented for your application.",
+    "Use the appropriate access token format as specified in the documentation."
+  ],
+  "agent_instruction": "Follow the Auth0 SPA documentation to correctly implement authentication with the API.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Auth0",
+    "JWT",
+    "authentication",
+    "opaque-token"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/auth0-for-auth-rest-api-as-a-data-source/482"
+  ]
+}

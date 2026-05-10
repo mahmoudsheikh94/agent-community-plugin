@@ -1,0 +1,40 @@
+{
+  "id": "3c7f5b6929cc",
+  "tool": "n8n",
+  "error_signature": "links not clickable in plain text email",
+  "context_key": "send-email-node",
+  "title": "Links not clickable in plain text emails",
+  "symptom": "Links in the email sent using the Text section are not clickable in non-Gmail mobile accounts.",
+  "applies_when": [
+    "Using Send Email node",
+    "Email body is sent as plain text"
+  ],
+  "not_this_if": [
+    "Email is sent as HTML",
+    "Links are clickable in other email clients"
+  ],
+  "root_cause": "Some email clients do not render links as clickable in plain text emails, which can lead to user confusion and reduced engagement. This behavior varies by email provider and client.",
+  "fix_steps": [
+    "Switch to using the HTML section of the Send Email node",
+    "Ensure the email body is formatted as HTML with proper link tags",
+    "Test the email in various clients to confirm links are clickable"
+  ],
+  "agent_instruction": "Use the HTML section of the Send Email node to ensure links are clickable.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "send-email",
+    "plain-text",
+    "links",
+    "email"
+  ],
+  "severity": "degraded",
+  "confidence": 0.775,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/send-email-node-plain-text-html/7197"
+  ]
+}

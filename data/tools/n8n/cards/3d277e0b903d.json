@@ -1,0 +1,39 @@
+{
+  "id": "3d277e0b903d",
+  "tool": "n8n",
+  "error_signature": "404 - The resource you are requesting could not be found",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets resource not found error",
+  "symptom": "When trying to access a specific sheet in Google Sheets, n8n returns a 404 error stating that the resource could not be found.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Successfully connected to Google Sheets"
+  ],
+  "not_this_if": [
+    "The sheet name is correctly specified and exists"
+  ],
+  "root_cause": "This error typically occurs when the specified sheet name does not exist in the Google Sheets document or if there is a temporary issue with the Google Sheets API. It may also happen if the credentials are not properly refreshed or if the node configuration is outdated.",
+  "fix_steps": [
+    "Refresh or re-login to your Google Sheets credentials in n8n",
+    "Delete the existing Google Sheets node",
+    "Re-add the Google Sheets node and select the correct document and sheet"
+  ],
+  "agent_instruction": "Refresh your credentials and re-add the Google Sheets node to resolve the issue.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-sheets",
+    "404-error",
+    "node-configuration",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-find-sheet-when-connected-to-google-sheet/145095"
+  ]
+}

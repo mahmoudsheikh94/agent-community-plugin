@@ -1,0 +1,40 @@
+{
+  "id": "eadda62ae5bc",
+  "tool": "n8n",
+  "error_signature": "Request failed with status code 401",
+  "context_key": "asana-http-request",
+  "title": "Unauthorized error when creating task in Asana",
+  "symptom": "When attempting to create a task in Asana via HTTP request, n8n returns a 'Request failed with status code 401' error.",
+  "applies_when": [
+    "Using Asana HTTP request",
+    "Attempting to create a task with a due date"
+  ],
+  "not_this_if": [
+    "Using valid credentials with sufficient permissions"
+  ],
+  "root_cause": "The 401 Unauthorized error indicates that the authentication token being used is either incorrect or does not have the required permissions to create a task in Asana. This can happen if the token is expired or if the necessary scopes are not granted.",
+  "fix_steps": [
+    "Verify the authentication token being used for the Asana HTTP request.",
+    "Ensure the token has the required scope: tasks:write.",
+    "If necessary, generate a new token with the correct permissions.",
+    "Update the HTTP request in n8n with the new token."
+  ],
+  "agent_instruction": "Check and update the Asana authentication token to ensure it has the correct permissions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "asana",
+    "http-request",
+    "401-error",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/asana-https-request/113065"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "43421611a3c4",
+  "tool": "weweb",
+  "error_signature": "delayed conditional rendering with user variables",
+  "context_key": "user-variable",
+  "title": "Delayed rendering of divs based on user variables",
+  "symptom": "The incorrect div appears first before the correct one after a delay. This happens when using user variables for conditional rendering.",
+  "applies_when": [
+    "Using user variables for conditional rendering",
+    "Page is loaded with user data"
+  ],
+  "not_this_if": [
+    "Using other types of variables for rendering"
+  ],
+  "root_cause": "The delay in rendering occurs because the user variables may not be fully populated or processed at the time the conditional rendering is evaluated, leading to a temporary display of the incorrect div.",
+  "fix_steps": [
+    "Set the entire section to 'isAuthenticated' initially to prevent premature rendering.",
+    "Consider transferring user variables to normal variables during data fetching."
+  ],
+  "agent_instruction": "Implement the workaround by setting the section to 'isAuthenticated' initially.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "user-variables",
+    "conditional-rendering",
+    "delayed-rendering"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/user-variable-delayed-conditional-rendering/20259"
+  ]
+}

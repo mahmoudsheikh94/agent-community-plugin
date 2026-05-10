@@ -1,0 +1,40 @@
+{
+  "id": "d579aafdc835",
+  "tool": "n8n",
+  "error_signature": "Failed to connect to MCP Server; MCP error -32000",
+  "context_key": "mcp-node",
+  "title": "MCP Server connection failure",
+  "symptom": "When attempting to connect to the MCP Server using the MCP node, n8n throws 'Failed to connect to MCP Server; MCP error -32000'.",
+  "applies_when": [
+    "Using MCP node",
+    "n8n version is prior to 1.85.4"
+  ],
+  "not_this_if": [
+    "Using HTTP node with cURL works",
+    "Already on n8n version 1.85.4 or higher"
+  ],
+  "root_cause": "The error occurs due to compatibility issues with the MCP node and the n8n version being used. Upgrading both the n8n platform and the MCP node can resolve these issues.",
+  "fix_steps": [
+    "Upgrade n8n to version 1.85.4 or higher",
+    "Upgrade the MCP node to version 0.17",
+    "Change the command from '-y @modelcontextprotocol/server-perplexity-ask' to '-y server-perplexity-ask'"
+  ],
+  "agent_instruction": "Upgrade n8n and the MCP node to the specified versions and adjust the installation command.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "mcp",
+    "perplexity",
+    "connection-error",
+    "node-upgrade"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-perplexity/93711"
+  ]
+}

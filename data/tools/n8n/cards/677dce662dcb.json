@@ -1,0 +1,40 @@
+{
+  "id": "677dce662dcb",
+  "tool": "n8n",
+  "error_signature": "Access blocked: n8n has not completed the Google verification process",
+  "context_key": "google-authentication",
+  "title": "Google authentication access blocked due to verification process",
+  "symptom": "When attempting to sign in with Google in n8n, an error 403 is displayed stating that access is blocked due to the app not completing the Google verification process.",
+  "applies_when": [
+    "Using Google authentication in n8n",
+    "n8n is running locally"
+  ],
+  "not_this_if": [
+    "The Google project is set to live",
+    "The user is added as a test user"
+  ],
+  "root_cause": "The Google Cloud project associated with n8n has not completed the verification process, which restricts access to only approved testers. This is a common issue when using Google APIs for applications that are still in development.",
+  "fix_steps": [
+    "Go to your Google Cloud project settings",
+    "Add your email as a test user under OAuth consent screen",
+    "Alternatively, set the project to live if ready for production"
+  ],
+  "agent_instruction": "Add your email as a test user in the Google Cloud project or set the project to live.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-authentication",
+    "error-403",
+    "n8n",
+    "google-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/local-n8n-cant-connect-google-credentials/112338"
+  ]
+}

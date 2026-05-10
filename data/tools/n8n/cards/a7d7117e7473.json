@@ -1,0 +1,40 @@
+{
+  "id": "a7d7117e7473",
+  "tool": "n8n",
+  "error_signature": "LinkedIn auth stopped working",
+  "context_key": "linkedin-auth",
+  "title": "LinkedIn authentication failure",
+  "symptom": "Users are unable to authenticate with LinkedIn, resulting in failed connections. Attempts to resolve the issue using community solutions have not been successful.",
+  "applies_when": [
+    "Using LinkedIn authentication",
+    "Organization support is enabled"
+  ],
+  "not_this_if": [
+    "Authentication works when organization support is disabled"
+  ],
+  "root_cause": "The LinkedIn API may have issues with organization support enabled, causing authentication failures. Disabling this feature can resolve conflicts that prevent successful authentication.",
+  "fix_steps": [
+    "Access the LinkedIn node settings",
+    "Turn off the organization support option",
+    "Save the changes",
+    "Attempt to authenticate again"
+  ],
+  "agent_instruction": "Disable organization support in the LinkedIn node settings and save the changes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "linkedin",
+    "authentication",
+    "oauth",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/linkedin-auth-stopped-working/98022"
+  ]
+}

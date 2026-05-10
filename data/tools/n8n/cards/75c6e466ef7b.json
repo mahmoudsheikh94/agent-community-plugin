@@ -1,0 +1,41 @@
+{
+  "id": "75c6e466ef7b",
+  "tool": "n8n",
+  "error_signature": "Failed to start Python task runner in internal mode",
+  "context_key": "n8n-tunnel",
+  "title": "Python task runner missing for internal mode",
+  "symptom": "When attempting to start n8n with the `--tunnel` option, an error indicates that Python 3 is missing from the system.",
+  "applies_when": [
+    "Using n8n v2.0 or later",
+    "Trying to start n8n with the `--tunnel` option"
+  ],
+  "not_this_if": [
+    "Using a version of n8n prior to v2.0",
+    "Running n8n without the `--tunnel` option"
+  ],
+  "root_cause": "In n8n v2.0, the `--tunnel` option was removed, and the internal Python task runner is not available unless Python 3 is installed. This change is part of the breaking changes introduced in the new version.",
+  "fix_steps": [
+    "Remove the `--tunnel` option from your command",
+    "Use ngrok with the command `ngrok http 5678` to expose your n8n instance",
+    "Follow ngrok setup instructions to establish the tunnel"
+  ],
+  "agent_instruction": "Remove the `--tunnel` option and use ngrok to create a tunnel to your n8n instance.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "n8n",
+    "tunnel",
+    "ngrok",
+    "python",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.0.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/tunnel-problem/240593"
+  ]
+}

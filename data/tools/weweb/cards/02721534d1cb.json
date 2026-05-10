@@ -1,0 +1,38 @@
+{
+  "id": "02721534d1cb",
+  "tool": "weweb",
+  "error_signature": "capitalize formula breaks when condition is true",
+  "context_key": "capitalize-formula",
+  "title": "Capitalize formula fails with boolean variable true",
+  "symptom": "The capitalize formula works when the boolean variable is false but fails when it is true, leading to unexpected behavior.",
+  "applies_when": [
+    "Using the capitalize formula",
+    "Boolean variable is involved"
+  ],
+  "not_this_if": [
+    "Boolean variable is false"
+  ],
+  "root_cause": "The capitalize formula evaluates all parameters, and if the boolean variable is true, it may not be treated as a string, causing the formula to break. This is due to the way the formula interprets non-string values.",
+  "fix_steps": [
+    "Modify the capitalize formula to include a default value, e.g., `capitalize(yourvariable || '')`",
+    "Test the formula with the boolean variable set to true to ensure it works as expected."
+  ],
+  "agent_instruction": "Update the capitalize formula to handle non-string values by adding a default value.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "capitalize",
+    "formula",
+    "boolean",
+    "error-handling"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/capitalize-formula-inconsistent-behavior-bug/3817"
+  ]
+}

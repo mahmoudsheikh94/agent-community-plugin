@@ -1,0 +1,41 @@
+{
+  "id": "484bbdec128e",
+  "tool": "n8n",
+  "error_signature": "Workflow does not contain a node with the name of 'undefined'",
+  "context_key": "Parse Data node",
+  "title": "Error with Parse Data node when streaming is enabled",
+  "symptom": "When enabling streaming in a workflow, the Parse Data node throws an error indicating it cannot find a node named 'undefined'. This occurs when the workflow is executed outside the editor.",
+  "applies_when": [
+    "Using Parse Data node",
+    "Streaming is enabled"
+  ],
+  "not_this_if": [
+    "Streaming is disabled",
+    "Error does not occur in the editor"
+  ],
+  "root_cause": "When streaming is enabled, the Parse Data node loses its reference to the User Schema node, leading to an inability to find the necessary schema definition. This results in the error message about the undefined node.",
+  "fix_steps": [
+    "Open the User Schema node and copy the JSON code.",
+    "Navigate to the Parse Data node settings.",
+    "Paste the copied JSON directly into the Input Schema field, replacing any existing expressions or variables.",
+    "Save the workflow and test it again with streaming enabled."
+  ],
+  "agent_instruction": "Replace the dynamic reference in the Parse Data node with the hardcoded JSON schema from the User Schema node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "parse-data",
+    "streaming",
+    "user-schema",
+    "workflow-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-does-not-contain-a-node-with-the-name-of-undefined/232410"
+  ]
+}

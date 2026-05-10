@@ -1,0 +1,40 @@
+{
+  "id": "c1ae69a1531e",
+  "tool": "n8n",
+  "error_signature": "AI sub-nodes only read the first item",
+  "context_key": "ollama-node",
+  "title": "Ollama only reads the first file input",
+  "symptom": "When using the Ollama node with multiple file inputs, it only processes the first file instead of all provided files.",
+  "applies_when": [
+    "Using Ollama node",
+    "Multiple files are input"
+  ],
+  "not_this_if": [
+    "Only one file is being processed"
+  ],
+  "root_cause": "The AI sub-nodes in n8n are designed to process only the first item in a list of inputs. This behavior prevents the model from accessing all provided files simultaneously.",
+  "fix_steps": [
+    "Add an Aggregate node before the Ollama node",
+    "Set the Aggregate node to 'All Item Data'",
+    "Connect the output of the Aggregate node to the Ollama node",
+    "Reference the combined content in your prompt"
+  ],
+  "agent_instruction": "Use an Aggregate node to merge all file inputs into a single item before the Ollama node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ollama",
+    "multiple-files",
+    "aggregate-node",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-make-ollama-read-multiple-files-at-once/271486"
+  ]
+}

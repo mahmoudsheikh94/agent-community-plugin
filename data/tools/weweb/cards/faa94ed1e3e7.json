@@ -1,0 +1,40 @@
+{
+  "id": "faa94ed1e3e7",
+  "tool": "weweb",
+  "error_signature": "API groups but not the API endpoints",
+  "context_key": "xano-source-plugin",
+  "title": "Xano plugin not displaying API endpoints",
+  "symptom": "The Xano source plugin shows API groups but fails to display any API endpoints. This issue started occurring recently for the user.",
+  "applies_when": [
+    "Using Xano source plugin",
+    "On a free plan"
+  ],
+  "not_this_if": [
+    "Endpoints are visible in other environments or plans"
+  ],
+  "root_cause": "The issue may arise from an outdated or incorrect Metadata API auth key in the Xano plugin, especially after recent updates to Xano that could affect authentication.",
+  "fix_steps": [
+    "Open the Xano plugin settings",
+    "Update the Metadata API auth key",
+    "Save the changes",
+    "Refresh the plugin to check if endpoints are now visible"
+  ],
+  "agent_instruction": "Update the Metadata API auth key in the Xano plugin settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "xano",
+    "api",
+    "plugin",
+    "metadata-auth"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/xano-source-plugin-shows-api-groups-but-not-the-endpoints/17381"
+  ]
+}

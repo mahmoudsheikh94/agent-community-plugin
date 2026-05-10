@@ -1,0 +1,43 @@
+{
+  "id": "678e7ec135f9",
+  "tool": "n8n",
+  "error_signature": "authentication failure with Google Business Messages API",
+  "context_key": "http-request-node",
+  "title": "Authentication failure with Google Business Messages API",
+  "symptom": "Users encounter authentication issues when trying to connect to the Google Business Messages API using the HTTP Request node in n8n.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Configuring Google Business Messages API"
+  ],
+  "not_this_if": [
+    "Using standard OAuth2 flow",
+    "No authentication issues present"
+  ],
+  "root_cause": "The Google Business Messages API requires a specific authentication method using a service account, which differs from the standard OAuth2 flow. If the correct credentials and scopes are not provided, authentication will fail.",
+  "fix_steps": [
+    "Open the HTTP Request node settings in n8n.",
+    "Select 'Google Service Account API' as the Credential Type.",
+    "Enter the service account email and private key.",
+    "Add 'https://www.googleapis.com/auth/rcsbusinessmessaging' as the OAuth2 scope.",
+    "Save the node configuration."
+  ],
+  "agent_instruction": "Configure the HTTP Request node with the Google Service Account API credentials and the correct OAuth2 scope.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "business-messages",
+    "http-request",
+    "authentication",
+    "service-account"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/auth-problems-with-google-business-messages/121942"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "1ca0d45b732b",
+  "tool": "n8n",
+  "error_signature": "The service is receiving too many requests from you",
+  "context_key": "http-request-node",
+  "title": "HTTP 429 Rate Limit Error in HTTP Request Node",
+  "symptom": "When executing a workflow that makes multiple HTTP requests, the second request fails with a 'too many requests' error. This prevents further execution of the workflow.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Making multiple requests to the same API"
+  ],
+  "not_this_if": [
+    "Only making a single request",
+    "API does not enforce rate limits"
+  ],
+  "root_cause": "The error occurs because the API being called has a rate limit that restricts the number of requests that can be made in a given time frame. When this limit is exceeded, the API responds with a 429 status code, indicating that the client should slow down.",
+  "fix_steps": [
+    "Implement retry logic with exponential backoff in your workflow",
+    "Consider adding delays between requests to stay within the API's rate limits",
+    "Batch requests if the API supports it to reduce the number of calls"
+  ],
+  "agent_instruction": "Add retry logic and delays between HTTP requests in your workflow to avoid hitting rate limits.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "http-request",
+    "rate-limit",
+    "error-429",
+    "api-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-429-rate-limit-errors/178702"
+  ]
+}

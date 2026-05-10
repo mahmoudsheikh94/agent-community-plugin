@@ -1,0 +1,40 @@
+{
+  "id": "39dcdc836ab7",
+  "tool": "n8n",
+  "error_signature": "The 'key' argument must be of type string or an instance of ArrayBuffer",
+  "context_key": "clickup-trigger-node",
+  "title": "ClickUp Trigger node key argument error in production",
+  "symptom": "When executing a workflow with the ClickUp trigger node in production, an error occurs stating that the 'key' argument is undefined. This prevents the workflow from processing ClickUp events correctly.",
+  "applies_when": [
+    "Using ClickUp trigger node",
+    "Workflow is published and running in production"
+  ],
+  "not_this_if": [
+    "Error occurs only during testing or in manual execution"
+  ],
+  "root_cause": "The ClickUp trigger node is receiving malformed webhook data from ClickUp, which includes undefined or null values. This causes the node to fail when it attempts to process the incoming data, specifically when it expects a valid key argument for cryptographic operations.",
+  "fix_steps": [
+    "Update n8n to the latest version to ensure all recent bug fixes are applied.",
+    "Delete the existing ClickUp trigger node and recreate it to register a new webhook with ClickUp.",
+    "Verify that the ClickUp API token has the necessary permissions for the events being monitored.",
+    "Consider adding an Error Trigger node or enabling 'Continue on Fail' to handle errors gracefully."
+  ],
+  "agent_instruction": "Update n8n, recreate the ClickUp trigger node, and check API permissions.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "clickup",
+    "trigger",
+    "webhook",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.4.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/clickup-trigger-task-crud-error-in-production-key-argument/252558"
+  ]
+}

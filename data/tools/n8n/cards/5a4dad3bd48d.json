@@ -1,0 +1,40 @@
+{
+  "id": "5a4dad3bd48d",
+  "tool": "n8n",
+  "error_signature": "ghost admin user not showing in user list",
+  "context_key": "user management",
+  "title": "Ghost admin user not appearing in user list",
+  "symptom": "A user can log in as an admin but does not appear in the user list. This indicates a potential issue with user records in the database.",
+  "applies_when": [
+    "User has been deleted from the UI",
+    "User was created via LDAP"
+  ],
+  "not_this_if": [
+    "User appears correctly in the user list",
+    "User was not created via LDAP"
+  ],
+  "root_cause": "When a user is deleted from the UI, it may not fully remove all associated records created by LDAP, leading to orphaned entries in the database that cause the user to appear as a ghost admin.",
+  "fix_steps": [
+    "Access the Postgres database directly and run a query to check for orphaned or duplicate user records.",
+    "Use the query `SELECT * FROM “user” WHERE email ILIKE ‘%their-email%’;` to identify any issues.",
+    "Manually clean up any orphaned records if necessary."
+  ],
+  "agent_instruction": "Check the Postgres database for orphaned user records and clean them up as needed.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "user-management",
+    "Postgres",
+    "LDAP",
+    "ghost-user"
+  ],
+  "severity": "degraded",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.7.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ldap-issues-when-migrating-from-invites-to-active-directory/264324"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "82b01cd19ac9",
+  "tool": "n8n",
+  "error_signature": "Unable to fetch email content from Freshdesk tickets",
+  "context_key": "freshdesk-node",
+  "title": "Missing email content in Freshdesk ticket retrieval",
+  "symptom": "When fetching ticket data from Freshdesk, the email content is not included in the response.",
+  "applies_when": [
+    "Using Freshdesk node",
+    "Fetching ticket data"
+  ],
+  "not_this_if": [
+    "Email content is not needed",
+    "Using a custom HTTP request with correct parameters"
+  ],
+  "root_cause": "The Freshdesk node in n8n does not support including conversation data by default. To retrieve email content, a specific query parameter must be added to the API request, which is not available in the standard node configuration.",
+  "fix_steps": [
+    "Switch from using the Freshdesk node to a custom HTTP request node.",
+    "Set the request method to GET and the URL to the Freshdesk API endpoint for tickets.",
+    "Add the query parameter 'include=conversation' to the request.",
+    "To filter for open tickets, add the query parameter 'status=2'.",
+    "Execute the custom HTTP request to retrieve the desired data."
+  ],
+  "agent_instruction": "Use a custom HTTP request to fetch Freshdesk tickets with the required query parameters.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "freshdesk",
+    "api",
+    "http-request",
+    "ticket-retrieval"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/freshdesk-retrieve-ticket-email-content/81971"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "59c6501c6f85",
+  "tool": "weweb",
+  "error_signature": "hover dropdown not recognizing mouse actions",
+  "context_key": "datagrid",
+  "title": "Hover dropdown not working outside of Datagrid",
+  "symptom": "The hover dropdown fails to recognize mouse actions when it expands outside the parent datagrid. Attempts to adjust Z-Order and Overflow settings have not resolved the issue.",
+  "applies_when": [
+    "Hover dropdown is used",
+    "Dropdown expands outside of the parent datagrid"
+  ],
+  "not_this_if": [
+    "Dropdown is fully contained within the datagrid"
+  ],
+  "root_cause": "The issue arises because the dropdown's mouse actions are not recognized when it overflows the boundaries of the parent datagrid. This can occur if the datagrid's Z-Axis is not properly set, preventing the dropdown from being interactive.",
+  "fix_steps": [
+    "Set the Z-Axis property on the datagrid",
+    "Ensure the overflow property is set to visible",
+    "Test the hover dropdown functionality again"
+  ],
+  "agent_instruction": "Adjust the Z-Axis and overflow settings on the datagrid to ensure the hover dropdown works correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "hover-dropdown",
+    "datagrid",
+    "z-axis",
+    "overflow"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/hover-dropdown-doesnt-work-outside-datagrid/8267"
+  ]
+}

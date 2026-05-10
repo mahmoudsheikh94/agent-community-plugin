@@ -1,0 +1,39 @@
+{
+  "id": "923a70e6082d",
+  "tool": "n8n",
+  "error_signature": "undefined",
+  "context_key": "edit-fields-node",
+  "title": "Edit Fields Node returns 'undefined'",
+  "symptom": "The Edit Fields Node is unable to parse a value, returning 'undefined' instead. This occurs even when the value is present in the input from a previous node.",
+  "applies_when": [
+    "Using Edit Fields Node",
+    "Input value is present but returns 'undefined'"
+  ],
+  "not_this_if": [
+    "Input value is missing or incorrectly referenced"
+  ],
+  "root_cause": "The issue arises when the Merge node is set to 'append' mode, which separates objects into arrays. This can lead to the Edit Fields Node being unable to correctly reference the input values, resulting in 'undefined' outputs.",
+  "fix_steps": [
+    "Change the Merge node mode from 'append' to 'Combine'",
+    "Select 'Combine by position' in the Merge node settings",
+    "Re-run the workflow to check if the Edit Fields Node now receives the correct input"
+  ],
+  "agent_instruction": "Change the Merge node to 'Combine' mode and re-run the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "edit-fields",
+    "merge-node",
+    "undefined",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.101.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/edit-fields-node-what-am-i-doing-wrong/148089"
+  ]
+}

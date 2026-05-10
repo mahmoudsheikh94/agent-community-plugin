@@ -1,0 +1,40 @@
+{
+  "id": "2561b353c5d9",
+  "tool": "n8n",
+  "error_signature": "ENOENT: no such file or directory",
+  "context_key": "write-files-node",
+  "title": "File write error due to missing directory",
+  "symptom": "When attempting to save a file using the Write Files to Disk node, n8n throws an ENOENT error indicating that the specified file or directory does not exist.",
+  "applies_when": [
+    "Using Write Files to Disk node",
+    "Directory exists but is not writable"
+  ],
+  "not_this_if": [
+    "File writes succeed without specifying a path",
+    "Using a different storage method"
+  ],
+  "root_cause": "The error occurs when the specified directory for saving files is not accessible or writable by the user under which n8n is running. This can happen if the directory permissions are set incorrectly or if the directory is not mounted properly in a containerized environment.",
+  "fix_steps": [
+    "Check the permissions of the target directory",
+    "Ensure that the user running n8n has write access to the directory",
+    "If using Docker, verify that the directory is correctly mounted and accessible"
+  ],
+  "agent_instruction": "Ensure the target directory is writable by the n8n user and check permissions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "write-files",
+    "ENOENT",
+    "permissions",
+    "directory-access"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/aggregate-files-images-before-editing-and-sending-to-openai/140601"
+  ]
+}

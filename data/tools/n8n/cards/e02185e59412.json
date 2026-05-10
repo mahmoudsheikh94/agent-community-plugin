@@ -1,0 +1,41 @@
+{
+  "id": "e02185e59412",
+  "tool": "n8n",
+  "error_signature": "405 Method Not Allowed",
+  "context_key": "httpRequest-node",
+  "title": "HTTP method not allowed for the Tripo3D API endpoint",
+  "symptom": "When sending a request to the Tripo3D API, the response returns a '405 Method Not Allowed' error. This indicates that the HTTP method used is not supported by the endpoint.",
+  "applies_when": [
+    "Using HTTP node to send requests to the Tripo3D API",
+    "Incorrect HTTP method is specified"
+  ],
+  "not_this_if": [
+    "Using the correct HTTP method as per API documentation",
+    "The endpoint supports the method being used"
+  ],
+  "root_cause": "The '405 Method Not Allowed' error indicates that the HTTP method specified in the request (e.g., POST) is not supported by the API endpoint. This can happen if the endpoint is configured to accept only certain methods (like GET) and the request is made with an unsupported method.",
+  "fix_steps": [
+    "Check the API documentation for the correct HTTP method for the endpoint.",
+    "Change the HTTP method in the HTTP node to the one specified in the documentation.",
+    "Retry the request."
+  ],
+  "agent_instruction": "Verify and use the correct HTTP method as specified in the Tripo3D API documentation.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "tripo3d",
+    "fal.ai",
+    "http-request",
+    "method-not-allowed",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.112.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/failed-to-post-http-request-to-tripo3d-api-provided-by-fal-ai/194966"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "4cd7969838fb",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'luxon'",
+  "context_key": "code-node",
+  "title": "Luxon module not found in code node",
+  "symptom": "When executing a code node that requires the Luxon module, n8n throws 'Cannot find module 'luxon''. This prevents the workflow from processing dates correctly.",
+  "applies_when": [
+    "Using a code node that requires Luxon",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "Luxon is already installed",
+    "Using n8n cloud or a managed service"
+  ],
+  "root_cause": "The error occurs because the Luxon module is not installed in the environment where n8n is running. Custom modules need to be installed manually in self-hosted instances to be accessible in code nodes.",
+  "fix_steps": [
+    "Open your terminal and navigate to your n8n installation directory.",
+    "Run the command 'npm install luxon' to install the Luxon module.",
+    "If using Docker, create a Dockerfile that includes 'RUN npm install -g luxon' and rebuild your Docker image.",
+    "Restart your n8n instance to ensure the changes take effect."
+  ],
+  "agent_instruction": "Install the Luxon module in your n8n environment using npm.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "luxon",
+    "code-node",
+    "npm",
+    "module-installation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.93",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/keep-getting-the-error-cannot-find-module-luxon-message-when-working-with-dates/120547"
+  ]
+}

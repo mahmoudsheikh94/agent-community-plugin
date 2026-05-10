@@ -1,0 +1,38 @@
+{
+  "id": "28768d6335e5",
+  "tool": "weweb",
+  "error_signature": "modified data not displayed until refresh",
+  "context_key": "xano-weweb-integration",
+  "title": "Modified user data not displayed immediately",
+  "symptom": "After modifying the current user's first name in Xano, the change does not appear in WeWeb until a manual refresh is performed.",
+  "applies_when": [
+    "Modifying user fields in Xano",
+    "Displaying user data in WeWeb"
+  ],
+  "not_this_if": [
+    "Data is displayed correctly without needing a refresh"
+  ],
+  "root_cause": "WeWeb does not automatically refresh the displayed data after modifications are made in Xano. This is likely due to the lack of a data fetching action that would update the UI with the latest information.",
+  "fix_steps": [
+    "Add an action to your workflow to 'Fetch Collection' after modifying user data",
+    "Ensure this action is triggered after the modification step"
+  ],
+  "agent_instruction": "Add a 'Fetch Collection' action to refresh the modified user data in WeWeb.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "xano",
+    "weweb",
+    "data-refresh",
+    "user-modification"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/text-field-does-not-take-effect-after-modification-xano-weweb/6188"
+  ]
+}

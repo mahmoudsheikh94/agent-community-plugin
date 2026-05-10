@@ -1,0 +1,41 @@
+{
+  "id": "82236a7866de",
+  "tool": "n8n",
+  "error_signature": "Document option missing in Header Parameters",
+  "context_key": "whatsapp-business-node",
+  "title": "Missing Document Option in WhatsApp Node",
+  "symptom": "The 'Document' option is not available in the Header Parameters dropdown for approved templates in the WhatsApp Business node.",
+  "applies_when": [
+    "Using WhatsApp Business node",
+    "Templates configured with Media Header (Document)"
+  ],
+  "not_this_if": [
+    "Document option appears in the dropdown",
+    "Using a different node or integration"
+  ],
+  "root_cause": "This is a known limitation of the WhatsApp Business Cloud node in n8n, where it fails to fetch the updated schema for certain template types, specifically the Document type.",
+  "fix_steps": [
+    "Use the HTTP Request node instead of the WhatsApp Business node",
+    "Construct the API call with the appropriate payload including the document type",
+    "Execute the workflow to send the message"
+  ],
+  "agent_instruction": "Switch to using the HTTP Request node to send WhatsApp messages with document headers.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "whatsapp",
+    "business-node",
+    "document",
+    "template",
+    "api-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whatsapp-business-node-document-option-missing-in-header-parameters-for-approved-templates/286426"
+  ]
+}

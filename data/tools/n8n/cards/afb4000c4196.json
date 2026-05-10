@@ -1,0 +1,39 @@
+{
+  "id": "afb4000c4196",
+  "tool": "n8n",
+  "error_signature": "sqlite3: not found",
+  "context_key": "sqlite-installation",
+  "title": "SQLite not found in Docker container",
+  "symptom": "When trying to access the SQLite database inside the n8n Docker container, the user receives an error indicating that sqlite3 is not found.",
+  "applies_when": [
+    "Using SQLite in an Alpine Linux Docker container",
+    "Attempting to reset user credentials"
+  ],
+  "not_this_if": [
+    "SQLite is already installed",
+    "Using a different database management tool"
+  ],
+  "root_cause": "The error occurs because the SQLite command-line tool is not installed in the Alpine Linux environment by default. This prevents users from accessing the SQLite database to perform necessary operations.",
+  "fix_steps": [
+    "Install SQLite temporarily in the container using: apk add sqlite",
+    "Run the SQLite command to access the database: sqlite3 /home/node/.n8n/database.sqlite"
+  ],
+  "agent_instruction": "Install SQLite in the Docker container to access the database.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "sqlite",
+    "alpine-linux",
+    "database-access"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.825,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/password-recovery-in-self-hosted-instance/82980"
+  ]
+}

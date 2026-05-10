@@ -1,0 +1,39 @@
+{
+  "id": "86dd534b1b23",
+  "tool": "n8n",
+  "error_signature": "Your message is incorrectly formatted.",
+  "context_key": "discord-node",
+  "title": "Discord node message formatting error",
+  "symptom": "When attempting to send a message using the Discord node, n8n returns 'Your message is incorrectly formatted.' This prevents the workflow from completing successfully.",
+  "applies_when": [
+    "Using Discord node",
+    "n8n version is newer than 1.82.1"
+  ],
+  "not_this_if": [
+    "Using n8n version 1.82.1 or older"
+  ],
+  "root_cause": "The error occurs due to changes in the Discord node's message formatting requirements in versions after 1.82.1. These changes may introduce stricter validation rules that the user's message does not meet, leading to the formatting error.",
+  "fix_steps": [
+    "Downgrade n8n to version 1.82.1",
+    "Rebuild the workflow to ensure compatibility with the older version",
+    "Test the Discord node again to confirm it works"
+  ],
+  "agent_instruction": "Downgrade your n8n instance to version 1.82.1 and rebuild the workflow.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "discord",
+    "node",
+    "message-formatting",
+    "downgrade"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.82.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/level-2-course-discord-node-issue-message-your-message-is-incorrectly-formatted/151960"
+  ]
+}

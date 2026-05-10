@@ -1,0 +1,38 @@
+{
+  "id": "5380c6ef5d2b",
+  "tool": "n8n",
+  "error_signature": "Node ‘Aggregate2’ hasn’t been executed",
+  "context_key": "merge-node",
+  "title": "Merge node not receiving expected inputs",
+  "symptom": "The merge node reports that it hasn't received all expected inputs, causing the workflow to fail. The node 'extract revisions' does not output as expected during full workflow execution.",
+  "applies_when": [
+    "Using a merge node to combine parallel paths",
+    "Workflow contains multiple nodes that may execute in parallel"
+  ],
+  "not_this_if": [
+    "All nodes are executed sequentially without parallel paths",
+    "The merge node is configured correctly to handle inputs"
+  ],
+  "root_cause": "The merge node executed before the 'extract revisions' node completed, leading to an incomplete input set. This can happen when the workflow execution is not properly synchronized, especially with parallel paths.",
+  "fix_steps": [
+    "Replace the custom merge node 'merge everything back1' with the standard merge node",
+    "Ensure that the workflow is designed to wait for all parallel nodes to complete before merging"
+  ],
+  "agent_instruction": "Use the standard merge node to ensure all parallel executions complete before merging.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "merge-node",
+    "parallel-execution",
+    "workflow-issues"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/when-executing-workflow-not-all-nodes-become-triggered/219664"
+  ]
+}

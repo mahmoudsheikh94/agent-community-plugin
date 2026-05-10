@@ -1,0 +1,40 @@
+{
+  "id": "2a8f41eb3104",
+  "tool": "n8n",
+  "error_signature": "Provided parameter is not a string or binary data object",
+  "context_key": "sharepoint-upload-node",
+  "title": "SharePoint Upload Node requires binary data",
+  "symptom": "The SharePoint Upload node throws an error stating 'Provided parameter is not a string or binary data object' when attempting to upload a file.",
+  "applies_when": [
+    "Using SharePoint Upload node",
+    "Binary data is being sent from a previous node"
+  ],
+  "not_this_if": [
+    "Binary data is correctly formatted",
+    "Using a different node for file upload"
+  ],
+  "root_cause": "The SharePoint Upload node expects the binary data to be provided in a specific format. If the binary data is not correctly referenced or named, the node cannot process it, leading to the error message.",
+  "fix_steps": [
+    "Ensure the binary data is being sent from the previous node",
+    "Use the correct field name for the binary data, typically 'data'",
+    "If necessary, change the field name in the SharePoint Upload node settings to match the binary data output."
+  ],
+  "agent_instruction": "Check the binary data field name in the SharePoint Upload node and ensure it matches the output from the previous node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sharepoint",
+    "upload",
+    "binary-data",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.116.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/file-upload-to-sharepoint/213971"
+  ]
+}

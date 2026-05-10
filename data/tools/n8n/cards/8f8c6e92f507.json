@@ -1,0 +1,41 @@
+{
+  "id": "8f8c6e92f507",
+  "tool": "n8n",
+  "error_signature": "Invalid Record Length: columns length is 54, got 56 on line 2",
+  "context_key": "extract-from-file-node",
+  "title": "CSV extraction fails due to mismatched column count",
+  "symptom": "The Extract from File node throws an error indicating a mismatch between the number of header columns and data columns in the CSV file.",
+  "applies_when": [
+    "Using Extract from File node",
+    "CSV file has mismatched header and data columns"
+  ],
+  "not_this_if": [
+    "CSV file has matching header and data columns",
+    "Using a different file format like XLS or XLSX"
+  ],
+  "root_cause": "The Extract from File node expects the number of data columns to match the number of header columns. When the CSV file has more data columns than headers, it results in an invalid record length error.",
+  "fix_steps": [
+    "Download the CSV file and open it in a spreadsheet application.",
+    "Remove the extra columns that do not have headers.",
+    "Save the modified CSV file.",
+    "Re-upload the corrected CSV file to n8n."
+  ],
+  "agent_instruction": "Modify the CSV file to ensure the number of data columns matches the header columns before extraction.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "extract-from-file",
+    "csv",
+    "data-extraction",
+    "google-sheets"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/extract-from-file-with-mismatched-headers-and-data/151476"
+  ]
+}

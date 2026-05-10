@@ -1,0 +1,39 @@
+{
+  "id": "c8b2348e716d",
+  "tool": "n8n",
+  "error_signature": "Admin Panel button not responding",
+  "context_key": "admin-panel-access",
+  "title": "Unable to access Admin Panel due to unresponsive button",
+  "symptom": "The 'Admin Panel' button does not respond or leads nowhere, preventing access to administrative settings.",
+  "applies_when": [
+    "Using n8n version 1.102.0",
+    "Accessing Admin Panel via web interface"
+  ],
+  "not_this_if": [
+    "Admin Panel is accessible in other instances",
+    "Using a different version of n8n"
+  ],
+  "root_cause": "The issue may arise from a temporary glitch in the n8n instance or a problem with the web interface that prevents the button from functioning correctly. Restarting the instance can often resolve such issues.",
+  "fix_steps": [
+    "Attempt to access the Admin Panel using the magic link at https://app.n8n.cloud/magic-link",
+    "If unsuccessful, request a manual restart of your n8n instance from support."
+  ],
+  "agent_instruction": "Try accessing the Admin Panel using the magic link provided.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "admin-panel",
+    "access-issue",
+    "n8n-cloud",
+    "button-not-working"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-access-admin-panel-button-not-working/150385"
+  ]
+}

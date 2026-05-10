@@ -1,0 +1,41 @@
+{
+  "id": "d8c5fdf1a0a9",
+  "tool": "n8n",
+  "error_signature": "The service was not able to process your request",
+  "context_key": "text-to-image-node",
+  "title": "Insufficient credits in PiAPI for text to image node",
+  "symptom": "When using the text to image node in n8n, the error 'The service was not able to process your request' appears, indicating a problem with processing the request.",
+  "applies_when": [
+    "Using the text to image node",
+    "PiAPI account has insufficient credits"
+  ],
+  "not_this_if": [
+    "Error occurs without using PiAPI",
+    "Sufficient credits are available in the PiAPI account"
+  ],
+  "root_cause": "The error occurs because the PiAPI service requires a certain number of credits to process requests. If the account does not have enough credits, the service cannot fulfill the request, leading to this error message.",
+  "fix_steps": [
+    "Log in to your PiAPI account",
+    "Check the credits available in your account",
+    "If credits are low, purchase additional credits",
+    "Retry the request in n8n after adding credits"
+  ],
+  "agent_instruction": "Ensure you have sufficient credits in your PiAPI account and retry the request.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "piapi",
+    "text-to-image",
+    "credits",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/am-having-trouble-with-kling-text-to-image-node-for-piapi/103238"
+  ]
+}

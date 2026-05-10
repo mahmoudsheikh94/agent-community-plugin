@@ -1,0 +1,39 @@
+{
+  "id": "190f434f9421",
+  "tool": "weweb",
+  "error_signature": "returning nothing from the function",
+  "context_key": "multi-select API binding",
+  "title": "Returning nothing from multi-select function",
+  "symptom": "The function fails to create multiple objects from a multi-select input, resulting in undefined values being returned.",
+  "applies_when": [
+    "Using a multi-select input",
+    "Binding to an API that expects multiple objects"
+  ],
+  "not_this_if": [
+    "Only one item is selected in the multi-select"
+  ],
+  "root_cause": "The function was incorrectly structured, leading to a return statement that outputs nothing. This happens when the return keyword is not properly placed, causing the function to return undefined instead of the expected object array.",
+  "fix_steps": [
+    "Move the return keyword to precede the mapping function",
+    "Ensure the mapping function correctly formats the selected values into objects",
+    "Test the function with multiple selections"
+  ],
+  "agent_instruction": "Adjust the return statement to properly format the multi-select input into an array of objects.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "multi-select",
+    "API",
+    "javascript",
+    "object-creation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/create-multiple-objects-from-multi-select/2926"
+  ]
+}

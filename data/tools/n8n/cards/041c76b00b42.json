@@ -1,0 +1,40 @@
+{
+  "id": "041c76b00b42",
+  "tool": "n8n",
+  "error_signature": "Error 400: redirect_uri_mismatch",
+  "context_key": "Gmail OAuth credentials",
+  "title": "Gmail OAuth redirect URI mismatch error",
+  "symptom": "When attempting to authenticate with Gmail OAuth, the user receives an 'Error 400: redirect_uri_mismatch' message. This occurs due to the redirect URL being incorrectly set to 'localhost'.",
+  "applies_when": [
+    "Using Gmail OAuth credentials",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Redirect URI is correctly set in Google Cloud Console",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The redirect URI mismatch error occurs because the redirect URL configured in the Google Cloud Console does not match the one being used by n8n. If the `.env` file is not properly loaded in the Docker environment, it may default to 'localhost', causing this mismatch.",
+  "fix_steps": [
+    "Open the docker-compose.yml file for your n8n setup.",
+    "Add the `-env_file` directive to ensure the `.env` file is loaded.",
+    "Restart the Docker container to apply the changes."
+  ],
+  "agent_instruction": "Ensure the `.env` file is loaded in your Docker setup by modifying the docker-compose.yml file.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "oauth",
+    "redirect_uri_mismatch",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/oauth-redirect-url-stuck-with-localhost-and-consent-windows-complains-on-error-400-redirect-uri-mismatch/92609"
+  ]
+}

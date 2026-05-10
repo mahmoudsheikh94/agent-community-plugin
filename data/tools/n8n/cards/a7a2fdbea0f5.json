@@ -1,0 +1,42 @@
+{
+  "id": "a7a2fdbea0f5",
+  "tool": "n8n",
+  "error_signature": "400 - missing authorization",
+  "context_key": "HTTP Request to Acast API",
+  "title": "Acast API missing authorization error",
+  "symptom": "When attempting to post a podcast to the Acast platform, the user receives a '400 - missing authorization' error message.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Posting to Acast API"
+  ],
+  "not_this_if": [
+    "Authorization header is correctly set",
+    "Using a different API endpoint"
+  ],
+  "root_cause": "The error occurs because the HTTP request to the Acast API lacks the necessary authorization header, which is required for authentication. This can happen if the API key is not correctly configured in the HTTP Request node settings.",
+  "fix_steps": [
+    "Open the HTTP Request node settings",
+    "Ensure the API key is added in the Authorization header",
+    "Save the workflow",
+    "Retry the request to the Acast API"
+  ],
+  "agent_instruction": "Check and configure the Authorization header in the HTTP Request node with the correct API key.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Acast",
+    "HTTP Request",
+    "API",
+    "authorization",
+    "error 400"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/acast-api-podcast-publishing/145535"
+  ]
+}

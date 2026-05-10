@@ -1,0 +1,39 @@
+{
+  "id": "a723d309b7a0",
+  "tool": "n8n",
+  "error_signature": "default value 0 on number fields",
+  "context_key": "datatable-node",
+  "title": "Default value 0 persists on number fields in datatable",
+  "symptom": "When using the datatable node to update rows, number fields default to 0. Deleting the 0 does not persist after refreshing the page.",
+  "applies_when": [
+    "Using datatable node",
+    "Updating rows with number fields"
+  ],
+  "not_this_if": [
+    "Workflow is saved properly before refresh"
+  ],
+  "root_cause": "The issue arises when the workflow is not saved correctly, leading to default values being reapplied upon refresh. This can happen if no changes are made to trigger the auto-save feature.",
+  "fix_steps": [
+    "Make a small change to the workflow, such as moving the datatable node",
+    "Ensure the workflow is saved",
+    "Refresh the page to verify the changes persist"
+  ],
+  "agent_instruction": "Make a small adjustment to the workflow to trigger auto-save and ensure the changes are saved.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "datatable",
+    "number-fields",
+    "workflow-saving",
+    "auto-save"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.7.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/datatable-default-value-0-on-number-fields-and-bolean-columns/265861"
+  ]
+}

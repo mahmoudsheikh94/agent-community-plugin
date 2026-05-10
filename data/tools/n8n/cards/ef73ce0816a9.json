@@ -1,0 +1,41 @@
+{
+  "id": "ef73ce0816a9",
+  "tool": "n8n",
+  "error_signature": "Unsupported protocol postgresql:",
+  "context_key": "supabase-node",
+  "title": "Supabase connection error due to incorrect protocol",
+  "symptom": "When attempting to connect to Supabase using the database connection string, n8n throws 'Couldn’t connect with these settings: Unsupported protocol postgresql:'.",
+  "applies_when": [
+    "Using Supabase node",
+    "Providing a database connection string"
+  ],
+  "not_this_if": [
+    "Using the correct API URL for Supabase"
+  ],
+  "root_cause": "The Supabase node in n8n requires the API URL for connection, not the database connection string. Using the database connection string leads to an unsupported protocol error.",
+  "fix_steps": [
+    "Go to Supabase Project Settings",
+    "Navigate to Data API",
+    "Copy the API URL provided",
+    "Paste the API URL into the Supabase node settings in n8n",
+    "Save the workflow and try connecting again"
+  ],
+  "agent_instruction": "Use the API URL from Supabase Project Settings instead of the database connection string.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "connection",
+    "api-url",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/too-to-connect-supabase/186920"
+  ]
+}

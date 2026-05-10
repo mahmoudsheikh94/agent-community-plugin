@@ -1,0 +1,40 @@
+{
+  "id": "d0e921e3ee69",
+  "tool": "n8n",
+  "error_signature": "Service unavailable - try again later",
+  "context_key": "Google Sheets Trigger",
+  "title": "Error handling workflow executed due to service unavailability",
+  "symptom": "The error handling workflow executed unexpectedly, sending a notification without the expected execution data. The trigger output only contained the workflow and trigger objects.",
+  "applies_when": [
+    "Using Google Sheets Trigger with polling",
+    "Error Trigger node is configured"
+  ],
+  "not_this_if": [
+    "Error is not related to the trigger node",
+    "Execution data is present in the error output"
+  ],
+  "root_cause": "The error occurred during a polling operation of the Google Sheets trigger, resulting in a 503 service unavailable error. This caused the error handling workflow to execute, but since the error originated from the trigger node, the execution data was not populated in the output.",
+  "fix_steps": [
+    "Review the configuration of the Google Sheets Trigger node",
+    "Ensure proper error handling for trigger-level errors",
+    "Consider implementing a more robust error handling workflow that captures both execution and trigger errors"
+  ],
+  "agent_instruction": "Check the Google Sheets Trigger configuration and enhance error handling for trigger errors.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "error-handling",
+    "trigger-node",
+    "503-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-handling-workflow-has-executed-on-its-own/83745"
+  ]
+}

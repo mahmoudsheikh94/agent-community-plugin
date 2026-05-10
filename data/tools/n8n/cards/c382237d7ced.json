@@ -1,0 +1,40 @@
+{
+  "id": "c382237d7ced",
+  "tool": "n8n",
+  "error_signature": "RangeError: Invalid string length",
+  "context_key": "workflow-execution",
+  "title": "Invalid string length error during workflow execution",
+  "symptom": "The workflow fails with a 'RangeError: Invalid string length' after processing a large CSV file. This occurs when trying to finalize the workflow after reading all data.",
+  "applies_when": [
+    "Processing a large CSV file",
+    "Using n8n with multiple workers"
+  ],
+  "not_this_if": [
+    "Error occurs with smaller files",
+    "Using a different execution strategy"
+  ],
+  "root_cause": "The error occurs because n8n attempts to hold too much data in memory during the execution of a workflow that processes a large CSV file. When the workflow tries to finalize, it exceeds the maximum string length that can be handled, leading to a crash.",
+  "fix_steps": [
+    "Create a subworkflow to handle the CSV processing in smaller chunks",
+    "Set the subworkflow to 'no save' to avoid excessive logging",
+    "Test the workflow with a manageable chunk size, such as 10,000 lines"
+  ],
+  "agent_instruction": "Implement a subworkflow to process the CSV in smaller chunks and set it to 'no save'.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "csv",
+    "workflow-execution",
+    "memory-management",
+    "subworkflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/reading-big-csv-on-self-hosted-business-plan-invalid-string-length/195003"
+  ]
+}

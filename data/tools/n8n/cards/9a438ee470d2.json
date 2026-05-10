@@ -1,0 +1,41 @@
+{
+  "id": "9a438ee470d2",
+  "tool": "n8n",
+  "error_signature": "Access to the configured URL is not allowed. Check your Firewall.",
+  "context_key": "webhook",
+  "title": "Webhook access issue due to authentication error",
+  "symptom": "When sending a POST request from Site24x7 to n8n, an error indicates that access to the URL is not allowed. This suggests a potential authentication issue.",
+  "applies_when": [
+    "Using Site24x7 to send POST requests",
+    "Webhook is configured in n8n"
+  ],
+  "not_this_if": [
+    "Webhook workflow is not activated in n8n",
+    "Firewall settings are correctly configured"
+  ],
+  "root_cause": "The error occurs because the authentication credentials (username and password) for the n8n webhook were not entered correctly. This prevents Site24x7 from successfully accessing the webhook URL.",
+  "fix_steps": [
+    "Open the n8n webhook node settings",
+    "Ensure the correct username and password are entered",
+    "Save the changes",
+    "Test the POST request again from Site24x7"
+  ],
+  "agent_instruction": "Verify and enter the correct authentication credentials in the n8n webhook settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "authentication",
+    "site24x7",
+    "post-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/need-help-i-am-unable-to-send-a-post-request-from-site24x7-to-n8n-app-cloud/189499"
+  ]
+}

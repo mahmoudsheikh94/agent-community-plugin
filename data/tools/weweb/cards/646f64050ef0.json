@@ -1,0 +1,39 @@
+{
+  "id": "646f64050ef0",
+  "tool": "weweb",
+  "error_signature": "cursor for text input can't be set to pointer",
+  "context_key": "text-input",
+  "title": "Text input cursor not changing to pointer",
+  "symptom": "The cursor for a read-only text input remains as the default text cursor instead of changing to a pointer as intended.",
+  "applies_when": [
+    "Text input is set to read-only",
+    "Cursor style is attempted to be changed to pointer"
+  ],
+  "not_this_if": [
+    "Input is editable or not set to read-only"
+  ],
+  "root_cause": "Read-only text inputs typically default to a text cursor, and CSS changes may not apply directly to them. Wrapping the input in a div allows for overriding the cursor style effectively.",
+  "fix_steps": [
+    "Wrap the read-only text input in a div element.",
+    "Set the desired cursor style (e.g., pointer) on the div.",
+    "Apply custom CSS to disable pointer events on the input itself."
+  ],
+  "agent_instruction": "Wrap the text input in a div and set the cursor style on the div.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "text-input",
+    "cursor",
+    "css",
+    "read-only"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/cursor-for-text-input-cant-be-set-to-pointer/4082"
+  ]
+}

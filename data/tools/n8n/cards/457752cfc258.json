@@ -1,0 +1,41 @@
+{
+  "id": "457752cfc258",
+  "tool": "n8n",
+  "error_signature": "the item has no binary field data",
+  "context_key": "gpt-vision-node",
+  "title": "Binary field 'data' not found in GPT Vision node",
+  "symptom": "When executing the GPT Vision node, it throws an error stating 'the item has no binary field data'. This indicates that the expected binary field is not present.",
+  "applies_when": [
+    "Using GPT Vision node",
+    "Input Type set to Binary Fields"
+  ],
+  "not_this_if": [
+    "Binary field is correctly named",
+    "Error occurs in a different node"
+  ],
+  "root_cause": "The error occurs because the specified binary field name 'data' does not match the actual key used to store binary data in n8n. The label 'File Name: data' can be misleading, as it refers to the filename rather than the binary field key.",
+  "fix_steps": [
+    "Open the GPT Vision node settings",
+    "Change the 'Input Data Field Name' from 'data' to 'Binary'",
+    "Save the workflow",
+    "Try executing the workflow again"
+  ],
+  "agent_instruction": "Update the 'Input Data Field Name' in the GPT Vision node to 'Binary' and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gpt-vision",
+    "binary-data",
+    "input-field",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/passing-binary-to-gpt-image-analyzer/198040"
+  ]
+}

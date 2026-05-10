@@ -1,0 +1,41 @@
+{
+  "id": "fea81b9ac45e",
+  "tool": "n8n",
+  "error_signature": "unable to extract text from binary file",
+  "context_key": "file-extraction-node",
+  "title": "Unable to extract text from binary file",
+  "symptom": "The output from the file node shows file metadata but not the actual content. The user sees a message indicating the file is in binary format.",
+  "applies_when": [
+    "Using a node to read files from disk",
+    "File content is in binary format"
+  ],
+  "not_this_if": [
+    "File content is already in text format",
+    "Using a different node for text extraction"
+  ],
+  "root_cause": "When a file is read in binary format, n8n does not automatically convert it to text. This requires an additional step to extract the content using the appropriate node designed for text extraction.",
+  "fix_steps": [
+    "Add an 'Extract from File' node to your workflow",
+    "Configure it to extract from the text file",
+    "Connect the output of the file node to the input of the Extract from File node",
+    "Pass the output to the next node in your workflow"
+  ],
+  "agent_instruction": "Use the 'Extract from File' node to convert the binary file content to text.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "file-extraction",
+    "binary-file",
+    "text-extraction",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-extract-text-from-file/180130"
+  ]
+}

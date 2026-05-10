@@ -1,0 +1,40 @@
+{
+  "id": "3f17c1bb1def",
+  "tool": "weweb",
+  "error_signature": "row level security violation",
+  "context_key": "supabase-auth",
+  "title": "Row Level Security violation when updating user roles",
+  "symptom": "When attempting to update the Joining table of Users & Roles during sign-up, an error related to row level security is encountered.",
+  "applies_when": [
+    "Using Supabase Auth for user management",
+    "Trying to update user roles during sign-up"
+  ],
+  "not_this_if": [
+    "Row level security is disabled for the tables involved"
+  ],
+  "root_cause": "Supabase enforces row level security (RLS) on tables, which restricts access to data based on policies. If no policy allows the insert operation for the user roles, the update will fail.",
+  "fix_steps": [
+    "Navigate to the Supabase dashboard",
+    "Go to the 'Authentication' section",
+    "Select 'Policies' for the relevant tables",
+    "Add a policy that allows inserting roles for authenticated users"
+  ],
+  "agent_instruction": "Add a policy in Supabase to allow inserting user roles during sign-up.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "row-level-security",
+    "user-roles",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-assign-superbase-user-roles-when-signing-up/6321"
+  ]
+}

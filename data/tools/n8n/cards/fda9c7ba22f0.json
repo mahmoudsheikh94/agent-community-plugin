@@ -1,0 +1,40 @@
+{
+  "id": "fda9c7ba22f0",
+  "tool": "n8n",
+  "error_signature": "No fields - item(s) exist, but they're empty",
+  "context_key": "subworkflow-caller",
+  "title": "Subworkflow returns empty fields despite data being present",
+  "symptom": "The parent workflow calls a subworkflow, but it receives 'No fields - item(s) exist, but they're empty' even though the subworkflow has data to return.",
+  "applies_when": [
+    "Using a subworkflow",
+    "Subworkflow contains a POST request or Set node"
+  ],
+  "not_this_if": [
+    "Subworkflow execution fails completely",
+    "Data is not being set correctly in the subworkflow"
+  ],
+  "root_cause": "The subworkflow may not be returning data due to a failure in execution or misconfiguration in the nodes. If the final node in the subworkflow does not output data correctly, the parent workflow will receive an empty response.",
+  "fix_steps": [
+    "Ensure the final node in the subworkflow has 'Always Output Data' enabled.",
+    "Check the execution logs of both the parent and subworkflow for errors.",
+    "Add a Set node in the subworkflow to explicitly define output data."
+  ],
+  "agent_instruction": "Enable 'Always Output Data' on the final node of the subworkflow and verify the execution logs.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "subworkflow",
+    "data-passing",
+    "cloudconvert",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/subworkflow-caller-receives-no-fields-item-s-exist-but-theyre-empty-but-subworkflow-did-return-data/227259"
+  ]
+}

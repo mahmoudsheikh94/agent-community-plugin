@@ -1,0 +1,38 @@
+{
+  "id": "5c80a6451895",
+  "tool": "n8n",
+  "error_signature": "workflow complete without processing all leads",
+  "context_key": "httpRequest-node",
+  "title": "Workflow stops processing leads on website errors",
+  "symptom": "The workflow completes without processing all leads when a website error occurs, and it does not produce an error message. It may process only a few leads before stopping.",
+  "applies_when": [
+    "Using HTTP Request node to scrape websites",
+    "Workflow is set to process multiple leads"
+  ],
+  "not_this_if": [
+    "All websites load successfully without errors"
+  ],
+  "root_cause": "When a website fails to load or returns an error, the HTTP Request node does not handle the error properly, causing the workflow to stop prematurely without processing the remaining leads. This can happen if the error handling settings are not configured to skip failed requests.",
+  "fix_steps": [
+    "Add a timeout to the HTTP Request node to handle slow or unresponsive websites.",
+    "Ensure the HTTP Request node is configured to continue on error."
+  ],
+  "agent_instruction": "Add a timeout to the HTTP Request node and configure it to continue on error.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "httpRequest",
+    "workflow",
+    "error-handling",
+    "scraping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-stops-if-website-error-or-doesnt-load-processes-some-leads-then-stops-won-t-proceed-to-next-lead/182348"
+  ]
+}

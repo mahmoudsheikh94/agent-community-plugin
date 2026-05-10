@@ -1,0 +1,42 @@
+{
+  "id": "2dff342edb0c",
+  "tool": "n8n",
+  "error_signature": "JSON parameter needs to be valid JSON",
+  "context_key": "HTTP Request node",
+  "title": "Invalid JSON parameter in HTTP Request node",
+  "symptom": "When attempting to run a workflow with an HTTP Request node, an error message states 'JSON parameter needs to be valid JSON'. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending data in JSON format"
+  ],
+  "not_this_if": [
+    "Error occurs with a different node type",
+    "JSON is correctly formatted"
+  ],
+  "root_cause": "The error occurs because the JSON being sent to the HTTP Request node is not properly formatted. This can happen if the JSON contains invalid characters, incorrect syntax, or unsupported formatting such as certain markdown headers.",
+  "fix_steps": [
+    "Open the HTTP Request node settings",
+    "Check the JSON parameter being sent",
+    "Ensure that all markdown headers are replaced with supported formatting (e.g., replace '####' with '#')",
+    "Save the changes and re-run the workflow"
+  ],
+  "agent_instruction": "Replace unsupported markdown headers in the JSON parameter with valid formatting and re-run the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "json",
+    "error",
+    "asana",
+    "markdown"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-format-asana-task-description/153824"
+  ]
+}

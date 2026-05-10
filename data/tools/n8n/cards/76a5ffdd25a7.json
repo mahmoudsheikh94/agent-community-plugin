@@ -1,0 +1,39 @@
+{
+  "id": "76a5ffdd25a7",
+  "tool": "n8n",
+  "error_signature": "command /usr/local/bin/task-runner-launcher not found",
+  "context_key": "aws-fargate",
+  "title": "Task runner launcher command not found on AWS Fargate",
+  "symptom": "When attempting to run the n8n runner on AWS Fargate, the error 'command /usr/local/bin/task-runner-launcher not found' is displayed.",
+  "applies_when": [
+    "Running n8n on AWS Fargate",
+    "Using the task-runner-launcher command"
+  ],
+  "not_this_if": [
+    "Running n8n locally or on a different environment"
+  ],
+  "root_cause": "AWS Fargate requires specific configurations for entrypoints and commands. The command for the task-runner-launcher was not recognized because the entrypoint was not set correctly, leading to the command not being found.",
+  "fix_steps": [
+    "Set the entrypoint in the Fargate configuration to '/usr/local/bin/task-runner-launcher'",
+    "Add 'javascript' as an argument to the entrypoint",
+    "Restart the n8n service"
+  ],
+  "agent_instruction": "Configure the entrypoint for the n8n runner on AWS Fargate to include the task-runner-launcher path.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "aws-fargate",
+    "task-runner-launcher",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/command-task-runner-launcher-not-found/101524"
+  ]
+}

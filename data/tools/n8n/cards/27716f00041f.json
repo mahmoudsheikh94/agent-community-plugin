@@ -1,0 +1,40 @@
+{
+  "id": "27716f00041f",
+  "tool": "n8n",
+  "error_signature": "Couldn’t connect with these settings",
+  "context_key": "redis-node",
+  "title": "Unable to connect to Redis with provided credentials",
+  "symptom": "When attempting to connect to Redis, n8n displays 'Couldn’t connect with these settings'. The connection fails despite previous successful attempts.",
+  "applies_when": [
+    "Using Upstash for Redis",
+    "Credentials have been previously working"
+  ],
+  "not_this_if": [
+    "Redis instance is down or unreachable",
+    "Credentials were recently changed and not updated"
+  ],
+  "root_cause": "The error occurs when the Redis connection settings are incorrect or outdated. This can happen if the endpoint or password has changed, or if the Redis instance is not running or accessible.",
+  "fix_steps": [
+    "Verify that the Upstash Redis endpoint and password are correct in the n8n credentials.",
+    "Check if the Upstash Redis instance is running and accessible by trying to connect via redis-cli.",
+    "Recreate the Redis credential in n8n from scratch instead of editing the existing one."
+  ],
+  "agent_instruction": "Verify the Redis connection settings and recreate the credentials in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "redis",
+    "upstash",
+    "credentials",
+    "connection-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-connecting-redis-credentials/226688"
+  ]
+}

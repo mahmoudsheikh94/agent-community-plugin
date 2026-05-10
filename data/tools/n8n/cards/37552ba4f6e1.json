@@ -1,0 +1,40 @@
+{
+  "id": "37552ba4f6e1",
+  "tool": "n8n",
+  "error_signature": "Task request timed out",
+  "context_key": "docker-compose setup",
+  "title": "Task request timed out in n8n Docker setup",
+  "symptom": "After upgrading n8n from 1.x to 2.x, the error 'Task request timed out' occurs. The task runner is unable to accept task offers, leading to execution failures.",
+  "applies_when": [
+    "Using n8n with Docker",
+    "Upgraded from version 1.x to 2.x"
+  ],
+  "not_this_if": [
+    "Task runner containers are already included in the setup"
+  ],
+  "root_cause": "The error occurs because the n8n setup lacks the necessary task runner containers, which are required for handling tasks in the upgraded version. Without these runners, the task broker cannot process requests, leading to timeouts.",
+  "fix_steps": [
+    "Update the docker-compose.yml file to include the task runner containers.",
+    "Add the n8n-task-runner-js and optionally n8n-task-runner-python services to the configuration.",
+    "Ensure the task runner containers are properly configured with the correct environment variables.",
+    "Restart the Docker containers to apply the changes."
+  ],
+  "agent_instruction": "Modify your docker-compose.yml to include the necessary task runner containers and restart the setup.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "task-request-timed-out",
+    "docker-compose"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/task-request-timed-out/272609"
+  ]
+}

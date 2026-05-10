@@ -1,0 +1,38 @@
+{
+  "id": "a729ddfd262e",
+  "tool": "n8n",
+  "error_signature": "to_send_to_xx does not receive anything",
+  "context_key": "sub-workflow-parameter",
+  "title": "Sub-workflow parameter not receiving expected value",
+  "symptom": "The parameter 'to_send_to_xx' in the sub-workflow is not receiving any data, resulting in it being null instead of the expected boolean value.",
+  "applies_when": [
+    "Using sub-workflows",
+    "Parameter type is Boolean"
+  ],
+  "not_this_if": [
+    "Parameter is correctly receiving data in other workflows"
+  ],
+  "root_cause": "This issue occurs due to a bug in how n8n handles the initial state of parameters when passing data from a master workflow to a sub-workflow. The parameter may not be correctly initialized, leading to it being null instead of the expected value.",
+  "fix_steps": [
+    "Toggle the parameter 'to_send_to_xx' off and then back on in the sub-workflow settings.",
+    "Save the changes and re-run the master workflow."
+  ],
+  "agent_instruction": "Toggle the 'to_send_to_xx' parameter in the sub-workflow settings and re-run the master workflow.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "sub-workflow",
+    "parameter-passing",
+    "boolean",
+    "n8n-bug"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/execute-sub-workflow-issue/227350"
+  ]
+}

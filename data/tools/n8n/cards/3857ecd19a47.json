@@ -1,0 +1,40 @@
+{
+  "id": "3857ecd19a47",
+  "tool": "n8n",
+  "error_signature": "cannot determine which item to use",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets node cannot determine item",
+  "symptom": "When saving data to Google Sheets, n8n throws 'cannot determine which item to use' intermittently. This occurs during a loop processing multiple rows of data.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Processing multiple rows in a loop"
+  ],
+  "not_this_if": [
+    "Error does not occur during looping",
+    "No data is being processed"
+  ],
+  "root_cause": "The error arises when the workflow is too complex or lengthy, leading to memory issues where n8n cannot track which item corresponds to which row of data. This can happen especially when using multiple nodes and subflows without proper management of data context.",
+  "fix_steps": [
+    "Convert part of the workflow into a subworkflow to simplify the main flow.",
+    "Ensure that all nodes are correctly named and referenced.",
+    "Test the workflow to confirm that the error no longer occurs."
+  ],
+  "agent_instruction": "Simplify the workflow by creating subflows for complex sections and ensure proper naming of nodes.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "google-sheets",
+    "loop",
+    "error-handling",
+    "subworkflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/handling-error-within-loop-from-google-sheets/135662"
+  ]
+}

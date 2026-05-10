@@ -1,0 +1,39 @@
+{
+  "id": "883f848babaf",
+  "tool": "n8n",
+  "error_signature": "ORA-06550",
+  "context_key": "oracle-execute-sql-node",
+  "title": "Error executing stored procedure in Oracle Execute SQL node",
+  "symptom": "When attempting to execute a stored procedure using the Oracle Execute SQL node, n8n returns an ORA-06550 error. However, the same procedure runs successfully in SQL Developer.",
+  "applies_when": [
+    "Using Oracle Execute SQL node",
+    "Executing a stored procedure"
+  ],
+  "not_this_if": [
+    "Executing standard SQL commands without issues"
+  ],
+  "root_cause": "The ORA-06550 error typically indicates a syntax error in the PL/SQL block. In this case, it may be due to incorrect formatting or a typo in the procedure call when executed through n8n.",
+  "fix_steps": [
+    "Check the syntax of the stored procedure call in n8n.",
+    "Ensure the PL/SQL block is correctly formatted as 'BEGIN procedure_name; END;'.",
+    "Test the execution again."
+  ],
+  "agent_instruction": "Correct the syntax of the stored procedure call in the Oracle Execute SQL node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "oracle",
+    "execute-sql",
+    "stored-procedure",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/oracle-database-module-how-to-run-stored-procedure-function-using-oracle-module/247197"
+  ]
+}

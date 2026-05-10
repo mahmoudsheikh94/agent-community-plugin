@@ -1,0 +1,41 @@
+{
+  "id": "41e785e51db9",
+  "tool": "n8n",
+  "error_signature": "property.split is not a function",
+  "context_key": "gmail-node",
+  "title": "Error when sending multiple file attachments in Gmail node",
+  "symptom": "When attempting to send multiple file attachments using the Gmail node, the error 'property.split is not a function' occurs.",
+  "applies_when": [
+    "Using Gmail node",
+    "Sending multiple attachments"
+  ],
+  "not_this_if": [
+    "Sending a single attachment",
+    "Using a different email node"
+  ],
+  "root_cause": "The error arises when the file names for attachments are not provided in the correct format. The Gmail node expects the file names to be raw strings separated by commas, and if they are not formatted this way, it leads to the mentioned error.",
+  "fix_steps": [
+    "Open the Gmail node settings",
+    "Ensure that the file names are provided as raw strings, separated by commas",
+    "Save the workflow",
+    "Test sending the email again"
+  ],
+  "agent_instruction": "Format the file names as raw strings separated by commas in the Gmail node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "attachments",
+    "error",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/send-multiple-file-attachments-in-emails/88617"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "f8b49a8daf34",
+  "tool": "n8n",
+  "error_signature": "invalid date format for Airtable",
+  "context_key": "airtable-node",
+  "title": "Handling invalid date formats in Airtable Node",
+  "symptom": "When sending an empty string, null, or an invalid date format to the Airtable node, an error occurs.",
+  "applies_when": [
+    "Using Airtable node",
+    "Date field may be empty or improperly formatted"
+  ],
+  "not_this_if": [
+    "Date field is always valid and properly formatted"
+  ],
+  "root_cause": "Airtable requires dates to be in a specific format (YYYY-MM-DD). Sending empty strings, null, or invalid formats leads to errors as Airtable cannot process them.",
+  "fix_steps": [
+    "Use Luxon's DateTime to convert the date to the required format.",
+    "Implement a check to ensure that if the date is empty or invalid, it is not sent to Airtable."
+  ],
+  "agent_instruction": "Convert the date using Luxon's DateTime and ensure empty dates are not sent.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "airtable",
+    "date-format",
+    "luxon",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-handle-a-null-empty-blank-date-field-in-airtable-node/86913"
+  ]
+}

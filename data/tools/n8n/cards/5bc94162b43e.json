@@ -1,0 +1,40 @@
+{
+  "id": "5bc94162b43e",
+  "tool": "n8n",
+  "error_signature": "credential fields start to flash and disappear",
+  "context_key": "SMTP credentials configuration",
+  "title": "SMTP credential fields not displaying correctly",
+  "symptom": "When attempting to register SMTP credentials, the fields flash and then disappear, preventing input. This issue occurs despite previously functioning correctly.",
+  "applies_when": [
+    "Using SMTP credentials configuration",
+    "n8n version 1.112.4"
+  ],
+  "not_this_if": [
+    "Fields are visible in other credential configurations",
+    "Issue does not occur in other n8n versions"
+  ],
+  "root_cause": "The presence of the `N8N_DEFAULT_LOCALE` environment variable can interfere with the rendering of credential fields in the n8n interface, causing them to behave unexpectedly.",
+  "fix_steps": [
+    "Access your n8n Docker environment configuration",
+    "Remove the `N8N_DEFAULT_LOCALE` environment variable",
+    "Restart the n8n service to apply changes"
+  ],
+  "agent_instruction": "Remove the `N8N_DEFAULT_LOCALE` variable from your Docker configuration and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "smtp",
+    "credentials",
+    "docker",
+    "n8n-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.112.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/smtp-credential-fields-not-visible-to-input-values/192973"
+  ]
+}

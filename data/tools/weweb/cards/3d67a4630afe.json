@@ -1,0 +1,38 @@
+{
+  "id": "3d67a4630afe",
+  "tool": "weweb",
+  "error_signature": "slice function does not work as expected",
+  "context_key": "array-slicing",
+  "title": "Array slicing function returns incorrect starting index",
+  "symptom": "The slicing function on the array starts at index 1 instead of index 0, leading to missing the first element.",
+  "applies_when": [
+    "Using the slice function on an array",
+    "Sorting the array before slicing"
+  ],
+  "not_this_if": [
+    "The array is not sorted before applying the slice function"
+  ],
+  "root_cause": "The issue arises because the sort operation is applied after the slice operation, which means the first six elements are taken from the unsorted array, leading to incorrect results.",
+  "fix_steps": [
+    "Use the sort function to sort the array before slicing",
+    "Apply the slice function to the sorted array with the correct parameters"
+  ],
+  "agent_instruction": "Sort the reviews array before applying the slice function to get the correct elements.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "array",
+    "slicing",
+    "sorting",
+    "function"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/slicing-is-not-functionning-correctly/4365"
+  ]
+}

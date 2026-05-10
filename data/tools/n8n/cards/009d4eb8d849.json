@@ -1,0 +1,40 @@
+{
+  "id": "009d4eb8d849",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'hyperformula'",
+  "context_key": "code-node",
+  "title": "Missing module error in custom code execution",
+  "symptom": "When executing a code node that requires 'hyperformula', n8n throws a 'Cannot find module' error.",
+  "applies_when": [
+    "Using a custom Dockerfile to install packages",
+    "Running a code node that requires external modules"
+  ],
+  "not_this_if": [
+    "The module is installed globally but not accessible in the code node"
+  ],
+  "root_cause": "The error occurs because the custom packages installed in the Docker image are not available in the execution context of the n8n code node. This can happen if the node's execution environment does not have access to the global node_modules directory where the packages were installed.",
+  "fix_steps": [
+    "Ensure that the packages are installed in the correct directory accessible by n8n.",
+    "Check the NODE_FUNCTION_ALLOW_EXTERNAL environment variable to include all required packages.",
+    "Rebuild the Docker image and restart the n8n service."
+  ],
+  "agent_instruction": "Verify the installation path of the packages and ensure they are accessible to the code node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "docker",
+    "custom-packages",
+    "code-node",
+    "hyperformula"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-fail-to-run-a-code-with-a-custom-package/114087"
+  ]
+}

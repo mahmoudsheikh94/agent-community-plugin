@@ -1,0 +1,43 @@
+{
+  "id": "fbb9539a21c7",
+  "tool": "n8n",
+  "error_signature": "forbidden error",
+  "context_key": "aws-s3-node",
+  "title": "AWS S3 node forbidden error due to permissions",
+  "symptom": "When attempting to use the AWS S3 node for file uploads, a 'forbidden error' is encountered despite correct credentials.",
+  "applies_when": [
+    "Using AWS S3 node",
+    "Correct AWS ID and secret provided"
+  ],
+  "not_this_if": [
+    "Error occurs with different AWS services",
+    "Credentials are incorrect"
+  ],
+  "root_cause": "The 'forbidden error' typically indicates that the AWS account does not have the necessary permissions to access the specified S3 bucket. This can happen if the IAM user or role associated with the credentials lacks the required policies for S3 actions.",
+  "fix_steps": [
+    "Log in to the AWS Management Console",
+    "Navigate to the IAM service",
+    "Check the permissions for the user or role associated with the credentials",
+    "Ensure the user/role has the necessary S3 permissions for the bucket in question",
+    "Test the AWS S3 node again in n8n"
+  ],
+  "agent_instruction": "Verify and update the IAM permissions for the AWS user or role to ensure access to the S3 bucket.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "aws",
+    "s3",
+    "permissions",
+    "forbidden-error",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/trouble-setting-up-aws-node-and-logging-in/130996"
+  ]
+}

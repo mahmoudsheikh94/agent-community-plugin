@@ -1,0 +1,41 @@
+{
+  "id": "86fddfebdf91",
+  "tool": "n8n",
+  "error_signature": "\"Response Mode\" in the chat trigger node must be set to \"Using Response Nodes\"",
+  "context_key": "chat-trigger-node",
+  "title": "Chat trigger node response mode not set",
+  "symptom": "When executing a workflow with a Chat trigger node, n8n throws an error indicating that the 'Response Mode' must be set to 'Using Response Nodes'. The setting is not visible in the node options.",
+  "applies_when": [
+    "Using Chat trigger node",
+    "n8n version 2.11.3"
+  ],
+  "not_this_if": [
+    "Response Mode is already set correctly",
+    "Using a different node type"
+  ],
+  "root_cause": "The Chat trigger node requires a specific configuration for the 'Response Mode' to function correctly. If this setting is not configured, the node cannot execute properly, leading to the error message.",
+  "fix_steps": [
+    "Open the Chat trigger node settings",
+    "Navigate to options and add the field for 'Response Mode'",
+    "Select 'Using Response Nodes' from the dropdown",
+    "Save the workflow and try executing it again"
+  ],
+  "agent_instruction": "Set the 'Response Mode' in the Chat trigger node to 'Using Response Nodes' and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "chat",
+    "trigger-node",
+    "response-mode",
+    "n8n-2.11.3"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.11.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/chat-nodes-are-broken-in-n8n-2-11-3/276662"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "f3fa78adaafa",
+  "tool": "n8n",
+  "error_signature": "Lost connection to the server",
+  "context_key": "nginx-reverse-proxy",
+  "title": "Lost connection to the server during MCP Client execution",
+  "symptom": "When executing an MCP Client node, the n8n UI displays 'Lost connection to the server'. Despite this, the backend process continues running.",
+  "applies_when": [
+    "Using MCP Client node",
+    "Running n8n behind an NGINX reverse proxy"
+  ],
+  "not_this_if": [
+    "Error occurs without using a reverse proxy",
+    "Short-running workflows"
+  ],
+  "root_cause": "The NGINX reverse proxy was not configured to handle WebSocket connections properly. n8n relies on WebSockets for real-time communication, and without the correct configuration, the connection is lost during long-running workflows.",
+  "fix_steps": [
+    "Update the NGINX configuration to support WebSocket connections and increase timeout settings.",
+    "Edit the /etc/nginx/sites-available/n8n file with the provided configuration.",
+    "Test the NGINX configuration using 'sudo nginx -t'.",
+    "Reload NGINX with 'sudo systemctl reload nginx'."
+  ],
+  "agent_instruction": "Update the NGINX configuration to support WebSocket connections and reload NGINX.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "websocket",
+    "mcp-client",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/first-workflow-issue-possible-environments-variable-issue-while-using-mcp-client/110784"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "058caf310f0a",
+  "tool": "n8n",
+  "error_signature": "webhook not receiving requests",
+  "context_key": "webhook-configuration",
+  "title": "Webhook not receiving requests due to inactive workflow",
+  "symptom": "Requests sent to the webhook URL result in no executions or errors, indicating the webhook is not active.",
+  "applies_when": [
+    "Webhook URL is being called",
+    "Workflow is not activated"
+  ],
+  "not_this_if": [
+    "Workflow is activated",
+    "Using the correct production webhook URL"
+  ],
+  "root_cause": "In n8n, webhooks only listen for incoming requests when the associated workflow is activated. If the workflow is saved but not activated, it will not process any incoming requests.",
+  "fix_steps": [
+    "Activate the workflow in n8n",
+    "Ensure you are using the production webhook URL",
+    "Check the WEBHOOK_URL environment variable if self-hosting",
+    "Verify that your reverse proxy is configured correctly",
+    "Ensure there are no firewall restrictions"
+  ],
+  "agent_instruction": "Activate the workflow and verify the webhook URL settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "workflow-activation",
+    "configuration",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/web-workflow/265436"
+  ]
+}

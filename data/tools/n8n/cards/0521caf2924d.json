@@ -1,0 +1,39 @@
+{
+  "id": "0521caf2924d",
+  "tool": "n8n",
+  "error_signature": "The URL or verification code could not be validated",
+  "context_key": "facebook-webhook",
+  "title": "Facebook webhook URL validation failure",
+  "symptom": "When trying to register a production webhook URL with Facebook, the error 'The URL or verification code could not be validated' appears.",
+  "applies_when": [
+    "Using Facebook integration",
+    "Workflow is not published or active"
+  ],
+  "not_this_if": [
+    "Workflow is already published and active"
+  ],
+  "root_cause": "Facebook requires that the webhook URL is valid and reachable. If the n8n workflow is not published or the `WEBHOOK_URL` is incorrectly set, Facebook cannot validate the URL, leading to this error.",
+  "fix_steps": [
+    "Publish the workflow in n8n",
+    "Ensure the `WEBHOOK_URL` environment variable is set to your public domain with HTTPS",
+    "Retry the URL validation in Facebook"
+  ],
+  "agent_instruction": "Publish the workflow and check the `WEBHOOK_URL` before retrying the validation.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook",
+    "webhook",
+    "validation",
+    "production"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-url-or-verification-code-could-not-be-validated-please-check-the-information-provided-or-try-again-later/277320"
+  ]
+}

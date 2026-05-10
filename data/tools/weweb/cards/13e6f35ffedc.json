@@ -1,0 +1,38 @@
+{
+  "id": "13e6f35ffedc",
+  "tool": "weweb",
+  "error_signature": "images not displaying in published version",
+  "context_key": "image-upload",
+  "title": "Images not displaying after publishing app",
+  "symptom": "Images appear correctly in the editor but fail to display in the published version of the app.",
+  "applies_when": [
+    "Images are uploaded with special characters in the filename",
+    "Viewing the published version of the app"
+  ],
+  "not_this_if": [
+    "Images display correctly in the published version"
+  ],
+  "root_cause": "Images with special characters or accents in their filenames may not be processed correctly in the published version of the app, leading to display issues.",
+  "fix_steps": [
+    "Rename the image file to remove any accents or special characters",
+    "Re-upload the renamed image to the app",
+    "Publish the app again and check if the image displays"
+  ],
+  "agent_instruction": "Rename the image to remove accents and re-upload it to the app.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "image-upload",
+    "publishing",
+    "filename-issues"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/error-on-displaying-image-when-i-publish-my-app/4467"
+  ]
+}

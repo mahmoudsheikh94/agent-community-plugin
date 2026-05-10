@@ -1,0 +1,39 @@
+{
+  "id": "3a427b81a229",
+  "tool": "n8n",
+  "error_signature": "undefined is not a function",
+  "context_key": "langchain-code-node",
+  "title": "Promise not resolved in LangChain code node",
+  "symptom": "The user encounters issues when trying to use the embeddings node, leading to confusion about the API exposed by the node.",
+  "applies_when": [
+    "Using LangChain code node",
+    "Trying to access connected nodes"
+  ],
+  "not_this_if": [
+    "The code does not involve promises",
+    "The embeddings node is not connected"
+  ],
+  "root_cause": "The error occurs because the promise returned by the method to get input connection data is not resolved. This leads to the variable being undefined, causing issues when trying to use it as a function.",
+  "fix_steps": [
+    "Add 'await' before the method call to resolve the promise",
+    "Use the resolved value as intended in the code"
+  ],
+  "agent_instruction": "Ensure to resolve the promise when accessing input connection data in the LangChain code node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "langchain",
+    "code-node",
+    "promise",
+    "embedding"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-use-child-nodes-from-a-langchain-code-node/126647"
+  ]
+}

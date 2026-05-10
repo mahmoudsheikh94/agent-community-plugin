@@ -1,0 +1,43 @@
+{
+  "id": "9f99b3b92967",
+  "tool": "weweb",
+  "error_signature": "SVG icon color not changing",
+  "context_key": "SVG icon upload",
+  "title": "SVG icon color not changing in WeWeb",
+  "symptom": "Users are unable to change the color of uploaded SVG icons through the WeWeb UI or custom CSS. The icons remain in their original color.",
+  "applies_when": [
+    "Uploading SVG icons",
+    "Attempting to change color through WeWeb UI or CSS"
+  ],
+  "not_this_if": [
+    "Icons are uploaded as fonts",
+    "Color changes are applied correctly to other elements"
+  ],
+  "root_cause": "The SVG file may contain hidden sections that define colors indirectly, preventing WeWeb from applying the desired color changes. Specifically, the presence of classes or fill attributes that override the intended styles can cause this issue.",
+  "fix_steps": [
+    "Open the SVG file in a text editor.",
+    "Locate and delete the hidden section that defines color indirectly.",
+    "Ensure the <path> element uses fill='currentColor'.",
+    "Save the modified SVG file.",
+    "Upload the updated SVG to WeWeb."
+  ],
+  "agent_instruction": "Modify the SVG file to remove hidden color definitions and ensure it uses currentColor, then re-upload it to WeWeb.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "SVG",
+    "icon",
+    "color",
+    "upload",
+    "WeWeb"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/bug-cannot-change-new-svg-icon-color/17439"
+  ]
+}

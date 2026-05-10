@@ -1,0 +1,40 @@
+{
+  "id": "6501851f019d",
+  "tool": "weweb",
+  "error_signature": "sort order does not change",
+  "context_key": "table-sort",
+  "title": "Table sort order not updating",
+  "symptom": "The table does not reflect the updated sort order when the variable changes. The sort button is set to sort based on the variable, but it fails to apply the new order.",
+  "applies_when": [
+    "Using a sort button on a table",
+    "Variable for sort order is toggled"
+  ],
+  "not_this_if": [
+    "Sort order updates correctly with other variables",
+    "No sort button is used"
+  ],
+  "root_cause": "The sorting mechanism may be case-sensitive, and the values provided for sorting need to be in uppercase ('ASC' or 'DESC') for the table to recognize and apply the sort order correctly.",
+  "fix_steps": [
+    "Change the sort order variable values to uppercase: 'ASC' and 'DESC'",
+    "Test the sort button again to see if the order updates"
+  ],
+  "agent_instruction": "Ensure the sort order variable uses uppercase values 'ASC' and 'DESC'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "table",
+    "sorting",
+    "sort-order",
+    "ASC",
+    "DESC"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/sorting-a-table-help/6009"
+  ]
+}

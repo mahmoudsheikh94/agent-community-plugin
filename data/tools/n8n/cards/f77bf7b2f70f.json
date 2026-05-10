@@ -1,0 +1,40 @@
+{
+  "id": "f77bf7b2f70f",
+  "tool": "n8n",
+  "error_signature": "Webhook URL mismatch",
+  "context_key": "n8n-host-configuration",
+  "title": "Mismatch in Webhook URL configuration",
+  "symptom": "The webhook URL is not responding correctly, leading to a 404 error or indefinite waiting. The user is unable to trigger the webhook as expected.",
+  "applies_when": [
+    "N8N_HOST is set to 0.0.0.0",
+    "Using Docker for n8n"
+  ],
+  "not_this_if": [
+    "N8N_HOST is set to localhost or 127.0.0.1",
+    "Webhook URL is correctly configured"
+  ],
+  "root_cause": "Setting N8N_HOST to 0.0.0.0 means the application listens on all interfaces, but the webhook URL must match the address used to access n8n. If they don't match, requests may not be routed correctly.",
+  "fix_steps": [
+    "Change the N8N_HOST environment variable from 0.0.0.0 to localhost",
+    "Ensure the WEBHOOK_URL matches the new host setting",
+    "Restart the n8n instance and test the webhook again"
+  ],
+  "agent_instruction": "Change N8N_HOST to localhost and ensure the webhook URL is correctly set.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "configuration",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.3.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-in-local-test-webhook/256701"
+  ]
+}

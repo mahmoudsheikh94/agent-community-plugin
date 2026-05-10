@@ -1,0 +1,40 @@
+{
+  "id": "5af419f19cad",
+  "tool": "n8n",
+  "error_signature": "JSON Output contains invalid JSON",
+  "context_key": "Edit Field2 node",
+  "title": "Invalid JSON output from Edit Field2 node",
+  "symptom": "The workflow fails to validate JSON output from the Edit Field2 node, displaying an error message indicating invalid JSON.",
+  "applies_when": [
+    "Using Edit Field2 node",
+    "Reading data from a text file"
+  ],
+  "not_this_if": [
+    "Data is manually entered into the Edit Field node",
+    "No error occurs when using the Code node"
+  ],
+  "root_cause": "The text file may contain unescaped control characters or formatting that is not compatible with JSON structure. This can include unescaped quotes, backslashes, or other special characters that disrupt JSON formatting.",
+  "fix_steps": [
+    "Use a Code node to process the text and convert it to a valid JSON object using JSON.stringify()",
+    "Ensure all control characters are properly escaped, including backslashes and newlines",
+    "Test the output to confirm it validates as JSON"
+  ],
+  "agent_instruction": "Use a Code node to convert the text to valid JSON format.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "json",
+    "edit-field",
+    "code-node",
+    "text-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/can-not-validate-as-json/90530"
+  ]
+}

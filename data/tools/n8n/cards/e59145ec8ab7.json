@@ -1,0 +1,40 @@
+{
+  "id": "e59145ec8ab7",
+  "tool": "n8n",
+  "error_signature": "HTTP Request to root domain won't scrape subdomains",
+  "context_key": "http-request-node",
+  "title": "Root domain request does not scrape subdomains",
+  "symptom": "An HTTP request to the root domain does not automatically crawl or scrape subdomains or paths.",
+  "applies_when": [
+    "Making an HTTP request to a root domain",
+    "Expecting to scrape subdomains and paths"
+  ],
+  "not_this_if": [
+    "You have a predefined list of URLs to scrape",
+    "Using a dedicated web crawler"
+  ],
+  "root_cause": "n8n does not have a built-in crawler to automatically discover and scrape subdomains or paths. It requires explicit URLs to be provided for scraping.",
+  "fix_steps": [
+    "Store the known URLs (including subdomains and paths) in a Set node.",
+    "Use a SplitInBatches node to iterate over the URLs.",
+    "Send an HTTP request for each URL and handle the output accordingly."
+  ],
+  "agent_instruction": "Create a list of URLs to scrape and use a SplitInBatches node to process each one.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "subdomain",
+    "scraping",
+    "workflow"
+  ],
+  "severity": "degraded",
+  "confidence": 0.875,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/markdown-from-subdomain-scrape-multiple-subdomains-and-paths/115032"
+  ]
+}

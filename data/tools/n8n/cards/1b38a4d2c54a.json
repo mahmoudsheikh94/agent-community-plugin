@@ -1,0 +1,39 @@
+{
+  "id": "1b38a4d2c54a",
+  "tool": "n8n",
+  "error_signature": "no data with an image in it",
+  "context_key": "image-upload-node",
+  "title": "Image data not being sent to server",
+  "symptom": "The PHP page receives the post with metadata but no actual image data is included.",
+  "applies_when": [
+    "Using n8n to generate an image",
+    "Sending data to a server"
+  ],
+  "not_this_if": [
+    "Receiving an error message",
+    "Image data is correctly sent"
+  ],
+  "root_cause": "The issue arises because the binary data is not being correctly referenced or extracted from the n8n workflow. The temporary file path provided does not directly yield the binary data needed for the upload.",
+  "fix_steps": [
+    "Use the 'Extract from File' node in n8n to convert the binary data to base64.",
+    "Ensure the correct binary field is referenced in the API call."
+  ],
+  "agent_instruction": "Use the 'Extract from File' node to convert the image to base64 before sending it to your server.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "image-upload",
+    "base64",
+    "binary-data",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-gemini-image-generation-how-to-change-id-to-base64/263344"
+  ]
+}

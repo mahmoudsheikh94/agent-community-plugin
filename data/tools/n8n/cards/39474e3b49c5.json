@@ -1,0 +1,40 @@
+{
+  "id": "39474e3b49c5",
+  "tool": "n8n",
+  "error_signature": "Method not allowed - please check you are using the right HTTP method",
+  "context_key": "microsoft-outlook-node",
+  "title": "Microsoft Outlook node authentication error",
+  "symptom": "Workflows using the Microsoft Outlook node intermittently fail with an authentication error stating 'Method not allowed - please check you are using the right HTTP method'. This occurs after switching credentials.",
+  "applies_when": [
+    "Using Microsoft Outlook node",
+    "Credentials have been switched recently"
+  ],
+  "not_this_if": [
+    "Error does not occur after switching credentials",
+    "No authentication errors present"
+  ],
+  "root_cause": "The Microsoft Outlook node may have issues with token or refresh handling, especially if credentials are recreated or switched frequently. This can lead to inconsistent authentication states, causing the node to fail with HTTP method errors.",
+  "fix_steps": [
+    "Recreate the Microsoft OAuth credentials",
+    "Ensure the correct HTTP method is being used in the node settings",
+    "Test the workflow again after recreating credentials"
+  ],
+  "agent_instruction": "Recreate the Microsoft OAuth credentials and verify the HTTP method in the node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "microsoft-outlook",
+    "authentication",
+    "oauth",
+    "node-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.75,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/microsoft-outlook-node-error/229397"
+  ]
+}

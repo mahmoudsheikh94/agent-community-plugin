@@ -1,0 +1,41 @@
+{
+  "id": "7d958e06aa37",
+  "tool": "n8n",
+  "error_signature": "workers starting active workflows despite configuration",
+  "context_key": "docker-compose",
+  "title": "Workers incorrectly starting active workflows in queue mode",
+  "symptom": "The n8n worker instances are attempting to start active workflows, which should only be managed by the main instance. This behavior persists despite correct configuration settings.",
+  "applies_when": [
+    "Using Docker Compose",
+    "n8n version 1.94.1",
+    "Workers are set to run in queue mode"
+  ],
+  "not_this_if": [
+    "Workers are correctly configured with 'command: worker' in the compose file"
+  ],
+  "root_cause": "The workers are not being correctly instructed to operate as worker instances due to missing configuration in the Docker Compose file. Without the proper command, they default to main instance behavior, leading to conflicts in workflow management.",
+  "fix_steps": [
+    "Open your Docker Compose file",
+    "Add 'command: worker' under the worker instances configuration",
+    "Restart the Docker containers to apply the changes"
+  ],
+  "agent_instruction": "Update the Docker Compose file to include 'command: worker' for the worker instances and restart the containers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker-compose",
+    "n8n",
+    "workers",
+    "queue-mode",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-workers-v1-94-1-incorrectly-starting-active-workflows-in-queue-mode-despite-correct-configuration/124209"
+  ]
+}

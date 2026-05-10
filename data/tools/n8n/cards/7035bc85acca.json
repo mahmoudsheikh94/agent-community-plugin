@@ -1,0 +1,43 @@
+{
+  "id": "7035bc85acca",
+  "tool": "n8n",
+  "error_signature": "require() of ES Module not supported",
+  "context_key": "custom-node-integration",
+  "title": "ESM vs CommonJS module compatibility issue",
+  "symptom": "n8n fails to load custom nodes due to an error when requiring an ES Module, resulting in an application crash.",
+  "applies_when": [
+    "Using custom nodes in n8n",
+    "Custom node depends on ESM packages"
+  ],
+  "not_this_if": [
+    "Custom node does not use ESM packages",
+    "No errors related to module loading"
+  ],
+  "root_cause": "Recent libraries like 'change-case' are now pure ES Modules, which cannot be loaded using CommonJS's require() syntax. This leads to compatibility issues when n8n attempts to load these modules.",
+  "fix_steps": [
+    "Remove the 'change-case' package from your custom node's dependencies.",
+    "Install 'change-case-all' as a replacement using 'pnpm add change-case-all'.",
+    "Update the import statements in your custom node to use 'change-case-all'.",
+    "Rebuild your custom node package using 'pnpm build'.",
+    "Rebuild your Docker image and redeploy."
+  ],
+  "agent_instruction": "Replace 'change-case' with 'change-case-all' in your custom node and rebuild the package.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "n8n",
+    "custom-nodes",
+    "ESM",
+    "CommonJS",
+    "change-case"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/installing-custom-nodes-from-a-private-npm-registry-in-n8n-using-pnpm-inside-a-custom-docker-image/92039"
+  ]
+}

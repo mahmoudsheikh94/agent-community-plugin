@@ -1,0 +1,41 @@
+{
+  "id": "210f21a13a25",
+  "tool": "n8n",
+  "error_signature": "unable to connect to n8n from Docker container",
+  "context_key": "docker-network-configuration",
+  "title": "Connection issue between Docker n8n and Claude MCP",
+  "symptom": "Users are unable to connect the Claude MCP server running in Docker to the n8n instance, resulting in communication failures.",
+  "applies_when": [
+    "n8n is running in a Docker container",
+    "Claude MCP is also running in a Docker container"
+  ],
+  "not_this_if": [
+    "n8n is running on a local machine without Docker",
+    "Claude MCP is not using Docker"
+  ],
+  "root_cause": "When running n8n and Claude MCP in separate Docker containers, using 'localhost' for the n8n API URL will not work because each container has its own isolated network environment. Instead, the host's network needs to be referenced correctly.",
+  "fix_steps": [
+    "Modify the Claude MCP configuration to use 'http://host.docker.internal:5678' as the N8N_API_URL.",
+    "Ensure that both containers are on the same Docker network.",
+    "Restart the Claude MCP container to apply the new configuration."
+  ],
+  "agent_instruction": "Update the N8N_API_URL in the Claude MCP configuration to 'http://host.docker.internal:5678'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "claude",
+    "network-configuration",
+    "mcp"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/im-having-trouble-connecting-n8n-which-is-installed-on-docker-to-claude-n8n-mcp/264239"
+  ]
+}

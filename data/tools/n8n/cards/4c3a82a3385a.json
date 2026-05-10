@@ -1,0 +1,39 @@
+{
+  "id": "4c3a82a3385a",
+  "tool": "n8n",
+  "error_signature": "Can’t determine which item to use",
+  "context_key": "Fetch Call Details - Vapi",
+  "title": "Error determining item in Fetch Call Details node",
+  "symptom": "The Fetch Call Details node throws an error stating 'Can’t determine which item to use' when trying to fetch call details after a Split In Batches node.",
+  "applies_when": [
+    "Using Fetch Call Details node",
+    "Using Split In Batches node"
+  ],
+  "not_this_if": [
+    "The IF node condition is met and does not lead to a wait"
+  ],
+  "root_cause": "The error occurs due to a nested loop situation where the Fetch Call Details node loses track of the current item being processed. This happens when the workflow passes through a Wait node again, causing confusion in item indexing.",
+  "fix_steps": [
+    "Open the Fetch Call Details - Vapi node settings.",
+    "Change the URL to: https://api.vapi.ai/call/{{ $('Create Call - Vapi').all()[$itemIndex].json.id }}",
+    "Save the workflow and test it again."
+  ],
+  "agent_instruction": "Update the Fetch Call Details node URL to correctly reference the item index.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "fetch-call-details",
+    "vapi",
+    "split-in-batches",
+    "nested-loop"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/can-t-determine-which-item-to-use-when-fetching-call-details-after-split-in-batches/246109"
+  ]
+}

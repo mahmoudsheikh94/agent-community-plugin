@@ -1,0 +1,40 @@
+{
+  "id": "9389a1b5d5d1",
+  "tool": "n8n",
+  "error_signature": "unable to calculate number of nights from dates",
+  "context_key": "email-trigger-node",
+  "title": "Calculating number of nights for booking email",
+  "symptom": "The user is unable to include the number of nights in the email sent from the booking form data.",
+  "applies_when": [
+    "Using a web form with check-in and check-out dates",
+    "Sending an email with booking details"
+  ],
+  "not_this_if": [
+    "The email is sent without date calculations",
+    "The workflow does not involve date fields"
+  ],
+  "root_cause": "The user needs to calculate the difference between two date fields (check-in and check-out) to determine the number of nights for the booking. This requires proper date manipulation in the workflow.",
+  "fix_steps": [
+    "Use a Code node to calculate the difference between the check-in and check-out dates.",
+    "Implement the following code: {{ Math.round((new Date($(‘Direct Booking Enquiry’).item.json[‘Check Out Date’]) - new Date($(‘Direct Booking Enquiry’).item.json[‘Check In Date’])) / (1000 * 60 * 60 * 24)) }}",
+    "Pass the calculated number of nights to the email trigger node."
+  ],
+  "agent_instruction": "Add a Code node to calculate the number of nights and pass it to the email node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "email",
+    "date-calculation",
+    "booking",
+    "javascript"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.13.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/working-out-date-range-from-a-web-form-post/283677"
+  ]
+}

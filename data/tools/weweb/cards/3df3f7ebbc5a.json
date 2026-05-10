@@ -1,0 +1,39 @@
+{
+  "id": "3df3f7ebbc5a",
+  "tool": "weweb",
+  "error_signature": "input reverts to previous text after update",
+  "context_key": "vue-input-binding",
+  "title": "Input value reverts after JavaScript update",
+  "symptom": "After updating an input's value via JavaScript, the input reverts to its previous value when clicked. This occurs in a collection of items managed by Vue.",
+  "applies_when": [
+    "Using Vue for input management",
+    "Updating input values via JavaScript"
+  ],
+  "not_this_if": [
+    "Input values are bound to a variable correctly"
+  ],
+  "root_cause": "Vue manages the internal state of inputs, and direct DOM manipulation via JavaScript does not update Vue's internal state. When Vue re-renders the input, it uses the last known value from its state, not the value set directly through JavaScript.",
+  "fix_steps": [
+    "Bind the input value to a Vue variable",
+    "Update the Vue variable instead of manipulating the DOM directly",
+    "Ensure the input reflects the updated variable value"
+  ],
+  "agent_instruction": "Bind the input value to a variable in Vue and update that variable to reset the input.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "vue",
+    "input-management",
+    "javascript",
+    "data-binding"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/input-value-reverts-after-being-updated-via-javascript-action/2562"
+  ]
+}

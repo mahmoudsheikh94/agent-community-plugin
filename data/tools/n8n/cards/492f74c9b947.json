@@ -1,0 +1,40 @@
+{
+  "id": "492f74c9b947",
+  "tool": "n8n",
+  "error_signature": "/bin/sh: python3: not found",
+  "context_key": "exec-command-node",
+  "title": "Python not found in n8n Exec Command Node",
+  "symptom": "When executing a Python script in the Exec Command Node, n8n returns an error stating 'python3: not found'. This prevents the script from running successfully.",
+  "applies_when": [
+    "Using Exec Command Node",
+    "Python script execution is attempted"
+  ],
+  "not_this_if": [
+    "Python is installed in the n8n container",
+    "Using a different command that does not require Python"
+  ],
+  "root_cause": "The n8n container image does not include Python by default. As a result, any attempt to execute a Python script will fail with a 'not found' error unless Python is installed in the container.",
+  "fix_steps": [
+    "Access the n8n container using Docker.",
+    "Run the command: docker exec -u root -it <container_name> sh -c 'apk add --no-cache python3 py3-pip' to install Python.",
+    "If needed, set up a Python virtual environment and install any required packages."
+  ],
+  "agent_instruction": "Install Python in the n8n container using the provided Docker commands.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "exec-command",
+    "python",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.95",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-hostinger-exec-command-script-python/121763"
+  ]
+}

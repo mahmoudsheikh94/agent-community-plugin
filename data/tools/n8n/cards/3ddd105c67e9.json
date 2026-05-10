@@ -1,0 +1,39 @@
+{
+  "id": "3ddd105c67e9",
+  "tool": "n8n",
+  "error_signature": "querying the wrong table despite correct configuration",
+  "context_key": "supabase-vector-store-node",
+  "title": "Supabase Vector Store querying incorrect table",
+  "symptom": "The Supabase Vector Store node is configured to query one table, but it returns results from a different table. This occurs even after confirming the configuration is correct.",
+  "applies_when": [
+    "Using Supabase Vector Store node",
+    "Configured table name is different from queried table"
+  ],
+  "not_this_if": [
+    "The node is querying the correct table as per configuration"
+  ],
+  "root_cause": "The issue arises when the SQL function `match_documents` used by the Supabase Vector Store node has a hardcoded table name, which overrides the configured table name in the node settings. This can lead to unexpected results being returned from a different table.",
+  "fix_steps": [
+    "Check the SQL function `match_documents` in your Supabase setup.",
+    "Look for any hardcoded table names in the function's query.",
+    "If found, update the function to use the correct table name or modify the node configuration accordingly."
+  ],
+  "agent_instruction": "Inspect the `match_documents` SQL function for hardcoded table names and update as necessary.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "supabase",
+    "vector-store",
+    "query-issue",
+    "match_documents"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/strange-supabase-vector-store-behavior-in-n8n-queries-the-wrong-table-despite-correct-configuration/100943"
+  ]
+}

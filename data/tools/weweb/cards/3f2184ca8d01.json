@@ -1,0 +1,40 @@
+{
+  "id": "3f2184ca8d01",
+  "tool": "weweb",
+  "error_signature": "Invalid Date",
+  "context_key": "date-element",
+  "title": "Date display shows 'Invalid Date' on mobile",
+  "symptom": "The date displayed on the mobile version of the app shows 'Invalid Date' instead of the current date when viewed on a phone.",
+  "applies_when": [
+    "Using the date element",
+    "Viewing the app in live mobile mode"
+  ],
+  "not_this_if": [
+    "Date displays correctly in desktop view",
+    "Date is valid in the editor preview"
+  ],
+  "root_cause": "The date element in WeWeb uses the dayjs library, which formats invalid dates as 'Invalid Date'. This typically occurs when the bound value assigned to the date input is not in a valid format that dayjs can parse.",
+  "fix_steps": [
+    "Check the bound value assigned to the date input in the mobile view.",
+    "Ensure the value is a valid date format: either a standard string, a string with a custom format, a Date object, or a Unix timestamp.",
+    "Update the bound value if necessary and save the changes."
+  ],
+  "agent_instruction": "Verify and correct the bound value for the date input to ensure it is in a valid format.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "date-element",
+    "invalid-date",
+    "dayjs",
+    "mobile-view"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/date-display-error-in-live-mobile-view-only/650"
+  ]
+}

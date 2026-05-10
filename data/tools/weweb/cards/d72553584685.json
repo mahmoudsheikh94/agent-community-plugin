@@ -1,0 +1,38 @@
+{
+  "id": "d72553584685",
+  "tool": "weweb",
+  "error_signature": "500 error screen during Google login",
+  "context_key": "Google login integration",
+  "title": "500 error when signing in with Google",
+  "symptom": "Users encounter a 500 error screen when attempting to log in to their WeWeb account using Google. This issue arises unexpectedly after previously successful logins.",
+  "applies_when": [
+    "Attempting to sign in with Google",
+    "Previously logged in successfully"
+  ],
+  "not_this_if": [
+    "Using a different login method (e.g., email/password)"
+  ],
+  "root_cause": "The error occurred due to a sudden change in how Google provides user profile pictures, which affected the login process. This change was made without prior notice, leading to the 500 error during authentication.",
+  "fix_steps": [
+    "Wait for the WeWeb team to implement a fix for the Google login issue",
+    "Attempt to log in again after the fix is applied"
+  ],
+  "agent_instruction": "Monitor the WeWeb updates for a fix to the Google login issue and try logging in again afterward.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-login",
+    "500-error",
+    "authentication",
+    "user-profile"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/can-no-longer-login-to-my-weweb-account-via-google/5684"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "f8d82693d3da",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials?",
+  "context_key": "jira-node",
+  "title": "Jira API access forbidden with Atlassian Service Account",
+  "symptom": "When attempting to retrieve Jira tickets using the Jira node with an Atlassian Service Account, the user receives a 'Forbidden' error message indicating a potential credential issue.",
+  "applies_when": [
+    "Using Jira node",
+    "Authenticating with Atlassian Service Account"
+  ],
+  "not_this_if": [
+    "Using a personal API token from a regular Atlassian user account"
+  ],
+  "root_cause": "n8n does not currently support Atlassian's new Service Account feature, leading to authentication failures when attempting to access the Jira API with these credentials. This is a compatibility issue with the service account method.",
+  "fix_steps": [
+    "Switch to using a personal API token from a regular Atlassian user account",
+    "Update the Jira node settings with the new credentials",
+    "Test the connection to ensure it works"
+  ],
+  "agent_instruction": "Use a personal API token from a regular Atlassian user account instead of the Service Account for Jira API access.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "jira",
+    "atlassian",
+    "service-account",
+    "api-token",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-support-for-atlassian-service-accounts/177377"
+  ]
+}

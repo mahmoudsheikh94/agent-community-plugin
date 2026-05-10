@@ -1,0 +1,42 @@
+{
+  "id": "1eb55df89660",
+  "tool": "n8n",
+  "error_signature": "client IP address not found in webhook node",
+  "context_key": "webhook-node",
+  "title": "Client IP address not available in Webhook node",
+  "symptom": "The Webhook node does not expose the client IP address directly, leading to difficulties in fetching it.",
+  "applies_when": [
+    "Using Webhook node",
+    "Running in a production/behind proxy environment"
+  ],
+  "not_this_if": [
+    "Testing locally without a reverse proxy",
+    "Client IP is sent in the request body"
+  ],
+  "root_cause": "The Webhook node in n8n does not include the client IP in the default JSON body. Instead, it relies on headers like 'x-forwarded-for' or 'x-real-ip' to retrieve the client IP, which may not be configured correctly in some environments.",
+  "fix_steps": [
+    "Add a Set or Function node after the Webhook node.",
+    "Access the client IP using the expression: {{$json[“headers”][“x-forwarded-for”] || $json[“headers”][“x-real-ip”]}}.",
+    "If testing locally, consider fetching the client IP from an external service and include it in the payload."
+  ],
+  "agent_instruction": "Use a Set or Function node to extract the client IP from the headers in the Webhook node.",
+  "safety_notes": [
+    "Sending the IP in the body is for logging purposes only and should not be relied upon for security."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "client-ip",
+    "x-forwarded-for",
+    "x-real-ip"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/fetch-client-ip-address-in-webhook-node/180487"
+  ]
+}

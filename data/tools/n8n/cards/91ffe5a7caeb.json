@@ -1,0 +1,43 @@
+{
+  "id": "91ffe5a7caeb",
+  "tool": "n8n",
+  "error_signature": "Access Denied",
+  "context_key": "http-request-node",
+  "title": "Access Denied error when using SuiteCRM API",
+  "symptom": "When executing the HTTP Request node to access the SuiteCRM API, an 'Access Denied' error is returned. This prevents successful authentication and token retrieval.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Attempting to authenticate with SuiteCRM API"
+  ],
+  "not_this_if": [
+    "Using the correct endpoint and credentials",
+    "Error does not occur when using Postman"
+  ],
+  "root_cause": "The error occurs due to incorrect API endpoint usage, improper authentication method, or missing required parameters. SuiteCRM requires specific configurations for OAuth2 authentication that must be followed precisely.",
+  "fix_steps": [
+    "Create a user specifically for OAuth2 authentication in SuiteCRM.",
+    "Identify the correct API endpoint based on your SuiteCRM version, e.g., https://[My-Domain]/api/oauth/access_token.",
+    "Set the HTTP Request Method to POST.",
+    "Include the required body parameters: grant_type (client_credentials), client_id, and client_secret.",
+    "Execute the HTTP Request node to retrieve the access token."
+  ],
+  "agent_instruction": "Follow the outlined steps to configure the HTTP Request node for SuiteCRM API authentication.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "suitecrm",
+    "http-request",
+    "oauth2",
+    "access-token",
+    "api-authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-oauth2-suitecrm-error-access-denied/7704"
+  ]
+}

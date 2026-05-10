@@ -1,0 +1,40 @@
+{
+  "id": "3a3f6ac0f0c9",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'data')",
+  "context_key": "airtop-node",
+  "title": "Airtop node cannot read properties of undefined",
+  "symptom": "When attempting to upload a file using the Airtop node, an error occurs stating 'Cannot read properties of undefined (reading 'data')'. This prevents the file upload from completing.",
+  "applies_when": [
+    "Using Airtop node with operation 'Upload'",
+    "File data is expected from a previous node"
+  ],
+  "not_this_if": [
+    "The error does not occur when using other nodes",
+    "The file upload is successful without errors"
+  ],
+  "root_cause": "The error occurs because the binary file data is not being passed correctly to the Airtop node. This typically happens when the node that retrieves the file data (like Google Drive) is not positioned correctly in the workflow, leading to undefined data being accessed.",
+  "fix_steps": [
+    "Rearrange the workflow to place the Google Drive node before the Airtop node",
+    "Ensure the Google Drive node outputs the binary data correctly",
+    "Retry the upload operation in the Airtop node"
+  ],
+  "agent_instruction": "Rearrange the workflow to ensure the Google Drive node is before the Airtop node.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "airtop",
+    "google-drive",
+    "file-upload",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.99.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-upload-google-drive-file-using-airtop-node/140305"
+  ]
+}

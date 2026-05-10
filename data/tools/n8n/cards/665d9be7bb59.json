@@ -1,0 +1,40 @@
+{
+  "id": "665d9be7bb59",
+  "tool": "n8n",
+  "error_signature": "replying with JSON in the chatbox",
+  "context_key": "chatbox-node",
+  "title": "Chatbox replying with JSON instead of a message",
+  "symptom": "After saving information to Google Sheets, the chatbox responds with JSON data instead of a user-friendly message.",
+  "applies_when": [
+    "Using a chatbox node",
+    "Data is saved to Google Sheets"
+  ],
+  "not_this_if": [
+    "Chatbox is configured to return a custom message"
+  ],
+  "root_cause": "The trigger node is set to default mode, which returns the raw data from the last node instead of a formatted response. This leads to the chatbox displaying JSON instead of a user-friendly confirmation message.",
+  "fix_steps": [
+    "Open the trigger node settings",
+    "Change the mode from default to 'Using Response Nodes'",
+    "Attach a Chat node at the end of the workflow",
+    "Test the workflow to ensure the chatbox responds correctly"
+  ],
+  "agent_instruction": "Change the trigger node mode to 'Using Response Nodes' and attach a Chat node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "chatbox",
+    "google-sheets",
+    "response-node",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/after-info-from-the-chatbox-is-saved-to-the-google-sheet-its-replying-with-json-in-the-chatbox-which-shouldnt-be-the-case/276047"
+  ]
+}

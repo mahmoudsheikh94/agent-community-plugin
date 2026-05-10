@@ -1,0 +1,40 @@
+{
+  "id": "fdd1223dd481",
+  "tool": "n8n",
+  "error_signature": "Service unavailable - try again later",
+  "context_key": "ollama-node",
+  "title": "Ollama service unavailable due to npm proxy settings",
+  "symptom": "When trying to connect n8n to a local Ollama instance, the error 'Service unavailable - try again later' appears. The logs indicate a 404 status code for a missing model.",
+  "applies_when": [
+    "Using Ollama node",
+    "Running n8n without Docker"
+  ],
+  "not_this_if": [
+    "Ollama instance is correctly configured and models are installed"
+  ],
+  "root_cause": "The error occurs because npm's proxy settings are interfering with local requests to the Ollama instance. Even when accessing localhost, npm attempts to route the request through the proxy, leading to connection issues.",
+  "fix_steps": [
+    "Open the .npmrc file in your home directory",
+    "Remove or comment out any proxy settings",
+    "Save the changes",
+    "Restart n8n and try connecting to the Ollama instance again"
+  ],
+  "agent_instruction": "Remove the proxy settings from your .npmrc file and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ollama",
+    "npm",
+    "proxy",
+    "local-setup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-connect-n8n-to-local-no-docker-ollama-instance-service-unavailable-ollama-running-per-curl-reachable/186374"
+  ]
+}

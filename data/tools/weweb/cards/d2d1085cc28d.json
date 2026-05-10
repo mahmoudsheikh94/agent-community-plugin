@@ -1,0 +1,41 @@
+{
+  "id": "d2d1085cc28d",
+  "tool": "weweb",
+  "error_signature": "Supabase realtime not updating the frontend",
+  "context_key": "supabase-integration",
+  "title": "Supabase realtime updates not reflecting on frontend",
+  "symptom": "Changes made in the Supabase editor do not reflect on the Weweb frontend without a manual refresh.",
+  "applies_when": [
+    "Using Supabase with Row level security",
+    "Realtime option is checked for all tables"
+  ],
+  "not_this_if": [
+    "Changes are visible in the Supabase dashboard",
+    "Realtime updates are working in other parts of the application"
+  ],
+  "root_cause": "The issue arises when the 'Enable Realtime' option is not activated in the Supabase settings, preventing updates from being pushed to the frontend in real-time.",
+  "fix_steps": [
+    "Log in to your Supabase dashboard",
+    "Navigate to the settings for your project",
+    "Find the 'Enable Realtime' option and activate it",
+    "Save the changes and test the updates in Weweb"
+  ],
+  "agent_instruction": "Activate the 'Enable Realtime' option in your Supabase settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "realtime",
+    "frontend-updates",
+    "integration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/supabase-realtime-not-updating-the-frontend/2979"
+  ]
+}

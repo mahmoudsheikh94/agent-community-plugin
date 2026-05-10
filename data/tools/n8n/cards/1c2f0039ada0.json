@@ -1,0 +1,39 @@
+{
+  "id": "1c2f0039ada0",
+  "tool": "n8n",
+  "error_signature": "binary property dropped from output",
+  "context_key": "code-node",
+  "title": "Code node drops binary property from output",
+  "symptom": "The Code node is expected to return both JSON and binary data, but only the JSON property appears in the output. This leads to downstream nodes failing due to missing binary data.",
+  "applies_when": [
+    "Using Code node",
+    "Configured to return both JSON and binary data"
+  ],
+  "not_this_if": [
+    "Only JSON data is returned",
+    "No binary data is expected"
+  ],
+  "root_cause": "In n8n v1.94.1, there appears to be a bug where the Code node drops the top-level `binary` property from its output when a `json` property is also present, particularly in 'Run Once for Each Item' mode.",
+  "fix_steps": [
+    "Use the method `await this.helpers.getBinaryDataBuffer(itemIndex, binaryPropertyName);` to correctly extract binary data.",
+    "Ensure the Code node is properly configured to return both JSON and binary data."
+  ],
+  "agent_instruction": "Update the Code node to use the correct method for binary data extraction.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "binary-data",
+    "n8n-v1.94.1",
+    "bug"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.85,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-v1-94-1-docker-output-drops-binary-property-helpers-undefined-no-console-log-in-docker-logs/122040"
+  ]
+}

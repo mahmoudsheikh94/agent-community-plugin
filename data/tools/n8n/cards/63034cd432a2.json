@@ -1,0 +1,41 @@
+{
+  "id": "63034cd432a2",
+  "tool": "n8n",
+  "error_signature": "Mailchimp API expects individual fields",
+  "context_key": "mailchimp-node",
+  "title": "Mailchimp API requires separate fields for contact creation",
+  "symptom": "When trying to create a new contact in Mailchimp using n8n, an error occurs, while the same request works in Postman.",
+  "applies_when": [
+    "Using Mailchimp node",
+    "Creating a new contact"
+  ],
+  "not_this_if": [
+    "Using a different node or integration",
+    "The error does not occur"
+  ],
+  "root_cause": "The Mailchimp API requires individual fields for contact information (like FNAME, LNAME) rather than a single JSON object. If the data is sent as a JSON object, it will not be processed correctly, leading to errors.",
+  "fix_steps": [
+    "Open the Mailchimp node settings",
+    "Add each field separately (e.g., FNAME, LNAME) instead of as a single JSON object",
+    "Save the workflow",
+    "Try executing the workflow again"
+  ],
+  "agent_instruction": "Add each contact field separately in the Mailchimp node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mailchimp",
+    "contact-creation",
+    "api-integration",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mailchimp-error/185926"
+  ]
+}

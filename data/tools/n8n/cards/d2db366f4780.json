@@ -1,0 +1,40 @@
+{
+  "id": "d2db366f4780",
+  "tool": "n8n",
+  "error_signature": "Connection Refused",
+  "context_key": "PostgreSQL node in Docker",
+  "title": "PostgreSQL Connection Refused in Docker",
+  "symptom": "When trying to connect to a local PostgreSQL database from n8n running in Docker, the connection is refused.",
+  "applies_when": [
+    "n8n is running in a Docker container",
+    "PostgreSQL is running on the host machine"
+  ],
+  "not_this_if": [
+    "PostgreSQL is also running in a Docker container",
+    "Using a different database"
+  ],
+  "root_cause": "The n8n instance running in a Docker container cannot access the PostgreSQL database on the host machine using localhost (127.0.0.1) because the container is isolated from the host network. Instead, it needs to use a special address to reach the host services.",
+  "fix_steps": [
+    "Open the PostgreSQL node settings in n8n.",
+    "Change the host from '127.0.0.1' to 'host.docker.internal'.",
+    "Save the changes and test the connection."
+  ],
+  "agent_instruction": "Update the PostgreSQL node to use 'host.docker.internal' as the host address.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgresql",
+    "docker",
+    "connection-refused",
+    "networking"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/local-postgresql-connection-refused/94630"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "75d5f139588c",
+  "tool": "n8n",
+  "error_signature": "Task request timed out after 60 seconds",
+  "context_key": "n8n-worker",
+  "title": "Code Node task request timeout due to incorrect broker URI",
+  "symptom": "When executing a Code Node, the workflow fails with 'Task request timed out after 60 seconds'. This indicates that the task runner could not be reached in time.",
+  "applies_when": [
+    "Using Code Node with JavaScript or Python",
+    "n8n is hosted on a VPS with a worker setup"
+  ],
+  "not_this_if": [
+    "Task runs successfully with other nodes",
+    "No timeout error occurs"
+  ],
+  "root_cause": "The error occurs because the task runner's broker URI is incorrectly configured. The default URI points to the main n8n service instead of the worker service, causing the requests to time out as they cannot reach the intended task runner.",
+  "fix_steps": [
+    "Open the docker-compose file for n8n",
+    "Locate the line with 'N8N_RUNNERS_TASK_BROKER_URI'",
+    "Change the value to 'http://n8n-worker:5679'",
+    "Save the changes and restart the n8n services"
+  ],
+  "agent_instruction": "Update the task broker URI in the docker-compose file to point to the n8n-worker service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "code-node",
+    "timeout",
+    "docker-compose",
+    "task-runner"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-task-request-timed-out-after-60-seconds/267306"
+  ]
+}

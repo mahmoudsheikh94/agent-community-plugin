@@ -1,0 +1,40 @@
+{
+  "id": "c8c1b4969499",
+  "tool": "n8n",
+  "error_signature": "labels stacking instead of updating",
+  "context_key": "gmail-node",
+  "title": "Gmail labels not updating correctly on replies",
+  "symptom": "When a reply is received in a Gmail thread, the old label is not removed, leading to multiple labels stacking instead of updating to the new one.",
+  "applies_when": [
+    "Using Gmail node",
+    "Handling reply threads"
+  ],
+  "not_this_if": [
+    "Labels are correctly updated for new emails",
+    "No replies in the thread"
+  ],
+  "root_cause": "The Gmail node in n8n does not automatically remove old labels when a new label is added to a message in a reply thread. This behavior leads to multiple labels being applied to the same message instead of replacing the old label.",
+  "fix_steps": [
+    "Use the Gmail node to retrieve all messages in the thread before adding a new label.",
+    "Set the operation to 'Remove Label' for the old label on each message in the thread.",
+    "Add the new label using the 'Add Label' operation."
+  ],
+  "agent_instruction": "Retrieve all messages in the thread and remove the old label before adding the new one.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "labels",
+    "email-thread",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/need-help-gmail-re-emails-not-labeling-labels-stacking-instead-of-updating/227911"
+  ]
+}

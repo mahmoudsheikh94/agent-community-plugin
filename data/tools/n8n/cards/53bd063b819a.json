@@ -1,0 +1,41 @@
+{
+  "id": "53bd063b819a",
+  "tool": "n8n",
+  "error_signature": "400 error regarding API limits",
+  "context_key": "google-drive-copy-file-module",
+  "title": "API limit exceeded in Google Drive Copy File module",
+  "symptom": "When processing multiple rows in a Google Sheet, the workflow encounters a 400 error due to exceeding API limits.",
+  "applies_when": [
+    "Using Google Drive Copy File module",
+    "Processing multiple rows from Google Sheet"
+  ],
+  "not_this_if": [
+    "Single row processing",
+    "No API limit errors"
+  ],
+  "root_cause": "The Google Drive API has rate limits that restrict the number of requests that can be made in a short period. When multiple files are created in quick succession, these limits can be exceeded, resulting in 400 errors.",
+  "fix_steps": [
+    "Insert a Loop node after the node that reads rows from Google Sheet.",
+    "Set the Loop batch size to 1 to process each row individually.",
+    "Within the Loop, add a Wait node to introduce a delay between requests.",
+    "Ensure all operations for each row are included within the Loop."
+  ],
+  "agent_instruction": "Use a Loop node with a batch size of 1 and add a Wait node to manage API request limits.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "api-limits",
+    "loop-node",
+    "wait-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.69.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/add-a-delay-within-google-drive-copy-file-module/72532"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "47f58beb9c89",
+  "tool": "n8n",
+  "error_signature": "always takes output 0 in Switch node",
+  "context_key": "switch-node",
+  "title": "Switch node always routes to output 0",
+  "symptom": "The Switch node consistently routes to the output for 'with attachment', even when no attachment is present. The expected behavior is to route to a fallback when there is no attachment.",
+  "applies_when": [
+    "Using a Switch node",
+    "Webhook may or may not include an attachment"
+  ],
+  "not_this_if": [
+    "The attachment field is always present and valid"
+  ],
+  "root_cause": "The Switch node may not correctly interpret the absence of the attachment field, leading it to default to the first output. This can happen if the webhook sends an empty value that the Switch node does not recognize as empty.",
+  "fix_steps": [
+    "Add a Code node right after the webhook to check for the attachment's existence.",
+    "Use the provided code to create a boolean variable 'has_real_attachment'.",
+    "Connect the If node to check if 'has_real_attachment' is true."
+  ],
+  "agent_instruction": "Insert a Code node to evaluate the attachment and connect an If node to route based on the boolean result.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "switch-node",
+    "if-node",
+    "webhook",
+    "attachment",
+    "routing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/required-switch-logic-not-working/271309"
+  ]
+}

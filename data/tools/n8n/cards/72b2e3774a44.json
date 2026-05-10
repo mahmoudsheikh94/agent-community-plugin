@@ -1,0 +1,39 @@
+{
+  "id": "72b2e3774a44",
+  "tool": "n8n",
+  "error_signature": "contents.parts must not be empty",
+  "context_key": "google-generative-ai-node",
+  "title": "Empty parts in Google Generative AI request",
+  "symptom": "When executing a workflow that connects to Google Generative AI, an error occurs stating 'contents.parts must not be empty'. This indicates that the request is missing required content.",
+  "applies_when": [
+    "Using Google Generative AI node",
+    "Requesting content generation"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or context"
+  ],
+  "root_cause": "The error occurs when the request to the Google Generative AI API is missing necessary content in the 'parts' field. This can happen if the prompts provided are empty or not formatted correctly, or if the node is outdated.",
+  "fix_steps": [
+    "Update the Google Generative AI node to the latest version",
+    "Verify that the API key is valid",
+    "Ensure that the prompts provided to the node are correctly formatted and not empty"
+  ],
+  "agent_instruction": "Update the Google Generative AI node and check the prompts for correctness.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-generative-ai",
+    "api-error",
+    "empty-parts",
+    "langchain"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-workflow-error/191643"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "2c5054a737f9",
+  "tool": "n8n",
+  "error_signature": "404 error from ngrok after first execution",
+  "context_key": "messenger-webhook",
+  "title": "Messenger webhook returns 404 after first execution",
+  "symptom": "The Messenger automation workflow executes successfully once but returns a 404 error on subsequent messages. The workflow appears active but does not respond again.",
+  "applies_when": [
+    "Using Messenger automation",
+    "Running n8n in test mode with ngrok"
+  ],
+  "not_this_if": [
+    "Using production webhook URL",
+    "Workflow is not activated"
+  ],
+  "root_cause": "In test mode, n8n creates a temporary webhook that is only valid for a single execution. After the first successful execution, the webhook becomes inactive, leading to a 404 error for subsequent requests.",
+  "fix_steps": [
+    "Switch the workflow toggle to ON in the n8n editor.",
+    "Update the Facebook Messenger app settings with the production webhook URL (without -test).",
+    "Re-run the subscription/verification step on Facebook if necessary."
+  ],
+  "agent_instruction": "Switch to the production webhook URL and ensure the workflow is activated.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "messenger",
+    "webhook",
+    "404-error",
+    "ngrok",
+    "test-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/messenger-automation-issue/151923"
+  ]
+}

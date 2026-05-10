@@ -1,0 +1,40 @@
+{
+  "id": "6374a44628d4",
+  "tool": "n8n",
+  "error_signature": "ECONNREFUSED",
+  "context_key": "ollama-node",
+  "title": "Ollama AI node connection refused",
+  "symptom": "When trying to connect to the Ollama AI node, n8n throws an 'ECONNREFUSED' error. This indicates that the connection to the specified URL is being rejected.",
+  "applies_when": [
+    "Using Ollama AI node",
+    "Running n8n locally"
+  ],
+  "not_this_if": [
+    "Ollama service is running and accessible"
+  ],
+  "root_cause": "The ECONNREFUSED error occurs when the specified service (Ollama) is not reachable at the given address and port. This can happen if the service is not running, the port is incorrect, or there are firewall rules blocking the connection.",
+  "fix_steps": [
+    "Ensure the Ollama service is running on your local machine",
+    "Verify the URL and port (http://localhost:11434) are correct",
+    "Check firewall settings to ensure the port is open",
+    "Retry the connection in n8n"
+  ],
+  "agent_instruction": "Verify that the Ollama service is running and accessible at the specified URL.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ollama",
+    "ECONNREFUSED",
+    "connection",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/questions-with-errors-in-ai-nodes-and-telegram/82233"
+  ]
+}

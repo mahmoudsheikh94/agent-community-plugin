@@ -1,0 +1,39 @@
+{
+  "id": "9c36d9e866f5",
+  "tool": "weweb",
+  "error_signature": "unexpected navigation on close button click",
+  "context_key": "side-menu",
+  "title": "Unexpected navigation when closing side menu",
+  "symptom": "Clicking the close button on the side menu unexpectedly navigates back to the home page instead of just closing the menu.",
+  "applies_when": [
+    "Using a side menu component",
+    "Close button is clicked"
+  ],
+  "not_this_if": [
+    "Close button is functioning correctly on all pages"
+  ],
+  "root_cause": "The unexpected navigation occurs because there is a link set up on the parent div of the side menu. This link triggers a navigation action when the close button is clicked, instead of just closing the menu.",
+  "fix_steps": [
+    "Inspect the parent div of the side menu",
+    "Remove or disable the link on the parent div",
+    "Test the close button functionality again"
+  ],
+  "agent_instruction": "Check the parent div of the side menu for any links and remove them to prevent navigation.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "side-menu",
+    "navigation",
+    "mobile",
+    "boolean-toggle"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/issue-or-bug-with-side-menu-instance/8545"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "9b6231fd7849",
+  "tool": "n8n",
+  "error_signature": "site is not available on localhost",
+  "context_key": "docker-container",
+  "title": "n8n Docker container not accessible on localhost",
+  "symptom": "The n8n Docker container starts successfully, but the editor is not accessible via the provided localhost URL.",
+  "applies_when": [
+    "n8n is running in a Docker container",
+    "Accessing via localhost"
+  ],
+  "not_this_if": [
+    "Container is accessible via a different IP or hostname"
+  ],
+  "root_cause": "The issue arises when the Docker container is not configured to expose the correct port to the host machine. If the port is not specified during container creation, the application will not be reachable from the localhost.",
+  "fix_steps": [
+    "Remove the current n8n Docker container.",
+    "Go to your Docker images and click 'Run' for the n8n image.",
+    "Open the additional settings in the popup.",
+    "In the 'Host Port' field, add 5678.",
+    "Click 'Run' to start the container with the correct port configuration."
+  ],
+  "agent_instruction": "Ensure the n8n Docker container is configured to expose port 5678 to the host.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "localhost",
+    "port-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-container-running-but-not-available-on-localhost/86697"
+  ]
+}

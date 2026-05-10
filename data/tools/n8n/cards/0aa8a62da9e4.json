@@ -1,0 +1,40 @@
+{
+  "id": "0aa8a62da9e4",
+  "tool": "n8n",
+  "error_signature": "The expression evaluated to a falsy value: a.ok(to)",
+  "context_key": "workflow-execution",
+  "title": "Workflow execution fails with falsy value error",
+  "symptom": "When running the workflow, it returns an error stating 'The expression evaluated to a falsy value: a.ok(to)'. This prevents any node in the workflow from executing properly.",
+  "applies_when": [
+    "Running a workflow with HTTP request nodes",
+    "Using the manual trigger node"
+  ],
+  "not_this_if": [
+    "The workflow runs successfully after refreshing the page"
+  ],
+  "root_cause": "This error occurs when the workflow's execution context has stale or invalid data, particularly after previous runs. The execution data may not be cleared properly, leading to conflicts in subsequent executions.",
+  "fix_steps": [
+    "Open the workflow in n8n",
+    "Remove the execution data from the workflow",
+    "Try running the workflow again"
+  ],
+  "agent_instruction": "Clear the execution data before testing the workflow again.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "workflow",
+    "execution",
+    "error",
+    "http-request",
+    "manual-trigger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-running-workflow-the-expression-evaluated-to-a-falsy-value-a-ok-to/89718"
+  ]
+}

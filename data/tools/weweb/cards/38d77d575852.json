@@ -1,0 +1,39 @@
+{
+  "id": "38d77d575852",
+  "tool": "weweb",
+  "error_signature": "date comparison fails due to time component",
+  "context_key": "datagrid-date-filter",
+  "title": "Date range filter fails due to time component in comparison",
+  "symptom": "The date range filter on the datagrid does not return expected results when comparing dates from Xano due to the inclusion of time in the timestamp.",
+  "applies_when": [
+    "Using a date range filter on a datagrid",
+    "Timestamps from Xano include time components"
+  ],
+  "not_this_if": [
+    "Dates are compared without time components",
+    "Using a date-only format for both inputs"
+  ],
+  "root_cause": "The comparison between the date selected in the date range picker and the timestamp from Xano fails because the timestamp includes hours, minutes, and seconds, which affects the comparison logic.",
+  "fix_steps": [
+    "Set the hour, minutes, and seconds of the date from the date range picker to 23:59:59 for the end date.",
+    "Ensure that the start date is compared correctly by adjusting its time component as needed."
+  ],
+  "agent_instruction": "Adjust the time components of the date range picker values to ensure proper comparison with Xano timestamps.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "datagrid",
+    "date-filter",
+    "timestamp",
+    "Xano"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/date-range-filter-on-datagrid-not-working/2918"
+  ]
+}

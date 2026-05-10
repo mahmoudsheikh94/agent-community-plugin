@@ -1,0 +1,39 @@
+{
+  "id": "863b28ee7164",
+  "tool": "n8n",
+  "error_signature": "only one row is sent to Google Sheets",
+  "context_key": "google-sheets-node",
+  "title": "Only one row appended to Google Sheets",
+  "symptom": "When attempting to append multiple rows to Google Sheets, only the first row is sent, resulting in incomplete data.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Sending multiple rows of data"
+  ],
+  "not_this_if": [
+    "Data is correctly formatted and sent as individual items"
+  ],
+  "root_cause": "The issue arises because the user is referencing only the first item of the array in their expressions, which leads to only that single item being sent to Google Sheets instead of the entire array.",
+  "fix_steps": [
+    "Use a Function node to split the array into individual items.",
+    "Implement the code: return `$json[\"Balance B/D\"].map(row => ({ json: row }));` in the Function node.",
+    "In the Google Sheets node, ensure to map fields without using the [0] index."
+  ],
+  "agent_instruction": "Split the array into individual items using a Function node before sending to Google Sheets.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "google-sheets",
+    "append-rows",
+    "function-node",
+    "data-mapping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-append-multiple-rows-in-google-sheet-at-once/134943"
+  ]
+}

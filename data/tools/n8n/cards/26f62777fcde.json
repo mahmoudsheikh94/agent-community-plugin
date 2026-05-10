@@ -1,0 +1,40 @@
+{
+  "id": "26f62777fcde",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials?",
+  "context_key": "google-gemini-api-credential",
+  "title": "Forbidden error when adding Google Gemini API credential",
+  "symptom": "When trying to add the Google Gemini API credential, n8n returns a 'Forbidden' error message, preventing successful saving of the credential.",
+  "applies_when": [
+    "Using Google Gemini API",
+    "API key restrictions are in place"
+  ],
+  "not_this_if": [
+    "API key is unrestricted and still fails",
+    "Different API is being used"
+  ],
+  "root_cause": "The error occurs because the Google Gemini API must be enabled in the Google Cloud project, and the API key must be properly restricted to allow access to it. If the API is not enabled or the restrictions are not set correctly, n8n will not be able to authenticate successfully.",
+  "fix_steps": [
+    "Enable the 'Gemini API' in the Google Cloud library",
+    "Restrict the API key to the 'Generative Language API' in the API Key Restrictions list",
+    "Save the changes and try adding the credential again"
+  ],
+  "agent_instruction": "Enable the Gemini API and restrict the API key accordingly in Google Cloud.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-gemini",
+    "api-credentials",
+    "forbidden-error",
+    "google-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/forbidden-when-adding-google-gemini-api-credential-on-a-new-digitalocean-1-click-droplet/166249"
+  ]
+}

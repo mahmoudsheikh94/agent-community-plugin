@@ -1,0 +1,41 @@
+{
+  "id": "6e97abf180ec",
+  "tool": "n8n",
+  "error_signature": "Invalid expression",
+  "context_key": "google-sheets-node",
+  "title": "Invalid expression in Google Sheets node",
+  "symptom": "The Google Sheets node throws an 'Invalid expression' error when trying to execute the workflow.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Merging multiple inputs"
+  ],
+  "not_this_if": [
+    "Single input without merging",
+    "No error in Google Sheets node"
+  ],
+  "root_cause": "The error occurs because the Google Sheets node is receiving multiple items from the Merge node in 'Append' mode, which it cannot process as a valid input expression. The node expects a single item to work with.",
+  "fix_steps": [
+    "Open the Merge node settings",
+    "Change the merge mode from 'Append' to 'Combine by position'",
+    "Save the workflow",
+    "Retry executing the workflow"
+  ],
+  "agent_instruction": "Change the Merge node to 'Combine by position' mode and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "merge",
+    "invalid-expression",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/correct-way-google-sheet/99571"
+  ]
+}

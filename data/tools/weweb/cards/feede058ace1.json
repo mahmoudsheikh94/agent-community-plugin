@@ -1,0 +1,39 @@
+{
+  "id": "feede058ace1",
+  "tool": "weweb",
+  "error_signature": "variable not persisting on navigation",
+  "context_key": "workflow-navigation",
+  "title": "Variable not persisting after page navigation",
+  "symptom": "After redirecting to another page, the variable intended to control modal visibility resets to FALSE, despite being set to TRUE in the workflow.",
+  "applies_when": [
+    "Redirecting to another page in a workflow",
+    "Changing variable value after navigation"
+  ],
+  "not_this_if": [
+    "Variable is set before navigation",
+    "No modal is involved"
+  ],
+  "root_cause": "The current limitation in the workflow system prevents any actions, including variable changes, from being executed after a page change. This results in the variable not retaining its value across navigations.",
+  "fix_steps": [
+    "Move the variable change action before the page navigation action in the workflow",
+    "If needed, create a second variable to manage modal state across pages"
+  ],
+  "agent_instruction": "Rearrange your workflow to change the variable before navigating to the new page.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow",
+    "navigation",
+    "variable",
+    "modal"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/workflow-question-var-not-saved-on-navigation/3612"
+  ]
+}

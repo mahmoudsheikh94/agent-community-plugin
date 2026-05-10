@@ -1,0 +1,39 @@
+{
+  "id": "841749cd8abf",
+  "tool": "n8n",
+  "error_signature": "An HTTPS URL must be provided for webhook",
+  "context_key": "telegram-trigger-node",
+  "title": "Telegram Trigger requires HTTPS URL",
+  "symptom": "When trying to activate the Telegram Trigger node, n8n throws 'An HTTPS URL must be provided for webhook' error, despite using ngrok.",
+  "applies_when": [
+    "Using Telegram Trigger node",
+    "Running n8n locally with ngrok"
+  ],
+  "not_this_if": [
+    "n8n is running in a production environment",
+    "Webhook URL is correctly set"
+  ],
+  "root_cause": "The error occurs because n8n needs to be explicitly told to use the ngrok URL as the webhook URL. If n8n is not started with the correct environment variable, it defaults to a non-HTTPS URL.",
+  "fix_steps": [
+    "Set the environment variable WEBHOOK_URL to your ngrok HTTPS URL",
+    "Start n8n using the command 'n8n start' with the environment variable set"
+  ],
+  "agent_instruction": "Start n8n with the command 'WEBHOOK_URL=your_ngrok_https_url n8n start'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "ngrok",
+    "webhook",
+    "trigger-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-gives-https-webhook-required-error-even-with-ngrok-https-url/106115"
+  ]
+}

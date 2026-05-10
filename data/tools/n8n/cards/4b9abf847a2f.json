@@ -1,0 +1,40 @@
+{
+  "id": "4b9abf847a2f",
+  "tool": "n8n",
+  "error_signature": "infinite execution loop",
+  "context_key": "gmail-get-many-messages",
+  "title": "Infinite execution loop with Gmail Get Many Messages",
+  "symptom": "The workflow keeps executing indefinitely due to the same set of emails being returned each time.",
+  "applies_when": [
+    "Using Gmail Trigger for unread emails",
+    "Using Gmail Get Many Messages node"
+  ],
+  "not_this_if": [
+    "Using a static date in the Received After field",
+    "No emails are returned"
+  ],
+  "root_cause": "The expression used in the Received After field recalculates to the current date each time the workflow runs, causing the same emails to be fetched repeatedly, which triggers the workflow again.",
+  "fix_steps": [
+    "Add a Remove Duplicates node after the Gmail Trigger node",
+    "Select the option 'Remove Items processed in previous executions' in the node settings",
+    "Save the workflow and test it again"
+  ],
+  "agent_instruction": "Insert a Remove Duplicates node after the Gmail Trigger to prevent re-processing of the same emails.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "infinite-loop",
+    "remove-duplicates",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-avoid-infinite-execution-loop-when-using-gmail-get-many-messages-with-dynamic-received-after-date-in-n8n/196018"
+  ]
+}

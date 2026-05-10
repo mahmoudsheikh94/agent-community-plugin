@@ -1,0 +1,41 @@
+{
+  "id": "b5e0f8d65a80",
+  "tool": "n8n",
+  "error_signature": "The value in 'iVBORw...kSuQmCC' is not set",
+  "context_key": "convert-file-node",
+  "title": "Base64 Input Field not set correctly in Convert to File node",
+  "symptom": "The Convert to File node throws an error indicating that the base64 value is not set, despite the input being valid.",
+  "applies_when": [
+    "Using Convert to File node",
+    "Input is a base64 string"
+  ],
+  "not_this_if": [
+    "Base64 string is empty",
+    "Using a different node for conversion"
+  ],
+  "root_cause": "The Convert to File node requires the Base64 Input Field to be specified as a fixed string representing the field name, rather than an expression that references the base64 text value. This misconfiguration leads to the error message.",
+  "fix_steps": [
+    "Open the Convert to File node settings",
+    "Set the Base64 Input Field to the fixed string 'data'",
+    "Save the workflow",
+    "Execute the workflow again"
+  ],
+  "agent_instruction": "Set the Base64 Input Field in the Convert to File node to 'data' and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "convert-file",
+    "base64",
+    "node-configuration",
+    "error-fix"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/difficulty-converting-base64-string-from-imagen-to-file/135044"
+  ]
+}

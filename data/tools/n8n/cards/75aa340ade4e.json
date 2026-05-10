@@ -1,0 +1,39 @@
+{
+  "id": "75aa340ade4e",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "telegram-trigger",
+  "title": "Telegram Trigger parameters may be incorrect",
+  "symptom": "When executing the workflow, n8n throws 'Bad request - please check your parameters'. This indicates that the parameters sent to Telegram are not valid.",
+  "applies_when": [
+    "Using Telegram Trigger",
+    "Parameters are not properly configured"
+  ],
+  "not_this_if": [
+    "All parameters are correctly set and validated"
+  ],
+  "root_cause": "This error typically occurs when the parameters provided to the Telegram API are either missing, malformed, or not in accordance with the expected format. This can happen if the webhook URL is not set correctly or if other required fields are left empty.",
+  "fix_steps": [
+    "Review the parameters set in the Telegram Trigger node.",
+    "Ensure that all required fields are filled out correctly, including the webhook URL.",
+    "Test the workflow again after making corrections."
+  ],
+  "agent_instruction": "Check and correct the parameters in the Telegram Trigger node to ensure they are valid.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "parameters",
+    "api-call",
+    "error"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.875,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-on-docker-localhost-bad-request-https-webhook-error/187534"
+  ]
+}

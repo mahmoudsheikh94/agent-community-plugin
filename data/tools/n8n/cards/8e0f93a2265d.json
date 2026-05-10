@@ -1,0 +1,42 @@
+{
+  "id": "8e0f93a2265d",
+  "tool": "n8n",
+  "error_signature": "Received tool input did not match expected schema",
+  "context_key": "postgres-supabase-tool",
+  "title": "Schema mismatch error in PostgreSQL/Supabase tool",
+  "symptom": "The AI agent encounters an error stating 'Received tool input did not match expected schema' when trying to create or update rows in a PostgreSQL table.",
+  "applies_when": [
+    "Using PostgreSQL or Supabase tool",
+    "Fields are not all required in the database schema"
+  ],
+  "not_this_if": [
+    "All required fields are provided",
+    "Using a different database tool"
+  ],
+  "root_cause": "The error occurs because the AI agent's tool schema expects all fields to be provided as required, even when the database schema allows for null or default values. This mismatch leads to the agent failing to execute the intended operation.",
+  "fix_steps": [
+    "Create a subworkflow that includes all required keys as strings.",
+    "Instruct the agent to provide necessary information for each field.",
+    "Use a code node in the subworkflow to normalize the JSON, removing empty keys and setting null values appropriately.",
+    "Send the normalized payload to the PostgreSQL node configured to match keys automatically."
+  ],
+  "agent_instruction": "Create a subworkflow to normalize the input JSON before sending it to the PostgreSQL node.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "postgres",
+    "supabase",
+    "schema",
+    "json",
+    "subworkflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-s-tool-schema-is-what-s-causing-the-required-behavior/236713"
+  ]
+}

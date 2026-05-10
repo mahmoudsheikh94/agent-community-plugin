@@ -1,0 +1,39 @@
+{
+  "id": "b1fcd870ecc3",
+  "tool": "n8n",
+  "error_signature": "mismatch dashboard page vs 'about n8n' page",
+  "context_key": "n8n cloud version",
+  "title": "Version mismatch between dashboard and 'About n8n' page",
+  "symptom": "The dashboard shows version 1.123.18 while the 'About n8n' page shows 1.111.0-exp.0. This discrepancy leads to confusion about the actual running version.",
+  "applies_when": [
+    "Using n8n Cloud",
+    "Versions displayed are different"
+  ],
+  "not_this_if": [
+    "Both pages show the same version"
+  ],
+  "root_cause": "This issue typically arises from a stuck update where the dashboard does not reflect the latest version due to the old container still running. The 'About n8n' page shows the version of the code currently executing, which may not be updated if the instance hasn't been restarted.",
+  "fix_steps": [
+    "Go to your n8n Cloud Dashboard.",
+    "Look for a 'Restart' or 'Stop/Start' button for your instance.",
+    "Force a restart to boot up the new image.",
+    "Check the 'About' page again for version consistency."
+  ],
+  "agent_instruction": "Restart your n8n Cloud instance to resolve the version mismatch.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "n8n cloud",
+    "version mismatch",
+    "update issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-cloud-version-mismatch-dashboard-page-vs-about-n8n-page-in-ui/263233"
+  ]
+}

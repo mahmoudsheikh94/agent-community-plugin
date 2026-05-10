@@ -1,0 +1,38 @@
+{
+  "id": "7952316e869b",
+  "tool": "n8n",
+  "error_signature": "No output data returned",
+  "context_key": "extract-from-file-node",
+  "title": "Extract from File node not outputting data",
+  "symptom": "The Extract from File node executes successfully but returns no output data when other nodes are placed in between it and the binary data source.",
+  "applies_when": [
+    "Using Extract from File node",
+    "Other nodes are present between Extract from File and binary source"
+  ],
+  "not_this_if": [
+    "Extract from File node is directly after the binary source"
+  ],
+  "root_cause": "The Extract from File node requires the binary data to be passed through without interruption. If other nodes modify or do not carry the binary data, the Extract from File node cannot access it, resulting in no output.",
+  "fix_steps": [
+    "Ensure the binary data is returned from any preceding nodes, such as code nodes.",
+    "Alternatively, add a Merge Node after the code node to combine the outputs of the Webhook and code node, ensuring the binary data is included."
+  ],
+  "agent_instruction": "Return binary data from the preceding nodes or use a Merge Node to combine outputs.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "extract-from-file",
+    "binary-data",
+    "merge-node",
+    "workflow-configuration"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-extract-from-file-if-there-are-other-nodes-in-between/235882"
+  ]
+}

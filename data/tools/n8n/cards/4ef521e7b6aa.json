@@ -1,0 +1,39 @@
+{
+  "id": "4ef521e7b6aa",
+  "tool": "n8n",
+  "error_signature": "metafield not found for update",
+  "context_key": "shopify-node",
+  "title": "Shopify metafield not found for update",
+  "symptom": "When attempting to update a metafield that hasn't been created yet, the update fails because the metafield ID cannot be retrieved.",
+  "applies_when": [
+    "Using Shopify API",
+    "Trying to update a metafield that may not exist"
+  ],
+  "not_this_if": [
+    "The metafield already exists and has an ID"
+  ],
+  "root_cause": "The error occurs because the metafield you are trying to update does not exist in Shopify. When a metafield is empty or hasn't been created, the API does not return an ID, leading to an inability to perform updates.",
+  "fix_steps": [
+    "First, query the Shopify API to check if the metafield exists using the appropriate GraphQL query.",
+    "If the metafield does not exist, create it using the `metafieldCreate` mutation.",
+    "If it does exist, proceed to update it using the `metafieldUpdate` mutation."
+  ],
+  "agent_instruction": "Check for the existence of the metafield before attempting to update it.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "shopify",
+    "metafields",
+    "graphql",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-get-empty-shopify-product-collection-metafields-id/135789"
+  ]
+}

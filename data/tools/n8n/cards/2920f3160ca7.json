@@ -1,0 +1,41 @@
+{
+  "id": "2920f3160ca7",
+  "tool": "n8n",
+  "error_signature": "404 Not Found",
+  "context_key": "chat-node",
+  "title": "404 error when accessing publicly available chat",
+  "symptom": "After enabling the 'Make Chat Publicly Available' option, accessing the generated URL results in a 404 Not Found error.",
+  "applies_when": [
+    "Using the 'When chat message received' node",
+    "Chat is set to be publicly available"
+  ],
+  "not_this_if": [
+    "Chat is accessed from the editor",
+    "Environment variable N8N_DISABLE_PRODUCTION_MAIN_PROCESS is not set to 1"
+  ],
+  "root_cause": "The error occurs because the environment variable N8N_DISABLE_PRODUCTION_MAIN_PROCESS is set to 1, which prevents the main process from running in production mode, leading to the 404 error when trying to access the public chat URL.",
+  "fix_steps": [
+    "Access your environment variables for n8n",
+    "Locate the N8N_DISABLE_PRODUCTION_MAIN_PROCESS variable",
+    "Change its value from 1 to True or remove it entirely",
+    "Restart your n8n service"
+  ],
+  "agent_instruction": "Remove or change the N8N_DISABLE_PRODUCTION_MAIN_PROCESS environment variable and restart the service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "chat",
+    "404",
+    "webhook",
+    "environment-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/publicly-available-chat-404/92462"
+  ]
+}

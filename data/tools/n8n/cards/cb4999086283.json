@@ -1,0 +1,41 @@
+{
+  "id": "cb4999086283",
+  "tool": "n8n",
+  "error_signature": "connection refused",
+  "context_key": "gmail-send-and-wait-node",
+  "title": "Gmail node generates localhost approval links",
+  "symptom": "The Gmail 'Send Message and Wait for Response' node generates approval links pointing to 'http://localhost:5678', leading to 'connection refused' errors when clicked by recipients.",
+  "applies_when": [
+    "Using Gmail 'Send and Wait for Response' node",
+    "Self-hosted n8n instance with Docker"
+  ],
+  "not_this_if": [
+    "Using a different node that does not generate localhost links",
+    "Running n8n in a non-Docker environment"
+  ],
+  "root_cause": "The issue arises when the n8n instance is configured in queue mode, which can lead to incorrect URL generation for approval links. This misconfiguration causes the links to default to localhost instead of the intended domain.",
+  "fix_steps": [
+    "Downgrade the n8n instance to a previous version that does not use queue mode",
+    "Restart the n8n instance",
+    "Test the Gmail node again to ensure approval links are generated correctly"
+  ],
+  "agent_instruction": "Downgrade the n8n instance to resolve the localhost link issue.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "gmail",
+    "localhost",
+    "connection-refused",
+    "docker",
+    "queue-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.12.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/localhost-http-localhost-5678-error-when-using-e-g-slack-or-gmail-send-and-wait-for-response-nodes/234166"
+  ]
+}

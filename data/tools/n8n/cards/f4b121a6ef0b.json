@@ -1,0 +1,39 @@
+{
+  "id": "f4b121a6ef0b",
+  "tool": "n8n",
+  "error_signature": "empty results from SharePoint API",
+  "context_key": "microsoft-graph-api",
+  "title": "Empty results from SharePoint API due to incorrect endpoint",
+  "symptom": "When querying the SharePoint API for folders/files, the response is empty despite correct permissions. The user sees an empty 'value' array in the response.",
+  "applies_when": [
+    "Using SharePoint API endpoint",
+    "Correct permissions granted"
+  ],
+  "not_this_if": [
+    "Using Microsoft Graph API endpoint"
+  ],
+  "root_cause": "The user was attempting to access SharePoint resources using the SharePoint API instead of the Microsoft Graph API. The Microsoft Graph API is the recommended approach for accessing SharePoint data, and using the wrong endpoint results in empty responses.",
+  "fix_steps": [
+    "Change the API endpoint to the Microsoft Graph API",
+    "Use the appropriate HTTP request format for Microsoft Graph",
+    "Test the request to ensure it returns the expected results"
+  ],
+  "agent_instruction": "Switch to using the Microsoft Graph API for accessing SharePoint data.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "sharepoint",
+    "microsoft-graph",
+    "api-endpoint",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sharepoint-rest-api-always-returns-empty-results-despite-correct-permissions-n8n-azure-graph/114711"
+  ]
+}

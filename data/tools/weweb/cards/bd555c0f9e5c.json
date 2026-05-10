@@ -1,0 +1,40 @@
+{
+  "id": "bd555c0f9e5c",
+  "tool": "weweb",
+  "error_signature": "401 error when trying to retrieve the user",
+  "context_key": "Xano integration",
+  "title": "401 Error Fetching User Record from Xano",
+  "symptom": "When attempting to retrieve a user record using Xano, a 401 error is returned. This indicates an authentication issue with the request.",
+  "applies_when": [
+    "Using Xano for user authentication",
+    "Binding the auth token incorrectly"
+  ],
+  "not_this_if": [
+    "The auth token is correctly bound to the request"
+  ],
+  "root_cause": "The 401 error occurs because the request is not sending the expected access token. Instead of sending just the token, the request is sending an object that contains the token, which Xano cannot process correctly.",
+  "fix_steps": [
+    "Open the settings for the Xano integration",
+    "Ensure that the auth token is bound directly to the token value, not the object containing it",
+    "Save the changes",
+    "Retry the request to fetch the user record"
+  ],
+  "agent_instruction": "Bind the auth token directly to its value in the Xano integration settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "401-error",
+    "user-authentication",
+    "token-binding"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/401-error-fetch-user-record/4527"
+  ]
+}

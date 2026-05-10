@@ -1,0 +1,42 @@
+{
+  "id": "6cbc8828c75d",
+  "tool": "n8n",
+  "error_signature": "Error: Command \"start\" not found",
+  "context_key": "docker-compose",
+  "title": "Docker Compose command 'start' not found error",
+  "symptom": "When running `docker compose up -d`, the `n8n` container fails to start with the error 'Command \"start\" not found'. This prevents the n8n service from launching properly.",
+  "applies_when": [
+    "Using Docker Compose to run n8n",
+    "Configured with PostgreSQL and Redis"
+  ],
+  "not_this_if": [
+    "Container starts successfully without errors",
+    "Using a different storage configuration"
+  ],
+  "root_cause": "The error occurs because the command specified for the n8n container is not recognized. This can happen if the storage volume is incorrectly configured or if the command is not set properly in the Docker Compose file.",
+  "fix_steps": [
+    "Change the volume configuration in the Docker Compose file to use a named volume instead of a bind mount.",
+    "For example, replace './n8n_data:/home/node/.n8n' with 'n8n_data:/home/node/.n8n'.",
+    "Run 'docker compose down' to stop and remove the existing containers.",
+    "Run 'docker compose up -d' to start the containers again."
+  ],
+  "agent_instruction": "Update the Docker Compose file to use a named volume for n8n storage and restart the containers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "docker-compose",
+    "n8n",
+    "postgres",
+    "redis"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-command-start-not-found-using-docker-compose/180799"
+  ]
+}

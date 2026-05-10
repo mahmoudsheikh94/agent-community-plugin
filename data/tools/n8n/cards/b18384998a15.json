@@ -1,0 +1,41 @@
+{
+  "id": "b18384998a15",
+  "tool": "n8n",
+  "error_signature": "400 error",
+  "context_key": "http_request-node",
+  "title": "HTTP 400 error when accessing Gemini API",
+  "symptom": "When using the http_request node to access the Gemini API, a 400 error is returned. The same request works perfectly with curl.",
+  "applies_when": [
+    "Using http_request node",
+    "Configured to access Gemini API"
+  ],
+  "not_this_if": [
+    "Request works with curl",
+    "Method is set to POST"
+  ],
+  "root_cause": "The http_request node is configured to use the GET method, which is not compatible with the Gemini API's requirements for this endpoint. The API expects a POST request with a JSON body, leading to the 400 error when the wrong method is used.",
+  "fix_steps": [
+    "Open the http_request node settings",
+    "Change the 'Method' from GET to POST",
+    "Ensure the request body is correctly formatted as JSON",
+    "Save the workflow and execute it again"
+  ],
+  "agent_instruction": "Change the HTTP method to POST in the http_request node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http_request",
+    "gemini-api",
+    "400-error",
+    "post-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-on-gemini-api/114000"
+  ]
+}

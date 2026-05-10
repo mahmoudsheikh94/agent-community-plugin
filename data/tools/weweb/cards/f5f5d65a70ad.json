@@ -1,0 +1,38 @@
+{
+  "id": "f5f5d65a70ad",
+  "tool": "weweb",
+  "error_signature": "Select input field does not reset to placeholder",
+  "context_key": "select-input",
+  "title": "Resetting Select Input Field to Placeholder",
+  "symptom": "After a user removes their selection from a Select input field, the previously selected value remains visible instead of showing the placeholder text.",
+  "applies_when": [
+    "User has selected an option in the Select input",
+    "User wants to reset the selection"
+  ],
+  "not_this_if": [
+    "Select input is already showing the placeholder text"
+  ],
+  "root_cause": "The Select input field retains the last selected value even after the user attempts to clear their selection, which can lead to confusion if the placeholder is not displayed.",
+  "fix_steps": [
+    "Create a clear button in the UI",
+    "Add a workflow to the button that resets the Select input variable to empty when clicked"
+  ],
+  "agent_instruction": "Implement a clear button that resets the Select input to show the placeholder text again.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "select-input",
+    "reset",
+    "placeholder",
+    "workflow"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-reset-a-select-input/6966"
+  ]
+}

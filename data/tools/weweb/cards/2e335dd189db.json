@@ -1,0 +1,41 @@
+{
+  "id": "2e335dd189db",
+  "tool": "weweb",
+  "error_signature": "404 Not Found",
+  "context_key": "magic-link-auth page",
+  "title": "404 error when accessing magic link",
+  "symptom": "When trying to access the magic link, the user receives a 404 error indicating the page does not exist.",
+  "applies_when": [
+    "Using a magic link with a token",
+    "The page route is incorrect"
+  ],
+  "not_this_if": [
+    "The correct page route is used",
+    "The token is valid and the page exists"
+  ],
+  "root_cause": "The 404 error occurs because the URL is pointing to a non-existent page ('magic-link-auth') instead of the intended page ('update_password'). This mismatch leads to the server not finding the requested resource.",
+  "fix_steps": [
+    "Change the URL to point to the correct page route, which is 'update_password'.",
+    "Ensure that the query parameter 'token' is included in the URL.",
+    "Create a query parameter variable called 'token' on the 'update_password' page to store the token value."
+  ],
+  "agent_instruction": "Update the magic link URL to point to 'update_password' instead of 'magic-link-auth'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "magic link",
+    "404 error",
+    "Xano",
+    "SendGrid",
+    "URL parameters"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/extract-magic-token-from-url/5636"
+  ]
+}

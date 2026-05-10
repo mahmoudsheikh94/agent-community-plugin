@@ -1,0 +1,40 @@
+{
+  "id": "595a70d30c80",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'fs'",
+  "context_key": "code-node",
+  "title": "Accessing 'fs' module in Code node fails",
+  "symptom": "When trying to use the built-in 'fs' module in a Code node, n8n throws 'Cannot find module 'fs''. This prevents the execution of the code that relies on this module.",
+  "applies_when": [
+    "Using Code node",
+    "Attempting to access built-in Node.js modules"
+  ],
+  "not_this_if": [
+    "Using Execute Command node",
+    "Using Read File From Disk node"
+  ],
+  "root_cause": "n8n's Code node uses vm2 for sandboxing, which restricts access to certain built-in Node.js modules like 'fs', 'child_process', and 'net' to prevent unsafe operations. This is a security feature to ensure that the execution environment is safe.",
+  "fix_steps": [
+    "Use an Execute Command node to check file existence",
+    "Alternatively, use the Read File From Disk node to read the file and check if the output is not empty"
+  ],
+  "agent_instruction": "Replace the Code node with either an Execute Command node or a Read File From Disk node to handle file operations.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "code-node",
+    "fs",
+    "vm2",
+    "sandboxing",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.88.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-solve-issue-with-cannot-find-module-fs-line-1-in-code-node/101727"
+  ]
+}

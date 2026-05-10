@@ -1,0 +1,39 @@
+{
+  "id": "f218a42fb568",
+  "tool": "n8n",
+  "error_signature": "must contain a binary file 'data', but none was found [item 0]",
+  "context_key": "Mistral Upload Node",
+  "title": "Missing binary file 'data' in Mistral Upload Node",
+  "symptom": "When attempting to upload multiple PDFs, the workflow throws an error stating 'must contain a binary file 'data', but none was found [item 0]'. This occurs specifically when reaching the Mistral Upload Node.",
+  "applies_when": [
+    "Using Mistral Upload Node",
+    "Uploading multiple PDF files"
+  ],
+  "not_this_if": [
+    "Only one PDF is uploaded successfully"
+  ],
+  "root_cause": "The Mistral Upload Node requires the input data to include a binary file named 'data'. When multiple files are uploaded, the workflow may not be correctly structured to provide this binary data, leading to the error.",
+  "fix_steps": [
+    "Ensure that the binary files are correctly split and mapped in the workflow.",
+    "Check the input data field settings in the Mistral Upload Node to confirm it is set to receive the binary data."
+  ],
+  "agent_instruction": "Verify the binary file mapping in the Mistral Upload Node and ensure it receives the correct input data.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Mistral",
+    "Upload Node",
+    "binary file",
+    "PDF",
+    "error handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-avoid-must-contain-a-binary-file-data-but-none-was-found-item-0/92595"
+  ]
+}

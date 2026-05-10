@@ -1,0 +1,41 @@
+{
+  "id": "c4e2613050e6",
+  "tool": "n8n",
+  "error_signature": "n8n version remains unchanged after upgrade",
+  "context_key": "docker-compose",
+  "title": "n8n version not updating due to volume mount",
+  "symptom": "After upgrading the n8n Docker image, the version remains at 1.73.1 despite pulling the latest image. Checking the version inside the container also shows the old version.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Upgrading to a new image version"
+  ],
+  "not_this_if": [
+    "No volume mounts are configured in docker-compose.yml"
+  ],
+  "root_cause": "The issue arises when the `node_modules` directory is mounted as a volume in the `docker-compose.yml` file. This prevents the new version of n8n from being properly installed, as the mounted volume retains the old version's files.",
+  "fix_steps": [
+    "Open the docker-compose.yml file",
+    "Locate the volume mount for node_modules",
+    "Remove the volume mount for node_modules",
+    "Re-run 'docker compose down' and 'docker compose up -d'"
+  ],
+  "agent_instruction": "Remove the volume mount for node_modules in your docker-compose.yml and restart the n8n service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "upgrade",
+    "version",
+    "docker-compose"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/docker-pull-new-image-but-version-appears-unchanged-solved/78826"
+  ]
+}

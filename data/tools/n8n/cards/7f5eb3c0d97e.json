@@ -1,0 +1,40 @@
+{
+  "id": "7f5eb3c0d97e",
+  "tool": "n8n",
+  "error_signature": "execute node runs entire workflow instead of single node",
+  "context_key": "execute-node-feature",
+  "title": "Execute node runs entire workflow instead of single node",
+  "symptom": "When using the execute node feature, the entire workflow is triggered instead of just the selected node. This makes testing specific nodes inefficient.",
+  "applies_when": [
+    "Using the execute node feature",
+    "Trying to test a single node after a workflow run"
+  ],
+  "not_this_if": [
+    "No previous workflow run data available",
+    "Node is not part of a chain"
+  ],
+  "root_cause": "The execute node feature in n8n is designed to check the entire workflow chain. Without pinning the output node, it defaults to executing the whole workflow, which can be inefficient for testing individual nodes.",
+  "fix_steps": [
+    "Identify the output node that feeds into the node you want to test",
+    "Pin the output node to lock the data in place",
+    "Use the execute node feature to run the specific node"
+  ],
+  "agent_instruction": "Pin the output node that feeds into your target node before executing it.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "execute-node",
+    "workflow-testing",
+    "node-testing",
+    "efficiency"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/im-hitting-a-bit-of-a-snag-while-working-with-n8n/196494"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "77ccec49578a",
+  "tool": "n8n",
+  "error_signature": "The node ‘Get Google Sheet’ doesn’t exist, but it’s used in an expression here.",
+  "context_key": "Create Workflow node",
+  "title": "Expression validation error when duplicating workflows",
+  "symptom": "When trying to duplicate Workflow A using Workflow B, an error occurs stating that a node used in an expression does not exist in Workflow B.",
+  "applies_when": [
+    "Duplicating a workflow with nodes that are not present in the new workflow",
+    "Using expressions that reference non-existent nodes"
+  ],
+  "not_this_if": [
+    "The workflow being duplicated has all nodes present in the new workflow"
+  ],
+  "root_cause": "The 'Create Workflow' node in n8n attempts to validate all expressions in the workflow JSON being sent. If any referenced nodes do not exist in the new workflow, it throws an error, preventing the duplication process.",
+  "fix_steps": [
+    "Use an HTTP Request node to GET the JSON of Workflow A.",
+    "Add a Code node to modify the response, ensuring it strips out any IDs and renames as necessary.",
+    "Use another HTTP Request node to POST the modified JSON to create the new workflow."
+  ],
+  "agent_instruction": "Implement the suggested nodes to bypass expression validation during workflow duplication.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "workflow-duplication",
+    "expression-validation",
+    "http-request",
+    "code-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-made-a-workflow-to-duplicate-another-workflow-but-i-am-facing-issue-with-expressions-conflict/227118"
+  ]
+}

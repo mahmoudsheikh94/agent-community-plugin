@@ -1,0 +1,39 @@
+{
+  "id": "da2ab450b004",
+  "tool": "weweb",
+  "error_signature": "overflow for the form section needed to be set to SCROLL",
+  "context_key": "sticky-header-footer",
+  "title": "Form section overflow not set to SCROLL",
+  "symptom": "The main section does not expand properly, causing layout issues with the sticky header and footer.",
+  "applies_when": [
+    "Using sticky header and footer",
+    "Form section is present"
+  ],
+  "not_this_if": [
+    "Layout works correctly without sticky elements"
+  ],
+  "root_cause": "The overflow property of the form section controls how content is displayed when it exceeds the container's size. If it's not set to SCROLL, the layout can break, preventing the main section from expanding as intended.",
+  "fix_steps": [
+    "Select the form section in the editor",
+    "Set the overflow property to SCROLL",
+    "Save the changes and refresh the page"
+  ],
+  "agent_instruction": "Set the overflow property of the form section to SCROLL.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sticky-header",
+    "sticky-footer",
+    "form-section",
+    "overflow"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/sticky-header-footer-troubleshooting/3977"
+  ]
+}

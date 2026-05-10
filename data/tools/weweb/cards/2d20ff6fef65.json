@@ -1,0 +1,40 @@
+{
+  "id": "2d20ff6fef65",
+  "tool": "weweb",
+  "error_signature": "ChartJS resets values to 0 on data update",
+  "context_key": "ChartJS",
+  "title": "ChartJS resets on dataset update",
+  "symptom": "When updating the dataset in ChartJS, the chart resets its values to 0 before re-rendering. This disrupts the expected display of data.",
+  "applies_when": [
+    "Using ChartJS for data visualization",
+    "Updating the dataset"
+  ],
+  "not_this_if": [
+    "Chart does not reset when data is updated",
+    "Using a different charting library"
+  ],
+  "root_cause": "ChartJS may not handle data updates smoothly, causing it to reset values to 0 before re-rendering. This behavior can be exacerbated by how the chart is rendered in WeWeb.",
+  "fix_steps": [
+    "Create a variable named 'isRendered' in your component state.",
+    "Set 'isRendered' to false when updating the dataset.",
+    "Immediately set 'isRendered' back to true to force a re-render of the chart."
+  ],
+  "agent_instruction": "Implement conditional rendering using the 'isRendered' variable to manage chart updates.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "ChartJS",
+    "data-update",
+    "re-render",
+    "visualization"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/chartjs-resets-on-data-update/8986"
+  ]
+}

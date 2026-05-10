@@ -1,0 +1,40 @@
+{
+  "id": "6f9aae8624a6",
+  "tool": "n8n",
+  "error_signature": "Google Sheets only adds one row from multiple JSON objects",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets node only adds one row for multiple JSON objects",
+  "symptom": "When trying to add multiple rows to Google Sheets from an array of JSON objects, only one row is added instead of multiple.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Input is an array of JSON objects"
+  ],
+  "not_this_if": [
+    "Input is already in the correct format",
+    "Using a different node for Google Sheets"
+  ],
+  "root_cause": "The Google Sheets node processes each item individually. If the input is a single array, it treats it as one item, resulting in only one row being added. To add multiple rows, the array must be split into individual items.",
+  "fix_steps": [
+    "Add a Split Out node before the Google Sheets node",
+    "Connect the Split Out node to the Google Sheets node",
+    "Configure the Split Out node to split the input array into individual items"
+  ],
+  "agent_instruction": "Use a Split Out node to split the input array into individual JSON objects before the Google Sheets node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "split-out",
+    "json",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheets-only-adds-one-row-from-multiple-json-objects-input/77387"
+  ]
+}

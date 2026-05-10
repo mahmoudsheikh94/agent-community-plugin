@@ -1,0 +1,41 @@
+{
+  "id": "3640d940ae20",
+  "tool": "n8n",
+  "error_signature": "defaulting to localhost for webhook URLs",
+  "context_key": "n8n-nginx-setup",
+  "title": "Webhook URLs defaulting to localhost",
+  "symptom": "When inviting users to access n8n, the links generated show 'http://localhost:5678' instead of the intended FQDN.",
+  "applies_when": [
+    "n8n is running behind an nginx proxy",
+    "WEBHOOK_URL environment variable is not set"
+  ],
+  "not_this_if": [
+    "n8n is running in Docker",
+    "WEBHOOK_URL is correctly configured"
+  ],
+  "root_cause": "n8n does not automatically detect that it is behind an nginx proxy, leading it to default to localhost for webhook URLs. This can cause issues when sharing links with users.",
+  "fix_steps": [
+    "Edit the n8n service file located at '/etc/systemd/system/n8n.service'.",
+    "Add the line 'Environment=\"WEBHOOK_URL=https://your-machine.your-domain.de\"' under the '[Service]' section.",
+    "Run 'sudo systemctl daemon-reload' to apply the changes.",
+    "Restart n8n with 'sudo systemctl restart n8n'."
+  ],
+  "agent_instruction": "Set the WEBHOOK_URL environment variable in the n8n service file to your FQDN.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "webhook",
+    "environment-variable",
+    "n8n-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/url-change-localhost-to-servername/269912"
+  ]
+}

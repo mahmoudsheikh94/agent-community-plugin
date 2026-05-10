@@ -1,0 +1,40 @@
+{
+  "id": "64fddbc7801f",
+  "tool": "n8n",
+  "error_signature": "Unknown field name: \"message\"",
+  "context_key": "airtable-node",
+  "title": "Airtable error due to unknown field name",
+  "symptom": "When executing the 'Create a record' node in Airtable, an error occurs stating 'Unknown field name: \"message\"'. This prevents the record from being created.",
+  "applies_when": [
+    "Using Airtable node",
+    "Creating a record with specific fields"
+  ],
+  "not_this_if": [
+    "The error does not mention unknown field names",
+    "Using a different node or service"
+  ],
+  "root_cause": "The error occurs because the JSON data being sent to Airtable includes a field name that does not exist in the specified table schema. This can happen if the field name is misspelled or if it has not been created in Airtable.",
+  "fix_steps": [
+    "Check the field names in your Airtable table schema",
+    "Ensure that all field names in your JSON match exactly with those in Airtable",
+    "Remove or correct any unknown field names in your request"
+  ],
+  "agent_instruction": "Verify and correct the field names in your Airtable node's JSON data to match the table schema.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "create-record",
+    "unknown-field",
+    "error-code-422"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/level-one-2-inserting-data-into-airtable-problem/232322"
+  ]
+}

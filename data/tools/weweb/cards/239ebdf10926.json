@@ -1,0 +1,40 @@
+{
+  "id": "239ebdf10926",
+  "tool": "weweb",
+  "error_signature": "AxiosError: Network Error",
+  "context_key": "Xano plugin",
+  "title": "Network Error with Xano plugin in WeWeb",
+  "symptom": "When trying to add a collection using the Xano plugin, a 'Network Error' occurs. This prevents the workflow from executing properly.",
+  "applies_when": [
+    "Using Xano plugin",
+    "Attempting to add a collection"
+  ],
+  "not_this_if": [
+    "Xano Auth plugin and REST API are functioning correctly"
+  ],
+  "root_cause": "The error occurs because the Xano plugin installed previously is outdated and does not support the current METADATA API required by WeWeb. This can lead to network errors when trying to fetch collections.",
+  "fix_steps": [
+    "Remove the outdated Xano plugin from WeWeb",
+    "Reinstall the latest version of the Xano plugin",
+    "Try adding the collection again"
+  ],
+  "agent_instruction": "Remove the outdated Xano plugin and reinstall the latest version.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "plugin",
+    "network-error",
+    "axios",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/axios-error-with-xano-plugin/9681"
+  ]
+}

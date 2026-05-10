@@ -1,0 +1,40 @@
+{
+  "id": "17a41791bf96",
+  "tool": "n8n",
+  "error_signature": "unable to merge data",
+  "context_key": "merge-node",
+  "title": "Issue merging data in n8n",
+  "symptom": "The user is unable to merge overdue and today's tasks in a single message. The merge operation does not yield the expected results.",
+  "applies_when": [
+    "Using Merge node",
+    "Combining data from multiple sources"
+  ],
+  "not_this_if": [
+    "Merge node is already set to Combine mode with All Possible Combinations"
+  ],
+  "root_cause": "The Merge node in n8n can operate in different modes. If it is not set to Combine mode with All Possible Combinations, it may not merge the data as intended, leading to incomplete or incorrect outputs.",
+  "fix_steps": [
+    "Open the Merge node settings",
+    "Set the mode to Combine and select All Possible Combinations",
+    "Save the workflow",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Change the Merge node to Combine mode with All Possible Combinations.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "merge",
+    "todoist",
+    "n8n",
+    "data-combination"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/not-able-to-merge-data/113910"
+  ]
+}

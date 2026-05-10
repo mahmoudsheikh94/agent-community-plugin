@@ -1,0 +1,39 @@
+{
+  "id": "b04e3b56fbd8",
+  "tool": "n8n",
+  "error_signature": "The expression evaluated to a falsy value: a.ok(nodeExists)*",
+  "context_key": "if-node",
+  "title": "IF node evaluates to falsy value",
+  "symptom": "The IF node fails to execute properly, displaying an error about a falsy value. This prevents the workflow from proceeding as expected.",
+  "applies_when": [
+    "Using IF node",
+    "Expression or fixed value is set"
+  ],
+  "not_this_if": [
+    "The workflow executes without issues after saving and reloading"
+  ],
+  "root_cause": "The IF node may not evaluate correctly due to a temporary state or caching issue in the n8n interface. Saving the workflow and reloading the page can refresh the context and resolve the issue.",
+  "fix_steps": [
+    "Save the current workflow",
+    "Reload the n8n page",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Save the workflow and reload the n8n interface to resolve the IF node issue.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "if-node",
+    "workflow",
+    "evaluation",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.82.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/if-node-never-works/88286"
+  ]
+}

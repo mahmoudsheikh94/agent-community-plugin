@@ -1,0 +1,40 @@
+{
+  "id": "4dc07cd3a7ee",
+  "tool": "n8n",
+  "error_signature": "QR code does not appear in the execution results",
+  "context_key": "evolution-api",
+  "title": "QR code not rendering due to outdated Docker image",
+  "symptom": "When trying to connect the Evolution API to n8n, the QR code fails to appear in the execution results.",
+  "applies_when": [
+    "Using the Evolution API with n8n",
+    "Running on a local Docker setup"
+  ],
+  "not_this_if": [
+    "Using the latest Docker image for Evolution API"
+  ],
+  "root_cause": "The issue arises from using an outdated Docker image for the Evolution API, which is no longer maintained and does not support QR code rendering properly. The current image on Docker Hub has the necessary updates and fixes.",
+  "fix_steps": [
+    "Open your Docker Compose file.",
+    "Locate the line that specifies the image: 'image: atendai/evolution-api:latest'.",
+    "Change it to 'image: evoapicloud/evolution-api:latest'.",
+    "Save the changes and restart your Docker containers."
+  ],
+  "agent_instruction": "Update the Docker image for the Evolution API in your Compose file and restart the containers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "evolution-api",
+    "docker",
+    "qr-code",
+    "image-update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/can-you-help-a-noob-with-evolution-app/254815"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "99b3253c1410",
+  "tool": "n8n",
+  "error_signature": "binary file not accessible after processing node",
+  "context_key": "on-submission-form-node",
+  "title": "Binary file not accessible after processing node",
+  "symptom": "After processing a binary file from the 'On submission form' node, the binary data is not available in subsequent nodes.",
+  "applies_when": [
+    "Using 'On submission form' node",
+    "Processing binary data in subsequent nodes"
+  ],
+  "not_this_if": [
+    "Binary data is accessible in subsequent nodes",
+    "No processing nodes are used"
+  ],
+  "root_cause": "The binary data may not be correctly referenced or passed through the workflow after the initial node. This can occur if the syntax used to access the binary data is incorrect or if the workflow structure does not properly carry the binary data forward.",
+  "fix_steps": [
+    "Change the syntax from `={{ $('On form submission').item.binary.data }}` to `data` in the last node.",
+    "Consider using a merge node to combine inputs if multiple processing nodes are involved.",
+    "Use a set field node after the form submission to include other input fields, ensuring the binary file is carried forward."
+  ],
+  "agent_instruction": "Update the last node to reference the binary data correctly and use a set field node to carry the binary file forward.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "binary-data",
+    "on-submission-form",
+    "workflow-structure",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-take-binary-file-from-node-on-submission-form-through-all-nodes/279020"
+  ]
+}

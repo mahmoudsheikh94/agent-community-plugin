@@ -1,0 +1,39 @@
+{
+  "id": "04ebdff3fb4d",
+  "tool": "n8n",
+  "error_signature": "multiple executions due to webhook calls",
+  "context_key": "wait-node",
+  "title": "Multiple executions caused by wait node and webhook configuration",
+  "symptom": "The automation runs multiple executions (2-5) each time it is triggered, causing a queue in n8n. This affects the performance of other automations relying on Vapi.",
+  "applies_when": [
+    "Using a wait node configured to resume on a webhook call",
+    "Receiving multiple webhook calls from Vapi"
+  ],
+  "not_this_if": [
+    "Using separate workflows for call initiation and end of call processing"
+  ],
+  "root_cause": "The wait node is receiving multiple webhook calls due to Vapi sending both 'end of call report' and 'status update' messages, which can lead to multiple executions in n8n. This is exacerbated by n8n's sequential processing of webhooks in non-Enterprise plans.",
+  "fix_steps": [
+    "Configure Vapi to send only 'end of call report' messages by adjusting the server messages in the API call.",
+    "Implement a switch node after the wait node to handle different types of webhook responses and control the flow based on the received message."
+  ],
+  "agent_instruction": "Adjust the Vapi API call configuration and implement a switch node to manage webhook responses effectively.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wait-node",
+    "webhook",
+    "vapi",
+    "multiple-executions",
+    "automation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.122.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/wait-node-causing-multiple-executions/234316"
+  ]
+}

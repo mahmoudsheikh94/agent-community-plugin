@@ -1,0 +1,38 @@
+{
+  "id": "2c4311f1b2df",
+  "tool": "n8n",
+  "error_signature": "Column to match on not found in input item",
+  "context_key": "postgres-node",
+  "title": "Postgres upsert fails due to missing column in input",
+  "symptom": "The upsert operation in the Postgres node fails with the error 'Column to match on not found in input item'. This occurs even when the columns are explicitly mapped.",
+  "applies_when": [
+    "Using Postgres node for upsert",
+    "Input items contain columns to match"
+  ],
+  "not_this_if": [
+    "Input items have valid non-null values for matching columns"
+  ],
+  "root_cause": "The error occurs because the specified column(s) to match on, such as 'Link', are null or empty in the input data. The upsert operation requires valid values to perform the match, and null values lead to this error.",
+  "fix_steps": [
+    "Ensure that the input data for the 'Link' column is not null or empty.",
+    "If necessary, add a conditional check to handle cases where 'Link' is null."
+  ],
+  "agent_instruction": "Check and ensure that the 'Link' column in the input data has valid values before executing the upsert.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "postgres",
+    "upsert",
+    "null-value",
+    "input-validation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgres-supabase-upsert-column-to-match-on-not-found-in-input-item/230810"
+  ]
+}

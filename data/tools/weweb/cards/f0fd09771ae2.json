@@ -1,0 +1,42 @@
+{
+  "id": "f0fd09771ae2",
+  "tool": "weweb",
+  "error_signature": "if statement not transforming into a weweb formula",
+  "context_key": "toggle-pricing",
+  "title": "Incorrect if statement format in pricing toggle",
+  "symptom": "The toggle for changing subscription pricing between monthly and yearly does not work as expected due to a formatting issue in the if statement.",
+  "applies_when": [
+    "Using a toggle to switch between pricing options",
+    "Binding the toggle to a formula"
+  ],
+  "not_this_if": [
+    "The toggle works correctly in other scenarios",
+    "The formula is correctly formatted"
+  ],
+  "root_cause": "The if statement in the formula is incorrectly formatted due to an extra space between 'if' and the opening bracket. This prevents the formula from being recognized and executed properly by WeWeb.",
+  "fix_steps": [
+    "Locate the if statement in your formula",
+    "Remove any spaces between 'if' and the opening bracket",
+    "Save the changes",
+    "Test the toggle functionality again"
+  ],
+  "agent_instruction": "Correct the formatting of the if statement in your pricing toggle formula.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "stripe",
+    "toggle",
+    "pricing",
+    "if-statement",
+    "formula"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/toggle-change-pricing-month-or-yearly/7744"
+  ]
+}

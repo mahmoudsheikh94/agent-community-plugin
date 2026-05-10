@@ -1,0 +1,40 @@
+{
+  "id": "f6775a50f2f9",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'xlsx-populate'",
+  "context_key": "code-node",
+  "title": "Missing xlsx-populate module in Code node",
+  "symptom": "When executing a Code node that requires the 'xlsx-populate' library, n8n throws an error stating 'Cannot find module 'xlsx-populate'.",
+  "applies_when": [
+    "Using Code node",
+    "Attempting to require 'xlsx-populate'"
+  ],
+  "not_this_if": [
+    "The library is installed locally in the project",
+    "The error is unrelated to module imports"
+  ],
+  "root_cause": "The error occurs because the 'xlsx-populate' library is not installed in the environment where n8n is running. If the library is not installed globally or not allowed as an external dependency, n8n cannot access it.",
+  "fix_steps": [
+    "Install the 'xlsx-populate' library globally using 'npm i -g xlsx-populate'",
+    "Set the NODE_FUNCTION_ALLOW_EXTERNAL environment variable to include 'xlsx-populate'",
+    "Restart n8n to apply the changes"
+  ],
+  "agent_instruction": "Install the 'xlsx-populate' library globally and set the NODE_FUNCTION_ALLOW_EXTERNAL variable.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "xlsx-populate",
+    "module-not-found",
+    "npm"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/use-the-xlsx-populate-library-in-code-node-n8n/104038"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "36b1e8c01b46",
+  "tool": "n8n",
+  "error_signature": "URL switches to http://localhost:5678/form-waiting",
+  "context_key": "n8n configuration",
+  "title": "Form submission redirects to localhost",
+  "symptom": "After submitting a form, the URL changes to 'http://localhost:5678/form-waiting', which is not accessible externally.",
+  "applies_when": [
+    "Using n8n with external URL",
+    "Running n8n via npm"
+  ],
+  "not_this_if": [
+    "Running n8n in a different environment (Docker, cloud)"
+  ],
+  "root_cause": "The n8n instance is not correctly configured to recognize the external URL, leading to it defaulting to localhost for webhook URLs. This often happens when environment variables are not set properly or the command is run from the wrong directory.",
+  "fix_steps": [
+    "Navigate to the n8n installation directory in your terminal.",
+    "Set the environment variables: 'set N8N_HOST=yyy.yyyyy.app', 'set N8N_PROTOCOL=https', 'set WEBHOOK_URL=https://yyy.yyyyy.app'.",
+    "Run 'n8n start' to launch the application."
+  ],
+  "agent_instruction": "Ensure you are in the n8n directory and set the correct environment variables before starting n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "configuration",
+    "webhook",
+    "localhost"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/form-switching-to-localhost/84691"
+  ]
+}

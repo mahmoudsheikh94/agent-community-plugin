@@ -1,0 +1,42 @@
+{
+  "id": "5751ba23fed6",
+  "tool": "n8n",
+  "error_signature": "Provided secret is not valid",
+  "context_key": "telegram-trigger",
+  "title": "Telegram trigger not responding due to invalid secret",
+  "symptom": "When using the Telegram trigger in test mode, n8n hangs and returns 'Provided secret is not valid'. No messages are triggered.",
+  "applies_when": [
+    "Using Telegram trigger",
+    "Running n8n behind a reverse proxy"
+  ],
+  "not_this_if": [
+    "Using Telegram trigger without a reverse proxy",
+    "Test mode works without issues"
+  ],
+  "root_cause": "The Telegram trigger may hang due to improper network configuration, especially when n8n is behind a reverse proxy that does not support websocket connections. This can prevent the trigger from receiving events properly.",
+  "fix_steps": [
+    "Check your reverse proxy configuration (Nginx, Caddy, etc.) for websocket support.",
+    "Add the provided configuration to your Nginx settings to enable websocket proxying.",
+    "Restart your Nginx server to apply the changes.",
+    "Reopen the n8n workflow and try the Telegram trigger in test mode again."
+  ],
+  "agent_instruction": "Update your reverse proxy configuration to support websockets and restart the server.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "trigger",
+    "websocket",
+    "nginx",
+    "reverse-proxy"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.76.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-testmode-doesnt-work/76311"
+  ]
+}

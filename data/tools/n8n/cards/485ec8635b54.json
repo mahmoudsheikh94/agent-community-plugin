@@ -1,0 +1,45 @@
+{
+  "id": "485ec8635b54",
+  "tool": "n8n",
+  "error_signature": "apps cannot reach your n8n instance",
+  "context_key": "whatsapp-telegram-nodes",
+  "title": "WhatsApp and Telegram nodes cannot reach n8n instance",
+  "symptom": "Activating WhatsApp and Telegram nodes results in connection issues, preventing them from starting. The error indicates that the apps cannot reach the n8n instance.",
+  "applies_when": [
+    "Using WhatsApp and Telegram nodes",
+    "n8n instance hosted on a VPS"
+  ],
+  "not_this_if": [
+    "n8n instance is accessible from the internet",
+    "webhooks are correctly configured"
+  ],
+  "root_cause": "The error occurs because the WhatsApp and Telegram services cannot send messages to the n8n instance due to network restrictions, firewall settings, or incorrect webhook configurations. This can happen if the n8n instance is not publicly accessible or if the webhook URL is misconfigured.",
+  "fix_steps": [
+    "Check and open port 5678 on your VPS firewall.",
+    "Ensure the n8n instance is reachable from the internet.",
+    "Use a domain name instead of an IP address in your webhook settings.",
+    "Manually set the Telegram webhook using a curl command.",
+    "Verify that the webhook is enabled in Meta's Developer Portal and that the URL is correct.",
+    "Check the port mapping in Portainer for the n8n container to ensure it is set to '5678:5678'.",
+    "If using Cloudflare, temporarily disable the proxy to allow webhooks."
+  ],
+  "agent_instruction": "Check firewall settings, open port 5678, and verify webhook configurations for WhatsApp and Telegram nodes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "telegram",
+    "webhook",
+    "firewall",
+    "vps"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-and-whatsapp-conection-problems/177814"
+  ]
+}

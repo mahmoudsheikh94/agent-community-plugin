@@ -1,0 +1,41 @@
+{
+  "id": "7df50c30538d",
+  "tool": "n8n",
+  "error_signature": "looping only processes the first item",
+  "context_key": "loop-over-items-node",
+  "title": "Loop Over Items Node Fails After First Item",
+  "symptom": "The workflow is expected to loop through multiple items, but it only processes the first item and then stops.",
+  "applies_when": [
+    "Using Loop Over Items node",
+    "Multiple items are present to process"
+  ],
+  "not_this_if": [
+    "No errors in subsequent nodes",
+    "Reset option is disabled"
+  ],
+  "root_cause": "The Loop Over Items node stops executing further iterations if any node within the loop encounters an error. Additionally, if the reset option is enabled, it may pass incorrect data to the next iteration, causing unexpected behavior.",
+  "fix_steps": [
+    "Check for errors in the nodes following the Loop Over Items node.",
+    "Set the 'Retry On Fail' or 'On Error' settings to allow continued execution despite errors.",
+    "Disable the 'reset' option in the Loop Over Items node.",
+    "Disable 'Always Output Data' in the Loop Over Items node."
+  ],
+  "agent_instruction": "Adjust the Loop Over Items node settings to prevent execution from stopping on errors.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "loop-over-items",
+    "workflow-execution",
+    "error-handling",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/urgent-probelm-with-loop-in-n8n-hosted-version-not-able-to-loop-through-items/166483"
+  ]
+}

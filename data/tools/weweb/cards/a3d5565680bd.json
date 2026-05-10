@@ -1,0 +1,41 @@
+{
+  "id": "a3d5565680bd",
+  "tool": "weweb",
+  "error_signature": "text not wrapping around image",
+  "context_key": "custom-css",
+  "title": "Text not wrapping around image due to CSS settings",
+  "symptom": "Text does not wrap around the image as expected when using float CSS. The layout appears broken.",
+  "applies_when": [
+    "Using custom CSS to style text and images",
+    "Image is placed within a parent div"
+  ],
+  "not_this_if": [
+    "Using default CSS settings without custom modifications"
+  ],
+  "root_cause": "The float property needs to be applied to the parent div of the image, not the image itself. Additionally, the parent div must be set to display: block instead of flex to allow proper text wrapping.",
+  "fix_steps": [
+    "Locate the parent div of the image in your HTML structure.",
+    "Add 'float: left;' or 'float: right;' to the parent div's CSS.",
+    "Ensure the parent div has 'display: block;' set.",
+    "Save the changes and refresh the page to see the effect."
+  ],
+  "agent_instruction": "Apply float CSS to the image's parent div and set it to display: block.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "css",
+    "float",
+    "text-wrapping",
+    "image",
+    "layout"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/wrap-text-around-image/4615"
+  ]
+}

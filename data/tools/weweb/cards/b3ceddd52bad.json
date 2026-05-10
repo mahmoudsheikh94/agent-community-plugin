@@ -1,0 +1,39 @@
+{
+  "id": "b3ceddd52bad",
+  "tool": "weweb",
+  "error_signature": "async code not returning expected results",
+  "context_key": "change-variable-action",
+  "title": "Async code not returning results in change variable action",
+  "symptom": "When trying to set a variable with an async function in a change variable action, it does not return the expected value.",
+  "applies_when": [
+    "Using async functions",
+    "In a change variable action within a workflow"
+  ],
+  "not_this_if": [
+    "Async function is used in a JS action"
+  ],
+  "root_cause": "In WeWeb, async functions do not behave as expected in certain contexts like change variable actions. They need to be executed in a JS action to properly handle async operations and return results.",
+  "fix_steps": [
+    "Add a JS action before the change variable action",
+    "Execute your async logic in the JS action and return the data",
+    "In the change variable action, use the 'result of step' from the JS action"
+  ],
+  "agent_instruction": "Use a JS action to handle async logic before the change variable action.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "async",
+    "js-action",
+    "change-variable",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/async-js-setting-a-variable/7332"
+  ]
+}

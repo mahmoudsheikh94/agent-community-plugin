@@ -4,7 +4,7 @@ import {
 } from "./chunk-GZG5ARJ7.js";
 import {
   validateCard
-} from "./chunk-SODTX4IE.js";
+} from "./chunk-QAQNMOTQ.js";
 import {
   redactText
 } from "./chunk-YHIXLTVA.js";
@@ -84,7 +84,7 @@ Safety notes:`);
   }
   case "ingest": {
     const subcommand = args[1];
-    const { handleIngestCommand } = await import("./cli-KJ2BPFDI.js");
+    const { handleIngestCommand } = await import("./cli-NYQDHYQH.js");
     await handleIngestCommand(subcommand, args.slice(2));
     break;
   }

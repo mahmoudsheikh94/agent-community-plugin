@@ -1,0 +1,41 @@
+{
+  "id": "ed2eb255a9ed",
+  "tool": "n8n",
+  "error_signature": "Error: Command \"start\" not found",
+  "context_key": "docker-volume-n8n-data",
+  "title": "Error when using local directory for n8n data",
+  "symptom": "When attempting to use a local directory instead of a Docker volume for n8n data, the error 'Command \"start\" not found' occurs.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Trying to mount a local directory for n8n data"
+  ],
+  "not_this_if": [
+    "Using the default Docker volume for n8n data"
+  ],
+  "root_cause": "The error occurs because the n8n instance cannot find the necessary configuration files or encryption keys in the newly mounted local directory, which may not have been properly initialized with the required data from the previous Docker volume.",
+  "fix_steps": [
+    "Stop the n8n Docker container if it is running.",
+    "Use 'docker volume inspect n8n_n8n_data' to find the mountpoint of the existing Docker volume.",
+    "Copy the data from the Docker volume to the local directory using 'cp -ar /var/lib/docker/volumes/n8n_n8n_data/_data n8n_data'.",
+    "Update the docker-compose file to mount the local directory instead of the Docker volume.",
+    "Restart the n8n Docker container."
+  ],
+  "agent_instruction": "Copy the existing data from the Docker volume to your local directory and update the docker-compose file accordingly.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "docker",
+    "n8n",
+    "local-directory",
+    "data-migration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/use-local-directory-instead-of-docker-volume-for-n8n-data/151593"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "6bc667ae9346",
+  "tool": "n8n",
+  "error_signature": "no input is connected",
+  "context_key": "notion-node",
+  "title": "Notion node not loading properties",
+  "symptom": "The Notion node fails to load properties for database updates, displaying an error that no input is connected. Users cannot map fields correctly due to this issue.",
+  "applies_when": [
+    "Using Notion node to update a database",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "Using n8n cloud",
+    "Other nodes are connected and functioning properly"
+  ],
+  "root_cause": "The Notion node requires input data to properly load and map properties for the database update operation. If no input is connected, the node cannot retrieve the necessary property definitions from the Notion API.",
+  "fix_steps": [
+    "Ensure that the Notion node is connected to a preceding node that provides input data.",
+    "If necessary, re-enter the database page ID without dashes and save the configuration.",
+    "Exit the node configuration and re-enter it to refresh the properties."
+  ],
+  "agent_instruction": "Connect a preceding node that provides input data to the Notion node and reconfigure the database ID.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "notion",
+    "database",
+    "node-configuration",
+    "update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/notion-loading-properties-is-not-working/155057"
+  ]
+}

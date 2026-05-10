@@ -1,0 +1,40 @@
+{
+  "id": "521a01c8486e",
+  "tool": "n8n",
+  "error_signature": "output is not an image",
+  "context_key": "gemini-http-node",
+  "title": "Gemini HTTP node output not returning an image",
+  "symptom": "The output from the Gemini HTTP node is not in image format, leading to issues when trying to display or use the image. Instead of an image, the output appears as a string or incorrect format.",
+  "applies_when": [
+    "Using Gemini HTTP node",
+    "Expecting image output"
+  ],
+  "not_this_if": [
+    "Output is correctly formatted as an image",
+    "Using a different node for image generation"
+  ],
+  "root_cause": "The Gemini HTTP node may not be correctly processing the response from the API, or the output may need to be converted to a proper image format. This can happen if the response is not handled correctly or if the output type is not set to image.",
+  "fix_steps": [
+    "Add a 'Convert To File' node after the Gemini HTTP node",
+    "Configure the 'Convert To File' node to handle the output from the Gemini node",
+    "Execute the workflow again to check if the output is now an image"
+  ],
+  "agent_instruction": "Use the 'Convert To File' node to properly format the output from the Gemini HTTP node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gemini",
+    "http-node",
+    "image-output",
+    "convert-to-file"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gemini-http-node-output-is-not-an-image/138102"
+  ]
+}

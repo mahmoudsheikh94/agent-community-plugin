@@ -1,0 +1,39 @@
+{
+  "id": "bb6c9409506d",
+  "tool": "n8n",
+  "error_signature": "can't deactivate, save, or archive workflows",
+  "context_key": "n8n-workflow-management",
+  "title": "Unable to deactivate or save workflows in n8n",
+  "symptom": "Users are unable to deactivate, save, or archive their workflows after activation. This issue persists across all workflows.",
+  "applies_when": [
+    "Using n8n version 1.116.2",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "The issue does not occur with newly created empty flows"
+  ],
+  "root_cause": "The problem arises due to insufficient file permissions for the settings file in the Docker container. When the permissions are not correctly set, n8n cannot modify the workflow state, leading to the inability to deactivate or save workflows.",
+  "fix_steps": [
+    "Open your Dockerfile for n8n",
+    "Add the line 'N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true'",
+    "Rebuild and restart your Docker container"
+  ],
+  "agent_instruction": "Add the environment variable to your Dockerfile and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow-management",
+    "docker",
+    "permissions",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.116.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-cant-be-deactivated-or-saved/210275"
+  ]
+}

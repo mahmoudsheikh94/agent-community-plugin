@@ -1,0 +1,40 @@
+{
+  "id": "b5c429a362e6",
+  "tool": "weweb",
+  "error_signature": "error 500 with Xano 'variable not found'",
+  "context_key": "Xano API integration",
+  "title": "Xano API returns error 500 due to missing user table information",
+  "symptom": "When attempting to connect to the Xano API, an error 500 occurs with the message 'variable not found'. This prevents successful API calls.",
+  "applies_when": [
+    "Using Xano API integration",
+    "User table is incomplete or missing information"
+  ],
+  "not_this_if": [
+    "User table is fully populated",
+    "Error occurs in a different API integration"
+  ],
+  "root_cause": "The error occurs because the Xano API expects certain variables to be present in the user table. If these variables are missing or incomplete, it results in a server error (500) indicating that the required data cannot be found.",
+  "fix_steps": [
+    "Check the user table in Xano for missing fields",
+    "Ensure all required fields are populated with valid data",
+    "Retry the API connection"
+  ],
+  "agent_instruction": "Verify and complete the user table in Xano before attempting to connect again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "API",
+    "error-500",
+    "user-table"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/api-rest-auth-xano/5566"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "6cc5af2e0076",
+  "tool": "n8n",
+  "error_signature": "no output port on webhook trigger",
+  "context_key": "webhook-trigger",
+  "title": "No output port visible on Webhook Trigger",
+  "symptom": "The Webhook Trigger node does not display an output port for connecting to subsequent nodes, despite receiving webhooks successfully.",
+  "applies_when": [
+    "Using Webhook Trigger node",
+    "Configured with nginx"
+  ],
+  "not_this_if": [
+    "Output port is visible in other nodes",
+    "Using a different trigger node"
+  ],
+  "root_cause": "The absence of an output port can be caused by a Content Security Policy (CSP) misconfiguration in the nginx setup, which prevents the proper rendering of the node's output ports in the n8n interface.",
+  "fix_steps": [
+    "Check the nginx configuration file for CSP settings",
+    "Adjust the CSP to allow necessary resources",
+    "Restart the nginx server",
+    "Refresh the n8n interface and check the Webhook Trigger node again"
+  ],
+  "agent_instruction": "Review and update the CSP settings in your nginx configuration to resolve the output port issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "nginx",
+    "csp",
+    "output-port"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/no-output-port-on-webhook-trigger/227161"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "ec61af144b21",
+  "tool": "n8n",
+  "error_signature": "Invalid url",
+  "context_key": "queue-mode",
+  "title": "Incorrect URL in notifications when using queue mode",
+  "symptom": "When using queue mode with workers, the URLs sent in notifications are incorrect, leading to 'Invalid url' errors when responding to Telegram messages.",
+  "applies_when": [
+    "Using queue mode with multiple workers",
+    "Notifications sent via Telegram or error workflows"
+  ],
+  "not_this_if": [
+    "Running in single-instance mode",
+    "URLs are correct in non-queue mode"
+  ],
+  "root_cause": "In queue mode, the environment variables for webhook and host settings may not be correctly configured, causing n8n to generate URLs with the wrong protocol or port.",
+  "fix_steps": [
+    "Set the environment variables on both the main and worker instances:",
+    "- WEBHOOK_URL=https://your.domain.com",
+    "- N8N_HOST=your.domain.com",
+    "- N8N_PORT=5678",
+    "- N8N_PROTOCOL=https",
+    "- N8N_SECURE_COOKIE=true",
+    "Restart both the main and worker instances to apply the changes."
+  ],
+  "agent_instruction": "Configure the environment variables for both main and worker instances as specified.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "queue-mode",
+    "webhook",
+    "notifications",
+    "telegram",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.0.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/queue-mode-wrong-url-in-notifications-etc/244416"
+  ]
+}

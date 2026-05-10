@@ -1,0 +1,40 @@
+{
+  "id": "0f1d77359b11",
+  "tool": "n8n",
+  "error_signature": "connect ECONNREFUSED 127.0.0.1:443",
+  "context_key": "telegram-node",
+  "title": "Telegram node connection refused error",
+  "symptom": "When testing Telegram credentials in n8n, the error 'connect ECONNREFUSED 127.0.0.1:443' appears, indicating a connection issue.",
+  "applies_when": [
+    "Using Telegram node",
+    "Running n8n in Docker with ngrok"
+  ],
+  "not_this_if": [
+    "Using a production environment without local SSL settings"
+  ],
+  "root_cause": "The error occurs because the local n8n instance is trying to connect to Telegram's API using localhost with SSL, which is not configured correctly for local testing. The WEBHOOK_URL is set correctly, but local connections are still attempting to use SSL.",
+  "fix_steps": [
+    "Strip out any SSL configurations for local connections in your Docker setup.",
+    "Set the environment variable to disable SSL for local testing.",
+    "Ensure your local network allows connections to api.telegram.org, possibly by using a VPN if DNS issues occur."
+  ],
+  "agent_instruction": "Adjust your Docker configuration to disable SSL for local connections and ensure network access to Telegram's API.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "docker",
+    "ECONNREFUSED",
+    "ngrok",
+    "local-setup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-docker-webhook-url-connection-refused/113796"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "29debf11bc99",
+  "tool": "n8n",
+  "error_signature": "HTML formatting removed in WordPress custom post update",
+  "context_key": "HTTP REQUEST to WordPress",
+  "title": "HTML formatting lost when updating WordPress custom post type",
+  "symptom": "When updating a WordPress custom post type via HTTP REQUEST, the HTML tags are stripped from the content. The preview shows HTML, but the final post does not retain it.",
+  "applies_when": [
+    "Using HTTP REQUEST to update a WordPress custom post type",
+    "Content includes HTML formatting"
+  ],
+  "not_this_if": [
+    "Using default post types",
+    "Content does not include HTML"
+  ],
+  "root_cause": "The issue arises because the HTTP REQUEST is not targeting the correct field for custom post types. For custom post types in WordPress, the content should be sent to the 'post_content' field to retain HTML formatting.",
+  "fix_steps": [
+    "Change the field in the HTTP REQUEST to 'post_content'",
+    "Re-execute the HTTP REQUEST to update the post"
+  ],
+  "agent_instruction": "Ensure the HTTP REQUEST targets the 'post_content' field for custom post types.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wordpress",
+    "custom-post-type",
+    "http-request",
+    "html-formatting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-to-wordpress-custom-post-type-html-formatting-not-working/118507"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "610ee22b0129",
+  "tool": "weweb",
+  "error_signature": "Dynamic icons do not work",
+  "context_key": "mobile-view",
+  "title": "Dynamic icons not displaying in mobile version",
+  "symptom": "Icons are not displayed in the mobile version of the app, both in the app and mobile browser. This issue persists regardless of the device used to view the mobile version.",
+  "applies_when": [
+    "Using dynamic icons in the mobile version",
+    "Icons are not declared in the header"
+  ],
+  "not_this_if": [
+    "Icons are statically included in the app"
+  ],
+  "root_cause": "Dynamic icons are not included in the build unless they are explicitly declared in the app at build time. Since dynamic data is not available during this process, the icons fail to render in the mobile view.",
+  "fix_steps": [
+    "Open the app's header section",
+    "Add a comment for each dynamic icon you intend to use",
+    "Rebuild the app to include the icons"
+  ],
+  "agent_instruction": "Declare each dynamic icon in the header as a comment and rebuild the app.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mobile",
+    "icons",
+    "dynamic-data",
+    "build-time"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/bug-with-icons-in-mobile-the-images-dont-load/19829"
+  ]
+}

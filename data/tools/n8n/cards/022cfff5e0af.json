@@ -1,0 +1,41 @@
+{
+  "id": "022cfff5e0af",
+  "tool": "n8n",
+  "error_signature": "550 5.7.708 Service unavailable. Access denied",
+  "context_key": "outlook-node",
+  "title": "Email delivery failure due to IP rejection by Microsoft",
+  "symptom": "Emails sent from a new Outlook account using the Outlook node fail to deliver, showing a bounce message indicating access is denied from the sending IP.",
+  "applies_when": [
+    "Using Outlook node",
+    "Self-hosted n8n in Docker"
+  ],
+  "not_this_if": [
+    "Older Outlook account works without issues",
+    "No IP rejection error occurs"
+  ],
+  "root_cause": "The sending IP address used by the n8n instance is blocked by Microsoft, preventing successful email delivery. This can happen if the IP has been flagged for spam or other issues.",
+  "fix_steps": [
+    "Open a terminal on the machine running Docker.",
+    "Execute the command: docker exec -it -u='root' n8n /bin/sh.",
+    "Run the command: ifconfig to find the IP address under eth0."
+  ],
+  "agent_instruction": "Identify the IP address used by your n8n instance to send emails and whitelist it with Microsoft.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "outlook",
+    "email",
+    "docker",
+    "ip-rejection",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/what-is-the-outbound-ip-address-used-by-my-self-hosted-n8n-docker-when-sending-emails-through-the-outlook-node-so-i-can-whitelist-it-with-microsoft/234756"
+  ]
+}

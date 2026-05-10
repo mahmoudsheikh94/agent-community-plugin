@@ -1,0 +1,39 @@
+{
+  "id": "f921c59aae2c",
+  "tool": "n8n",
+  "error_signature": "Workflow could not be activated. External hook 'workflow.activate' failed.",
+  "context_key": "workflow-activation",
+  "title": "Workflow activation failure due to plan limits",
+  "symptom": "Users encounter an error stating 'Workflow could not be activated. External hook 'workflow.activate' failed.' when trying to activate workflows beyond the allowed limit.",
+  "applies_when": [
+    "Using n8n Cloud Free Plan",
+    "Attempting to activate more than 2 workflows"
+  ],
+  "not_this_if": [
+    "Upgraded to a paid plan",
+    "Deactivated one of the active workflows"
+  ],
+  "root_cause": "The n8n Cloud Free Plan restricts users to a maximum of 2 active workflows. Attempting to activate additional workflows without upgrading the plan results in the activation failure error.",
+  "fix_steps": [
+    "Upgrade to a paid plan to allow more active workflows",
+    "Deactivate one of the currently active workflows to activate a new one"
+  ],
+  "agent_instruction": "Upgrade your n8n plan or deactivate an existing workflow to activate a new one.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow",
+    "activation",
+    "n8n-cloud",
+    "plan-limits"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-could-not-be-activated-external-hook-workflow-activate-failed/81029"
+  ]
+}

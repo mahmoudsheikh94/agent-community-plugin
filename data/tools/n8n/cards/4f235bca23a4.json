@@ -1,0 +1,40 @@
+{
+  "id": "4f235bca23a4",
+  "tool": "n8n",
+  "error_signature": "Google Sheets filter returns nothing",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets filter returns empty results",
+  "symptom": "When filtering data by email in Google Sheets, the filter returns nothing if the email does not exist, causing issues in the IF node.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Filtering data by email"
+  ],
+  "not_this_if": [
+    "Email exists in the Google Sheets"
+  ],
+  "root_cause": "The Google Sheets node does not output any data when the filter criteria do not match any records. This results in an empty array or undefined output, which cannot be evaluated in subsequent nodes like the IF node.",
+  "fix_steps": [
+    "Open the Google Sheets node settings",
+    "Enable the 'Always output data' option",
+    "Save the workflow",
+    "Use the IF node to check if the {{ $json }} object is empty"
+  ],
+  "agent_instruction": "Enable 'Always output data' in the Google Sheets node settings to handle empty results.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "filter",
+    "if-node",
+    "workflow-routing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-put-and-if-with-a-googe-sheets-filter/198591"
+  ]
+}

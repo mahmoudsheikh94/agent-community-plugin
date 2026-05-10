@@ -1,0 +1,39 @@
+{
+  "id": "3c4381481dfe",
+  "tool": "n8n",
+  "error_signature": "unable to merge results from Loop Over Items",
+  "context_key": "Loop Over Items",
+  "title": "Merging SQL results after Loop Over Items",
+  "symptom": "After executing SQL queries in a Loop Over Items, the user cannot combine the results into a single object or array.",
+  "applies_when": [
+    "Using Loop Over Items node",
+    "Running SQL queries in each iteration"
+  ],
+  "not_this_if": [
+    "Results are already combined before the loop ends",
+    "Using a different method to aggregate results"
+  ],
+  "root_cause": "The Loop Over Items node processes each item separately, and without a proper aggregation step, the results remain fragmented. n8n requires an additional node to consolidate these results into a single output.",
+  "fix_steps": [
+    "Add an Aggregate node to the 'done' branch of the Loop Over Items",
+    "Configure the Aggregate node to combine the results into a single list"
+  ],
+  "agent_instruction": "Use an Aggregate node after the Loop Over Items to merge all results into one object.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "loop-over-items",
+    "sql",
+    "aggregate",
+    "results-merging"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/iterating-over-array-items-with-split-out-loop-over-items-to-run-sql-queries-and-merge-results-into-one-object/190667"
+  ]
+}

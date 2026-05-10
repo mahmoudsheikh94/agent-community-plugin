@@ -1,0 +1,40 @@
+{
+  "id": "1c47471f29d8",
+  "tool": "n8n",
+  "error_signature": "Simplify Output toggle not available",
+  "context_key": "googleDrive-node",
+  "title": "Simplify Output toggle missing in Share operation",
+  "symptom": "The user cannot find the 'Simplify Output' toggle when using the Share operation in the Google Drive node.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Share operation selected"
+  ],
+  "not_this_if": [
+    "Using Upload operation",
+    "Toggle is present in the interface"
+  ],
+  "root_cause": "The 'Simplify Output' toggle is only available for the Upload operation in the Google Drive node. When using the Share operation, this option is not accessible, preventing users from easily obtaining the `webContentLink` for shared files.",
+  "fix_steps": [
+    "Add an HTTP Request node to your workflow.",
+    "Set the method to GET and the URL to 'https://www.googleapis.com/drive/v3/files/{{ $json.document_id }}'.",
+    "Execute the workflow to retrieve the `webContentLink`."
+  ],
+  "agent_instruction": "Add an HTTP Request node to call the Google Drive API directly for the file ID.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-drive",
+    "webContentLink",
+    "API-call",
+    "n8n"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/fetching-webcontentlink-from-google-drive-in-n8n-old-question-locked-and-irrelevant/110056"
+  ]
+}

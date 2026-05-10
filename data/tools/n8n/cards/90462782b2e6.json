@@ -1,0 +1,39 @@
+{
+  "id": "90462782b2e6",
+  "tool": "n8n",
+  "error_signature": "async authenticate doesn't work in n8n v1.80.3",
+  "context_key": "custom-credential-type",
+  "title": "Async authenticate fails in latest n8n version",
+  "symptom": "The custom credential type 'Solapi API' is not visible in the authentication settings of the HTTP request node in n8n v1.80.3, while it was available in v1.68.1.",
+  "applies_when": [
+    "Using custom credential type 'Solapi API'",
+    "Upgrading from n8n v1.68.1 to v1.80.3"
+  ],
+  "not_this_if": [
+    "Using a different credential type",
+    "No upgrade from v1.68.1"
+  ],
+  "root_cause": "The issue arises from using an incompatible version of the n8n-workflow library with the custom credential implementation. The changes in the library may have affected how custom credentials are registered and recognized in newer versions of n8n.",
+  "fix_steps": [
+    "Ensure you are using the correct version of the n8n-workflow library that is compatible with n8n v1.80.3.",
+    "Update your project dependencies to use 'n8n-nodes-starter' if necessary."
+  ],
+  "agent_instruction": "Check and update the n8n-workflow library version to ensure compatibility.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "custom-credentials",
+    "async-authenticate",
+    "n8n-workflow",
+    "Solapi API"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/async-authenticate-doesnt-work-at-latest-n8n-version/82104"
+  ]
+}

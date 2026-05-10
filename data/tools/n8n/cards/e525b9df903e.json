@@ -1,0 +1,40 @@
+{
+  "id": "e525b9df903e",
+  "tool": "n8n",
+  "error_signature": "Only the following file types are allowed: text/csv",
+  "context_key": "CSV import functionality",
+  "title": "CSV import fails with file type error",
+  "symptom": "When attempting to import a CSV file, n8n displays an error stating 'Only the following file types are allowed: text/csv'. This occurs specifically for Member accounts.",
+  "applies_when": [
+    "Using a Member account",
+    "Importing a CSV file"
+  ],
+  "not_this_if": [
+    "Using an Owner account",
+    "Importing from a different browser"
+  ],
+  "root_cause": "The issue seems to be related to browser compatibility, where certain browsers may not correctly handle the file type validation for CSV imports when logged in as a Member account. This can lead to a '400 Bad Request' error.",
+  "fix_steps": [
+    "Switch to a different browser, preferably Chrome",
+    "Log in to the Member account",
+    "Attempt to import the CSV file again"
+  ],
+  "agent_instruction": "Try importing the CSV file using Chrome while logged in as a Member account.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "csv-import",
+    "file-type-error",
+    "browser-compatibility",
+    "member-account"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.4.8",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/creating-a-new-table-from-csv-fails-with-a-file-type-error/258889"
+  ]
+}

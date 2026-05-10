@@ -1,0 +1,40 @@
+{
+  "id": "8660bfa69464",
+  "tool": "n8n",
+  "error_signature": "pagination loop with duplicate pages",
+  "context_key": "pagination-node",
+  "title": "Pagination loop causing duplicate pages",
+  "symptom": "The pagination loop starts repeating pages, leading to duplicate records and trapping the workflow in a loop.",
+  "applies_when": [
+    "Using pagination in a workflow",
+    "API returns a next-page token"
+  ],
+  "not_this_if": [
+    "Pagination works correctly without duplicates"
+  ],
+  "root_cause": "The pagination loop can lose state during execution due to reasons like cursor resets, old next-page tokens being returned by the API, or rate limiting causing duplicate responses. This results in the workflow cycling through the same pages repeatedly.",
+  "fix_steps": [
+    "Track all used cursors during pagination",
+    "Store each cursor that has been used",
+    "Implement a check to stop the loop if a cursor is repeated"
+  ],
+  "agent_instruction": "Implement cursor tracking to prevent pagination loops.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "pagination",
+    "loop",
+    "API",
+    "cursor",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pagination-loop/288909"
+  ]
+}

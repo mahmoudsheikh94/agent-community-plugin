@@ -1,0 +1,41 @@
+{
+  "id": "e8c8fa83f468",
+  "tool": "n8n",
+  "error_signature": "real IP address returned instead of proxy IP",
+  "context_key": "http-request-node",
+  "title": "HTTP Request node not using proxy correctly",
+  "symptom": "The HTTP Request node returns the real IP address instead of the expected proxy IP when making requests.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Configured with a proxy for web scraping"
+  ],
+  "not_this_if": [
+    "Proxy works in curl command",
+    "Different IP returned in other tests"
+  ],
+  "root_cause": "The proxy URL format used in the HTTP Request node is incorrect. The node requires a specific format for the proxy URL, which includes the protocol and proper credentials.",
+  "fix_steps": [
+    "Open the HTTP Request node settings",
+    "Change the proxy URL to 'http://-dc-IT:@eu.proxy-jet.io:1010'",
+    "Save the workflow",
+    "Test the HTTP Request node again"
+  ],
+  "agent_instruction": "Update the proxy URL format in the HTTP Request node settings to include 'http://' at the beginning.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "proxy",
+    "web-scraping",
+    "curl"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-proxy-not-working/229560"
+  ]
+}

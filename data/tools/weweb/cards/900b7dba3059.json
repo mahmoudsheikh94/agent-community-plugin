@@ -1,0 +1,40 @@
+{
+  "id": "900b7dba3059",
+  "tool": "weweb",
+  "error_signature": "error when attempting to create the record",
+  "context_key": "airtable-attachment-field",
+  "title": "Error creating Airtable record with attachment",
+  "symptom": "When trying to create a record in Airtable with a mapped attachment field, an error occurs due to incorrect data structure.",
+  "applies_when": [
+    "Using Drag and Drop element to upload files",
+    "Mapping URLs to Airtable attachment field"
+  ],
+  "not_this_if": [
+    "The attachment field is correctly formatted",
+    "No error occurs during record creation"
+  ],
+  "root_cause": "The Drag and Drop module generates an array of objects with more key/value pairs than Airtable allows for attachments. Airtable requires a specific structure with only 'url' and 'filename' keys for each attachment.",
+  "fix_steps": [
+    "Create a secondary variable to transform the array of objects to only include 'url' and 'filename' keys.",
+    "Use a For Loop to iterate through the transformed array and create the correct structure for Airtable.",
+    "Map the newly created array to the attachment field in Airtable."
+  ],
+  "agent_instruction": "Transform the uploaded file data to match Airtable's required structure and map it to the attachment field.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "airtable",
+    "attachment",
+    "drag-and-drop",
+    "file-upload"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/create-airtable-record-with-attachment/6549"
+  ]
+}

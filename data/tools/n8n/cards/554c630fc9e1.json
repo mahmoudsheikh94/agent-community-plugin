@@ -1,0 +1,40 @@
+{
+  "id": "554c630fc9e1",
+  "tool": "n8n",
+  "error_signature": "MaxClientsInSessionMode: max clients reached",
+  "context_key": "postgres-trigger-node",
+  "title": "Max clients reached error with Postgres Trigger node",
+  "symptom": "When using the Postgres Trigger node, n8n throws 'MaxClientsInSessionMode: max clients reached', causing executions to get stuck in the queue.",
+  "applies_when": [
+    "Using Postgres Trigger node",
+    "Connected to Supabase with session-mode pooler"
+  ],
+  "not_this_if": [
+    "Using a direct connection string",
+    "Using transaction-mode pooler"
+  ],
+  "root_cause": "The error occurs because the Postgres Trigger node requires a persistent connection, which conflicts with the session-mode connection pooling used by Supabase. This leads to reaching the maximum number of allowed clients, causing execution failures.",
+  "fix_steps": [
+    "Switch to a direct connection string for Supabase",
+    "Alternatively, use the transaction-mode pooler (port 6543)",
+    "Kill any stale idle connections in Supabase’s SQL editor"
+  ],
+  "agent_instruction": "Change the connection method for the Postgres Trigger node to a direct connection or transaction-mode pooler.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "supabase",
+    "trigger-node",
+    "connection-pooling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgres-trigger-causing-queueing-and-maxclientsinsessionmode-error-in-n8n-sqlite-setup/287652"
+  ]
+}

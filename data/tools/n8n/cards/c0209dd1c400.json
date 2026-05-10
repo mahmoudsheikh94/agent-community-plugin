@@ -1,0 +1,41 @@
+{
+  "id": "c0209dd1c400",
+  "tool": "n8n",
+  "error_signature": "relation property not showing in dropdown",
+  "context_key": "notion-node",
+  "title": "Notion relation property not appearing in n8n",
+  "symptom": "The relation property of a Notion database does not appear in the dropdown list when trying to update a page using n8n.",
+  "applies_when": [
+    "Using Notion node",
+    "Trying to update a database page with a relation property"
+  ],
+  "not_this_if": [
+    "Relation property appears in the dropdown",
+    "Using a one-way relation"
+  ],
+  "root_cause": "n8n requires relation properties to be two-way in order to be selectable. If the relation is one-way, it will not show up in the dropdown list for selection.",
+  "fix_steps": [
+    "Change the relation property in Notion from one-way to two-way.",
+    "Ensure that both databases involved in the relation are connected to the n8n integration."
+  ],
+  "agent_instruction": "Change the relation to two-way in Notion and verify both databases are connected to n8n.",
+  "safety_notes": [
+    "Changing relation types may affect existing data relationships."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "notion",
+    "relation",
+    "database",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.31.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/notion-update-database-page-relation-property-not-showing/43658"
+  ]
+}

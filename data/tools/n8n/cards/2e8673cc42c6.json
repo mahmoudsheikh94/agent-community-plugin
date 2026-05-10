@@ -1,0 +1,39 @@
+{
+  "id": "2e8673cc42c6",
+  "tool": "n8n",
+  "error_signature": "Missing import file. Upload a gezipped CSV as multipart form-data field 'file'.",
+  "context_key": "shopware-node",
+  "title": "Shopware endpoint not receiving large gzipped files",
+  "symptom": "When attempting to upload a gzipped CSV larger than 2MB, the Shopware endpoint reports that the file is missing. Smaller files upload successfully.",
+  "applies_when": [
+    "Using Shopware 6 endpoint",
+    "Uploading gzipped CSV files larger than 2MB"
+  ],
+  "not_this_if": [
+    "Files smaller than 2MB upload successfully",
+    "Endpoint does not support chunked transfers"
+  ],
+  "root_cause": "n8n has a default maximum data size limit of 2MB for form data uploads. When files exceed this limit, n8n attempts to send them as chunked transfers, which the Shopware endpoint may not handle correctly, leading to missing file errors.",
+  "fix_steps": [
+    "Modify the Shopware endpoint to accept chunked file uploads.",
+    "Test the upload with files larger than 2MB to ensure they are received."
+  ],
+  "agent_instruction": "Change the Shopware endpoint to accept chunked file uploads for larger files.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "shopware",
+    "file-upload",
+    "chunked-transfer",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.3.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-upload-binary-file-of-3-6m-gzipped/264737"
+  ]
+}

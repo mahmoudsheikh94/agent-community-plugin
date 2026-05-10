@@ -1,0 +1,39 @@
+{
+  "id": "8e5f1a199702",
+  "tool": "weweb",
+  "error_signature": "shows all activities from all tasks",
+  "context_key": "task-activities-list",
+  "title": "Displaying all task activities instead of specific ones",
+  "symptom": "When clicking on a task name, all activities from all tasks are displayed instead of just the activities for the selected task.",
+  "applies_when": [
+    "Using nested lists for tasks and task activities",
+    "Clicking on a task name to show activities"
+  ],
+  "not_this_if": [
+    "Activities are filtered correctly based on the task clicked"
+  ],
+  "root_cause": "The current implementation does not differentiate between tasks when displaying activities, leading to all activities being shown regardless of the selected task. This occurs because the logic does not properly utilize a state variable to track which task's activities should be displayed.",
+  "fix_steps": [
+    "Add an 'isOpen' boolean column to the Tasks collection to track the open state of each task.",
+    "In the task_activities_list, check the 'isOpen' state of the corresponding task to determine if its activities should be displayed.",
+    "Implement a toggle function that updates the 'isOpen' state when a task is clicked."
+  ],
+  "agent_instruction": "Implement an 'isOpen' column in the Tasks collection and use it to filter displayed activities.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "tasks",
+    "task-activities",
+    "nested-lists",
+    "state-management"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/show-items-list-inside-other-item-list/16819"
+  ]
+}

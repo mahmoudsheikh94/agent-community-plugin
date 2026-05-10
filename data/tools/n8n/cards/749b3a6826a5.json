@@ -1,0 +1,43 @@
+{
+  "id": "749b3a6826a5",
+  "tool": "n8n",
+  "error_signature": "422 Error",
+  "context_key": "http-request-node",
+  "title": "422 Error when sending email via GoHighLevel API",
+  "symptom": "When attempting to send an email using the GoHighLevel API through the HTTP Request node, a 422 error is returned. This indicates that the request was well-formed but unable to be processed due to semantic errors.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending email via GoHighLevel API"
+  ],
+  "not_this_if": [
+    "Using a different API or endpoint",
+    "No error is returned"
+  ],
+  "root_cause": "The 422 error typically occurs when the request body is syntactically valid JSON, but one or more required fields are missing or invalid for the specific API endpoint. This can also happen if the API version is outdated or if the structure of the JSON body does not match the expected format.",
+  "fix_steps": [
+    "Ensure you are using the correct API endpoint for creating a conversation.",
+    "Verify that the headers match the API documentation, especially the Content-Type.",
+    "Check that the JSON body structure is correct, including required fields and nesting.",
+    "Test the API call using cURL/Postman to confirm it works before implementing in n8n.",
+    "If using variables in the JSON body, ensure they are correctly formatted and do not introduce errors."
+  ],
+  "agent_instruction": "Verify the API endpoint, headers, and JSON structure before sending the request.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "GoHighLevel",
+    "API",
+    "422-error",
+    "email"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-http-request-node-422-error-when-sending-email/232571"
+  ]
+}

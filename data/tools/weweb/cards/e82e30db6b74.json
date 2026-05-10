@@ -1,0 +1,40 @@
+{
+  "id": "e82e30db6b74",
+  "tool": "weweb",
+  "error_signature": "phantom form submissions",
+  "context_key": "workflow-trigger",
+  "title": "Phantom form submissions due to click event propagation",
+  "symptom": "The form submits unexpectedly when a workflow is triggered by a select element's change action. This occurs every time the select element is clicked.",
+  "applies_when": [
+    "Workflow is triggered on click",
+    "Select element is inside a form"
+  ],
+  "not_this_if": [
+    "Workflow is triggered on submit"
+  ],
+  "root_cause": "The click event on the select element propagates to the form, causing the form to submit automatically. This happens because the workflow is set to trigger on click, which is executed every time the select element is interacted with.",
+  "fix_steps": [
+    "Open the workflow settings",
+    "Change the trigger from 'on click' to 'on submit'",
+    "Save the changes",
+    "Test the form submission again"
+  ],
+  "agent_instruction": "Change the workflow trigger to 'on submit' to prevent phantom submissions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow",
+    "form-submission",
+    "event-propagation",
+    "trigger-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/using-the-new-workflow-i-get-phantom-form-submissions/982"
+  ]
+}

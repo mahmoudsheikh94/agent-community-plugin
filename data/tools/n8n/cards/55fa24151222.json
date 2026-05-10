@@ -1,0 +1,40 @@
+{
+  "id": "55fa24151222",
+  "tool": "n8n",
+  "error_signature": "JSON parameter needs to be valid JSON",
+  "context_key": "httpRequest-node",
+  "title": "Invalid JSON error in HTTP Request node",
+  "symptom": "When executing the HTTP Request node with dynamic JSON, n8n throws 'JSON parameter needs to be valid JSON'. This occurs despite the preview showing the correct Base64 string.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Dynamic JSON body with variable substitution"
+  ],
+  "not_this_if": [
+    "Static JSON body works without errors",
+    "No variable substitution is used"
+  ],
+  "root_cause": "The error arises during the variable substitution process in the HTTP Request node. If the variable is not formatted correctly or if there are issues with escaping characters, n8n fails to interpret the JSON structure, leading to this error.",
+  "fix_steps": [
+    "Ensure the variable used in the JSON body is correctly formatted and escaped.",
+    "Test the workflow with a static JSON body to confirm the structure is valid.",
+    "If issues persist, consider using a different node to handle file reading and conversion to Base64."
+  ],
+  "agent_instruction": "Check the formatting of the Base64 string in the JSON body and ensure it is valid.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "json",
+    "base64",
+    "dynamic-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-using-dynamic-json-in-http-node/210987"
+  ]
+}

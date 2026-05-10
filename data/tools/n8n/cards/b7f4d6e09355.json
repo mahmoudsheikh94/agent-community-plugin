@@ -1,0 +1,39 @@
+{
+  "id": "b7f4d6e09355",
+  "tool": "n8n",
+  "error_signature": "null values in MongoDB document",
+  "context_key": "insertMongoDB",
+  "title": "Null values when inserting into MongoDB",
+  "symptom": "When attempting to insert data into MongoDB, the resulting document contains null values, making it unreadable.",
+  "applies_when": [
+    "Using insertMongoDB node",
+    "Data is generated from OpenAI output"
+  ],
+  "not_this_if": [
+    "Data is correctly formatted before insertion",
+    "No null values in the source data"
+  ],
+  "root_cause": "The issue arises when the fields parameter in the insertMongoDB node is not properly defined, leading to null values being inserted into the database. This can occur if the output from the previous node does not match the expected structure or if the fields are not specified correctly.",
+  "fix_steps": [
+    "Ensure the fields parameter in the insertMongoDB node is correctly set to match the output structure from the previous node.",
+    "Test the workflow to confirm that the data is now being inserted without null values."
+  ],
+  "agent_instruction": "Check and correctly define the fields parameter in the insertMongoDB node to match the expected JSON structure.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mongodb",
+    "insert",
+    "null-values",
+    "json-format"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-me-formating-openai-output-into-json-and-insert-this-in-my-mongodb-conntection-correctly/237070"
+  ]
+}

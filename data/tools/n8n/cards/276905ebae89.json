@@ -1,0 +1,42 @@
+{
+  "id": "276905ebae89",
+  "tool": "n8n",
+  "error_signature": "column testrun.workflowId does not exist",
+  "context_key": "database-migration",
+  "title": "Database column missing after version update",
+  "symptom": "After updating n8n, users encounter an error stating 'column testrun.workflowId does not exist' when trying to access community licensing features.",
+  "applies_when": [
+    "n8n has been updated to a new version",
+    "Using PostgreSQL or SQLite as the database"
+  ],
+  "not_this_if": [
+    "The error does not occur after the update",
+    "Database migrations have already been run"
+  ],
+  "root_cause": "The error occurs because the database schema has not been updated to include new columns required by the latest version of n8n. This typically happens when migrations are not run after an update.",
+  "fix_steps": [
+    "Ensure the n8n container is running and connected to the database.",
+    "Run the migration command: `docker exec -it n8n npx typeorm migration:run`.",
+    "Verify the database configuration environment variables are correctly set.",
+    "Check the installed n8n version with: `docker exec -it n8n npx n8n --version`."
+  ],
+  "agent_instruction": "Run the database migration command to update the schema.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "database",
+    "migration",
+    "version-update",
+    "postgresql",
+    "sqlite"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-not-opening-community-licensing-features/133128"
+  ]
+}

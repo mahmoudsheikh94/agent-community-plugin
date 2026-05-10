@@ -1,0 +1,39 @@
+{
+  "id": "8756cdca2af2",
+  "tool": "n8n",
+  "error_signature": "fetch is not defined",
+  "context_key": "code-node",
+  "title": "Fetch not available in n8n Code node",
+  "symptom": "When trying to use the fetch function in a Code node, n8n throws 'fetch is not defined'. This prevents the workflow from executing as expected.",
+  "applies_when": [
+    "Using a Code node",
+    "Attempting to call an external API"
+  ],
+  "not_this_if": [
+    "Using the HTTP Request node instead"
+  ],
+  "root_cause": "The Code node in n8n does not run in a browser environment where the fetch API is available. As a result, attempts to use fetch will lead to an error since it is not defined in the Node.js environment that n8n operates in.",
+  "fix_steps": [
+    "Replace the fetch call with this.helpers.httpRequest",
+    "Use the appropriate method and URL in the httpRequest call",
+    "Return the response in the expected format"
+  ],
+  "agent_instruction": "Use this.helpers.httpRequest instead of fetch to call external APIs in the Code node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "fetch",
+    "http-request",
+    "api-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-fetch-is-not-defined-error-when-calling-external-api/288365"
+  ]
+}

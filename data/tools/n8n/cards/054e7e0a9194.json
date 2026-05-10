@@ -1,0 +1,40 @@
+{
+  "id": "054e7e0a9194",
+  "tool": "n8n",
+  "error_signature": "Code node set to run once is running on each",
+  "context_key": "code-node",
+  "title": "Code Node executing multiple times due to loop configuration",
+  "symptom": "The Code node, intended to run once, is executing for each item due to incorrect node connections. This leads to unexpected item counts in the output.",
+  "applies_when": [
+    "Using a Code node set to run once",
+    "Connected to a Loop Over Items node"
+  ],
+  "not_this_if": [
+    "Code node is correctly connected to the done output of the loop"
+  ],
+  "root_cause": "The Code node is incorrectly placed within the loop path of the Loop Over Items node, causing it to execute for each item instead of just once. Proper configuration requires connecting it to the done output to ensure it runs only after all items have been processed.",
+  "fix_steps": [
+    "Open the workflow in n8n",
+    "Locate the Loop Over Items node",
+    "Disconnect the Code node from the loop path",
+    "Connect the Code node to the done output of the Loop Over Items node",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Reconfigure the Code node to connect to the done output of the Loop Over Items node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "loop-over-items",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-set-to-run-once-is-running-for-each/204283"
+  ]
+}

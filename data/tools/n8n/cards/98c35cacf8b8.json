@@ -1,0 +1,39 @@
+{
+  "id": "98c35cacf8b8",
+  "tool": "n8n",
+  "error_signature": "The DNS server returned an error",
+  "context_key": "DNS configuration",
+  "title": "DNS server error causing automation failures",
+  "symptom": "Automations intermittently fail with a DNS server error, requiring multiple retries to complete successfully.",
+  "applies_when": [
+    "Self-hosting on a VPS",
+    "Experiencing repeated DNS errors"
+  ],
+  "not_this_if": [
+    "Using a cloud-hosted n8n instance",
+    "No DNS errors reported"
+  ],
+  "root_cause": "The error occurs when the DNS server fails to resolve the domain name, which can happen due to issues with the DNS server itself or network connectivity problems. This can lead to automation failures as n8n cannot reach the required endpoints.",
+  "fix_steps": [
+    "Change your primary DNS server to Google DNS (8.8.8.8)",
+    "If issues persist, create a manual DNS entry for the required domain."
+  ],
+  "agent_instruction": "Change your DNS settings to use Google DNS and create a manual entry if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "DNS",
+    "self-hosting",
+    "automation-failure",
+    "network-issues"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-dns-server-returned-an-error-perhaps-the-server-is-offline-error/95959"
+  ]
+}

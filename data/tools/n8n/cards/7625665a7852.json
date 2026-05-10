@@ -1,0 +1,40 @@
+{
+  "id": "7625665a7852",
+  "tool": "n8n",
+  "error_signature": "Cannot GET / in the app endpoint",
+  "context_key": "Cloud Run deployment",
+  "title": "Cannot access n8n app endpoint due to cold start",
+  "symptom": "When trying to access the n8n app endpoint, the user receives a 'Cannot GET /' message. This occurs due to the service taking too long to spin up.",
+  "applies_when": [
+    "Using n8n on Cloud Run",
+    "Min instances set to 0"
+  ],
+  "not_this_if": [
+    "Min instances set to 1 or more"
+  ],
+  "root_cause": "Cloud Run services can experience cold starts when there are no minimum instances running. If the min_instance setting is set to 0, the service may take longer to respond, leading to connection issues.",
+  "fix_steps": [
+    "Go to your Cloud Run service settings",
+    "Set the min_instance to 1",
+    "Deploy the changes"
+  ],
+  "agent_instruction": "Set the min_instance of your Cloud Run service to 1 to avoid cold starts.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "cloud-run",
+    "cold-start",
+    "n8n",
+    "redis",
+    "queue-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/redis-and-broker-connection-issues-in-n8n-queue-mode-cloud-run-deployment/176093"
+  ]
+}

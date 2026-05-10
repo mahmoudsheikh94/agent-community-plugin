@@ -1,0 +1,40 @@
+{
+  "id": "2b845b3a0c0c",
+  "tool": "weweb",
+  "error_signature": "space is not generated when using a formula",
+  "context_key": "data/grid component",
+  "title": "Space not generated in data grid with formula",
+  "symptom": "When using the 'Custom' option in the data grid component with a formula, the expected interactive space is not generated. This leads to a lack of interactivity in the grid cells.",
+  "applies_when": [
+    "Using the 'Custom' option in the data grid",
+    "Passing an array through a formula"
+  ],
+  "not_this_if": [
+    "Using static data without formulas",
+    "Using other cell types like 'text' or 'number'"
+  ],
+  "root_cause": "The issue arises because the data grid component does not properly handle the rendering of custom cells when the data is passed through a formula. This can lead to the absence of the expected interactive space that should be generated for custom cells.",
+  "fix_steps": [
+    "Check the formula used to pass the array to ensure it is correctly structured.",
+    "If necessary, modify the formula to ensure it returns the expected data format.",
+    "Test the grid again to see if the interactive space is generated."
+  ],
+  "agent_instruction": "Verify and adjust the formula used for the custom cell data in the data grid component.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "data-grid",
+    "custom-cell",
+    "formula",
+    "rendering-issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/when-i-use-the-custom-option-in-the-new-data-grid-component-the-space-is-not-generated-if-i-do-this-using-a-formula/17868"
+  ]
+}

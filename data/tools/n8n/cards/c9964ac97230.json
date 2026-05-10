@@ -1,0 +1,38 @@
+{
+  "id": "c9964ac97230",
+  "tool": "n8n",
+  "error_signature": "Precondition check failed",
+  "context_key": "gmail-node",
+  "title": "Gmail node fails with 'Precondition check failed' error",
+  "symptom": "After updating n8n, the Gmail node throws a 'Precondition check failed' error when attempting to send emails.",
+  "applies_when": [
+    "Using Gmail node",
+    "Non-Gmail domain account"
+  ],
+  "not_this_if": [
+    "Using a Gmail account (@gmail.com)"
+  ],
+  "root_cause": "The error occurs due to stricter security policies applied to Google Workspace accounts compared to standard Gmail accounts. These policies can prevent certain actions unless specific settings are adjusted.",
+  "fix_steps": [
+    "Ask your Workspace admin to enable 'Less secure app access' for your account",
+    "Retry sending emails using the Gmail node"
+  ],
+  "agent_instruction": "Request your Workspace admin to enable 'Less secure app access' for your Google account.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "node",
+    "precondition-check",
+    "google-workspace"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/encountering-precondition-check-failed-error-in-gmail-node-after-recent-update/80395"
+  ]
+}

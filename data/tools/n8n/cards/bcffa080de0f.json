@@ -1,0 +1,41 @@
+{
+  "id": "bcffa080de0f",
+  "tool": "n8n",
+  "error_signature": "403 Forbidden",
+  "context_key": "google-gemini-node",
+  "title": "Google Gemini access denied due to IP blocking",
+  "symptom": "When attempting to send a request to the Google Gemini API, a '403 Forbidden' error is returned, indicating that access is denied. This issue occurs only in the self-hosted N8N instance.",
+  "applies_when": [
+    "Using Google Gemini node",
+    "Self-hosted N8N on Hetzner VPS"
+  ],
+  "not_this_if": [
+    "Request works in cloud version",
+    "Using a different hosting provider"
+  ],
+  "root_cause": "Similar to the BigQuery issue, Google has blocked access from certain IP addresses associated with Hetzner, preventing successful API calls to services like Gemini. This is a recurring problem for users on the same infrastructure.",
+  "fix_steps": [
+    "Disable IPv6 on your server",
+    "Reserve a floating IPv4 address",
+    "Alternatively, migrate your N8N instance to a different hosting provider like AWS"
+  ],
+  "agent_instruction": "Disable IPv6 and reserve a floating IPv4 address or migrate to a different hosting provider.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "google-gemini",
+    "403",
+    "hetzner",
+    "ip-blocking",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/self-hosted-n8n-on-coolify-in-a-hetzner-vps-cant-connect-to-google-services/83245"
+  ]
+}

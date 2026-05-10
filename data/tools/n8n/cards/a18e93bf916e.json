@@ -1,0 +1,39 @@
+{
+  "id": "a18e93bf916e",
+  "tool": "n8n",
+  "error_signature": "[object Object]",
+  "context_key": "execute-command-node",
+  "title": "Passing JSON object results in [object Object]",
+  "symptom": "When attempting to pass a JSON object to an execute command node, the output displays as '[object Object]'. This indicates that the object is not being properly serialized into a string format.",
+  "applies_when": [
+    "Using execute command node",
+    "Passing JSON object as parameter"
+  ],
+  "not_this_if": [
+    "The parameter is a simple string without spaces"
+  ],
+  "root_cause": "The execute command node requires a string input, but when a JSON object is passed directly, it is converted to a string representation that results in '[object Object]'. This happens because JavaScript's default behavior for object-to-string conversion does not serialize the object's contents.",
+  "fix_steps": [
+    "Use JSON.stringify() to convert the JSON object to a string.",
+    "Apply encodeURI() to the string to handle spaces and special characters.",
+    "Pass the encoded string to the execute command node."
+  ],
+  "agent_instruction": "Transform the JSON object to a string using JSON.stringify() and encode it with encodeURI() before passing it to the execute command node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "execute-command",
+    "json",
+    "stringify",
+    "encodeURI"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-pass-an-entire-json-from-a-node-to-execute-command-object-object/8590"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "d1a7d1be5887",
+  "tool": "n8n",
+  "error_signature": "No execution data available",
+  "context_key": "http-request-node",
+  "title": "Dynamic email input fails with 'No execution data available'",
+  "symptom": "When using a dynamic email expression in the HTTP Request node, n8n throws 'No execution data available'. Replacing it with a static email works without issues.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Dynamic email input via expression"
+  ],
+  "not_this_if": [
+    "Static email value is used",
+    "Different node type is used"
+  ],
+  "root_cause": "The `$fromAI` function may not resolve properly in the context of the HTTP Request node, leading to the absence of execution data for the dynamic input. This can occur when the node expects a value that is not yet available during execution.",
+  "fix_steps": [
+    "Replace the dynamic email expression with a placeholder (e.g., `{{placeholder}}`)",
+    "Instruct the AI or subsequent logic to replace the placeholder with the actual email value before the HTTP Request node executes."
+  ],
+  "agent_instruction": "Use a placeholder for the email input and ensure it gets replaced with the actual email before the HTTP Request node runs.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "http-request",
+    "dynamic-input",
+    "email",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.76.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-with-dynamic-email-input-in-http-request-node-failing-with-no-execution-data-available/72331"
+  ]
+}

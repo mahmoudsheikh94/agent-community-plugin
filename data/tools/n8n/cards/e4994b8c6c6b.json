@@ -1,0 +1,42 @@
+{
+  "id": "e4994b8c6c6b",
+  "tool": "n8n",
+  "error_signature": "relation 'documents' does not exist",
+  "context_key": "supabase-vector-db-node",
+  "title": "Supabase documents table does not exist error",
+  "symptom": "When attempting to retrieve data from the Supabase vector DB node, n8n throws an error stating 'relation \"documents\" does not exist'. This prevents any data retrieval despite successful inserts.",
+  "applies_when": [
+    "Using Supabase vector DB node",
+    "Attempting to retrieve data from the 'documents' table"
+  ],
+  "not_this_if": [
+    "The 'documents' table exists and is correctly configured"
+  ],
+  "root_cause": "The error occurs when the specified 'documents' table is missing from the Supabase database schema. This can happen if the table was deleted or not created properly during setup.",
+  "fix_steps": [
+    "Check if the 'documents' table exists in your Supabase database.",
+    "If it does not exist, recreate the 'documents' table using the langchain template in the SQL Editor.",
+    "Verify that the 'match_documents' function is also correctly defined."
+  ],
+  "agent_instruction": "Recreate the 'documents' table in Supabase using the provided SQL template.",
+  "safety_notes": [
+    "Deleting the table will result in data loss if there are existing records."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "vector-db",
+    "documents",
+    "error",
+    "data-retrieval"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.108.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/supabase-vector-db-as-a-tool-retrieval/175055"
+  ]
+}

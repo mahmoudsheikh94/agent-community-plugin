@@ -1,0 +1,40 @@
+{
+  "id": "3bd3e1730ed9",
+  "tool": "weweb",
+  "error_signature": "collections are loaded twice",
+  "context_key": "collection-fetch-settings",
+  "title": "Collections fetched multiple times on page load",
+  "symptom": "The collections Reunions, Courses, and Horses are being fetched twice during the page load process, leading to unnecessary data retrieval.",
+  "applies_when": [
+    "Fetch automatic option is enabled in collection settings",
+    "Collections are used on the page"
+  ],
+  "not_this_if": [
+    "Fetch automatic option is disabled",
+    "Collections are not used on the page"
+  ],
+  "root_cause": "When the 'fetch automatic' option is enabled in the collection settings, the collections are fetched automatically on every page load. This can lead to multiple fetches if workflows also trigger additional fetches for the same collections.",
+  "fix_steps": [
+    "Go to the collection settings for Reunions, Courses, and Horses.",
+    "Disable the 'fetch automatic' option.",
+    "Ensure that the collections are fetched only through the designated workflows."
+  ],
+  "agent_instruction": "Disable the 'fetch automatic' option in the collection settings to prevent double fetching.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "collection-fetch",
+    "automatic-fetch",
+    "workflow",
+    "data-retrieval"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/fetch-collection-on-workflow-or-on-initialisation/9138"
+  ]
+}

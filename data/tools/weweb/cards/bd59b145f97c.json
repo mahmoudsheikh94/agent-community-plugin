@@ -1,0 +1,39 @@
+{
+  "id": "bd59b145f97c",
+  "tool": "weweb",
+  "error_signature": "image slider shows on top of the mobile and tablet default menu",
+  "context_key": "image-slider",
+  "title": "Image slider overlaps mobile and tablet menu",
+  "symptom": "The image slider is displayed above the mobile and tablet default menu, obstructing it. Adjusting the z-index values did not resolve the issue.",
+  "applies_when": [
+    "Using an image slider",
+    "Viewing on mobile or tablet devices"
+  ],
+  "not_this_if": [
+    "The issue does not occur on desktop devices"
+  ],
+  "root_cause": "The z-index values set for the image slider and the menu may not be sufficient to control their stacking order due to other CSS rules or parent elements affecting the layout.",
+  "fix_steps": [
+    "Open the custom CSS settings for the image slider",
+    "Set a higher z-index value for the slider than the menu",
+    "Save the changes and refresh the page"
+  ],
+  "agent_instruction": "Adjust the z-index in the custom CSS for the image slider to ensure it is lower than the menu.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "image-slider",
+    "z-index",
+    "CSS",
+    "mobile-menu"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/image-slider-z-axis-problem/3955"
+  ]
+}

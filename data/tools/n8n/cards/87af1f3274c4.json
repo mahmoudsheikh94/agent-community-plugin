@@ -1,0 +1,44 @@
+{
+  "id": "87af1f3274c4",
+  "tool": "n8n",
+  "error_signature": "The provided authorization grant or refresh token is invalid, expired, revoked",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets OAuth token keeps expiring",
+  "symptom": "The OAuth token for the Google Sheets node in n8n keeps expiring, requiring manual reconnection. The error message indicates issues with the authorization grant or refresh token.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "OAuth token is set up"
+  ],
+  "not_this_if": [
+    "Token is valid and does not expire",
+    "Using a verified app"
+  ],
+  "root_cause": "The issue arises when the Google app is in Testing mode, which limits the issuance of refresh tokens. Moving the app to Production allows for permanent tokens, bypassing the need for frequent re-authentication.",
+  "fix_steps": [
+    "Go to Google Cloud Console > APIs & Services > OAuth consent screen.",
+    "Click the 'Publish' button to change the app status from Testing to Production.",
+    "Ignore any verification requirements and leave the app as 'Unverified'.",
+    "Re-authenticate in n8n by clicking 'Sign in with Google' in the Google credentials.",
+    "Accept the warning screen by clicking 'Advanced' and then 'Go to [Your App Name] (unsafe)'."
+  ],
+  "agent_instruction": "Change the Google app status to Production and re-authenticate in n8n.",
+  "safety_notes": [
+    "Unverified apps are limited to 100 users."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "oauth",
+    "refresh-token",
+    "google-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-oauth/228459"
+  ]
+}

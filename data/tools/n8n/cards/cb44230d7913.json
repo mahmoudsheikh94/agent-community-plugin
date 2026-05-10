@@ -1,0 +1,40 @@
+{
+  "id": "cb44230d7913",
+  "tool": "n8n",
+  "error_signature": "Sheet with ID 1366469942 not found",
+  "context_key": "googleSheets-node",
+  "title": "Google Sheets node cannot find specified sheet ID",
+  "symptom": "The Google Sheets node throws an error stating 'Sheet with ID 1366469942 not found' when attempting to append data. The specified ID does not match any existing sheets in the spreadsheet.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Appending data to a sheet"
+  ],
+  "not_this_if": [
+    "The sheet ID is correctly specified and exists in the spreadsheet"
+  ],
+  "root_cause": "The error occurs because the Google Sheets node is trying to access a sheet using an ID that does not exist in the specified spreadsheet. This can happen if the sheet was deleted, or if the ID was incorrectly referenced from a list instead of using the sheet's name.",
+  "fix_steps": [
+    "Open the Google Sheets node settings",
+    "Change the sheet identification method from 'From list' to 'By name'",
+    "Specify the exact name of the target sheet",
+    "Save the workflow and re-run it"
+  ],
+  "agent_instruction": "Change the sheet identification method to use the sheet's name instead of its ID.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "sheet-id",
+    "append",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sheet-with-id-1366469942-not-found/83280"
+  ]
+}

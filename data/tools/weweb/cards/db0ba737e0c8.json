@@ -1,0 +1,41 @@
+{
+  "id": "db0ba737e0c8",
+  "tool": "weweb",
+  "error_signature": "Failed to load PDF document",
+  "context_key": "supabase-storage-upload",
+  "title": "PDF upload results in empty file in Supabase",
+  "symptom": "After uploading a PDF file to Supabase, the file size is only 15 bytes, and attempting to download it results in 'Failed to load PDF document'.",
+  "applies_when": [
+    "Using WeWeb file upload component",
+    "Uploading to Supabase Storage"
+  ],
+  "not_this_if": [
+    "File uploads successfully without errors",
+    "File size is correct in Supabase"
+  ],
+  "root_cause": "The issue arises when the wrong value is used for the file upload in the workflow. Instead of using the file upload component's value, the correct value from the form must be used to ensure the file is uploaded properly.",
+  "fix_steps": [
+    "Open the WeWeb workflow containing the Supabase 'Storage upload file' action",
+    "Change the file upload value to use the value from the form instead of the file upload component",
+    "Save the workflow",
+    "Retry the file upload"
+  ],
+  "agent_instruction": "Ensure to use the correct file value from the form for the Supabase upload action.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "file-upload",
+    "pdf",
+    "storage"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/weweb-supabase-file-upload-results-in-15b-file-failed-to-load-pdf-error/18147"
+  ]
+}

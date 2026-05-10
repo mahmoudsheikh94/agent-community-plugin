@@ -1,0 +1,39 @@
+{
+  "id": "5ad6cd44cf1e",
+  "tool": "n8n",
+  "error_signature": "Merge node not combining data correctly",
+  "context_key": "merge-node",
+  "title": "Merge node not combining user and order data correctly",
+  "symptom": "The Merge node outputs either only data from one side or mismatched items, leading to incorrect associations between users and their orders.",
+  "applies_when": [
+    "Using Merge node",
+    "Merging data from two branches"
+  ],
+  "not_this_if": [
+    "Data is correctly matched by index",
+    "Using a different merge strategy"
+  ],
+  "root_cause": "The Merge node's 'Merge by Index' mode matches items based on their position rather than their actual data values. This can lead to incorrect associations if the order of items changes, resulting in mismatched data.",
+  "fix_steps": [
+    "Change the Merge mode from 'Merge by Index' to 'Merge by Key'",
+    "Set Input 1 key to 'id' and Input 2 key to 'user_id'",
+    "Ensure both fields are of the same type (e.g., both numbers)"
+  ],
+  "agent_instruction": "Switch to 'Merge by Key' mode and configure the keys correctly for accurate data merging.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "merge-node",
+    "data-merging",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/merge-node-not-combining-data-correctly-from-two-branches/279270"
+  ]
+}

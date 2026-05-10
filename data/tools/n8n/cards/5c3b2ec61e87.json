@@ -1,0 +1,43 @@
+{
+  "id": "5c3b2ec61e87",
+  "tool": "n8n",
+  "error_signature": "expression evaluates to undefined",
+  "context_key": "static-node",
+  "title": "Expression evaluates to undefined after multiple iterations",
+  "symptom": "After running a workflow for over 100 iterations, an expression that previously evaluated correctly suddenly returns undefined, causing the workflow to fail.",
+  "applies_when": [
+    "Workflow runs in a loop",
+    "Expression is evaluated from a static node"
+  ],
+  "not_this_if": [
+    "Error occurs in the first few iterations",
+    "Expression is dynamic and changes frequently"
+  ],
+  "root_cause": "The error occurs because the workflow's static data may not be properly managed across iterations, leading to unexpected behavior after a certain number of executions. This can happen if the static data is not reset or cleared, causing conflicts or memory issues.",
+  "fix_steps": [
+    "Implement a code node to track iterations and manage static data",
+    "Reset or clear static data at the end of each iteration",
+    "Consider using a sub-workflow to deactivate and reactivate the main workflow to manage long-running processes"
+  ],
+  "agent_instruction": "Track iterations using a code node and clear static data to prevent undefined expressions.",
+  "safety_notes": [
+    "Ensure that no important data is lost when clearing static data."
+  ],
+  "fix_type": "code_change",
+  "tags": [
+    "workflow",
+    "static-data",
+    "loop",
+    "iteration",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/expression-evaluates-to-undefined-after-100-iterations/192403"
+  ]
+}

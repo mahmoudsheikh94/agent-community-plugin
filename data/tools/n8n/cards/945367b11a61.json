@@ -1,0 +1,40 @@
+{
+  "id": "945367b11a61",
+  "tool": "n8n",
+  "error_signature": "sub-workflows run within the same execution context",
+  "context_key": "workflow-tool-node",
+  "title": "Sub-workflows executing locally instead of on worker nodes",
+  "symptom": "Sub-workflows are executed directly on the MCP webhook node instead of being enqueued for worker nodes. This behavior is contrary to the expected distributed execution in Queue Mode.",
+  "applies_when": [
+    "Using Workflow Tool node",
+    "MCP Server Trigger in Queue Mode"
+  ],
+  "not_this_if": [
+    "Sub-workflows are designed to run independently via Webhooks"
+  ],
+  "root_cause": "The Workflow Tool node is designed to execute sub-workflows synchronously within the same execution context as the parent workflow. This means that sub-workflows do not get enqueued as separate jobs and are executed locally, preventing distributed execution across worker nodes.",
+  "fix_steps": [
+    "Replace the Workflow Tool node with an HTTP Request node that calls the sub-workflow's webhook URL.",
+    "Ensure the sub-workflow starts with a Webhook Trigger to allow it to be processed as a new execution.",
+    "Test the workflow to confirm that sub-workflows are now enqueued and executed by available worker nodes."
+  ],
+  "agent_instruction": "Use an HTTP Request node to call the sub-workflow's webhook URL instead of using the Workflow Tool node.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "workflow-tool",
+    "sub-workflow",
+    "mcp-server-trigger",
+    "queue-mode",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.4.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-workflow-tool-node-mcp-server-trigger-behaviour-not-running-sub-workflows-on-worker-nodes/257919"
+  ]
+}

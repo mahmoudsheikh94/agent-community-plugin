@@ -1,0 +1,40 @@
+{
+  "id": "91a95a235e8c",
+  "tool": "weweb",
+  "error_signature": "Supabase is set by default not to show more than 1000 records",
+  "context_key": "supabase-collection",
+  "title": "Supabase limit on records for dropdown options",
+  "symptom": "When trying to bind a large collection to a dropdown, it fails to show all options due to a default limit of 1000 records in Supabase.",
+  "applies_when": [
+    "Using Supabase as a data source",
+    "Attempting to bind a dropdown to a large collection"
+  ],
+  "not_this_if": [
+    "The collection has fewer than 1000 records",
+    "Pagination is correctly implemented"
+  ],
+  "root_cause": "Supabase has a default setting that limits the number of records returned in a single API call to 1000. This can cause issues when trying to display a large dataset in a dropdown, as not all options will be available.",
+  "fix_steps": [
+    "Access the Supabase API settings.",
+    "Change the settings to allow fetching more than 1000 items.",
+    "Fetch all elements to the collection and implement frontend pagination to limit the displayed items."
+  ],
+  "agent_instruction": "Adjust the Supabase API settings to increase the record limit and implement frontend pagination.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "dropdown",
+    "pagination",
+    "api-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/dropdown-select-for-a-huge-amount-of-options/8574"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "d27c22f3750d",
+  "tool": "n8n",
+  "error_signature": "No results",
+  "context_key": "ollama-cloud-connection",
+  "title": "Model list not loading in Ollama Cloud connection",
+  "symptom": "After successfully testing the connection to Ollama Cloud, the model list shows 'No results'. This indicates that while the connection is authenticated, no models are being retrieved.",
+  "applies_when": [
+    "Using Ollama Cloud connection",
+    "Base URL is set to https://ollama.com"
+  ],
+  "not_this_if": [
+    "Base URL is set to https://ollama.com/v1"
+  ],
+  "root_cause": "The base URL for the Ollama Cloud API must be set correctly to retrieve models. Using the incorrect base URL can lead to the API not returning any model data, even if the connection itself is successful.",
+  "fix_steps": [
+    "Change the base URL in the Ollama Cloud credentials to https://ollama.com/v1",
+    "Save the changes",
+    "Test the connection again and check the model list"
+  ],
+  "agent_instruction": "Update the base URL to https://ollama.com/v1 in the Ollama Cloud credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ollama",
+    "cloud",
+    "api",
+    "model-list",
+    "connection"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ollama-cloud-connection-tested-successfully-but-model-list-shows-no-results/268828"
+  ]
+}

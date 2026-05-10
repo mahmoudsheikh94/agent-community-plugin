@@ -1,0 +1,40 @@
+{
+  "id": "94a45da4588b",
+  "tool": "weweb",
+  "error_signature": "isAuthenticated not updated",
+  "context_key": "Xano-Google OAuth integration",
+  "title": "isAuthenticated value not updated after Google login",
+  "symptom": "After logging in with Google, the 'isAuthenticated' value remains unchanged, preventing access to private pages.",
+  "applies_when": [
+    "Using Xano with Google OAuth",
+    "User attempts to access private pages"
+  ],
+  "not_this_if": [
+    "isAuthenticated updates correctly with Xano Auth element"
+  ],
+  "root_cause": "The issue arises from a bug in Xano where the dbTable variable needs to be refreshed. Without this refresh, the workflow does not update the 'isAuthenticated' value, leading to access issues for authenticated users.",
+  "fix_steps": [
+    "Open the Xano API workflow settings",
+    "Type in dummy text to force a dbTable search",
+    "Select the existing table from the dropdown",
+    "Publish the API workflow"
+  ],
+  "agent_instruction": "Refresh the dbTable variable in the Xano API workflow and republish it.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "Google OAuth",
+    "isAuthenticated",
+    "API workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/xano-oauth-google-login-with-provider-action-doesnt-update-value-for-isauthenticated/9132"
+  ]
+}

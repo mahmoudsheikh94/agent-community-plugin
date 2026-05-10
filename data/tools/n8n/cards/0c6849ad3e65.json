@@ -1,0 +1,40 @@
+{
+  "id": "0c6849ad3e65",
+  "tool": "n8n",
+  "error_signature": "invalid syntax",
+  "context_key": "JavaScript code in n8n",
+  "title": "Syntax error in JavaScript code after upgrade",
+  "symptom": "After upgrading to the latest version, a syntax error occurs in JavaScript code that previously worked. The error message indicates 'invalid syntax' for the first line of code.",
+  "applies_when": [
+    "Using JavaScript code in a node",
+    "Upgraded to n8n version 1.107.3"
+  ],
+  "not_this_if": [
+    "Code works without syntax error in previous versions",
+    "Using a different programming language"
+  ],
+  "root_cause": "The syntax for defining variables in JavaScript within n8n may have changed with the update. The use of 'const' in the template syntax is not supported, leading to the syntax error.",
+  "fix_steps": [
+    "Add a Set node before the JavaScript code node",
+    "Set a key 'responseUrl' with the desired URL value",
+    "In the JavaScript code, reference the URL as '{{ $json.responseUrl }}'"
+  ],
+  "agent_instruction": "Use a Set node to define 'responseUrl' and reference it in your JavaScript code.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "javascript",
+    "syntax-error",
+    "n8n-update",
+    "set-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/syntax-error-in-javascript-code-after-updating/171263"
+  ]
+}

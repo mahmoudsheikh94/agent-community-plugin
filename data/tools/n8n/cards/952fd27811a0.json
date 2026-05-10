@@ -1,0 +1,43 @@
+{
+  "id": "952fd27811a0",
+  "tool": "n8n",
+  "error_signature": "The first argument must be of type string or an instance of Buffer",
+  "context_key": "http-request-node",
+  "title": "Invalid argument type in HTTP request to OpenAI API",
+  "symptom": "When executing an HTTP request to the OpenAI image edit API, an error occurs stating that the first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Calling OpenAI image edit API"
+  ],
+  "not_this_if": [
+    "Error does not occur when using other APIs",
+    "No binary data is involved"
+  ],
+  "root_cause": "The error arises when the HTTP request is improperly configured, such as using a period instead of a comma in the parameters or trying to reference binary data from a remote node, which is not supported in n8n.",
+  "fix_steps": [
+    "Check the parameters in the HTTP request and ensure that commas are used correctly instead of periods.",
+    "If using binary data, utilize a Merge node to bring the binary data into the correct context before the HTTP request.",
+    "Create a credential for OpenAI instead of using the API key in clear text."
+  ],
+  "agent_instruction": "Correct the parameter formatting and use a Merge node for binary data, then create OpenAI credentials for secure API access.",
+  "safety_notes": [
+    "Avoid exposing API keys in clear text."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "openai",
+    "api-call",
+    "binary-data",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.111.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-with-gpt-image-edit-api-call/191090"
+  ]
+}

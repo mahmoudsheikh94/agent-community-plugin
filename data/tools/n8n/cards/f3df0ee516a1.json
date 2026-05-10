@@ -1,0 +1,39 @@
+{
+  "id": "f3df0ee516a1",
+  "tool": "n8n",
+  "error_signature": "no output",
+  "context_key": "googleDrive-node",
+  "title": "No output when uploading images to Google Drive",
+  "symptom": "When attempting to upload images received via webhook to Google Drive, there is no output generated. The expected file names and types are not being set correctly.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Receiving binary data from webhook"
+  ],
+  "not_this_if": [
+    "Output is generated in other nodes",
+    "Images are uploaded successfully in other workflows"
+  ],
+  "root_cause": "The Google Drive node requires specific input formats for binary data and file metadata. If the input fields are not set correctly, the node may not process the data as expected, leading to no output.",
+  "fix_steps": [
+    "Use 'data0' or 'data1' directly in the input fields instead of '{{$binary.data0}}'",
+    "Ensure that the file names and types are dynamically set based on the incoming data."
+  ],
+  "agent_instruction": "Set the input fields in the Google Drive node to 'data0' and 'data1' directly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "webhook",
+    "binary-data",
+    "file-upload"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/need-help-extracting-images-submitted-via-webhook/123751"
+  ]
+}

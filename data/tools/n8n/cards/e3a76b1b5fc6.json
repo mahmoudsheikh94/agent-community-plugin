@@ -1,0 +1,40 @@
+{
+  "id": "e3a76b1b5fc6",
+  "tool": "n8n",
+  "error_signature": "workflow re-executing with same ID after 65 seconds",
+  "context_key": "wait-node",
+  "title": "Workflow re-execution due to long Wait node duration",
+  "symptom": "Workflows using a Wait node for over 64 seconds re-execute with the same execution ID, causing interruptions. The previous execution stops shortly after the re-execution begins.",
+  "applies_when": [
+    "Using Wait node in queue mode",
+    "Wait duration is 65 seconds or more"
+  ],
+  "not_this_if": [
+    "Wait duration is less than 60 seconds",
+    "Using a different execution mode"
+  ],
+  "root_cause": "In queue mode, n8n has a limitation where workflows with long blocking nodes, such as Wait nodes exceeding 60 seconds, can trigger re-execution. This is due to the way execution locks are managed, leading to potential overlaps in workflow executions.",
+  "fix_steps": [
+    "Replace Wait node with a Schedule trigger or Execute Workflow node",
+    "If using loops, add a short Wait (1 second) between iterations",
+    "Monitor execution with N8N_LOG_LEVEL=debug to identify issues"
+  ],
+  "agent_instruction": "Replace long Wait nodes with alternative scheduling methods and implement short pauses in loops.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "wait-node",
+    "queue-mode",
+    "workflow-reexecution",
+    "execution-id"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-re-executing-with-same-id-when-wait-node-over-64-seconds-despite-queue-worker-lock-duration-set-to-120s-or-queue-health-check-active-set-false/125944"
+  ]
+}

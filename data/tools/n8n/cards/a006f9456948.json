@@ -1,0 +1,40 @@
+{
+  "id": "a006f9456948",
+  "tool": "n8n",
+  "error_signature": "webhook never registers executions",
+  "context_key": "webhook-configuration",
+  "title": "Webhook not registering due to URL mismatch",
+  "symptom": "The production webhook endpoint resolves, but n8n does not pick up the requests, leading to no executions being registered.",
+  "applies_when": [
+    "Using n8n with Traefik for TLS termination",
+    "Webhook URL is not correctly configured"
+  ],
+  "not_this_if": [
+    "Webhook works in a different environment",
+    "Using a different reverse proxy setup"
+  ],
+  "root_cause": "The issue arises when the externally reachable URL does not match the internal webhook registration URL. If the WEBHOOK_URL is unset or points to an internal address, incoming requests cannot be routed correctly to the execution handler.",
+  "fix_steps": [
+    "Set the WEBHOOK_URL environment variable to reflect the public HTTPS endpoint.",
+    "Ensure that your reverse proxy forwards the headers X-Forwarded-Proto and X-Forwarded-Host.",
+    "Verify that N8N_HOST and N8N_PROTOCOL are consistent with your external domain."
+  ],
+  "agent_instruction": "Configure the WEBHOOK_URL and ensure proper header forwarding in your reverse proxy.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "traefik",
+    "tls",
+    "url-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-registration/270760"
+  ]
+}

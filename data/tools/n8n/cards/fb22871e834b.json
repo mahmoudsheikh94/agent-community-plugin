@@ -1,0 +1,40 @@
+{
+  "id": "fb22871e834b",
+  "tool": "n8n",
+  "error_signature": "Error in sub-node MCP Client Could not connect to your MCP server",
+  "context_key": "mcp-client-node",
+  "title": "MCP Client node connection error",
+  "symptom": "The workflow fails with an error indicating that the MCP Client could not connect to the MCP server. This occurs during the execution of the node.",
+  "applies_when": [
+    "Using MCP Client node",
+    "Workflow is active and accessible"
+  ],
+  "not_this_if": [
+    "Using a single web instance instead of multiple",
+    "MCP server is reachable from the network"
+  ],
+  "root_cause": "The error occurs when the MCP Client node cannot establish a connection to the specified MCP server endpoint. This can be due to network issues, incorrect endpoint configuration, or the workflow not being active.",
+  "fix_steps": [
+    "Ensure the MCP server is running and accessible from the n8n instance.",
+    "Verify that the endpoint URL in the MCP Client node is correct.",
+    "Check that the workflow containing the MCP Client node is active."
+  ],
+  "agent_instruction": "Verify the MCP server's accessibility and ensure the workflow is active.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mcp",
+    "client",
+    "connection",
+    "node-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/nodeoperationerror-error-in-sub-node-mcp-client1-at-executecontext-getinputconnectiondata/177071"
+  ]
+}

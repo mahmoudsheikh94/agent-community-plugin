@@ -1,0 +1,40 @@
+{
+  "id": "435366433a1c",
+  "tool": "weweb",
+  "error_signature": "422 status code",
+  "context_key": "airtable-integration",
+  "title": "Form submission fails with 422 status code to Airtable",
+  "symptom": "When submitting a form connected to Airtable, the submission fails with a 422 status code. The payload structure appears incorrect, leading to the failure.",
+  "applies_when": [
+    "Using a form to submit data to Airtable",
+    "Payload structure is incorrect"
+  ],
+  "not_this_if": [
+    "Form submission works with other integrations",
+    "No error is shown in dev tools"
+  ],
+  "root_cause": "The error occurs due to incorrect data mapping in the form submission. Specifically, the user may be passing the entire object instead of the specific property needed for the Airtable field, leading to a 422 error indicating unprocessable entity.",
+  "fix_steps": [
+    "Ensure the form is correctly set up to use the POST method.",
+    "Check the data mapping to ensure only the necessary properties are being sent to Airtable.",
+    "Adjust the workflow scope to be specific to the form rather than global."
+  ],
+  "agent_instruction": "Verify and correct the data mapping in the form to ensure only the required properties are submitted to Airtable.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "form-submission",
+    "POST",
+    "data-mapping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/form-submission-fails-to-write-to-airtable/19424"
+  ]
+}

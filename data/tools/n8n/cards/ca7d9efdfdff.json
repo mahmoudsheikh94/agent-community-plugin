@@ -1,0 +1,39 @@
+{
+  "id": "ca7d9efdfdff",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'map')",
+  "context_key": "code-node",
+  "title": "Error accessing items in Code node",
+  "symptom": "The Code node throws an error stating 'Cannot read properties of undefined (reading 'map')' when trying to access the items property.",
+  "applies_when": [
+    "Using Code node",
+    "Accessing previous node outputs"
+  ],
+  "not_this_if": [
+    "The previous node outputs are correctly formatted",
+    "The error does not occur"
+  ],
+  "root_cause": "The error occurs because the Code node is trying to access the 'items' property of the previous node's output, but it is not defined. This typically happens when the output is not structured as expected or when using the wrong method to access the items.",
+  "fix_steps": [
+    "Change $('Old List').items.map(item => item.json) to $('Old List').all().map(item => item.json)",
+    "Do the same for the new list: $('New List').all().map(item => item.json)",
+    "Test the Code node again to ensure it works."
+  ],
+  "agent_instruction": "Update the Code node to use the 'all()' method instead of 'items'.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "javascript",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/using-code-node-to-process-two-jsons/140233"
+  ]
+}

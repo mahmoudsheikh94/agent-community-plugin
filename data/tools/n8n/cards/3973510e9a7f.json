@@ -1,0 +1,38 @@
+{
+  "id": "3973510e9a7f",
+  "tool": "n8n",
+  "error_signature": "loop runs only once",
+  "context_key": "loop-node",
+  "title": "Loop node only runs once when executed incorrectly",
+  "symptom": "The loop node does not iterate over items as expected and only runs once when executed from the last node.",
+  "applies_when": [
+    "Using a loop node",
+    "Executing the workflow from the last node"
+  ],
+  "not_this_if": [
+    "Executing the entire workflow from the start"
+  ],
+  "root_cause": "When executing a workflow from a specific node (like the last node), n8n does not process the preceding nodes, which prevents the loop from iterating over the intended items. The loop node relies on the full execution context to function correctly.",
+  "fix_steps": [
+    "Execute the entire workflow instead of right-clicking the last node",
+    "Ensure that the loop node is connected properly to the preceding nodes"
+  ],
+  "agent_instruction": "Run the entire workflow to ensure the loop node processes all items correctly.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "loop-node",
+    "execution",
+    "workflow",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/looping-over-not-working/128293"
+  ]
+}

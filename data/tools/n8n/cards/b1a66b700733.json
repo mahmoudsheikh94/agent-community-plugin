@@ -1,0 +1,41 @@
+{
+  "id": "b1a66b700733",
+  "tool": "n8n",
+  "error_signature": "[empty object]",
+  "context_key": "output_parser",
+  "title": "Agent outputs empty object due to output parser issues",
+  "symptom": "The agent sometimes returns an empty object instead of the expected output, particularly when parsing messages. This occurs intermittently, with some messages being processed correctly.",
+  "applies_when": [
+    "Using an output parser",
+    "Agent is expected to return a structured response"
+  ],
+  "not_this_if": [
+    "Output is consistently valid without the output parser",
+    "Error does not occur when 'Require Specific Output Format' is disabled"
+  ],
+  "root_cause": "The output parser may not be correctly configured to handle all expected response types, leading to inconsistencies. Additionally, the agent's instructions may not clearly define the expected output format, causing it to return an empty object when the format is not met.",
+  "fix_steps": [
+    "Disable the 'Require Specific Output Format' option in the output parser settings.",
+    "Check the raw output in the JSON tab after re-running the node.",
+    "Ensure the output parser is configured to handle both 'idea' and 'message' types explicitly.",
+    "Add an IF node after the agent to validate the output before proceeding."
+  ],
+  "agent_instruction": "Disable the specific output format requirement and validate the output with an IF node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "output-parser",
+    "agent",
+    "empty-object",
+    "json-format"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/agent-outputs-empty-object-even-though-chat-model-generates-a-completion/105153"
+  ]
+}

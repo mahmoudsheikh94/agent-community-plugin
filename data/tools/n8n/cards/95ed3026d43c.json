@@ -1,0 +1,39 @@
+{
+  "id": "95ed3026d43c",
+  "tool": "n8n",
+  "error_signature": "The file “C:\\tmp\\poetrydb.json” is not writable.",
+  "context_key": "Read/Write Files from Disk node",
+  "title": "File not writable error in Read/Write Files node",
+  "symptom": "When attempting to write a file using the Read/Write Files from Disk node, n8n throws an error stating that the file is not writable.",
+  "applies_when": [
+    "Using Read/Write Files from Disk node",
+    "Running n8n on Windows"
+  ],
+  "not_this_if": [
+    "File path is correct and accessible",
+    "Running n8n on a different operating system"
+  ],
+  "root_cause": "The error occurs because n8n restricts file access to a default directory, which may not include the specified file path. If the environment variable for file access is not set correctly, n8n cannot write to the intended location.",
+  "fix_steps": [
+    "Set the environment variable N8N_RESTRICT_FILE_ACCESS_TO to the desired writable directory path.",
+    "Restart n8n in a new PowerShell window to apply the changes."
+  ],
+  "agent_instruction": "Set the N8N_RESTRICT_FILE_ACCESS_TO environment variable to your desired writable directory and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "read-write-files",
+    "windows",
+    "environment-variable",
+    "file-access"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.4.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/stuck-in-course-level-2-read-write-node-exercise/258826"
+  ]
+}

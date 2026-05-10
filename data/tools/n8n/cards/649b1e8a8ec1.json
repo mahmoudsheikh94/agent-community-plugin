@@ -1,0 +1,41 @@
+{
+  "id": "649b1e8a8ec1",
+  "tool": "n8n",
+  "error_signature": "Google credentials keep disconnecting",
+  "context_key": "google-credentials",
+  "title": "Google credentials disconnecting frequently",
+  "symptom": "The Google credentials used in the workflow disconnect after a few days, requiring manual reconnection for each node.",
+  "applies_when": [
+    "Using Google credentials in n8n",
+    "Workflow runs for extended periods"
+  ],
+  "not_this_if": [
+    "Credentials are stable and do not require reconnection"
+  ],
+  "root_cause": "Google OAuth credentials can expire based on the access type and the publishing status in the Google Cloud Console. If the access type is not set to offline or if the application is in testing mode, credentials may expire after a short period.",
+  "fix_steps": [
+    "Go to your Google Cloud Console and locate your OAuth credentials.",
+    "Ensure that the 'access_type' is set to 'offline'.",
+    "Check the OAuth consent screen settings and set the Publishing status to 'In production'.",
+    "Save the changes and test the workflow again."
+  ],
+  "agent_instruction": "Update the Google OAuth credentials settings to prevent disconnection.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "credentials",
+    "oauth",
+    "disconnection",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-credentials-keeps-disconnecting/191691"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "b8ec41372728",
+  "tool": "weweb",
+  "error_signature": "horizontal scroll not working inside expanded layout",
+  "context_key": "expanded-layout",
+  "title": "Horizontal scroll issue in expanded layout",
+  "symptom": "The datagrid does not display a horizontal scroll when placed inside an expanded layout, causing overflow issues.",
+  "applies_when": [
+    "Using a datagrid inside an expanded layout",
+    "Width settings are not correctly configured"
+  ],
+  "not_this_if": [
+    "Datagrid is outside of an expanded layout",
+    "Width settings are already set to 100%"
+  ],
+  "root_cause": "The expanded layout may have restrictive width settings that prevent child elements from displaying correctly. If the child elements do not have appropriate width and max-width settings, they can overflow without providing a scroll option.",
+  "fix_steps": [
+    "Set the expanded layout's width to 100%.",
+    "Set the child element (datagrid) to a max-width of 100%.",
+    "Enable scrolling on the datagrid."
+  ],
+  "agent_instruction": "Adjust the width settings of the expanded layout and datagrid to ensure proper scrolling functionality.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "expanded-layout",
+    "datagrid",
+    "scroll",
+    "css"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/set-dynamic-width-of-a-div-based-on-parent-container-width/4203"
+  ]
+}

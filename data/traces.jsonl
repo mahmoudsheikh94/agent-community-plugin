@@ -1,0 +1,3 @@
+{"trace_id":"tr_f9faee99","timestamp":"2026-05-10T16:10:02.867Z","agent":"claude-code","tool":"n8n","error":"credentials not available","attempted_steps":[],"matched_fix_id":"199c6dabdaa3"}
+{"trace_id":"tr_b5afeb49","timestamp":"2026-05-10T16:10:19.598Z","agent":"claude-code","tool":"weweb","error":"binding not found supabase","attempted_steps":[],"matched_fix_id":"4c2cebcee632"}
+{"trace_id":"tr_c2a53728","timestamp":"2026-05-10T16:10:19.646Z","agent":"claude-code","tool":"weweb","error":"binding not found supabase","attempted_steps":[],"matched_fix_id":"4c2cebcee632"}

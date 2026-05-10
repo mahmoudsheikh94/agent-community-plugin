@@ -1,0 +1,41 @@
+{
+  "id": "67b994fbf1fd",
+  "tool": "n8n",
+  "error_signature": "no new rows added due to matching update condition",
+  "context_key": "google-sheets-node",
+  "title": "No new rows added in Google Sheets due to existing data",
+  "symptom": "When attempting to append or update rows in Google Sheets, no new rows are added because existing data matches the update condition.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Data matches existing entries in the sheet"
+  ],
+  "not_this_if": [
+    "Data is completely new and does not match any existing entries"
+  ],
+  "root_cause": "The Google Sheets node in n8n checks for existing data that matches the update condition before appending new rows. If a match is found, it will not add new rows, leading to the appearance that the operation has failed.",
+  "fix_steps": [
+    "Check the existing data in the Google Sheet to identify any matches with the new data.",
+    "Delete or modify the existing rows that match the update condition.",
+    "Retry the workflow to append new data."
+  ],
+  "agent_instruction": "Ensure there are no matching entries in the Google Sheet before appending new data.",
+  "safety_notes": [
+    "Deleting rows may result in data loss if not backed up."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "append",
+    "update",
+    "data-matching"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/append-or-update-row-does-not-work/91365"
+  ]
+}

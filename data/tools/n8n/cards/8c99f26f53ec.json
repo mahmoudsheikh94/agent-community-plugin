@@ -1,0 +1,40 @@
+{
+  "id": "8c99f26f53ec",
+  "tool": "n8n",
+  "error_signature": "Can’t determine which item to use",
+  "context_key": "append stage in Google Sheets node",
+  "title": "Error during append stage in Google Sheets",
+  "symptom": "When attempting to append data to Google Sheets, the error '[Can’t determine which item to use]' occurs, indicating multiple matches found.",
+  "applies_when": [
+    "Using a code node to filter PDF files",
+    "Appending data to Google Sheets"
+  ],
+  "not_this_if": [
+    "Only one PDF is processed",
+    "No filtering is done in the code node"
+  ],
+  "root_cause": "The error arises because the workflow attempts to append multiple items simultaneously without properly distinguishing between them. The append operation expects a single item, but multiple items are being passed due to the way the workflow is structured.",
+  "fix_steps": [
+    "Remove the if node that checks for duplicates after filtering PDFs",
+    "Add a Loop node to process each PDF file individually",
+    "Connect the Loop node to the Google Sheets append operation"
+  ],
+  "agent_instruction": "Use a Loop node to process each PDF file one by one before appending to Google Sheets.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "pdf",
+    "loop-node",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.1.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/extracting-information-of-multiple-pdfs/246170"
+  ]
+}

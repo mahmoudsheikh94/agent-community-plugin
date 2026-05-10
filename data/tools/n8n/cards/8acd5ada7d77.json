@@ -1,0 +1,43 @@
+{
+  "id": "8acd5ada7d77",
+  "tool": "n8n",
+  "error_signature": "OpenWebUI timeout after 60 seconds",
+  "context_key": "OpenWebUI integration",
+  "title": "OpenWebUI timeout issue with long-running n8n workflows",
+  "symptom": "When a request to OpenWebUI takes longer than 60 seconds, it shows a timeout error despite the n8n workflow completing successfully.",
+  "applies_when": [
+    "Using OpenWebUI as a frontend for n8n",
+    "n8n workflows take longer than 60 seconds"
+  ],
+  "not_this_if": [
+    "Requests complete in under 60 seconds",
+    "Using a different frontend or integration"
+  ],
+  "root_cause": "OpenWebUI has a default timeout setting that limits the duration of requests. When n8n workflows exceed this limit, OpenWebUI cannot wait for the response, resulting in a timeout error.",
+  "fix_steps": [
+    "Call the n8n webhook and immediately respond with the execution ID.",
+    "Store the execution ID in your OpenWebUI function.",
+    "Poll the n8n API every 5 seconds to check the execution status using the endpoint: `https://www.n8n/api/v1/{execution_id}?includeData=false`.",
+    "Once the execution status is 'finished': true, fetch the full execution data using: `https://www.n8n/api/v1/{execution_id}?includeData=true`.",
+    "Extract the data from the last node."
+  ],
+  "agent_instruction": "Implement polling for execution status in your OpenWebUI function to handle long-running workflows.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "OpenWebUI",
+    "timeout",
+    "n8n",
+    "polling",
+    "execution-status"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/openwebui-timeout-issue-after-60s-when-using-with-n8n-pipe/111001"
+  ]
+}

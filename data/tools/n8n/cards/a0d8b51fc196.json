@@ -1,0 +1,42 @@
+{
+  "id": "a0d8b51fc196",
+  "tool": "n8n",
+  "error_signature": "unable to create Google Drive credential without server access",
+  "context_key": "google-drive-node",
+  "title": "Creating Google Drive credentials without server access",
+  "symptom": "Users are unable to create Google Drive credentials for n8n without exposing their server. They seek a secure method to authenticate without direct server access.",
+  "applies_when": [
+    "Using n8n to integrate with Google Drive",
+    "Concerned about server access exposure"
+  ],
+  "not_this_if": [
+    "Using standard OAuth2 credentials",
+    "Server access is acceptable"
+  ],
+  "root_cause": "The standard OAuth2 flow requires user interaction and server access, which can expose sensitive information. Service Accounts provide a secure alternative for server-to-server communication without user involvement.",
+  "fix_steps": [
+    "Create a Service Account in Google Cloud Console.",
+    "Enable the Google Drive API for your project.",
+    "Generate a JSON key for the Service Account.",
+    "Share the Google Drive folder with the Service Account email.",
+    "Set up the Google Service Account credential in n8n using the JSON key."
+  ],
+  "agent_instruction": "Follow the steps to create a Service Account and configure it in n8n for Google Drive access.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "service-account",
+    "credentials",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-drive-credential-without-giving-access-to-my-n8n-server/105178"
+  ]
+}

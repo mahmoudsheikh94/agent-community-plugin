@@ -1,0 +1,40 @@
+{
+  "id": "464ad87de149",
+  "tool": "n8n",
+  "error_signature": "Origin header does NOT match the expected origin",
+  "context_key": "docker-configuration",
+  "title": "Origin header mismatch in Docker setup",
+  "symptom": "When accessing n8n hosted on Docker, an error indicates that the Origin header does not match the expected origin, causing connection issues.",
+  "applies_when": [
+    "Using n8n in a Docker container",
+    "Accessing n8n via a named URL"
+  ],
+  "not_this_if": [
+    "Using localhost or default Docker settings"
+  ],
+  "root_cause": "The mismatch occurs because the Docker image URL specified in the docker-compose file is incorrect, leading to configuration issues that affect the expected WebSocket connection.",
+  "fix_steps": [
+    "Open your docker-compose.yml file",
+    "Change the image line from 'image: docker.n8n.io/n8nio/n8n' to 'image: n8nio/n8n'",
+    "Save the changes",
+    "Restart your Docker container"
+  ],
+  "agent_instruction": "Update the Docker image URL in your docker-compose.yml file and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "origin-header",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.95.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-docker-origin-header-issue/126209"
+  ]
+}

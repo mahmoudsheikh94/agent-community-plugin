@@ -1,0 +1,39 @@
+{
+  "id": "799e960a3eb6",
+  "tool": "n8n",
+  "error_signature": "Bad Request: bad webhook: An HTTPS URL must be provided for webhook",
+  "context_key": "telegram-trigger",
+  "title": "Telegram Trigger requires HTTPS webhook URL",
+  "symptom": "When executing a workflow with a Telegram trigger, n8n returns a 'Bad Request: bad webhook' error indicating that an HTTPS URL must be provided for the webhook.",
+  "applies_when": [
+    "Using Telegram trigger",
+    "n8n is behind a reverse proxy"
+  ],
+  "not_this_if": [
+    "Webhook URL is correctly set to HTTPS",
+    "n8n is not behind a reverse proxy"
+  ],
+  "root_cause": "The Telegram trigger requires a publicly accessible HTTPS URL for webhooks. If n8n is running behind a reverse proxy and the environment variables are not set correctly, it may default to using a localhost URL instead of the public domain.",
+  "fix_steps": [
+    "Ensure the environment variables are correctly set for n8n",
+    "Restart n8n using 'sudo pm2 restart n8n --update-env' to apply changes"
+  ],
+  "agent_instruction": "Set the correct environment variables and restart n8n to ensure the webhook URL is updated.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "webhook",
+    "reverse-proxy",
+    "nginx"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-behind-nginx-reverse-proxy/134875"
+  ]
+}

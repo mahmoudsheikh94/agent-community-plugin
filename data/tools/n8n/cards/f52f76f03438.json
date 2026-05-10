@@ -1,0 +1,40 @@
+{
+  "id": "f52f76f03438",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials?",
+  "context_key": "AEM API",
+  "title": "AEM API Forbidden Error",
+  "symptom": "When attempting to create a new AEM page, the workflow returns a 'Forbidden' error, indicating potential credential issues.",
+  "applies_when": [
+    "Using AEM API for page creation",
+    "CSRF token is not included in the request"
+  ],
+  "not_this_if": [
+    "Credentials are verified and working",
+    "CSRF token is correctly passed"
+  ],
+  "root_cause": "The error occurs because the AEM API requires a valid CSRF token for POST requests to prevent cross-site request forgery. If the token is missing or incorrect, the API will respond with a 'Forbidden' error.",
+  "fix_steps": [
+    "Make a GET request to your AEM instance to retrieve the CSRF token from the response headers.",
+    "Include the retrieved CSRF token in the header of your subsequent POST request when creating the AEM page."
+  ],
+  "agent_instruction": "Retrieve the CSRF token from AEM and include it in your page creation request.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "AEM",
+    "CSRF",
+    "API",
+    "forbidden",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/create-adobe-experience-manager-aem-page-from-figma-design/219921"
+  ]
+}

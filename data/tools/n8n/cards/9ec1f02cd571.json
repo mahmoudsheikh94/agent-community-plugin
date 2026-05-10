@@ -1,0 +1,40 @@
+{
+  "id": "9ec1f02cd571",
+  "tool": "n8n",
+  "error_signature": "agent stopped due to max iterations",
+  "context_key": "sub-agent tool call",
+  "title": "Infinite loop in sub-agent tool calls",
+  "symptom": "The agent keeps calling the same tool repeatedly even after a successful response, eventually crashing with 'agent stopped due to max iterations'.",
+  "applies_when": [
+    "Using sub-agents for tool calls",
+    "Agent receives a successful response from the tool"
+  ],
+  "not_this_if": [
+    "Agent successfully returns a response without looping",
+    "No sub-agent is involved"
+  ],
+  "root_cause": "The agent's prompt instructions may not clearly indicate when to stop processing. If the prompt suggests that information is always missing, the agent will continue to loop instead of terminating after a successful tool call.",
+  "fix_steps": [
+    "Review the system prompt instructions",
+    "Add a clear instruction indicating when the agent should stop after a successful update",
+    "Test the agent to ensure it terminates correctly after success"
+  ],
+  "agent_instruction": "Modify the system prompt to include a clear stop condition after a successful tool call.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sub-agent",
+    "tool-call",
+    "infinite-loop",
+    "prompt-instructions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/agent-goes-into-infinite-tool-call-loop/174472"
+  ]
+}

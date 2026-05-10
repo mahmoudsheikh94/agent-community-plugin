@@ -1,0 +1,39 @@
+{
+  "id": "bd3e69437af3",
+  "tool": "n8n",
+  "error_signature": "custom properties not appearing in HubSpot node",
+  "context_key": "hubspot-company-node",
+  "title": "Custom properties not visible in HubSpot Update node",
+  "symptom": "The user cannot see the custom properties in the HubSpot Update node's fields, even when the internal name is used.",
+  "applies_when": [
+    "Using HubSpot Update node",
+    "Trying to update a custom property"
+  ],
+  "not_this_if": [
+    "Custom properties are visible in the dropdown"
+  ],
+  "root_cause": "By default, the HubSpot Update node only displays default properties. Custom properties must be explicitly selected from the 'Add Field' dropdown under 'Custom Properties' to be accessible.",
+  "fix_steps": [
+    "Open the HubSpot Update node settings.",
+    "Navigate to Update Fields and select 'Add Field'.",
+    "Choose 'Custom Properties' from the dropdown to access custom fields."
+  ],
+  "agent_instruction": "Select 'Custom Properties' from the Update Fields dropdown in the HubSpot node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "hubspot",
+    "update-node",
+    "custom-properties",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/update-a-property-in-hubspot/227014"
+  ]
+}

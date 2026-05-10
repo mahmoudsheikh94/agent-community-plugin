@@ -1,0 +1,39 @@
+{
+  "id": "df1f9a8eb76a",
+  "tool": "n8n",
+  "error_signature": "parsing as type timestamp: unexpected separator ‘\"’ for field Year",
+  "context_key": "postgresql-insert-node",
+  "title": "Timestamp parsing error in PostgreSQL Insert node",
+  "symptom": "When using the PostgreSQL Insert node with an ISO 8601 date string, an error occurs indicating an unexpected separator for the field Year.",
+  "applies_when": [
+    "Using PostgreSQL Insert node",
+    "Input date is in ISO 8601 format"
+  ],
+  "not_this_if": [
+    "Using standard PostgreSQL database instead of CockroachDB"
+  ],
+  "root_cause": "CockroachDB, while compatible with PostgreSQL, has stricter timestamp parsing rules. The error arises because the input date string starts with a double quote, which is not expected by CockroachDB's parser.",
+  "fix_steps": [
+    "Switch to using the execute statement operation in n8n",
+    "Explicitly cast the required types in your SQL statement"
+  ],
+  "agent_instruction": "Use the execute statement operation and ensure to cast the timestamp types explicitly.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "postgresql",
+    "cockroachdb",
+    "timestamp",
+    "insert-node",
+    "error-parsing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.111.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgresql-insert-error-parsing-iso-format-string/190598"
+  ]
+}

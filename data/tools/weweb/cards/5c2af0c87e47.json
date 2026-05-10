@@ -1,0 +1,38 @@
+{
+  "id": "5c2af0c87e47",
+  "tool": "weweb",
+  "error_signature": "performance issue with Data Grid",
+  "context_key": "Data Grid Element",
+  "title": "Performance issue with Data Grid due to incorrect binding",
+  "symptom": "The Data Grid displays a performance issue message and the editor becomes slow or crashes. This occurs when too many records are loaded at once.",
+  "applies_when": [
+    "Using Data Grid Element",
+    "Binding to the entire collection object"
+  ],
+  "not_this_if": [
+    "Binding to the paginated data of the collection"
+  ],
+  "root_cause": "Binding to the entire collection object instead of the paginated data causes all records to load at once, leading to performance degradation and potential crashes in the editor.",
+  "fix_steps": [
+    "Change the binding from 'Companies-01' to 'Companies-01.data'",
+    "Ensure pagination is set up correctly with the Paginator element"
+  ],
+  "agent_instruction": "Bind the Data Grid to 'Companies-01.data' to load only the paginated records.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "data-grid",
+    "pagination",
+    "mySQL",
+    "performance-issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/get-data-from-mysql-table/4652"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "9c6d1df1f2d2",
+  "tool": "n8n",
+  "error_signature": "undefined when calling field data",
+  "context_key": "Extract from File node",
+  "title": "CSV file reading issue with multi-language content",
+  "symptom": "When trying to read a CSV file with multi-language content, the first column returns 'undefined'.",
+  "applies_when": [
+    "Using Extract from File node",
+    "CSV file contains multi-language content"
+  ],
+  "not_this_if": [
+    "CSV file is in a single language",
+    "No undefined values in the output"
+  ],
+  "root_cause": "The presence of a Byte Order Mark (BOM) in the CSV file can interfere with how the Extract from File node reads the content, leading to undefined values for certain fields.",
+  "fix_steps": [
+    "Open the Extract from File node settings",
+    "Enable the option 'Exclude Byte Order Mark (BOM)'",
+    "Save the workflow",
+    "Re-run the workflow to check if the issue is resolved"
+  ],
+  "agent_instruction": "Enable 'Exclude Byte Order Mark (BOM)' in the Extract from File node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "csv",
+    "multi-language",
+    "Extract from File",
+    "BOM"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.2.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-read-csv-file-that-contains-multi-language/256175"
+  ]
+}

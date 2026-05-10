@@ -1,0 +1,39 @@
+{
+  "id": "748dc5d1b4cb",
+  "tool": "n8n",
+  "error_signature": "Resource not found",
+  "context_key": "azure-openai-node",
+  "title": "Azure OpenAI API resource not found error",
+  "symptom": "The AI model node in n8n fails to connect to the Azure OpenAI API, displaying 'Resource not found'. This occurs even when the correct resource name is provided.",
+  "applies_when": [
+    "Using Azure OpenAI API node",
+    "Correct resource name is specified"
+  ],
+  "not_this_if": [
+    "Error occurs with a different node or API"
+  ],
+  "root_cause": "The error typically arises when the endpoint or resource name is incorrectly specified. Additionally, the default API version set by n8n may not match the current version required by Azure, leading to connection issues.",
+  "fix_steps": [
+    "Verify the resource name and endpoint in the Azure OpenAI node settings",
+    "Check the API version in the node settings and update it to '2025-04-01-preview'",
+    "Save the workflow and attempt to connect again"
+  ],
+  "agent_instruction": "Ensure the Azure OpenAI node has the correct resource name and API version set.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "azure",
+    "openai",
+    "api-connection",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-model-node-not-connecting-to-azure-openai-api/166127"
+  ]
+}

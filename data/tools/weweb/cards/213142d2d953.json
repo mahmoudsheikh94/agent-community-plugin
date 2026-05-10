@@ -1,0 +1,39 @@
+{
+  "id": "213142d2d953",
+  "tool": "weweb",
+  "error_signature": "collection info not loading in published app",
+  "context_key": "Xano data source",
+  "title": "Collection info not loading in published app",
+  "symptom": "The app works as expected in the editor, but the published version fails to load collection information. Users see discrepancies between the two environments.",
+  "applies_when": [
+    "Using Xano as a data source",
+    "Publishing the app after editing"
+  ],
+  "not_this_if": [
+    "The issue occurs only in the editor or only in production"
+  ],
+  "root_cause": "The problem arises from how parameters are accessed in the workflow. Using 'Context > Query > wwParam-XXX' may not correctly reference the parameters in the published app, leading to data not being loaded.",
+  "fix_steps": [
+    "Open the workflow settings in the WeWeb editor",
+    "Change the parameter access method from 'Context > Query > wwParam-XXX' to 'var > From Path in Current Page'",
+    "Save the changes and republish the app"
+  ],
+  "agent_instruction": "Update the parameter access method in the workflow to use 'var > From Path in Current Page'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "data-source",
+    "collection-loading",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/collection-loading-in-editor-but-not-in-published-app/1681"
+  ]
+}

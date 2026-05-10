@@ -1,0 +1,38 @@
+{
+  "id": "bf83e8d57682",
+  "tool": "n8n",
+  "error_signature": "sending several identical emails",
+  "context_key": "microsoftOutlookTrigger",
+  "title": "Multiple identical emails sent from Outlook trigger",
+  "symptom": "The workflow sends several identical emails every minute due to the trigger node configuration.",
+  "applies_when": [
+    "Using Microsoft Outlook Trigger",
+    "Emails are sent every minute"
+  ],
+  "not_this_if": [
+    "Emails are sent only once per trigger"
+  ],
+  "root_cause": "The Outlook trigger node is configured to poll for new emails every minute without filtering for read status. This causes the same unread emails to be processed repeatedly, resulting in multiple identical emails being sent.",
+  "fix_steps": [
+    "Add a node to update the trigger email's status to read after processing.",
+    "Configure the Outlook trigger node to filter for 'read status - only unread messages'."
+  ],
+  "agent_instruction": "Update the trigger email status to read and set the trigger to only process unread messages.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "outlook",
+    "email",
+    "trigger",
+    "duplicate-emails"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/outlook-send-several-mail/100970"
+  ]
+}

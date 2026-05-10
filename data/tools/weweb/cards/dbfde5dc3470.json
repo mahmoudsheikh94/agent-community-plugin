@@ -1,0 +1,39 @@
+{
+  "id": "dbfde5dc3470",
+  "tool": "weweb",
+  "error_signature": "modal dropdown not scrolling",
+  "context_key": "modal-dropdown",
+  "title": "Modal dropdown not scrolling issue",
+  "symptom": "The dropdown in the modal does not scroll when there are many results, making it difficult to view all options.",
+  "applies_when": [
+    "Using a modal with a dropdown",
+    "Dropdown contains many items"
+  ],
+  "not_this_if": [
+    "Dropdown has few items",
+    "Dropdown is not in a modal"
+  ],
+  "root_cause": "The dropdown's container does not have a fixed height or the overflow property is not set to allow scrolling, which prevents the dropdown from displaying scrollbars when content exceeds the visible area.",
+  "fix_steps": [
+    "Set a fixed height on the `wrapper-content-search` element.",
+    "Enable the `Scroll` option on the `Overflow` property."
+  ],
+  "agent_instruction": "Adjust the height and overflow settings of the dropdown's wrapper element to enable scrolling.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "modal",
+    "dropdown",
+    "scrolling",
+    "UI"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/modal-dropdown-not-scrolling/3916"
+  ]
+}

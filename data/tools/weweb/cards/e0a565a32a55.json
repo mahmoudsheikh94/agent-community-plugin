@@ -1,0 +1,39 @@
+{
+  "id": "e0a565a32a55",
+  "tool": "weweb",
+  "error_signature": "opens the relevant page when clicking bookmark icon",
+  "context_key": "bookmark-icon",
+  "title": "Bookmark icon opens page instead of just bookmarking",
+  "symptom": "Clicking the bookmark icon not only bookmarks the item but also opens the relevant page, which is unintended behavior.",
+  "applies_when": [
+    "Using a clickable card with an open-on-click action",
+    "Bookmark icon is nested within the card"
+  ],
+  "not_this_if": [
+    "Bookmark icon is not nested within a clickable card"
+  ],
+  "root_cause": "The default behavior of the clickable card is to open a new page on click. When the bookmark icon is clicked, the event propagates to the card, triggering the page opening action instead of just executing the bookmark action.",
+  "fix_steps": [
+    "Select the bookmark button in the card",
+    "Add a JavaScript action with `event.stopPropagation()`",
+    "Save the changes"
+  ],
+  "agent_instruction": "Implement `event.stopPropagation()` on the bookmark button to prevent the page from opening.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "bookmark",
+    "clickable-card",
+    "event-handling",
+    "javascript"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/page-opening-unintentionally-upon-bookmarking/5038"
+  ]
+}

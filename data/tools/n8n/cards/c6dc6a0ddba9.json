@@ -1,0 +1,39 @@
+{
+  "id": "c6dc6a0ddba9",
+  "tool": "n8n",
+  "error_signature": "You do not have permission to send messages in this channel.",
+  "context_key": "discord-node",
+  "title": "Discord channel permission error",
+  "symptom": "When attempting to send a message to the #course-level-1 channel on Discord, the user receives an error stating 'You do not have permission to send messages in this channel.'",
+  "applies_when": [
+    "Using Discord node",
+    "Trying to send messages to a specific channel"
+  ],
+  "not_this_if": [
+    "Using a different messaging platform like Telegram"
+  ],
+  "root_cause": "The error occurs because the user does not have the necessary permissions to send messages in the specified Discord channel. This can happen if the user has not completed the required steps to gain access or if the webhook is not set up correctly.",
+  "fix_steps": [
+    "Use the Discord node with Connection Type set to Webhook.",
+    "Paste the course webhook URL from your Level 1 email into the webhook credentials.",
+    "Send the required message format using the specified expression."
+  ],
+  "agent_instruction": "Set up the Discord node with the correct webhook URL and message format to gain permission to send messages.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "discord",
+    "webhook",
+    "permissions",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-send-to-course-level-1-on-discord-cant-pass-quiz/267784"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "09beb675cb72",
+  "tool": "n8n",
+  "error_signature": "allowed-env wildcard patterns not supported",
+  "context_key": "n8n-runner-env-configuration",
+  "title": "Wildcard patterns in allowed-env not supported",
+  "symptom": "The runner fails to recognize environment variables due to wildcard patterns in the allowed-env configuration.",
+  "applies_when": [
+    "Configuring environment variables for n8n runners",
+    "Using wildcard patterns in allowed-env"
+  ],
+  "not_this_if": [
+    "All environment variables are explicitly listed in allowed-env"
+  ],
+  "root_cause": "The n8n runner does not support wildcard patterns in the allowed-env configuration. Each environment variable must be explicitly listed to ensure they are recognized by the runner process.",
+  "fix_steps": [
+    "Update the allowed-env list in the runner configuration to explicitly include each required environment variable.",
+    "Remove any wildcard patterns from the allowed-env configuration."
+  ],
+  "agent_instruction": "Explicitly list all required environment variables in the allowed-env configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "runner",
+    "environment-variables",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.9.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/task-request-timed-out-after-60-seconds-external-runner-queue-mode-on-kubernetes-v2-9-4/273616"
+  ]
+}

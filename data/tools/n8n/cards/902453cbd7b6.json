@@ -1,0 +1,39 @@
+{
+  "id": "902453cbd7b6",
+  "tool": "n8n",
+  "error_signature": "Method not allowed - please check you are using the right HTTP method",
+  "context_key": "wooCommerce-node",
+  "title": "WooCommerce update product method not allowed",
+  "symptom": "When attempting to update a product in WooCommerce via n8n, the error 'Method not allowed - please check you are using the right HTTP method' is displayed.",
+  "applies_when": [
+    "Using WooCommerce node",
+    "Attempting to update a product"
+  ],
+  "not_this_if": [
+    "Creating products works without issue",
+    "No plugins are interfering"
+  ],
+  "root_cause": "The error occurs when a plugin, such as 'Really Simple SSL', interferes with the HTTP request method used for updating products in WooCommerce. This can prevent the correct HTTP method from being processed, leading to a 405 error.",
+  "fix_steps": [
+    "Identify and disable any conflicting plugins, such as 'Really Simple SSL'.",
+    "Test the product update functionality again in n8n."
+  ],
+  "agent_instruction": "Disable the 'Really Simple SSL' plugin and retry updating the product.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "woocommerce",
+    "update-product",
+    "HTTP-405",
+    "plugin-conflict"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-update-product-in-woo-commerce/84795"
+  ]
+}

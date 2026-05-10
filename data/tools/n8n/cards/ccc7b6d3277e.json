@@ -1,0 +1,39 @@
+{
+  "id": "ccc7b6d3277e",
+  "tool": "n8n",
+  "error_signature": "only the first row gets updated",
+  "context_key": "google-sheets-update",
+  "title": "Only the first child row is updated in Google Sheets",
+  "symptom": "When updating multiple rows in Google Sheets, only the first child row receives the updated value, while others are skipped.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Updating multiple rows with parent-child relationships"
+  ],
+  "not_this_if": [
+    "All rows are updated correctly",
+    "No parent-child relationships exist"
+  ],
+  "root_cause": "The update logic is likely using a non-unique key for matching rows, causing only the first matching row to be updated. This happens when the workflow does not correctly iterate through all child rows for a given parent.",
+  "fix_steps": [
+    "Add a 'Split In Batches' node before the update step with batchSize set to 1",
+    "Ensure the Update node references fresh data using $json instead of previously referenced data"
+  ],
+  "agent_instruction": "Implement a 'Split In Batches' node with batchSize: 1 before the update step to ensure all matching rows are updated.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "update-rows",
+    "parent-child-relationship",
+    "n8n-workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/update-multiple-rows-in-google-sheets-based-on-parent-child-relationship/238843"
+  ]
+}

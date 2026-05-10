@@ -1,0 +1,39 @@
+{
+  "id": "d6c5697524c0",
+  "tool": "n8n",
+  "error_signature": "Authorization failed - please check your credentials",
+  "context_key": "gemini-api",
+  "title": "Gemini API authorization failure",
+  "symptom": "When attempting to connect to the Gemini API, n8n displays 'Authorization failed - please check your credentials'. This indicates that the provided API credentials are not being accepted.",
+  "applies_when": [
+    "Using Gemini API",
+    "Correct API keys generated"
+  ],
+  "not_this_if": [
+    "Credentials are valid and working in other applications"
+  ],
+  "root_cause": "The error occurs when the API keys used for authentication are not recognized by the Gemini API. This can happen if the keys are generated from the wrong source or if there are restrictions on the keys that prevent them from being used with n8n.",
+  "fix_steps": [
+    "Generate a new API key from the AI Studio at https://aistudio.google.com/app/apikey",
+    "Use this new key in the n8n Gemini API node settings",
+    "Save the workflow and attempt to connect again"
+  ],
+  "agent_instruction": "Generate a new API key from AI Studio and update the Gemini API node settings in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gemini",
+    "api",
+    "authorization",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gemini-api-credentials-correct-are-not-recognized/193091"
+  ]
+}

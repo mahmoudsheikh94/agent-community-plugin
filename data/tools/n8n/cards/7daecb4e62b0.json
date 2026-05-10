@@ -1,0 +1,38 @@
+{
+  "id": "7daecb4e62b0",
+  "tool": "n8n",
+  "error_signature": "Only works if we are not using toggle",
+  "context_key": "notion-api",
+  "title": "Notion API block insertion fails with toggle blocks",
+  "symptom": "When attempting to insert a new block using the Notion API, the operation fails if the target block is a toggle block.",
+  "applies_when": [
+    "Using Notion API to insert blocks",
+    "Target block is not a toggle"
+  ],
+  "not_this_if": [
+    "Target block is a toggle block"
+  ],
+  "root_cause": "The Notion API has limitations regarding the manipulation of toggle blocks. Specifically, the method for inserting new blocks does not support toggle blocks, leading to failures when such blocks are involved.",
+  "fix_steps": [
+    "Ensure the target block for insertion is not a toggle block",
+    "Use the PATCH request to insert the new block as shown in the documentation"
+  ],
+  "agent_instruction": "Check that the target block is not a toggle before attempting to insert a new block.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "notion",
+    "api",
+    "block-insertion",
+    "toggle-blocks"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/insert-a-text-block-at-a-specific-position-in-a-notion-page/99061"
+  ]
+}

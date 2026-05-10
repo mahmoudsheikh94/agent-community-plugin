@@ -1,0 +1,39 @@
+{
+  "id": "43da4b5af89e",
+  "tool": "weweb",
+  "error_signature": "events missing the last day",
+  "context_key": "calendar-component",
+  "title": "Calendar component missing last day of multi-day events",
+  "symptom": "Multi-day events in the calendar component do not display the last day. Users see that events are cut off before the final day.",
+  "applies_when": [
+    "Using the calendar component",
+    "Events marked as 'All Day'"
+  ],
+  "not_this_if": [
+    "Events are not marked as 'All Day'"
+  ],
+  "root_cause": "The FullCalendar library used by WeWeb requires that all-day events have an exclusive end date. This means that the end date is treated as a cutoff, causing the last day of the event not to be displayed.",
+  "fix_steps": [
+    "Open the event settings in the calendar component",
+    "Change the end date to one day after the actual end date",
+    "Save the changes and refresh the calendar"
+  ],
+  "agent_instruction": "Adjust the end date of all-day events to be one day later than intended.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "calendar",
+    "multi-day-events",
+    "fullcalendar",
+    "all-day"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/calendar-component-not-displaying-multi-day-events-correctly/19941"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "f844ae8e7e9c",
+  "tool": "n8n",
+  "error_signature": "Cannot GET /xxxx_verify.txt",
+  "context_key": "n8n_additional_non_ui_routes",
+  "title": "404 error when accessing additional non-UI route",
+  "symptom": "When trying to access the static file at the specified URL, n8n returns a 404 error: 'Cannot GET /xxxx_verify.txt'. This indicates that the file is not being served correctly.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Setting N8N_ADDITIONAL_NON_UI_ROUTES environment variable"
+  ],
+  "not_this_if": [
+    "File is correctly served from a different path",
+    "Using a different deployment method"
+  ],
+  "root_cause": "The 404 error occurs because the additional non-UI routes are not properly configured in the n8n server. The environment variable alone does not suffice; the server's routing logic must also be modified to recognize the new routes.",
+  "fix_steps": [
+    "Set the environment variables N8N_EDITOR_BASE_URL and WEBHOOK_URL to your desired subdomain.",
+    "Map a modified server.js file to the container path /usr/local/lib/node_modules/n8n/dist/server.js.",
+    "Add the line for your specific file name in the nonUIRoutes array in server.js.",
+    "Restart the n8n container to apply the changes."
+  ],
+  "agent_instruction": "Modify the server.js file to include your static file in the nonUIRoutes and restart the container.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "n8n",
+    "docker",
+    "non-ui-routes",
+    "404-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "latest",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-setup-n8n-additional-non-ui-routes/93439"
+  ]
+}

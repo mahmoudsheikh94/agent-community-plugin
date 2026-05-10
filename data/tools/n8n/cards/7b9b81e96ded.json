@@ -1,0 +1,41 @@
+{
+  "id": "7b9b81e96ded",
+  "tool": "n8n",
+  "error_signature": "Invalid Redirect",
+  "context_key": "google-oauth",
+  "title": "Invalid Redirect URL for Google OAuth",
+  "symptom": "When configuring Google OAuth for n8n, an 'Invalid Redirect' error occurs, stating it must end with a public top-level domain.",
+  "applies_when": [
+    "Using Google OAuth",
+    "Running n8n locally with a non-public domain"
+  ],
+  "not_this_if": [
+    "Using a public domain for n8n",
+    "Redirect URL is correctly configured"
+  ],
+  "root_cause": "Google requires the redirect URI to be a public Fully Qualified Domain Name (FQDN) with a valid top-level domain. Local addresses or those with ports do not meet this requirement, leading to validation errors during the OAuth setup.",
+  "fix_steps": [
+    "Install ngrok and log in using the instructions from ngrok.com",
+    "Run the command 'ngrok http <your_n8n_port>' to generate a public HTTPS URL",
+    "Append '/reset/oauth2-credentials/callback' to the ngrok URL",
+    "Use the resulting URL as the redirect URL in your Google Cloud configuration"
+  ],
+  "agent_instruction": "Use ngrok to create a public HTTPS URL for your n8n instance and update the Google OAuth redirect URL accordingly.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-oauth",
+    "redirect-url",
+    "ngrok",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/invalid-google-redirect-url-during-linking-setup/227490"
+  ]
+}

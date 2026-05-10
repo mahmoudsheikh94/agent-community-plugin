@@ -1,0 +1,41 @@
+{
+  "id": "272b43e012ca",
+  "tool": "n8n",
+  "error_signature": "502 Bad Gateway",
+  "context_key": "n8n container restart",
+  "title": "502 Bad Gateway on n8n container restart after key update",
+  "symptom": "After updating the N8N_ENCRYPTION_KEY and restarting the n8n container, a 502 Bad Gateway error is displayed.",
+  "applies_when": [
+    "Updating N8N_ENCRYPTION_KEY",
+    "Restarting n8n container"
+  ],
+  "not_this_if": [
+    "Using the default encryption key",
+    "No changes made to the config file"
+  ],
+  "root_cause": "The 502 Bad Gateway error occurs when the n8n container fails to start properly after the encryption key is changed. This can happen if the key is incorrectly set or if there are issues with the configuration file or the container setup.",
+  "fix_steps": [
+    "Change the N8N_ENCRYPTION_KEY in the config file to a new random string.",
+    "Ensure that the config file is part of the mounted volume.",
+    "Import unencrypted credentials after the change.",
+    "Restart the n8n container."
+  ],
+  "agent_instruction": "Update the N8N_ENCRYPTION_KEY in the config file and restart the n8n container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "encryption",
+    "502 Bad Gateway",
+    "container restart"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.105.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/updating-n8n-encryption-key/165334"
+  ]
+}

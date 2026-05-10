@@ -1,0 +1,39 @@
+{
+  "id": "7fea657a93d3",
+  "tool": "weweb",
+  "error_signature": "initial value not displayed in select input",
+  "context_key": "select-input",
+  "title": "Initial value not displayed in select input",
+  "symptom": "The select input shows a placeholder instead of the expected initial value. Users expect the initial value to be displayed based on their configuration.",
+  "applies_when": [
+    "Select input is configured with an initial value",
+    "Initial value does not match any option's value"
+  ],
+  "not_this_if": [
+    "Initial value matches one of the option values"
+  ],
+  "root_cause": "The select input component requires that the initial value be exactly equal to one of the option values, not just the label. If the initial value is set to a label instead of the corresponding value, the component defaults to showing the placeholder.",
+  "fix_steps": [
+    "Check the options configured in the select input",
+    "Ensure the initial value is set to match one of the option values exactly",
+    "Save the changes and refresh the component"
+  ],
+  "agent_instruction": "Set the initial value of the select input to match one of the option values exactly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "select-input",
+    "initial-value",
+    "placeholder",
+    "component-configuration"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/select-showing-placeholder-not-initial-value/5338"
+  ]
+}

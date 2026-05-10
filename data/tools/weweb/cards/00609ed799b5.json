@@ -1,0 +1,40 @@
+{
+  "id": "00609ed799b5",
+  "tool": "weweb",
+  "error_signature": "rollup is not defined",
+  "context_key": "dynamic list generation",
+  "title": "Rollup function not defined in dynamic list generation",
+  "symptom": "When attempting to generate a unique dynamic list from a table value, the error 'rollup is not defined' appears, indicating a problem with the function's recognition.",
+  "applies_when": [
+    "Using the rollup function in a dynamic list",
+    "Following a tutorial for implementation"
+  ],
+  "not_this_if": [
+    "The rollup function is correctly recognized and highlighted"
+  ],
+  "root_cause": "The error occurs when the rollup function is not properly entered or recognized in the input box, often due to copy-pasting issues that prevent the function from being correctly formatted.",
+  "fix_steps": [
+    "Delete the existing input for the rollup function",
+    "Manually type 'rollup(' into the input box",
+    "Ensure the function is highlighted with a grey background",
+    "Proceed with the rest of the dynamic list setup"
+  ],
+  "agent_instruction": "Manually re-enter the rollup function to ensure it is recognized correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "rollup",
+    "dynamic-list",
+    "error",
+    "function-setup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/multi-select-rollup-is-not-defined-error-when-trying-to-generate-unique-dynamic-list-from-table-value/4540"
+  ]
+}

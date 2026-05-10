@@ -1,0 +1,39 @@
+{
+  "id": "ee2c8115b746",
+  "tool": "n8n",
+  "error_signature": "null output from Arguments node",
+  "context_key": "Arguments node",
+  "title": "Arguments node outputs null values",
+  "symptom": "The Arguments node is outputting 'null' instead of the expected values, causing issues in the workflow.",
+  "applies_when": [
+    "Using Arguments node",
+    "Referencing variables from previous nodes"
+  ],
+  "not_this_if": [
+    "The workflow executes correctly without referencing previous nodes"
+  ],
+  "root_cause": "The Arguments node is trying to reference variable values from a previous node that do not exist in the expected format. This can happen if the node names are not correctly referenced or if the data flow is misconfigured.",
+  "fix_steps": [
+    "Change the mapping in the Arguments node to use named references instead of $json.",
+    "Use the correct syntax to access the previous node's output, e.g., {{ $('tool-call-name').first().json.body.message.toolCalls[0].function.arguments.requestTime }}.",
+    "Test the workflow again to ensure the Arguments node outputs the correct values."
+  ],
+  "agent_instruction": "Update the Arguments node mappings to use named references for previous node outputs.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "arguments-node",
+    "data-flow",
+    "node-references",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-final-boss-of-errors/129724"
+  ]
+}

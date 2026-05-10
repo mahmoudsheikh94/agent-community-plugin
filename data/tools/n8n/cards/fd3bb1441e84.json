@@ -1,0 +1,39 @@
+{
+  "id": "fd3bb1441e84",
+  "tool": "n8n",
+  "error_signature": "$helpers is not defined",
+  "context_key": "code-node",
+  "title": "$helpers object is undefined in Code node",
+  "symptom": "The Code node script fails when trying to access `$helpers`, resulting in an error indicating that it is not defined.",
+  "applies_when": [
+    "Using Code node",
+    "Attempting to access $helpers in the script"
+  ],
+  "not_this_if": [
+    "$helpers is accessed correctly",
+    "No attempt to use $helpers in the script"
+  ],
+  "root_cause": "In n8n v1.94.1, the `$helpers` object may not be available in the Code node, leading to errors when scripts attempt to use it for operations like preparing binary data.",
+  "fix_steps": [
+    "Avoid using `$helpers` in the Code node scripts.",
+    "Use alternative methods for binary data handling, such as the Convert to File node."
+  ],
+  "agent_instruction": "Remove any references to `$helpers` in the Code node script.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "$helpers",
+    "n8n-v1.94.1",
+    "bug"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.85,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-v1-94-1-docker-output-drops-binary-property-helpers-undefined-no-console-log-in-docker-logs/122040"
+  ]
+}

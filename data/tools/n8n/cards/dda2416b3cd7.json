@@ -1,0 +1,39 @@
+{
+  "id": "dda2416b3cd7",
+  "tool": "n8n",
+  "error_signature": "Google Sheet only processes one data item",
+  "context_key": "google-sheet-node",
+  "title": "Google Sheet not updating multiple rows",
+  "symptom": "When attempting to update multiple rows in Google Sheets, only the first row is updated, and the rest are ignored.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Outputting multiple rows from a previous node"
+  ],
+  "not_this_if": [
+    "Only one row is being outputted from the previous node"
+  ],
+  "root_cause": "The Google Sheets node is designed to process a single data item at a time. If multiple items are returned as a single object, the node will only handle the first item, leading to incomplete updates.",
+  "fix_steps": [
+    "Add a 'Split Out' node after the Gemini output node",
+    "Configure the 'Split Out' node to separate the multiple items into individual entries",
+    "Connect the output of the 'Split Out' node to the Google Sheets node",
+    "Run the workflow again"
+  ],
+  "agent_instruction": "Insert a 'Split Out' node to separate the multiple data items before they reach the Google Sheets node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "data-processing",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "3.7",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/update-multiple-rows-in-google-sheet/136849"
+  ]
+}

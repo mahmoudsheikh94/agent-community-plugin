@@ -1,0 +1,40 @@
+{
+  "id": "6bf0059faf53",
+  "tool": "n8n",
+  "error_signature": "not valid SSL certificate",
+  "context_key": "docker-compose",
+  "title": "Invalid SSL certificate prevents triggers from working",
+  "symptom": "Triggers for Typeform and ActiveCampaign do not activate on a self-hosted n8n instance due to SSL issues. The same triggers work perfectly on n8n cloud.",
+  "applies_when": [
+    "Using n8n self-hosted on Docker",
+    "SSL certificate is not valid"
+  ],
+  "not_this_if": [
+    "Triggers work on n8n cloud",
+    "SSL certificate is valid"
+  ],
+  "root_cause": "The SSL certificate validation failed because the Docker container was started before the DNS propagated, leading to an invalid certificate. This prevents external services from communicating with the n8n instance properly.",
+  "fix_steps": [
+    "Ensure DNS has fully propagated",
+    "Restart the n8n Docker container",
+    "Verify that the SSL certificate is valid"
+  ],
+  "agent_instruction": "Check the SSL certificate validity and restart the n8n instance if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "ssl",
+    "triggers",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/triggers-not-working-on-self-hosted-instance/10845"
+  ]
+}

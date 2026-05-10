@@ -1,0 +1,39 @@
+{
+  "id": "1f252ca29234",
+  "tool": "weweb",
+  "error_signature": "auth plugin not visible after installation",
+  "context_key": "weweb-auth-plugin",
+  "title": "Auth plugin not visible after installation",
+  "symptom": "After attempting to install the WeWeb auth plugin, it appears to be installed but is not listed among the installed plugins. Consequently, the auth actions are inaccessible in workflows.",
+  "applies_when": [
+    "WeWeb auth plugin installation attempted",
+    "Another auth plugin is already installed"
+  ],
+  "not_this_if": [
+    "No other auth plugins are installed"
+  ],
+  "root_cause": "WeWeb restricts the installation of multiple auth plugins because they manage the same global information regarding the connected user. If another auth plugin is already installed, the new one cannot be accessed.",
+  "fix_steps": [
+    "Identify the currently installed auth plugin (e.g., Xano Auth)",
+    "Remove the existing auth plugin from the plugins list",
+    "Re-attempt the installation of the WeWeb auth plugin"
+  ],
+  "agent_instruction": "Remove the existing auth plugin before installing the WeWeb auth plugin.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "weweb",
+    "auth-plugin",
+    "installation",
+    "xano-auth"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/cant-install-weweb-auth-plugin/4191"
+  ]
+}

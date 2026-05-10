@@ -1,0 +1,38 @@
+{
+  "id": "360533bdbe56",
+  "tool": "n8n",
+  "error_signature": "watched folder event not firing reliably",
+  "context_key": "local-file-trigger-node",
+  "title": "Local File Trigger Node not detecting new files",
+  "symptom": "After the first successful execution, the Local File Trigger node fails to detect new files added to the watched folder.",
+  "applies_when": [
+    "Using Local File Trigger node",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Files created inside the Docker container are detected"
+  ],
+  "root_cause": "The issue arises from the way Docker handles file system events between the host and the container. When files are added from the host, the event may not propagate correctly to the container, causing the trigger to miss the changes.",
+  "fix_steps": [
+    "Create a file directly inside the Docker container in the /data/shared directory.",
+    "If the file is detected, adjust the Docker volume mapping or polling settings."
+  ],
+  "agent_instruction": "Test file creation directly in the Docker container to verify event detection.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "local-file-trigger",
+    "docker",
+    "file-event",
+    "polling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2:11:2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/local-file-trigger-node-is-driving-me-crazy/278314"
+  ]
+}

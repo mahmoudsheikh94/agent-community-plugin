@@ -1,0 +1,38 @@
+{
+  "id": "1ed8751f9f46",
+  "tool": "n8n",
+  "error_signature": "Airtable Trigger not firing in testing mode",
+  "context_key": "airtable-trigger-node",
+  "title": "Airtable Trigger not firing in testing mode",
+  "symptom": "The Airtable Trigger node does not fire as expected in testing mode, despite correct configuration.",
+  "applies_when": [
+    "Using Airtable Trigger node",
+    "In testing mode"
+  ],
+  "not_this_if": [
+    "Trigger works in production mode"
+  ],
+  "root_cause": "The Airtable Trigger node may behave differently in testing mode compared to production mode. This can lead to unexpected results where triggers do not fire as anticipated during testing.",
+  "fix_steps": [
+    "Switch the workflow from testing mode to production mode",
+    "Wait a few minutes for the trigger to start working"
+  ],
+  "agent_instruction": "Switch to production mode and wait for the trigger to function properly.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "airtable",
+    "trigger",
+    "testing-mode",
+    "production"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/airtable-trigger-in-n8n-not-firing-despite-correct-setup/149405"
+  ]
+}

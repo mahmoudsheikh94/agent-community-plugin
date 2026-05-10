@@ -1,0 +1,42 @@
+{
+  "id": "d4c263470b47",
+  "tool": "n8n",
+  "error_signature": "Connection Lost - You have a connection issue or the server is down",
+  "context_key": "apache-reverse-proxy",
+  "title": "Connection Lost error with Apache reverse proxy",
+  "symptom": "Users experience a 'Connection Lost' message indicating a connection issue or server downtime when using n8n through an Apache reverse proxy.",
+  "applies_when": [
+    "Using n8n with Apache as a reverse proxy",
+    "WebSocket connections are required"
+  ],
+  "not_this_if": [
+    "Using n8n without a reverse proxy",
+    "No WebSocket connections are needed"
+  ],
+  "root_cause": "The Apache configuration may not properly handle WebSocket connections, which are essential for real-time updates in n8n. Without the correct proxy settings for WebSockets, the connection can drop, leading to the 'Connection Lost' error.",
+  "fix_steps": [
+    "Update the Apache configuration to include WebSocket handling using RewriteEngine.",
+    "Add the necessary ProxyPass and ProxyPassReverse directives for WebSocket connections.",
+    "Enable required Apache modules with 'sudo a2enmod rewrite proxy proxy_http proxy_wstunnel ssl headers'.",
+    "Test the configuration with 'sudo apache2ctl configtest' and restart Apache with 'sudo systemctl restart apache2'."
+  ],
+  "agent_instruction": "Modify the Apache configuration to properly handle WebSocket connections and restart the server.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "apache",
+    "reverse-proxy",
+    "websocket",
+    "n8n",
+    "connection-lost"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-lost-issues/261810"
+  ]
+}

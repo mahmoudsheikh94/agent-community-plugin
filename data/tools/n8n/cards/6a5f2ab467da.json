@@ -1,0 +1,40 @@
+{
+  "id": "6a5f2ab467da",
+  "tool": "n8n",
+  "error_signature": "Null output from JSON input into MongoDB",
+  "context_key": "mongoDb-node",
+  "title": "Null output when inserting JSON into MongoDB",
+  "symptom": "The MongoDB node is returning null values when attempting to insert data from a JSON input. This results in no data being stored in the database.",
+  "applies_when": [
+    "Using MongoDB node",
+    "Inserting data from JSON input"
+  ],
+  "not_this_if": [
+    "Data is correctly formatted and inserted without nulls"
+  ],
+  "root_cause": "The issue arises because the MongoDB node is not correctly referencing the fields from the JSON input. Instead of passing the field names and values correctly, it is compiling them into a text string, which leads to null outputs.",
+  "fix_steps": [
+    "Open the MongoDB node settings",
+    "Ensure that you are only referencing the field names without concatenating them into a string",
+    "Use the correct JSON structure for the input",
+    "Test the workflow again to confirm data is inserted correctly"
+  ],
+  "agent_instruction": "Correctly reference the fields in the MongoDB node without compiling them into a text string.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mongodb",
+    "json",
+    "data-insertion",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/getting-nulls-in-mongo-db-with-json/164735"
+  ]
+}

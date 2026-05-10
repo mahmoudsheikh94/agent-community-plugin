@@ -1,0 +1,40 @@
+{
+  "id": "f0b2552203f2",
+  "tool": "n8n",
+  "error_signature": "Slack bot does not respond to app mentions",
+  "context_key": "slack-trigger",
+  "title": "Slack bot not responding to app mentions",
+  "symptom": "The Slack bot does not respond when mentioned in a message, despite working with other triggers. The issue persists even after configuring the necessary settings.",
+  "applies_when": [
+    "Using Slack bot with 'bot/app mention' trigger",
+    "All required OAuth scopes are added"
+  ],
+  "not_this_if": [
+    "Bot responds to 'new message posted on channel' trigger"
+  ],
+  "root_cause": "The Slack bot requires specific event subscriptions to respond to app mentions. If the 'app_mention' event is not subscribed or if the bot lacks necessary permissions, it will not trigger as expected.",
+  "fix_steps": [
+    "Go to your Slack App dashboard and click on Event Subscriptions.",
+    "Under 'Subscribe to bot events', add 'app_mention'.",
+    "Reinstall the app to the workspace to activate the new event subscription.",
+    "Ensure the bot is invited to the channel where it should respond."
+  ],
+  "agent_instruction": "Subscribe to the 'app_mention' event in Slack and reinstall the app.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "slack",
+    "bot",
+    "app-mention",
+    "event-subscription"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/slack-agent-doesnt-respond-on-trigger-bot-app-mention/264197"
+  ]
+}

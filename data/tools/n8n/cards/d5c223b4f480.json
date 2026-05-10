@@ -1,0 +1,39 @@
+{
+  "id": "d5c223b4f480",
+  "tool": "n8n",
+  "error_signature": "N8N_RUNNERS_ENABLED deprecation",
+  "context_key": "n8n-task-runners",
+  "title": "Deprecation warning for task runners",
+  "symptom": "n8n logs a deprecation warning indicating that running without task runners is deprecated and may cause issues in the future.",
+  "applies_when": [
+    "Running n8n",
+    "Not using task runners"
+  ],
+  "not_this_if": [
+    "Task runners are already enabled",
+    "Using an older version of n8n that does not support task runners"
+  ],
+  "root_cause": "n8n is transitioning to a model where task runners are enabled by default. If users do not enable task runners, they may encounter issues as future versions will require them to be active for proper functionality.",
+  "fix_steps": [
+    "Set the environment variable N8N_RUNNERS_ENABLED to true",
+    "Restart the n8n service to apply the changes"
+  ],
+  "agent_instruction": "Set N8N_RUNNERS_ENABLED to true and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "task-runners",
+    "deprecation",
+    "configuration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.85,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-ignores-trust-proxy-settings-in-docker-on-google-cloud-vm/180828"
+  ]
+}

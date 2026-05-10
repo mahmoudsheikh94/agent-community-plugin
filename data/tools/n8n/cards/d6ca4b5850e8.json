@@ -1,0 +1,42 @@
+{
+  "id": "d6ca4b5850e8",
+  "tool": "n8n",
+  "error_signature": "Mismatching encryption keys",
+  "context_key": "n8n Docker container",
+  "title": "Encryption key mismatch prevents n8n startup",
+  "symptom": "The n8n Docker container fails to start, showing workflows briefly before clearing. Logs indicate an encryption key mismatch preventing database decryption.",
+  "applies_when": [
+    "Using n8n in a Docker container",
+    "Encryption key is set via environment variables"
+  ],
+  "not_this_if": [
+    "No encryption key is set",
+    "Container starts without issues"
+  ],
+  "root_cause": "The encryption key specified in the Docker environment variables does not match the key in the persisted configuration file. This mismatch prevents n8n from decrypting the database file, causing the container to abort startup.",
+  "fix_steps": [
+    "Temporarily remove the N8N_ENCRYPTION_KEY from the Docker Compose file to allow the container to start.",
+    "Replace the volume’s config and database.sqlite with files from a known good backup.",
+    "Ensure the encryption key in the config matches the backup database.sqlite.",
+    "Reset user credentials using 'n8n user-management:reset' if login details are incorrect.",
+    "Restart the n8n container."
+  ],
+  "agent_instruction": "Remove the encryption key from Docker Compose, replace config files, and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "encryption",
+    "startup",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/would-like-to-hire-someone-to-restore-files/117637"
+  ]
+}

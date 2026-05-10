@@ -1,0 +1,38 @@
+{
+  "id": "15230c21352a",
+  "tool": "n8n",
+  "error_signature": "N8N_EXPERIMENTAL_FEATURES_ENABLED=true not needed for Text Classifier",
+  "context_key": "configuration",
+  "title": "Unnecessary experimental features flag for Text Classifier",
+  "symptom": "The user has set the environment variable for experimental features, but it is not required for the Text Classifier node.",
+  "applies_when": [
+    "Using n8n with experimental features enabled",
+    "Trying to access the Text Classifier node"
+  ],
+  "not_this_if": [
+    "Text Classifier node is still missing after pulling the latest image"
+  ],
+  "root_cause": "The Text Classifier node is part of the stable version of n8n and does not require the experimental features flag to be enabled. This can lead to confusion about its availability.",
+  "fix_steps": [
+    "Remove the line `N8N_EXPERIMENTAL_FEATURES_ENABLED=true` from your Docker environment configuration",
+    "Restart the Docker Compose setup to apply the changes"
+  ],
+  "agent_instruction": "Remove the experimental features flag from the configuration and restart Docker Compose.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "text-classifier",
+    "configuration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.875,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/missing-official-nodes-text-classifier-on-fresh-docker-install/156332"
+  ]
+}

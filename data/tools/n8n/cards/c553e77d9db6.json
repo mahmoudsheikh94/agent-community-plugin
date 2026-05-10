@@ -1,0 +1,41 @@
+{
+  "id": "c553e77d9db6",
+  "tool": "n8n",
+  "error_signature": "Empty entity body is not allowed for create method request",
+  "context_key": "httpRequest-node",
+  "title": "LinkedIn API requires RAW body format",
+  "symptom": "When attempting to post to the LinkedIn API using n8n, a 400 error occurs with the message 'Empty entity body is not allowed for create method request'. This indicates that the request body is not being sent correctly.",
+  "applies_when": [
+    "Using LinkedIn API",
+    "Sending POST request with JSON body"
+  ],
+  "not_this_if": [
+    "Request is sent as RAW format",
+    "Different API endpoint is used"
+  ],
+  "root_cause": "The LinkedIn API expects the request body to be sent in RAW format rather than as a JSON object. When n8n sends the body as JSON, it does not meet the API's requirements, resulting in a 400 error.",
+  "fix_steps": [
+    "Change the body format in the HTTP Request node to RAW",
+    "Ensure the JSON structure is correctly formatted as a string",
+    "Test the request again"
+  ],
+  "agent_instruction": "Set the HTTP Request node to send the body as RAW instead of JSON.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "linkedin",
+    "httpRequest",
+    "api",
+    "json",
+    "raw"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/linkedin-post-under-organisation-issue/110367"
+  ]
+}

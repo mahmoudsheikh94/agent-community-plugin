@@ -1,0 +1,39 @@
+{
+  "id": "2d421cc06782",
+  "tool": "n8n",
+  "error_signature": "Parameter 'Account' is required.",
+  "context_key": "google-business-profile-node",
+  "title": "Missing Account Parameter in Google Business Profile Node",
+  "symptom": "When executing the Google Business Profile node, an error indicates that the 'Account' parameter is required, and no data is returned.",
+  "applies_when": [
+    "Using Google Business Profile node",
+    "OAuth2 authentication is successful"
+  ],
+  "not_this_if": [
+    "The node returns data successfully",
+    "Using a paid version of n8n with access to logs"
+  ],
+  "root_cause": "The Google Business Profile API requires an 'Account' parameter to be specified in the request. If this parameter is missing, the API will not return any data, leading to confusion during workflow execution.",
+  "fix_steps": [
+    "Ensure that the 'Account' parameter is included in the node configuration.",
+    "Check that the account associated with the parameter has the necessary permissions and data."
+  ],
+  "agent_instruction": "Add the required 'Account' parameter to the Google Business Profile node configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-business-profile",
+    "node-configuration",
+    "API-error",
+    "account-parameter"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.76.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-business-profile-trigger-list/74193"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "9fc170b9a607",
+  "tool": "n8n",
+  "error_signature": "expected 768 dimensions, not 3072",
+  "context_key": "supabase-vector-store-node",
+  "title": "Dimension mismatch when inserting with gemini-embedding-001",
+  "symptom": "When trying to insert embeddings using the gemini-embedding-001 model, n8n throws an error about dimension mismatch, indicating it expected 768 dimensions but received 3072.",
+  "applies_when": [
+    "Using gemini-embedding-001 model",
+    "Inserting into Supabase Vector Store"
+  ],
+  "not_this_if": [
+    "Using a different embedding model",
+    "Querying instead of inserting"
+  ],
+  "root_cause": "The Supabase Vector Store node has a hardcoded dimension check that expects embeddings of 768 dimensions, which conflicts with the new gemini-embedding-001 model that outputs 3072 dimensions.",
+  "fix_steps": [
+    "Ensure your Supabase table is configured to accept 3072 dimensions.",
+    "Continue using the Supabase Vector Store node for inserting embeddings with gemini-embedding-001."
+  ],
+  "agent_instruction": "Make sure your Supabase table supports 3072 dimensions and use the Supabase Vector Store node for insertion.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "vector-store",
+    "gemini-embedding-001",
+    "dimension-mismatch"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.123.14",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-deprecating-text-embedding-004-but-gemini-embedding-001-doesnt-work/262008"
+  ]
+}

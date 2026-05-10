@@ -1,0 +1,39 @@
+{
+  "id": "1b2d1de13b98",
+  "tool": "weweb",
+  "error_signature": "input values not binding in repeating rows",
+  "context_key": "Form Container in repeating Rows",
+  "title": "Input values not binding in repeating Rows",
+  "symptom": "When trying to bind text inputs inside a repeating row, the inputs do not appear in the variable list, and values cannot be stored.",
+  "applies_when": [
+    "Using a Form Container inside a repeating Rows element",
+    "Trying to bind input values to variables"
+  ],
+  "not_this_if": [
+    "Inputs are outside of a repeating context",
+    "Using static inputs not within a repeating group"
+  ],
+  "root_cause": "WeWeb loses the state of inputs when they are placed inside a repeating group, which prevents the inputs from being recognized and bound to variables correctly.",
+  "fix_steps": [
+    "Select each input inside the Form Container",
+    "Set up 'On changed' actions for each input to manually save their values to a variable"
+  ],
+  "agent_instruction": "Use 'On changed' actions for inputs in the repeating Rows to save their values to variables.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "input-binding",
+    "repeating-rows",
+    "form-container",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/input-values-inside-of-elements-that-repeat-bug/16337"
+  ]
+}

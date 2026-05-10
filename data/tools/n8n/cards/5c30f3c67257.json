@@ -1,0 +1,39 @@
+{
+  "id": "5c30f3c67257",
+  "tool": "n8n",
+  "error_signature": "Bad request",
+  "context_key": "http-node",
+  "title": "Bad request error when sending image to OpenRouter",
+  "symptom": "When sending a JSON payload to the OpenRouter via the HTTP node, a 'Bad request' error is returned.",
+  "applies_when": [
+    "Using HTTP node to send a request to OpenRouter",
+    "Payload includes image data in base64 format"
+  ],
+  "not_this_if": [
+    "Payload is correctly formatted according to OpenRouter's API documentation"
+  ],
+  "root_cause": "The error occurs because the JSON payload structure is incorrect for the OpenRouter API. Specifically, the base64 image data is not being referenced correctly, leading to a malformed request.",
+  "fix_steps": [
+    "Modify the JSON payload to use the correct reference for the base64 image data.",
+    "Use the 'Extract from File' node to get the base64 string directly.",
+    "Ensure the payload matches the structure specified in the OpenRouter Image Inputs documentation."
+  ],
+  "agent_instruction": "Update the JSON payload to correctly reference the base64 image data and use the 'Extract from File' node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "openrouter",
+    "image-analysis",
+    "bad-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.2.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/analysis-image-by-openrouter-google-gemini-2-5-flash/271407"
+  ]
+}

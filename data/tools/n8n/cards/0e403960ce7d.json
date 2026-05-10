@@ -1,0 +1,39 @@
+{
+  "id": "0e403960ce7d",
+  "tool": "n8n",
+  "error_signature": "520: Web server is returning an unknown error",
+  "context_key": "openai-node",
+  "title": "OpenAI node returns 520 error due to rate limiting",
+  "symptom": "The workflow fails to process requests with a 520 error from the OpenAI node when handling large batches. Smaller tests succeed, indicating a potential rate limit issue.",
+  "applies_when": [
+    "Using OpenAI node",
+    "Processing large batches of items"
+  ],
+  "not_this_if": [
+    "Error occurs with small batches or different nodes"
+  ],
+  "root_cause": "The 520 error indicates that the OpenAI API is unable to process the request due to rate limiting. This can happen when too many requests are sent in a short period, exceeding the allowed limits set by OpenAI.",
+  "fix_steps": [
+    "Review OpenAI's rate limit documentation to understand the limits.",
+    "Stagger the processing of items to avoid hitting the rate limit.",
+    "Consider increasing limits if possible."
+  ],
+  "agent_instruction": "Check OpenAI's rate limits and adjust your workflow to stagger requests.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "openai",
+    "rate-limiting",
+    "error-520",
+    "workflow-issues"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/520-cloudflare-keeps-interrupting-my-workflow/193620"
+  ]
+}

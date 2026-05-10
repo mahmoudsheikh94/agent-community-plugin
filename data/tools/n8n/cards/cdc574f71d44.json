@@ -1,0 +1,41 @@
+{
+  "id": "cdc574f71d44",
+  "tool": "n8n",
+  "error_signature": "301 Moved Permanently",
+  "context_key": "aws-s3-node",
+  "title": "AWS S3 Upload 301 Error due to Incorrect Region",
+  "symptom": "When attempting to upload to AWS S3, n8n returns a 301 error indicating that the request is not directed at the proper endpoint.",
+  "applies_when": [
+    "Using AWS S3 node",
+    "Custom endpoint configured in credentials"
+  ],
+  "not_this_if": [
+    "Region is correctly set in the S3 Account credentials"
+  ],
+  "root_cause": "The 301 error typically occurs when the request is sent to an incorrect endpoint, often due to a mismatch between the specified region in the S3 credentials and the actual region where the S3 bucket was created. AWS S3 requires that the endpoint matches the region of the bucket.",
+  "fix_steps": [
+    "Open the S3 Account credentials in n8n",
+    "Check the region setting and ensure it matches the region of your S3 bucket",
+    "Save the changes",
+    "Retry the upload operation"
+  ],
+  "agent_instruction": "Adjust the region in the S3 Account credentials to match the bucket's region and save the changes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "aws",
+    "s3",
+    "upload",
+    "301-error",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/aws-s3-upload-301-error/89915"
+  ]
+}

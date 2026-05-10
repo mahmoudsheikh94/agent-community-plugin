@@ -1,0 +1,41 @@
+{
+  "id": "b3ae787bdfe0",
+  "tool": "n8n",
+  "error_signature": "Loop over items had a batch size of 10000",
+  "context_key": "Loop over items",
+  "title": "Incorrect batch size in Loop over items",
+  "symptom": "The user experiences unexpected output with a cartesian product of merged items instead of the desired one-by-one merges.",
+  "applies_when": [
+    "Using Loop over items",
+    "Merging parent and child objects"
+  ],
+  "not_this_if": [
+    "Batch size is set to 1",
+    "No merging of objects is performed"
+  ],
+  "root_cause": "Setting a high batch size in the Loop over items causes n8n to process multiple items at once, leading to unintended combinations of parent and child objects instead of the desired one-to-one merging.",
+  "fix_steps": [
+    "Open the Loop over items node settings",
+    "Change the batch size from 10000 to 1",
+    "Save the workflow",
+    "Execute the workflow again"
+  ],
+  "agent_instruction": "Set the batch size in the Loop over items to 1 to achieve the desired merging behavior.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "loop",
+    "merge",
+    "batch-size",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.117.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/trying-to-merge-two-objects-in-a-list-of-34-objects-and-i-get-1296-objects-out/227915"
+  ]
+}

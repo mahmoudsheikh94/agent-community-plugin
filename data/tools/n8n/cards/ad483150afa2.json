@@ -1,0 +1,42 @@
+{
+  "id": "ad483150afa2",
+  "tool": "n8n",
+  "error_signature": "Could not connect to your MCP server",
+  "context_key": "mcp-client",
+  "title": "MCP Client unable to connect to MCP Server",
+  "symptom": "The MCP Client node fails to connect to the MCP Server, displaying 'Could not connect to your MCP server'. This occurs even after multiple restarts and recreating workflows.",
+  "applies_when": [
+    "Using MCP Client node",
+    "SSE endpoint is reachable in the browser"
+  ],
+  "not_this_if": [
+    "MCP Server Trigger is not activated",
+    "Custom domain/SSL proxy is misconfigured"
+  ],
+  "root_cause": "The error occurs when there is an issue with the connection settings, such as gzip compression being enabled, which can interfere with the communication between the MCP Client and Server. This can happen after changing the SSE endpoint configuration.",
+  "fix_steps": [
+    "Check if gzip or HTTP compression is enabled for the n8n service.",
+    "Disable gzip compression for API and SSE compatibility.",
+    "Restart the n8n service and try connecting again."
+  ],
+  "agent_instruction": "Disable gzip compression for your n8n service and restart it.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mcp",
+    "client",
+    "server",
+    "gzip",
+    "compression",
+    "connection"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-client-can-t-reach-mcp-server-on-n8n/116772"
+  ]
+}

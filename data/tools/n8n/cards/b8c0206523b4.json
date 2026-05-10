@@ -1,0 +1,41 @@
+{
+  "id": "b8c0206523b4",
+  "tool": "n8n",
+  "error_signature": "Error 500 + {\"code\":0,\"message\":\"There was a problem executing the workflow\"}",
+  "context_key": "webhook-node",
+  "title": "Webhook execution error due to invalid headers",
+  "symptom": "When sending a webhook, n8n returns a 500 error with a message indicating a problem executing the workflow. This occurs due to issues with the headers being sent.",
+  "applies_when": [
+    "Using a webhook node",
+    "Headers contain invisible characters or empty values"
+  ],
+  "not_this_if": [
+    "Webhook works correctly without errors",
+    "Headers are properly formatted"
+  ],
+  "root_cause": "The webhook node is failing because the headers being sent contain invisible tab characters and an empty header, which disrupts the execution of the workflow. This can lead to n8n being unable to process the incoming request correctly.",
+  "fix_steps": [
+    "Inspect the headers being sent in the webhook node",
+    "Remove any invisible tab characters from the headers",
+    "Delete any empty headers",
+    "Test the webhook again"
+  ],
+  "agent_instruction": "Check and clean the headers in the webhook node to ensure they are correctly formatted.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "error-500",
+    "headers",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.105.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-issue-error-500-code-0-message-there-was-a-problem-executing-the-workflow/169561"
+  ]
+}

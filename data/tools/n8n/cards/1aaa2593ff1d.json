@@ -1,0 +1,41 @@
+{
+  "id": "1aaa2593ff1d",
+  "tool": "n8n",
+  "error_signature": "Wait node fails on long intervals",
+  "context_key": "wait-node",
+  "title": "Wait node fails on long intervals in v2.6.4",
+  "symptom": "The Wait node in n8n stops and never resumes when set to 5 minutes. No errors are logged, and it stays in 'Waiting' status indefinitely.",
+  "applies_when": [
+    "Using Wait node",
+    "n8n version 2.6.4",
+    "Running behind a reverse proxy"
+  ],
+  "not_this_if": [
+    "Using short intervals (e.g., 1 minute) for Wait node",
+    "Not using a reverse proxy"
+  ],
+  "root_cause": "The issue arises from the `X-Forwarded-For` header validation introduced in v2.6.4, which blocks internal webhooks used by the Wait node for longer durations. This is due to stricter rate-limiting validation requiring explicit trust of proxy headers when running behind a reverse proxy.",
+  "fix_steps": [
+    "Add the environment variables N8N_PROXY_TRUST_ALL: 'true' and N8N_METRICS: 'true' to your Docker configuration.",
+    "Restart the n8n Docker container."
+  ],
+  "agent_instruction": "Add the required environment variables to the Docker configuration and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wait-node",
+    "docker",
+    "reverse-proxy",
+    "v2.6.4",
+    "X-Forwarded-For"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.6.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/potential-bug-in-v2-6-4-wait-node-fails-on-long-intervals-5min-but-works-on-short-ones-60s/263282"
+  ]
+}

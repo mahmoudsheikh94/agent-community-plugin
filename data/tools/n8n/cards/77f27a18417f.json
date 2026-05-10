@@ -1,0 +1,40 @@
+{
+  "id": "77f27a18417f",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'googleApiCredentialTest')",
+  "context_key": "google-vertex-node",
+  "title": "Error saving Google Vertex credentials",
+  "symptom": "When attempting to save Google Vertex credentials, the save button spins endlessly and a 500 error occurs in the console.",
+  "applies_when": [
+    "Using Google Vertex node",
+    "Entering credentials in n8n"
+  ],
+  "not_this_if": [
+    "Credentials are entered correctly without errors",
+    "No 500 error occurs"
+  ],
+  "root_cause": "The error occurs because the private key is not being recognized correctly by n8n. This can happen if the private key is not formatted properly or if it is not being passed correctly in the configuration.",
+  "fix_steps": [
+    "Open the Google Vertex node settings",
+    "Add the private key in an expression instead of directly in the field",
+    "Save the workflow and test the credentials again"
+  ],
+  "agent_instruction": "Use an expression to input the private key in the Google Vertex node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-vertex",
+    "credentials",
+    "500-error",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-vertex-credentials/136737"
+  ]
+}

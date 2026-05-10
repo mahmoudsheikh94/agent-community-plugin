@@ -1,0 +1,40 @@
+{
+  "id": "4ab0e1600a02",
+  "tool": "n8n",
+  "error_signature": "no output from switch node",
+  "context_key": "switch-node",
+  "title": "No output from switch node due to string comparison",
+  "symptom": "The switch node does not produce any output when checking for text, leading to workflow execution issues.",
+  "applies_when": [
+    "Using a switch node to evaluate webhook data",
+    "Webhook body contains text data"
+  ],
+  "not_this_if": [
+    "Switch node is configured correctly with valid conditions"
+  ],
+  "root_cause": "The switch node is comparing the string 'Text' directly to the string 'hello!', which will always fail as they are not equal. This results in no output from the switch node.",
+  "fix_steps": [
+    "Open the switch node settings",
+    "Change the comparison operation to 'exists'",
+    "Use the expression {{ $('Webhook').item.json.body.Text }} to check for text presence",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Modify the switch node to check for the existence of the text using the correct expression.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "switch-node",
+    "webhook",
+    "text-check",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-recently-solved-the-problem-with-the-chat-id-and-the-photo-file-but-now-i-have-a-common-error-with-the-text-and-chat-id-for-the-ai-agent/191847"
+  ]
+}

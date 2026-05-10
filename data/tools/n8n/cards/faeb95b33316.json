@@ -1,0 +1,40 @@
+{
+  "id": "faeb95b33316",
+  "tool": "n8n",
+  "error_signature": "You have a connection issue or the server is down",
+  "context_key": "docker-compose-nginx",
+  "title": "Connection issue with n8n using Docker and Nginx",
+  "symptom": "Users encounter a message stating 'You have a connection issue or the server is down' when trying to access n8n. This indicates that n8n is unable to establish a connection.",
+  "applies_when": [
+    "Running n8n in Docker",
+    "Using Nginx as a reverse proxy"
+  ],
+  "not_this_if": [
+    "n8n is accessible directly without Nginx",
+    "Docker container is not running"
+  ],
+  "root_cause": "The error occurs when the n8n server is not reachable due to misconfiguration in the Docker setup or Nginx settings. Specifically, incorrect environment variables or issues with the Docker container's state can lead to this connection problem.",
+  "fix_steps": [
+    "Check if the n8n Docker container is running and not restarted.",
+    "Correct the environment variable from WEBHOOK_TUNNEL_URL to WEBHOOK_URL.",
+    "Remove or adjust the N8N_PUSH_BACKEND variable if not needed."
+  ],
+  "agent_instruction": "Ensure the n8n container is running and update the environment variables in your Docker configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "nginx",
+    "connection-issue",
+    "webhook-url"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/a-connection-issue-or-the-server-is-down/85059"
+  ]
+}

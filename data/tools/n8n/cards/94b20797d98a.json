@@ -1,0 +1,40 @@
+{
+  "id": "94b20797d98a",
+  "tool": "n8n",
+  "error_signature": "request/body must NOT have additional properties",
+  "context_key": "n8n API PUT workflow",
+  "title": "Error updating workflow via n8n API",
+  "symptom": "When attempting to update a workflow using the n8n API with a PUT request, the error 'request/body must NOT have additional properties' is returned.",
+  "applies_when": [
+    "Using n8n API to update workflows",
+    "Sending JSON body from GET API response"
+  ],
+  "not_this_if": [
+    "The JSON body is correctly formatted according to API specifications"
+  ],
+  "root_cause": "The error occurs because the JSON body being sent in the PUT request contains additional properties that are not expected by the n8n API. This can happen if the fetched workflow JSON includes fields that are not required or allowed in the update request.",
+  "fix_steps": [
+    "Review the n8n API documentation for the PUT /workflows/{id} endpoint",
+    "Ensure the JSON body only includes the required fields: name, nodes, connections, settings, staticData, and shared",
+    "Remove any additional properties from the JSON before sending the PUT request"
+  ],
+  "agent_instruction": "Trim the JSON body to include only the required fields as specified in the n8n API documentation.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "n8n",
+    "API",
+    "PUT",
+    "workflow",
+    "JSON"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/best-practice-for-put-workflow-using-json-from-get-api/220642"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "87e31cd998e3",
+  "tool": "n8n",
+  "error_signature": "subworkflow returning original data instead of last node data",
+  "context_key": "wait-node",
+  "title": "Subworkflow returns original data due to Wait node",
+  "symptom": "The main workflow receives the original input data instead of the output from the last node in the subworkflow, causing confusion.",
+  "applies_when": [
+    "Using a subworkflow",
+    "Incorporating a Wait node"
+  ],
+  "not_this_if": [
+    "Using the latest version of n8n",
+    "Not using a Wait node"
+  ],
+  "root_cause": "The Wait node in n8n does not properly handle data passing back to the main workflow, resulting in the original input data being returned instead of the processed output from the last node in the subworkflow.",
+  "fix_steps": [
+    "Replace the Wait node with a Python Code Node",
+    "Use the provided code to manage the wait and return the correct data"
+  ],
+  "agent_instruction": "Replace the Wait node with a Python Code Node and implement the provided code to ensure correct data output.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "subworkflow",
+    "wait-node",
+    "python-code",
+    "data-passing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/subwrokflow-returning-original-data-submitted-instead-of-data-from-the-last-node/205460"
+  ]
+}

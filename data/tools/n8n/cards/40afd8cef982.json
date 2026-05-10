@@ -1,0 +1,42 @@
+{
+  "id": "40afd8cef982",
+  "tool": "n8n",
+  "error_signature": "stuck on v1.103.2 - wont update",
+  "context_key": "docker-compose",
+  "title": "Unable to update n8n from version 1.103.2",
+  "symptom": "The user is unable to update their n8n instance from version 1.103.2, despite following the update steps. The instance indicates that it is two updates behind.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Following standard update procedures"
+  ],
+  "not_this_if": [
+    "Error occurs during a different version update",
+    "Using a different deployment method"
+  ],
+  "root_cause": "The issue arises when the Docker image for n8n is not being updated properly, possibly due to old images lingering in the system. This can prevent the latest version from being pulled and used, leading to the instance remaining on an outdated version.",
+  "fix_steps": [
+    "Run 'docker image prune' to remove unused images",
+    "Attempt to pull the latest n8n image again using 'docker compose pull'",
+    "Restart the n8n service with 'docker compose up -d'"
+  ],
+  "agent_instruction": "Run 'docker image prune' to clean up old images and then update n8n again.",
+  "safety_notes": [
+    "Pruning images may remove unused images that could be needed for other containers."
+  ],
+  "fix_type": "workaround",
+  "tags": [
+    "docker",
+    "update",
+    "n8n",
+    "version"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/stuck-on-v1-103-2-wont-update/162219"
+  ]
+}

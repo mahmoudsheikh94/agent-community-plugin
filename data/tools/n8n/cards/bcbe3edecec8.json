@@ -1,0 +1,38 @@
+{
+  "id": "bcbe3edecec8",
+  "tool": "n8n",
+  "error_signature": "Administrator approval required",
+  "context_key": "microsoft-teams-node",
+  "title": "Administrator approval required for Microsoft Teams node",
+  "symptom": "When attempting to authenticate with the Microsoft Teams node, the error 'Administrator approval required' is displayed, indicating that access to resources requires admin consent.",
+  "applies_when": [
+    "Using Microsoft Teams node",
+    "User is part of an Azure Active Directory"
+  ],
+  "not_this_if": [
+    "User is an admin in Azure Active Directory"
+  ],
+  "root_cause": "The Microsoft Teams node requires administrator consent to access organizational resources. If the user is not an admin in Azure Active Directory, they cannot grant the necessary permissions for the application to function properly.",
+  "fix_steps": [
+    "Confirm if you are an admin in your Azure Active Directory.",
+    "If not, contact your organization's IT team to approve the app usage."
+  ],
+  "agent_instruction": "Check your admin status in Azure Active Directory and seek approval from IT if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "microsoft-teams",
+    "authentication",
+    "azure-active-directory",
+    "admin-consent"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "0.168.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/authentification-failed-with-microsoft-teams-node/15793"
+  ]
+}

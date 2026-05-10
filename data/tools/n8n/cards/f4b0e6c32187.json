@@ -1,0 +1,40 @@
+{
+  "id": "f4b0e6c32187",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials?",
+  "context_key": "httpRequest-node",
+  "title": "HTTP Request returns 403 Forbidden error",
+  "symptom": "The HTTP Request node returns a 403 Forbidden error indicating potential credential issues. The error message suggests checking the API key or credentials.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "API requires authentication"
+  ],
+  "not_this_if": [
+    "API does not require authentication",
+    "Error is not related to credentials"
+  ],
+  "root_cause": "The 403 Forbidden error typically occurs when the API key is missing, incorrect, or lacks the necessary permissions to access the requested resource. This can also happen if the API endpoint is misconfigured or if there are restrictions on the server side.",
+  "fix_steps": [
+    "Verify that the API key is correctly set in the HTTP Request node.",
+    "Ensure that the API key has the necessary permissions for the requested operation.",
+    "Test the API call again after making any necessary adjustments."
+  ],
+  "agent_instruction": "Check and update the API key in the HTTP Request node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "httpRequest",
+    "403",
+    "credentials",
+    "API-key"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/forbidden-perhaps-check-your-credentials-403-error/155482"
+  ]
+}

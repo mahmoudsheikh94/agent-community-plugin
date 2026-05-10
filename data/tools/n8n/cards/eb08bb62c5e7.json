@@ -1,0 +1,40 @@
+{
+  "id": "eb08bb62c5e7",
+  "tool": "n8n",
+  "error_signature": "Unexpected token 'return' [line 2]",
+  "context_key": "code-node",
+  "title": "Syntax error in code node due to misplaced return",
+  "symptom": "The code node throws an 'Unexpected token' error when executing the workflow, indicating a syntax issue in the provided code.",
+  "applies_when": [
+    "Using a code node",
+    "JavaScript code contains syntax errors"
+  ],
+  "not_this_if": [
+    "Code is syntactically correct",
+    "Error occurs in a different node type"
+  ],
+  "root_cause": "The error occurs because the 'return' statement is incorrectly placed outside of a function context, and there are additional syntax issues such as incorrect parentheses and extra commas.",
+  "fix_steps": [
+    "Remove the misplaced parentheses around the return statement.",
+    "Ensure the return statement is inside a function.",
+    "Fix any additional syntax errors, such as removing extra commas."
+  ],
+  "agent_instruction": "Correct the syntax in the code node as per the identified issues.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "javascript",
+    "syntax-error",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.92.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-show-unexpected-token-return-line-2/118852"
+  ]
+}

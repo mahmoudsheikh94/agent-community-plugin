@@ -1,0 +1,40 @@
+{
+  "id": "183a2861d96a",
+  "tool": "n8n",
+  "error_signature": "Compare datasets node not identifying new properties",
+  "context_key": "compare-datasets-node",
+  "title": "Compare Datasets Node Fails to Identify New Properties",
+  "symptom": "The Compare datasets node shows incorrect results, indicating only one result instead of the expected two. Additionally, the Telegram node sends notifications for all properties instead of just the newly added ones.",
+  "applies_when": [
+    "Using Compare datasets node",
+    "Data sources are correctly formatted"
+  ],
+  "not_this_if": [
+    "All properties are correctly identified",
+    "No new properties are added"
+  ],
+  "root_cause": "The Compare datasets node requires proper linking to the Get row(s) node to function correctly. Without this linkage, it cannot accurately compare the datasets and identify newly added properties.",
+  "fix_steps": [
+    "Link the Get row(s) node to the Compare datasets node",
+    "Re-run the workflow",
+    "Check the output of the Compare datasets node for correct results"
+  ],
+  "agent_instruction": "Link the Get row(s) node to the Compare datasets node and re-run the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "compare-datasets",
+    "data-comparison",
+    "new-properties",
+    "n8n-workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/compare-datasets-wrong-output/207782"
+  ]
+}

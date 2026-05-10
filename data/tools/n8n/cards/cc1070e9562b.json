@@ -1,0 +1,40 @@
+{
+  "id": "cc1070e9562b",
+  "tool": "n8n",
+  "error_signature": "403 - \"Unauthorized. Sign up for a free account.\"",
+  "context_key": "serper.dev-httpRequest-node",
+  "title": "Unauthorized access to Serper.dev API",
+  "symptom": "When attempting to connect to the Serper.dev API, a 403 error is returned indicating unauthorized access. The error message suggests signing up for a free account.",
+  "applies_when": [
+    "Using Serper.dev API",
+    "GET method for requests"
+  ],
+  "not_this_if": [
+    "Using POST method with correct headers"
+  ],
+  "root_cause": "The Serper.dev API requires authentication to be passed in the query string when using the GET method. If the authentication is not provided correctly, it results in a 403 Unauthorized error.",
+  "fix_steps": [
+    "Change the request method to POST if using headers for authentication.",
+    "If using GET, include the API key in the query parameters instead of headers.",
+    "Test the connection again."
+  ],
+  "agent_instruction": "Adjust the request method or modify how the API key is passed based on the method used.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "serper.dev",
+    "httpRequest",
+    "API",
+    "authentication",
+    "403"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/serper-dev-authentication-issues/156527"
+  ]
+}

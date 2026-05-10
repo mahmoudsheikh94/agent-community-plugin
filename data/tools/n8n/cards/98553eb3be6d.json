@@ -1,0 +1,41 @@
+{
+  "id": "98553eb3be6d",
+  "tool": "n8n",
+  "error_signature": "No Session ID found",
+  "context_key": "window Buffer Memory",
+  "title": "Missing Session ID in Buffer Memory Node",
+  "symptom": "After adding the window Buffer Memory module, the workflow throws 'No Session ID found'. This prevents the AI from maintaining context.",
+  "applies_when": [
+    "Using window Buffer Memory node",
+    "Telegram Trigger is configured"
+  ],
+  "not_this_if": [
+    "Session ID is defined correctly",
+    "Using a different trigger that handles session IDs automatically"
+  ],
+  "root_cause": "The window Buffer Memory node requires a session ID to maintain context between messages. When using the Telegram Trigger, a session ID is not automatically set, leading to this error.",
+  "fix_steps": [
+    "Open the settings for the window Buffer Memory node",
+    "Manually define a session ID (e.g., phone number or random UUID)",
+    "Save the workflow",
+    "Run the workflow again"
+  ],
+  "agent_instruction": "Define a session ID in the window Buffer Memory node settings and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "buffer-memory",
+    "session-id",
+    "telegram-trigger",
+    "ai-workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-after-add-memory-get-error/86311"
+  ]
+}

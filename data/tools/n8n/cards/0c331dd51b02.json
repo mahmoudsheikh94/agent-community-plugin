@@ -1,0 +1,44 @@
+{
+  "id": "0c331dd51b02",
+  "tool": "n8n",
+  "error_signature": "EACCES: permission denied, scandir '/demo-data/credentials'",
+  "context_key": "SELINUX",
+  "title": "Permission denied due to SELINUX settings",
+  "symptom": "The error 'EACCES: permission denied, scandir' occurs when trying to access the credentials directory. This prevents n8n from functioning correctly.",
+  "applies_when": [
+    "Running n8n on a Fedora system",
+    "SELINUX is enabled"
+  ],
+  "not_this_if": [
+    "SELINUX is disabled",
+    "Permissions are correctly set"
+  ],
+  "root_cause": "SELINUX can restrict access to files and directories based on security policies. In this case, it was preventing n8n from accessing the credentials directory, leading to permission errors.",
+  "fix_steps": [
+    "Open a terminal",
+    "Run the command 'setenforce 0' to temporarily disable SELINUX",
+    "Check if the error persists",
+    "Consider configuring SELINUX policies for a permanent solution"
+  ],
+  "agent_instruction": "Temporarily disable SELINUX to resolve the permission denied error.",
+  "safety_notes": [
+    "Disabling SELINUX can expose the system to security risks; consider configuring it properly instead."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "SELINUX",
+    "permissions",
+    "EACCES",
+    "n8n",
+    "Fedora"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/eacces-permission-denied-scandir-demo-data-credentials/159084"
+  ]
+}

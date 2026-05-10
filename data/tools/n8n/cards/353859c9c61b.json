@@ -1,0 +1,39 @@
+{
+  "id": "353859c9c61b",
+  "tool": "n8n",
+  "error_signature": "can't find the node",
+  "context_key": "community-node-installation",
+  "title": "Community node not appearing in available nodes list",
+  "symptom": "After installing a community node, it does not appear in the list of available nodes when trying to add it to a workflow.",
+  "applies_when": [
+    "Community node is installed",
+    "Using the web GUI to add nodes"
+  ],
+  "not_this_if": [
+    "Node appears in the list after installation",
+    "Using a different version of n8n"
+  ],
+  "root_cause": "Sometimes, the browser cache may prevent the updated list of nodes from being displayed correctly after installation. This can lead to confusion as the node appears to be installed but is not accessible.",
+  "fix_steps": [
+    "Clear your browser cache",
+    "Refresh the n8n web interface",
+    "Check the list of available nodes again"
+  ],
+  "agent_instruction": "Clear the browser cache and refresh the n8n interface to see the installed community node.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "community-nodes",
+    "node-installation",
+    "browser-cache"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/community-nodes-install-how-to-use/77736"
+  ]
+}

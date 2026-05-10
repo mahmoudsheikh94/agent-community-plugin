@@ -1,0 +1,41 @@
+{
+  "id": "fee6545fbed1",
+  "tool": "n8n",
+  "error_signature": "Connection Lost",
+  "context_key": "docker-compose",
+  "title": "Connection Lost on fresh install in Hostinger",
+  "symptom": "After setting up n8n on Hostinger, the interface shows 'Connection Lost' when trying to upload a template.",
+  "applies_when": [
+    "Using n8n on Hostinger",
+    "Docker is used for installation"
+  ],
+  "not_this_if": [
+    "Using a different hosting provider",
+    "n8n is already running without issues"
+  ],
+  "root_cause": "The issue arises because the n8n Docker image version is not specified, leading to potential compatibility issues or bugs in the latest version. Specifying a stable version can resolve these connection problems.",
+  "fix_steps": [
+    "Run the command: docker pull docker.n8n.io/n8nio/n8n:1.97.0",
+    "Modify the docker-compose.yml file to specify the image version as 'docker.n8n.io/n8nio/n8n:1.97.0'",
+    "Save the changes to the docker-compose.yml file",
+    "Run the command: docker compose up -d"
+  ],
+  "agent_instruction": "Pull the specific n8n version and update your docker-compose configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "hostinger",
+    "connection-lost",
+    "n8n-installation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-lost-on-fresh-install-in-hostinger/125750"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "46c396e69cae",
+  "tool": "n8n",
+  "error_signature": "output wrapped in an array",
+  "context_key": "respond-to-webhook-node",
+  "title": "Webhook response wrapped in an array",
+  "symptom": "The response from the webhook is always returned as an array, even when a single object is expected.",
+  "applies_when": [
+    "Using Respond to Webhook node",
+    "Expecting a single JSON object response"
+  ],
+  "not_this_if": [
+    "The output is correctly formatted in other nodes",
+    "The workflow is not using the Respond to Webhook node"
+  ],
+  "root_cause": "The Respond to Webhook node in n8n is designed to output data in a specific format. By default, it wraps the output in an array, which can be confusing when a single object is intended.",
+  "fix_steps": [
+    "Add a Set node before the Respond to Webhook node",
+    "Change the mode of the Set node to 'json'",
+    "In the Respond to Webhook node, set 'Respond with' to 'First incoming item'"
+  ],
+  "agent_instruction": "Use a Set node to format the output correctly before responding to the webhook.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "respond-to-webhook",
+    "json",
+    "set-node"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/why-does-n8n-always-return-arrays-even-when-i-return-a-single-object/101521"
+  ]
+}

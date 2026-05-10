@@ -1,0 +1,40 @@
+{
+  "id": "7868cf2dfe2e",
+  "tool": "n8n",
+  "error_signature": "Defined automatically by the model",
+  "context_key": "airtable-update-record-node",
+  "title": "Airtable Update Record Node Shows Default Values",
+  "symptom": "In the Update Record node, fields like Tipo_de_mesa and Numero_de_personas show as 'Defined automatically by the model' with default values instead of the expected mapped data.",
+  "applies_when": [
+    "Using Airtable Update Record node",
+    "Fields are not manually set"
+  ],
+  "not_this_if": [
+    "Fields are correctly mapped and show expected values"
+  ],
+  "root_cause": "The Airtable Update Record node may not refresh its schema automatically, leading to incorrect field definitions and default values being displayed. This can happen if the node configuration is not updated after changes in the Airtable schema.",
+  "fix_steps": [
+    "Open the Airtable Update Record node settings",
+    "Click the 'Refresh' button to update the schema",
+    "Ensure the fields are correctly mapped after refreshing",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Refresh the schema in the Airtable Update Record node and verify field mappings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "update-record",
+    "schema-refresh",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-airtable-update-record-error-with-n8n/187253"
+  ]
+}

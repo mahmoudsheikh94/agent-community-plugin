@@ -1,0 +1,40 @@
+{
+  "id": "39e3b78b01d2",
+  "tool": "n8n",
+  "error_signature": "campaign_id not included in Facebook Lead Ads trigger",
+  "context_key": "facebook-lead-ads-trigger",
+  "title": "Missing campaign ID in Facebook Lead Ads trigger response",
+  "symptom": "The Facebook Lead Ads trigger does not return the campaign ID in the webhook response, leading to incomplete data extraction.",
+  "applies_when": [
+    "Using Facebook Lead Ads trigger",
+    "Expecting campaign details in the response"
+  ],
+  "not_this_if": [
+    "Campaign details are available in the CSV download"
+  ],
+  "root_cause": "The Facebook Lead Ads trigger is designed to only return ad and adset information in its webhook response, omitting the campaign ID. This is a limitation of the trigger's current implementation.",
+  "fix_steps": [
+    "Use the adset.id from the trigger response",
+    "Make a GET request to the Graph API endpoint /{{adset.id}}?fields=campaign{id,name}",
+    "Extract the campaign details from the API response"
+  ],
+  "agent_instruction": "Retrieve the campaign details using the adset ID from the trigger response via the Graph API.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "facebook",
+    "lead-ads",
+    "trigger",
+    "campaign-id",
+    "graph-api"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.10.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/facebook-leads-form-trigger-not-sending-campaign-details/281702"
+  ]
+}

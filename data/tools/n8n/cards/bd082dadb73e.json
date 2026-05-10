@@ -1,0 +1,41 @@
+{
+  "id": "bd082dadb73e",
+  "tool": "n8n",
+  "error_signature": "400 status code (no body)",
+  "context_key": "openai-embeddings-node",
+  "title": "400 error when using OpenAI Embeddings node",
+  "symptom": "When entering 'text-embedding-3-small' in the OpenAI Embeddings node, a 400 status code is returned without any body.",
+  "applies_when": [
+    "Using OpenAI Embeddings node",
+    "Self-hosted n8n instance in Docker"
+  ],
+  "not_this_if": [
+    "Using a different model that works",
+    "Running in a non-Docker environment"
+  ],
+  "root_cause": "The error occurs due to an incompatibility between the OpenAI API version and the embedding models being requested. The self-hosted setup may not be configured to use the correct API version that supports these models.",
+  "fix_steps": [
+    "Set the environment variable 'OPENAI_API_VERSION' to '2023-05-15' in your Docker run command.",
+    "Restart the n8n Docker container to apply the changes.",
+    "Try using 'text-embedding-ada-002' as the model name if the dropdown is still empty."
+  ],
+  "agent_instruction": "Set the 'OPENAI_API_VERSION' environment variable to '2023-05-15' and restart the Docker container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "openai",
+    "embeddings",
+    "docker",
+    "400-error",
+    "api-version"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/openai-embeddings-node-zeigt-keine-embedding-modelle-an-400-fehler-bei-text-embedding-3-small-self-hosted-docker/239566"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "ad50a0180314",
+  "tool": "n8n",
+  "error_signature": "sub-workflow does not return data after Wait node",
+  "context_key": "wait-webhook-node",
+  "title": "Sub-workflow fails to return data after Wait node",
+  "symptom": "When a sub-workflow containing a Wait (Webhook) node is called, it does not return the expected data from the last node. Instead, it returns data from the node before the Wait node or only the initial input data.",
+  "applies_when": [
+    "Using a sub-workflow",
+    "Sub-workflow contains a Wait (Webhook) node"
+  ],
+  "not_this_if": [
+    "Sub-workflow does not contain a Wait node",
+    "No loop is present in the sub-workflow"
+  ],
+  "root_cause": "There is a known bug in n8n that prevents sub-workflows from returning data back to the main workflow when they include a Wait node. This issue arises because the Wait node does not properly handle the data flow after it completes, leading to incorrect data being returned.",
+  "fix_steps": [
+    "Avoid using a Wait node in the sub-workflow if you need to return data.",
+    "Consider restructuring the workflow to eliminate the need for waiting."
+  ],
+  "agent_instruction": "Restructure the sub-workflow to avoid using a Wait node to ensure data is returned correctly.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "sub-workflow",
+    "wait-node",
+    "webhook",
+    "data-return"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problems-obtaining-the-response-from-the-sub-workflow/194376"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "434f6f9c0053",
+  "tool": "n8n",
+  "error_signature": "ERR_CONNECTION_TIMED_OUT",
+  "context_key": "facebook-meta-integration",
+  "title": "Connection timeout when connecting Facebook/Meta app",
+  "symptom": "When attempting to connect a Facebook/Meta app to n8n, the user encounters an 'ERR_CONNECTION_TIMED_OUT' error.",
+  "applies_when": [
+    "Using Facebook/Meta app integration",
+    "Self-hosted n8n with specific port configuration"
+  ],
+  "not_this_if": [
+    "Using default port without custom configurations",
+    "Error does not occur after a few minutes"
+  ],
+  "root_cause": "The connection timeout occurs because the OAuth callback URL configured in the Facebook app includes a port that is not reachable. This can happen if the n8n instance is behind a reverse proxy that does not forward the port correctly.",
+  "fix_steps": [
+    "Add the webhook URL without the port to the environment variables",
+    "Ensure the Facebook app is configured to use the updated URL",
+    "Wait a few minutes for the changes to propagate"
+  ],
+  "agent_instruction": "Update the webhook URL in the environment variables to exclude the port and reconfigure the Facebook app.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook",
+    "meta",
+    "oauth",
+    "connection",
+    "timeout"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-with-facebook-meta-account-connection/143851"
+  ]
+}

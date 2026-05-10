@@ -1,0 +1,39 @@
+{
+  "id": "4f340ca6eef8",
+  "tool": "n8n",
+  "error_signature": "item has no binary field ‘data[0]’",
+  "context_key": "file-extraction",
+  "title": "Error extracting first file from folder",
+  "symptom": "When attempting to extract the first file from a folder, n8n throws an error stating 'item has no binary field ‘data[0]’'.",
+  "applies_when": [
+    "Extracting files from a folder",
+    "Expecting binary data in the first item"
+  ],
+  "not_this_if": [
+    "The folder contains only one file",
+    "Files are not in binary format"
+  ],
+  "root_cause": "The error occurs because n8n is trying to access a binary field that does not exist in the first item of the input data. This can happen if the input data structure is not as expected or if the files are not being read correctly.",
+  "fix_steps": [
+    "Ensure that the folder contains files in a compatible format",
+    "Use a command to list files and select the first one without reading all files",
+    "Adjust the workflow to handle the binary data correctly"
+  ],
+  "agent_instruction": "Modify the workflow to list files and select the first file without reading all files.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "file-extraction",
+    "binary-data",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-extract-only-the-first-file/105381"
+  ]
+}

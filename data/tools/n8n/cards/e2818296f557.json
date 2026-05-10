@@ -1,0 +1,41 @@
+{
+  "id": "e2818296f557",
+  "tool": "n8n",
+  "error_signature": "No output data returned",
+  "context_key": "extract-file-module",
+  "title": "XLSX extraction returns no output data",
+  "symptom": "When using the Extract from File module with an XLSX file containing only one record, it returns 'No output data returned'.",
+  "applies_when": [
+    "Using Extract from File module",
+    "Processing an XLSX file with one record"
+  ],
+  "not_this_if": [
+    "XLSX file contains multiple records",
+    "Using a PDF file"
+  ],
+  "root_cause": "The Extract from File module requires the 'Include Empty Cells' option to be enabled when processing XLSX files with only one record. Without this option, it does not output any data.",
+  "fix_steps": [
+    "Open the Extract from File module settings",
+    "Enable the 'Include Empty Cells' option",
+    "Save the workflow",
+    "Re-run the workflow with the XLSX file"
+  ],
+  "agent_instruction": "Enable the 'Include Empty Cells' option in the Extract from File module settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "extract-file",
+    "xlsx",
+    "no-output",
+    "module-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/extract-file-xlsx/202543"
+  ]
+}

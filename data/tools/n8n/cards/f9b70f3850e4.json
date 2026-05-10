@@ -1,0 +1,42 @@
+{
+  "id": "f9b70f3850e4",
+  "tool": "n8n",
+  "error_signature": "Parse Error: Header overflow",
+  "context_key": "woocommerce-trigger",
+  "title": "WooCommerce Trigger fails after PHP upgrade",
+  "symptom": "After upgrading PHP, the WooCommerce Trigger in n8n cannot be activated and shows a 'Header overflow' error.",
+  "applies_when": [
+    "Using WooCommerce Trigger node",
+    "PHP version upgraded to 8.2 or 8.3"
+  ],
+  "not_this_if": [
+    "PHP version is 8.1 or lower",
+    "No plugins are causing conflicts"
+  ],
+  "root_cause": "The error occurs due to a conflict with the 'Query Monitor' plugin, which interferes with the API calls made by the WooCommerce Trigger after the PHP upgrade. This plugin may alter the request headers in a way that exceeds the server's limits.",
+  "fix_steps": [
+    "Clone the website to a staging environment",
+    "Deactivate all plugins",
+    "Reactivate plugins one by one to identify the conflict",
+    "Disable the 'Query Monitor' plugin if it causes the issue"
+  ],
+  "agent_instruction": "Deactivate the 'Query Monitor' plugin to resolve the WooCommerce Trigger issue.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "woocommerce",
+    "trigger",
+    "php-upgrade",
+    "header-overflow",
+    "query-monitor"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/woocommerce-trigger-not-working-anymore-after-upgrading-to-php-8-1/92974"
+  ]
+}

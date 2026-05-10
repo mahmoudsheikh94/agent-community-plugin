@@ -1,0 +1,40 @@
+{
+  "id": "59c3a531d554",
+  "tool": "n8n",
+  "error_signature": "Compare Dataset node not comparing properly",
+  "context_key": "compare-dataset-node",
+  "title": "Compare Dataset node fails to compare identical inputs",
+  "symptom": "The Compare Dataset node shows that items in both inputs are only in their respective sets, despite being identical.",
+  "applies_when": [
+    "Using Compare Dataset node",
+    "Inputs are complex arrays"
+  ],
+  "not_this_if": [
+    "Inputs are not identical",
+    "Using incorrect key/value for comparison"
+  ],
+  "root_cause": "The Compare Dataset node requires the correct key to be specified for comparison. If the value is used instead of the key, the node will not function as intended, leading to incorrect comparison results.",
+  "fix_steps": [
+    "Open the Compare Dataset node settings",
+    "Change the input from '{{ $json.ID.trim() }}' to 'ID'",
+    "Save the workflow",
+    "Re-run the workflow to check the comparison results"
+  ],
+  "agent_instruction": "Use the correct key for comparison in the Compare Dataset node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "compare-dataset",
+    "node-configuration",
+    "data-comparison"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.76.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/compare-elements-in-a-complex-array-using-comapare-datasets-node/74462"
+  ]
+}

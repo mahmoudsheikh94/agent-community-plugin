@@ -1,0 +1,41 @@
+{
+  "id": "26ce3f04e4e9",
+  "tool": "n8n",
+  "error_signature": "getaddrinfo EAI_AGAIN jobapply-fastapi-production-0990.up.railway.app",
+  "context_key": "http-node",
+  "title": "EAI_AGAIN error on HTTP requests to Railway",
+  "symptom": "When making HTTP requests to a Railway-hosted FastAPI, n8n throws an EAI_AGAIN error. This indicates a DNS resolution issue for the specified hostname.",
+  "applies_when": [
+    "Using HTTP node",
+    "Requesting a Railway-hosted service"
+  ],
+  "not_this_if": [
+    "Request works in other tools like PowerShell",
+    "No DNS issues reported elsewhere"
+  ],
+  "root_cause": "The EAI_AGAIN error typically indicates a temporary DNS resolution failure. In this case, it was linked to an issue with Railway's TLS certificate, which prevented proper resolution of the service's hostname.",
+  "fix_steps": [
+    "Ensure the HTTP request URL is correct and uses HTTPS.",
+    "Check for any security warnings related to the URL.",
+    "Retry the request after confirming the TLS certificate is valid."
+  ],
+  "agent_instruction": "Verify the HTTP request URL and ensure it uses HTTPS without security warnings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "EAI_AGAIN",
+    "railway",
+    "TLS",
+    "DNS"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/eai-again-axios-error-on-http-nodes/134008"
+  ]
+}

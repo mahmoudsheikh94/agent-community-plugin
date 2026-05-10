@@ -1,0 +1,39 @@
+{
+  "id": "2f07edcf7e0e",
+  "tool": "n8n",
+  "error_signature": "console.log not appearing in Docker logs",
+  "context_key": "code-node",
+  "title": "Console logs from Code node not appearing in Docker logs",
+  "symptom": "Despite using `console.log` in the Code node, the output does not appear in the Docker logs, making debugging difficult.",
+  "applies_when": [
+    "Using Code node",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Logs are being captured correctly",
+    "Using console methods other than console.log"
+  ],
+  "root_cause": "In n8n, `console.log` statements in the Code node are intended for the browser console and do not output to Docker logs. Other console methods like `console.warn` or `console.error` are not implemented.",
+  "fix_steps": [
+    "Use browser developer tools to view console logs instead of relying on Docker logs.",
+    "Consider using alternative logging methods or nodes for capturing logs."
+  ],
+  "agent_instruction": "Check the browser console for logs instead of Docker logs.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "code-node",
+    "docker-logs",
+    "console-log",
+    "n8n-v1.94.1"
+  ],
+  "severity": "degraded",
+  "confidence": 0.85,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-v1-94-1-docker-output-drops-binary-property-helpers-undefined-no-console-log-in-docker-logs/122040"
+  ]
+}

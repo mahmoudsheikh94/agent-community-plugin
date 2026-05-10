@@ -1,0 +1,39 @@
+{
+  "id": "4d764600d82b",
+  "tool": "n8n",
+  "error_signature": "Code node hangs or fails to execute scripts",
+  "context_key": "code-node",
+  "title": "Code node execution issues in n8n Cloud",
+  "symptom": "The Code node in n8n Cloud hangs indefinitely or fails to execute simple scripts. This issue has been reported by multiple users.",
+  "applies_when": [
+    "Using n8n Cloud",
+    "Code node is being executed"
+  ],
+  "not_this_if": [
+    "Running n8n on a self-hosted instance",
+    "Code node executes without issues"
+  ],
+  "root_cause": "The issue is likely related to environment variables like NODE_FUNCTION_ALLOW_EXTERNAL, which cannot be modified by users on the n8n Cloud. This can lead to problems with executing external modules in the Code node.",
+  "fix_steps": [
+    "Contact your workspace owner to update the n8n Cloud version",
+    "Ensure the version is updated to at least 1.116.1 beta"
+  ],
+  "agent_instruction": "Request an update to the n8n Cloud version from your workspace owner.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "code-node",
+    "n8n-cloud",
+    "execution-issues",
+    "environment-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.116.1 beta",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-stopped-working-in-n8n-cloud-suspecting-node-function-allow-external-issue/207558"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "38106f3162ed",
+  "tool": "n8n",
+  "error_signature": "Invalid 'messages[1].name': string too long",
+  "context_key": "AI Agent node",
+  "title": "AI Agent node string length error",
+  "symptom": "The AI Agent node throws an error indicating that a string exceeds the maximum length of 64 characters. This prevents the workflow from executing properly.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Sending messages with names longer than 64 characters"
+  ],
+  "not_this_if": [
+    "Messages are within the character limit",
+    "Using only text messages without exceeding limits"
+  ],
+  "root_cause": "The error occurs because the AI Agent node expects a specific JSON structure for messages. When handling image messages, the structure may inadvertently include keys or values that exceed the 64-character limit, leading to a bad request error.",
+  "fix_steps": [
+    "Update the workflow to separate logic for text and image messages using an IF node",
+    "Ensure that image messages are sent as strings and not as objects",
+    "Clear any stored objects that may contain invalid URLs from the database"
+  ],
+  "agent_instruction": "Modify the workflow to handle text and image messages correctly and clear any invalid stored objects.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "AI Agent",
+    "OpenAI",
+    "message-structure",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-node-invalid-messages-1-name-string-too-long-expected-a-string-with-maximum-length-64-but-got-a-string-with-length-65-instead/88373"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "5c3acea061f4",
+  "tool": "n8n",
+  "error_signature": "undefined when referencing channel ID",
+  "context_key": "slack-create-channel-node",
+  "title": "Channel ID is undefined after creation in Slack node",
+  "symptom": "After creating a Slack channel, the channel ID is rendered as 'undefined' when referenced in subsequent nodes.",
+  "applies_when": [
+    "Using Slack create:channel node",
+    "Referencing channel ID in a following node"
+  ],
+  "not_this_if": [
+    "Channel ID is correctly referenced in other workflows",
+    "No previous nodes have variable output"
+  ],
+  "root_cause": "The error occurs when the previous nodes return a different number of items than expected, leading to issues in referencing the correct output. This can happen if the workflow is not properly handling the output structure of the Slack node.",
+  "fix_steps": [
+    "Locate the node where the channel ID is being referenced",
+    "Replace '.item.json' with '.last().json' to ensure the last item is accessed",
+    "Save the workflow",
+    "Test the workflow again to see if the channel ID is now correctly referenced"
+  ],
+  "agent_instruction": "Change the reference from '.item.json' to '.last().json' in the node settings.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "slack",
+    "create-channel",
+    "undefined",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/referencing-slack-channel-after-creation-is-undefined/97902"
+  ]
+}

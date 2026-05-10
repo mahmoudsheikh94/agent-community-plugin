@@ -1,0 +1,42 @@
+{
+  "id": "01c64d3f4dda",
+  "tool": "n8n",
+  "error_signature": "PG Vector credentials are empty",
+  "context_key": "PGVector Store node",
+  "title": "PG Vector credentials not set for chatbot",
+  "symptom": "The chatbot stops responding and throws an error related to PG Vector credentials being empty.",
+  "applies_when": [
+    "Using PG Vector Store node",
+    "Chatbot is not responding"
+  ],
+  "not_this_if": [
+    "Chatbot works in manual execution mode",
+    "Credentials are correctly set"
+  ],
+  "root_cause": "The PG Vector Store node requires valid credentials to connect to the Postgres database. If these credentials are empty or not properly configured, the chatbot will fail to function as expected.",
+  "fix_steps": [
+    "Open Workflow Settings",
+    "Confirm Execution Logic is set to v1",
+    "Reconnect the Postgres credentials on the PGVector Store node",
+    "Hit Publish and test via the production chat URL"
+  ],
+  "agent_instruction": "Reconnect the Postgres credentials and publish the workflow to test the chatbot.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "chatbot",
+    "PGVector",
+    "Postgres",
+    "credentials",
+    "workflow-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/chatbot-error-in-inputchat/275822"
+  ]
+}

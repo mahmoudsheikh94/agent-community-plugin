@@ -1,0 +1,39 @@
+{
+  "id": "cc3d0059b632",
+  "tool": "n8n",
+  "error_signature": "Wait node remains stuck in a loop",
+  "context_key": "wait-node",
+  "title": "Wait node stuck in execution loop",
+  "symptom": "The Wait node does not complete and keeps looping even after the image generation is done.",
+  "applies_when": [
+    "Using a Wait node",
+    "Image generation completes successfully"
+  ],
+  "not_this_if": [
+    "Wait node is functioning correctly in other workflows"
+  ],
+  "root_cause": "The Wait node may be receiving multiple inputs from the previous node, which it cannot process correctly. This can cause it to remain in a loop if not configured properly.",
+  "fix_steps": [
+    "Identify the Edit Fields node that is causing the issue",
+    "Remove the lower Edit Fields node (SelectDream_Vercel)",
+    "Test the workflow again to ensure the Wait node completes"
+  ],
+  "agent_instruction": "Remove the problematic Edit Fields node to resolve the Wait node loop issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wait-node",
+    "execution-loop",
+    "edit-fields",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/wait-node-remains-in-a-loop-even-after-image-completion/99105"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "45b6a32e64ca",
+  "tool": "n8n",
+  "error_signature": "Sorry, you are not allowed to create posts as this user.",
+  "context_key": "wordpress-node",
+  "title": "WordPress user permission error when creating posts",
+  "symptom": "When attempting to create a new post in WordPress using the n8n node, an error message states 'Sorry, you are not allowed to create posts as this user.'",
+  "applies_when": [
+    "Using WordPress node",
+    "User has administrator permissions"
+  ],
+  "not_this_if": [
+    "User has correct permissions set in WordPress",
+    "Basic Auth plugin is not installed"
+  ],
+  "root_cause": "The error occurs because the WordPress API requires proper authentication to allow post creation. If the Basic Auth plugin is not installed or configured correctly, the API will deny access even for users with administrator roles.",
+  "fix_steps": [
+    "Install the 'WP-API/Basic-Auth' plugin in your WordPress installation.",
+    "Edit the .htaccess file to include the provided rewrite rules.",
+    "Ensure the rules are placed below the 'RewriteEngine On' line.",
+    "Test the post creation again in n8n."
+  ],
+  "agent_instruction": "Install the Basic Auth plugin and update the .htaccess file as instructed.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wordpress",
+    "api",
+    "authentication",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-have-error-when-try-to-post-to-wordpress/2455"
+  ]
+}

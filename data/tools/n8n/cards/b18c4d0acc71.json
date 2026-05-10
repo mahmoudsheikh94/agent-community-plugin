@@ -1,0 +1,40 @@
+{
+  "id": "b18c4d0acc71",
+  "tool": "n8n",
+  "error_signature": "Google Drive trigger not recognizing new files",
+  "context_key": "google-drive-node",
+  "title": "Google Drive trigger fails to recognize newly uploaded files",
+  "symptom": "The Google Drive node only processes files with timestamps newer than the last polling checkpoint, ignoring older files. Users may see only a single file processed despite multiple uploads.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Files uploaded have old timestamps"
+  ],
+  "not_this_if": [
+    "All files have timestamps newer than the last polling checkpoint"
+  ],
+  "root_cause": "n8n's Google Drive trigger uses a polling mechanism that tracks files by their modification timestamps. If files are uploaded with timestamps older than the last checkpoint, they are considered already processed and won't be picked up.",
+  "fix_steps": [
+    "Deactivate the workflow in n8n.",
+    "Delete the execution history of the workflow.",
+    "Reactivate the workflow to reset the polling checkpoint."
+  ],
+  "agent_instruction": "Reset the polling checkpoint by deactivating and reactivating the workflow after deleting its execution history.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-drive",
+    "trigger",
+    "polling",
+    "timestamp",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-drive-node-not-recognizing-new-files/273614"
+  ]
+}

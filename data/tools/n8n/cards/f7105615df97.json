@@ -1,0 +1,39 @@
+{
+  "id": "f7105615df97",
+  "tool": "n8n",
+  "error_signature": "file named 'Untitled' with MIME application/octet-stream",
+  "context_key": "google-drive-upload",
+  "title": "File created as 'Untitled' with incorrect MIME type",
+  "symptom": "When uploading a file using the multipart upload endpoint, the resulting file is created as 'Untitled' with the MIME type 'application/octet-stream'.",
+  "applies_when": [
+    "Using Google Drive API for multipart uploads",
+    "Sending raw multipart data"
+  ],
+  "not_this_if": [
+    "File is created successfully with the correct name and MIME type",
+    "Using standard JSON body for file creation"
+  ],
+  "root_cause": "This issue occurs when the multipart data is not formatted correctly, leading Google Drive to default to a generic file name and MIME type. This can happen if the required headers are missing or if the boundary is not properly defined.",
+  "fix_steps": [
+    "Ensure that the multipart data includes the correct headers, including 'Content-Transfer-Encoding: binary'.",
+    "Double-check the formatting of the multipart body to ensure it adheres to the required structure."
+  ],
+  "agent_instruction": "Add the 'Content-Transfer-Encoding: binary' header to the multipart data and verify the formatting.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "multipart-upload",
+    "file-creation",
+    "mime-type"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.775,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-upload-raw-files-to-to-google-drive/231620"
+  ]
+}

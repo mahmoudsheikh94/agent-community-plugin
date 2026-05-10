@@ -1,0 +1,39 @@
+{
+  "id": "2d761b0859df",
+  "tool": "n8n",
+  "error_signature": "Lovable UI not rendering webhook response",
+  "context_key": "webhook-response",
+  "title": "Lovable UI not displaying objects and styles from webhook",
+  "symptom": "The Lovable UI is receiving the webhook response but fails to render the objects and styles for user selection. Users are unable to proceed as they cannot see the options.",
+  "applies_when": [
+    "Using Lovable UI",
+    "Webhook response contains objects and styles"
+  ],
+  "not_this_if": [
+    "Webhook response is empty",
+    "Error messages are displayed in n8n"
+  ],
+  "root_cause": "The Lovable UI may require specific response headers to properly interpret and display the data received from the webhook. Without these headers, the UI might not render the content correctly, leading to a lack of visible options for the user.",
+  "fix_steps": [
+    "Add the necessary response headers in the webhook settings",
+    "Test the webhook again to ensure the UI displays the objects and styles"
+  ],
+  "agent_instruction": "Ensure to add the required response headers in the webhook settings to enable proper rendering in Lovable UI.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "lovable-ui",
+    "response-headers",
+    "rendering-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/lovable-ui-is-not-interpreting-webhook-response/111840"
+  ]
+}

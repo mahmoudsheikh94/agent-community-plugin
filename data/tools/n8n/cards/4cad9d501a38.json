@@ -1,0 +1,40 @@
+{
+  "id": "4cad9d501a38",
+  "tool": "n8n",
+  "error_signature": "Invalid email address (item 0)",
+  "context_key": "gmail-node",
+  "title": "Invalid email address error in Gmail node",
+  "symptom": "The Gmail node throws 'Invalid email address (item 0)' when using an email address from the AI agent. Manually entered email addresses work fine.",
+  "applies_when": [
+    "Using Gmail node",
+    "Email address is dynamically generated from AI agent"
+  ],
+  "not_this_if": [
+    "Email address is manually entered and valid"
+  ],
+  "root_cause": "The Gmail node requires the 'To' field to be set as an Expression to properly interpret dynamic values. If set to Fixed, it does not evaluate the expression, leading to the invalid email error.",
+  "fix_steps": [
+    "Open the Gmail node settings",
+    "Change the 'To' field from Fixed to Expression",
+    "Ensure the email address is correctly referenced from the AI agent",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Change the 'To' field in the Gmail node to use Expression instead of Fixed.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "email",
+    "dynamic-value",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-cannot-send-email-gmail/77205"
+  ]
+}

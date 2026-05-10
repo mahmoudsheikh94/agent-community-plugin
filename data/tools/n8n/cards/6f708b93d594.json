@@ -1,0 +1,40 @@
+{
+  "id": "6f708b93d594",
+  "tool": "n8n",
+  "error_signature": "This hapikey doesn't exist",
+  "context_key": "hubspot-node",
+  "title": "HubSpot API key authentication deprecated",
+  "symptom": "When using the 'Get Contact Details' node in HubSpot, the error 'This hapikey doesn't exist' appears, indicating an authentication failure.",
+  "applies_when": [
+    "Using HubSpot node",
+    "Attempting to authenticate with an API key"
+  ],
+  "not_this_if": [
+    "Using the correct private app token for authentication"
+  ],
+  "root_cause": "HubSpot has deprecated the use of API keys (hapikeys) for authentication in favor of private app tokens. If the node is still configured to use the old API key, it will result in an authentication failure.",
+  "fix_steps": [
+    "Open the HubSpot node settings in n8n.",
+    "Remove the API key from the credentials.",
+    "Add the private app's Access Token as the new credential.",
+    "Save the workflow and try executing it again."
+  ],
+  "agent_instruction": "Replace the API key with the private app's Access Token in the HubSpot node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "hubspot",
+    "authentication",
+    "api-key",
+    "private-app"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/this-hapikey-doesnt-exist/271915"
+  ]
+}

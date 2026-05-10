@@ -1,0 +1,40 @@
+{
+  "id": "a12d1a62da9a",
+  "tool": "n8n",
+  "error_signature": "sub-workflow inputs are not updating",
+  "context_key": "sub-workflow",
+  "title": "Sub-workflow inputs not updating in main workflow",
+  "symptom": "After adding new inputs to a sub-workflow, the main workflow does not reflect these changes when refreshing the input list.",
+  "applies_when": [
+    "Using sub-workflows",
+    "New inputs added to sub-workflow"
+  ],
+  "not_this_if": [
+    "Sub-workflow is already published"
+  ],
+  "root_cause": "n8n requires sub-workflows to be published for changes to be recognized in the main workflow. If the sub-workflow is not published, the main workflow will not update its input list with the new inputs.",
+  "fix_steps": [
+    "Open the sub-workflow",
+    "Click on 'Publish' to publish the changes",
+    "Go back to the main workflow",
+    "Click 'Refresh input list' again"
+  ],
+  "agent_instruction": "Publish the sub-workflow and then refresh the input list in the main workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sub-workflow",
+    "inputs",
+    "refresh",
+    "workflow-publishing"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sub-workflow-inputs-are-not-updating/249221"
+  ]
+}

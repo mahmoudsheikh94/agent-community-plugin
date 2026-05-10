@@ -1,0 +1,40 @@
+{
+  "id": "8f4d4aaeaa13",
+  "tool": "n8n",
+  "error_signature": "unable to insert data into newly created Google Sheet",
+  "context_key": "google-sheets-node",
+  "title": "Data insertion failure in new Google Sheet",
+  "symptom": "After creating a new Google Sheet, the user cannot insert data due to column mapping issues. The error arises when trying to map columns that do not exist in the newly created sheet.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Creating a new sheet and attempting to insert data"
+  ],
+  "not_this_if": [
+    "The sheet already has the required columns",
+    "Using automatic mapping mode"
+  ],
+  "root_cause": "The error occurs because the user is trying to map columns for data insertion in a newly created Google Sheet where those columns have not been established yet. Manual selection of a different sheet further complicates the mapping process.",
+  "fix_steps": [
+    "Delete the current column mappings in the Google Sheets node.",
+    "Select the automatic mapping option to let n8n create the necessary columns.",
+    "Alternatively, manually create the required columns in the Google Sheet before mapping."
+  ],
+  "agent_instruction": "Choose automatic mapping in the Google Sheets node or create the required columns manually in the sheet.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "data-insertion",
+    "column-mapping",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/not-able-to-create-a-google-sheet-and-populate-data/101109"
+  ]
+}

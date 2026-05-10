@@ -1,0 +1,39 @@
+{
+  "id": "48164db464a9",
+  "tool": "n8n",
+  "error_signature": "Cannot access 'binding' due to security concerns",
+  "context_key": "set-node",
+  "title": "Access to 'binding' blocked due to security restrictions",
+  "symptom": "When running a script in a Set node, n8n throws an error stating 'Cannot access binding due to security concerns'. This error occurs unexpectedly after the script has been functioning correctly for a long time.",
+  "applies_when": [
+    "Using n8n version 1.123.12",
+    "Running a script in a Set node"
+  ],
+  "not_this_if": [
+    "Using an older version of n8n",
+    "Not using a Set node"
+  ],
+  "root_cause": "In n8n version 1.123.12, a new security restriction was introduced that blocks access to 'binding' in JavaScript code within nodes. This is to prevent potential security vulnerabilities associated with accessing reserved JavaScript properties.",
+  "fix_steps": [
+    "Modify the script to use bracket notation instead of accessing 'binding' directly.",
+    "Alternatively, set the environment variable N8N_BLOCK_ENV_ACCESS_IN_NODE=false in your Docker setup and restart n8n."
+  ],
+  "agent_instruction": "Change your script to use bracket notation or adjust the Docker environment variable to allow access.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "set-node",
+    "security",
+    "binding",
+    "n8n-1.123.12"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.12",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-access-binding-due-to-security-concerns/281681"
+  ]
+}

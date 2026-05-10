@@ -1,0 +1,40 @@
+{
+  "id": "b79f60af556c",
+  "tool": "n8n",
+  "error_signature": "Bad request – please check your parameters",
+  "context_key": "AI Agent node",
+  "title": "AI Agent node returns bad request error",
+  "symptom": "The AI Agent node throws a 'Bad request – please check your parameters' error when processing messages from the tenant account.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Receiving messages from tenant account"
+  ],
+  "not_this_if": [
+    "Messages sent from team lead account",
+    "Postgres chat memory is removed"
+  ],
+  "root_cause": "The error occurs due to incorrect parameters being passed to the Telegram API, which can happen if the chat ID or message format is not valid. This can also be influenced by the integration with the Postgres database, leading to unexpected behavior.",
+  "fix_steps": [
+    "Check the parameters being sent to the Telegram API in the AI Agent node.",
+    "Ensure that the chat ID is valid and correctly formatted.",
+    "If using Postgres, verify that the integration does not interfere with the message parameters."
+  ],
+  "agent_instruction": "Verify and correct the parameters in the AI Agent node for Telegram messages.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "AI Agent",
+    "bad request",
+    "Postgres"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.775,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-ai-agent-with-two-telegram-tools-either-returns-bad-request-or-sends-no-message-at-all/263139"
+  ]
+}

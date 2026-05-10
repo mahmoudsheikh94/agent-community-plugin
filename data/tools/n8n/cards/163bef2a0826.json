@@ -1,0 +1,40 @@
+{
+  "id": "163bef2a0826",
+  "tool": "n8n",
+  "error_signature": "invalid_grant",
+  "context_key": "google-oauth2",
+  "title": "Invalid grant error when obtaining Google access token",
+  "symptom": "When attempting to get an access token using the authorization code in n8n, the process fails with an 'invalid_grant' error.",
+  "applies_when": [
+    "Using Google OAuth2 for authentication",
+    "Sending access token request with authorization code"
+  ],
+  "not_this_if": [
+    "The authorization code has already been used",
+    "The request is correctly formatted and still fails"
+  ],
+  "root_cause": "The 'invalid_grant' error typically occurs when the authorization code is invalid, expired, or has already been used. Additionally, if the request headers or body format are incorrect, it can lead to this error.",
+  "fix_steps": [
+    "Add the HTTP header with Key: Content-Type and Value: application/x-www-form-urlencoded.",
+    "Ensure that the redirect_uri matches the one set in the Google API console.",
+    "Verify that the authorization code is fresh and has not been used before."
+  ],
+  "agent_instruction": "Add the correct Content-Type header and verify the redirect_uri matches the initial setup.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "oauth2",
+    "invalid_grant",
+    "access_token"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/invalid-grant-on-attempt-to-get-access-token-using-code-google-oauth-oauth2/105151"
+  ]
+}

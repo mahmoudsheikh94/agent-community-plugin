@@ -1,0 +1,42 @@
+{
+  "id": "ada0ed97a19b",
+  "tool": "n8n",
+  "error_signature": "Connection lost error in the editor",
+  "context_key": "traefik-reverse-proxy",
+  "title": "Connection lost due to WebSocket misconfiguration",
+  "symptom": "Users experience a 'Connection lost' error in the n8n editor when using SSE or WebSocket. The Docker logs indicate an invalid origin error when SSE is used.",
+  "applies_when": [
+    "Using n8n with traefik as a reverse proxy",
+    "Configured to use SSE or WebSocket"
+  ],
+  "not_this_if": [
+    "WebSocket passthrough is enabled in the WAF",
+    "No connection issues reported"
+  ],
+  "root_cause": "The error occurs due to a misconfiguration in the Web Application Firewall (WAF) that blocks WebSocket connections. This misconfiguration prevents n8n from establishing a proper connection when using WebSocket or SSE.",
+  "fix_steps": [
+    "Access the WAF configuration settings",
+    "Enable WebSocket passthrough",
+    "Restart the WAF and n8n services",
+    "Test the connection in the n8n editor"
+  ],
+  "agent_instruction": "Enable WebSocket passthrough in the WAF configuration to resolve the connection issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "traefik",
+    "websocket",
+    "sse",
+    "reverse-proxy",
+    "waf"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-connection-lost/107744"
+  ]
+}

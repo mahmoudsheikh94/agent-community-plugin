@@ -1,0 +1,38 @@
+{
+  "id": "0837a4370407",
+  "tool": "n8n",
+  "error_signature": "sub-workflow ignores subsequent queries",
+  "context_key": "sub-workflow",
+  "title": "Sub-workflow ignores queries after the first call",
+  "symptom": "The sub-workflow receives the first query correctly but ignores all subsequent queries from the parent agent.",
+  "applies_when": [
+    "Using sub-workflows",
+    "Multiple queries sent in a single execution"
+  ],
+  "not_this_if": [
+    "Only one query is sent to the sub-workflow"
+  ],
+  "root_cause": "This is a known bug in n8n where the sub-workflow does not properly handle multiple queries sent from the parent agent during a single execution, leading to it only processing the first query.",
+  "fix_steps": [
+    "Downgrade n8n to version 1.77 or 1.76",
+    "Alternatively, adjust the workflow to avoid using sub-workflows for this logic"
+  ],
+  "agent_instruction": "Downgrade to n8n version 1.77 or 1.76 to resolve the issue with sub-workflows.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "sub-workflow",
+    "bug",
+    "query-handling",
+    "n8n-version"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sub-workflow-is-not-getting-the-right-query-from-the-parent-agent/81974"
+  ]
+}

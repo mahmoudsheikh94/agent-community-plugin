@@ -1,0 +1,38 @@
+{
+  "id": "4da2f9ee277a",
+  "tool": "weweb",
+  "error_signature": "select is probably returning the value as a string",
+  "context_key": "dynamic value dropdown",
+  "title": "Dropdown value type mismatch",
+  "symptom": "The dropdown selection does not match the expected data type, causing issues in displaying the corresponding image and name.",
+  "applies_when": [
+    "Using a dropdown to select values",
+    "Trying to display associated data based on selection"
+  ],
+  "not_this_if": [
+    "The dropdown correctly displays the associated data without issues"
+  ],
+  "root_cause": "The dropdown component may return the selected value as a string, while the data list expects a number. This type mismatch prevents the correct lookup of associated data.",
+  "fix_steps": [
+    "Wrap the dropdown value with `toNumber()` in your formula",
+    "Test the dropdown again to see if it retrieves the correct data"
+  ],
+  "agent_instruction": "Use `toNumber()` to convert the dropdown value to the correct type for data lookup.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "dropdown",
+    "value-type",
+    "data-lookup",
+    "dynamic-value"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/problem-with-dynamic-value-dropdown/6214"
+  ]
+}

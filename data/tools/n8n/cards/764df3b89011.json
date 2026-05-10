@@ -1,0 +1,39 @@
+{
+  "id": "764df3b89011",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'name')",
+  "context_key": "webhook-test",
+  "title": "Error in webhook test mode due to undefined reference",
+  "symptom": "When testing a webhook with Twilio, n8n returns a 500 error with a message indicating that the workflow could not be started. The stack trace shows a TypeError related to reading properties of undefined.",
+  "applies_when": [
+    "Using webhook test mode",
+    "Webhook is in listening mode"
+  ],
+  "not_this_if": [
+    "Webhook works in production mode"
+  ],
+  "root_cause": "The error occurs because the `checkResponseModeConfiguration` function attempts to access child nodes of the webhook but encounters an undefined reference. This is stricter in test mode compared to production, leading to the failure.",
+  "fix_steps": [
+    "Check the webhook's 'Respond With' setting and ensure it is correctly configured.",
+    "If using 'Respond to Webhook' Node, verify that the node is present and properly wired.",
+    "If issues persist, export the workflow JSON, delete the workflow, and reimport it."
+  ],
+  "agent_instruction": "Verify the webhook's response settings and reimport the workflow if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "test-mode",
+    "error",
+    "twilio"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.6.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-test-mode-500-cannot-read-properties-of-undefined-reading-name-cloud-2-6-3/264833"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "3f833c773504",
+  "tool": "n8n",
+  "error_signature": "Received SIGTERM. Shutting down...",
+  "context_key": "n8n-worker-pod",
+  "title": "n8n worker pod crashing with SIGTERM",
+  "symptom": "The n8n worker pod keeps crashing and logs show 'Received SIGTERM. Shutting down...'. This prevents the worker from processing tasks.",
+  "applies_when": [
+    "Using n8n in a self-hosted Kubernetes setup",
+    "Worker pod is configured with queue execution mode"
+  ],
+  "not_this_if": [
+    "Worker pod is running without crashing",
+    "Using a different execution mode"
+  ],
+  "root_cause": "The worker pod is not able to respond to readiness probes, causing Kubernetes to send a SIGTERM signal to terminate the pod. This can happen if the health check is not properly configured, leading to the pod being marked as unhealthy.",
+  "fix_steps": [
+    "Add the environment variable `QUEUE_HEALTH_CHECK_ACTIVE: true` to the worker pod configuration",
+    "Redeploy the worker pod to apply the changes",
+    "Monitor the logs to ensure the worker starts without crashing"
+  ],
+  "agent_instruction": "Set `QUEUE_HEALTH_CHECK_ACTIVE` to true in the worker pod configuration and redeploy.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "worker",
+    "Kubernetes",
+    "SIGTERM",
+    "health-check"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/self-hosted-n8n-worker-pods-keeps-crashing-with-sigterm/180557"
+  ]
+}

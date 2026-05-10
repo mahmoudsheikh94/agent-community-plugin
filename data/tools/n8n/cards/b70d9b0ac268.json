@@ -1,0 +1,40 @@
+{
+  "id": "b70d9b0ac268",
+  "tool": "n8n",
+  "error_signature": "Missing node to start execution",
+  "context_key": "Execute Workflow Trigger",
+  "title": "Sub-workflow execution failure due to missing trigger node",
+  "symptom": "The sub-workflow fails to execute with the error 'Missing node to start execution'. This occurs even though the workflow contains a valid Execute Workflow Trigger node.",
+  "applies_when": [
+    "Using Execute Workflow node in parent workflow",
+    "Sub-workflow contains an Execute Workflow Trigger"
+  ],
+  "not_this_if": [
+    "Sub-workflow is correctly configured with a valid trigger node"
+  ],
+  "root_cause": "The error occurs when the parent workflow attempts to call a sub-workflow that does not have a properly configured Execute Workflow Trigger node. This can happen if there are additional nodes that interfere with the execution flow or if the workflow structure is not recognized correctly by n8n.",
+  "fix_steps": [
+    "Open the sub-workflow in the editor",
+    "Remove any unnecessary final nodes that may disrupt execution",
+    "Ensure the Execute Workflow Trigger is the last node in the workflow",
+    "Save the workflow and try executing the parent workflow again"
+  ],
+  "agent_instruction": "Remove any final nodes in the sub-workflow that may interfere with execution.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "execute-workflow",
+    "sub-workflow",
+    "trigger-node",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.115.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sub-workflow-error-missing-node-to-start-execution-please-make-sure-the-workflow-youre-calling-contains-an-execute-workflow-trigger-node/209351"
+  ]
+}

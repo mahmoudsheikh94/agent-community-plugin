@@ -1,0 +1,40 @@
+{
+  "id": "3735f88c7674",
+  "tool": "n8n",
+  "error_signature": "redirect_uri mismatch",
+  "context_key": "google-oauth2",
+  "title": "Google OAuth2 redirect URI mismatch error",
+  "symptom": "When attempting to sign in with Google, an error occurs due to a redirect URI mismatch. The error indicates that the redirect URI used does not match the one configured in the Google Cloud console.",
+  "applies_when": [
+    "Using Google OAuth2 for authentication",
+    "Running n8n locally"
+  ],
+  "not_this_if": [
+    "Using a public HTTPS domain for n8n",
+    "Redirect URI matches the configured one"
+  ],
+  "root_cause": "Google OAuth2 requires that the redirect URI used in the authentication request matches exactly with one of the URIs configured in the Google Cloud console. If you are using localhost with HTTP, it will not match with an HTTPS URI, leading to this error.",
+  "fix_steps": [
+    "Ensure that the redirect URI in the Google Cloud console matches the one used in n8n.",
+    "If using localhost, configure n8n to run on HTTPS or use a public domain with HTTPS.",
+    "Add the correct redirect URI to the 'Authorized redirect URIs' section in the Google Cloud console."
+  ],
+  "agent_instruction": "Check and update the redirect URI in the Google Cloud console to match your n8n instance's URL.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "oauth2",
+    "redirect-uri",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-locally-and-google/243317"
+  ]
+}

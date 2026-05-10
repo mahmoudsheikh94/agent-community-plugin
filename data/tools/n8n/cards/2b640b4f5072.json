@@ -1,0 +1,41 @@
+{
+  "id": "2b640b4f5072",
+  "tool": "n8n",
+  "error_signature": "Quota exceeded for metric: generate_content_free_tier_requests",
+  "context_key": "google-gemini-api",
+  "title": "Quota exceeded error for Google Gemini API on free tier",
+  "symptom": "When attempting to use the Gemini 3.1 Pro model, n8n returns a 'Quota exceeded' error despite sending only a single request.",
+  "applies_when": [
+    "Using Google Gemini API",
+    "Free tier account"
+  ],
+  "not_this_if": [
+    "Billing is enabled",
+    "Using a different model available on the free tier"
+  ],
+  "root_cause": "The free tier of the Google Gemini API does not provide access to the Gemini 3.1 Pro model. Users on the free tier are limited to lower-tier models, and attempting to use a higher-tier model results in a quota exceeded error.",
+  "fix_steps": [
+    "Enable billing on your Google account",
+    "Obtain a paid API key",
+    "Update the API key in n8n",
+    "Retry the request with the Gemini 3.1 Pro model"
+  ],
+  "agent_instruction": "Enable billing and obtain a paid API key to access the Gemini 3.1 Pro model.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-gemini",
+    "api-error",
+    "quota-exceeded",
+    "free-tier"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/429-quota-exceeded-error-when-using-gemini-3-1-pro-in-n8n-limit-0/273248"
+  ]
+}

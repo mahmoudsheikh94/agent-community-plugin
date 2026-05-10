@@ -1,0 +1,40 @@
+{
+  "id": "f128244ac5a8",
+  "tool": "n8n",
+  "error_signature": "Extract node produces no output when subworkflow is executed",
+  "context_key": "execute-sub-workflow-node",
+  "title": "Extract node fails to process binary data in subworkflow",
+  "symptom": "The Extract node does not produce any output when called from a parent workflow via the Execute Sub-Workflow node, failing silently without an error message.",
+  "applies_when": [
+    "Using Extract node in a subworkflow",
+    "Binary data passed from a parent workflow"
+  ],
+  "not_this_if": [
+    "Extract node works when subworkflow is tested independently"
+  ],
+  "root_cause": "Binary data does not automatically propagate through nodes in n8n. Each node must explicitly preserve binary data, which is often overlooked, leading to silent failures in extraction when using subworkflows.",
+  "fix_steps": [
+    "In the 'Split Out' node, enable 'Include Binary' under Options.",
+    "In all 'Edit Fields (Set)' nodes, enable 'Include Other Input Fields'.",
+    "If necessary, add a Code node to directly reference the binary data."
+  ],
+  "agent_instruction": "Enable 'Include Binary' in the Split Out node and 'Include Other Input Fields' in all Set nodes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "extract-node",
+    "subworkflow",
+    "binary-data",
+    "execute-sub-workflow",
+    "workflow-automation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.99.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/binary-file-data-not-accessible-when-passed-via-execute-sub-workflow-node/142192"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "257e6fbc14c2",
+  "tool": "n8n",
+  "error_signature": "401 - Token auth is not allowed",
+  "context_key": "httpRequest-node",
+  "title": "Bright Data Token Authentication Failure",
+  "symptom": "When using the HTTP Get Node to fetch data from Bright Data, the response returns a 401 error stating 'Token auth is not allowed'. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using HTTP Get Node",
+    "Fetching data from Bright Data with token authentication"
+  ],
+  "not_this_if": [
+    "Using a different authentication method",
+    "The error does not occur when using a different API endpoint"
+  ],
+  "root_cause": "The error occurs because the token being used for authentication is either invalid, expired, or not permitted for the requested operation. Bright Data may have updated their authentication requirements, leading to this failure.",
+  "fix_steps": [
+    "Check the token configuration on Bright Data's side to ensure it is valid and has the correct permissions.",
+    "Use n8n's built-in credentials feature to set up 'Header Auth' with the correct token.",
+    "Replace 'YOUR_TOKEN' with the valid token in the credentials settings."
+  ],
+  "agent_instruction": "Verify the Bright Data token and configure it in n8n using the Header Auth credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "bright-data",
+    "http-request",
+    "authentication",
+    "token-auth"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.122.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bright-data-authentication-problem-while-getting-data-with-snapshot-id/233521"
+  ]
+}

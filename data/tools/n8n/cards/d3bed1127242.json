@@ -1,0 +1,41 @@
+{
+  "id": "d3bed1127242",
+  "tool": "n8n",
+  "error_signature": "The connection was aborted, perhaps the server is offline",
+  "context_key": "google-drive-integration",
+  "title": "Google Drive integration connection aborted",
+  "symptom": "The workflow fails at the 'Upload PDF to Drive2' step with an error indicating the connection was aborted. This occurs after a short period of time using the Google Drive integration.",
+  "applies_when": [
+    "Using Google Drive integration",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "Using the built-in Google Drive node",
+    "Error does not occur after re-login"
+  ],
+  "root_cause": "The error occurs due to issues with the OAuth 2.0 token expiration or invalidation, which can happen if the Google project settings are not correctly configured or if there are issues with the Google API itself. This can lead to the connection being aborted unexpectedly.",
+  "fix_steps": [
+    "Create a new Google Console project",
+    "Set up the Google Drive integration as a fresh instance",
+    "Publish the new project",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Create a new Google Console project and set up the Google Drive integration anew.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "oauth2",
+    "integration",
+    "connection-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.6.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/being-logout-after-few-hour-or-hours-with-integration-under-google-drive-oauth2/262858"
+  ]
+}

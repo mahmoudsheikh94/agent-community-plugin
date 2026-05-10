@@ -1,0 +1,41 @@
+{
+  "id": "eb3b8d6b93ed",
+  "tool": "n8n",
+  "error_signature": "TypeError: Cannot read properties of undefined (reading 'ldap')",
+  "context_key": "docker-compose",
+  "title": "SSO initialization error in n8n 1.120.4",
+  "symptom": "When accessing the n8n application in the browser, a TypeError occurs, preventing the page from loading. The console shows 'Cannot read properties of undefined (reading 'ldap')'.",
+  "applies_when": [
+    "Using n8n version 1.120.4",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Using n8n version 1.118.2 or earlier"
+  ],
+  "root_cause": "The new SSO features introduced in n8n 1.120+ require certain configuration variables to be set. If these variables are not defined, it leads to a TypeError during the initialization process, causing the application to fail to load.",
+  "fix_steps": [
+    "Open your docker-compose.yml file.",
+    "Add the following environment variables under the environment section: N8N_SSO_SAML_ENABLED=false, N8N_SSO_OIDC_ENABLED=false, N8N_SSO_LDAP_ENABLED=false.",
+    "Run 'docker-compose down' to stop the current container.",
+    "Run 'docker-compose up -d' to restart the container with the new configuration."
+  ],
+  "agent_instruction": "Add the required environment variables to your docker-compose.yml and restart the n8n container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "sso",
+    "ldap",
+    "n8n-1.120.4",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/self-host-n8n-1-120-4-login-page-error/224553"
+  ]
+}

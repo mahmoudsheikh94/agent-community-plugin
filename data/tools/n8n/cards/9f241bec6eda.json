@@ -1,0 +1,41 @@
+{
+  "id": "9f241bec6eda",
+  "tool": "n8n",
+  "error_signature": "failed to calculate checksum of ref",
+  "context_key": "docker-task-runner",
+  "title": "Docker build fails due to missing dist folder",
+  "symptom": "During the Docker build process for the task runner, an error occurs stating 'failed to calculate checksum of ref' due to a missing dist folder.",
+  "applies_when": [
+    "Building a custom Docker image for n8n task runner",
+    "Using a specific version of n8n"
+  ],
+  "not_this_if": [
+    "The dist folder exists with the required files",
+    "Using the latest version of n8n"
+  ],
+  "root_cause": "The error occurs because the Docker build process expects a 'dist' folder containing necessary files, which is not created if the build process for n8n is not run prior to building the task runner image.",
+  "fix_steps": [
+    "Ensure the n8n main docker image and the task runner docker image are of the same version.",
+    "Run 'pnpm i' to install dependencies.",
+    "Run 'pnpm run build:n8n' to create the dist folder and necessary files.",
+    "Build the Docker image for the task runner using the provided docker build command."
+  ],
+  "agent_instruction": "Run the necessary build commands before building the Docker image for the task runner.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "docker",
+    "task-runner",
+    "build-error",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.114.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-add-custom-python-package-to-n8n-task-runner/199518"
+  ]
+}

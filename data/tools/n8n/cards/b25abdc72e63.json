@@ -1,0 +1,40 @@
+{
+  "id": "b25abdc72e63",
+  "tool": "n8n",
+  "error_signature": "localhost refused to connect",
+  "context_key": "google-oauth2-credentials",
+  "title": "Google OAuth2 redirect fails with localhost error",
+  "symptom": "After granting permissions during Google OAuth2 authentication, the user is redirected to an error page stating 'localhost refused to connect'.",
+  "applies_when": [
+    "Using Google OAuth2 credentials",
+    "n8n is hosted on a platform like Render.com"
+  ],
+  "not_this_if": [
+    "Using a custom domain or reverse proxy",
+    "n8n is running locally"
+  ],
+  "root_cause": "The error occurs because 'localhost' is not accessible from the internet. When Google attempts to redirect back to the specified localhost URL, it fails since that address is not reachable from Google's servers.",
+  "fix_steps": [
+    "Set up n8n on a fully qualified domain name (FQDN)",
+    "Update the OAuth Redirect URL in the Google Cloud Console to match the new domain",
+    "Test the OAuth2 flow again"
+  ],
+  "agent_instruction": "Configure n8n with a proper domain name instead of localhost for OAuth2 authentication.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "google-oauth2",
+    "localhost",
+    "connection-error",
+    "self-hosting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-with-google-oauth2-credentials-in-n8n-localhost-refused-to-connect/78881"
+  ]
+}

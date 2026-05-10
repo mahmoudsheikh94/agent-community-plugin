@@ -1,0 +1,40 @@
+{
+  "id": "d711c81d1c5e",
+  "tool": "weweb",
+  "error_signature": "poor typing experience due to rapid input",
+  "context_key": "supabase-text-input",
+  "title": "Poor typing experience with Supabase text input",
+  "symptom": "When typing quickly in a long text input, the changes do not register smoothly, causing a lag in user experience.",
+  "applies_when": [
+    "Using a long text input field",
+    "Data is being sent to Supabase on every keystroke"
+  ],
+  "not_this_if": [
+    "Debounce is already implemented",
+    "Typing is slow and does not trigger rapid requests"
+  ],
+  "root_cause": "The application is sending requests to Supabase on every keystroke, which can overwhelm the system and lead to delays in updating the input field, resulting in a poor user experience.",
+  "fix_steps": [
+    "Implement a debounce function on the text input field",
+    "Set the debounce time to 1 second",
+    "Test the input field to ensure it updates smoothly after typing pauses"
+  ],
+  "agent_instruction": "Add a debounce function to the long text input field to improve typing responsiveness.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "supabase",
+    "text-input",
+    "debounce",
+    "user-experience"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/long-text-input-as-initial-value-error-upon-change/4254"
+  ]
+}

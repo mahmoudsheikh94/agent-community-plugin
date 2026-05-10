@@ -1,0 +1,40 @@
+{
+  "id": "b76b8665269c",
+  "tool": "weweb",
+  "error_signature": "button that triggers the workflow is disabled",
+  "context_key": "button-trigger",
+  "title": "Button triggering workflow is disabled",
+  "symptom": "The button intended to trigger the workflow does not initiate any action when clicked, and no calls are recorded in Xano.",
+  "applies_when": [
+    "Button is configured to trigger a workflow",
+    "User clicks the button"
+  ],
+  "not_this_if": [
+    "Button is enabled and configured correctly"
+  ],
+  "root_cause": "The button may have been inadvertently set to a disabled state, preventing any action from being triggered when clicked. This can occur during the design phase if the button's properties are not properly configured.",
+  "fix_steps": [
+    "Locate the button in the project settings",
+    "Check the 'Disabled' option",
+    "Toggle the 'Disabled' option to 'off'",
+    "Save the changes and test the button again"
+  ],
+  "agent_instruction": "Ensure the button is enabled by toggling the 'Disabled' option to 'off'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "button",
+    "workflow",
+    "xano",
+    "trigger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/solved-workflow-working-when-testing-but-not-when-clicking-the-button/2986"
+  ]
+}

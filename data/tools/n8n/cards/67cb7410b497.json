@@ -1,0 +1,39 @@
+{
+  "id": "67cb7410b497",
+  "tool": "n8n",
+  "error_signature": "Number of parameters does not match the expected number of params",
+  "context_key": "whatsapp-node",
+  "title": "WhatsApp template parameter mismatch error",
+  "symptom": "When sending a message using a WhatsApp template, the execution fails with 'Number of parameters does not match the expected number of params'. This occurs despite the parameters appearing correct in the preview.",
+  "applies_when": [
+    "Using WhatsApp node",
+    "Sending messages with templates"
+  ],
+  "not_this_if": [
+    "Parameters are correctly defined as expected by the template"
+  ],
+  "root_cause": "The error occurs when the variable names in the WhatsApp template do not match the expected types. Specifically, if a variable is defined as 'name' but is sent as 'number', the node fails to execute properly.",
+  "fix_steps": [
+    "Check the variable definitions in the WhatsApp template.",
+    "Ensure that the variable names match the expected types (e.g., use 'number' instead of 'name').",
+    "Test sending the message again."
+  ],
+  "agent_instruction": "Ensure that the variable names in the WhatsApp template match the expected types and try sending the message again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "templates",
+    "parameters",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whatsapp-templates/143208"
+  ]
+}

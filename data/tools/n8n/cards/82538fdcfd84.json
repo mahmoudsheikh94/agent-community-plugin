@@ -1,0 +1,41 @@
+{
+  "id": "82538fdcfd84",
+  "tool": "n8n",
+  "error_signature": "subworkflow does not return any data",
+  "context_key": "Execute Workflow node",
+  "title": "Subworkflow not returning data in main workflow execution",
+  "symptom": "The 'create Google Calendar event' node does not execute when running the entire workflow, but works when executed individually. No error message is displayed.",
+  "applies_when": [
+    "Using Execute Workflow node",
+    "Subworkflow has a waiting node"
+  ],
+  "not_this_if": [
+    "Subworkflow returns data successfully",
+    "Running nodes individually works without issues"
+  ],
+  "root_cause": "The Execute Workflow node may be set to wait for the subworkflow to complete, but if the subworkflow does not return any data due to a waiting node, the main workflow will not proceed to the next node.",
+  "fix_steps": [
+    "Open the settings of the Execute Workflow node",
+    "Change the mode to not wait for subworkflow completion",
+    "Save the workflow",
+    "Execute the main workflow again"
+  ],
+  "agent_instruction": "Change the Execute Workflow node's mode to not wait for subworkflow completion and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "execute-workflow",
+    "subworkflow",
+    "google-calendar",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/node-only-executes-when-pressing-play-manually-not-when-executing-entire-workflow/105566"
+  ]
+}

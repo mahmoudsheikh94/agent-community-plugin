@@ -1,0 +1,40 @@
+{
+  "id": "33b877f8d6a1",
+  "tool": "n8n",
+  "error_signature": "changes not reflected in nested subworkflow",
+  "context_key": "subworkflow-publishing",
+  "title": "Changes not reflected in nested subworkflow after saving",
+  "symptom": "After making changes to a nested subworkflow, the updates do not appear when executing the workflow, despite being visible in the editor.",
+  "applies_when": [
+    "Using nested subworkflows",
+    "Changes made in the latest version of n8n"
+  ],
+  "not_this_if": [
+    "Changes are made in the main workflow instead of a subworkflow"
+  ],
+  "root_cause": "In n8n version 2.0 and later, simply saving a subworkflow does not apply changes. You must publish the subworkflow for the changes to take effect, as the older 'Activate' toggle has been replaced with a publishing mechanism.",
+  "fix_steps": [
+    "Open the subworkflow in the editor",
+    "Make the necessary changes",
+    "Click on the 'Publish' button to apply the changes",
+    "Run the workflow again to see the updates"
+  ],
+  "agent_instruction": "Ensure to publish the subworkflow after making changes to see them reflected in executions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "subworkflow",
+    "publishing",
+    "n8n-2.0",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.2.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/nested-subworkflow-getting-cached-in-self-hosted-workflow/248822"
+  ]
+}

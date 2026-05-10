@@ -1,0 +1,42 @@
+{
+  "id": "f7e38e41cba8",
+  "tool": "n8n",
+  "error_signature": "NJS-518: cannot connect to Oracle Database",
+  "context_key": "oracle-node",
+  "title": "Oracle Database connection error due to incorrect instance configuration",
+  "symptom": "When attempting to execute a SQL query in n8n with Oracle node, the error 'NJS-518: cannot connect to Oracle Database' is displayed.",
+  "applies_when": [
+    "Using Oracle node",
+    "Configured database credentials in n8n"
+  ],
+  "not_this_if": [
+    "Connection works with sqlplus",
+    "Correct instance name is used"
+  ],
+  "root_cause": "The error occurs because the database connection string provided in the n8n credentials includes the complete link with Server/Instance instead of just the Instance name. This misconfiguration prevents n8n from properly connecting to the Oracle Database.",
+  "fix_steps": [
+    "Open the Oracle node credentials in n8n",
+    "Edit the database connection string to include only the Instance name",
+    "Save the credentials",
+    "Retry executing the SQL query"
+  ],
+  "agent_instruction": "Ensure the database connection string in the Oracle node credentials only specifies the Instance name.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "oracle",
+    "database",
+    "connection",
+    "njs-518",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-nodes-oracle-database-parameterization-dont-show-file-tnsname-ora/145749"
+  ]
+}

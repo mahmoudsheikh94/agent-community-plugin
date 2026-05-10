@@ -1,0 +1,40 @@
+{
+  "id": "03775381f31f",
+  "tool": "n8n",
+  "error_signature": "SERVER_ERROR: Check your request and try again",
+  "context_key": "http-request-node",
+  "title": "HTTP Request node returns server error with brackets in value",
+  "symptom": "Using brackets in the value field of the HTTP Request node results in a server 500 error. The error message indicates a parse exception related to the brackets.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Value field contains brackets"
+  ],
+  "not_this_if": [
+    "Brackets are not present in the value field"
+  ],
+  "root_cause": "The API being called requires specific formatting for date ranges, including URL encoding of brackets. When brackets are not encoded, the server cannot parse the request correctly, leading to a server error.",
+  "fix_steps": [
+    "Replace brackets in the value field with their URL encoded equivalents: [%5B for [ and %5D for ]",
+    "Ensure spaces are replaced with %20 or +",
+    "Update the value to 'device.date_received%3A%5B20230101%20TO%2020231231%5D'",
+    "Retry the HTTP request"
+  ],
+  "agent_instruction": "URL encode the brackets in the value field of the HTTP Request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "server-error",
+    "url-encoding",
+    "api-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-with-brackets-in-value-field-server-error/232458"
+  ]
+}

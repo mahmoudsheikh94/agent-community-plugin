@@ -1,0 +1,39 @@
+{
+  "id": "e6f8a8257a33",
+  "tool": "n8n",
+  "error_signature": "getaddrinfo EAI_AGAIN ph.n8n.io",
+  "context_key": "docker",
+  "title": "DNS resolution failure in n8n Docker container",
+  "symptom": "When running the n8n Docker container, the error 'getaddrinfo EAI_AGAIN ph.n8n.io' occurs, preventing access to necessary services.",
+  "applies_when": [
+    "Running n8n in a Docker container",
+    "Experiencing DNS resolution issues"
+  ],
+  "not_this_if": [
+    "DNS resolution works in the host environment",
+    "No errors occur when accessing other domains"
+  ],
+  "root_cause": "The Docker container may not be able to resolve DNS queries properly due to network configuration issues, such as not using the host's DNS settings or being blocked by firewall or VPN settings.",
+  "fix_steps": [
+    "Stop the running n8n Docker container",
+    "Restart the container with the command: docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n --dns 8.8.8.8 docker.n8n.io/n8nio/n8n"
+  ],
+  "agent_instruction": "Restart the n8n Docker container with the Google DNS server option.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "dns",
+    "EAI_AGAIN",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/install-n8n-docker-get-error-getaddrinfo-eai-again-ph-n8n-io/98868"
+  ]
+}

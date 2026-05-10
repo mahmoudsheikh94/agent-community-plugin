@@ -1,0 +1,41 @@
+{
+  "id": "9695e225c4d0",
+  "tool": "n8n",
+  "error_signature": "Failed to process request : Internal Server Error",
+  "context_key": "forminator-webhook",
+  "title": "Internal Server Error when saving Webhook URL",
+  "symptom": "When trying to save the Webhook URL in n8n, an error message 'Failed to process request : Internal Server Error' appears.",
+  "applies_when": [
+    "Using Forminator plugin",
+    "Webhook URL is set to production"
+  ],
+  "not_this_if": [
+    "Webhook URL is set to a test environment",
+    "All outcomes have a response configured"
+  ],
+  "root_cause": "The error occurs because the workflow does not have a response configured for every possible outcome. If the workflow reaches a path without a response, it will time out and trigger an internal server error.",
+  "fix_steps": [
+    "Open the workflow in n8n",
+    "Ensure that every outcome of the If node has a corresponding response to the webhook",
+    "Save the workflow",
+    "Try activating the webhook again"
+  ],
+  "agent_instruction": "Configure responses for all outcomes in the workflow to avoid timeouts.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "forminator",
+    "webhook",
+    "internal-server-error",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/forminator-webhook-failed-to-process-request/70512"
+  ]
+}

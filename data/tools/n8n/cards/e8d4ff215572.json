@@ -1,0 +1,42 @@
+{
+  "id": "e8d4ff215572",
+  "tool": "n8n",
+  "error_signature": "CONNECT tunnel failed, response 429",
+  "context_key": "whatsapp-trigger-node",
+  "title": "WhatsApp Trigger Node produces 429 Response",
+  "symptom": "When publishing workflows with the WhatsApp Trigger Node, it fails with a 429 error indicating too many requests. This issue also affects data exchange in WhatsApp Flows.",
+  "applies_when": [
+    "Using WhatsApp Trigger Node",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "The issue does not occur in n8n cloud"
+  ],
+  "root_cause": "The error occurs because the self-hosted n8n instance is still trying to use the n8n development tunnel, which has strict rate limits. This results in the callback URL being rejected by WhatsApp due to throttling.",
+  "fix_steps": [
+    "Open your Docker Compose configuration or .env file.",
+    "Remove the N8N_TUNNEL_SUBDOMAIN variable and the --tunnel flag if present.",
+    "Set WEBHOOK_URL to your actual public domain (e.g., https://n8n.your-domain.com/).",
+    "Restart your container with docker-compose up -d.",
+    "Update your WhatsApp App settings in the Meta Developer Console to point to this new webhook URL."
+  ],
+  "agent_instruction": "Update the webhook URL in your Meta Developer Console and restart your n8n instance.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "trigger-node",
+    "429-error",
+    "docker",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.6.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whatsapp-trigger-node-produces-429-response-on-publish/264640"
+  ]
+}

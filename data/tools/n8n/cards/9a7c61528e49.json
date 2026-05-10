@@ -1,0 +1,41 @@
+{
+  "id": "9a7c61528e49",
+  "tool": "n8n",
+  "error_signature": "payload not being refreshed properly on reschedule",
+  "context_key": "calendly-node",
+  "title": "Calendly payload not updating on appointment reschedule",
+  "symptom": "When rescheduling an appointment in Calendly, the payload returns outdated answers and questions instead of the latest data.",
+  "applies_when": [
+    "Using Calendly node",
+    "Rescheduling appointments"
+  ],
+  "not_this_if": [
+    "Payload updates correctly for new appointments",
+    "No rescheduling occurs"
+  ],
+  "root_cause": "The Calendly node triggers both 'invitee.canceled' and 'invitee.created' events almost simultaneously during a reschedule. The webhook can only capture the first event, which leads to outdated data being returned in the payload.",
+  "fix_steps": [
+    "Add an IF node immediately after the Calendly trigger.",
+    "Configure the IF node to check for 'payload.old_invitee.is_reschedule=true' to differentiate between new and rescheduled appointments.",
+    "Handle the 'invitee.canceled' actions similarly by adding another IF node to check for 'payload.invitee.is_reschedule=true'."
+  ],
+  "agent_instruction": "Implement IF nodes to properly handle rescheduled appointments in your workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "calendly",
+    "payload",
+    "reschedule",
+    "webhook",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/calendly-payload-doesn-t-refresh-properly/4313"
+  ]
+}

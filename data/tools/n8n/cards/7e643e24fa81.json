@@ -1,0 +1,39 @@
+{
+  "id": "7e643e24fa81",
+  "tool": "n8n",
+  "error_signature": "The item has no binary field ‘data’ [item 0]",
+  "context_key": "merge-node",
+  "title": "Merge node missing binary field",
+  "symptom": "When attempting to merge two binaries using a merge node, an error occurs stating 'The item has no binary field ‘data’ [item 0]'. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using a merge node",
+    "Trying to merge multiple binaries"
+  ],
+  "not_this_if": [
+    "Only one binary is being merged",
+    "Binaries are correctly named"
+  ],
+  "root_cause": "The error occurs because the merge node is not configured to output a single object containing both binaries. Instead, it is likely outputting separate objects, which leads to the absence of the expected binary field in the merged output.",
+  "fix_steps": [
+    "Ensure that the merge node is set to combine the binaries into a single output object.",
+    "Use the expression '{{ Object.keys($binary).join(',') }}' to dynamically retrieve binary keys if their names are unknown."
+  ],
+  "agent_instruction": "Configure the merge node to output a single object with both binaries included.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "merge",
+    "binaries",
+    "compression",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-merge-binaries-e-g-for-compression-or-attachment/158272"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "055d52462544",
+  "tool": "n8n",
+  "error_signature": "unable to process Word files in n8n workflow",
+  "context_key": "docx-processing",
+  "title": "Issues processing Word files in n8n workflow",
+  "symptom": "The user is unable to properly detect or process Word files in their n8n workflow, leading to failures in extracting text.",
+  "applies_when": [
+    "Using Word (.docx) files",
+    "Attempting to extract text in n8n"
+  ],
+  "not_this_if": [
+    "PDF files are being processed successfully",
+    "Using a different file format"
+  ],
+  "root_cause": "n8n does not have a built-in node for directly converting Word files to text, which can lead to difficulties in processing these files. Users need to rely on community nodes or external APIs for conversion.",
+  "fix_steps": [
+    "Install and use a Community DOCX to Text Node (e.g., n8n-docx-converter).",
+    "Alternatively, use the Google Drive node to convert the DOCX to Google Docs format, then export it as plain text."
+  ],
+  "agent_instruction": "Install the DOCX to Text Node or use Google Drive to convert and export the Word file as text.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docx",
+    "text-extraction",
+    "qdrant",
+    "google-drive"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/word-files-to-qdrant-library/145314"
+  ]
+}

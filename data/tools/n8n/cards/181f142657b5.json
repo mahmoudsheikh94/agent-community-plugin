@@ -1,0 +1,40 @@
+{
+  "id": "181f142657b5",
+  "tool": "n8n",
+  "error_signature": "messages are being sent out again",
+  "context_key": "Postgres integration",
+  "title": "Postgres integration causes message sending issues",
+  "symptom": "When the Postgres chat memory is used, messages are not sent to either the tenant or the team lead, leading to a silent failure.",
+  "applies_when": [
+    "Using Postgres integration",
+    "Messages are not being sent"
+  ],
+  "not_this_if": [
+    "Postgres chat memory is removed",
+    "Messages sent from team lead account"
+  ],
+  "root_cause": "The integration with Postgres may be causing the AI Agent to enter a loop or fail to process messages correctly, resulting in no messages being sent. This could be due to how the chat memory is being handled or conflicts with the AI model.",
+  "fix_steps": [
+    "Remove the Postgres chat memory from the workflow.",
+    "Test the workflow to confirm that messages are sent correctly without Postgres.",
+    "Consider toggling between different AI models or service providers if issues persist."
+  ],
+  "agent_instruction": "Remove the Postgres chat memory and test the workflow again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "AI Agent",
+    "message sending",
+    "integration issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.775,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-ai-agent-with-two-telegram-tools-either-returns-bad-request-or-sends-no-message-at-all/263139"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "11a40c383039",
+  "tool": "n8n",
+  "error_signature": "ERR_ASSERTION - refreshToken is required",
+  "context_key": "zohoSignOAuth2Api",
+  "title": "Missing refresh token in custom Zoho Sign OAuth2 credentials",
+  "symptom": "When the access token expires, the error 'ERR_ASSERTION - refreshToken is required' occurs due to the absence of a refresh token in the stored credentials.",
+  "applies_when": [
+    "Using custom Zoho Sign OAuth2 credentials",
+    "Access token has expired"
+  ],
+  "not_this_if": [
+    "Refresh token is present in the credentials"
+  ],
+  "root_cause": "The refresh token is not returned because the initial token request did not include the 'access_type=offline' parameter. Without this parameter, the OAuth2 flow defaults to online mode, which does not provide a refresh token.",
+  "fix_steps": [
+    "Modify the OAuth2 authorization URL to include 'access_type=offline' and '&prompt=consent'.",
+    "Re-authenticate to obtain a new access token and refresh token."
+  ],
+  "agent_instruction": "Update the OAuth2 authorization URL to include 'access_type=offline' and re-authenticate.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "zoho",
+    "oauth2",
+    "refresh-token",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/custom-oauth2-credentials-not-storing-refresh-token/135046"
+  ]
+}

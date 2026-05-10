@@ -1,0 +1,41 @@
+{
+  "id": "9cd50a08945d",
+  "tool": "n8n",
+  "error_signature": "npm error 403 403 Forbidden",
+  "context_key": "npx command",
+  "title": "403 Forbidden error when using npx with MCP",
+  "symptom": "When executing an npx command to connect to the MCP server, a 403 Forbidden error is returned, indicating access issues.",
+  "applies_when": [
+    "Using npx to connect to MCP server",
+    "Authorization header is incorrectly formatted"
+  ],
+  "not_this_if": [
+    "Using correct header format",
+    "Accessing a different server or endpoint"
+  ],
+  "root_cause": "The error occurs due to incorrect case sensitivity in the command line arguments. Specifically, using '--Header' instead of the correct '--header' leads to the server rejecting the request due to improper authorization formatting.",
+  "fix_steps": [
+    "Change '--Header' to '--header' in your command",
+    "Ensure the authorization token is valid",
+    "Retry the npx command"
+  ],
+  "agent_instruction": "Correct the header case in your npx command and try again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "npx",
+    "MCP",
+    "403",
+    "authorization",
+    "command-line"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-bearer-authorization/110628"
+  ]
+}

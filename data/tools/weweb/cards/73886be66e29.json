@@ -1,0 +1,37 @@
+{
+  "id": "73886be66e29",
+  "tool": "weweb",
+  "error_signature": "date picker bug",
+  "context_key": "date picker",
+  "title": "Date picker not displaying correctly after first use",
+  "symptom": "The date picker popup appears correctly the first time but fails to show on subsequent attempts.",
+  "applies_when": [
+    "Using the date picker in the live version",
+    "Attempting to open the date picker multiple times"
+  ],
+  "not_this_if": [
+    "Date picker works correctly in the test version"
+  ],
+  "root_cause": "This is a known bug in the date picker component that is currently being fixed by the development team. It affects the visibility of the popup after the initial use.",
+  "fix_steps": [
+    "Wait for the bug fix to be deployed by the WeWeb team",
+    "Check for updates regarding the date picker component"
+  ],
+  "agent_instruction": "Monitor for updates on the date picker bug fix from the WeWeb team.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "date-picker",
+    "bug",
+    "live-version"
+  ],
+  "severity": "degraded",
+  "confidence": 0.875,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/display-issues-with-production-version/1980"
+  ]
+}

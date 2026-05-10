@@ -1,0 +1,41 @@
+{
+  "id": "58b90e8934fc",
+  "tool": "n8n",
+  "error_signature": "Airtable not updating with new order data",
+  "context_key": "airtable-node",
+  "title": "Airtable not updating records correctly",
+  "symptom": "After running the workflow, Airtable shows 58 orders instead of the expected 14, indicating that new records are being added instead of updating existing ones.",
+  "applies_when": [
+    "Using Airtable node",
+    "Running a workflow that creates orders"
+  ],
+  "not_this_if": [
+    "Airtable is empty before running the workflow",
+    "Using a different method to update records"
+  ],
+  "root_cause": "The workflow is configured to create new records in Airtable each time it runs, rather than updating existing records. This leads to duplicate entries instead of refreshing the existing data.",
+  "fix_steps": [
+    "Open the Airtable node settings",
+    "Change the operation to 'Create or Update'",
+    "Set 'order_id' as the match field",
+    "Save the workflow and run it again"
+  ],
+  "agent_instruction": "Change the Airtable node to use 'Create or Update' with 'order_id' as the match field.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "create-or-update",
+    "workflow",
+    "data-update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.102.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/questions-when-i-study-text-courses-lever-one-filtering-orders/151036"
+  ]
+}

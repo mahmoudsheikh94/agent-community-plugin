@@ -1,0 +1,41 @@
+{
+  "id": "ddb291d9e3cd",
+  "tool": "n8n",
+  "error_signature": "Could not connect with these settings",
+  "context_key": "caldav-node",
+  "title": "Connection issue with Apple CalDAV settings",
+  "symptom": "When attempting to connect to Apple CalDAV, n8n returns 'Could not connect with these settings'. This occurs despite using the correct server URL and credentials.",
+  "applies_when": [
+    "Using CalDAV node",
+    "Configured with Apple ID and app password"
+  ],
+  "not_this_if": [
+    "Using incorrect calendar ID",
+    "No entries in the calendar for the specified date"
+  ],
+  "root_cause": "The error occurs due to incorrect configuration of the calendar ID or missing entries in the calendar for the specified date. The CalDAV node requires precise formatting and valid credentials to establish a connection.",
+  "fix_steps": [
+    "Ensure the Server URL is set to 'https://caldav.icloud.com'",
+    "Set the Username to your Apple ID email and the Password to the app password created in your Apple account.",
+    "Set the 'Calendar Name or ID' field to 'Expression' and enter the correct path '/YOURUSERID/calendars/CALENDERID/' with the appropriate calendar ID.",
+    "Make sure there is at least one entry in your calendar for the date you are querying."
+  ],
+  "agent_instruction": "Verify your CalDAV node settings and ensure the calendar ID and date entries are correct.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "caldav",
+    "apple-calendar",
+    "credentials",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "115.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/apple-calender-caldav-or-http-req-access/208780"
+  ]
+}

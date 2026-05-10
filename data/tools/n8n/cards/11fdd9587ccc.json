@@ -1,0 +1,40 @@
+{
+  "id": "11fdd9587ccc",
+  "tool": "n8n",
+  "error_signature": "The file /shared/test.txt is not writable",
+  "context_key": "file-write-node",
+  "title": "File write operation fails due to incorrect environment variable",
+  "symptom": "The workflow fails to write a binary file to disk, returning 'The file /shared/test.txt is not writable'. Despite having correct permissions, the operation does not succeed.",
+  "applies_when": [
+    "Using the 'Read/Write Files from Disk' node",
+    "Docker container running n8n"
+  ],
+  "not_this_if": [
+    "File write operation succeeds in other directories",
+    "Different environment variable settings are used"
+  ],
+  "root_cause": "The environment variable set for allowing write access to the filesystem is incorrect. Instead of using 'N8N_FILESYSTEM_ALLOW_WRITE', the correct variable is 'N8N_RESTRICT_FILE_ACCESS_TO', which controls file access permissions for n8n.",
+  "fix_steps": [
+    "Change the environment variable from 'N8N_FILESYSTEM_ALLOW_WRITE' to 'N8N_RESTRICT_FILE_ACCESS_TO'",
+    "Set the value to '/shared'",
+    "Restart the n8n Docker container to apply changes"
+  ],
+  "agent_instruction": "Update the environment variable to 'N8N_RESTRICT_FILE_ACCESS_TO=/shared' and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "file-write",
+    "docker",
+    "n8n",
+    "environment-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.4.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/write-files-from-disk-fails-with-error-the-file-is-not-writable/255409"
+  ]
+}

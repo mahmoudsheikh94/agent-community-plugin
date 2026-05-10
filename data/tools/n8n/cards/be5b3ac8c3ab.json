@@ -1,0 +1,39 @@
+{
+  "id": "be5b3ac8c3ab",
+  "tool": "n8n",
+  "error_signature": "_input.all()[0].json[\"content_list\"] = None",
+  "context_key": "python-code-node",
+  "title": "Assigning list to JSON field fails in Python Code node",
+  "symptom": "When trying to assign a list of dictionaries to a JSON field in the Python Code node, the assignment results in 'None'.",
+  "applies_when": [
+    "Using Python Code node",
+    "Assigning a list to a JSON field"
+  ],
+  "not_this_if": [
+    "Using intermediary string conversion with json.dumps"
+  ],
+  "root_cause": "The Python Code node in n8n does not handle direct assignment of lists to JSON fields correctly, resulting in the field being set to None instead of the intended list.",
+  "fix_steps": [
+    "Add a new node after the Python Code node",
+    "Set the new node to 'Edit Fields' mode",
+    "Manually map the 'content_list' field to '{{ JSON.parse($json.content_list) }}'"
+  ],
+  "agent_instruction": "Create an Edit Fields node to map 'content_list' using JSON.parse.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "python",
+    "code-node",
+    "json",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/python-code-node-issue-assigning-list-to-json-field-fails-input-all-0/107505"
+  ]
+}

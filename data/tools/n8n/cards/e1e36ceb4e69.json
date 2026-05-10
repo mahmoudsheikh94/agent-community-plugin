@@ -1,0 +1,40 @@
+{
+  "id": "e1e36ceb4e69",
+  "tool": "n8n",
+  "error_signature": "Slack not handling markdown correctly",
+  "context_key": "slack-node",
+  "title": "Slack node not processing Markdown as expected",
+  "symptom": "When posting messages to Slack using the Slack node, Markdown formatting is not applied correctly, resulting in plain text output instead of formatted text.",
+  "applies_when": [
+    "Using Slack node",
+    "Sending messages with Markdown formatting"
+  ],
+  "not_this_if": [
+    "Markdown is not required for the message",
+    "Using a different messaging platform"
+  ],
+  "root_cause": "Slack uses a specific flavor of Markdown that differs from standard Markdown. The Slack node in n8n does not automatically convert common Markdown syntax to the format that Slack recognizes, leading to unformatted messages.",
+  "fix_steps": [
+    "Replace `**` with `*` in your Markdown text.",
+    "Change `-` at the beginning of lines to `*` for bullet points.",
+    "Use the provided regex replacement in your workflow to format the text correctly."
+  ],
+  "agent_instruction": "Modify your Markdown text according to Slack's formatting rules before sending it through the Slack node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "slack",
+    "markdown",
+    "message-formatting",
+    "node-configuration"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.88.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/slack-message-post-not-handling-markdown/102123"
+  ]
+}

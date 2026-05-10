@@ -1,0 +1,40 @@
+{
+  "id": "33233fa1b3d6",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "facebook-graph-api-node",
+  "title": "Invalid media type for Instagram post",
+  "symptom": "When attempting to post an image to Instagram using the Facebook Graph API, an error occurs stating 'Bad request - please check your parameters. Only photo or video can be accepted as media type.'",
+  "applies_when": [
+    "Using Facebook Graph API to post to Instagram",
+    "Image URL is from Google Drive"
+  ],
+  "not_this_if": [
+    "Image is uploaded as binary data",
+    "Using a direct image file link"
+  ],
+  "root_cause": "The Facebook Graph API requires that media types be either photo or video. If the provided media URL is not a direct link to an image file, the API cannot process it correctly, resulting in a bad request error.",
+  "fix_steps": [
+    "Change the Facebook node settings to enable 'Send Binary File'.",
+    "Use the binary data from the previous node instead of a URL for the image.",
+    "Ensure the caption is passed correctly in the request."
+  ],
+  "agent_instruction": "Switch to sending the image as binary data in the Facebook node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook-graph-api",
+    "instagram",
+    "media-type",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bad-request-only-photo-or-video-can-be-accepted-as-media-type/163267"
+  ]
+}

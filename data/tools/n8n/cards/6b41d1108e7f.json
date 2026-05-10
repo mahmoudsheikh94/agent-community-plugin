@@ -1,0 +1,41 @@
+{
+  "id": "6b41d1108e7f",
+  "tool": "n8n",
+  "error_signature": "Input values have 2 keys, you must specify an input key",
+  "context_key": "simple-memory-node",
+  "title": "Simple Memory node requires specific input key",
+  "symptom": "The Simple Memory node throws an error stating that input values have 2 keys and requires a specific input key to be set.",
+  "applies_when": [
+    "Using Simple Memory node",
+    "Input has multiple keys"
+  ],
+  "not_this_if": [
+    "Input has only one key",
+    "Error does not occur in Simple Memory node"
+  ],
+  "root_cause": "The Simple Memory node expects a single input key to function correctly. When multiple keys are present in the input, it cannot determine which key to use, leading to the error message.",
+  "fix_steps": [
+    "Open the Simple Memory node settings",
+    "Locate the 'Input Key' parameter",
+    "Set the 'Input Key' to the desired key name",
+    "Save the workflow and re-run it"
+  ],
+  "agent_instruction": "Set the 'Input Key' in the Simple Memory node to the key you want to use.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "simple-memory",
+    "input-key",
+    "node-configuration",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/trouble-with-simple-memory/122764"
+  ]
+}

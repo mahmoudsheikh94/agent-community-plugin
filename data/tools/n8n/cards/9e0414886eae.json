@@ -1,0 +1,40 @@
+{
+  "id": "9e0414886eae",
+  "tool": "n8n",
+  "error_signature": "Incomplete login attempt. Telegram blocked an attempt to log into your account",
+  "context_key": "telegram-userbot",
+  "title": "Telegram login blocked due to code sharing",
+  "symptom": "Users receive an 'Incomplete login attempt' message when trying to log in. The login is blocked because the verification code was shared improperly.",
+  "applies_when": [
+    "Using Telegram userbot",
+    "User is entering a verification code"
+  ],
+  "not_this_if": [
+    "Code is entered without sharing",
+    "User is not using a bot to log in"
+  ],
+  "root_cause": "Telegram detects that the verification code is being shared between the app and the bot, which violates their security protocols. This leads to the login attempt being blocked to protect the user's account.",
+  "fix_steps": [
+    "Modify the bot's response to instruct users not to paste the code directly.",
+    "Instruct users to add spaces or dashes between each digit of the code before sending it."
+  ],
+  "agent_instruction": "Update the bot's message to include instructions on formatting the verification code.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "telegram",
+    "userbot",
+    "login",
+    "verification-code",
+    "security"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-userbot-pairing-other-users-issue/264648"
+  ]
+}

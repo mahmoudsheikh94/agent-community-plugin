@@ -1,0 +1,42 @@
+{
+  "id": "09f3e4122b6a",
+  "tool": "n8n",
+  "error_signature": "MCP Server Trigger not loading",
+  "context_key": "MCP Server Trigger",
+  "title": "MCP Server Trigger fails to load in Claude Desktop",
+  "symptom": "The MCP Server Trigger does not display the expected Google Sheets tool in Claude Desktop, indicating a loading issue.",
+  "applies_when": [
+    "Using MCP Server Trigger",
+    "Configured with Google Sheets tool"
+  ],
+  "not_this_if": [
+    "MCP Server Trigger works in other environments",
+    "No error in logs related to configuration"
+  ],
+  "root_cause": "The issue arises from incorrect Nginx configuration, particularly in handling WebSocket connections and proxy settings. If the server is not properly set up to handle the MCP paths, the trigger may fail to load.",
+  "fix_steps": [
+    "Review the Nginx configuration for the MCP Server Trigger.",
+    "Ensure that WebSocket and proxy settings are correctly configured as per the provided example.",
+    "Restart the Nginx server to apply the changes.",
+    "Test the MCP Server Trigger again in Claude Desktop."
+  ],
+  "agent_instruction": "Check and update the Nginx configuration for the MCP Server Trigger and restart the server.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "MCP",
+    "Nginx",
+    "WebSocket",
+    "Google Sheets",
+    "trigger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.88.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-server-trigger-not-loading-in-claude-desktop/101970"
+  ]
+}

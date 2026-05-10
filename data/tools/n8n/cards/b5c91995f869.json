@@ -1,0 +1,39 @@
+{
+  "id": "b5c91995f869",
+  "tool": "n8n",
+  "error_signature": "Telegram trigger stops responding to incoming messages",
+  "context_key": "telegram-webhook-trigger",
+  "title": "Telegram trigger not responding after inactivity",
+  "symptom": "The Telegram webhook trigger stops responding to messages after a period of inactivity, requiring manual reactivation to function again.",
+  "applies_when": [
+    "Using Telegram webhook trigger",
+    "Workflow has been inactive for some time"
+  ],
+  "not_this_if": [
+    "Workflow is continuously active or has not been inactive"
+  ],
+  "root_cause": "When multiple Telegram triggers are created with the same production link, it can cause conflicts that lead to the webhook becoming unresponsive. This happens because the system cannot distinguish between the triggers, leading to issues with message delivery.",
+  "fix_steps": [
+    "Identify any duplicate Telegram triggers in your workflows",
+    "Ensure each trigger has a unique production link",
+    "Save the changes and test the workflow again"
+  ],
+  "agent_instruction": "Check for duplicate Telegram triggers and assign unique production links to each.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "telegram",
+    "webhook",
+    "trigger",
+    "automation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-webhook-trigger/134822"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "1b676ac24a63",
+  "tool": "n8n",
+  "error_signature": "command /usr/local/bin/task-runner-launcher not found",
+  "context_key": "docker-compose",
+  "title": "Task runner launcher command not found in Docker setup",
+  "symptom": "When setting up n8n with Docker Compose, the error 'command /usr/local/bin/task-runner-launcher not found' occurs.",
+  "applies_when": [
+    "Using Docker Compose to run n8n",
+    "Configured to use runners for offloading tasks"
+  ],
+  "not_this_if": [
+    "Running n8n without Docker",
+    "Using a different execution mode"
+  ],
+  "root_cause": "The error occurs because the Docker image's entry point prepends 'n8n' to commands, making direct calls to executables like 'task-runner-launcher' fail. This is a common issue when trying to execute commands directly in a Docker container without the correct entry point configuration.",
+  "fix_steps": [
+    "Modify the Docker Compose file to include an entrypoint override",
+    "Set the entrypoint to '/bin/sh -c /usr/local/bin/task-runner-launcher javascript;'"
+  ],
+  "agent_instruction": "Update your Docker Compose configuration to set the correct entrypoint for the task runner.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "task-runner",
+    "docker-compose"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/trying-to-setup-runners-in-external-mode-with-docker-compose/131206"
+  ]
+}

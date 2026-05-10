@@ -1,0 +1,41 @@
+{
+  "id": "e1da542c947d",
+  "tool": "n8n",
+  "error_signature": "Workflow is not active and cannot be executed",
+  "context_key": "subflow-execution",
+  "title": "Inactive subflow causes execution error",
+  "symptom": "When running the main workflow, an error occurs stating 'Workflow is not active and cannot be executed'. This prevents the main workflow from executing properly.",
+  "applies_when": [
+    "Using nested subflows",
+    "Main workflow is triggered"
+  ],
+  "not_this_if": [
+    "All subflows are published and active"
+  ],
+  "root_cause": "Subflows in n8n must be published to be executed. If a subflow is not published, it remains inactive and cannot be called from another workflow, leading to execution errors.",
+  "fix_steps": [
+    "Open Subflow A in the n8n editor",
+    "Click the Publish button to activate it",
+    "Open Subflow B in the n8n editor",
+    "Click the Publish button to activate it",
+    "Try running the Main workflow again"
+  ],
+  "agent_instruction": "Publish both Subflow A and Subflow B to resolve the execution error.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "subflow",
+    "workflow-execution",
+    "n8n",
+    "publish"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.3.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/nested-subflows/264734"
+  ]
+}

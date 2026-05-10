@@ -1,0 +1,38 @@
+{
+  "id": "37f1473e8abc",
+  "tool": "weweb",
+  "error_signature": "prevent users from entering more than four digits for the year",
+  "context_key": "input-component-date",
+  "title": "Date input allows more than four digits for the year",
+  "symptom": "Users can enter more than four digits for the year in the date input field, causing the input to malfunction.",
+  "applies_when": [
+    "Using the input component with type 'date'",
+    "User attempts to enter a year"
+  ],
+  "not_this_if": [
+    "User enters a valid year format"
+  ],
+  "root_cause": "The date input component does not have a built-in validation to restrict the year input to four digits, leading to potential errors when users input invalid year formats.",
+  "fix_steps": [
+    "Set a maximum date in the date input settings to limit the year input.",
+    "Ensure the maximum date is set to a value that corresponds to a four-digit year."
+  ],
+  "agent_instruction": "Set a maximum date in the date input settings to prevent users from entering more than four digits for the year.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "input",
+    "date",
+    "validation",
+    "user-input"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.85,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/struggling-with-some-weweb-basics-desperately-looking-for-help/20242"
+  ]
+}

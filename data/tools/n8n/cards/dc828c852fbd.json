@@ -1,0 +1,40 @@
+{
+  "id": "dc828c852fbd",
+  "tool": "n8n",
+  "error_signature": "Unable to sign without access token",
+  "context_key": "twitter-node",
+  "title": "Twitter node unable to sign without access token",
+  "symptom": "When attempting to connect the Twitter node, n8n returns 'Unable to sign without access token'. This prevents the user from successfully authenticating their account.",
+  "applies_when": [
+    "Using the Twitter node",
+    "Attempting to connect to an X account"
+  ],
+  "not_this_if": [
+    "Access token is already set and valid",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The error occurs because the Twitter node requires a valid access token to authenticate API requests. If the access token is missing or invalid, the node cannot sign the request, leading to this error.",
+  "fix_steps": [
+    "Regenerate the access token and secret in your Twitter developer account.",
+    "Copy the new access token and secret into the Twitter node settings in n8n.",
+    "Try connecting your account again."
+  ],
+  "agent_instruction": "Regenerate your Twitter access token and secret, then update them in the Twitter node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "twitter",
+    "oauth2",
+    "access-token",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/x-tweeter-connector-is-having-a-problem-to-connect-to-my-x-account/93687"
+  ]
+}

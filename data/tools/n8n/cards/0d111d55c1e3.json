@@ -1,0 +1,41 @@
+{
+  "id": "0d111d55c1e3",
+  "tool": "n8n",
+  "error_signature": "Connection lost",
+  "context_key": "nginx-proxy-manager",
+  "title": "Connection lost error in n8n UI with Nginx Proxy Manager",
+  "symptom": "Users see a 'Connection lost' message in the n8n interface, preventing workflow execution. The connection to the server appears to be lost despite successful HTTPS access.",
+  "applies_when": [
+    "Using n8n behind Nginx Proxy Manager",
+    "WebSocket support is not enabled"
+  ],
+  "not_this_if": [
+    "WebSocket support is correctly configured in Nginx Proxy Manager"
+  ],
+  "root_cause": "n8n requires WebSocket support for real-time updates in the UI. If the reverse proxy (Nginx Proxy Manager) does not properly handle WebSocket connections, users will experience connection issues in the n8n interface.",
+  "fix_steps": [
+    "Access the Nginx Proxy Manager dashboard",
+    "Locate the proxy host configuration for n8n",
+    "Enable WebSocket support in the settings",
+    "Save the configuration and restart the proxy"
+  ],
+  "agent_instruction": "Enable WebSocket support in your Nginx Proxy Manager configuration for n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "websocket",
+    "n8n",
+    "proxy",
+    "connection-lost"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/self-hosted-n8n-docker-with-nginx-for-ssl/167459"
+  ]
+}

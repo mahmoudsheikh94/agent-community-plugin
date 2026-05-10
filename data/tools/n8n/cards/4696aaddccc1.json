@@ -1,0 +1,40 @@
+{
+  "id": "4696aaddccc1",
+  "tool": "n8n",
+  "error_signature": "CORS policy: No 'Access-Control-Allow-Origin' header",
+  "context_key": "webhook",
+  "title": "CORS error due to missing or misconfigured header",
+  "symptom": "When making a request from a web app, the browser blocks the request due to CORS policy, indicating that the 'Access-Control-Allow-Origin' header is missing or incorrectly set.",
+  "applies_when": [
+    "Making requests to n8n webhook from a different origin",
+    "CORS settings are configured in n8n"
+  ],
+  "not_this_if": [
+    "CORS headers are correctly set and the request is from the same origin"
+  ],
+  "root_cause": "The CORS error occurs because the server response does not include the 'Access-Control-Allow-Origin' header, or it is incorrectly configured to allow multiple origins, which is not permitted. This prevents the browser from allowing the web app to access the resource.",
+  "fix_steps": [
+    "Open your n8n .env file or the environment settings where n8n is configured.",
+    "Set the following values: N8N_DEFAULT_CORS=TRUE and N8N_CORS_ALLOW_ORIGIN=https://mywebsite.co.uk.",
+    "Restart n8n to apply the changes.",
+    "If using NGINX, add the appropriate CORS headers in the NGINX configuration and reload NGINX."
+  ],
+  "agent_instruction": "Configure CORS settings in the n8n .env file and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "CORS",
+    "webhook",
+    "n8n",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/allowed-origins-cors-error/80385"
+  ]
+}

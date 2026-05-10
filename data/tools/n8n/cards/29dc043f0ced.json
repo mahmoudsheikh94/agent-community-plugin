@@ -1,0 +1,40 @@
+{
+  "id": "29dc043f0ced",
+  "tool": "n8n",
+  "error_signature": "no variables are addressable from within the Bearer Auth credentials",
+  "context_key": "mcp-client-node",
+  "title": "MCP Client Bearer Auth token not passing",
+  "symptom": "The MCP Client node fails to pass a Bearer token fetched from a previous HTTP Request node, resulting in authentication issues.",
+  "applies_when": [
+    "Using MCP Client node",
+    "Fetching Bearer token from a previous node"
+  ],
+  "not_this_if": [
+    "Bearer token is hardcoded in the credentials"
+  ],
+  "root_cause": "The Bearer Auth credentials in the MCP Client node do not automatically recognize or allow the use of dynamic variables from previous nodes, which prevents the token fetched from being utilized.",
+  "fix_steps": [
+    "Open the MCP Client node settings",
+    "Use expressions to reference the output of the HTTP Request node that fetches the Bearer token",
+    "Save the workflow",
+    "Test the workflow to ensure the token is passed correctly"
+  ],
+  "agent_instruction": "Reference the Bearer token from the FetchToken node using expressions in the MCP Client node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mcp-client",
+    "bearer-auth",
+    "http-request",
+    "dynamic-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.115.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-client-tool-bearer-auth-variable/209225"
+  ]
+}

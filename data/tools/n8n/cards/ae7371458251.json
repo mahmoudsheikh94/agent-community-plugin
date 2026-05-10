@@ -1,0 +1,41 @@
+{
+  "id": "ae7371458251",
+  "tool": "n8n",
+  "error_signature": "node doesn’t have credentials set",
+  "context_key": "reddit-get-post-node",
+  "title": "Reddit Get Post Node Credential Error",
+  "symptom": "When using an expression in the Reddit Get Post node, n8n throws an error stating 'node doesn’t have credentials set'.",
+  "applies_when": [
+    "Using Reddit Get Post node",
+    "Using expressions for dynamic values"
+  ],
+  "not_this_if": [
+    "Using fixed values without expressions"
+  ],
+  "root_cause": "The error occurs because the node fails to recognize the credentials when expressions are used. This can happen if the credentials are not properly linked or if there is a mismatch in how they are set when using dynamic values.",
+  "fix_steps": [
+    "Open the Reddit Get Post node settings",
+    "Unset the current credentials",
+    "Set the credentials again from the dropdown",
+    "Save the workflow",
+    "Try executing the node again"
+  ],
+  "agent_instruction": "Unset and then re-set the credentials for the Reddit Get Post node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "reddit",
+    "get-post",
+    "credentials",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/have-this-issue-with-the-reddit-get-post-node/190354"
+  ]
+}

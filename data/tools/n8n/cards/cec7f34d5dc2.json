@@ -1,0 +1,38 @@
+{
+  "id": "cec7f34d5dc2",
+  "tool": "n8n",
+  "error_signature": "OAuth Redirect URL still refers to localhost",
+  "context_key": "Google Calendar integration",
+  "title": "OAuth Redirect URL not updating from localhost",
+  "symptom": "The OAuth Redirect URL remains set to localhost even after changing environment variables and restarting the Docker container.",
+  "applies_when": [
+    "Using Google Calendar integration",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Environment variables are correctly set and the URL updates"
+  ],
+  "root_cause": "The OAuth Redirect URL is determined by the environment variables N8N_EDITOR_BASE_URL and WEBHOOK_URL. If these are not set correctly to the public URL, n8n defaults to localhost, causing connection issues during OAuth authentication.",
+  "fix_steps": [
+    "Set the environment variables N8N_HOST, N8N_EDITOR_BASE_URL, and WEBHOOK_URL to your public URL.",
+    "Restart the Docker container to apply the changes."
+  ],
+  "agent_instruction": "Ensure the environment variables are set to your public URL and restart the Docker container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-calendar",
+    "oauth",
+    "docker",
+    "environment-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-change-oauth-redirect-url/114964"
+  ]
+}

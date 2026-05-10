@@ -1,0 +1,39 @@
+{
+  "id": "e16023ac5902",
+  "tool": "weweb",
+  "error_signature": "some endpoint can’t be loaded",
+  "context_key": "xano-auth-plugin",
+  "title": "Xano auth plugin endpoint loading issue",
+  "symptom": "When setting up the Xano auth plugin, the user encounters an error stating that some endpoints can't be loaded, specifically the signup endpoint.",
+  "applies_when": [
+    "Using Xano auth plugin",
+    "Endpoints configured in Xano"
+  ],
+  "not_this_if": [
+    "Endpoints work in Xano debugger or Postman"
+  ],
+  "root_cause": "The issue may arise from incorrect datasource or branch naming conventions. If the datasource or branch names are not matching the expected case (uppercase vs lowercase), the plugin may fail to load the endpoints correctly.",
+  "fix_steps": [
+    "Add the Xano auth plugin using default options for datasource and branch",
+    "Ensure that datasource and branch names start with uppercase letters",
+    "Test the plugin functionality again"
+  ],
+  "agent_instruction": "Re-add the Xano auth plugin with the correct datasource and branch naming conventions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "xano",
+    "auth-plugin",
+    "endpoint-loading",
+    "datasource"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/xano-auth-plugin-issues-how-to-authenticate-without-plugin/6136"
+  ]
+}

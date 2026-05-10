@@ -1,0 +1,41 @@
+{
+  "id": "05b0571743ec",
+  "tool": "n8n",
+  "error_signature": "Loop Node Only Processes the First Item",
+  "context_key": "nested-loop-node",
+  "title": "Nested loop node not processing items correctly on second run",
+  "symptom": "The nested loop node processes data correctly for the first month but fails to extract data for the second month, going directly to the 'Done' branch.",
+  "applies_when": [
+    "Using nested loop nodes",
+    "Processing multiple items in a loop"
+  ],
+  "not_this_if": [
+    "The workflow is not using nested loops",
+    "The issue occurs in a different context"
+  ],
+  "root_cause": "The nested loop node does not automatically reset its state between iterations. Without proper configuration, it may not recognize that it needs to process a new set of data, leading to premature completion of the loop.",
+  "fix_steps": [
+    "Open the settings of the inner loop node",
+    "Enable the 'Reset' option",
+    "Set the reset condition to reference the last node from the outer loop, e.g., '{{ $prevNode.name == 'Group programs by days' }}'",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Enable the 'Reset' option in the inner loop node and configure it to reset based on the last executed node from the outer loop.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nested-loop",
+    "loop-node",
+    "workflow-configuration",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.112.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/nested-loop-node-is-not-working-as-expected-when-its-run-for-the-second-time/237745"
+  ]
+}

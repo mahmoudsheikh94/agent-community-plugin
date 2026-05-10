@@ -1,0 +1,40 @@
+{
+  "id": "a217bfd29fde",
+  "tool": "n8n",
+  "error_signature": "Error 403",
+  "context_key": "Google OAuth",
+  "title": "Error 403 when authenticating Google OAuth credentials",
+  "symptom": "When attempting to sign in with Google for OAuth in n8n, the user encounters a 403 error. This prevents the workflow from executing properly.",
+  "applies_when": [
+    "Using Google OAuth credentials",
+    "Trying to authenticate with a Google account"
+  ],
+  "not_this_if": [
+    "The app is already verified by Google",
+    "The user is not using the same account for app creation and authentication"
+  ],
+  "root_cause": "The 403 error typically occurs when the Google app is not verified or the user is not listed as a test user in the OAuth consent screen. Google requires additional verification steps for apps that are not fully published, especially when using sensitive scopes.",
+  "fix_steps": [
+    "Edit the Google OAuth credential in n8n to include your domain and callback URL.",
+    "Go to the OAuth consent screen in Google Cloud Console and add your email as a test user.",
+    "Save the changes and try authenticating again."
+  ],
+  "agent_instruction": "Edit the Google OAuth credential to include your domain and add your email as a test user in the OAuth consent screen.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "oauth",
+    "error-403",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-403-using-oauth-credential-from-google/3848"
+  ]
+}

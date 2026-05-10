@@ -1,0 +1,40 @@
+{
+  "id": "d6b7f9e78766",
+  "tool": "n8n",
+  "error_signature": "redirect URL missing 'https://'",
+  "context_key": "OAuth configuration",
+  "title": "OAuth Redirect URL not updating correctly",
+  "symptom": "The redirect URL for OAuth is missing the 'https://' prefix, causing authentication issues.",
+  "applies_when": [
+    "Using OAuth authentication",
+    "Incorrect redirect URL configured"
+  ],
+  "not_this_if": [
+    "Redirect URL is correct and includes 'https://'"
+  ],
+  "root_cause": "The issue arises when the wrong environment variable is referenced in the Docker Compose file, leading to an incorrect redirect URL being set for OAuth authentication.",
+  "fix_steps": [
+    "Open the Docker Compose file used to deploy n8n.",
+    "Change 'N8N_EDITOR_BASE_URL' to use 'SERVICE_FQDN_N8N' instead of 'SERVICE_FQDN_N8N_5678'.",
+    "Change 'WEBHOOK_URL' to use 'SERVICE_FQDN_N8N' instead of 'SERVICE_FQDN_N8N_5678'.",
+    "Redeploy the n8n instance."
+  ],
+  "agent_instruction": "Update the Docker Compose file to reference the correct environment variable for the redirect URL.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "oauth",
+    "redirect-url",
+    "docker",
+    "compose-file"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.115.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/oauth-redirect-url-unable-to-change/206893"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "e88cb197a176",
+  "tool": "n8n",
+  "error_signature": "Connection error.",
+  "context_key": "azure-openai-chatmodel",
+  "title": "Intermittent Connection Error with Azure OpenAI Chat Model",
+  "symptom": "The Azure OpenAI chat model fails randomly with a 'Connection error' during workflow execution. This occurs intermittently, affecting the reliability of the AI agent.",
+  "applies_when": [
+    "Using Azure OpenAI chat model",
+    "Running n8n in a Kubernetes environment"
+  ],
+  "not_this_if": [
+    "Connection error does not occur in other workflows",
+    "Using a different DNS configuration"
+  ],
+  "root_cause": "The connection error is likely caused by intermittent DNS resolution failures when the n8n pod attempts to resolve the Azure OpenAI service address. This can happen due to flaky DNS servers or misconfigured network settings in the Kubernetes environment.",
+  "fix_steps": [
+    "Use the Kubernetes 'hostAliases' feature to bypass DNS resolution for the Azure OpenAI service.",
+    "Run the command: kubectl patch deployment -p '{\"spec\": {\"template\": {\"spec\": {\"hostAliases\": [{\"ip\": \"20.***.**.***\",\"hostnames\": [\"resoure-name.openai.azure.com\"]}]}}}}}'",
+    "Verify that the n8n pod restarts and the fix is applied."
+  ],
+  "agent_instruction": "Patch the Kubernetes deployment to use hostAliases for the Azure OpenAI service.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "azure",
+    "openai",
+    "connection-error",
+    "kubernetes",
+    "dns"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.7.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/azure-open-ai-chatmodel-intermittent-connection-error/270156"
+  ]
+}

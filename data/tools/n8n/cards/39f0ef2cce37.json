@@ -1,0 +1,39 @@
+{
+  "id": "39f0ef2cce37",
+  "tool": "n8n",
+  "error_signature": "getaddrinfo ENOTFOUND unknown_address_in_th_web.com",
+  "context_key": "httpRequestTool",
+  "title": "HTTP Request tool fails with ENOTFOUND error",
+  "symptom": "The HTTP Request tool fails to connect, resulting in a 'getaddrinfo ENOTFOUND' error. The workflow execution stops abruptly, preventing further actions.",
+  "applies_when": [
+    "Using HTTP Request tool",
+    "Workflow is initiated by a user via a webhook"
+  ],
+  "not_this_if": [
+    "Error handling is properly configured to continue execution"
+  ],
+  "root_cause": "The error occurs when the HTTP Request tool attempts to connect to a domain that cannot be resolved. This typically indicates that the domain name is incorrect or the server is unreachable, leading to a failure in the workflow execution.",
+  "fix_steps": [
+    "Move the HTTP Request tool into a sub-workflow.",
+    "Use a node to call the sub-workflow with the setting 'On error': 'Continue'.",
+    "Ensure that the main workflow can handle the error output from the sub-workflow."
+  ],
+  "agent_instruction": "Implement a sub-workflow for the HTTP Request tool and configure error handling to continue execution.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "http-request",
+    "error-handling",
+    "sub-workflow",
+    "ENOTFOUND"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.13.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-handle-ia-agent-tools-errors/283789"
+  ]
+}

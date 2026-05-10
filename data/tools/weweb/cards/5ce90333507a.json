@@ -1,0 +1,40 @@
+{
+  "id": "5ce90333507a",
+  "tool": "weweb",
+  "error_signature": "data not binding to element",
+  "context_key": "language-settings",
+  "title": "Data not binding due to language settings",
+  "symptom": "Data fails to display on elements, regardless of static or dynamic content. The issue appears only in one project while another works fine.",
+  "applies_when": [
+    "Using elements that require language settings",
+    "The project has multiple languages configured"
+  ],
+  "not_this_if": [
+    "The project has only one language enabled",
+    "The issue occurs in a different project with the same settings"
+  ],
+  "root_cause": "The error occurs when a language is referenced in the elements but is not enabled in the project settings. This can happen if a language is removed or added without proper configuration.",
+  "fix_steps": [
+    "Open the page settings in the project",
+    "Check the list of available languages",
+    "Ensure that the required language (e.g., German) is added and enabled",
+    "Save the settings and refresh the page"
+  ],
+  "agent_instruction": "Verify and enable the necessary language in the page settings to allow data binding.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "data-binding",
+    "language-settings",
+    "project-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/binding-not-working-data-not-binding-to-element/5456"
+  ]
+}

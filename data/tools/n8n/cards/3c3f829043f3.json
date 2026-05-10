@@ -1,0 +1,39 @@
+{
+  "id": "3c3f829043f3",
+  "tool": "n8n",
+  "error_signature": "producing 0 bytes when converting multiple images",
+  "context_key": "convert-to-file-node",
+  "title": "0 bytes output when converting multiple images from base64",
+  "symptom": "When converting multiple images from base64 to binary in the 'Convert to File' node, the output files are all 0 bytes. However, converting 1-5 images works correctly.",
+  "applies_when": [
+    "Using 'Convert to File' node",
+    "Converting more than 5 images at once"
+  ],
+  "not_this_if": [
+    "Converting 1-5 images works without issue"
+  ],
+  "root_cause": "The error occurs due to hitting memory limits or processing time constraints of the system when handling a large number of images simultaneously. This can lead to incomplete processing and result in 0-byte files.",
+  "fix_steps": [
+    "Use the 'Loop Over Items' node before the 'Convert to File' node to process images in smaller batches (1-5 images).",
+    "Alternatively, increase Node.js memory limit by setting the `--max-old-space-size` option to 4 GB.",
+    "Consider switching to filesystem mode for binary data by setting `N8N_BINARY_DATA_MODE=filesystem` and defining a local storage path."
+  ],
+  "agent_instruction": "Process images in smaller batches or adjust memory settings to avoid 0-byte outputs.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "convert-to-file",
+    "base64",
+    "binary-data",
+    "memory-limit"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/convert-from-base64-to-image-jpeg-produce-0-bytes/157411"
+  ]
+}

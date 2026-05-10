@@ -1,0 +1,41 @@
+{
+  "id": "ae758d4e661f",
+  "tool": "n8n",
+  "error_signature": "ModuleNotFoundError: No module named 'pandas'",
+  "context_key": "python-code-node",
+  "title": "Python module 'pandas' not found due to SSL certificate issue",
+  "symptom": "When executing a Python code node that requires the 'pandas' module, n8n throws a 'ModuleNotFoundError'. This indicates that the module is not installed despite being included in the Pyodide distribution.",
+  "applies_when": [
+    "Using Python code node",
+    "Company network has SSL certificate validation issues"
+  ],
+  "not_this_if": [
+    "Running in an environment without SSL issues",
+    "Using a different Python module"
+  ],
+  "root_cause": "The error occurs because the n8n instance is unable to download the required Python packages due to SSL certificate validation failures caused by company networking restrictions. This prevents the automatic installation of the 'pandas' module.",
+  "fix_steps": [
+    "Pass custom SSL certificates to the Docker container running n8n",
+    "Ensure that the network settings allow for SSL validation",
+    "Retry executing the Python code node"
+  ],
+  "agent_instruction": "Configure the Docker container to use custom SSL certificates and retry the execution.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "python",
+    "pandas",
+    "docker",
+    "ssl",
+    "module-not-found"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.105.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/python-modules-not-being-auto-installed/166782"
+  ]
+}

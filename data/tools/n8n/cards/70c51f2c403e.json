@@ -1,0 +1,39 @@
+{
+  "id": "70c51f2c403e",
+  "tool": "n8n",
+  "error_signature": "workflow never proceeds past the scheduled trigger",
+  "context_key": "schedule-trigger-node",
+  "title": "Schedule trigger not proceeding in manual test",
+  "symptom": "When manually testing a workflow with a weekly schedule trigger, it runs indefinitely without proceeding past the trigger node.",
+  "applies_when": [
+    "Using a schedule trigger node",
+    "Manual testing of the workflow"
+  ],
+  "not_this_if": [
+    "The workflow is triggered by an event or webhook"
+  ],
+  "root_cause": "The Schedule trigger node requires a non-zero value for 'Weeks Between Triggers'. If this value is set to 0, the workflow will not execute as expected during manual testing.",
+  "fix_steps": [
+    "Open the schedule trigger node settings",
+    "Change the 'Weeks Between Triggers' value from 0 to 1",
+    "Save the workflow",
+    "Try manual execution again"
+  ],
+  "agent_instruction": "Set 'Weeks Between Triggers' to 1 in the schedule trigger node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "schedule-trigger",
+    "manual-testing",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.80.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-manually-test-schedule-trigger/94348"
+  ]
+}

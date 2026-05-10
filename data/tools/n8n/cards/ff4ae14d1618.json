@@ -1,0 +1,41 @@
+{
+  "id": "ff4ae14d1618",
+  "tool": "n8n",
+  "error_signature": "main workflow calling an older version of subworkflow",
+  "context_key": "subworkflow-activation",
+  "title": "Main workflow using outdated subworkflow version",
+  "symptom": "The main workflow is executing an older version of the subworkflow, despite updates being made in the development environment. This leads to unexpected behavior without any error messages.",
+  "applies_when": [
+    "Using subworkflows in main workflow",
+    "Recent changes made to subworkflow"
+  ],
+  "not_this_if": [
+    "Subworkflow is correctly updated and activated in production"
+  ],
+  "root_cause": "When a workflow calls another by ID, n8n uses the version stored in the database. If the subworkflow was not properly updated or reactivated after changes, the main workflow will continue to execute the old version, leading to inconsistencies.",
+  "fix_steps": [
+    "Open the subworkflow in the production environment",
+    "Deactivate the subworkflow",
+    "Save the changes",
+    "Reactivate the subworkflow",
+    "Test the main workflow again"
+  ],
+  "agent_instruction": "Reactivate the subworkflow in the production environment to ensure the latest version is used.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "subworkflow",
+    "versioning",
+    "workflow-execution",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.7",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-workflow-running-older-version-of-subworkflow/258245"
+  ]
+}

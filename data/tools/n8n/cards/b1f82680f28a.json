@@ -1,0 +1,41 @@
+{
+  "id": "b1f82680f28a",
+  "tool": "n8n",
+  "error_signature": "null instead of expected object in Set node output",
+  "context_key": "set-node",
+  "title": "Set node outputs null instead of expected object",
+  "symptom": "The final Set node outputs `null` for the `realtor_data` field instead of the expected realtor object, despite the workflow executing successfully.",
+  "applies_when": [
+    "Using a Set node to format output",
+    "Postgres node returns a single object"
+  ],
+  "not_this_if": [
+    "Postgres node returns an array of objects",
+    "Error messages are present in the workflow"
+  ],
+  "root_cause": "The expression used in the Set node was attempting to access the first element of an array, but the Postgres node returned a single object instead. This led to the output being null because the expected array index was not valid.",
+  "fix_steps": [
+    "Open the Set node settings",
+    "Change the expression to {{ $node[“Get Realtor”].json ?? null }}",
+    "Save the workflow",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Update the expression in the Set node to access the object directly without indexing.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "set-node",
+    "postgres",
+    "output-formatting",
+    "workflow-execution"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/set-node-outputs-null-despite-correct-input-object-from-postgres-node/95465"
+  ]
+}

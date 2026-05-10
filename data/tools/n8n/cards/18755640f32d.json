@@ -1,0 +1,39 @@
+{
+  "id": "18755640f32d",
+  "tool": "n8n",
+  "error_signature": "duplicate webhook executions",
+  "context_key": "webhook-node",
+  "title": "Duplicate executions for a single webhook call",
+  "symptom": "When a webhook is called, multiple executions are triggered for the same request, leading to duplicate processing.",
+  "applies_when": [
+    "Using webhook node",
+    "Webhook response is slow"
+  ],
+  "not_this_if": [
+    "Webhook is responding quickly without retries"
+  ],
+  "root_cause": "The issue arises when the sender retries the request due to a timeout, which can happen if the workflow takes too long to respond. This results in the same request being sent multiple times, causing duplicates.",
+  "fix_steps": [
+    "Use the 'Respond to Webhook' node to send an immediate response",
+    "Implement idempotency checks in your workflow",
+    "Log request IDs to detect and handle duplicates"
+  ],
+  "agent_instruction": "Implement immediate response handling and idempotency checks in your webhook workflow.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "webhook",
+    "duplicate-executions",
+    "timeout",
+    "idempotency"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/duplicate-webhook-executions/281406"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "f9af676afc21",
+  "tool": "n8n",
+  "error_signature": "Task request timed out after 300 seconds",
+  "context_key": "Code node",
+  "title": "Code node task request timeout in n8n v2",
+  "symptom": "When executing a Code node, n8n throws a timeout error after 300 seconds. This indicates that the task runner is not available to process the task.",
+  "applies_when": [
+    "Using Code node in n8n v2",
+    "Running on Cloud Run"
+  ],
+  "not_this_if": [
+    "Using a different node type",
+    "Running on a different environment"
+  ],
+  "root_cause": "In n8n v2, Code nodes require task runners to execute tasks. If the runners are not properly configured or if the Cloud Run instance is under-resourced, tasks may time out while waiting for an available runner.",
+  "fix_steps": [
+    "Ensure that N8N_RUNNERS_ENABLED is set to true",
+    "Set appropriate values for N8N_RUNNERS_MAX_CONCURRENCY and N8N_RUNNERS_TASK_REQUEST_TIMEOUT",
+    "Verify the health and capacity of the task runners on Cloud Run"
+  ],
+  "agent_instruction": "Configure the task runners in your Cloud Run deployment to ensure they can handle the workload.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "v2",
+    "timeout",
+    "Code node",
+    "Cloud Run"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.11",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-errors-after-shifting-to-v2/278006"
+  ]
+}

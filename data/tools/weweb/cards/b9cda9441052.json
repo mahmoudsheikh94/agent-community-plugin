@@ -1,0 +1,40 @@
+{
+  "id": "b9cda9441052",
+  "tool": "weweb",
+  "error_signature": "data of the previously logged-in user in the preview mode",
+  "context_key": "collection settings",
+  "title": "Data from previous user persists in preview mode",
+  "symptom": "When switching users in preview mode, data from the previous user is still visible. Edited data also appears blank until the data is reloaded.",
+  "applies_when": [
+    "Using the same browser for multiple user logins",
+    "Collection is set to preserve data on navigation"
+  ],
+  "not_this_if": [
+    "Using different browsers for each user",
+    "Realtime tables are enabled"
+  ],
+  "root_cause": "The collection's default setting to preserve data on navigation causes the application to retain the previous user's data, leading to confusion when switching users without reloading.",
+  "fix_steps": [
+    "Access the collection settings in your WeWeb project",
+    "Disable the option to preserve data on navigation",
+    "Test by logging in with different users to confirm the fix"
+  ],
+  "agent_instruction": "Disable the preserve data on navigation option in the collection settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "weweb",
+    "supabase",
+    "data-persistence",
+    "collection-settings"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/is-data-cached/3437"
+  ]
+}

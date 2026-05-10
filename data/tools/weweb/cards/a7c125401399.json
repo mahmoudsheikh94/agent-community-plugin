@@ -1,0 +1,39 @@
+{
+  "id": "a7c125401399",
+  "tool": "weweb",
+  "error_signature": "display issue preventing onClick workflow trigger creation",
+  "context_key": "workflow editor",
+  "title": "Display issue with onClick workflow trigger in editor",
+  "symptom": "Users are unable to create onClick workflow triggers due to a display issue in the new editor. The interface does not allow for the expected actions.",
+  "applies_when": [
+    "Using the new editor",
+    "Attempting to create onClick triggers"
+  ],
+  "not_this_if": [
+    "Using an older version of the editor",
+    "No display issues present"
+  ],
+  "root_cause": "The new editor has a display bug that prevents users from seeing the option to create onClick workflow triggers directly. However, the functionality still exists behind the scenes.",
+  "fix_steps": [
+    "Select any template visible in the editor",
+    "Change the workflow trigger to onClick in the workflow settings"
+  ],
+  "agent_instruction": "Select a visible template and set the workflow trigger to onClick.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "workflow",
+    "onClick",
+    "editor",
+    "display-issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/cannot-create-a-workflow-action-like-onclick-on-tan-instance-of-a-component-anymore/21032"
+  ]
+}

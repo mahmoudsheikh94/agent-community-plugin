@@ -1,0 +1,39 @@
+{
+  "id": "a05d14578156",
+  "tool": "weweb",
+  "error_signature": "clickedRow variable does not record item.data.id",
+  "context_key": "DataGrid",
+  "title": "DataGrid row click not updating clickedRow variable",
+  "symptom": "The clickedRow variable fails to store the item.data.id when a row is clicked, leading to issues in displaying modal information.",
+  "applies_when": [
+    "Using DataGrid component",
+    "Attempting to store clicked row ID in a variable"
+  ],
+  "not_this_if": [
+    "clickedRow variable is correctly set to type object"
+  ],
+  "root_cause": "The clickedRow variable must be correctly configured to store the row ID as an object. If it is not set to the correct type or updated properly, it will not retain the expected value.",
+  "fix_steps": [
+    "Set the clickedRow variable type to object",
+    "On click, perform a partial update of clickedRow with item.id",
+    "Ensure the value is set as item.id as a key:value pair"
+  ],
+  "agent_instruction": "Configure the clickedRow variable as an object and update it correctly on row click.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "DataGrid",
+    "modal",
+    "clickedRow",
+    "variable-configuration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/open-modal-on-click-of-datagrid-row/4386"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "967382bd0302",
+  "tool": "n8n",
+  "error_signature": "health-check-server-port is required with multiple runners",
+  "context_key": "n8n-task-runners.json",
+  "title": "Missing health-check-server-port for multiple runners",
+  "symptom": "When defining multiple runners in n8n-task-runners.json, n8n throws an error stating that 'health-check-server-port is required with multiple runners'. This prevents any Python or JavaScript Code Node from functioning.",
+  "applies_when": [
+    "Using multiple runners in n8n-task-runners.json",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Only one runner is defined",
+    "Running n8n without Docker"
+  ],
+  "root_cause": "When multiple task runners are defined in the configuration, n8n requires each runner to have its own health-check server port to ensure proper communication and health monitoring. Without this configuration, the system cannot validate the runners' statuses, leading to execution failures.",
+  "fix_steps": [
+    "Open your n8n-task-runners.json file",
+    "Add a 'health-check-server-port' field for each runner with unique port numbers (e.g., 5681 for JavaScript and 5682 for Python)",
+    "Ensure other required fields like 'workdir', 'command', and 'args' are also included",
+    "Save the changes and restart n8n"
+  ],
+  "agent_instruction": "Add health-check-server-port fields for each runner in your n8n-task-runners.json file.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "task-runners",
+    "docker",
+    "configuration",
+    "health-check"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "latest",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/health-check-server-port-is-required-with-multiple-runners/274028"
+  ]
+}

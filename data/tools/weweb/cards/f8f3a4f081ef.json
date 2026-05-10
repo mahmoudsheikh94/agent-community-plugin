@@ -1,0 +1,38 @@
+{
+  "id": "f8f3a4f081ef",
+  "tool": "weweb",
+  "error_signature": "CORS policy: Response to preflight request doesn't pass access control check",
+  "context_key": "token-based-auth-plugin",
+  "title": "CORS issue with Token Based Auth plugin",
+  "symptom": "The API call to fetch the user fails due to CORS policy, blocking the request. The console shows an error indicating multiple values for 'Access-Control-Allow-Origin'.",
+  "applies_when": [
+    "Using Token Based Auth plugin",
+    "Fetching user data from a different origin"
+  ],
+  "not_this_if": [
+    "CORS headers are correctly configured on the backend"
+  ],
+  "root_cause": "The backend server is incorrectly configured to send multiple values for the 'Access-Control-Allow-Origin' header, which violates CORS policy. This leads to the preflight request failing and blocking the actual API call.",
+  "fix_steps": [
+    "Update the backend server configuration to ensure 'Access-Control-Allow-Origin' sends only one value, e.g., '*'.",
+    "Test the API call again to confirm it succeeds without CORS errors."
+  ],
+  "agent_instruction": "Ensure the backend server sends a single value for 'Access-Control-Allow-Origin'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "CORS",
+    "token-based-auth",
+    "API",
+    "fetch-user"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/token-based-auth-not-able-to-fetch-user/698"
+  ]
+}

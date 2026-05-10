@@ -1,0 +1,41 @@
+{
+  "id": "013fb9088334",
+  "tool": "n8n",
+  "error_signature": "Invalid URL",
+  "context_key": "http-node",
+  "title": "POST request fails with 'Invalid URL' error",
+  "symptom": "When executing a POST request in the HTTP Node, n8n throws an 'Invalid URL' error despite the environment variable being correctly set.",
+  "applies_when": [
+    "Using HTTP Node for POST requests",
+    "Environment variable is correctly defined"
+  ],
+  "not_this_if": [
+    "GET requests work without issues",
+    "Environment variable is not set"
+  ],
+  "root_cause": "The HTTP Node's URL field for the POST request is likely set to 'fixed' mode instead of 'expression' mode. In fixed mode, the environment variable is not interpreted correctly, leading to the 'Invalid URL' error.",
+  "fix_steps": [
+    "Open the HTTP Node settings for the POST request",
+    "Change the URL field from 'fixed' mode to 'expression' mode",
+    "Use the expression to reference the environment variable",
+    "Save the workflow and try executing the POST request again"
+  ],
+  "agent_instruction": "Change the URL field in the POST request node to 'expression' mode and reference the environment variable correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "post-request",
+    "environment-variable",
+    "invalid-url"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bug-environment-variable-not-always-working-in-http-node-get-works-post-fails/102369"
+  ]
+}

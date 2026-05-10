@@ -1,0 +1,39 @@
+{
+  "id": "67a1bf13a884",
+  "tool": "n8n",
+  "error_signature": "ERROR: No binary data exists on item!",
+  "context_key": "imgur-upload-node",
+  "title": "No binary data for imgur upload",
+  "symptom": "When attempting to upload an image to imgur, n8n throws 'ERROR: No binary data exists on item!'. This indicates that the upload process cannot find the required binary data.",
+  "applies_when": [
+    "Using imgur upload node",
+    "Image URLs are extracted from RSS"
+  ],
+  "not_this_if": [
+    "Binary data is correctly set in the workflow"
+  ],
+  "root_cause": "The error occurs because the imgur upload node expects binary data to be present, but the workflow is currently only providing URLs without downloading the actual image files. The node cannot proceed without the binary representation of the image.",
+  "fix_steps": [
+    "Download the image file from the extracted URL using an HTTP request node",
+    "Set the binary property in the imgur upload node to point to the downloaded image",
+    "Execute the workflow again"
+  ],
+  "agent_instruction": "Ensure to download the image as binary data before attempting to upload to imgur.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "imgur",
+    "upload",
+    "binary-data",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "0.177.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-upload-to-imgur-by-url/14374"
+  ]
+}

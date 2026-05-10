@@ -1,0 +1,40 @@
+{
+  "id": "9c8bb0af0085",
+  "tool": "n8n",
+  "error_signature": "Session not found.",
+  "context_key": "Typebot integration",
+  "title": "Typebot session not found error",
+  "symptom": "When trying to return output from n8n to Typebot, the error 'Session not found.' appears, indicating that the session ID is not recognized.",
+  "applies_when": [
+    "Using Typebot with n8n",
+    "Webhook is set up correctly"
+  ],
+  "not_this_if": [
+    "The webhook response is successful without errors"
+  ],
+  "root_cause": "The error occurs when the session ID expected by Typebot is either not sent or is invalid. This can happen if the session is not properly initialized or if the request to the n8n webhook does not include the necessary session information.",
+  "fix_steps": [
+    "Ensure that the Typebot HTTP request includes a valid session ID.",
+    "Check the n8n webhook configuration to confirm it is set to handle session data correctly.",
+    "Test the HTTP request in Typebot to verify the session is recognized."
+  ],
+  "agent_instruction": "Verify and include a valid session ID in the Typebot HTTP request to the n8n webhook.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "typebot",
+    "session",
+    "webhook",
+    "http-request",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-chatbot-output-into-to-appear-in-typebot/201885"
+  ]
+}

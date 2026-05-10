@@ -1,0 +1,39 @@
+{
+  "id": "96de4fc9aab6",
+  "tool": "n8n",
+  "error_signature": "double free or corruption (out)",
+  "context_key": "npm execution",
+  "title": "Double free or corruption error during n8n execution",
+  "symptom": "When executing `npm exec n8n`, the process crashes with a 'double free or corruption (out)' error. This occurs after updating to Android version 15.",
+  "applies_when": [
+    "Using n8n installed via npm",
+    "Running on Linux Ubuntu 24.04 with Termux"
+  ],
+  "not_this_if": [
+    "Error does not occur after reinstalling Node.js"
+  ],
+  "root_cause": "The 'double free or corruption' error typically indicates a memory management issue within Node.js, which can arise from incompatibilities or corruption in the Node.js installation, especially after system updates.",
+  "fix_steps": [
+    "Uninstall Node.js from your system",
+    "Reinstall Node.js",
+    "Try executing `npm exec n8n` again"
+  ],
+  "agent_instruction": "Uninstall and then reinstall Node.js to resolve the error.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "npm",
+    "nodejs",
+    "error",
+    "execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.93",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/double-free-or-corruption-out/121990"
+  ]
+}

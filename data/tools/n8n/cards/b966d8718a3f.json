@@ -1,0 +1,41 @@
+{
+  "id": "b966d8718a3f",
+  "tool": "n8n",
+  "error_signature": "blank page after WebHook response",
+  "context_key": "google-sheet-node",
+  "title": "Blank page issue with Google Sheet node and WebHook",
+  "symptom": "After linking a Google Sheet to a WebHook, the page appears blank when the WebHook responds. Removing the Google Sheet resolves the issue.",
+  "applies_when": [
+    "Using Google Sheet node",
+    "WebHook is triggered"
+  ],
+  "not_this_if": [
+    "WebHook works without Google Sheet",
+    "No error handling configured"
+  ],
+  "root_cause": "The issue arises from the configuration of the Google Sheet node, particularly the 'On Error' setting and potential whitespace in expressions. Incorrect error handling can lead to unhandled errors, causing the workflow to fail silently.",
+  "fix_steps": [
+    "Open the Google Sheet node settings",
+    "Remove or adjust the 'On Error' configuration",
+    "Check for and remove any extra whitespace in expressions",
+    "Save the workflow and test the WebHook again"
+  ],
+  "agent_instruction": "Adjust the Google Sheet node settings to fix the error handling and whitespace issues.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheet",
+    "webhook",
+    "error-handling",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.117.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/please-save-me/218106"
+  ]
+}

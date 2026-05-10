@@ -1,0 +1,40 @@
+{
+  "id": "295beb2bcbf4",
+  "tool": "n8n",
+  "error_signature": "no data is being written to the target Google Sheet",
+  "context_key": "google-sheets-node",
+  "title": "Data not appearing in Google Sheet after API call",
+  "symptom": "The API call in the n8n workflow executes successfully, but no data is written to the specified Google Sheet.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "API call shows as successful"
+  ],
+  "not_this_if": [
+    "Data is written to the sheet but in an unexpected location"
+  ],
+  "root_cause": "The Google Sheets node may not be configured with the correct table range, causing data to be written outside the visible area of the sheet, such as in a row that is not displayed or is beyond the expected range.",
+  "fix_steps": [
+    "Open the Google Sheets node settings",
+    "Define the correct table range for the data",
+    "Save the workflow",
+    "Re-run the workflow to check if data appears"
+  ],
+  "agent_instruction": "Define the table range in the Google Sheets node settings and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "api-call",
+    "data-append",
+    "node-configuration"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/append-row-in-google-sheet-not-working/225965"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "d50fa8fd2c7a",
+  "tool": "n8n",
+  "error_signature": "loop not processing all items",
+  "context_key": "MySQL node",
+  "title": "Loop not processing all items due to MySQL node output",
+  "symptom": "The workflow is designed to loop through Facebook ad accounts, but it stops processing before reaching all items, specifically at 35 accounts without any error message.",
+  "applies_when": [
+    "Using a loop to process items",
+    "MySQL node is part of the workflow"
+  ],
+  "not_this_if": [
+    "The loop processes all items correctly",
+    "The MySQL node outputs all expected data"
+  ],
+  "root_cause": "The MySQL node may not be returning data for all items, which can cause the loop to terminate prematurely. If the node outputs fewer items than expected, the loop will stop processing further items.",
+  "fix_steps": [
+    "Open the MySQL node settings",
+    "Set the option to 'Always Output Data'",
+    "Save the workflow",
+    "Run the workflow again to check if all items are processed"
+  ],
+  "agent_instruction": "Configure the MySQL node to always output data and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "MySQL",
+    "loop",
+    "workflow",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.85.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/loop-not-processing-all-items/94059"
+  ]
+}

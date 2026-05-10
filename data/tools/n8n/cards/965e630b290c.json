@@ -1,0 +1,42 @@
+{
+  "id": "965e630b290c",
+  "tool": "n8n",
+  "error_signature": "ENOSPC: no space left on device",
+  "context_key": "Azure Storage node",
+  "title": "No space left on device error in Azure Storage node",
+  "symptom": "All workflows fail with the error 'ENOSPC: no space left on device' when using the Azure Storage node. This prevents any executions from completing successfully.",
+  "applies_when": [
+    "Using n8n cloud on a Pro plan",
+    "Azure Storage node is part of the workflow"
+  ],
+  "not_this_if": [
+    "Using a different storage node",
+    "Workflows are executing successfully"
+  ],
+  "root_cause": "The error occurs when the storage allocated for the n8n cloud instance is full, preventing new data from being written. This can happen due to excessive execution logs or archived workflows consuming available space.",
+  "fix_steps": [
+    "Go to the Admin Panel and navigate to Manage.",
+    "In Executions to Save, deselect types you don’t need (e.g., only save errors).",
+    "For individual workflows, open the workflow’s Settings and set 'Save successful production executions' to 'Do not save'."
+  ],
+  "agent_instruction": "Adjust execution saving settings in the Admin Panel to free up space.",
+  "safety_notes": [
+    "Be cautious as this may result in loss of execution history."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n-cloud",
+    "Azure-Storage",
+    "ENOSPC",
+    "storage-management"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.111.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-cloud-ran-out-of-space/188821"
+  ]
+}

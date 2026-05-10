@@ -1,0 +1,42 @@
+{
+  "id": "fc9952baa386",
+  "tool": "n8n",
+  "error_signature": "Subscription.ReadWrite.All permission does not exist",
+  "context_key": "microsoft-teams-node",
+  "title": "Microsoft Teams node unable to connect due to missing permission",
+  "symptom": "Users are unable to connect their Microsoft Teams account in n8n due to a missing permission that is incorrectly documented.",
+  "applies_when": [
+    "Using Microsoft Teams node",
+    "Configured permissions in Microsoft Entra"
+  ],
+  "not_this_if": [
+    "Other Microsoft nodes work without issues",
+    "Permissions are correctly set and consented"
+  ],
+  "root_cause": "The permission `Subscription.ReadWrite.All` mentioned in n8n documentation does not exist in Microsoft Graph, leading to confusion and connection failures for users trying to authenticate their Microsoft Teams and OneDrive accounts.",
+  "fix_steps": [
+    "Skip the `Subscription.ReadWrite.All` permission in your app registration.",
+    "Ensure admin consent is granted for the permissions `ChannelMessage.Read.All`, `Chat.Read.All`, and `Team.ReadBasic.All`.",
+    "Check that your Azure app registration is set to 'Accounts in any organizational directory'.",
+    "Re-create your credentials in n8n after confirming the permissions are properly consented."
+  ],
+  "agent_instruction": "Follow the steps to adjust permissions and re-create credentials for Microsoft Teams and OneDrive nodes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "microsoft-teams",
+    "onedrive",
+    "authentication",
+    "permissions",
+    "azure"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.120.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/microsoft-teams-onedrive-node-unable-to-connect-account-enterprise-tenant/220495"
+  ]
+}

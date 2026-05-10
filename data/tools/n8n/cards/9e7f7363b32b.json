@@ -1,0 +1,40 @@
+{
+  "id": "9e7f7363b32b",
+  "tool": "n8n",
+  "error_signature": "No output data",
+  "context_key": "google-sheets-get-rows-node",
+  "title": "Google Sheets Get Rows returns 'No output data'",
+  "symptom": "The Google Sheets 'Get Rows' node returns 'No output data' despite valid data in the sheet. The node fails to retrieve expected rows even with simple configurations.",
+  "applies_when": [
+    "Using Google Sheets 'Get Rows' node",
+    "Data is present in the specified range"
+  ],
+  "not_this_if": [
+    "The node returns data when tested with different parameters",
+    "The sheet is empty or incorrectly referenced"
+  ],
+  "root_cause": "The issue arises when the filter criteria set in the Google Sheets node do not match any values in the specified column. For instance, if the node is filtering for 'READY' but the actual value is '1', it will return no data.",
+  "fix_steps": [
+    "Check the values in the specified column of the Google Sheet.",
+    "Ensure that the filter criteria in the n8n node matches the actual values in the sheet.",
+    "Adjust the filter to match the correct value (e.g., change from '1' to 'READY')."
+  ],
+  "agent_instruction": "Verify and adjust the filter criteria in the Google Sheets 'Get Rows' node to match the actual data in the sheet.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "get-rows",
+    "no-output-data",
+    "filter-criteria"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/oogle-sheets-get-rows-returns-no-output-data-even-when-apps-script-can-read-the-sheet/183622"
+  ]
+}

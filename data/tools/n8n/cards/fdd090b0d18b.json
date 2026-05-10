@@ -1,0 +1,38 @@
+{
+  "id": "fdd090b0d18b",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading ‘error’)",
+  "context_key": "discord-embed",
+  "title": "Error reading properties in Discord embed JSON",
+  "symptom": "When trying to configure the Raw JSON for Discord embeds, an error occurs stating 'Cannot read properties of undefined (reading ‘error’)'.",
+  "applies_when": [
+    "Using Discord node",
+    "Configuring Raw JSON for embeds"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or context"
+  ],
+  "root_cause": "The error arises when the JSON structure is not correctly defined, leading to attempts to access properties of an undefined object. This typically happens when the expected data structure is not present in the workflow's JSON input.",
+  "fix_steps": [
+    "Adjust the Raw JSON structure to ensure it correctly references existing properties.",
+    "Use JSON.stringify for string values to ensure they are properly formatted."
+  ],
+  "agent_instruction": "Update the Raw JSON structure in the Discord node as specified in the accepted answer.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "discord",
+    "embed",
+    "raw-json",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/need-help-with-raw-json-in-discord-embeds/173872"
+  ]
+}

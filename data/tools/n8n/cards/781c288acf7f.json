@@ -1,0 +1,40 @@
+{
+  "id": "781c288acf7f",
+  "tool": "n8n",
+  "error_signature": "WEBHOOK_URL not updating",
+  "context_key": "docker-compose",
+  "title": "WEBHOOK_URL not reflecting custom domain in Docker setup",
+  "symptom": "The WEBHOOK_URL remains set to 'http://localhost' despite configuring environment variables for a custom domain. This prevents external access to webhook endpoints.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Setting up a custom domain with reverse proxy"
+  ],
+  "not_this_if": [
+    "WEBHOOK_URL is correctly set in the docker-compose file",
+    "Using default settings without custom domain"
+  ],
+  "root_cause": "Docker does not automatically load environment variables defined in the .env file unless they are explicitly referenced in the docker-compose.yml file. This can lead to the application using default values instead of the intended custom configurations.",
+  "fix_steps": [
+    "Edit the docker-compose.yml file to include 'WEBHOOK_URL' without a value",
+    "Ensure other relevant environment variables like 'N8N_PROTOCOL', 'DOMAIN_NAME', and 'SUBDOMAIN' are also included without values",
+    "Run 'docker compose down' and then 'docker compose up -d --build' to apply changes"
+  ],
+  "agent_instruction": "Update the docker-compose file to reference WEBHOOK_URL and other necessary environment variables without values, then rebuild the Docker containers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "webhook",
+    "environment-variables",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.82.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-fix-webhook-url-only-serves-at-http-localhost/91865"
+  ]
+}

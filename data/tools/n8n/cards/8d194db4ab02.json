@@ -1,0 +1,42 @@
+{
+  "id": "8d194db4ab02",
+  "tool": "n8n",
+  "error_signature": "Schedule Trigger node run at wrong timing",
+  "context_key": "schedule-trigger-node",
+  "title": "Schedule Trigger node timing misconfiguration",
+  "symptom": "The Schedule Trigger node executes at unexpected times, not aligning with the intended schedule.",
+  "applies_when": [
+    "Using Schedule Trigger node",
+    "Specific timing configuration is required"
+  ],
+  "not_this_if": [
+    "The node runs as expected with correct cron expressions"
+  ],
+  "root_cause": "The Schedule Trigger node may misinterpret timing settings if the cron expression is not correctly configured. Wildcards in the cron expression can help specify the desired execution schedule more accurately.",
+  "fix_steps": [
+    "Open the Schedule Trigger node settings.",
+    "Adjust the cron expression to include wildcards where necessary.",
+    "For a specific date, use: '00 00 10 19 11 *'.",
+    "For every Wednesday in November, use: '00 00 10 * 11 3'.",
+    "Save the workflow and test the execution."
+  ],
+  "agent_instruction": "Modify the cron expression in the Schedule Trigger node to include wildcards as needed.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "schedule",
+    "trigger",
+    "cron",
+    "timing",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.115.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/schedule-trigger-node-run-at-wrong-timing/217621"
+  ]
+}

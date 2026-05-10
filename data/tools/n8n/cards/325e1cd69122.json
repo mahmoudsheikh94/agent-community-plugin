@@ -1,0 +1,43 @@
+{
+  "id": "325e1cd69122",
+  "tool": "n8n",
+  "error_signature": "custom email templates not being picked up",
+  "context_key": "email-customization",
+  "title": "Custom email templates not loaded in n8n",
+  "symptom": "n8n sends out default branded emails instead of custom templates. No error is logged indicating the issue.",
+  "applies_when": [
+    "Using n8n with custom email templates",
+    "Running in a Docker/Fargate environment"
+  ],
+  "not_this_if": [
+    "Templates are correctly mounted and readable",
+    "Using absolute paths for environment variables"
+  ],
+  "root_cause": "n8n only loads email templates at startup from specified absolute paths. If the files are not present or not readable at that time, n8n silently falls back to default templates without logging an error, which can lead to confusion.",
+  "fix_steps": [
+    "Mount the EFS to a dedicated directory, e.g., /opt/n8n/templates.",
+    "Ensure the email template files exist in that directory.",
+    "Set the environment variables to use absolute paths pointing to the mounted templates.",
+    "Restart the Fargate task to apply changes.",
+    "Check file permissions to ensure n8n can read the templates."
+  ],
+  "agent_instruction": "Ensure the email templates are correctly mounted and readable, then restart the n8n task.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "email-customization",
+    "docker",
+    "fargate",
+    "templates",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.3.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/email-customisation-not-being-picked-up/257804"
+  ]
+}

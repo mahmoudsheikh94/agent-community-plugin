@@ -1,0 +1,39 @@
+{
+  "id": "2aec94a7e695",
+  "tool": "weweb",
+  "error_signature": "dropdown value not preserved on navigation",
+  "context_key": "tab container with dropdown",
+  "title": "Dropdown value not preserved when navigating between tabs",
+  "symptom": "When navigating between tabs, the selected value in the dropdown resets to unselected. Users expect their selection to remain intact.",
+  "applies_when": [
+    "Using a tab container with dropdowns",
+    "Navigating back and forth between tabs"
+  ],
+  "not_this_if": [
+    "Dropdown values are preserved in other components or contexts"
+  ],
+  "root_cause": "The dropdown component does not maintain its state across tab navigations, leading to a loss of the selected value. This is a common issue when the component's state is not properly managed during navigation events.",
+  "fix_steps": [
+    "Create an 'On change' workflow for the dropdown select component.",
+    "Store the selected value in a variable within the workflow.",
+    "Bind this variable to the initial value of the dropdown select component."
+  ],
+  "agent_instruction": "Implement an 'On change' workflow to store and bind the dropdown value to preserve it during tab navigation.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "dropdown",
+    "tab-container",
+    "state-management",
+    "navigation"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/select-value-is-not-presevered-on-navigation/5584"
+  ]
+}

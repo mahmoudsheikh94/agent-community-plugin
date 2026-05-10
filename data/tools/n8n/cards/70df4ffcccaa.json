@@ -1,0 +1,40 @@
+{
+  "id": "70df4ffcccaa",
+  "tool": "n8n",
+  "error_signature": "getaddrinfo ENOTFOUND api.amazingmarvin.com",
+  "context_key": "amazing-marvin-api",
+  "title": "Connection error to Amazing Marvin API",
+  "symptom": "When attempting to connect to the Amazing Marvin API, the error 'getaddrinfo ENOTFOUND api.amazingmarvin.com' is returned, indicating that the host cannot be found.",
+  "applies_when": [
+    "Using Amazing Marvin API",
+    "Incorrect base URL specified"
+  ],
+  "not_this_if": [
+    "Correct base URL is used",
+    "No network issues present"
+  ],
+  "root_cause": "The error occurs because the specified base URL 'api.amazingmarvin.com' is incorrect. The correct base URL should be 'https://serv.amazingmarvin.com/api/:endpoint', which leads to the ENOTFOUND error when the incorrect URL is used.",
+  "fix_steps": [
+    "Change the API base URL to 'https://serv.amazingmarvin.com/api/:endpoint'",
+    "Replace ':endpoint' with the actual endpoint you want to call",
+    "Test the connection using a valid endpoint like '/test'"
+  ],
+  "agent_instruction": "Update the Amazing Marvin API base URL in your configuration to 'https://serv.amazingmarvin.com/api/:endpoint'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "amazing-marvin",
+    "api",
+    "connection-error",
+    "ENOTFOUND"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-get-data-from-amazing-marvin/124906"
+  ]
+}

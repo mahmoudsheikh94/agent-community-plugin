@@ -1,0 +1,40 @@
+{
+  "id": "95dcd3cb71a7",
+  "tool": "n8n",
+  "error_signature": "SSL Issue: consider using the 'Ignore SSL issue' options",
+  "context_key": "http-request-node",
+  "title": "SSL issue with HTTP Request node",
+  "symptom": "The HTTP Request node throws an SSL error despite having 'Ignore SSL issues' enabled.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Proxy settings are enabled"
+  ],
+  "not_this_if": [
+    "Error occurs without proxy",
+    "Valid URL is used"
+  ],
+  "root_cause": "The error occurs when the HTTP Request node encounters SSL certificate validation issues, which can be exacerbated by proxy configurations or improperly formatted URLs. Even with 'Ignore SSL issues' enabled, certain proxy setups may still enforce SSL checks.",
+  "fix_steps": [
+    "Remove the proxy URL from the settings and run a simple request.",
+    "Check that the sanitizedUrl field is generating valid URLs with the correct https:// prefix.",
+    "Temporarily set the URL to a known safe URL like https://httpbin.org/get to test the node."
+  ],
+  "agent_instruction": "Test the HTTP Request node without the proxy and ensure the URL is correctly formatted.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "ssl",
+    "proxy",
+    "url-format"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/topic/193055"
+  ]
+}

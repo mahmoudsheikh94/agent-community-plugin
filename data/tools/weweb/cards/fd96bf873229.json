@@ -1,0 +1,38 @@
+{
+  "id": "fd96bf873229",
+  "tool": "weweb",
+  "error_signature": "PDF viewer downloads instead of displaying",
+  "context_key": "PDF viewer element",
+  "title": "PDF viewer downloads file instead of displaying it",
+  "symptom": "When using the PDF viewer element with a URI, the PDF file downloads instead of being displayed. The sample URL works correctly, indicating an issue with the provided URI.",
+  "applies_when": [
+    "Using PDF viewer element",
+    "Providing a URI for the PDF"
+  ],
+  "not_this_if": [
+    "Using a base64 encoded PDF"
+  ],
+  "root_cause": "The PDF viewer element is designed to display PDFs directly from a base64 encoded string. When a URI is provided, if the server does not return the correct content type or headers, the browser may default to downloading the file instead of displaying it.",
+  "fix_steps": [
+    "Convert the PDF file to a base64 encoded string",
+    "Provide the base64 string to the PDF viewer element instead of the URI"
+  ],
+  "agent_instruction": "Use a base64 encoded PDF string in the PDF viewer element.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "pdf-viewer",
+    "base64",
+    "display-issue",
+    "pdf"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/pdf-viewer-doesnt-display-the-pdf-file/17497"
+  ]
+}

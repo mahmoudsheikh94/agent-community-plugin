@@ -1,0 +1,41 @@
+{
+  "id": "015149e710e4",
+  "tool": "n8n",
+  "error_signature": "data tables config is broken after update",
+  "context_key": "data-tables-node",
+  "title": "Data tables configuration broken after n8n update",
+  "symptom": "After updating n8n, the configuration for data tables in workflows appears broken, causing issues when trying to run them.",
+  "applies_when": [
+    "Upgrading from an older version of n8n",
+    "Using data tables in workflows"
+  ],
+  "not_this_if": [
+    "No data tables are used in the workflows",
+    "The workflows were created in the same version"
+  ],
+  "root_cause": "When upgrading n8n, changes in the underlying structure or configuration requirements for nodes like data tables can lead to previously saved configurations becoming incompatible or inaccessible.",
+  "fix_steps": [
+    "Open the workflow containing the data tables",
+    "Click the 'expand' button on each data table configuration form",
+    "Review and adjust the settings as needed",
+    "Save the workflow and try running it again"
+  ],
+  "agent_instruction": "Expand the data table configurations in your workflow and adjust them as necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "data-tables",
+    "workflow-update",
+    "n8n-upgrade",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.2.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-lost-all-my-workflows-while-updating-n8n-to-latest-version-help/247923"
+  ]
+}

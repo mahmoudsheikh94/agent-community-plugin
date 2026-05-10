@@ -1,0 +1,39 @@
+{
+  "id": "894f623bba08",
+  "tool": "n8n",
+  "error_signature": "Client ID and Client Secret fields disappear",
+  "context_key": "google-oauth2-credentials",
+  "title": "Google OAuth2 fields not displaying in n8n",
+  "symptom": "When attempting to create Google OAuth2 credentials, the Client ID and Client Secret fields briefly appear and then disappear, preventing authentication.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Self-hosted n8n via Docker"
+  ],
+  "not_this_if": [
+    "Fields are visible in other credential types",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The issue is caused by the presence of the environment variable `N8N_DEFAULT_LOCALE` in the Docker configuration, which interferes with the display of the credential fields in the n8n interface.",
+  "fix_steps": [
+    "Remove the `N8N_DEFAULT_LOCALE` environment variable from your Docker run command or docker-compose file",
+    "Restart the n8n server"
+  ],
+  "agent_instruction": "Remove the `N8N_DEFAULT_LOCALE` variable and restart the n8n server.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "oauth2",
+    "credentials",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.112.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-configuring-oauth2-with-google-on-n8n-self-hosted/192474"
+  ]
+}

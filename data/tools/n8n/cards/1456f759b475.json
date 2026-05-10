@@ -1,0 +1,42 @@
+{
+  "id": "1456f759b475",
+  "tool": "n8n",
+  "error_signature": "cannot login nor send smtp email",
+  "context_key": "user-management",
+  "title": "User deletion prevents login and SMTP email sending",
+  "symptom": "After deleting the user from the database, the user cannot log in or send SMTP emails. The setup screen is also inaccessible.",
+  "applies_when": [
+    "User deleted from the database",
+    "Using n8n with user management enabled"
+  ],
+  "not_this_if": [
+    "User exists in the database",
+    "User management is disabled"
+  ],
+  "root_cause": "Deleting the user directly from the database removes necessary references and permissions, leading to a state where the application cannot authenticate or send emails. This disrupts the user management functionality and the application's ability to operate normally.",
+  "fix_steps": [
+    "Access the database using a valid connection.",
+    "Create a new user directly in the database with appropriate permissions.",
+    "Recreate any necessary roles and relationships between the user and projects."
+  ],
+  "agent_instruction": "Create a new user in the database and restore the necessary roles and permissions.",
+  "safety_notes": [
+    "Ensure to back up the database before making changes."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "user-management",
+    "database",
+    "smtp",
+    "login-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-forgot-password-then-deleted-the-user-cant-login-nor-send-smtp-email/87599"
+  ]
+}

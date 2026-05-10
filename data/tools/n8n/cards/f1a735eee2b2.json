@@ -1,0 +1,41 @@
+{
+  "id": "f1a735eee2b2",
+  "tool": "n8n",
+  "error_signature": "changes to form-trigger.handlebars not persisting",
+  "context_key": "docker-mount",
+  "title": "Changes to form-trigger.handlebars not persisting in Docker",
+  "symptom": "After modifying the form-trigger.handlebars file in Docker, changes revert upon restart.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Modifying form-trigger.handlebars file"
+  ],
+  "not_this_if": [
+    "Running n8n without Docker",
+    "File changes are made correctly"
+  ],
+  "root_cause": "Docker containers are ephemeral, meaning any changes made inside the container will be lost upon restart unless the files are properly mounted from the host system.",
+  "fix_steps": [
+    "Copy the modified form-trigger.handlebars file to the desired location on your host machine.",
+    "Update your Docker Compose file to mount the host file to the correct path in the container.",
+    "Restart the Docker container to apply the changes."
+  ],
+  "agent_instruction": "Ensure the form-trigger.handlebars file is correctly mounted in your Docker setup.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "form-trigger",
+    "handlebars",
+    "file-mount"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.80.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/add-custom-javascrip-to-the-forms-node/93653"
+  ]
+}

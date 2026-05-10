@@ -1,0 +1,39 @@
+{
+  "id": "73545f519e77",
+  "tool": "n8n",
+  "error_signature": "input data not being received correctly",
+  "context_key": "Execute Workflow node",
+  "title": "Input data issue with simultaneous workflow execution",
+  "symptom": "When triggering a workflow multiple times simultaneously via the Execute Workflow node, the input data is not received correctly, resulting in all calls returning the same incorrect value.",
+  "applies_when": [
+    "Using Execute Workflow node",
+    "Triggering multiple workflows simultaneously"
+  ],
+  "not_this_if": [
+    "Single sequential tool calls are used",
+    "Issue does not occur in the latest version"
+  ],
+  "root_cause": "The issue arises when multiple workflows are triggered at the same time, causing the input data to be incorrectly handled or overwritten, leading to all executions returning the same result instead of the expected unique inputs.",
+  "fix_steps": [
+    "Upgrade n8n to version 1.80.4 or later",
+    "Test the workflow again to ensure input data is received correctly"
+  ],
+  "agent_instruction": "Upgrade n8n to the latest version and retest the simultaneous workflow execution.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "Execute Workflow",
+    "input data",
+    "simultaneous execution",
+    "n8n bug"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-bug-workflow-input-data-not-being-received-correctly-when-simultaneously-triggered-via-an-ai-agent-tool-v2/81740"
+  ]
+}

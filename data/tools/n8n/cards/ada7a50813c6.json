@@ -1,0 +1,41 @@
+{
+  "id": "ada7a50813c6",
+  "tool": "n8n",
+  "error_signature": "404 error when connecting to Git repository",
+  "context_key": "n8n-deployment.yaml",
+  "title": "404 error connecting to Git repository in n8n",
+  "symptom": "Users encounter a 404 error when attempting to connect n8n to a Git repository through Bitbucket. This issue persists despite successful cloning of the repository in the Kubernetes environment.",
+  "applies_when": [
+    "Using n8n on Azure Kubernetes",
+    "Connecting to a Git repository"
+  ],
+  "not_this_if": [
+    "The error does not occur when using a different Git provider",
+    "The repository URL is correct and accessible"
+  ],
+  "root_cause": "The 404 error occurs due to incorrect permissions on the persistent volume used by n8n. If the UID of the process running n8n does not have the correct permissions to access the data directory, it can lead to failures in connecting to external services like Git.",
+  "fix_steps": [
+    "Modify the n8n-deployment.yaml file to change ownership of the data directory by adding 'chown -R 1000:1000 /data' to the command section.",
+    "Add 'securityContext: runAsUser: 0' to the deployment configuration.",
+    "Redeploy the n8n instance with the updated configuration."
+  ],
+  "agent_instruction": "Update the n8n-deployment.yaml file to adjust permissions and redeploy n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "Azure Kubernetes",
+    "Git",
+    "404 error",
+    "Bitbucket"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.10.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/environments-git-configuration-on-azure-kubernetes-keeps-returning-404-error/275064"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "e2d87f23ca91",
+  "tool": "weweb",
+  "error_signature": "cannot reuse newly inserted row in workflow",
+  "context_key": "insert-action",
+  "title": "Unable to reuse newly inserted row in workflow",
+  "symptom": "The user cannot access the newly created team object in their workflow after inserting it into the database.",
+  "applies_when": [
+    "Using an Insert action to add a new row",
+    "Trying to access the newly inserted row in subsequent actions"
+  ],
+  "not_this_if": [
+    "The workflow does not include an Insert action",
+    "The option to return inserted rows is enabled"
+  ],
+  "root_cause": "By default, the Insert action may not return the newly inserted rows unless explicitly configured to do so. This can lead to confusion when trying to reference the new data in subsequent steps of the workflow.",
+  "fix_steps": [
+    "Open the settings of the Insert action",
+    "Enable the option 'return inserted rows'",
+    "Save the workflow",
+    "Retry accessing the newly created team object"
+  ],
+  "agent_instruction": "Enable the 'return inserted rows' option in the Insert action settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "insert-action",
+    "workflow",
+    "database",
+    "return-inserted-rows"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/reuse-from-action-in-workflow-not-working/18848"
+  ]
+}

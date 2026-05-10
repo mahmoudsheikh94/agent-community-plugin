@@ -1,0 +1,41 @@
+{
+  "id": "43303b975fe4",
+  "tool": "n8n",
+  "error_signature": "corrupt vCard output from base64 conversion",
+  "context_key": "vCard file generation",
+  "title": "Corrupt vCard output due to incorrect base64 conversion",
+  "symptom": "The generated vCard file appears empty or corrupt when opened, indicating that the data format is incorrect.",
+  "applies_when": [
+    "Generating vCard files",
+    "Using base64 encoding for file content"
+  ],
+  "not_this_if": [
+    "vCard files are generated without base64 encoding",
+    "Files are generated using valid text data"
+  ],
+  "root_cause": "The error occurs because the user attempted to convert plain text data to base64, which is not valid. This results in a corrupt file output that cannot be read properly by vCard-compatible applications.",
+  "fix_steps": [
+    "Change the data conversion method to 'Convert to Text'",
+    "Ensure the correct value is set for the vCard content",
+    "Regenerate the vCard file"
+  ],
+  "agent_instruction": "Switch the data conversion to 'Convert to Text' and set the correct value for the vCard.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "vCard",
+    "vcf",
+    "file-generation",
+    "base64",
+    "data-format"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.116.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/vcard-vcf-files-dont-show-anything/212280"
+  ]
+}

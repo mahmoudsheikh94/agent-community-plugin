@@ -1,0 +1,40 @@
+{
+  "id": "dece3918ad4d",
+  "tool": "n8n",
+  "error_signature": "Method not allowed",
+  "context_key": "hubspot-api",
+  "title": "Incorrect HTTP method for HubSpot API subscription update",
+  "symptom": "When attempting to update a subscription using the HubSpot API, the request fails with a 'Method not allowed' error.",
+  "applies_when": [
+    "Using HubSpot API to update subscription",
+    "Using PUT method"
+  ],
+  "not_this_if": [
+    "Using POST method successfully",
+    "Different API endpoint is used"
+  ],
+  "root_cause": "The HubSpot API endpoint for updating communication preferences requires a POST method instead of PUT. This mismatch leads to the error when the incorrect method is used.",
+  "fix_steps": [
+    "Change the HTTP method from PUT to POST in your API request",
+    "Ensure all other parameters are correctly set as per the API documentation",
+    "Test the request again to confirm it works"
+  ],
+  "agent_instruction": "Change the HTTP method to POST for the HubSpot subscription update request.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "hubspot",
+    "api",
+    "subscription",
+    "http-method"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-can-i-edit-the-subscription-type-a-contact-is-subscribed-to/245537"
+  ]
+}

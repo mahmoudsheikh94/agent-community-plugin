@@ -1,0 +1,40 @@
+{
+  "id": "d634ef984ee8",
+  "tool": "n8n",
+  "error_signature": "401 Unauthorized",
+  "context_key": "gmail-oauth2",
+  "title": "Gmail OAuth2 fails with 401 Unauthorized during callback",
+  "symptom": "During the OAuth callback for Gmail, n8n consistently returns a 401 Unauthorized error. Manual token exchange works, indicating the issue lies within n8n's OAuth implementation.",
+  "applies_when": [
+    "Using Gmail OAuth2 API",
+    "OAuth callback phase"
+  ],
+  "not_this_if": [
+    "Manual token exchange succeeds",
+    "Other OAuth credentials work"
+  ],
+  "root_cause": "The error occurs because the session validation fails during the OAuth callback, leading to `req.user` being undefined. This causes n8n to reject the OAuth attempts with a 401 Unauthorized response.",
+  "fix_steps": [
+    "Add the environment variable N8N_SKIP_AUTH_ON_OAUTH_CALLBACK=true to your docker-compose.yml",
+    "Restart the n8n Docker container to apply the changes"
+  ],
+  "agent_instruction": "Add the specified environment variable to skip session validation during OAuth callbacks.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "oauth2",
+    "401",
+    "docker",
+    "session-validation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.4.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gmail-oauth2-fails-with-401-unauthorized-at-callback-manual-token-exchange-succeeds/256330"
+  ]
+}

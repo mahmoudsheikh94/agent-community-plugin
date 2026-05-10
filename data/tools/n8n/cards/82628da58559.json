@@ -1,0 +1,39 @@
+{
+  "id": "82628da58559",
+  "tool": "n8n",
+  "error_signature": "sub-workflow not returning output data",
+  "context_key": "execute-workflow-node",
+  "title": "Sub-workflow not returning data due to merge node issue",
+  "symptom": "The sub-workflow executes successfully but does not return data for certain routes, leading to empty outputs in the main workflow.",
+  "applies_when": [
+    "Using sub-workflows",
+    "Involves merge nodes and conditional checks"
+  ],
+  "not_this_if": [
+    "All routes in the sub-workflow return data correctly"
+  ],
+  "root_cause": "The issue arises when a merge node is waiting for inputs that are not provided due to conditional logic in the workflow. If one path of the workflow is activated, the merge node may not receive all necessary inputs, causing it to not complete properly.",
+  "fix_steps": [
+    "Rearrange the workflow to merge data before applying conditional checks",
+    "Ensure that all paths provide necessary inputs to the merge node",
+    "Test the sub-workflow to confirm it returns data correctly"
+  ],
+  "agent_instruction": "Rearrange the merge and if nodes in the workflow to ensure proper data flow.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "sub-workflow",
+    "merge-node",
+    "conditional-checks",
+    "data-flow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.104.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/sub-workflow-not-returning-output-data-to-main-workflow/158659"
+  ]
+}

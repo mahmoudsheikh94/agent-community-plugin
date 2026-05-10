@@ -1,0 +1,39 @@
+{
+  "id": "a0d90433af17",
+  "tool": "n8n",
+  "error_signature": "Request contains an invalid argument.",
+  "context_key": "google-ads-node",
+  "title": "Google Ads API version deprecated",
+  "symptom": "The Google Ads node fails with a 400 error, indicating an invalid argument. The error message specifies that version v17 is deprecated and requests to this version will be blocked.",
+  "applies_when": [
+    "Using Google Ads node",
+    "n8n is updated to the latest version"
+  ],
+  "not_this_if": [
+    "Using an older version of the Google Ads API",
+    "Error does not mention deprecated version"
+  ],
+  "root_cause": "The Google Ads API version v17 has been deprecated by Google, and requests made to this version are no longer supported. This leads to a 400 error indicating an invalid argument due to the unsupported version.",
+  "fix_steps": [
+    "Update the Google Ads node to use API version v20 or newer.",
+    "If immediate access is needed, switch to using the Http Request node to manually configure the API call."
+  ],
+  "agent_instruction": "Update the Google Ads node to use a supported API version or use the Http Request node as a workaround.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-ads",
+    "api-version",
+    "error-400",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "latest",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-ads-endpoint-not-working/131904"
+  ]
+}

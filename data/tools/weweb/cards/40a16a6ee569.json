@@ -1,0 +1,38 @@
+{
+  "id": "40a16a6ee569",
+  "tool": "weweb",
+  "error_signature": "data not displaying in input multiselect",
+  "context_key": "input-multiselect",
+  "title": "Data not displaying in input multiselect",
+  "symptom": "The input multiselect shows the initial value but does not display the list of options. The options are bound to a variable or a database but only the index is shown instead of the text.",
+  "applies_when": [
+    "Using input multiselect component",
+    "Data is bound to a page variable or Xano database"
+  ],
+  "not_this_if": [
+    "Data is correctly formatted as a list of objects with label and value fields"
+  ],
+  "root_cause": "The input multiselect requires a specific format for the options, which should be a list of objects containing both label and value fields. If the data is not structured this way, it will not display correctly.",
+  "fix_steps": [
+    "Format the data as a list of objects, e.g., [{\"Status\": \"Active\"}, {\"Status\": \"Pending\"}, {\"Status\": \"Deactivated\"}]",
+    "Set the 'Status' field as both the label and value in the input multiselect settings."
+  ],
+  "agent_instruction": "Ensure the data for the input multiselect is formatted as a list of objects with appropriate label and value fields.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "input-multiselect",
+    "data-binding",
+    "Xano",
+    "page-variable"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/displaying-data-in-input-multiselect/2942"
+  ]
+}

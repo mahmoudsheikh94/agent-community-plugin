@@ -1,0 +1,41 @@
+{
+  "id": "cdd23329dcd0",
+  "tool": "n8n",
+  "error_signature": "Waiting for you to submit the form",
+  "context_key": "form-trigger-node",
+  "title": "Form not appearing in Form Trigger node",
+  "symptom": "When testing a Form Trigger node, the message 'Waiting for you to submit the form' appears, but no form is displayed.",
+  "applies_when": [
+    "Using Form Trigger node",
+    "Testing the workflow"
+  ],
+  "not_this_if": [
+    "Form appears after reloading the canvas",
+    "Testing in a different browser"
+  ],
+  "root_cause": "The issue occurs due to a bug in the Form Trigger node where the form does not display after the first test execution. This can be related to browser settings or the state of the n8n canvas.",
+  "fix_steps": [
+    "Ensure your browser allows pop-ups and new windows.",
+    "Click 'Test workflow' to trigger the form.",
+    "If the form does not appear, reload the n8n canvas.",
+    "Try testing the workflow again."
+  ],
+  "agent_instruction": "Reload the canvas and test the workflow again to display the form.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "form-trigger",
+    "workflow-testing",
+    "bug",
+    "n8n"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/form-trigger-no-form-appears-bug/77247"
+  ]
+}

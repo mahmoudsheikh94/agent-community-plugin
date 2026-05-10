@@ -1,0 +1,40 @@
+{
+  "id": "e0364938db47",
+  "tool": "n8n",
+  "error_signature": "Invalid credentials error when creating Gmail credentials",
+  "context_key": "gmail-node",
+  "title": "Gmail credentials invalid due to app status",
+  "symptom": "Users encounter an invalid credentials error when trying to create Gmail credentials after a recent change in app status.",
+  "applies_when": [
+    "Using Gmail node",
+    "App status is set to Testing"
+  ],
+  "not_this_if": [
+    "App status is already set to Production"
+  ],
+  "root_cause": "When the app's Publishing status is set to Testing, it restricts the use of credentials, leading to errors when trying to authenticate or create new credentials. Changing the status to Production resolves this issue.",
+  "fix_steps": [
+    "Go to the Google Cloud Console",
+    "Change the app's Publishing status from Testing to Production",
+    "Save the changes",
+    "Try creating the Gmail credentials again"
+  ],
+  "agent_instruction": "Change the app's Publishing status to Production in the Google Cloud Console.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "credentials",
+    "google-cloud",
+    "app-status"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-gmail-credentials-error/89649"
+  ]
+}

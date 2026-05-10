@@ -1,0 +1,40 @@
+{
+  "id": "18720c5bb1bd",
+  "tool": "n8n",
+  "error_signature": "TypeError: Cannot read properties of undefined (reading 'manager')",
+  "context_key": "n8n-initialization",
+  "title": "TypeError during n8n initialization",
+  "symptom": "Upon starting n8n, an error occurs stating 'Cannot read properties of undefined (reading 'manager')'. This prevents n8n from initializing properly.",
+  "applies_when": [
+    "Using n8n version 1.114.3 or 1.114.4",
+    "Running n8n via npm"
+  ],
+  "not_this_if": [
+    "n8n is installed globally",
+    "Using a different version of n8n"
+  ],
+  "root_cause": "This error typically arises when there are issues with the local node modules, often due to corrupted installations or mismatched dependencies after an upgrade. The 'manager' property is likely part of a module that failed to load correctly.",
+  "fix_steps": [
+    "Backup the current node_modules directory",
+    "Remove the node_modules directory and any lock files",
+    "Reinstall the dependencies using npm install"
+  ],
+  "agent_instruction": "Remove the node_modules directory and reinstall dependencies to resolve the initialization error.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "n8n",
+    "initialization",
+    "npm",
+    "TypeError"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.114.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/typeerror-cannot-read-properties-of-undefined-reading-manager/201738"
+  ]
+}

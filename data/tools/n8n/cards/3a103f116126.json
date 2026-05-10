@@ -1,0 +1,38 @@
+{
+  "id": "3a103f116126",
+  "tool": "n8n",
+  "error_signature": "expression does not recognize dynamic node reference",
+  "context_key": "mysql-node",
+  "title": "Dynamic node reference not recognized in If node",
+  "symptom": "The If node fails to recognize the result of a MySQL query when the column name is dynamic, leading to incorrect evaluations.",
+  "applies_when": [
+    "Using MySQL node to check record existence",
+    "Referencing query results in an If node"
+  ],
+  "not_this_if": [
+    "Column names are static and do not change"
+  ],
+  "root_cause": "When using dynamic column names in SQL queries, the expressions in n8n may not resolve correctly because they rely on static references. This causes the If node to fail in evaluating the condition based on the query result.",
+  "fix_steps": [
+    "Modify the SQL query to include an 'AS' statement for the column name, e.g., 'SELECT EXISTS(...) AS exists_flag'",
+    "Update the expression in the If node to reference the static column name 'exists_flag'"
+  ],
+  "agent_instruction": "Use an 'AS' statement in your SQL query to ensure the column name is static.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "mysql",
+    "if-node",
+    "dynamic-reference",
+    "sql-query"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/using-an-expression-from-a-mysql-query-doesnt-work-good/6730"
+  ]
+}

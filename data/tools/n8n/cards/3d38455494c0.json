@@ -1,0 +1,41 @@
+{
+  "id": "3d38455494c0",
+  "tool": "n8n",
+  "error_signature": "n8n instance freezes or crashes during AI Agent workflow",
+  "context_key": "AI Agent node",
+  "title": "n8n instance freezes during AI Agent processing",
+  "symptom": "The n8n instance freezes or crashes when processing specific image files in an AI Agent workflow. This results in 100% CPU usage in the Docker container.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Processing specific image files"
+  ],
+  "not_this_if": [
+    "The issue does not occur with most other files",
+    "The n8n version is updated"
+  ],
+  "root_cause": "The freezing issue may be related to specific image files that trigger high CPU usage in the Node.js process. This could be due to inefficiencies in how the AI Agent node handles certain image formats or sizes, leading to resource exhaustion.",
+  "fix_steps": [
+    "Update n8n to the latest version (1.107.1 or higher)",
+    "Restart the n8n instance after the update",
+    "Test the workflow again with the problematic image files"
+  ],
+  "agent_instruction": "Update n8n to version 1.107.1 or higher to resolve the freezing issue.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "AI Agent",
+    "freezing",
+    "crash",
+    "image processing",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-instance-freezes-crashes-during-simple-ai-agent-workflow-for-a-specific-image-file/154939"
+  ]
+}

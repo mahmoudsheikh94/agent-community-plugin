@@ -1,0 +1,40 @@
+{
+  "id": "c54d6964bbd8",
+  "tool": "weweb",
+  "error_signature": "Empty List",
+  "context_key": "collection list",
+  "title": "Collection list not displaying data",
+  "symptom": "The collection list shows 'Empty List' despite data being fetched correctly from Xano.",
+  "applies_when": [
+    "Using a collection list in weweb",
+    "Data structure from Xano has changed"
+  ],
+  "not_this_if": [
+    "Data is not fetched correctly from Xano"
+  ],
+  "root_cause": "The data structure returned from Xano may have changed due to enabling pagination or sorting, leading to the collection list not being able to access the correct data path.",
+  "fix_steps": [
+    "Access the nocode Bind editor view in weweb",
+    "Navigate down the collection tree to select the nested [items] array",
+    "Ensure the binding formula points to [news-items].data.items",
+    "Save the changes and refresh the collection list"
+  ],
+  "agent_instruction": "Update the binding formula to point to [news-items].data.items in the nocode Bind editor.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "collection-list",
+    "xano",
+    "data-binding",
+    "pagination"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/need-help-collection-list-was-working-then-poof-not-working/5058"
+  ]
+}

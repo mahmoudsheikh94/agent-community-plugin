@@ -1,0 +1,40 @@
+{
+  "id": "aa0c872b1575",
+  "tool": "n8n",
+  "error_signature": "workflow diagram missing",
+  "context_key": "reverse-proxy-configuration",
+  "title": "Workflow diagram not displayed due to reverse proxy settings",
+  "symptom": "After running a workflow, the diagram does not appear. This issue occurs when n8n is run behind a reverse proxy.",
+  "applies_when": [
+    "Running n8n behind a reverse proxy",
+    "Using Docker"
+  ],
+  "not_this_if": [
+    "Running n8n without a reverse proxy",
+    "Diagram appears in other environments"
+  ],
+  "root_cause": "The reverse proxy configuration was not set up to properly handle WebSocket connections, which are necessary for displaying the workflow diagram after execution. Incorrect buffering settings can prevent the necessary data from being transmitted correctly.",
+  "fix_steps": [
+    "Update the reverse proxy configuration to include the correct WebSocket settings",
+    "Ensure that proxy_buffering is turned off",
+    "Restart the reverse proxy service"
+  ],
+  "agent_instruction": "Modify the reverse proxy configuration to support WebSocket connections and disable buffering.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "reverse-proxy",
+    "websocket",
+    "docker",
+    "workflow-diagram"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.111.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-diagram-missing/192173"
+  ]
+}

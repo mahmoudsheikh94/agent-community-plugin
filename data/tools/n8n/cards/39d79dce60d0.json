@@ -1,0 +1,40 @@
+{
+  "id": "39d79dce60d0",
+  "tool": "n8n",
+  "error_signature": "Referenced node is unexecuted",
+  "context_key": "ChooseProjectId node",
+  "title": "Referenced node not executed error in workflow",
+  "symptom": "When executing a workflow with multiple triggers, an error occurs stating 'Referenced node is unexecuted' when the second trigger is used.",
+  "applies_when": [
+    "Using multiple triggers in a workflow",
+    "One trigger is a webhook"
+  ],
+  "not_this_if": [
+    "Both triggers are executed successfully"
+  ],
+  "root_cause": "In n8n, when using multiple triggers, nodes that depend on the output of a specific trigger may not execute if that trigger is not the one that initiated the workflow. This leads to errors when trying to reference data from unexecuted nodes.",
+  "fix_steps": [
+    "Add a Merge node to your workflow",
+    "Configure the Merge node to use the 'Append' option",
+    "Connect the output of both triggers to the Merge node",
+    "Use the output from the Merge node in subsequent nodes"
+  ],
+  "agent_instruction": "Add a Merge node with the Append option to combine outputs from both triggers.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "merge",
+    "workflow",
+    "multiple-triggers",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/choosing-between-2-input-items-when-one-node-is-not-executed/107923"
+  ]
+}

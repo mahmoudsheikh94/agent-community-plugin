@@ -1,0 +1,41 @@
+{
+  "id": "ab4824717fb5",
+  "tool": "n8n",
+  "error_signature": "Split node has nothing to split",
+  "context_key": "split-node",
+  "title": "Split node stopping workflow due to no data",
+  "symptom": "The workflow stops executing when the Split node has no data to process, leading to fewer loop iterations than expected.",
+  "applies_when": [
+    "Using a Split node",
+    "Looping over items"
+  ],
+  "not_this_if": [
+    "Split node always outputs data",
+    "There is data to split"
+  ],
+  "root_cause": "The Split node is designed to stop the workflow if there are no items to process. This can lead to fewer iterations in a loop if the Split node does not output any data, causing subsequent nodes to not execute.",
+  "fix_steps": [
+    "Open the settings of the Split node",
+    "Enable the 'Always Output Data' option",
+    "Save the workflow",
+    "Test the workflow again with the loop"
+  ],
+  "agent_instruction": "Enable 'Always Output Data' in the Split node settings to prevent workflow stoppage.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "split-node",
+    "loop",
+    "workflow-execution",
+    "data-output"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/loop-different-results-not-finishing/115770"
+  ]
+}

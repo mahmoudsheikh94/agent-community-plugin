@@ -1,0 +1,41 @@
+{
+  "id": "dc8e9238f537",
+  "tool": "n8n",
+  "error_signature": "500 - \"{\\\"myField\\\":\\\"value\\\"}\"",
+  "context_key": "HTTP Request node",
+  "title": "Handling 500 HTTP status code in HTTP Request node",
+  "symptom": "When the HTTP Request node receives a 500 status code, the JSON data payload is not accessible as expected.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Receiving a 500 HTTP status code"
+  ],
+  "not_this_if": [
+    "Error is not a 500 status code",
+    "Response options are not set to 'never error'"
+  ],
+  "root_cause": "The HTTP Request node in n8n treats responses with a 500 status code as errors by default, which prevents access to the response data payload. By changing the response options to 'never error', the node will allow access to the payload even when an error status is returned.",
+  "fix_steps": [
+    "Open the HTTP Request node settings",
+    "Locate the response options",
+    "Set the response option to 'never error'",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Change the response option in the HTTP Request node to 'never error' to access the payload.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "error-handling",
+    "status-code-500",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-get-data-payload-from-webhook-with-http-status-code-500/182836"
+  ]
+}

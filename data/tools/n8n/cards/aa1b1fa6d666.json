@@ -1,0 +1,39 @@
+{
+  "id": "aa1b1fa6d666",
+  "tool": "n8n",
+  "error_signature": "message field missing in WhatsApp trigger",
+  "context_key": "whatsapp-trigger",
+  "title": "Missing message field in WhatsApp trigger executions",
+  "symptom": "The WhatsApp trigger sometimes does not include the user message in the input data, causing execution errors in n8n. This inconsistency makes it difficult to validate mappings and debug workflows.",
+  "applies_when": [
+    "Using WhatsApp trigger",
+    "Workflow is executed multiple times"
+  ],
+  "not_this_if": [
+    "Message field is consistently present in all executions"
+  ],
+  "root_cause": "The WhatsApp trigger may execute multiple times for a single incoming message, leading to inconsistent input data. This can result in the message field being absent in some executions, which confuses the workflow and affects subsequent nodes.",
+  "fix_steps": [
+    "Add an If node immediately after the WhatsApp trigger",
+    "Configure the If node to check if the incoming data contains the message",
+    "Connect the true branch to continue the workflow and the false branch to do nothing"
+  ],
+  "agent_instruction": "Implement an If node to check for the presence of the message after the WhatsApp trigger.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "trigger",
+    "execution",
+    "if-node"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.104.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/execution-bug-whatsapp-trigger/156664"
+  ]
+}

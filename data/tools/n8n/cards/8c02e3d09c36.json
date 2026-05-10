@@ -1,0 +1,41 @@
+{
+  "id": "8c02e3d09c36",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading ‘!ref’)",
+  "context_key": "google-sheets-trigger",
+  "title": "Google Sheets Trigger Activation Error",
+  "symptom": "When trying to activate a workflow with a Google Sheets trigger, n8n throws an error stating 'Cannot read properties of undefined (reading ‘!ref’)'. This prevents the workflow from being activated.",
+  "applies_when": [
+    "Using Google Sheets trigger",
+    "Workflow is being activated"
+  ],
+  "not_this_if": [
+    "Workflow is executing without issues",
+    "Error occurs in a different trigger mode"
+  ],
+  "root_cause": "The error occurs when the specified data range in the Google Sheets trigger is incorrect or undefined. This can happen if the range is not properly set, leading to n8n being unable to determine which rows and columns to monitor for updates.",
+  "fix_steps": [
+    "Remove the 'Data Location on Sheet' option or set it correctly",
+    "Manually specify the exact range (e.g., 'A1:Z1000')",
+    "Ensure the Google Sheet has a proper header row and no hidden rows or columns",
+    "If issues persist, duplicate the sheet with a new name to refresh the reference"
+  ],
+  "agent_instruction": "Adjust the data location settings in the Google Sheets trigger and ensure the range is correctly specified.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "trigger",
+    "activation-error",
+    "data-range"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheets-trigger-issue-in-1-91-3/115952"
+  ]
+}

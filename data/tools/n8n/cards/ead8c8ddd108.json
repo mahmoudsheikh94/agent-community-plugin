@@ -1,0 +1,40 @@
+{
+  "id": "ead8c8ddd108",
+  "tool": "n8n",
+  "error_signature": "No prompt specified",
+  "context_key": "guardrails-node",
+  "title": "Guardrails node prompt not specified",
+  "symptom": "When running the workflow, the guardrails node outputs 'No prompt specified', causing the Start node's value to become undefined.",
+  "applies_when": [
+    "Using guardrails node",
+    "Workflow execution"
+  ],
+  "not_this_if": [
+    "Prompt is correctly specified in the input field"
+  ],
+  "root_cause": "The guardrails node expects a prompt to be provided in an input field named 'guardrailsInput'. If this input is not correctly set, it results in the error and subsequent undefined values in the workflow.",
+  "fix_steps": [
+    "Open the guardrails node settings",
+    "Ensure the 'Prompt' parameter is set correctly",
+    "If using expressions, replace 'item' with 'first()' in the expression",
+    "Save the workflow and run it again"
+  ],
+  "agent_instruction": "Check the guardrails node settings and ensure the prompt is specified correctly using 'first()' in expressions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "guardrails",
+    "node-configuration",
+    "undefined-values",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.0.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/values-become-undefined/237737"
+  ]
+}

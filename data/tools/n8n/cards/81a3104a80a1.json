@@ -1,0 +1,41 @@
+{
+  "id": "81a3104a80a1",
+  "tool": "n8n",
+  "error_signature": "HTTP request firing multiple times",
+  "context_key": "http-request-node",
+  "title": "HTTP request firing multiple times in workflow",
+  "symptom": "The HTTP request at the end of the workflow is being triggered 20+ times per second instead of once, causing multiple workflow instances to run.",
+  "applies_when": [
+    "Using an HTTP request node at the end of the workflow",
+    "Postgres node returns multiple items"
+  ],
+  "not_this_if": [
+    "Postgres node is configured to return only one row",
+    "Execute only once option is enabled"
+  ],
+  "root_cause": "In n8n, each node executes once for every item returned by the previous node. If the Postgres node returns multiple items, the subsequent HTTP request node will send out multiple requests simultaneously, leading to the observed behavior.",
+  "fix_steps": [
+    "Open the settings of the last HTTP request node",
+    "Enable the 'Execute only once' option",
+    "Save the workflow",
+    "Test the workflow to ensure it triggers only once"
+  ],
+  "agent_instruction": "Enable the 'Execute only once' option on the last HTTP request node to prevent multiple triggers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "workflow",
+    "postgres",
+    "execute-only-once"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-at-end-of-workflow-firing-20-times-per-second/90165"
+  ]
+}

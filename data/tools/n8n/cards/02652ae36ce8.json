@@ -1,0 +1,40 @@
+{
+  "id": "02652ae36ce8",
+  "tool": "n8n",
+  "error_signature": "Import template not working",
+  "context_key": "n8n-import-template",
+  "title": "Issue with importing templates in n8n",
+  "symptom": "Users are unable to import templates due to old settings pointing to a non-existent instance. The import option does not function as expected.",
+  "applies_when": [
+    "Using n8n locally",
+    "Previously used a different instance for templates"
+  ],
+  "not_this_if": [
+    "Importing templates works correctly",
+    "No previous instance was used"
+  ],
+  "root_cause": "The browser may retain cookies and local storage data from the previous instance, causing n8n to reference outdated template import settings. Clearing this data allows n8n to reset and recognize the local instance correctly.",
+  "fix_steps": [
+    "Clear cookies and local storage in your browser",
+    "Close and reopen the browser",
+    "Try importing the template again from the local instance"
+  ],
+  "agent_instruction": "Clear your browser's cookies and local storage, then reopen the browser and attempt to import the template again.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "import",
+    "template",
+    "cookies",
+    "local-storage"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/import-workflow-issue/98773"
+  ]
+}

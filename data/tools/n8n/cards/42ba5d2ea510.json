@@ -1,0 +1,42 @@
+{
+  "id": "42ba5d2ea510",
+  "tool": "n8n",
+  "error_signature": "exactly-once processing fails due to cursor issues",
+  "context_key": "cursor-based pagination",
+  "title": "Exactly-once processing failure in cursor-based pagination",
+  "symptom": "Records are missing or processed multiple times due to incorrect cursor handling. Overlapping executions lead to inconsistent results.",
+  "applies_when": [
+    "Using cursor-based pagination",
+    "Implementing exactly-once processing"
+  ],
+  "not_this_if": [
+    "No overlapping Cron executions",
+    "No retries or crashes during execution"
+  ],
+  "root_cause": "The cursor is stored in static workflow data, which is shared and non-transactional. This leads to incorrect cursor advancement during retries, crashes, and overlapping executions, resulting in duplicates and missing records.",
+  "fix_steps": [
+    "Create a new table in your database to store the sync state with cursor and lock information.",
+    "Lock the execution by updating the sync state table before fetching data.",
+    "Fetch one page of data using the cursor stored in the sync state.",
+    "Perform an idempotent write to insert data into your target table.",
+    "Advance the cursor in the sync state table after a successful write and unlock the execution."
+  ],
+  "agent_instruction": "Implement a database-backed cursor management system to ensure safe retries and prevent data duplication.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "cursor-pagination",
+    "exactly-once-processing",
+    "database-locking",
+    "data-synchronization"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/exactly-once-processing-failure-in-paginated/271354"
+  ]
+}

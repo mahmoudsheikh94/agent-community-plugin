@@ -1,0 +1,39 @@
+{
+  "id": "5ad72e95a25e",
+  "tool": "n8n",
+  "error_signature": "inner loop jumps straight to done for subsequent queries",
+  "context_key": "Loop Over Items (inner)",
+  "title": "Inner loop not iterating for subsequent outer queries",
+  "symptom": "The inner Loop Over Items processes the first batch of results but skips subsequent iterations, going directly to 'done'. This results in incomplete processing of items from the outer loop.",
+  "applies_when": [
+    "Using nested Loop Over Items nodes",
+    "Batch size set to 1 for both loops"
+  ],
+  "not_this_if": [
+    "Inner loop processes all items for each outer iteration"
+  ],
+  "root_cause": "The inner loop retains its state between outer iterations, causing it to think there are no items left to process after the first iteration. This happens because the inner loop's context is not reset appropriately when moving to the next outer iteration.",
+  "fix_steps": [
+    "Open the settings for the inner Loop Over Items node.",
+    "Set the Reset option to an expression that checks if new items are arriving from the upstream node, such as '{{ $prevNode.name === 'Google Search' }}'.",
+    "Ensure that the Batch size remains set to 1 for both loops."
+  ],
+  "agent_instruction": "Set the inner loop's Reset option to reset only when new items arrive from the Google Search node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "loop",
+    "nested-loops",
+    "google-search",
+    "items-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.64.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/nested-loop-over-items-not-iterating-for-subsequent-queries/177043"
+  ]
+}

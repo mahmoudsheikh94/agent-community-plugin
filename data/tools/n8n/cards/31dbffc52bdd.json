@@ -1,0 +1,42 @@
+{
+  "id": "31dbffc52bdd",
+  "tool": "n8n",
+  "error_signature": "Could not get the SHA of the file",
+  "context_key": "github-node",
+  "title": "GitHub Node fails to get SHA for files with special characters",
+  "symptom": "When trying to edit a file in GitHub with a name that includes '#' or emojis, n8n throws an error stating 'Could not get the SHA of the file'.",
+  "applies_when": [
+    "Using GitHub node",
+    "File name includes special characters like '#' or emojis"
+  ],
+  "not_this_if": [
+    "File names do not include special characters",
+    "Using a different node or integration"
+  ],
+  "root_cause": "The GitHub node in n8n uses the wrong encoding function for file paths that contain special characters. Specifically, it uses 'encodeURI' instead of 'encodeURIComponent', which leads to issues when trying to retrieve the SHA of the file.",
+  "fix_steps": [
+    "Identify the GitHub node in your workflow",
+    "Check the file path being used",
+    "If it contains special characters, consider modifying the source code to use encodeURIComponent instead of encodeURI",
+    "Test the workflow again after making changes"
+  ],
+  "agent_instruction": "Modify the GitHub node's source code to use encodeURIComponent for file paths with special characters.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "github",
+    "node",
+    "SHA",
+    "file-path",
+    "special-characters"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.104.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/github-node-error-could-not-get-the-sha-of-the-file-when-try-edit-file-with-or-emoji-in-name/172457"
+  ]
+}

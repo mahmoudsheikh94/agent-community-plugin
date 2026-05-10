@@ -1,0 +1,39 @@
+{
+  "id": "6c3109d6a247",
+  "tool": "n8n",
+  "error_signature": "FetchError: [POST] “https://api.n8n.io/api/workflows”: 400",
+  "context_key": "workflow_submission",
+  "title": "400 Error on Workflow Submission",
+  "symptom": "When submitting a workflow template, n8n returns a 400 error immediately. The preview loads fine, but submission fails.",
+  "applies_when": [
+    "Submitting a workflow template",
+    "JSON structure is complex"
+  ],
+  "not_this_if": [
+    "Error does not occur during preview",
+    "No JSON structure issues"
+  ],
+  "root_cause": "The 400 error occurs due to malformed JSON in the workflow submission. This can include missing values in required fields or incorrect syntax, such as using double quotes instead of single quotes in expressions.",
+  "fix_steps": [
+    "Ensure all required fields in the JSON are populated correctly, including 'matchingColumns'. Set it to an empty array if no values are needed.",
+    "Replace double quotes with single quotes in expressions within the JSON, particularly in nodes like 'Update Task Row in Project Planning'."
+  ],
+  "agent_instruction": "Correct the JSON structure by fixing the 'matchingColumns' and replacing double quotes with single quotes in expressions.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "workflow",
+    "400-error",
+    "JSON",
+    "submission"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/creator-portal-400-error-on-workflow-submission-need-help/265671"
+  ]
+}

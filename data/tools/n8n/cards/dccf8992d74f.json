@@ -1,0 +1,40 @@
+{
+  "id": "dccf8992d74f",
+  "tool": "n8n",
+  "error_signature": "Using the item method doesn’t work with pinned data",
+  "context_key": "code-node",
+  "title": "Item method fails with pinned data in Code node",
+  "symptom": "When trying to reference data points after filtering in a Code node, n8n throws an error about the item method not working with pinned data.",
+  "applies_when": [
+    "Using a Code node",
+    "Data is filtered and pinned"
+  ],
+  "not_this_if": [
+    "Using unpinned data",
+    "No filtering is applied"
+  ],
+  "root_cause": "The item method in n8n's Code node cannot resolve the correct item when data is pinned after filtering. This leads to confusion in referencing specific data points from previous nodes.",
+  "fix_steps": [
+    "Unpin the data in the Code node",
+    "Use the pairedItem method to reference the required data",
+    "Test the workflow to ensure data points are accessible"
+  ],
+  "agent_instruction": "Unpin the data and use the pairedItem method to access previous node data.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "item-method",
+    "data-filtering",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.82.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/item-linking-issues-after-a-code-node/89235"
+  ]
+}

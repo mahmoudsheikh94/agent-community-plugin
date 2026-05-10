@@ -1,0 +1,39 @@
+{
+  "id": "4afeafc1faf6",
+  "tool": "n8n",
+  "error_signature": "400 Bad Request",
+  "context_key": "whatsapp-node",
+  "title": "400 Bad Request due to newline character in WhatsApp template",
+  "symptom": "When sending WhatsApp Business Cloud templates, n8n returns a '400 Bad Request' error. This occurs specifically when a variable value contains a newline character.",
+  "applies_when": [
+    "Using WhatsApp Business Cloud templates",
+    "Variable values contain newline characters"
+  ],
+  "not_this_if": [
+    "All variable values are free of newline characters"
+  ],
+  "root_cause": "The WhatsApp API does not accept newline characters in template variable values. Including such characters leads to a '400 Bad Request' response from the API.",
+  "fix_steps": [
+    "Check the variable values in your WhatsApp template",
+    "Remove any newline characters from the end of the variable values",
+    "Retry sending the template"
+  ],
+  "agent_instruction": "Ensure that all variable values in the WhatsApp template do not contain newline characters.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "400 Bad Request",
+    "template",
+    "newline character"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/400-bad-request-using-whatsapp-templates-values-seems-to-not-be-valid/168096"
+  ]
+}

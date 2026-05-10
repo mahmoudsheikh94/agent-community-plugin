@@ -1,0 +1,38 @@
+{
+  "id": "a6cafd7d2aa1",
+  "tool": "weweb",
+  "error_signature": "CSS commands do not affect what's shown in the styling panel",
+  "context_key": "class-styling",
+  "title": "CSS commands not reflecting in styling panel",
+  "symptom": "Changes made via CSS commands do not update the styling panel, leading to confusion about the current settings.",
+  "applies_when": [
+    "Using CSS commands to style components",
+    "Saving styles to a class"
+  ],
+  "not_this_if": [
+    "CSS commands are applied correctly and reflected in the editor"
+  ],
+  "root_cause": "CSS commands applied directly may not update the visual representation in the styling panel, causing a disconnect between the applied styles and what is displayed in the editor.",
+  "fix_steps": [
+    "Ensure that the CSS commands are correctly applied and saved to the class.",
+    "Check if the styling panel reflects the changes made through CSS commands."
+  ],
+  "agent_instruction": "Verify that CSS commands are saved to the class and check the styling panel for updates.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "CSS",
+    "styling",
+    "class",
+    "editor"
+  ],
+  "severity": "degraded",
+  "confidence": 0.85,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/struggling-with-some-weweb-basics-desperately-looking-for-help/20242"
+  ]
+}

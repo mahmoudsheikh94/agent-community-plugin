@@ -1,0 +1,41 @@
+{
+  "id": "385cdc7a7041",
+  "tool": "n8n",
+  "error_signature": "HTTP 401 authentication error",
+  "context_key": "credentials",
+  "title": "HTTP 401 Authentication Error in n8n Workflows",
+  "symptom": "Workflows in n8n fail with an HTTP 401 authentication error when connecting to external services.",
+  "applies_when": [
+    "Using external services requiring authentication",
+    "Credentials are configured in n8n"
+  ],
+  "not_this_if": [
+    "Error is not related to authentication or credentials"
+  ],
+  "root_cause": "The HTTP 401 error indicates that the authentication credentials provided are invalid or insufficient. This can occur due to expired tokens, incorrect API keys, or insufficient permissions for the requested operation.",
+  "fix_steps": [
+    "Go to the Credentials section in n8n and test the connection.",
+    "If the connection fails, re-authenticate by clicking 'Connect' and following the OAuth flow.",
+    "For API keys, verify the key in the service’s dashboard and ensure it is not restricted.",
+    "Check that the API has the necessary permissions, such as 'read/write' access for Google Calendar."
+  ],
+  "agent_instruction": "Test the connection in the Credentials section and re-authenticate if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "authentication",
+    "HTTP 401",
+    "credentials",
+    "API keys",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-401-authentication-error/178701"
+  ]
+}

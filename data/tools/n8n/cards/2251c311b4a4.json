@@ -1,0 +1,41 @@
+{
+  "id": "2251c311b4a4",
+  "tool": "n8n",
+  "error_signature": "Failed to refresh slots cache",
+  "context_key": "redis-cluster-configuration",
+  "title": "Redis cluster slots cache refresh failure",
+  "symptom": "When starting n8n in queue mode with Redis cluster, it throws 'Failed to refresh slots cache'. This prevents the application from functioning correctly.",
+  "applies_when": [
+    "Using Redis in cluster mode",
+    "Configured QUEUE_BULL_REDIS_CLUSTER_NODES"
+  ],
+  "not_this_if": [
+    "Using standalone Redis",
+    "No error related to slots cache"
+  ],
+  "root_cause": "The error occurs when the Redis client cannot refresh the slots cache, which is essential for routing commands to the correct nodes in a Redis cluster. This can happen due to misconfiguration of the cluster nodes or network issues preventing access to the Redis cluster.",
+  "fix_steps": [
+    "Set QUEUE_BULL_REDIS_HOST to one of the cluster nodes",
+    "Set QUEUE_BULL_REDIS_PORT to the corresponding port",
+    "Restart the n8n instance",
+    "Check logs for any further errors"
+  ],
+  "agent_instruction": "Configure QUEUE_BULL_REDIS_HOST and QUEUE_BULL_REDIS_PORT to test the Redis connection.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "redis",
+    "cluster",
+    "n8n",
+    "queue-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.93.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-queue-mode-with-clustermode-redis/162495"
+  ]
+}

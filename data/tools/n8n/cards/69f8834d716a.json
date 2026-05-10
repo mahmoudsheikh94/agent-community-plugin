@@ -1,0 +1,39 @@
+{
+  "id": "69f8834d716a",
+  "tool": "n8n",
+  "error_signature": "expected 768 dimensions, not 3072",
+  "context_key": "google-gemini-embedding-node",
+  "title": "Dimension mismatch in Google Gemini Embedding",
+  "symptom": "When attempting to upsert data into the Vector Store, n8n throws an error stating 'expected 768 dimensions, not 3072'. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using Google Gemini Embedding node",
+    "Upserting data into Supabase Vector Store"
+  ],
+  "not_this_if": [
+    "Embedding dimensions match the Vector Store configuration"
+  ],
+  "root_cause": "The error occurs because the output dimensions from the Google Gemini model (3072) do not match the expected dimensions configured in the Supabase Vector Store (768). This mismatch leads to a 400 Bad Request error when trying to insert the data.",
+  "fix_steps": [
+    "Update the Supabase Vector Store configuration to accept 3072 dimensions",
+    "Ensure that the embedding dimensions in the Google Gemini node are correctly set to match the Vector Store"
+  ],
+  "agent_instruction": "Adjust the Supabase Vector Store to use 'vector(3072)' to resolve the dimension mismatch.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-gemini",
+    "embedding",
+    "supabase",
+    "vector-store",
+    "dimension-mismatch"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.1.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gemini-embedding-error/272496"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "919281d7f7cb",
+  "tool": "n8n",
+  "error_signature": "The execution was cancelled",
+  "context_key": "queue-mode",
+  "title": "Workflows stuck in 'queued' status in queue mode",
+  "symptom": "Workflows get stuck in 'queued' status after approximately 60 seconds, and new executions also show as 'queued'. The logs indicate 'The execution was cancelled'.",
+  "applies_when": [
+    "Using n8n in queue mode",
+    "Docker Compose setup with Redis and PostgreSQL"
+  ],
+  "not_this_if": [
+    "Using n8n in regular mode",
+    "No executions are queued"
+  ],
+  "root_cause": "The issue arises when the main n8n instance fails to communicate effectively with the worker nodes, leading to executions being cancelled. This can be due to misconfiguration in the Docker setup or insufficient resources allocated to the containers.",
+  "fix_steps": [
+    "Ensure that the main n8n instance and worker nodes are correctly configured to communicate with each other.",
+    "Add the commands 'worker' and 'webhook' to the respective containers in the Docker Compose file.",
+    "Set the N8N_RUNNERS_MODE environment variable appropriately."
+  ],
+  "agent_instruction": "Update your Docker Compose configuration to include the necessary commands and environment variables for queue mode.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "queue-mode",
+    "docker-compose",
+    "execution-cancelled",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.80.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflows-stuck-in-queued-status-after-60-seconds-of-execution-time/82729"
+  ]
+}

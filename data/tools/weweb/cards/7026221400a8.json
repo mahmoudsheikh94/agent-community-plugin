@@ -1,0 +1,40 @@
+{
+  "id": "7026221400a8",
+  "tool": "weweb",
+  "error_signature": "Failed to init Xano, please ensure your API key has the permission required",
+  "context_key": "metadata-api-key-configuration",
+  "title": "Xano API Key Permission Error",
+  "symptom": "When entering a newly generated XANO API key in the Metadata API Key Configuration, the error 'Failed to init Xano, please ensure your API key has the permission required' appears.",
+  "applies_when": [
+    "Using a newly generated XANO API key",
+    "Configured in the Metadata API Key field"
+  ],
+  "not_this_if": [
+    "Using a Developer API Key",
+    "API key is correctly configured with permissions"
+  ],
+  "root_cause": "The error occurs because the API key being used does not have the necessary permissions or is not the correct type for the Metadata API. The Developer API Key has been deprecated and cannot be used in this context.",
+  "fix_steps": [
+    "Ensure you are using the correct Metadata API Key and not a Developer API Key.",
+    "Check that the API key has full permissions and is generated from the correct section.",
+    "Copy and paste the generated key exactly as shown, not the ID."
+  ],
+  "agent_instruction": "Verify that you are using the correct Metadata API Key with full permissions and paste it correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "xano",
+    "metadata-api",
+    "api-key",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/metadata-api-key-configuration-fails-due-missing-permissions/5007"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "b67742e40961",
+  "tool": "weweb",
+  "error_signature": "CODEBUILD_FAILED",
+  "context_key": "rich-text-component",
+  "title": "Build failure due to rich text component library issue",
+  "symptom": "Users encounter 'CODEBUILD_FAILED' errors when attempting to publish their apps. This issue arose suddenly, affecting previously successful builds.",
+  "applies_when": [
+    "Using the rich text component",
+    "Attempting to publish the app"
+  ],
+  "not_this_if": [
+    "Build failure is unrelated to the rich text component"
+  ],
+  "root_cause": "The library used for the rich text component had a version deleted, causing builds that rely on it to fail. The dynamic versioning may lead to regressions if new versions introduce bugs.",
+  "fix_steps": [
+    "Wait for the WeWeb team to stabilize the library version",
+    "Monitor for updates regarding the rich text component",
+    "Consider using a static version if available"
+  ],
+  "agent_instruction": "Monitor the status of the rich text component and wait for updates from WeWeb.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "build-failure",
+    "rich-text-component",
+    "CODEBUILD_FAILED",
+    "library-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/anyone-else-having-build-publishing-issues-today/9719"
+  ]
+}

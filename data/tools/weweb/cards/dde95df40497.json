@@ -1,0 +1,40 @@
+{
+  "id": "dde95df40497",
+  "tool": "weweb",
+  "error_signature": "case sensitivity issues with table names",
+  "context_key": "supabase",
+  "title": "Case sensitivity issues with Supabase table names",
+  "symptom": "When querying tables in Supabase, the user encounters errors due to case sensitivity in table names, leading to empty results or incorrect references.",
+  "applies_when": [
+    "Using Supabase with mixed case table names",
+    "Querying tables that have foreign key relationships"
+  ],
+  "not_this_if": [
+    "All table names are consistently in lowercase",
+    "No foreign key relationships are involved"
+  ],
+  "root_cause": "Supabase treats table names as case-sensitive when they are created with mixed case. If a table is created with a capital letter, it must be referenced with the exact same casing in queries, otherwise, it defaults to lowercase, leading to mismatches.",
+  "fix_steps": [
+    "Identify the correct case for all table names in your database",
+    "Update your SQL queries to match the exact case of the table names",
+    "Test the queries to ensure they return the expected results"
+  ],
+  "agent_instruction": "Ensure all table names in your SQL queries match the exact case used during their creation in Supabase.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "supabase",
+    "case-sensitivity",
+    "sql-queries",
+    "database"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/joins-from-2-tables-in-supabase/4647"
+  ]
+}

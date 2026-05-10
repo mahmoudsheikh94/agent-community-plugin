@@ -1,0 +1,38 @@
+{
+  "id": "fc4dc4f752f5",
+  "tool": "n8n",
+  "error_signature": "Workspace offline (503)",
+  "context_key": "n8n Cloud workspace",
+  "title": "Workspace crashes due to memory exhaustion",
+  "symptom": "The workspace becomes unavailable with a 'Workspace offline (503)' message during scheduled workflow runs. This occurs consistently when the workflow is triggered.",
+  "applies_when": [
+    "Using n8n Cloud",
+    "Scheduled workflow runs"
+  ],
+  "not_this_if": [
+    "The workflow runs successfully in another n8n Cloud account"
+  ],
+  "root_cause": "The error occurs because the `$getWorkflowStaticData('node')` arrays (`seenPlaceIds`, `seenEmails`) grow indefinitely with each execution. This accumulation of data can lead to memory exhaustion, causing the workspace to crash and return a 503 error.",
+  "fix_steps": [
+    "Add a check at the start of the Code node to monitor the size of `seenPlaceIds` and `seenEmails`.",
+    "Implement logic to prune or reset these arrays when they exceed a certain size, such as keeping only the last 5000 entries."
+  ],
+  "agent_instruction": "Modify the Code node to include logic that limits the size of static data arrays.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "n8n Cloud",
+    "memory management",
+    "static data",
+    "error 503"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.9.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-cloud-workspace-offline-503-when-scheduled-workflow-runs/274857"
+  ]
+}

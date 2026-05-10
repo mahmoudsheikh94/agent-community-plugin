@@ -1,0 +1,40 @@
+{
+  "id": "b12ab6e134bc",
+  "tool": "n8n",
+  "error_signature": "connection timeout",
+  "context_key": "postgresql-node",
+  "title": "PostgreSQL connection timeout issue",
+  "symptom": "The PostgreSQL node fails to connect, displaying a 'connection timeout' error. This occurs even after multiple troubleshooting attempts.",
+  "applies_when": [
+    "Using PostgreSQL node",
+    "Running n8n in Docker on Render"
+  ],
+  "not_this_if": [
+    "Database is not paused",
+    "No network restrictions on Supabase"
+  ],
+  "root_cause": "The connection timeout can occur due to network restrictions, incorrect SSL settings, or exceeding the maximum allowed connections on Supabase's free tier. If the IP address of the Render server changes, it may also be blocked by Supabase.",
+  "fix_steps": [
+    "Check the Supabase dashboard for any network restrictions and ensure the Render server's IP is allowed.",
+    "Enable SSL for the PostgreSQL connection and also check the 'Ignore SSL Issues (Insecure)' option.",
+    "Reduce the maximum connections in the PostgreSQL node settings to 3 or 5."
+  ],
+  "agent_instruction": "Adjust the PostgreSQL node settings to enable SSL and reduce the max connections, then test the connection again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgresql",
+    "connection-timeout",
+    "supabase",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.85,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgress-connection-timeout-since-a-week/268976"
+  ]
+}

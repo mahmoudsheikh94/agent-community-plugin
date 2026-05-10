@@ -1,0 +1,40 @@
+{
+  "id": "ec3a05bba156",
+  "tool": "weweb",
+  "error_signature": "UI displays the wrong item after deletion",
+  "context_key": "item deletion in UI",
+  "title": "UI shows incorrect item after deletion",
+  "symptom": "After deleting a record at a specific index, the UI incorrectly displays the last record instead of the intended one.",
+  "applies_when": [
+    "Deleting a record from an array",
+    "UI is not updating correctly"
+  ],
+  "not_this_if": [
+    "The deletion works correctly in the backend",
+    "No binding issues with the input"
+  ],
+  "root_cause": "The UI may not be properly bound to the data model, causing it to display stale or incorrect data after an operation like deletion. This can happen if the input field is not correctly linked to the data source that reflects the current state of the array.",
+  "fix_steps": [
+    "Check the binding of the input field to the data model",
+    "Ensure that the input is correctly linked to the context.item.data.amount",
+    "Test the deletion again to see if the UI updates correctly"
+  ],
+  "agent_instruction": "Verify and correct the binding of the input field to the data model to ensure the UI reflects the correct state after deletion.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "UI",
+    "item-deletion",
+    "data-binding",
+    "array-manipulation"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/delete-record-at-index-not-working-as-expected/5657"
+  ]
+}

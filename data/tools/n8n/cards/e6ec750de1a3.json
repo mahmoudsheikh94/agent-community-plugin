@@ -1,0 +1,39 @@
+{
+  "id": "e6ec750de1a3",
+  "tool": "n8n",
+  "error_signature": "Teams Trigger stops listening after new subscription",
+  "context_key": "microsoft-teams-trigger",
+  "title": "Teams Trigger stops listening after new subscription",
+  "symptom": "The Microsoft Teams Trigger stops responding shortly after a new subscription is created, requiring the workflow to be republished frequently.",
+  "applies_when": [
+    "Using Microsoft Teams Trigger",
+    "New subscription has been made"
+  ],
+  "not_this_if": [
+    "Trigger works continuously without needing republishing"
+  ],
+  "root_cause": "The Teams Trigger does not automatically update its subscription expiration date/time after a new subscription is created. As a result, it stops listening once the old subscription expires, leading to the need for manual intervention.",
+  "fix_steps": [
+    "Create a new workflow that uses a scheduled trigger",
+    "Set the scheduled trigger to execute a PATCH request to update the Teams subscriptions every night",
+    "Ensure the PATCH request updates the subscriptions by +72 hours"
+  ],
+  "agent_instruction": "Implement a scheduled workflow to automatically update Teams subscriptions nightly.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "microsoft-teams",
+    "trigger",
+    "subscription",
+    "automation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/microsoft-teams-trigger-trigger-stops-listening-shortly-after-new-subscription-has-been-made/242510"
+  ]
+}

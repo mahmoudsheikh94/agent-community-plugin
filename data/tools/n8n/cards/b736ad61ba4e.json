@@ -1,0 +1,39 @@
+{
+  "id": "b736ad61ba4e",
+  "tool": "n8n",
+  "error_signature": "only getting values of 1 email in return",
+  "context_key": "splitter-node",
+  "title": "Only one email value returned in workflow",
+  "symptom": "The workflow is only returning details for one email instead of multiple matching emails.",
+  "applies_when": [
+    "Using a filter function to check for keywords",
+    "Expecting multiple email outputs"
+  ],
+  "not_this_if": [
+    "All emails are processed correctly without filtering"
+  ],
+  "root_cause": "The workflow is not set up to handle multiple email outputs due to the absence of a Split In Batches node, which is necessary to process each email individually.",
+  "fix_steps": [
+    "Add a Split In Batches node after your filter function.",
+    "Set the 'Batch Size' to 1 in the Split In Batches node.",
+    "In your Google Sheets node, use direct field references for email details."
+  ],
+  "agent_instruction": "Add a Split In Batches node and set the batch size to 1 to process each email individually.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "splitter",
+    "google-sheets",
+    "email-filter",
+    "workflow-setup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-setup-splitter-and-reference-value-directly/82892"
+  ]
+}

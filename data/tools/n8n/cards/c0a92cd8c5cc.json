@@ -1,0 +1,41 @@
+{
+  "id": "c0a92cd8c5cc",
+  "tool": "n8n",
+  "error_signature": "HTTP 500 error invalid mode",
+  "context_key": "Docker Desktop",
+  "title": "HTTP 500 error due to invalid volume path in Docker",
+  "symptom": "When trying to run an n8n container in Docker Desktop, a HTTP 500 error occurs with an 'invalid mode' message.",
+  "applies_when": [
+    "Running n8n in Docker Desktop",
+    "Using Windows as the host OS"
+  ],
+  "not_this_if": [
+    "Using a Linux host",
+    "No error occurs when running other containers"
+  ],
+  "root_cause": "Docker on Windows requires Linux-style paths for volume mappings, and using Windows-style paths can lead to errors when the container tries to access the specified directories.",
+  "fix_steps": [
+    "Open your Docker Desktop settings for the n8n container.",
+    "Change the volume mapping from 'C:\\Users\\8\\n8n-data' to '/home/node/.n8n'.",
+    "Ensure the host path is set to 'C:\\Users\\8\\n8n-data' and the container path is '/home/node/.n8n'.",
+    "Restart the n8n container."
+  ],
+  "agent_instruction": "Update the volume mapping to use Linux-style paths and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "http-500",
+    "volume-mapping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-500-error-invalid-mode-when-trying-torun-a-n8n-container-in-docker-desktop/181982"
+  ]
+}

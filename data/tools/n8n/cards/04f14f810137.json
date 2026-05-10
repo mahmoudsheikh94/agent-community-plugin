@@ -1,0 +1,40 @@
+{
+  "id": "04f14f810137",
+  "tool": "n8n",
+  "error_signature": "The service was not able to process your request",
+  "context_key": "wordpress-media-upload",
+  "title": "WordPress media upload authorization error",
+  "symptom": "When attempting to upload a JPEG image to WordPress via n8n, the error 'The service was not able to process your request' appears, indicating authorization issues with the file type.",
+  "applies_when": [
+    "Using WordPress REST API for media uploads",
+    "Uploading a JPEG image"
+  ],
+  "not_this_if": [
+    "File type is not JPEG",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The error occurs because the filename provided in the content-disposition header does not have a proper format, specifically missing a full stop between the filename and the file extension. This can lead WordPress to misinterpret the file type and deny the upload.",
+  "fix_steps": [
+    "Ensure the filename in the content-disposition header includes a full stop before the file extension (e.g., 'filename=image.jpg')",
+    "Retry the media upload after correcting the filename format"
+  ],
+  "agent_instruction": "Correct the filename format in the content-disposition header and attempt the upload again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wordpress",
+    "media-upload",
+    "REST-API",
+    "file-upload",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-wordpress-media-upload-failing-the-service-was-not-able-to-process-your-request/128297"
+  ]
+}

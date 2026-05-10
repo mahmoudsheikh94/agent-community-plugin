@@ -1,0 +1,39 @@
+{
+  "id": "9f1279e12266",
+  "tool": "n8n",
+  "error_signature": "binary data not forwarded from AI Agent to HTTP Request",
+  "context_key": "AI Agent to HTTP Request node",
+  "title": "Binary data not passed to HTTP Request from AI Agent",
+  "symptom": "When using an AI Agent node followed by an HTTP Request node, the binary data from previous steps is not accessible, leading to confusion about the expected behavior.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Following with HTTP Request node"
+  ],
+  "not_this_if": [
+    "Binary data is not needed for the HTTP Request",
+    "Using HTTP Request node independently without AI Agent"
+  ],
+  "root_cause": "The AI Agent node is designed to operate with JSON-only payloads and does not carry forward binary data from upstream nodes. This design choice creates a limitation where binary files cannot be passed to tools invoked by the AI Agent.",
+  "fix_steps": [
+    "Keep the binary data on a parallel branch before the AI Agent node.",
+    "Use a Merge node after the AI Agent to combine the output with the original binary data."
+  ],
+  "agent_instruction": "Use a parallel branch to maintain binary data and merge it after the AI Agent node.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "AI Agent",
+    "HTTP Request",
+    "binary data",
+    "workflow design"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-node-won-t-pass-binary-data-to-http-request-node/261291"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "185a2ac3e537",
+  "tool": "n8n",
+  "error_signature": "webhook not visible in the editor",
+  "context_key": "webhook-configuration",
+  "title": "Webhook not visible in n8n editor",
+  "symptom": "The webhook appears to be functioning as it receives requests, but it is not visible in the n8n editor, leading to confusion about its status.",
+  "applies_when": [
+    "Webhook is correctly set up",
+    "Webhook receives HTTP requests"
+  ],
+  "not_this_if": [
+    "Webhook is visible in the editor",
+    "No requests are received by the webhook"
+  ],
+  "root_cause": "This issue can occur due to a glitch in the n8n editor where the webhook node does not refresh or display correctly, even though it is operational and receiving data as expected.",
+  "fix_steps": [
+    "Check the executions in n8n to confirm the webhook is receiving requests.",
+    "Pin the webhook in the editor to ensure it is visible.",
+    "Refresh the n8n editor to see if the webhook appears."
+  ],
+  "agent_instruction": "Check the executions and pin the webhook to make it visible in the editor.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "webhook",
+    "n8n-editor",
+    "visibility",
+    "execution-logs"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-to-vapi-doesnt-work-despite-observing-the-correct-setup/119383"
+  ]
+}

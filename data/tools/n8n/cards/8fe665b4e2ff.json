@@ -1,0 +1,39 @@
+{
+  "id": "8fe665b4e2ff",
+  "tool": "n8n",
+  "error_signature": "invalid filter format",
+  "context_key": "nocodb-get-many-node",
+  "title": "Invalid filter format error in NocoDB node",
+  "symptom": "When using nested logic with `~or` and `~and` in a NocoDB filter, an 'invalid filter format' error is thrown.",
+  "applies_when": [
+    "Using NocoDB get many node",
+    "Applying complex nested filters"
+  ],
+  "not_this_if": [
+    "Using simple filters without nesting",
+    "Filters are correctly formatted"
+  ],
+  "root_cause": "NocoDB requires complex nested logic expressions to be prefixed with `@` to be recognized as valid. Without this prefix, the filter format is deemed invalid.",
+  "fix_steps": [
+    "Prefix the entire filter expression with `@`",
+    "Re-run the NocoDB get many node with the updated filter"
+  ],
+  "agent_instruction": "Add `@` before your nested filter expression in the NocoDB node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nocodb",
+    "filter",
+    "invalid-format",
+    "nested-logic"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.95.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/filter-by-formula-not-working-when-nesting/129922"
+  ]
+}

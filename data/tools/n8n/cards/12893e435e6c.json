@@ -1,0 +1,40 @@
+{
+  "id": "12893e435e6c",
+  "tool": "n8n",
+  "error_signature": "Response [200] without expected JSON output",
+  "context_key": "Google Colab integration",
+  "title": "LLM output not visible in Google Colab",
+  "symptom": "The response from the n8n workflow shows '<Response [200]>' instead of the expected JSON output from the AI Agent.",
+  "applies_when": [
+    "Using Google Colab to call n8n webhook",
+    "Receiving a 200 HTTP status code"
+  ],
+  "not_this_if": [
+    "The AI Agent is not configured correctly",
+    "The webhook URL is incorrect"
+  ],
+  "root_cause": "The user is printing the response object directly, which only shows the HTTP status code. To see the actual JSON output from the AI Agent, the response needs to be parsed correctly.",
+  "fix_steps": [
+    "Change the print statement to 'print(json.dumps(response.json(), indent=2))'",
+    "Alternatively, use 'print(response.json())' to directly print the JSON output."
+  ],
+  "agent_instruction": "Modify the print statement in your Google Colab code to display the AI output correctly.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "google-colab",
+    "n8n",
+    "AI-Agent",
+    "webhook",
+    "JSON-output"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/json-value-not-passed-properly-to-llm-in-workflow/256008"
+  ]
+}

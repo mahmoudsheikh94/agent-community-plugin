@@ -1,0 +1,40 @@
+{
+  "id": "e4357ab3ba77",
+  "tool": "weweb",
+  "error_signature": "form not submitting due to hidden required element",
+  "context_key": "form-container",
+  "title": "Form submission failure due to hidden required field",
+  "symptom": "The form does not submit when the submit button is clicked, and required parameters are missing. This results in the form crashing.",
+  "applies_when": [
+    "Form contains required fields",
+    "One or more required fields are hidden"
+  ],
+  "not_this_if": [
+    "All required fields are visible",
+    "Form submission works without hidden fields"
+  ],
+  "root_cause": "Hiding a required field in a form violates the submission rules, causing the form to fail. The form validation checks for visibility and requirement status, leading to a crash if a required field is not visible.",
+  "fix_steps": [
+    "Identify the required fields in the form",
+    "Ensure that no required fields are hidden",
+    "Alternatively, set the 'required' option to false for hidden fields"
+  ],
+  "agent_instruction": "Ensure all required fields are visible in the form before submission.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "form",
+    "submission",
+    "required-fields",
+    "validation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/submit-button-not-submitting-form-content/645"
+  ]
+}

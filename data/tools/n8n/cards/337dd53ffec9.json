@@ -1,0 +1,42 @@
+{
+  "id": "337dd53ffec9",
+  "tool": "n8n",
+  "error_signature": "[item 3]",
+  "context_key": "discord-node",
+  "title": "Discord node error due to empty Message field",
+  "symptom": "The Discord node throws an error '[item 3]' when processing the workflow. This occurs without providing specific feedback on the fault.",
+  "applies_when": [
+    "Using Discord node",
+    "Message field is empty"
+  ],
+  "not_this_if": [
+    "Message field contains valid JSON content"
+  ],
+  "root_cause": "The Discord node requires the 'Message' field to contain a valid JSON string. If this field is left empty, it leads to an error during execution, as the node cannot process the request without a valid message.",
+  "fix_steps": [
+    "Open the Discord node settings",
+    "Locate the 'Message' field",
+    "Set the 'Message' field to an expression with a value like '{{ \"\" }}' or '{{ null }}'",
+    "Save the workflow",
+    "Try executing the workflow again"
+  ],
+  "agent_instruction": "Set the 'Message' field in the Discord node to an expression with a valid value.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "discord",
+    "node",
+    "error",
+    "json",
+    "message-field"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/discord-node-wont-accept-json/98525"
+  ]
+}

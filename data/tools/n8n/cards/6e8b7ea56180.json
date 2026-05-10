@@ -1,0 +1,40 @@
+{
+  "id": "6e8b7ea56180",
+  "tool": "n8n",
+  "error_signature": "self-signed certificate in certificate chain",
+  "context_key": "n8n-setup",
+  "title": "License request failed due to self-signed certificate",
+  "symptom": "When attempting to register for the community edition license, n8n returns an error stating 'self-signed certificate in certificate chain'. This prevents successful license activation.",
+  "applies_when": [
+    "Using self-signed certificates for HTTPS",
+    "Running n8n locally without Docker"
+  ],
+  "not_this_if": [
+    "Using valid SSL certificates from a trusted CA",
+    "Running n8n in Docker"
+  ],
+  "root_cause": "n8n's license server does not trust self-signed certificates by default. This leads to failures in license requests when the server cannot validate the certificate chain.",
+  "fix_steps": [
+    "Start n8n in tunnel mode to bypass certificate validation issues.",
+    "Request the community edition license while in tunnel mode.",
+    "Restart n8n without tunneling.",
+    "Apply the license in the settings."
+  ],
+  "agent_instruction": "Start n8n in tunnel mode, request the license, then restart without tunneling.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "self-signed-certificate",
+    "license-request",
+    "n8n-setup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/license-request-failed-self-signed-certificate-in-certificate-chain/194178"
+  ]
+}

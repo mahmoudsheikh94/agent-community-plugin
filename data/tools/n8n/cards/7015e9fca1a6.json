@@ -1,0 +1,39 @@
+{
+  "id": "7015e9fca1a6",
+  "tool": "n8n",
+  "error_signature": "Mailjet sandbox setting gets synced across environments",
+  "context_key": "mailjet-credentials",
+  "title": "Mailjet sandbox setting sync issue across environments",
+  "symptom": "The Mailjet sandbox setting is unintentionally synced from lab/test to prod environments, causing production to use sandbox mode.",
+  "applies_when": [
+    "Using Mailjet credentials",
+    "Multiple n8n environments configured"
+  ],
+  "not_this_if": [
+    "All environments are intended to use the same settings"
+  ],
+  "root_cause": "The Mailjet sandbox toggle is stored as a non-sensitive property, which allows it to be synced across environments. This behavior is not consistent with other credentials where sensitive fields are excluded from sync.",
+  "fix_steps": [
+    "Use an HTTP Request node instead of the Mailjet node in test/lab environments.",
+    "Point the HTTP Request node to the Mailjet sandbox API endpoint directly.",
+    "Set the Mailjet base URL via an environment variable (N8N_VAR_MAILJET_BASE_URL)."
+  ],
+  "agent_instruction": "Switch to using an HTTP Request node for Mailjet in non-production environments.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "mailjet",
+    "credentials",
+    "environment-sync",
+    "sandbox"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.9.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mailjet-credentials-sandbox-setting-gets-synced-when-working-with-environments/273951"
+  ]
+}

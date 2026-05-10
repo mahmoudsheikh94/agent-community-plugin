@@ -1,0 +1,40 @@
+{
+  "id": "91b3df61a000",
+  "tool": "n8n",
+  "error_signature": "Trello node not fetching boards, stuck on loading",
+  "context_key": "trello-node",
+  "title": "Trello node stuck on loading when fetching boards",
+  "symptom": "The Trello node is stuck on loading and does not display any boards. Attempts to create a card also result in loading without success.",
+  "applies_when": [
+    "Using Trello node to fetch boards",
+    "Webhook trigger is set up"
+  ],
+  "not_this_if": [
+    "Fetching boards works in other workflows",
+    "Using a different integration method"
+  ],
+  "root_cause": "The Trello node may not be properly configured to retrieve the list ID for the cards, leading to a failure in fetching the necessary data. This can occur if the node does not handle the API response correctly or if there are issues with the Trello API itself.",
+  "fix_steps": [
+    "Use an HTTP request node to manually fetch the cards information for the board.",
+    "Replace the board ID in the request URL with your specific board ID.",
+    "Test the HTTP request to ensure it retrieves the correct data."
+  ],
+  "agent_instruction": "Use an HTTP request node to fetch card information from Trello instead of relying on the Trello node.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "trello",
+    "node",
+    "loading",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/trello-not-fetching-and-stuck-on-forever-loading-but-connection-tested-successfully/218181"
+  ]
+}

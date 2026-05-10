@@ -1,0 +1,38 @@
+{
+  "id": "1da1ae470d13",
+  "tool": "n8n",
+  "error_signature": "Stop and Error node returns empty output",
+  "context_key": "Stop and Error node",
+  "title": "Stop and Error node not returning expected output",
+  "symptom": "The output of the 'Stop and Error' node is empty, even when catching errors in a parent workflow.",
+  "applies_when": [
+    "Using Stop and Error node",
+    "Catching errors in a parent workflow"
+  ],
+  "not_this_if": [
+    "Errors are handled in the parent workflow without using Stop and Error"
+  ],
+  "root_cause": "The 'Stop and Error' node may not return the error object as expected due to how errors are caught and processed in n8n. When an error object is thrown, it is often converted to a string, leading to empty outputs in certain configurations.",
+  "fix_steps": [
+    "Use JSON.stringify to convert the error object to a string before throwing it in the Stop and Error node.",
+    "In the parent workflow, parse the string back into an object using JSON.parse."
+  ],
+  "agent_instruction": "Stringify your error object before throwing it in the Stop and Error node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "stop-and-error",
+    "error-handling",
+    "workflow",
+    "json"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-does-error-objects-works/119070"
+  ]
+}

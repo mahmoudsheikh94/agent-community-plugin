@@ -1,0 +1,40 @@
+{
+  "id": "abcb7b5e71e9",
+  "tool": "n8n",
+  "error_signature": "Authorization failed - please check your credentials",
+  "context_key": "fal-ai-node",
+  "title": "Fal.ai API key authorization failure",
+  "symptom": "Users receive an 'Authorization failed' error when trying to access fal.ai nodes, indicating issues with the API key.",
+  "applies_when": [
+    "Using fal.ai node",
+    "Providing API key for authorization"
+  ],
+  "not_this_if": [
+    "Using a valid API key in the correct format"
+  ],
+  "root_cause": "The fal.ai API requires the API key to be included as an Authorization header in the request. If the key is not formatted correctly or not included, authentication will fail.",
+  "fix_steps": [
+    "Open the HTTP node settings in your workflow",
+    "Add the fal.ai API key as an Authorization header in the format 'Authorization: Key $FAL_KEY'",
+    "Save the workflow",
+    "Test the node again"
+  ],
+  "agent_instruction": "Ensure the fal.ai API key is added as an Authorization header in the HTTP node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "fal-ai",
+    "api-key",
+    "authorization",
+    "http-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.23.8",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/fal-ai-api-key-not-working/101203"
+  ]
+}

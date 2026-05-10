@@ -1,0 +1,39 @@
+{
+  "id": "ed4bb26c85b7",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'replace')",
+  "context_key": "gpt-3.5-turbo",
+  "title": "Error with gpt-3.5-turbo due to prompt sensitivity",
+  "symptom": "When using the gpt-3.5-turbo model with certain prompts, n8n throws an error stating 'Cannot read properties of undefined (reading 'replace')'. This does not occur with the gpt-4 model.",
+  "applies_when": [
+    "Using gpt-3.5-turbo model",
+    "Specific prompts that may be sensitive"
+  ],
+  "not_this_if": [
+    "Using gpt-4 model",
+    "Different prompts that do not trigger the error"
+  ],
+  "root_cause": "The gpt-3.5-turbo model is more sensitive to the structure and content of the prompts provided. If the prompt does not meet certain expectations, it can lead to undefined values being accessed, resulting in the error when trying to read properties like 'replace'.",
+  "fix_steps": [
+    "Revise the prompt for gpt-3.5-turbo to include clear instructions and examples.",
+    "Test the workflow again with the updated prompt."
+  ],
+  "agent_instruction": "Update the prompt for the gpt-3.5-turbo model to ensure it includes clear instructions and examples.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gpt-3.5-turbo",
+    "prompt-sensitivity",
+    "error-handling",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/what-is-the-reason-for-this-error-cannot-read-properties-of-undefined-reading-replace/144950"
+  ]
+}

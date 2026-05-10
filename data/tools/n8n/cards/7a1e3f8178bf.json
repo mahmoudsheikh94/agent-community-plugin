@@ -1,0 +1,41 @@
+{
+  "id": "7a1e3f8178bf",
+  "tool": "n8n",
+  "error_signature": "unsupported file type",
+  "context_key": "gmail-node",
+  "title": "Gmail attachment shows unsupported file type",
+  "symptom": "When sending an MP4 file as an attachment via Gmail, the recipient sees 'unsupported file type'. The file appears to be sent correctly, but cannot be previewed.",
+  "applies_when": [
+    "Using Gmail node to send emails",
+    "Attaching MP4 files"
+  ],
+  "not_this_if": [
+    "File plays correctly on local machine",
+    "File is not an MP4 format"
+  ],
+  "root_cause": "The issue arises not from n8n but from Gmail's web player, which may not support certain codecs used in the MP4 file. If the video is encoded in a codec that Gmail cannot handle, it will show as unsupported despite being a valid MP4 file.",
+  "fix_steps": [
+    "Download the MP4 file from the email and test it on your computer to ensure it plays correctly.",
+    "Re-export the video using the H.264 codec and ensure the 'web optimized' or 'fast start' option is checked.",
+    "Change the file extension back to a standard '.mp4' in Google Drive."
+  ],
+  "agent_instruction": "Re-export the video with H.264 codec and ensure it is web optimized.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "gmail",
+    "mp4",
+    "attachment",
+    "video",
+    "codec"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-send-mp4-as-gmail-attachment-even-tho-everything-is-set-up/267902"
+  ]
+}

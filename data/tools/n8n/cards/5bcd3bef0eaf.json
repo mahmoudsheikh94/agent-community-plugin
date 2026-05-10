@@ -1,0 +1,39 @@
+{
+  "id": "5bcd3bef0eaf",
+  "tool": "n8n",
+  "error_signature": "workflow completed successfully but didn't finish the loop",
+  "context_key": "code-node",
+  "title": "Loop processing halted due to missing return in code node",
+  "symptom": "The workflow indicates completion, but not all items in the loop are processed. The last processed item is shown, but the next iteration does not start.",
+  "applies_when": [
+    "Using a loop in the workflow",
+    "Code node is part of the loop"
+  ],
+  "not_this_if": [
+    "All items in the loop are processed successfully"
+  ],
+  "root_cause": "The code node did not return any data, which is necessary for the merge node to function correctly. Without a return value, the workflow cannot proceed to the next iteration of the loop.",
+  "fix_steps": [
+    "Ensure the code node returns data at the end of its execution.",
+    "Consider placing the loop logic inside a subflow using the execute workflow node.",
+    "Set the execute workflow node to always return an item."
+  ],
+  "agent_instruction": "Modify the code node to ensure it always returns data to continue the loop.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "loop",
+    "code-node",
+    "workflow",
+    "execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-completed-sucessfully-but-didnt-finsih-the-loop/200629"
+  ]
+}

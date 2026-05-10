@@ -1,0 +1,39 @@
+{
+  "id": "067311881e78",
+  "tool": "n8n",
+  "error_signature": "ERROR: No path back to node",
+  "context_key": "credential-store",
+  "title": "No path back to node error when saving credentials",
+  "symptom": "When trying to save a Bearer token in the credential store, n8n throws 'ERROR: No path back to node'. This occurs when editing or cloning workflows that use expressions for the token.",
+  "applies_when": [
+    "Using expressions to set Bearer tokens",
+    "Editing or cloning workflows"
+  ],
+  "not_this_if": [
+    "Creating new workflows from scratch without expressions"
+  ],
+  "root_cause": "The error occurs because the variable used in the expression must be correctly passed from the previous node to the HTTP request node. If the variable is not properly defined or named, n8n cannot establish a path back to the node that generates the token.",
+  "fix_steps": [
+    "Ensure the variable is correctly set in the Edit Fields node",
+    "Use the exact same name for the fields in the expressions",
+    "Test the workflow to confirm the variable is being passed correctly"
+  ],
+  "agent_instruction": "Verify the variable name and ensure it is correctly passed to the HTTP request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "credentials",
+    "bearer-token",
+    "error",
+    "workflow-editing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/credential-store-for-api-now-giving-error-no-path-back-to-node-when-using-expression/237901"
+  ]
+}

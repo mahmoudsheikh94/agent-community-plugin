@@ -1,0 +1,40 @@
+{
+  "id": "9ad4baf19b7b",
+  "tool": "n8n",
+  "error_signature": "No binary data exists on item!",
+  "context_key": "microsoft-outlook-node",
+  "title": "Missing binary data in Outlook email attachment",
+  "symptom": "The email sent via the Microsoft Outlook node does not include the intended PDF attachment, and the error 'No binary data exists on item!' is displayed.",
+  "applies_when": [
+    "Using Microsoft Outlook node",
+    "Fetching PDF via HTTP Request node"
+  ],
+  "not_this_if": [
+    "Binary data is correctly passed from another source",
+    "Using a different email service"
+  ],
+  "root_cause": "The error occurs because the binary data fetched from the HTTP Request node is not properly passed to the Microsoft Outlook node, often due to incorrect node connections or missing merge steps in the workflow.",
+  "fix_steps": [
+    "Check the connections between nodes to ensure they are correctly set up.",
+    "Add a Merge node to combine the binary data before it reaches the Microsoft Outlook node.",
+    "Test the workflow again to confirm the attachment is sent."
+  ],
+  "agent_instruction": "Ensure the binary data is properly merged and passed to the Microsoft Outlook node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "microsoft-outlook",
+    "http-request",
+    "binary-data",
+    "email-attachment"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/send-binary-file-pdf-using-outlook-api-email/74020"
+  ]
+}

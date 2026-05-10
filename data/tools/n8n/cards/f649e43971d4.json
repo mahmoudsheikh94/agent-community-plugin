@@ -1,0 +1,39 @@
+{
+  "id": "f649e43971d4",
+  "tool": "n8n",
+  "error_signature": "/bin/sh: curl: not found",
+  "context_key": "execute-command-node",
+  "title": "Curl not found in Execute Command node",
+  "symptom": "When executing a command in the Execute Command node, n8n returns an error stating '/bin/sh: curl: not found'. This indicates that the curl utility is not available in the Docker container.",
+  "applies_when": [
+    "Using Execute Command node",
+    "Running n8n in a Docker container"
+  ],
+  "not_this_if": [
+    "Curl is installed in the Docker image",
+    "Using a different command that does not require curl"
+  ],
+  "root_cause": "The n8n Docker images do not include package managers like apt-get or apk, which means that utilities like curl are not available by default. This is common in minimal Docker images to reduce size and complexity.",
+  "fix_steps": [
+    "Modify your Dockerfile to include the necessary commands to install curl.",
+    "Use the provided solution to copy apk from an Alpine image and install curl using apk."
+  ],
+  "agent_instruction": "Update your Dockerfile to install curl by copying apk from an Alpine image and using it to install curl.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "docker",
+    "execute-command",
+    "curl",
+    "installation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.6.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/curl-not-found-in-execute-command/260629"
+  ]
+}

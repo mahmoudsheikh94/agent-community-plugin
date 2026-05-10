@@ -1,0 +1,39 @@
+{
+  "id": "80ad405ed22a",
+  "tool": "n8n",
+  "error_signature": "Your Slack credential is missing required Oauth Scopes",
+  "context_key": "slack-oauth2-credentials",
+  "title": "Missing 'search:read' scope in Slack OAuth2 credentials",
+  "symptom": "When attempting to use Slack credentials, n8n throws an error indicating that required OAuth scopes are missing. Specifically, it mentions the 'search:read' scope is not included.",
+  "applies_when": [
+    "Using Slack OAuth2 credentials",
+    "Attempting to perform actions that require 'search:read' scope"
+  ],
+  "not_this_if": [
+    "The required scope is already included in the OAuth credentials"
+  ],
+  "root_cause": "The default set of scopes for Slack OAuth2 credentials in n8n did not include the 'search:read' scope, which is necessary for searching messages. This omission can lead to errors when workflows attempt to use this functionality.",
+  "fix_steps": [
+    "Check the current version of n8n to ensure it includes the fix for the missing scope.",
+    "If on an outdated version, follow the documentation to update your n8n cloud instance."
+  ],
+  "agent_instruction": "Ensure your n8n instance is updated to the latest version to include the 'search:read' scope in Slack OAuth2 credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "slack",
+    "oauth2",
+    "credentials",
+    "search:read",
+    "n8n-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/slack-app-still-not-including-search-read-scope/218774"
+  ]
+}

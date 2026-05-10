@@ -1,0 +1,39 @@
+{
+  "id": "b3952577d314",
+  "tool": "n8n",
+  "error_signature": "Execute Command node not showing up",
+  "context_key": "execute-command-node",
+  "title": "Execute Command node not appearing in n8n",
+  "symptom": "The Execute Command node is not visible in the node selection menu, despite enabling it via environment variables.",
+  "applies_when": [
+    "Using n8n version 2.0 or later",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Execute Command node is visible in the node selection menu"
+  ],
+  "root_cause": "Since n8n version 2.0, the Execute Command node is disabled by default through the NODES_EXCLUDE environment variable. Users must explicitly re-enable it to make it available in the node selection.",
+  "fix_steps": [
+    "Open your docker-compose.yml file.",
+    "Set the NODES_EXCLUDE environment variable to allow the Execute Command node, either by enabling all nodes or selectively excluding others.",
+    "Recreate the Docker container using 'docker compose down' followed by 'docker compose up -d'."
+  ],
+  "agent_instruction": "Modify the NODES_EXCLUDE variable in your docker-compose.yml to enable the Execute Command node and recreate the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "execute-command",
+    "docker",
+    "n8n",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-enable-execute-command-node/268110"
+  ]
+}

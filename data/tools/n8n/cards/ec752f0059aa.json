@@ -1,0 +1,40 @@
+{
+  "id": "ec752f0059aa",
+  "tool": "n8n",
+  "error_signature": "Using the item method doesn’t work with pinned data",
+  "context_key": "Lead / Campanha node",
+  "title": "Item method error with pinned data in Lead / Campanha node",
+  "symptom": "The workflow occasionally fails with an error stating that the item method doesn’t work with pinned data, despite the node not being pinned. This happens inconsistently during executions.",
+  "applies_when": [
+    "Using the Lead / Campanha node",
+    "Attempting to access data using the item method"
+  ],
+  "not_this_if": [
+    "The node is pinned during execution",
+    "The workflow does not use the item method"
+  ],
+  "root_cause": "The error occurs because the workflow is trying to access data from a previous node that is no longer relevant due to the execution context changing. When the last node is a wait node, it does not provide the expected data structure for the item method.",
+  "fix_steps": [
+    "Ensure that the node is not pinned during execution",
+    "Avoid using the item method directly on data that may not be available due to execution context changes",
+    "Consider restructuring the workflow to handle data retrieval more reliably"
+  ],
+  "agent_instruction": "Avoid using the item method on data from nodes that may not be relevant in the current execution context.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "Lead / Campanha",
+    "item method",
+    "pinned data",
+    "workflow execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.92.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-with-pinned-data-but-the-node-is-not-pinned/129383"
+  ]
+}

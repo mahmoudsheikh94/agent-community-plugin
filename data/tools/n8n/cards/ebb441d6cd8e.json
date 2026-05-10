@@ -1,0 +1,40 @@
+{
+  "id": "ebb441d6cd8e",
+  "tool": "n8n",
+  "error_signature": "Shopify webhook URL includes a port number",
+  "context_key": "shopify-webhook",
+  "title": "Shopify webhook not triggering due to port number",
+  "symptom": "Shopify is not triggering the order creation event in n8n, resulting in no executions. The webhook URL is incorrectly configured with a port number.",
+  "applies_when": [
+    "Using Shopify to trigger webhooks",
+    "n8n is hosted on a public domain"
+  ],
+  "not_this_if": [
+    "Webhook URL does not include a port number",
+    "n8n is not behind a reverse proxy"
+  ],
+  "root_cause": "Shopify requires the webhook URL to be publicly accessible without a port number. If a port number is included, Shopify cannot reach the n8n instance, leading to failed webhook triggers.",
+  "fix_steps": [
+    "Update the n8n environment variables to set WEBHOOK_URL without a port number.",
+    "Ensure N8N_HOST and N8N_PROTOCOL are correctly set to match the public domain.",
+    "Restart the n8n instance to apply the changes."
+  ],
+  "agent_instruction": "Update the n8n environment variables to remove the port from the webhook URL and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "shopify",
+    "webhook",
+    "n8n",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/shopify-order-creation-event-not-triggering/230901"
+  ]
+}

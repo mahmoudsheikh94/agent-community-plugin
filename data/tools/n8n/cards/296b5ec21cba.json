@@ -1,0 +1,40 @@
+{
+  "id": "296b5ec21cba",
+  "tool": "n8n",
+  "error_signature": "Webhooks are not responding with binary data",
+  "context_key": "webhook-node",
+  "title": "Webhooks not returning binary data after upgrade",
+  "symptom": "After upgrading to n8n version 1.104.1, webhooks fail to return binary data. Users report that the expected binary response is missing.",
+  "applies_when": [
+    "Using webhook node",
+    "Upgraded from version 1.103.1 to 1.104.1"
+  ],
+  "not_this_if": [
+    "Using an older version than 1.104.1",
+    "Webhook responses are expected to be in HTML format"
+  ],
+  "root_cause": "The upgrade to version 1.104.1 introduced a change in how webhook responses are handled, specifically wrapping responses in an iframe. This affects the ability to return binary data correctly.",
+  "fix_steps": [
+    "Upgrade n8n to version 1.104.2 or later",
+    "Check the release notes for changes related to webhook responses",
+    "If necessary, set the environment variable to disable iframe sandboxing for webhooks"
+  ],
+  "agent_instruction": "Upgrade to n8n version 1.104.2 to resolve the binary data issue with webhooks.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "webhook",
+    "binary-data",
+    "upgrade",
+    "n8n-1.104.2"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.104.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhooks-are-not-returning-binary-data-after-the-upgrade/158557"
+  ]
+}

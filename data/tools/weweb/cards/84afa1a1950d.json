@@ -1,0 +1,42 @@
+{
+  "id": "84afa1a1950d",
+  "tool": "weweb",
+  "error_signature": "datagrid action submits form",
+  "context_key": "datagrid",
+  "title": "Datagrid action triggers form submission",
+  "symptom": "Clicking any action in the datagrid submits the entire form, even without workflows defined. This behavior complicates form validation and layout.",
+  "applies_when": [
+    "Datagrid is inside a form",
+    "Action buttons in the datagrid are not defined with a type"
+  ],
+  "not_this_if": [
+    "Datagrid is outside the form",
+    "Action buttons have a defined type"
+  ],
+  "root_cause": "When a button inside a form does not have a defined type, it defaults to 'submit', causing the form to submit when the button is clicked. This is a common behavior in HTML forms.",
+  "fix_steps": [
+    "Fork the datagrid component",
+    "Open ActionCellRenderer.vue",
+    "Locate the button definition",
+    "Add 'type=\"button\"' to the button element",
+    "Save the changes"
+  ],
+  "agent_instruction": "Fork the datagrid component and set the button type to 'button' in ActionCellRenderer.vue.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "datagrid",
+    "form",
+    "button-type",
+    "action"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/datagrid-action-submits-form/17633"
+  ]
+}

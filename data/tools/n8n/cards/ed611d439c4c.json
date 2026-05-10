@@ -1,0 +1,40 @@
+{
+  "id": "ed611d439c4c",
+  "tool": "n8n",
+  "error_signature": "pending_update_count not reset on workflow reactivation",
+  "context_key": "telegram-trigger-node",
+  "title": "Pending updates not cleared on Telegram Trigger reactivation",
+  "symptom": "When reactivating a Telegram Trigger workflow, all messages sent during deactivation are processed, leading to a growing pending update count.",
+  "applies_when": [
+    "Using Telegram Trigger node",
+    "Workflow has been deactivated and reactivated"
+  ],
+  "not_this_if": [
+    "No messages were sent during the deactivation period"
+  ],
+  "root_cause": "The Telegram Trigger node retains messages sent while the workflow is inactive, processing them upon reactivation. This behavior may not align with user expectations, as it can lead to unintended message handling.",
+  "fix_steps": [
+    "Use a Webhook node instead of the Telegram Trigger node.",
+    "Manually set the webhook URL using the `setWebhook` endpoint.",
+    "Clear the existing webhook using the `deleteWebhook` endpoint when stopping the workflow.",
+    "Include the `drop_pending_updates` parameter in the `setWebhook` call."
+  ],
+  "agent_instruction": "Switch to using a Webhook node and configure it to clear pending updates on reactivation.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "telegram",
+    "trigger-node",
+    "pending-updates",
+    "webhook"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-node-setwebhook-drop-pending-updates-true/115291"
+  ]
+}

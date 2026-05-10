@@ -1,0 +1,40 @@
+{
+  "id": "9f9c1f58ff6b",
+  "tool": "n8n",
+  "error_signature": "No binary data found in input. Check previous node output.",
+  "context_key": "Code: Validate & Pick Binary1",
+  "title": "Binary data becomes undefined after remapping",
+  "symptom": "After remapping the binary key from 'data' to 'audio', the next Code node reports that no binary data is found, leading to an error.",
+  "applies_when": [
+    "Using Webhook node to receive binary data",
+    "Remapping binary key in Code node"
+  ],
+  "not_this_if": [
+    "Binary data is correctly referenced in subsequent nodes",
+    "Error occurs in a different node or context"
+  ],
+  "root_cause": "The remapping of the binary key from 'data' to 'audio' may not be correctly implemented, causing the subsequent node to fail in finding the expected binary data. This can happen if the return format is not properly structured or if the binary data is not correctly assigned.",
+  "fix_steps": [
+    "Use the provided function to rename the binary key in the Code node: renameBinary($input.item.binary, 'data', 'audio');",
+    "Ensure the return statement in the Code node is structured as an object, not an array: return { json: $json, binary: { audio } };",
+    "Check the output of the previous node to confirm the binary data is present before the remapping."
+  ],
+  "agent_instruction": "Implement the renaming function and ensure the return format is correct in the Code node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "binary-data",
+    "code-node",
+    "webhook",
+    "remapping"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.1-exp.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/binary-audio-becomes-undefined-in-code-node-after-successful-binary-upload-via-webhook-node/189688"
+  ]
+}

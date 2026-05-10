@@ -1,0 +1,41 @@
+{
+  "id": "772e672a66c4",
+  "tool": "weweb",
+  "error_signature": "user object not set correctly after auth",
+  "context_key": "supabaseAuth",
+  "title": "User object not set after Supabase authentication",
+  "symptom": "After setting the auth token, the user object remains null, and isAuthenticated shows false despite successful token validation.",
+  "applies_when": [
+    "Using Supabase for authentication",
+    "Setting auth token via API call"
+  ],
+  "not_this_if": [
+    "User object is correctly set in the Supabase session"
+  ],
+  "root_cause": "The Supabase V1 SDK does not automatically set the user object after authentication, leading to a situation where the user is not recognized even though the token is valid.",
+  "fix_steps": [
+    "Manually save the session using supabase.auth._saveSession with the result from the previous step.",
+    "Notify subscribers of the sign-in event using supabase.auth._notifyAllSubscribers('SIGNED_IN').",
+    "Optionally, call supabase.auth.update({}) to refresh the user data."
+  ],
+  "agent_instruction": "Manually save the session and notify subscribers to update the user object in Supabase.",
+  "safety_notes": [
+    "Using internal Supabase functions may lead to unexpected behavior in future updates."
+  ],
+  "fix_type": "code_change",
+  "tags": [
+    "supabase",
+    "authentication",
+    "user-object",
+    "session-management"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/is-there-a-way-to-set-the-supabase-auth-token-manually/5252"
+  ]
+}

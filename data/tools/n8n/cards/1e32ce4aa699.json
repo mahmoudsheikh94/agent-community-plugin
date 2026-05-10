@@ -1,0 +1,39 @@
+{
+  "id": "1e32ce4aa699",
+  "tool": "n8n",
+  "error_signature": "Received tool input did not match expected schema",
+  "context_key": "MCP Server tool",
+  "title": "Input schema mismatch with MCP Server tool",
+  "symptom": "The AI Agent encounters an error stating 'Received tool input did not match expected schema' when communicating with the MCP Server tool.",
+  "applies_when": [
+    "Using MCP Server tool",
+    "n8n version 1.102.3"
+  ],
+  "not_this_if": [
+    "Error occurs with a different MCP Server",
+    "No error present in other workflows"
+  ],
+  "root_cause": "The error indicates that the input being sent to the MCP Server does not conform to the expected schema defined by the server. This can happen due to incorrect data formatting or missing required fields in the request.",
+  "fix_steps": [
+    "Add a code node in the workflow before the MCP Server tool to log the output being sent.",
+    "Alternatively, enable the 'Return Intermediate Steps' option in the workflow settings to inspect the data being sent."
+  ],
+  "agent_instruction": "Log the output being sent to the MCP Server to identify schema mismatches.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "MCP Server",
+    "input schema",
+    "debugging",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-received-tool-input-did-not-match-expected-schema-at-proxy-call/153590"
+  ]
+}

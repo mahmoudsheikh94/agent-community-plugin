@@ -1,0 +1,41 @@
+{
+  "id": "7c647b131c14",
+  "tool": "n8n",
+  "error_signature": "n8n ignores Postgres configuration",
+  "context_key": "postgres-configuration",
+  "title": "Postgres configuration typo in n8n setup",
+  "symptom": "n8n fails to connect to Postgres and defaults to SQLite, with no error logs indicating the issue.",
+  "applies_when": [
+    "Using Postgres as the intended database",
+    "Configured n8n with environment variables"
+  ],
+  "not_this_if": [
+    "Using a different database type",
+    "Error messages indicate a different issue"
+  ],
+  "root_cause": "The configuration for the database type was incorrectly specified as 'postgres' instead of the required 'postgresdb'. This typo prevents n8n from recognizing the intended database type and leads to defaulting to SQLite.",
+  "fix_steps": [
+    "Open your ecosystem.config.js file",
+    "Change DB_TYPE: 'postgres' to DB_TYPE: 'postgresdb'",
+    "Save the changes",
+    "Restart n8n to apply the new configuration"
+  ],
+  "agent_instruction": "Correct the database type in your configuration file and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "configuration",
+    "n8n",
+    "database-setup"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-ignores-postgres-in-config-file-new-install/82685"
+  ]
+}

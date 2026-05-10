@@ -1,0 +1,41 @@
+{
+  "id": "f9c2896721e4",
+  "tool": "n8n",
+  "error_signature": "No model found called ‘gemini-2.5-flash-preview-05-20’",
+  "context_key": "google-vertex-chat-model",
+  "title": "Vertex model not found error",
+  "symptom": "When attempting to use the Vertex chat model with a specific model name, an error indicates that the model is not found.",
+  "applies_when": [
+    "Using Google Vertex Chat Model node",
+    "Specifying a model name"
+  ],
+  "not_this_if": [
+    "Region is set correctly",
+    "Model name is valid"
+  ],
+  "root_cause": "The error occurs because the specified model is not available in the default region. Google Vertex AI requires the correct region to access specific models, and if the region is not set to one that supports the model, it will return a 'model not found' error.",
+  "fix_steps": [
+    "Open the Google Vertex Chat Model node settings",
+    "Set the region to 'us-central1'",
+    "Save the workflow",
+    "Test the model again"
+  ],
+  "agent_instruction": "Change the region setting to 'us-central1' in the Google Vertex Chat Model node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-vertex",
+    "chat-model",
+    "model-not-found",
+    "region-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.0.7",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/vertex-model-chat-model-not-found/129691"
+  ]
+}

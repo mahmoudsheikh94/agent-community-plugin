@@ -1,0 +1,38 @@
+{
+  "id": "a4a90961f341",
+  "tool": "n8n",
+  "error_signature": "OpenAI: Rate limit reached",
+  "context_key": "openrouter-node",
+  "title": "OpenAI Rate Limit Error with OpenRouter Node",
+  "symptom": "When invoking the OpenRouter Node with a specific model, the error 'OpenAI: Rate limit reached' occurs. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using OpenRouter Node",
+    "Selected model is 'moonshotai/kimi-k2:free'"
+  ],
+  "not_this_if": [
+    "Using a different model like 'moonshotai/kimi-k2'"
+  ],
+  "root_cause": "The error occurs because the selected model 'moonshotai/kimi-k2:free' has a rate limit that is being exceeded. This can happen if the model is being called too frequently or if the API key has restrictions on usage.",
+  "fix_steps": [
+    "Change the model from 'moonshotai/kimi-k2:free' to 'moonshotai/kimi-k2'",
+    "Save the changes and re-run the workflow"
+  ],
+  "agent_instruction": "Switch to the 'moonshotai/kimi-k2' model in the OpenRouter Node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "openrouter",
+    "openai",
+    "rate-limit",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/incorrect-credential-invoke-for-openrouter-node-agent-node/154177"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "8ded50c3e3e2",
+  "tool": "n8n",
+  "error_signature": "DNS Error",
+  "context_key": "on-form-submission-node",
+  "title": "DNS Error in On Form Submission Node",
+  "symptom": "When executing the On Form Submission node, a DNS Error occurs, indicating issues with the webhook URL. The URL appears to have an unwanted space, causing the error.",
+  "applies_when": [
+    "Using On Form Submission node",
+    "Self-hosted n8n with ngrok"
+  ],
+  "not_this_if": [
+    "No DNS Error occurs",
+    "Webhook URL is correctly formatted without spaces"
+  ],
+  "root_cause": "The DNS Error is likely caused by incorrect formatting of the WEBHOOK_URL environment variable, particularly if there are spaces or incorrect quotes. This can prevent n8n from resolving the URL correctly during execution.",
+  "fix_steps": [
+    "Set the WEBHOOK_URL environment variable with double quotes around the entire URL: `set \"WEBHOOK_URL=https://77530af20fbe.ngrok-free.app\" && npx n8n`",
+    "Ensure there are no spaces in the URL and that it ends with a trailing slash if necessary.",
+    "Restart n8n and try executing the On Form Submission node again."
+  ],
+  "agent_instruction": "Set the WEBHOOK_URL with proper quotes and no spaces, then restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ngrok",
+    "webhook",
+    "DNS",
+    "on-form-submission",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/dns-error-of-on-form-submission-node/163613"
+  ]
+}

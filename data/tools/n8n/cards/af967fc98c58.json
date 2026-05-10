@@ -1,0 +1,41 @@
+{
+  "id": "af967fc98c58",
+  "tool": "n8n",
+  "error_signature": "JS code node just loading and timing out",
+  "context_key": "n8n-js-node",
+  "title": "JS code node timing out in external task runner setup",
+  "symptom": "When executing a workflow with a JS code node, it keeps loading indefinitely and eventually times out.",
+  "applies_when": [
+    "Using external task runners",
+    "Running JS code in workflows"
+  ],
+  "not_this_if": [
+    "Using internal task runner mode",
+    "No JS code node in the workflow"
+  ],
+  "root_cause": "The external task runner requires an additional environment variable, N8N_RUNNERS_RUNNER_TYPE, to specify the type of runner being used. Without this variable set, the JS code node cannot execute properly, leading to timeouts.",
+  "fix_steps": [
+    "Open the n8n service configuration in your Docker Compose file.",
+    "Add the environment variable N8N_RUNNERS_RUNNER_TYPE with the value 'javascript'.",
+    "Restart the n8n service to apply the changes."
+  ],
+  "agent_instruction": "Set the N8N_RUNNERS_RUNNER_TYPE environment variable to 'javascript' in the n8n service configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "javascript",
+    "task-runner",
+    "timeout",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.117.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/compose-file-for-running-task-runner/214690"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "e3e0bfae595e",
+  "tool": "n8n",
+  "error_signature": "ERR_ASSERTION - refreshToken is required",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets node requires a valid refresh token",
+  "symptom": "When attempting to access a Google Sheet, n8n throws an error stating 'refreshToken is required'. This indicates an authentication issue preventing access to the sheet.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Credentials have been added"
+  ],
+  "not_this_if": [
+    "Error occurs with a different node",
+    "Credentials are valid and working"
+  ],
+  "root_cause": "The error occurs because n8n requires a valid refresh token to maintain the authentication session with Google Sheets. If the refresh token is missing, expired, or invalid, the connection cannot be established.",
+  "fix_steps": [
+    "Ensure the Google Sheet is shared with the service account email or your Google account used in n8n.",
+    "Verify that the credentials include a valid refresh token.",
+    "If using a service account, check that the JSON key file is valid and not expired.",
+    "Double-check the sheet ID or document name for accuracy."
+  ],
+  "agent_instruction": "Ensure the Google Sheet is shared correctly and verify the refresh token in your credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "authentication",
+    "refresh-token",
+    "service-account"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/err-assertion-refreshtoken-is-required/119609"
+  ]
+}

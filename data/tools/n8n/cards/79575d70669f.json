@@ -1,0 +1,38 @@
+{
+  "id": "79575d70669f",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials?",
+  "context_key": "http-request-node",
+  "title": "Forbidden error when sending binary data to URL",
+  "symptom": "When attempting to upload binary data to a presigned URL, n8n returns a 'Forbidden - perhaps check your credentials?' error.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending binary data to a presigned URL"
+  ],
+  "not_this_if": [
+    "Uploading plain/text data works without issues"
+  ],
+  "root_cause": "The error occurs because the HTTP request for binary data is not properly configured, potentially due to missing headers or incorrect permissions in the environment settings for the n8n instance.",
+  "fix_steps": [
+    "Ensure the HTTP request is configured to send binary data correctly.",
+    "Add the necessary environment variables to your docker-compose.yml file: NODE_FUNCTION_ALLOW_BUILTIN=https,http,url."
+  ],
+  "agent_instruction": "Configure the HTTP Request node to send binary data and update your docker-compose.yml with the required environment variables.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "binary-data",
+    "forbidden-error",
+    "docker-compose"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-put-raw-data/277207"
+  ]
+}

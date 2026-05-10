@@ -1,0 +1,40 @@
+{
+  "id": "11cdc07daace",
+  "tool": "n8n",
+  "error_signature": "406 Not Acceptable",
+  "context_key": "httpRequest-node",
+  "title": "406 error when calling KnowBe4 API from n8n",
+  "symptom": "When executing an HTTP Request node to the KnowBe4 API, n8n returns a 406 Not Acceptable error, while the same request works in Postman.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending requests to KnowBe4 API"
+  ],
+  "not_this_if": [
+    "Request works in Postman without modifications"
+  ],
+  "root_cause": "The KnowBe4 API requires an 'Accept' header to specify the response format. Postman automatically includes this header, but n8n does not, leading to the 406 error when the header is missing.",
+  "fix_steps": [
+    "Open the HTTP Request node settings in n8n.",
+    "Add a new header with the name 'Accept' and set its value to 'application/json'.",
+    "Save the workflow and execute it again."
+  ],
+  "agent_instruction": "Add an 'Accept' header with the value 'application/json' to the HTTP Request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "knowbe4",
+    "httpRequest",
+    "API",
+    "406",
+    "headers"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/406-on-knowbe4-api-when-running-n8n-postman-is-fine/168631"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "2508f84ff826",
+  "tool": "n8n",
+  "error_signature": "The param ‘redirect_uri’ has an invalid value.",
+  "context_key": "Pushbullet OAuth",
+  "title": "Invalid redirect_uri for Pushbullet OAuth",
+  "symptom": "When attempting to grant access in Pushbullet, the error 'The param ‘redirect_uri’ has an invalid value.' is displayed.",
+  "applies_when": [
+    "Using Pushbullet OAuth",
+    "Configured n8n with a custom domain"
+  ],
+  "not_this_if": [
+    "Using default callback URL without modifications",
+    "Not using a reverse proxy"
+  ],
+  "root_cause": "The redirect URI must match the one configured in the OAuth client settings. If n8n is running in a Docker container with a reverse proxy, the callback URL must be set to the public domain, and the environment variable WEBHOOK_TUNNEL_URL must be configured accordingly.",
+  "fix_steps": [
+    "Set the environment variable WEBHOOK_TUNNEL_URL to your domain (e.g., export WEBHOOK_TUNNEL_URL=https://n8n.mydomain.tld/)",
+    "Restart the n8n Docker container to apply the changes.",
+    "Update the redirect URI in the Pushbullet settings to match the public domain."
+  ],
+  "agent_instruction": "Set the WEBHOOK_TUNNEL_URL environment variable and restart the n8n container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "pushbullet",
+    "oauth",
+    "redirect_uri",
+    "docker",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/redirect-uri-for-pushbullet-via-docker-container/4582"
+  ]
+}

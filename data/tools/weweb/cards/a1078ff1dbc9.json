@@ -1,0 +1,40 @@
+{
+  "id": "a1078ff1dbc9",
+  "tool": "weweb",
+  "error_signature": "404 not found error",
+  "context_key": "static collection page",
+  "title": "Static page returns 404 not found error",
+  "symptom": "When trying to access a published static page, the browser shows a 404 not found error. The slug appears correct in the editor but fails to load on the published URL.",
+  "applies_when": [
+    "Using Static Collection and Static pages",
+    "Slug is correctly set in the editor"
+  ],
+  "not_this_if": [
+    "Page loads correctly in the editor",
+    "Different slug is used"
+  ],
+  "root_cause": "The error occurs when the collection page is incorrectly configured to refer to an object instead of an array. This misconfiguration prevents the static page from being published correctly, leading to a 404 error when accessed via the URL.",
+  "fix_steps": [
+    "Add a result.key to your collection to ensure it is an array.",
+    "Re-bind the collection page to the updated collection.",
+    "Re-publish the project to apply the changes."
+  ],
+  "agent_instruction": "Ensure the collection is an array by adding a result.key, re-bind the collection page, and re-publish the project.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "static-page",
+    "404-error",
+    "static-collection",
+    "binding"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/published-static-page-not-found/3136"
+  ]
+}

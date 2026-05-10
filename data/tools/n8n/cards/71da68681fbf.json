@@ -1,0 +1,40 @@
+{
+  "id": "71da68681fbf",
+  "tool": "n8n",
+  "error_signature": "cV^X value at index 0 contains invalid url",
+  "context_key": "notion-node",
+  "title": "Invalid URL for Notion 'File & media' property",
+  "symptom": "When trying to update a Notion database page with a file URL, n8n throws an error indicating the URL is invalid. The error message states that a file with type external cannot contain a Notion hosted file URL.",
+  "applies_when": [
+    "Using Notion node",
+    "Updating a database page with a file URL"
+  ],
+  "not_this_if": [
+    "Using a valid external file URL",
+    "Error occurs in a different context"
+  ],
+  "root_cause": "Notion has changed their API validation rules, disallowing the use of Notion-hosted URLs as external files. The n8n Notion node currently only supports external URLs, which leads to this validation error when attempting to use a Notion-hosted file URL.",
+  "fix_steps": [
+    "Download the file from the Notion CDN to your local or server storage.",
+    "Upload the file to an external storage service (e.g., S3, Cloudflare R2).",
+    "Use the stable URL from the external storage to update the Notion database page."
+  ],
+  "agent_instruction": "Re-host the file on an external storage service and use the new URL in the Notion node.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "notion",
+    "file-upload",
+    "API-validation",
+    "external-url"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.117.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/notion-database-pages-how-to-pass-a-file-to-a-file-media-property/234482"
+  ]
+}

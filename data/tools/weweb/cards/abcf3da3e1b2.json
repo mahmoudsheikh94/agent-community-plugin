@@ -1,0 +1,40 @@
+{
+  "id": "abcf3da3e1b2",
+  "tool": "weweb",
+  "error_signature": "icons not displaying from custom collection",
+  "context_key": "custom-icons-import",
+  "title": "Custom icons not displaying in WeWeb",
+  "symptom": "After attempting to import a custom icon collection, the icons do not appear in the WeWeb editor. The user sees a broken icon representation when trying to use them.",
+  "applies_when": [
+    "Using a custom icon collection",
+    "Icons file and list URLs are provided"
+  ],
+  "not_this_if": [
+    "Icons display correctly from default collections",
+    "No custom icons are being used"
+  ],
+  "root_cause": "The issue arises when the icons file URL is not correctly linked or the font files are not properly uploaded to WeWeb. If the icons file is served from an external source without proper access or if the font files are missing, the icons will not render.",
+  "fix_steps": [
+    "Download the icons file from the provided URL by right-clicking and selecting 'Save as'.",
+    "Upload the downloaded file to the 'Files' section in WeWeb.",
+    "Copy the link to the uploaded file and replace the existing icons-file.min.css link in the icon settings."
+  ],
+  "agent_instruction": "Ensure the icons file is uploaded to WeWeb and update the icon settings with the new file link.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "custom-icons",
+    "import",
+    "weweb",
+    "icons"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/importing-a-new-icons-collection/7056"
+  ]
+}

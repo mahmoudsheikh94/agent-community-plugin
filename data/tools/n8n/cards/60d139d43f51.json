@@ -1,0 +1,40 @@
+{
+  "id": "60d139d43f51",
+  "tool": "n8n",
+  "error_signature": "extra = before the inserted value",
+  "context_key": "fastbill-node",
+  "title": "Extra '=' in FastBill API request body",
+  "symptom": "When using expressions in the FastBill node, an extra '=' appears before the inserted values in the request body.",
+  "applies_when": [
+    "Using FastBill node",
+    "Defining request body with expressions"
+  ],
+  "not_this_if": [
+    "Using static values in the request body",
+    "Not using the FastBill node"
+  ],
+  "root_cause": "The issue arises from how expressions are evaluated in the node's body definition. When using the $evaluateExpression function, it can lead to incorrect formatting of the request body, resulting in an extra '=' character being added.",
+  "fix_steps": [
+    "Change the body definition to use the 'send' routing instead of directly embedding expressions.",
+    "Define the SERVICE property separately in the send routing.",
+    "Adjust the filter properties to send them correctly in the body."
+  ],
+  "agent_instruction": "Modify the FastBill node to use the 'send' routing for defining the request body.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "fastbill",
+    "api",
+    "node-development",
+    "request-body"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "latest",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-fastbill-node-development/225910"
+  ]
+}

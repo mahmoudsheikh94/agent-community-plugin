@@ -1,0 +1,41 @@
+{
+  "id": "8014cd8d3199",
+  "tool": "n8n",
+  "error_signature": "The service was not able to process your request",
+  "context_key": "OpenAI gpt-4o-transcribe-diarize model",
+  "title": "Error processing request with gpt-4o-transcribe-diarize model",
+  "symptom": "When attempting to use the gpt-4o-transcribe-diarize model with an mp3 file, the error 'The service was not able to process your request' is returned.",
+  "applies_when": [
+    "Using OpenAI node with gpt-4o-transcribe-diarize model",
+    "Input is an mp3 file"
+  ],
+  "not_this_if": [
+    "Using Whisper model for transcription",
+    "Input is not an mp3 file"
+  ],
+  "root_cause": "The gpt-4o-transcribe-diarize model does not accept binary data directly in the user prompt. Instead, it requires a direct API call to process audio files, which is not supported through the standard node configuration.",
+  "fix_steps": [
+    "Use an HTTP request node to call the OpenAI transcription endpoint",
+    "Pass the mp3 file as binary data in the request body",
+    "Configure the request with the necessary headers and parameters as per the OpenAI API documentation"
+  ],
+  "agent_instruction": "Make an HTTP request to the OpenAI transcription endpoint with the mp3 file as binary data.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "OpenAI",
+    "gpt-4o-transcribe-diarize",
+    "transcription",
+    "audio",
+    "HTTP request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.9",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-use-openai-node-with-gpt-4o-transcribe-diarize-model/258400"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "c7568de6dec2",
+  "tool": "weweb",
+  "error_signature": "need to reload the page to see updated votes",
+  "context_key": "Supabase integration",
+  "title": "Votes not updating without page reload",
+  "symptom": "Users must reload the page to see their vote reflected in the vote count. This leads to a poor user experience.",
+  "applies_when": [
+    "Using Supabase for vote tracking",
+    "Static collection for product data"
+  ],
+  "not_this_if": [
+    "Votes update automatically without page reload",
+    "Using a different database"
+  ],
+  "root_cause": "The front end does not automatically refresh the displayed vote count after a user votes. This is likely due to the static nature of the collection and the lack of a mechanism to fetch updated data post-vote.",
+  "fix_steps": [
+    "Add a Fetch collection action at the end of the voting workflow",
+    "Configure it to fetch the updated dynamic collection from Supabase",
+    "Test the workflow to ensure the vote count updates without a page reload"
+  ],
+  "agent_instruction": "Implement a Fetch collection action in the workflow to update the vote count dynamically.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "supabase",
+    "dynamic-collection",
+    "vote-update",
+    "frontend-refresh"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-reload-a-value-after-a-workflow-is-completed/8606"
+  ]
+}

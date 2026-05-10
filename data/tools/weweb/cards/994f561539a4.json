@@ -1,0 +1,39 @@
+{
+  "id": "994f561539a4",
+  "tool": "weweb",
+  "error_signature": "undefined value when extracting from array variable",
+  "context_key": "supabase-select-workflow",
+  "title": "Undefined value when extracting from array variable",
+  "symptom": "The user receives 'undefined' when trying to extract a specific field from an array variable after a successful query execution.",
+  "applies_when": [
+    "Using Supabase to fetch a single record",
+    "Storing the result in an array variable"
+  ],
+  "not_this_if": [
+    "The variable type is set to Object instead of Array"
+  ],
+  "root_cause": "The user was attempting to extract a value from an array variable when the expected result was a single object. This mismatch in variable type led to the 'undefined' output.",
+  "fix_steps": [
+    "Change the variable type from Array to Object",
+    "Re-run the workflow to ensure the correct data is retrieved",
+    "Access the desired field from the object variable"
+  ],
+  "agent_instruction": "Change the variable type to Object to correctly retrieve the data.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "workflow",
+    "variable-type",
+    "data-retrieval"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-make-a-proper-and-efficient-detail-page-for-a-collection-item-from-supabase/18792"
+  ]
+}

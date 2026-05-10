@@ -1,0 +1,39 @@
+{
+  "id": "ec3c222bc770",
+  "tool": "n8n",
+  "error_signature": "Task request timed out after 60 seconds",
+  "context_key": "n8n-runner-connection",
+  "title": "Task request timeout due to runner connection issues",
+  "symptom": "Code node executions fail with 'Task request timed out after 60 seconds'. This indicates that the task runner is not connecting properly.",
+  "applies_when": [
+    "Using external runners in queue mode",
+    "Running on Kubernetes"
+  ],
+  "not_this_if": [
+    "Task runner is functioning correctly after initial setup"
+  ],
+  "root_cause": "The timeout occurs when the task runner cannot connect to the broker within the specified time. This can happen due to network policies blocking communication between the runner and the worker or misconfigured environment variables preventing the runner from registering properly.",
+  "fix_steps": [
+    "Ensure that the network policies allow TCP connections on port 5679 between the runner pod and the worker pod.",
+    "Verify that the environment variables for the runner are correctly set, especially the task broker URI and authentication token."
+  ],
+  "agent_instruction": "Check and update the network policies and environment variables for the runner.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "kubernetes",
+    "n8n",
+    "runner",
+    "timeout",
+    "queue-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.9.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/task-request-timed-out-after-60-seconds-external-runner-queue-mode-on-kubernetes-v2-9-4/273616"
+  ]
+}

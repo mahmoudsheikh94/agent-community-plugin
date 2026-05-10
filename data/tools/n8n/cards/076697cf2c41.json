@@ -1,0 +1,39 @@
+{
+  "id": "076697cf2c41",
+  "tool": "n8n",
+  "error_signature": "Default Data Loader splitting input data",
+  "context_key": "default-data-loader",
+  "title": "Default Data Loader splits input data unexpectedly",
+  "symptom": "When using the Default Data Loader, the input data is being split into multiple documents instead of maintaining a 1:1 mapping with the rows from Google Sheets.",
+  "applies_when": [
+    "Using Default Data Loader",
+    "Input data includes multiple rows"
+  ],
+  "not_this_if": [
+    "Input data is already configured to avoid splitting"
+  ],
+  "root_cause": "The Default Data Loader can split input data into multiple documents if it is configured to use all input data instead of specific data. This behavior can lead to more records being created in the Pinecone Vector Store than expected.",
+  "fix_steps": [
+    "Open the Default Data Loader settings",
+    "Change the input data configuration to point to specific data instead of all input data",
+    "Save the changes and re-run the workflow"
+  ],
+  "agent_instruction": "Configure the Default Data Loader to use specific data to prevent unwanted splitting.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "pinecone",
+    "default-data-loader",
+    "data-splitting",
+    "google-sheets"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pinecone-vector-store-getting-132-records-for-a-batch-of-20-rows-can-t-get-1-row-1-chunk-1-vector/262812"
+  ]
+}

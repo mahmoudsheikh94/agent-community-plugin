@@ -1,0 +1,40 @@
+{
+  "id": "ee36c1043afa",
+  "tool": "n8n",
+  "error_signature": "Unrecognized node type: n8n-nodes-test-random.netSuiteRest",
+  "context_key": "custom-node",
+  "title": "Custom node type not recognized in worker execution",
+  "symptom": "When executing a workflow with a custom node, it gets stuck loading and eventually shows an error about the node type not being recognized.",
+  "applies_when": [
+    "Using custom nodes",
+    "Running n8n with external workers"
+  ],
+  "not_this_if": [
+    "Running n8n locally without workers",
+    "Custom node is installed in all worker instances"
+  ],
+  "root_cause": "The error occurs because the custom node is not installed in all worker instances. Each worker needs to have access to the custom node definition to process it correctly. If the node is only installed in the main instance, workers will not recognize it.",
+  "fix_steps": [
+    "Install the custom node in all Docker worker instances by copying it to the appropriate directory.",
+    "Restart all worker instances to ensure they recognize the newly installed node.",
+    "Consider setting N8N_REINSTALL_MISSING_PACKAGES=true to automatically install any missing packages."
+  ],
+  "agent_instruction": "Ensure the custom node is installed in all worker instances and restart them.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "custom-node",
+    "docker",
+    "worker",
+    "unrecognized-node-type"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.9.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unrecognized-node-type-after-infinite-loading-on-custom-node/285497"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "4c32a8328923",
+  "tool": "n8n",
+  "error_signature": "ETIMEDOUT",
+  "context_key": "supabase-ipv6-issue",
+  "title": "Supabase IPv6 connection timeout",
+  "symptom": "When executing the Postgres node, it spins indefinitely or returns an 'ETIMEDOUT' error. This indicates a failure to connect to the Supabase database.",
+  "applies_when": [
+    "Using Supabase as the Postgres database",
+    "Direct URL is IPv6 only"
+  ],
+  "not_this_if": [
+    "Using an IPv4-compatible URL",
+    "The connection succeeds without timeout"
+  ],
+  "root_cause": "The timeout occurs because the Direct URL provided by Supabase is IPv6 only, and many Docker containers do not have IPv6 enabled by default, preventing a successful connection.",
+  "fix_steps": [
+    "Go to Supabase and navigate to the Connect section.",
+    "Change the connection mode to Session.",
+    "Copy the Host URL that looks like 'aws-0-[region].pooler.supabase.com'.",
+    "Set the Port to 5432 and use this in your n8n Postgres credentials."
+  ],
+  "agent_instruction": "Use the Supavisor Pooler URL in Session Mode for your Postgres connection.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "postgres",
+    "ipv6",
+    "connection"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-cant-connect-n8n-postgres-account-to-my-supabase-postgresql-database/262765"
+  ]
+}

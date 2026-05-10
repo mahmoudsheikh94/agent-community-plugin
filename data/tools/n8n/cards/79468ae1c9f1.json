@@ -1,0 +1,40 @@
+{
+  "id": "79468ae1c9f1",
+  "tool": "n8n",
+  "error_signature": "production URL shows port in webhook",
+  "context_key": "webhook-node",
+  "title": "Production webhook URL incorrectly shows port",
+  "symptom": "In production, the webhook URL displays with a port number (e.g., :5678), while in test mode it does not. This can cause confusion and potential issues with webhook calls.",
+  "applies_when": [
+    "Using n8n in production",
+    "Webhook node configured"
+  ],
+  "not_this_if": [
+    "The URL works correctly without the port when accessed"
+  ],
+  "root_cause": "The issue arises from incorrect configuration of the N8N_WEBHOOK_URL and N8N_EDITOR_BASE_URL environment variables, which may include a trailing slash. This can lead to the production URL displaying the internal port number instead of the expected format.",
+  "fix_steps": [
+    "Remove the trailing slash from the N8N_EDITOR_BASE_URL and N8N_WEBHOOK_URL environment variables.",
+    "Set N8N_EDITOR_BASE_URL to 'https://mydomain.com' and N8N_WEBHOOK_URL to 'https://mydomain.com'.",
+    "Restart the n8n service to apply the changes."
+  ],
+  "agent_instruction": "Update the environment variables for the webhook and editor URLs and restart the n8n service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "production",
+    "docker",
+    "nginx",
+    "configuration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-of-production-showing-port-on-https/155822"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "c5ed4a01bc12",
+  "tool": "n8n",
+  "error_signature": "can not find own email address",
+  "context_key": "google-calendar-node",
+  "title": "Google Calendar node cannot find email address",
+  "symptom": "The Google Calendar node in n8n fails to locate the user's email address, resulting in an inability to access calendar data.",
+  "applies_when": [
+    "Using Google Calendar node",
+    "Google Calendar API is enabled"
+  ],
+  "not_this_if": [
+    "Email address is correctly configured in Google account settings"
+  ],
+  "root_cause": "The issue arises when the Google Calendar API is not properly enabled or when there are authentication issues with the Google account being used. Changing the user ID and password can refresh the authentication and resolve the issue.",
+  "fix_steps": [
+    "Enable the Google Calendar API in the Google Cloud Console.",
+    "Ensure that the correct Google account is linked in n8n.",
+    "If issues persist, change the Google account password and re-authenticate in n8n."
+  ],
+  "agent_instruction": "Enable the Google Calendar API and re-authenticate your Google account in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-calendar",
+    "api",
+    "authentication",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.92.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/can-not-find-google-calendar/117423"
+  ]
+}

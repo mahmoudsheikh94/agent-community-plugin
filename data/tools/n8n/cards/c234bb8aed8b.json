@@ -1,0 +1,41 @@
+{
+  "id": "c234bb8aed8b",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials?",
+  "context_key": "google-drive-node",
+  "title": "Google Drive access forbidden due to scope issues",
+  "symptom": "The Google Drive node in n8n returns a 'Forbidden' error, indicating that the granted access scopes do not cover all requested spaces.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Previously working access to Google Drive"
+  ],
+  "not_this_if": [
+    "Error occurs with different nodes or integrations"
+  ],
+  "root_cause": "The error occurs because the OAuth credentials do not have the necessary scopes enabled for accessing Google Drive and its related services. If the required APIs are not enabled in the Google Cloud Console, access will be denied.",
+  "fix_steps": [
+    "Go to your Google Cloud Console and navigate to the API and Services Library.",
+    "Enable the Google Drive API and Google Docs API for your project.",
+    "In the OAuth consent screen, add the necessary scopes: 'https://www.googleapis.com/auth/documents', 'https://www.googleapis.com/auth/drive', and 'https://www.googleapis.com/auth/drive.file'.",
+    "Reconnect your credentials in n8n.",
+    "Ensure your project is set to production mode."
+  ],
+  "agent_instruction": "Enable the required Google Drive and Docs APIs and reconnect your credentials in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "oauth",
+    "api-scopes",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/having-problems-with-accessing-google-drive-due-to-scope-issues/276577"
+  ]
+}

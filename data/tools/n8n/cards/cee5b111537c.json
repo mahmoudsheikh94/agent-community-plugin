@@ -1,0 +1,40 @@
+{
+  "id": "cee5b111537c",
+  "tool": "n8n",
+  "error_signature": "AI skips tool call and responds incorrectly",
+  "context_key": "jira-agent",
+  "title": "AI agent incorrectly confirms actions without executing",
+  "symptom": "The AI agent claims to have created tasks in Jira without actually calling the tool, leading to incorrect confirmations.",
+  "applies_when": [
+    "Using an AI agent with Jira integration",
+    "Agent has memory of previous successful actions"
+  ],
+  "not_this_if": [
+    "Agent is not using memory",
+    "Tool calls are always executed correctly"
+  ],
+  "root_cause": "The AI agent relies on its memory of past interactions, leading it to incorrectly assume that similar requests can be fulfilled without executing the necessary tool calls. This results in false confirmations to the user.",
+  "fix_steps": [
+    "Strengthen the system prompt to explicitly instruct the agent to always use the Jira tool for actions.",
+    "Ensure the agent's memory saves the complete interaction sequence, including tool calls and responses.",
+    "Consider separating the AI's decision-making from action execution in the system architecture."
+  ],
+  "agent_instruction": "Update the system prompt to require tool calls for all actions and manage memory correctly.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "jira",
+    "AI-agent",
+    "tool-call",
+    "memory-management"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-is-not-working-properly/214457"
+  ]
+}

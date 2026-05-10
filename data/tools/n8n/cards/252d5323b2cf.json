@@ -1,0 +1,40 @@
+{
+  "id": "252d5323b2cf",
+  "tool": "n8n",
+  "error_signature": "SSL Issue: consider using the ‘Ignore SSL issues’ option",
+  "context_key": "http-request-node",
+  "title": "SSL error despite using 'Ignore SSL issues'",
+  "symptom": "The HTTP request node throws an SSL error even after enabling the 'Ignore SSL issues' option.",
+  "applies_when": [
+    "Using HTTP request node",
+    "Proxy is configured"
+  ],
+  "not_this_if": [
+    "Error occurs without a proxy",
+    "SSL error does not appear"
+  ],
+  "root_cause": "The error may occur due to an issue with the proxy server being used, or the URL format may be incorrect. If the proxy is down or misconfigured, it can prevent proper SSL handling, leading to this error.",
+  "fix_steps": [
+    "Temporarily remove the proxy URL from the 'Proxy' field in the HTTP request node.",
+    "Test a simple request to a known URL like 'https://httpbin.org/get' to see if it works without the proxy.",
+    "If the request works, check the proxy configuration or availability."
+  ],
+  "agent_instruction": "Remove the proxy temporarily and test the HTTP request with a direct URL.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "http-request",
+    "SSL",
+    "proxy",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.99.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/consider-using-the-ignore-ssl-issues-option-error/141117"
+  ]
+}

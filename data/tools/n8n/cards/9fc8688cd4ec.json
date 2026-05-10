@@ -1,0 +1,42 @@
+{
+  "id": "9fc8688cd4ec",
+  "tool": "n8n",
+  "error_signature": "paid features are still disabled",
+  "context_key": "license_activation",
+  "title": "License key activation not reflecting in n8n",
+  "symptom": "After adding the license key to the environment variables and redeploying, the paid features remain disabled in the self-hosted n8n instance.",
+  "applies_when": [
+    "Using self-hosted n8n",
+    "Attempting to activate a license key"
+  ],
+  "not_this_if": [
+    "Using a different version of n8n",
+    "License key is already activated"
+  ],
+  "root_cause": "The issue arises when the environment variable for hiding the usage page is set to true, which prevents the license key activation menu from appearing and the features from being enabled.",
+  "fix_steps": [
+    "Open your environment configuration for n8n",
+    "Set the variable N8N_HIDE_USAGE_PAGE to false",
+    "Redeploy your n8n instance",
+    "Check if the paid features are now enabled"
+  ],
+  "agent_instruction": "Set N8N_HIDE_USAGE_PAGE to false and redeploy your n8n instance.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "license",
+    "activation",
+    "self-hosted",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-needed-to-activate-a-license-key-on-a-self-hosted-n8n/139142"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "34d1b230c213",
+  "tool": "weweb",
+  "error_signature": "audio player buttons not functioning",
+  "context_key": "audio-player-embed",
+  "title": "Audio player buttons not functioning",
+  "symptom": "The audio player buttons, except for the download button, do not work as expected. Users cannot play or adjust the volume of the audio.",
+  "applies_when": [
+    "Using an audio player in an embed HTML element",
+    "Audio file URL is not correctly formatted"
+  ],
+  "not_this_if": [
+    "Audio file URL is correctly specified",
+    "Player works in code editors but not in WeWeb"
+  ],
+  "root_cause": "The audio player requires a correctly formatted URL for the audio file to function properly. If the URL is missing or incorrectly formatted, the player will not be able to locate the audio file, leading to non-functional controls.",
+  "fix_steps": [
+    "Ensure the audio file URL is correctly specified within the `src=` attribute of the audio tag.",
+    "Use the `concatenate` formula to format the URL correctly, ensuring it is enclosed in double quotes."
+  ],
+  "agent_instruction": "Check and format the audio file URL correctly in the embed HTML element.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "audio-player",
+    "embed-html",
+    "url-formatting",
+    "concatenate"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-get-audio-player-to-play/3928"
+  ]
+}

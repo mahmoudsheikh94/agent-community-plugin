@@ -1,0 +1,38 @@
+{
+  "id": "94ec9b7cd0fe",
+  "tool": "n8n",
+  "error_signature": "only able to use 1 and 0 values from branches",
+  "context_key": "merge-node",
+  "title": "Unable to access all branch values after merging",
+  "symptom": "After merging branches in n8n, only values from the first two branches are accessible, while others are missing.",
+  "applies_when": [
+    "Using a Merge node",
+    "Multiple branches are created"
+  ],
+  "not_this_if": [
+    "All branch values are accessible without the Merge node"
+  ],
+  "root_cause": "The Merge node in n8n returns data as an array of JSON objects, and using shorthand syntax only accesses the first item, leading to missing values from other branches.",
+  "fix_steps": [
+    "Set the Merge node to Append mode.",
+    "Use the full syntax to access values: {{$(‘Merge’).all()[0].json['DATA 1']}}, {{$(‘Merge’).all()[1].json['DATA 2']}}, {{$(‘Merge’).all()[2].json['DATA 3']}}."
+  ],
+  "agent_instruction": "Change the expressions in the Merge node to access all branch values correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "merge-node",
+    "branching",
+    "data-access",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-use-values-from-the-branches-using-merge/180602"
+  ]
+}

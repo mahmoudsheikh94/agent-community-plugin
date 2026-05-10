@@ -1,0 +1,40 @@
+{
+  "id": "478759c8cca2",
+  "tool": "n8n",
+  "error_signature": "Workflow Webhook Error: Workflow could not be started!",
+  "context_key": "webhook-node",
+  "title": "Webhook fails to start workflow",
+  "symptom": "When triggering a webhook, n8n returns a 'Workflow could not be started!' error. This prevents the workflow from executing as expected.",
+  "applies_when": [
+    "Using webhook nodes",
+    "Running on Heroku"
+  ],
+  "not_this_if": [
+    "Running on a different platform",
+    "No error message is displayed"
+  ],
+  "root_cause": "The error occurs due to a compatibility issue with the latest n8n version, which may introduce breaking changes or bugs affecting webhook functionality. Downgrading to a previous stable version resolves this issue.",
+  "fix_steps": [
+    "Downgrade n8n from version 1.121.3 to 1.120.4",
+    "Restart the n8n instance",
+    "Test the webhook again to ensure it triggers the workflow"
+  ],
+  "agent_instruction": "Downgrade n8n to version 1.120.4 and restart the instance.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "webhook",
+    "error",
+    "downgrade",
+    "n8n-version"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhooks-arent-working/228339"
+  ]
+}

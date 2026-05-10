@@ -1,0 +1,39 @@
+{
+  "id": "f922e008d00e",
+  "tool": "weweb",
+  "error_signature": "isValid value does not match custom validation output",
+  "context_key": "form-field-validation",
+  "title": "Mismatch between custom validation and isValid field",
+  "symptom": "The custom validation for a username field outputs the correct boolean, but the main 'isValid' field shows undefined or incorrect values.",
+  "applies_when": [
+    "Using custom validation for form fields",
+    "Binding the validation formula incorrectly"
+  ],
+  "not_this_if": [
+    "Validation works when formula is added directly without binding"
+  ],
+  "root_cause": "The issue arises when the custom validation formula is added using the binding button, which causes the validation result to be faulty. This can lead to discrepancies between the custom validation output and the isValid field.",
+  "fix_steps": [
+    "Remove the custom validation formula that was added using the binding button.",
+    "Add the custom validation formula directly into the formula field without using the binding button.",
+    "Test the form to ensure the isValid field reflects the correct validation output."
+  ],
+  "agent_instruction": "Ensure the custom validation formula is added directly to the formula field without binding.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "form-validation",
+    "isValid",
+    "custom-validation",
+    "binding-issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/custom-validation-of-form-field-does-not-match-up-with-isvalid-value-of-that-field/17186"
+  ]
+}

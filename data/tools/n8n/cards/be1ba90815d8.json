@@ -1,0 +1,41 @@
+{
+  "id": "be1ba90815d8",
+  "tool": "n8n",
+  "error_signature": "no microsoft onedrive data found",
+  "context_key": "onedrive-business-trigger",
+  "title": "OneDrive Business trigger not detecting new/updated files",
+  "symptom": "The OneDrive Business trigger reports 'no microsoft onedrive data found' despite running successfully. It fails to detect new or updated files.",
+  "applies_when": [
+    "Using OneDrive Business trigger node",
+    "Correct folder ID is provided"
+  ],
+  "not_this_if": [
+    "Files are being downloaded successfully in other nodes",
+    "No special characters in filenames"
+  ],
+  "root_cause": "The OneDrive Business trigger may fail to detect changes if the filenames contain special characters, leading to poor error handling. This can result in the trigger not functioning as expected, even when the node reports success.",
+  "fix_steps": [
+    "Check the filenames in the OneDrive folder for special characters",
+    "Rename any files or folders with special characters",
+    "Test the trigger again to see if it detects new or updated files"
+  ],
+  "agent_instruction": "Ensure filenames do not contain special characters and test the OneDrive trigger again.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "onedrive",
+    "business",
+    "trigger",
+    "file-detection",
+    "special-characters"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.75,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/onedrive-business-not-triggering-for-new-updated-files/144259"
+  ]
+}

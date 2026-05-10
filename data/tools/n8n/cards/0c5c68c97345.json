@@ -1,0 +1,40 @@
+{
+  "id": "0c5c68c97345",
+  "tool": "n8n",
+  "error_signature": "Header name must be a valid HTTP token",
+  "context_key": "dataforseo-node",
+  "title": "Invalid HTTP token error in DataforSEO node",
+  "symptom": "When testing the DataforSEO HTTP request node, an error states 'Header name must be a valid HTTP token'. This indicates an issue with the authorization method being used.",
+  "applies_when": [
+    "Using DataforSEO node",
+    "Authorization method is set to Header Auth"
+  ],
+  "not_this_if": [
+    "Using Basic Auth as the authorization method"
+  ],
+  "root_cause": "The error occurs because the DataforSEO API requires Basic Authentication instead of Header Authentication. When Header Auth is used, the email is incorrectly treated as a header name, leading to the invalid token error.",
+  "fix_steps": [
+    "Open the DataforSEO node settings",
+    "Change the Authorization method to 'Basic Auth'",
+    "Enter your email and API key as credentials",
+    "Save the workflow and test the node again"
+  ],
+  "agent_instruction": "Switch the authorization method to 'Basic Auth' in the DataforSEO node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "dataforseo",
+    "http-request",
+    "basic-auth",
+    "api-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/data-for-seo-api-http-request-error/80128"
+  ]
+}

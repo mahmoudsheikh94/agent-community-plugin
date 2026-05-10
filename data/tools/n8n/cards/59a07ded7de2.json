@@ -1,0 +1,42 @@
+{
+  "id": "59a07ded7de2",
+  "tool": "n8n",
+  "error_signature": "new versions of n8n google sheet credentials now ask for additional fields",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets credentials require additional OAuth2 fields",
+  "symptom": "Users encounter confusion when setting up Google Sheets credentials due to new required fields. The setup now includes Authorization URL and Access Token URL, which were not previously needed.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "On a newer version of n8n"
+  ],
+  "not_this_if": [
+    "Using an older version of n8n",
+    "Not using Google Sheets node"
+  ],
+  "root_cause": "Recent updates to n8n's Google Sheets integration have introduced additional OAuth2 configuration requirements. Users must now provide an Authorization URL and Access Token URL, which were not part of the previous setup process.",
+  "fix_steps": [
+    "Open the Google Sheets credentials configuration in n8n.",
+    "Input the Authorization URL: 'https://accounts.google.com/o/oauth2/auth'.",
+    "Input the Access Token URL: 'https://oauth2.googleapis.com/token'.",
+    "Set the Grant Type to 'Authorization Code'.",
+    "Use the OAuth Redirect URL provided by n8n."
+  ],
+  "agent_instruction": "Update the Google Sheets credentials with the new OAuth2 configuration details.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "oauth2",
+    "credentials",
+    "n8n-update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheets-credencials/94237"
+  ]
+}

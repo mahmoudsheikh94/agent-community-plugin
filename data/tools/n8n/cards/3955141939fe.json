@@ -1,0 +1,39 @@
+{
+  "id": "3955141939fe",
+  "tool": "n8n",
+  "error_signature": "invalid credentials",
+  "context_key": "n8n user management",
+  "title": "Invalid credentials error after cloning n8n repo",
+  "symptom": "After cloning the n8n repository and running it, the UI shows 'invalid credentials' when trying to log in.",
+  "applies_when": [
+    "Cloned n8n repository",
+    "Running n8n locally"
+  ],
+  "not_this_if": [
+    "Using a standard installation method without cloning"
+  ],
+  "root_cause": "When running a cloned version of n8n, the user credentials may not be properly set up or recognized, leading to authentication issues when accessing the UI.",
+  "fix_steps": [
+    "Run the command 'n8n user-management:reset' in the terminal",
+    "If using Docker, run 'docker exec -u node -it n8n user-management:reset'",
+    "Restart the n8n instance"
+  ],
+  "agent_instruction": "Reset the user credentials using the provided command and restart the instance.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "n8n",
+    "credentials",
+    "user-management",
+    "clone-repo"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-run-n8n-cloned-repo-locally-wsl/228434"
+  ]
+}

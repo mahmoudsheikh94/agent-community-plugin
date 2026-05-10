@@ -1,0 +1,41 @@
+{
+  "id": "23b845d9a3fc",
+  "tool": "n8n",
+  "error_signature": "403 - Forbidden",
+  "context_key": "airtable-integration",
+  "title": "403 Forbidden error when accessing Airtable base",
+  "symptom": "Users encounter a '403 - Forbidden' error when trying to load a list of bases in Airtable. This indicates issues with permissions or model access.",
+  "applies_when": [
+    "Using Airtable integration",
+    "Attempting to access a specific base"
+  ],
+  "not_this_if": [
+    "Error occurs with a different integration",
+    "User has confirmed correct permissions"
+  ],
+  "root_cause": "The 403 Forbidden error typically arises from insufficient permissions associated with the API token or incorrect base IDs. If the token does not have access to the specific base or the workspace settings are not configured correctly, access will be denied.",
+  "fix_steps": [
+    "Verify that the API token has access to the specific base ID in Airtable.",
+    "Regenerate the API token ensuring it includes the full 'schema.bases:read' scope.",
+    "Update the workflow with the new token and test the base access again."
+  ],
+  "agent_instruction": "Check the API token's permissions and regenerate it if necessary to include full access.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "403",
+    "forbidden",
+    "permissions",
+    "api-token"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/403-forbidden-error-chapter-5-of-beginner-course/166688"
+  ]
+}

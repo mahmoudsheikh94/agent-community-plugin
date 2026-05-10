@@ -1,0 +1,40 @@
+{
+  "id": "39c0a2dcf609",
+  "tool": "n8n",
+  "error_signature": "Cannot find module ‘@n8n/di’",
+  "context_key": "javascript-code-node",
+  "title": "Missing module error in JavaScript code node",
+  "symptom": "The JavaScript code node fails to execute, throwing an error indicating that the module ‘@n8n/di’ cannot be found. This occurs when running the workflow in a Kubernetes environment.",
+  "applies_when": [
+    "Using JavaScript code node",
+    "Running in Kubernetes environment"
+  ],
+  "not_this_if": [
+    "Error occurs in local environment",
+    "Using Python code node"
+  ],
+  "root_cause": "The error occurs because the necessary module ‘@n8n/di’ is not present in the node_modules directory. This can happen if the Dockerfile used for building the image does not correctly copy all required dependencies, especially when transitioning from local development to a Kubernetes setup.",
+  "fix_steps": [
+    "Modify the Dockerfile to ensure that all necessary dependencies are included.",
+    "Instead of deleting the entire node_modules directory, copy additional dependencies to a separate directory and set that as the path for node_modules."
+  ],
+  "agent_instruction": "Update the Dockerfile to correctly handle dependencies for the JavaScript code node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "javascript",
+    "code-node",
+    "docker",
+    "kubernetes",
+    "module-not-found"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.1.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-working-for-python-but-fails-for-js-what-could-be-the-reasons/275733"
+  ]
+}

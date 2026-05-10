@@ -1,0 +1,40 @@
+{
+  "id": "e453c7cfc09d",
+  "tool": "n8n",
+  "error_signature": "Internal error encountered",
+  "context_key": "google-sheets-node",
+  "title": "Internal error from Google Sheets API",
+  "symptom": "The workflow fails with a 500 internal error message, indicating that the request could not be processed.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Receiving unexpected internal errors"
+  ],
+  "not_this_if": [
+    "Error is due to user input or configuration issues",
+    "Service is functioning normally"
+  ],
+  "root_cause": "An internal error from the Google Sheets API indicates that something went wrong on the server side. This could be due to temporary issues with the API or problems with the request being sent.",
+  "fix_steps": [
+    "Retry the request after a short delay",
+    "Check for any issues with the request format or parameters",
+    "Monitor the Google Cloud status for any ongoing issues"
+  ],
+  "agent_instruction": "Retry the request after a brief wait to see if the issue resolves itself.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-sheets",
+    "internal-error",
+    "error-handling",
+    "api-issues"
+  ],
+  "severity": "degraded",
+  "confidence": 0.85,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-check-google-sheet-api-quota/135361"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "6e7a32077868",
+  "tool": "n8n",
+  "error_signature": "Workflow did not finish, possible out-of-memory issue",
+  "context_key": "sub-workflow",
+  "title": "Memory-related crash in sub-workflow execution",
+  "symptom": "The workflow crashes at random points with an out-of-memory error, preventing completion. The error message indicates that the workflow did not finish due to potential memory issues.",
+  "applies_when": [
+    "Using sub-workflows",
+    "Processing large datasets (e.g., 4000 tickets)"
+  ],
+  "not_this_if": [
+    "Workflow runs successfully without sub-workflows",
+    "Error does not occur with smaller datasets"
+  ],
+  "root_cause": "The sub-workflow may be returning hidden data or excessive data that exceeds memory limits during execution. This can happen even if the last node is set to output an empty item, as the underlying data handling may still consume significant memory.",
+  "fix_steps": [
+    "Implement a webhook + Wait Node in the loop to manage data flow",
+    "Ensure that the sub-workflow does not return any hidden or excessive data",
+    "Test the workflow with the new configuration"
+  ],
+  "agent_instruction": "Use a webhook and Wait Node in your loop to control data flow and prevent memory issues.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "memory",
+    "sub-workflow",
+    "out-of-memory",
+    "webhook",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/memory-related-crash-sub-workflow/119535"
+  ]
+}

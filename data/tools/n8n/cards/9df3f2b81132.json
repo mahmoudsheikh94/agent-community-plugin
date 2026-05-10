@@ -1,0 +1,40 @@
+{
+  "id": "9df3f2b81132",
+  "tool": "n8n",
+  "error_signature": "filesystem-v2",
+  "context_key": "Encode to Base64 node",
+  "title": "Base64 encoding returns 'filesystem-v2' instead of actual string",
+  "symptom": "When attempting to encode a binary image to base64, the output is 'filesystem-v2', indicating the file is stored on disk rather than in memory.",
+  "applies_when": [
+    "Using Twilio MMS to receive images",
+    "Encoding binary data to base64"
+  ],
+  "not_this_if": [
+    "The binary data is already in memory and correctly encoded"
+  ],
+  "root_cause": "The 'filesystem-v2' placeholder indicates that the binary data is not being loaded into memory for encoding. This typically occurs when the file is stored on disk, and the encoding process does not access the file's content directly.",
+  "fix_steps": [
+    "Use an HTTP Request node to download the image from the Twilio MediaUrl0.",
+    "Pass the downloaded image to an 'Extract from File' node to convert it to base64.",
+    "Ensure the workflow is configured to handle binary data correctly."
+  ],
+  "agent_instruction": "Replace the current encoding method with an HTTP Request node followed by an Extract from File node to get the base64 string.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "twilio",
+    "base64",
+    "binary",
+    "image",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.48.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/encode-base64-from-twilio-mms-fails-returns-filesystem-v2-instead-of-actual-base64-string/153777"
+  ]
+}

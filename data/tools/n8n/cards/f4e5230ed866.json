@@ -1,0 +1,41 @@
+{
+  "id": "f4e5230ed866",
+  "tool": "n8n",
+  "error_signature": "stuck on version 1.75.2",
+  "context_key": "npm-installation",
+  "title": "Unable to upgrade n8n beyond version 1.75.2",
+  "symptom": "The user is unable to upgrade n8n past version 1.75.2 despite running upgrade commands without errors.",
+  "applies_when": [
+    "Using npm for installation",
+    "Attempting to upgrade n8n"
+  ],
+  "not_this_if": [
+    "Error messages during installation or upgrade",
+    "Using a different installation method (e.g., Docker)"
+  ],
+  "root_cause": "The issue arises when multiple installations of n8n exist in different directories, causing the system to prioritize the wrong version based on the PATH environment variable. This leads to the user running an outdated version even after a successful upgrade.",
+  "fix_steps": [
+    "Check the installation directories for n8n, specifically in /usr/local and /usr.",
+    "Ensure that the correct version of n8n is being called by adjusting the PATH variable if necessary.",
+    "Remove any stray installations of n8n from /usr/local if they are not needed."
+  ],
+  "agent_instruction": "Check for and remove any stray installations of n8n in /usr/local to resolve version conflicts.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "n8n",
+    "npm",
+    "upgrade",
+    "installation",
+    "path-issues"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/stuck-on-version-1-75-2-wont-auto-upgrade-to-latest/93022"
+  ]
+}

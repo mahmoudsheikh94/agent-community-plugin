@@ -1,0 +1,41 @@
+{
+  "id": "ab82a7c1041d",
+  "tool": "n8n",
+  "error_signature": "Credential to connect with in the Puppeteer node",
+  "context_key": "puppeteer-node",
+  "title": "Missing credentials for Puppeteer node",
+  "symptom": "The Puppeteer node prompts for credentials, indicating that it cannot connect without them.",
+  "applies_when": [
+    "Using the Puppeteer node",
+    "n8n-nodes-puppeteer-extended is installed"
+  ],
+  "not_this_if": [
+    "Credentials are already configured in the node settings"
+  ],
+  "root_cause": "The Puppeteer node requires an n8n API key to function correctly. This key is necessary for the node to communicate with the n8n server and manage browser interactions effectively.",
+  "fix_steps": [
+    "Navigate to the Puppeteer node settings in your workflow",
+    "Locate the credentials section",
+    "Select or create the 'n8nApi' credentials",
+    "Enter your n8n API key and base URL",
+    "Save the node settings"
+  ],
+  "agent_instruction": "Configure the Puppeteer node with the required n8n API credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "puppeteer",
+    "credentials",
+    "n8n-api",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whats-credential-to-connect-with-in-the-puppeteer-node/181000"
+  ]
+}

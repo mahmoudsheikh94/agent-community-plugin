@@ -1,0 +1,41 @@
+{
+  "id": "5f8d2c126e43",
+  "tool": "n8n",
+  "error_signature": "property names not displayed correctly for Chinese characters",
+  "context_key": "notion-node",
+  "title": "Notion node fails to display Chinese property names",
+  "symptom": "When using the Notion node, property names that are entirely in Chinese are not displayed correctly and appear as 'property_'.",
+  "applies_when": [
+    "Using Notion node",
+    "Property names are in Traditional Chinese"
+  ],
+  "not_this_if": [
+    "Property names include Latin characters",
+    "Error does not occur in other languages"
+  ],
+  "root_cause": "The Notion node has a known issue with handling non-Latin characters, leading to incorrect processing of property names that are entirely in Chinese. This results in all such properties being treated generically as 'property_'.",
+  "fix_steps": [
+    "Modify the Chinese property names in Notion to include a number or Latin character (e.g., '中文1')",
+    "Save the changes in Notion",
+    "Retry using the Notion node in n8n"
+  ],
+  "agent_instruction": "Add a number or Latin character to your Chinese property names in Notion to ensure they are displayed correctly in n8n.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "notion",
+    "node",
+    "chinese-characters",
+    "property-names",
+    "text-encoding"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.74.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/notion-node-can-not-show-chinese-property-name-correctly/70691"
+  ]
+}

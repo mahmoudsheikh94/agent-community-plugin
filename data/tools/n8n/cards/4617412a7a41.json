@@ -1,0 +1,38 @@
+{
+  "id": "4617412a7a41",
+  "tool": "n8n",
+  "error_signature": "workflow crashes immediately at the trigger level",
+  "context_key": "slack-trigger",
+  "title": "Workflow crashes due to self-trigger loop in Slack",
+  "symptom": "The workflow crashes immediately when the last Slack Send Message node is activated, causing the trigger to fail.",
+  "applies_when": [
+    "Using Slack as a trigger",
+    "Sending messages back to the same channel"
+  ],
+  "not_this_if": [
+    "Last Slack Send Message node is disabled"
+  ],
+  "root_cause": "The workflow enters a self-trigger loop when it sends a message back to the same Slack channel that triggered the workflow. This causes the trigger to activate again, leading to an immediate crash as the workflow cannot handle the recursive triggering.",
+  "fix_steps": [
+    "Add an IF statement after the Slack trigger node",
+    "Configure the IF statement to filter out messages sent by the bot itself using the bot_id"
+  ],
+  "agent_instruction": "Implement an IF condition to filter out bot messages after the Slack trigger.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "slack",
+    "trigger",
+    "self-trigger",
+    "workflow-crash"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/slack-discussion-using-n8n-worflow/269464"
+  ]
+}

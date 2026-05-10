@@ -1,0 +1,39 @@
+{
+  "id": "98cac18bafa5",
+  "tool": "weweb",
+  "error_signature": "form not submitted due to invisible HTML characters",
+  "context_key": "rich-text-element",
+  "title": "Form submission blocked by invisible HTML characters in Rich Text",
+  "symptom": "The form does not submit even when the Rich Text field appears filled. The validation fails due to invisible HTML characters.",
+  "applies_when": [
+    "Using Rich Text element for form input",
+    "Custom validation implemented"
+  ],
+  "not_this_if": [
+    "Using standard input fields without custom validation"
+  ],
+  "root_cause": "Rich Text fields often contain invisible HTML characters that can lead to incorrect validation results. When checking for non-empty values, these characters can cause the validation to return true even if the user perceives the field as empty.",
+  "fix_steps": [
+    "Implement a JavaScript function to clean the Rich Text input by removing HTML tags and decoding HTML entities.",
+    "Check the length of the cleaned text to determine if the field is truly filled.",
+    "Provide visual feedback to the user if the form cannot be submitted."
+  ],
+  "agent_instruction": "Use the provided JavaScript code to validate the Rich Text input before form submission.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "rich-text",
+    "form-validation",
+    "javascript",
+    "custom-validation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-make-a-specific-required-field-option-for-rich-text/19041"
+  ]
+}

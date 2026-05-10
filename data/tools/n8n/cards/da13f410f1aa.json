@@ -1,0 +1,40 @@
+{
+  "id": "da13f410f1aa",
+  "tool": "n8n",
+  "error_signature": "Workflow did not finish, possible out-of-memory issue",
+  "context_key": "n8n-runner",
+  "title": "Out-of-memory issue with n8n runners enabled",
+  "symptom": "n8n gradually consumes all server RAM, leading to workflows not finishing. The server memory clears after hitting the limit, causing a cycle of memory consumption.",
+  "applies_when": [
+    "Using n8n with PostgreSQL",
+    "N8N_RUNNERS_ENABLED is set to true"
+  ],
+  "not_this_if": [
+    "N8N_RUNNERS_ENABLED is set to false"
+  ],
+  "root_cause": "Enabling the N8N_RUNNERS feature can lead to excessive memory usage if the runners are not managed properly. This can cause the application to consume all available RAM, resulting in out-of-memory errors during workflow execution.",
+  "fix_steps": [
+    "Open the Docker Compose file for n8n",
+    "Remove the line '- N8N_RUNNERS_ENABLED=true'",
+    "Restart the n8n service to apply changes"
+  ],
+  "agent_instruction": "Disable the n8n runners by removing the N8N_RUNNERS_ENABLED setting and restart the service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "memory-issue",
+    "docker",
+    "postgres",
+    "runners"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-gradually-consumes-all-server-ram/123485"
+  ]
+}

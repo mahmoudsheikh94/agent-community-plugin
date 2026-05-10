@@ -1,0 +1,38 @@
+{
+  "id": "2c79bc7775cb",
+  "tool": "n8n",
+  "error_signature": "The value '[Array: [...]' is not supported!",
+  "context_key": "http-node",
+  "title": "Invalid array format for HTTP query parameters",
+  "symptom": "When attempting to send an HTTP request with query parameters, n8n throws an error indicating that the provided value is not supported.",
+  "applies_when": [
+    "Using HTTP node",
+    "Passing query parameters as an array"
+  ],
+  "not_this_if": [
+    "Query parameters are passed as a simple JSON object"
+  ],
+  "root_cause": "The HTTP node in n8n expects query parameters to be formatted as a simple JSON object. If an array is provided instead, it results in an error because the node cannot process the array format correctly.",
+  "fix_steps": [
+    "Use the JSON.stringify() method to convert the parameters to a JSON string.",
+    "Set the field type to JSON in the HTTP node settings."
+  ],
+  "agent_instruction": "Ensure query parameters are formatted as a JSON string and set the field type to JSON.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http",
+    "query-parameters",
+    "json",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/dynamic-mapping-of-a-javascript-json-object-to-a-http-searchparams-n8n-query/239365"
+  ]
+}

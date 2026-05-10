@@ -1,0 +1,38 @@
+{
+  "id": "1d82c036f935",
+  "tool": "n8n",
+  "error_signature": "sessionId not passed to workflow tool",
+  "context_key": "call_n8n_workflow_tool",
+  "title": "sessionId not being sent to workflow tool",
+  "symptom": "The AI agent fails to send the sessionId to the workflow tool, resulting in incomplete data being passed. The workflow tool only receives the chat input without the necessary session ID.",
+  "applies_when": [
+    "Using call_n8n_workflow_tool",
+    "sessionId is required for memory implementation"
+  ],
+  "not_this_if": [
+    "sessionId is not needed for the workflow tool"
+  ],
+  "root_cause": "The AI agent is not configured to include the sessionId in the data sent to the workflow tool. This can occur if the expression used to pass data does not include the sessionId variable.",
+  "fix_steps": [
+    "Edit the expression in the Workflow Tool to include both {{ $json.chatInput }} and {{ $json.sessionId }}.",
+    "Ensure that the Workflow Execution Trigger is set up to accept the sessionId."
+  ],
+  "agent_instruction": "Modify the expression in the Workflow Tool to include the sessionId along with the chat input.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow_tool",
+    "sessionId",
+    "AI agent",
+    "memory"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-in-n8n-not-passing-sessionid-to-workflow-tool-how-to-fix/79921"
+  ]
+}

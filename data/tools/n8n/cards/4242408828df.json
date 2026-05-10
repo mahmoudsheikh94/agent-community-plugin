@@ -1,0 +1,39 @@
+{
+  "id": "4242408828df",
+  "tool": "n8n",
+  "error_signature": "Gmail trigger not activating for additional emails",
+  "context_key": "gmail-node",
+  "title": "Gmail trigger fails for shared inbox additional emails",
+  "symptom": "The Gmail trigger activates for the main account's emails but fails for additional emails sent to the shared inbox.",
+  "applies_when": [
+    "Using Gmail trigger node",
+    "Emails sent to a shared inbox"
+  ],
+  "not_this_if": [
+    "All emails trigger successfully",
+    "Using a dedicated service account"
+  ],
+  "root_cause": "The issue arises because standard OAuth2 credentials are typically tied to a specific user's primary mailbox, limiting access to only that user's emails. This prevents the trigger from activating for emails sent to a shared inbox unless configured correctly.",
+  "fix_steps": [
+    "Switch to using Dedicated Service Account Credentials for the Gmail trigger.",
+    "Alternatively, configure an IMAP Mail Trigger to handle emails from the shared inbox."
+  ],
+  "agent_instruction": "Use Dedicated Service Account Credentials or an IMAP Mail Trigger for the Gmail node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "shared-inbox",
+    "trigger",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.122.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/shared-inbox/233750"
+  ]
+}

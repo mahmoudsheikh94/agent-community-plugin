@@ -1,0 +1,40 @@
+{
+  "id": "9b5e4eb464a2",
+  "tool": "n8n",
+  "error_signature": "Media type 'binary/octet-stream' is not supported.",
+  "context_key": "youtube-node",
+  "title": "YouTube node does not accept binary/octet-stream",
+  "symptom": "The YouTube node returns an error stating 'Media type 'binary/octet-stream' is not supported.' despite the input showing as video/mp4.",
+  "applies_when": [
+    "Using YouTube node",
+    "Input file is incorrectly recognized as binary/octet-stream"
+  ],
+  "not_this_if": [
+    "Input file is correctly recognized as video/mp4"
+  ],
+  "root_cause": "The YouTube node requires the input file to be in a supported video format. If the file is downloaded as 'binary/octet-stream', it may not be properly recognized as video/mp4, leading to the error.",
+  "fix_steps": [
+    "Install ffmpeg in the Docker container running n8n using 'docker exec' command.",
+    "Use ffmpeg to convert the downloaded file to the correct video format.",
+    "Store the converted file in a temporary folder within the n8n instance.",
+    "Read the converted file again for further processing in the YouTube node."
+  ],
+  "agent_instruction": "Install ffmpeg in your n8n Docker container and convert the video file to the correct format.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "youtube",
+    "ffmpeg",
+    "video-conversion",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/converting-mimetype-binary-octet-stream-to-video-mp4/140072"
+  ]
+}

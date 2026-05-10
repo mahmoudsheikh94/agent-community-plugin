@@ -1,0 +1,40 @@
+{
+  "id": "ee537a8c7676",
+  "tool": "n8n",
+  "error_signature": "unable to attach multiple files in Gmail node",
+  "context_key": "gmail-node",
+  "title": "Issue attaching multiple files in Gmail node",
+  "symptom": "The user is unable to attach multiple files to an email using the Gmail node, resulting in failed email sending.",
+  "applies_when": [
+    "Using Gmail node",
+    "Attempting to attach multiple binary files"
+  ],
+  "not_this_if": [
+    "Only one file is being attached",
+    "Using a different email service"
+  ],
+  "root_cause": "The Gmail node requires a specific format for multiple attachments. Users often mistakenly try to use the binary data directly instead of providing a comma-separated list of binary field names.",
+  "fix_steps": [
+    "In the Gmail node, locate the attachment parameter.",
+    "Use the expression {{ Object.keys($binary).join(',') }} to create a comma-separated list of binary field names.",
+    "Ensure that the binary files are correctly set up in the previous steps."
+  ],
+  "agent_instruction": "Set the Gmail node attachment parameter to '{{ Object.keys($binary).join(',') }}'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "attachments",
+    "binary",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/add-multiple-binary-attachments-to-gmail/114232"
+  ]
+}

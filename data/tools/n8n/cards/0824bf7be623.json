@@ -1,0 +1,40 @@
+{
+  "id": "0824bf7be623",
+  "tool": "n8n",
+  "error_signature": "401 - Sorry, you are not allowed to create posts as this user.",
+  "context_key": "wordpress-node",
+  "title": "WordPress authorization failed due to insufficient permissions",
+  "symptom": "The workflow fails at the WordPress credentials step, returning a 401 error indicating insufficient permissions to create posts.",
+  "applies_when": [
+    "Using WordPress node",
+    "Attempting to create posts"
+  ],
+  "not_this_if": [
+    "User has sufficient permissions",
+    "Error occurs in a different context"
+  ],
+  "root_cause": "The user or application configured in the WordPress credentials does not have the necessary permissions to create posts. This can happen if the user role is not set to allow post creation or if the credentials are incorrect.",
+  "fix_steps": [
+    "Check the user role in WordPress and ensure it has permissions to create posts.",
+    "Update the credentials in n8n with a user that has the correct permissions.",
+    "Test the workflow again to see if the error persists."
+  ],
+  "agent_instruction": "Ensure the WordPress user has the correct permissions to create posts and update the credentials in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wordpress",
+    "401-error",
+    "credentials",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/401-error-message-authorization-failed-please-check-your-credentials/87856"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "7727ee459ad1",
+  "tool": "n8n",
+  "error_signature": "Forbidden - perhaps check your credentials",
+  "context_key": "X OAuth2 API credentials",
+  "title": "Forbidden error when using X OAuth2 credentials",
+  "symptom": "When attempting to use the X OAuth2 API with certain scopes, the user receives a 'Forbidden - perhaps check your credentials' error. This prevents successful execution of the workflow.",
+  "applies_when": [
+    "Using X OAuth2 API",
+    "Requesting media.write and tweet.write scopes"
+  ],
+  "not_this_if": [
+    "Only using predefined scopes without media.write",
+    "Error does not occur with other OAuth2 configurations"
+  ],
+  "root_cause": "The error occurs because the X API requires specific scopes to be included together for certain actions. If the required scopes are not properly configured or if the API does not recognize the combination, it results in a forbidden error.",
+  "fix_steps": [
+    "Ensure all necessary scopes are included in the OAuth2 configuration",
+    "Add tweet.write and media.write along with any other required scopes",
+    "Reconnect the OAuth2 credentials in n8n",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Include all necessary scopes in the OAuth2 configuration and reconnect the credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "X",
+    "OAuth2",
+    "credentials",
+    "forbidden",
+    "media.write",
+    "tweet.write"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/x-formerly-twitter-predefined-and-generic-credentials-scopes/77195"
+  ]
+}

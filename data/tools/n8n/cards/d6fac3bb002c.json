@@ -1,0 +1,40 @@
+{
+  "id": "d6fac3bb002c",
+  "tool": "n8n",
+  "error_signature": "only receive the first 10 results",
+  "context_key": "miro-node",
+  "title": "Miro node pagination not returning all results",
+  "symptom": "The Miro node only returns the first 10 results despite pagination configuration attempts.",
+  "applies_when": [
+    "Using Miro node",
+    "Configured pagination"
+  ],
+  "not_this_if": [
+    "Pagination is correctly configured and more than 10 results are expected"
+  ],
+  "root_cause": "The pagination configuration in the Miro node may be incomplete or incorrect. Specifically, the response body may not be properly referenced to access the next page of results, leading to only the first set being returned.",
+  "fix_steps": [
+    "Open the Miro node settings",
+    "Ensure the pagination expression is set to '{{ $response.body.links.next }}'",
+    "Save the workflow",
+    "Execute the workflow again to check for additional results"
+  ],
+  "agent_instruction": "Set the pagination expression to '{{ $response.body.links.next }}' in the Miro node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "miro",
+    "pagination",
+    "node-configuration",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pagination-configuration-miro-n8n/97525"
+  ]
+}

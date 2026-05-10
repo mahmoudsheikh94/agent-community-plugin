@@ -1,0 +1,41 @@
+{
+  "id": "ffd7dd83c2d6",
+  "tool": "n8n",
+  "error_signature": "no output from the update row in Google Sheet node",
+  "context_key": "google-sheet-node",
+  "title": "Google Sheet node not outputting data",
+  "symptom": "The Google Sheet node runs without errors but does not output any data to the sheet. The workflow completes normally, but the expected updates are missing.",
+  "applies_when": [
+    "Using Google Sheet node",
+    "Workflow runs without errors"
+  ],
+  "not_this_if": [
+    "Error message is displayed during execution",
+    "Data is outputted in other nodes"
+  ],
+  "root_cause": "The issue arises from improperly structured input data for the Google Sheet node. If the input data does not match the expected format, the node may execute without errors but fail to produce the desired output.",
+  "fix_steps": [
+    "Edit the input data structure in the Google Sheet node",
+    "Ensure the fields are correctly referenced, e.g., 'first_name', 'email', 'organization_name'",
+    "Save the changes",
+    "Run the workflow again"
+  ],
+  "agent_instruction": "Correct the input data structure in the Google Sheet node and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheet",
+    "node-configuration",
+    "data-output",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheet-node-problem/179054"
+  ]
+}

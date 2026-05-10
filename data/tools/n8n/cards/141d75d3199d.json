@@ -1,0 +1,41 @@
+{
+  "id": "141d75d3199d",
+  "tool": "n8n",
+  "error_signature": "Authorization failed - please check your credentials",
+  "context_key": "API key authentication",
+  "title": "API key authentication failure due to malformed JWT",
+  "symptom": "Users encounter an 'Authorization failed - please check your credentials' error with a 'jwt malformed' message when trying to authenticate with their API keys.",
+  "applies_when": [
+    "Using n8n version 1.78.1 or 1.80.0",
+    "API keys are being used for authentication"
+  ],
+  "not_this_if": [
+    "Using n8n version 1.75.1",
+    "No API keys are being used"
+  ],
+  "root_cause": "The error occurs due to a bug in the newer versions of n8n where the API keys may have become invalid or malformed after a recent update, leading to authentication failures.",
+  "fix_steps": [
+    "Recreate the API key in the n8n interface",
+    "Update your application or workflow to use the new API key",
+    "Test the authentication again"
+  ],
+  "agent_instruction": "Recreate the API key and update your application with the new key.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "api",
+    "authentication",
+    "jwt",
+    "n8n",
+    "key-expiration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/all-my-n8n-api-keys-just-expired-potential-bug/79353"
+  ]
+}

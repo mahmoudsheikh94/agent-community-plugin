@@ -1,0 +1,41 @@
+{
+  "id": "fa5ccf566df2",
+  "tool": "n8n",
+  "error_signature": "Access to the file is not allowed. Allowed paths: ...",
+  "context_key": "file-access-restriction",
+  "title": "File access not allowed due to restrictions",
+  "symptom": "When trying to read or write a file on a network share, n8n throws 'Access to the file is not allowed'. This occurs despite having the correct permissions set on the folder.",
+  "applies_when": [
+    "Using n8n version 2.10.4",
+    "Accessing files on a network share"
+  ],
+  "not_this_if": [
+    "Using a local file path",
+    "Using an older version of n8n without this issue"
+  ],
+  "root_cause": "The error occurs because the N8N_RESTRICT_FILE_ACCESS_TO environment variable is not correctly configured. In version 2.10.4, this variable requires a semicolon-separated list of allowed paths, and incorrect formatting can lead to access issues.",
+  "fix_steps": [
+    "Open the n8n environment configuration file.",
+    "Ensure the N8N_RESTRICT_FILE_ACCESS_TO variable is set with semicolon-separated paths.",
+    "Restart n8n to apply the changes.",
+    "Test file access again."
+  ],
+  "agent_instruction": "Correct the N8N_RESTRICT_FILE_ACCESS_TO variable and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "file-access",
+    "network-share",
+    "n8n-configuration",
+    "windows"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.10.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-file-is-not-writable-access-to-the-file-is-not-allowed/278179"
+  ]
+}

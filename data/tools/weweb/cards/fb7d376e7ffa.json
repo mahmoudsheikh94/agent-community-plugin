@@ -1,0 +1,39 @@
+{
+  "id": "fb7d376e7ffa",
+  "tool": "weweb",
+  "error_signature": "default grid height not adjustable",
+  "context_key": "datagrid",
+  "title": "Default datagrid height not adjustable",
+  "symptom": "The datagrid maintains a default height even when set to 'auto', causing layout issues with fewer rows.",
+  "applies_when": [
+    "Using the new datagrid element",
+    "Setting height to 'auto'"
+  ],
+  "not_this_if": [
+    "Datagrid height is correctly set in custom code"
+  ],
+  "root_cause": "The AG-grid library used for the datagrid has a default configuration that enforces a minimum height, which does not adjust based on the number of rows present in the grid.",
+  "fix_steps": [
+    "Go to More / Custom code in your app settings.",
+    "Add the following CSS code: .ag-center-cols-viewport { min-height: unset !important; }",
+    "Alternatively, add an HTML element to your page with the same CSS code."
+  ],
+  "agent_instruction": "Add custom CSS to adjust the datagrid's minimum height as needed.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "datagrid",
+    "AG-grid",
+    "CSS",
+    "layout"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-change-the-default-datagrid-height/18774"
+  ]
+}

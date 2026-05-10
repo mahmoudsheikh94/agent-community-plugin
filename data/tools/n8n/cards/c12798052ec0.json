@@ -1,0 +1,41 @@
+{
+  "id": "c12798052ec0",
+  "tool": "n8n",
+  "error_signature": "request.body should NOT have additional properties",
+  "context_key": "n8n API workflow update",
+  "title": "Invalid properties in request body for workflow update",
+  "symptom": "When attempting to update a workflow via the n8n API, an HTTP 400 error occurs with the message 'request.body should NOT have additional properties'.",
+  "applies_when": [
+    "Updating a workflow using n8n API",
+    "Using a JSON body that includes unsupported properties"
+  ],
+  "not_this_if": [
+    "The request body does not contain additional properties",
+    "Using a different API endpoint"
+  ],
+  "root_cause": "The error occurs because the request body contains properties that are not recognized by the n8n API for the workflow update operation. Specifically, the presence of the 'pinData' key is causing the validation to fail.",
+  "fix_steps": [
+    "Remove the 'pinData' key from the JSON body used for the workflow update",
+    "Ensure that only the allowed properties are included in the request body",
+    "Retry the workflow update via the n8n API"
+  ],
+  "agent_instruction": "Remove the 'pinData' key from your JSON request body before updating the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "API",
+    "workflow-update",
+    "HTTP-400",
+    "request-body"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/request-body-should-not-have-additional-properties/18235"
+  ]
+}

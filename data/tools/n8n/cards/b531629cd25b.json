@@ -1,0 +1,40 @@
+{
+  "id": "b531629cd25b",
+  "tool": "n8n",
+  "error_signature": "The name of the input field containing the binary file data must be set",
+  "context_key": "google-drive-node",
+  "title": "Missing input field for binary file data in Google Drive upload",
+  "symptom": "When attempting to upload a video to Google Drive, n8n throws an error stating that the input field for binary file data must be set.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Uploading a file generated from an API"
+  ],
+  "not_this_if": [
+    "The video file is ready before the upload attempt"
+  ],
+  "root_cause": "The Google Drive node requires a specific input field name that corresponds to the binary data of the file being uploaded. If this field is not set correctly, the upload will fail.",
+  "fix_steps": [
+    "Open the Google Drive node settings",
+    "In the 'Input Data Field Name', enter the name of the binary property from the previous node (usually 'data')",
+    "Set the 'File Name' to the desired filename",
+    "Specify the target folder if needed"
+  ],
+  "agent_instruction": "Ensure the 'Input Data Field Name' in the Google Drive node is set to the correct binary property name.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "upload",
+    "binary-data",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/generate-video-workflow/211318"
+  ]
+}

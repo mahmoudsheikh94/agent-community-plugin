@@ -1,0 +1,40 @@
+{
+  "id": "0ce9292d7958",
+  "tool": "weweb",
+  "error_signature": "Unable to process request",
+  "context_key": "supabase-password-reset",
+  "title": "Supabase password reset request fails",
+  "symptom": "When attempting to reset a password using Supabase, the system returns an error stating 'Unable to process request'. This occurs during the password reset flow.",
+  "applies_when": [
+    "Using Supabase for authentication",
+    "Attempting to reset a password"
+  ],
+  "not_this_if": [
+    "Using default SMTP settings for email"
+  ],
+  "root_cause": "The error indicates a failure in processing the password reset request, which can occur if there are issues with the SMTP configuration used for sending emails. If a custom SMTP server is misconfigured or down, it can lead to this error.",
+  "fix_steps": [
+    "Check the SMTP settings in your Supabase project",
+    "Ensure that the SMTP server is operational and correctly configured",
+    "Test the email sending functionality",
+    "Retry the password reset process"
+  ],
+  "agent_instruction": "Verify and correct the SMTP settings in Supabase to ensure email functionality.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "password-reset",
+    "smtp",
+    "auth-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/error-on-forgot-password/9533"
+  ]
+}

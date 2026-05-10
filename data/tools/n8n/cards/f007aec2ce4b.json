@@ -1,0 +1,41 @@
+{
+  "id": "f007aec2ce4b",
+  "tool": "n8n",
+  "error_signature": "SMTP blocked on DigitalOcean Droplets",
+  "context_key": "smtp-configuration",
+  "title": "SMTP not sending emails on DigitalOcean Droplets",
+  "symptom": "Emails are not being sent from n8n when configured to use SMTP on a DigitalOcean droplet. The error 'Could not reinvite user' appears for various email actions.",
+  "applies_when": [
+    "Using SMTP with DigitalOcean Droplet",
+    "Configured with Gmail SMTP settings"
+  ],
+  "not_this_if": [
+    "Using a different hosting provider",
+    "SMTP settings are correct and working elsewhere"
+  ],
+  "root_cause": "DigitalOcean blocks SMTP traffic on their Droplets to prevent spam and abuse. This restriction prevents n8n from sending emails directly through SMTP, requiring users to utilize third-party email services instead.",
+  "fix_steps": [
+    "Use a third-party email service provider for SMTP",
+    "Update n8n SMTP configuration with the new provider's settings",
+    "Test sending emails again"
+  ],
+  "agent_instruction": "Switch to a third-party email service provider for SMTP and update your n8n configuration accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "smtp",
+    "digitalocean",
+    "email",
+    "gmail",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/smtp-on-digitalocean-droplet-not-sending-emails/171225"
+  ]
+}

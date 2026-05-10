@@ -1,0 +1,41 @@
+{
+  "id": "e03659bf1382",
+  "tool": "n8n",
+  "error_signature": "Could not find workflow with id",
+  "context_key": "webhook",
+  "title": "404 error for webhook in production due to EXECUTIONS_MODE",
+  "symptom": "When triggering a webhook in production, a 404 error occurs with the message 'Could not find workflow with id'. This happens despite the workflow functioning correctly in test mode.",
+  "applies_when": [
+    "Using webhook node",
+    "Running in production environment"
+  ],
+  "not_this_if": [
+    "Workflow is executed in test mode",
+    "EXECUTIONS_MODE is set to REGULAR"
+  ],
+  "root_cause": "The error occurs because the EXECUTIONS_MODE parameter is set to QUEUE, which requires worker containers to process workflows. If no worker containers are available, the webhook cannot find the corresponding workflow, resulting in a 404 error.",
+  "fix_steps": [
+    "Access the n8n configuration settings",
+    "Locate the EXECUTIONS_MODE parameter",
+    "Change the EXECUTIONS_MODE from QUEUE to REGULAR",
+    "Save the changes and restart n8n"
+  ],
+  "agent_instruction": "Change the EXECUTIONS_MODE to REGULAR in the n8n configuration settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "404-error",
+    "EXECUTIONS_MODE",
+    "production"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.115.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-error-in-production-404-could-not-find-workflow-with-id-xxxxxxxxx/205397"
+  ]
+}

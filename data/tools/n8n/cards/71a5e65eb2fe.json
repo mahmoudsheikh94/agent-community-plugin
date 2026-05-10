@@ -1,0 +1,40 @@
+{
+  "id": "71a5e65eb2fe",
+  "tool": "n8n",
+  "error_signature": "password incorrect for LDAP user",
+  "context_key": "LDAP authentication",
+  "title": "LDAP user password incorrect error",
+  "symptom": "One user is unable to log in with their password, receiving an 'incorrect password' message. If the wrong password is entered, it states that the user already exists.",
+  "applies_when": [
+    "Using LDAP for user authentication",
+    "User has been migrated from invite to LDAP"
+  ],
+  "not_this_if": [
+    "All users can log in successfully",
+    "User is not using LDAP for authentication"
+  ],
+  "root_cause": "The issue arises from mismatched email addresses due to trailing spaces or incorrect user ID attributes in the LDAP configuration. This can lead to authentication failures and confusion in user records.",
+  "fix_steps": [
+    "Check the email addresses in the LDAP query output for trailing spaces.",
+    "Ensure that the 'uid' attribute is correctly set for each user in LDAP.",
+    "Delete the problematic user from the n8n user list and re-add them after correcting the LDAP entries."
+  ],
+  "agent_instruction": "Verify and correct the email addresses and user ID attributes in LDAP, then re-add the user in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "LDAP",
+    "authentication",
+    "user-management",
+    "Postgres"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.7.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ldap-issues-when-migrating-from-invites-to-active-directory/264324"
+  ]
+}

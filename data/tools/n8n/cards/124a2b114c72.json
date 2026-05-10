@@ -1,0 +1,41 @@
+{
+  "id": "124a2b114c72",
+  "tool": "n8n",
+  "error_signature": "Error loading package \"n8n-nodes-deepseek\" :Package could not be installed",
+  "context_key": "community-node-installation",
+  "title": "Unable to install community nodes in n8n",
+  "symptom": "Users encounter an error when trying to install any community node, specifically 'Package could not be installed'. This prevents the addition of new functionality to n8n workflows.",
+  "applies_when": [
+    "Using n8n version 1.84.1",
+    "Running n8n via Docker on Truenas Scale"
+  ],
+  "not_this_if": [
+    "Installation is done with correct UID/GID settings",
+    "No error occurs during package installation"
+  ],
+  "root_cause": "The issue arises when the UID and GID for the n8n installation are not set correctly. If these values are not set to 1000 during installation, permission issues can prevent community nodes from being installed properly.",
+  "fix_steps": [
+    "Perform a fresh installation of n8n from the apps library",
+    "Set both UID and GID to 1000 during the installation process",
+    "Complete the installation and try installing the community nodes again"
+  ],
+  "agent_instruction": "Reinstall n8n with UID and GID set to 1000 to resolve the installation issue.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "community-nodes",
+    "installation",
+    "docker",
+    "truenas",
+    "permissions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-install-any-community-nodes-on-n8n-truenas-scale-24-10-2/90807"
+  ]
+}

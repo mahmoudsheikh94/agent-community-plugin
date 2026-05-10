@@ -1,0 +1,39 @@
+{
+  "id": "447d2fa06780",
+  "tool": "n8n",
+  "error_signature": "Item has no JSON property called 'GV23989n001_huegrp90.3989Y'",
+  "context_key": "xml-node",
+  "title": "XML node not recognizing input property",
+  "symptom": "The XML node throws an error stating 'Item has no JSON property called 'GV23989n001_huegrp90.3989Y'' when trying to access the input property.",
+  "applies_when": [
+    "Using XML node",
+    "Receiving webhook events with XML payload"
+  ],
+  "not_this_if": [
+    "Input property is correctly mapped to the XML node"
+  ],
+  "root_cause": "The XML node requires the name of the variable holding the XML data, not the value itself. If the input property is not correctly set, the node cannot access the expected data, leading to the error.",
+  "fix_steps": [
+    "Add a Set node before the XML node",
+    "Map the body.message to a variable called 'message'",
+    "Ensure the XML node is configured to use 'message' as the input property"
+  ],
+  "agent_instruction": "Map the body.message to a variable named 'message' in a Set node before the XML node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "xml",
+    "json",
+    "node-configuration",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.1.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/xml-to-json-node-not-recognizing-input-properties/244793"
+  ]
+}

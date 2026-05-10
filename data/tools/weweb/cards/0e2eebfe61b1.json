@@ -1,0 +1,38 @@
+{
+  "id": "0e2eebfe61b1",
+  "tool": "weweb",
+  "error_signature": "Request failed with status code 422",
+  "context_key": "airtable-integration",
+  "title": "Airtable request fails with status code 422",
+  "symptom": "When trying to send user data to Airtable, the request fails with a 422 status code, indicating an issue with the request format.",
+  "applies_when": [
+    "Using Airtable to store user data",
+    "Sending user_id from WeWeb auth"
+  ],
+  "not_this_if": [
+    "The user_id field is correctly set as a text column in Airtable"
+  ],
+  "root_cause": "The 422 error indicates that Airtable cannot process the request due to a mismatch in expected data types. Specifically, if the user_id is sent as a number while Airtable expects it to be a text field, this error will occur.",
+  "fix_steps": [
+    "Check the Airtable schema and ensure the user_id field is set to text.",
+    "If it is set to number, change it to text and try sending the data again."
+  ],
+  "agent_instruction": "Ensure the user_id field in Airtable is a text column and resend the data.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "user-auth",
+    "error-422",
+    "data-type-mismatch"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/user-auth-weweb-airtable-sync/7742"
+  ]
+}

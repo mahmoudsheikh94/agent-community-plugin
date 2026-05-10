@@ -1,0 +1,40 @@
+{
+  "id": "890a3391753d",
+  "tool": "weweb",
+  "error_signature": "Realtime subscription overwriting query parameters",
+  "context_key": "WeWeb Realtime plugin",
+  "title": "Realtime subscription causing query parameter conflicts",
+  "symptom": "Multiple users accessing the same WeWeb page with different URL parameters experience conflicts, as the query parameters are overwritten by the Realtime subscription.",
+  "applies_when": [
+    "Using WeWeb with Realtime enabled",
+    "Multiple users accessing the same base URL"
+  ],
+  "not_this_if": [
+    "Each user has a unique session management system",
+    "Realtime is disabled"
+  ],
+  "root_cause": "The WeWeb platform subscribes to entire tables with Realtime enabled by default, which causes it to listen to all changes in the table instead of filtering based on individual user sessions. This leads to overwriting of query parameters when multiple users access the same page.",
+  "fix_steps": [
+    "Go to the plugin settings in WeWeb.",
+    "Turn off the Realtime feature for the WeWeb plugin.",
+    "Manually manage Realtime subscriptions using JavaScript as needed."
+  ],
+  "agent_instruction": "Disable the Realtime feature in the WeWeb plugin settings and manage subscriptions manually with JavaScript.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "weweb",
+    "realtime",
+    "query-parameters",
+    "session-management"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/url-parameter-issue/5444"
+  ]
+}

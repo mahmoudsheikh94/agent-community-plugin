@@ -1,0 +1,40 @@
+{
+  "id": "21e2e25d33dc",
+  "tool": "n8n",
+  "error_signature": "only shows HTML data instead of binary data",
+  "context_key": "file-upload-node",
+  "title": "Receiving HTML data instead of binary file",
+  "symptom": "When attempting to upload a file to the accounting system, the response contains HTML data instead of the expected binary file data.",
+  "applies_when": [
+    "Using n8n to download a file from a URL",
+    "Uploading the file to an API expecting binary data"
+  ],
+  "not_this_if": [
+    "The API accepts other content types successfully",
+    "The file is not downloaded correctly"
+  ],
+  "root_cause": "The issue arises when the file is not correctly set as a binary file in the upload parameters. If the content type is not specified correctly or if the input data field is not set to the binary file, the API may interpret the data incorrectly, leading to HTML responses instead of the expected binary data.",
+  "fix_steps": [
+    "In the upload node, set the Body Content Type to 'multipart/form-data'.",
+    "Select 'n8n Binary File' for the Parameter Type instead of 'Form Data'.",
+    "Ensure the Name is set to 'file' and Input Data Field Name is set to 'paymentProof'."
+  ],
+  "agent_instruction": "Adjust the upload node settings to use 'n8n Binary File' for the parameter type and ensure the correct field names are used.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "file-upload",
+    "binary-data",
+    "multipart/form-data",
+    "API-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "cloud",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/file-images-pdfs-cant-obtain-the-binary-data/215511"
+  ]
+}

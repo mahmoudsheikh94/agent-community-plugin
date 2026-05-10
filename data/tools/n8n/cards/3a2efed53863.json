@@ -1,0 +1,40 @@
+{
+  "id": "3a2efed53863",
+  "tool": "n8n",
+  "error_signature": "Expected object, received array",
+  "context_key": "text-classifier-node",
+  "title": "Text Classifier fails with invalid type error",
+  "symptom": "The Text Classifier node throws an error indicating it expected an object but received an array when processing input.",
+  "applies_when": [
+    "Using the Text Classifier node",
+    "The 'Use Responses API' option is enabled"
+  ],
+  "not_this_if": [
+    "The 'Use Responses API' option is disabled"
+  ],
+  "root_cause": "The Text Classifier node is designed to process input in a specific format. When the 'Use Responses API' option is enabled, it expects an object structure but receives an array instead, leading to a parsing error.",
+  "fix_steps": [
+    "Open the settings for the Text Classifier node",
+    "Disable the 'Use Responses API' option",
+    "Save the workflow",
+    "Retry executing the workflow"
+  ],
+  "agent_instruction": "Disable the 'Use Responses API' option in the Text Classifier node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "text-classifier",
+    "error",
+    "invalid-type",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/is-the-text-classifier-broken/228016"
+  ]
+}

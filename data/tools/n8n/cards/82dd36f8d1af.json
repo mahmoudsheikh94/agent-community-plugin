@@ -1,0 +1,43 @@
+{
+  "id": "82dd36f8d1af",
+  "tool": "n8n",
+  "error_signature": "Gmail trigger not firing after a day",
+  "context_key": "gmail-trigger",
+  "title": "Gmail trigger stops firing after a period",
+  "symptom": "The Gmail trigger works initially but stops firing after a day, despite receiving emails.",
+  "applies_when": [
+    "Using Gmail trigger",
+    "Workflow is activated"
+  ],
+  "not_this_if": [
+    "Trigger works continuously without interruption",
+    "No emails are received"
+  ],
+  "root_cause": "n8n Cloud uses polling to check for new emails, which can be rate-limited by Google. If the polling interval is too short, it may hit these limits, causing the trigger to stop firing after a while.",
+  "fix_steps": [
+    "Open the Gmail Trigger node settings in your workflow.",
+    "Reduce the polling interval (e.g., change from 60s to 300s).",
+    "Ensure 'Mark as Read' or 'Remove Label' is enabled to prevent re-checking processed emails.",
+    "Check the Gmail credentials and click 'Reconnect' or 'Re-authenticate' to refresh the token.",
+    "Save and redeploy the workflow."
+  ],
+  "agent_instruction": "Adjust the polling interval and refresh the Gmail token in the node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "trigger",
+    "polling",
+    "rate-limit",
+    "n8n-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gmail-trigger-not-triggering-after-a-couple-of-hours/137997"
+  ]
+}

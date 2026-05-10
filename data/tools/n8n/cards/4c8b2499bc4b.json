@@ -1,0 +1,40 @@
+{
+  "id": "4c8b2499bc4b",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'name')",
+  "context_key": "LlamaIndex",
+  "title": "Error reading properties in LlamaIndex integration",
+  "symptom": "When attempting to send a file to LlamaIndex, the process fails with the error 'Cannot read properties of undefined (reading 'name')'. This indicates that the expected file properties are not being correctly passed to the API.",
+  "applies_when": [
+    "Using LlamaIndex API",
+    "Sending files from Gmail"
+  ],
+  "not_this_if": [
+    "Files are correctly formatted and properties are defined"
+  ],
+  "root_cause": "The error occurs because the integration is trying to access the 'name' property of a file object that is undefined. This can happen if the file attachment is not properly extracted or if the API endpoint being used is outdated or incorrect.",
+  "fix_steps": [
+    "Ensure that you are using the latest LlamaParse API v1 endpoints.",
+    "Switch all API calls from /api to /api/v1.",
+    "Add premium_mode=true to the api/v1/upload call.",
+    "Check that all file attachments are correctly extracted from the Gmail message."
+  ],
+  "agent_instruction": "Update your API calls to use the latest LlamaParse API v1 and ensure file attachments are correctly handled.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "LlamaIndex",
+    "Gmail",
+    "API",
+    "file-attachments"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/having-issue-to-run-llamacloud-llamaindex/79511"
+  ]
+}

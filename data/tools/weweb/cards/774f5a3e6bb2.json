@@ -1,0 +1,39 @@
+{
+  "id": "774f5a3e6bb2",
+  "tool": "weweb",
+  "error_signature": "Failed to send a request to the Edge Function",
+  "context_key": "supabase-edge-function",
+  "title": "Error sending request to Supabase Edge Function",
+  "symptom": "When attempting to call a Supabase Edge Function from WeWeb, the error 'Failed to send a request to the Edge Function' appears.",
+  "applies_when": [
+    "Using Supabase Edge Functions",
+    "Configured with WeWeb"
+  ],
+  "not_this_if": [
+    "Edge Function works when called directly via REST API"
+  ],
+  "root_cause": "The error occurs due to potential misconfigurations in the Edge Function setup, such as incorrect API links, missing headers, or authorization issues that prevent WeWeb from successfully sending requests to the Edge Function.",
+  "fix_steps": [
+    "Verify the API link for the Edge Function is correct.",
+    "Ensure the required headers, including Authorization, are properly set.",
+    "Test the Edge Function using a REST API client to confirm it works independently."
+  ],
+  "agent_instruction": "Check the API link and headers for the Supabase Edge Function in WeWeb.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "edge-function",
+    "api-call",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/supabase-edge-function-fails/20582"
+  ]
+}

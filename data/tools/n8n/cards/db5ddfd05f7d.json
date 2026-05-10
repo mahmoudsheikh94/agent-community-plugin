@@ -1,0 +1,41 @@
+{
+  "id": "db5ddfd05f7d",
+  "tool": "n8n",
+  "error_signature": "Telegram Trigger does not start listening after activation",
+  "context_key": "telegram-trigger-node",
+  "title": "Telegram Trigger not responding after workflow activation",
+  "symptom": "After activating a workflow with a Telegram Trigger, it does not respond to messages until a node is edited and saved. No error messages are shown in logs or console.",
+  "applies_when": [
+    "Using Telegram Trigger node",
+    "Workflow is activated"
+  ],
+  "not_this_if": [
+    "Trigger works after editing and saving a node",
+    "No other workflows are using the same bot"
+  ],
+  "root_cause": "The Telegram Trigger may not properly register the webhook upon initial activation due to an issue with the API or webhook registration process. This can lead to the trigger not responding until a manual intervention occurs.",
+  "fix_steps": [
+    "Edit any node in the workflow",
+    "Save the workflow again",
+    "Test the Telegram Trigger by sending a message"
+  ],
+  "agent_instruction": "Edit and save any node in the workflow to activate the Telegram Trigger.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "telegram",
+    "trigger",
+    "webhook",
+    "activation",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/telegram-trigger-not-working-on-workflow-activation-v1-91-2/194173"
+  ]
+}

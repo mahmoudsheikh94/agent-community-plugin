@@ -1,0 +1,39 @@
+{
+  "id": "16a1648c5802",
+  "tool": "n8n",
+  "error_signature": "empty data returned from Call Another Workflow node",
+  "context_key": "Call Another Workflow node",
+  "title": "Empty data returned from Call Another Workflow node",
+  "symptom": "The Main Workflow receives empty data instead of the expected output after calling the Output-Workflow. The Output-Workflow does not wait for the full duration set in the Wait node.",
+  "applies_when": [
+    "Using Call Another Workflow node",
+    "Output-Workflow includes a Wait node"
+  ],
+  "not_this_if": [
+    "Output-Workflow returns data correctly without the Wait node"
+  ],
+  "root_cause": "The Call Another Workflow node may have a timeout limit that is shorter than the wait time set in the Output-Workflow. This causes it to return empty data before the Wait node completes its duration.",
+  "fix_steps": [
+    "Split the wait time into smaller intervals (e.g., 30 seconds each)",
+    "Adjust the Wait node in the Output-Workflow accordingly",
+    "Test the workflow to ensure data is returned correctly"
+  ],
+  "agent_instruction": "Split the wait time in the Output-Workflow into smaller intervals to ensure data is returned correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Call Another Workflow",
+    "Wait node",
+    "workflow-execution",
+    "timeout"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "0.225.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-with-call-another-workflow-node-not-waiting-for-full-duration/84499"
+  ]
+}

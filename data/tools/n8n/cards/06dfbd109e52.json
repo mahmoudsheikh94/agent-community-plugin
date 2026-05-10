@@ -1,0 +1,41 @@
+{
+  "id": "06dfbd109e52",
+  "tool": "n8n",
+  "error_signature": "HTTP node does not request the next page of results",
+  "context_key": "http-node",
+  "title": "HTTP Node pagination not working with NextToken",
+  "symptom": "The HTTP node in n8n does not fire a new request for the next page of results despite receiving a NextToken in the response.",
+  "applies_when": [
+    "Using HTTP node for API requests",
+    "Response contains a NextToken"
+  ],
+  "not_this_if": [
+    "Pagination is correctly implemented with a different method",
+    "NextToken is not present in the response"
+  ],
+  "root_cause": "The HTTP node requires a proper expression to determine when pagination is complete. If the expression does not evaluate to a Boolean value indicating whether to continue, the node will not trigger additional requests.",
+  "fix_steps": [
+    "Open the HTTP node settings",
+    "Replace the existing Pagination Complete expression with '{{ $response.body.payload.NextToken.isEmpty() }}'",
+    "Save the workflow",
+    "Run the workflow again to check if pagination works"
+  ],
+  "agent_instruction": "Update the Pagination Complete expression in the HTTP node to check if the NextToken is empty.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "pagination",
+    "NextToken",
+    "AWS SP-API"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pagination-next-token-on-aws-sp-api-not-working/128395"
+  ]
+}

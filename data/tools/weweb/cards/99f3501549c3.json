@@ -1,0 +1,38 @@
+{
+  "id": "99f3501549c3",
+  "tool": "weweb",
+  "error_signature": "returns blank object from the jsonplaceholder testing endpoint",
+  "context_key": "axios-fetch",
+  "title": "Axios fetch returns blank object",
+  "symptom": "The Axios call to the JSONPlaceholder API returns a blank object instead of the expected data. The console logs show 'No data fetched' or an error message.",
+  "applies_when": [
+    "Using Axios to fetch data from an API",
+    "The API endpoint is valid and returns data in Postman"
+  ],
+  "not_this_if": [
+    "The API call is successful and returns data in the console"
+  ],
+  "root_cause": "The main function does not return the fetched data, leading to a blank object being returned. Additionally, the outer code does not properly invoke the main function, causing it to not execute as expected.",
+  "fix_steps": [
+    "Add a return statement in the main function after fetching data, e.g., 'return data'.",
+    "Insert 'return' before the main function call, e.g., 'return main()'."
+  ],
+  "agent_instruction": "Ensure the main function returns the fetched data and is properly invoked.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "axios",
+    "fetch",
+    "javascript",
+    "async-await"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/axios-returning-blank-objects/6001"
+  ]
+}

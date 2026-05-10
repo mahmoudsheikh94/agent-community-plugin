@@ -1,0 +1,39 @@
+{
+  "id": "e4af03d9867f",
+  "tool": "n8n",
+  "error_signature": "simultaneous output from sub-workflow for success and failure",
+  "context_key": "sub-workflow-execution-node",
+  "title": "Sub-workflow returns both success and error outputs",
+  "symptom": "The sub-workflow is producing simultaneous outputs indicating both success and failure, leading to confusion in the workflow execution.",
+  "applies_when": [
+    "Using a sub-workflow",
+    "Node settings include 'always Output data' and 'continue on error'"
+  ],
+  "not_this_if": [
+    "Sub-workflow has a clear single path without conflicting output settings"
+  ],
+  "root_cause": "The issue arises when a node is configured to always output data while also set to continue on error. This creates a situation where both success and error outputs can be emitted simultaneously, causing ambiguity in the workflow's execution flow.",
+  "fix_steps": [
+    "Open the settings of the node in the sub-workflow.",
+    "Remove the 'always Output data' option or adjust the error handling settings to ensure only one output path is followed.",
+    "Ensure that the sub-workflow can only reach an end once, either by catching errors or converting them to a clear output."
+  ],
+  "agent_instruction": "Adjust the node settings in the sub-workflow to prevent simultaneous success and error outputs.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sub-workflow",
+    "execution-node",
+    "error-handling",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.2.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-and-success-for-subworkflow-execution-node-bug/260385"
+  ]
+}

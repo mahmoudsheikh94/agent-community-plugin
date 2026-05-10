@@ -1,0 +1,39 @@
+{
+  "id": "99a5d28bcefa",
+  "tool": "n8n",
+  "error_signature": "NodeOperationError: JSON parameter needs to be valid JSON",
+  "context_key": "http-request-node",
+  "title": "Invalid JSON parameter in HTTP Request node",
+  "symptom": "The HTTP Request node throws an error stating 'JSON parameter needs to be valid JSON' when executing the workflow.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending JSON data"
+  ],
+  "not_this_if": [
+    "All input items contain valid data"
+  ],
+  "root_cause": "The error occurs when the HTTP Request node processes multiple items, and at least one of the items lacks the required data for the JSON structure, leading to invalid JSON being sent.",
+  "fix_steps": [
+    "Check the output of the preceding node for all items",
+    "Ensure that all items contain the necessary data for the HTTP request",
+    "Remove or filter out any unnecessary items before the HTTP request"
+  ],
+  "agent_instruction": "Verify that all items passed to the HTTP Request node contain valid data for the JSON structure.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "http-request",
+    "json",
+    "node-operation-error",
+    "klaviyo"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/klaviyo-api-request-works-but-n8n-node-errors-out/134035"
+  ]
+}

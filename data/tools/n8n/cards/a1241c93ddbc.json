@@ -1,0 +1,39 @@
+{
+  "id": "a1241c93ddbc",
+  "tool": "n8n",
+  "error_signature": "Error code 400",
+  "context_key": "sharepoint-node",
+  "title": "SharePoint node returns Error code 400 on filter",
+  "symptom": "When applying a filter using 'Filter by formula' in the SharePoint node, an Error code 400 is returned, indicating a bad request.",
+  "applies_when": [
+    "Using SharePoint node",
+    "Filtering with 'Filter by formula'"
+  ],
+  "not_this_if": [
+    "No error occurs when filtering without a formula"
+  ],
+  "root_cause": "The error occurs because the 'FileLeafRef' field is not indexed in SharePoint, which leads to performance issues when querying large lists. SharePoint restricts non-indexed queries to prevent slow performance.",
+  "fix_steps": [
+    "Go to SharePoint Dashboard and navigate to Settings.",
+    "Select Columns and add 'FileLeafRef' as an indexed column.",
+    "Alternatively, use an HTTP Request node with the header 'Prefer' set to 'HonorNonIndexedQueriesWarningMayFailRandomly'."
+  ],
+  "agent_instruction": "Add 'FileLeafRef' as an indexed column in SharePoint to resolve the error.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sharepoint",
+    "filter",
+    "error-code-400",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.118.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/filter-by-formula-in-sharepoint-node/216455"
+  ]
+}

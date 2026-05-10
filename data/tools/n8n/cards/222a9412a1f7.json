@@ -1,0 +1,39 @@
+{
+  "id": "222a9412a1f7",
+  "tool": "n8n",
+  "error_signature": "(#10) Application does not have permission for this action",
+  "context_key": "facebook-graph-node",
+  "title": "Facebook Graph Node Permission Error",
+  "symptom": "When executing a workflow with the Facebook Graph node, an error occurs stating 'Bad request - please check your parameters' and '(#10) Application does not have permission for this action'.",
+  "applies_when": [
+    "Using Facebook Graph node",
+    "Configured with required permissions"
+  ],
+  "not_this_if": [
+    "Using a different node or integration",
+    "Permissions are correctly set and verified"
+  ],
+  "root_cause": "The error indicates that the Facebook application lacks the necessary permissions to perform the requested action. This can happen if the permissions were not granted correctly or if the node is outdated and does not support the latest API changes.",
+  "fix_steps": [
+    "Verify that all required permissions are granted in the Facebook app settings.",
+    "Consider using an alternative node like 'Upload-post' if the Facebook Graph node is outdated."
+  ],
+  "agent_instruction": "Check the Facebook app permissions and switch to the Upload-post node if necessary.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook",
+    "graph-api",
+    "permissions",
+    "error-code-10"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/facebook-container-error-bad-request-please-check-your-parameters-10-application-does-not-have-permission-for-this-action/159797"
+  ]
+}

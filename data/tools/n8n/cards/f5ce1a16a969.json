@@ -1,0 +1,41 @@
+{
+  "id": "f5ce1a16a969",
+  "tool": "n8n",
+  "error_signature": "returns metadata, no binaries",
+  "context_key": "slack-node",
+  "title": "Slack node returns only metadata instead of binary file",
+  "symptom": "When using the Slack node to get a file, it only returns metadata and not the actual binary file.",
+  "applies_when": [
+    "Using Slack node with 'Get file' operation",
+    "Expecting to download a binary file"
+  ],
+  "not_this_if": [
+    "File is downloaded successfully",
+    "Using a different node for file retrieval"
+  ],
+  "root_cause": "The Slack node is designed to return file metadata, and to obtain the actual file, a separate HTTP request must be made using the provided file URL. This is a limitation in how the Slack node handles file downloads.",
+  "fix_steps": [
+    "Use the URL provided in the Slack node output (url_private_download).",
+    "Add an HTTP Request node to your workflow.",
+    "Set the HTTP Request node to use the file URL and configure it to return the file as a binary response.",
+    "Connect the HTTP Request node to the next step in your workflow to send the file to its destination."
+  ],
+  "agent_instruction": "Make an HTTP request to the file URL to download the binary file.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "slack",
+    "file-download",
+    "http-request",
+    "binary-file"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-get-a-binary-file-from-slack/86978"
+  ]
+}

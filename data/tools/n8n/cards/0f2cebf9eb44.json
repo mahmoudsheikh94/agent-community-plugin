@@ -1,0 +1,40 @@
+{
+  "id": "0f2cebf9eb44",
+  "tool": "n8n",
+  "error_signature": "Lost Redis connection. Trying to reconnect in 1s...",
+  "context_key": "redis-connection",
+  "title": "Redis connection drops causing workflows to get stuck",
+  "symptom": "Workflows get stuck in the queue indefinitely, with logs indicating lost Redis connections. Workers do not pick up jobs from the Redis queue.",
+  "applies_when": [
+    "Using Redis as a queue backend",
+    "Multiple services deployed on AWS ECS Fargate"
+  ],
+  "not_this_if": [
+    "Redis connection is stable and workers are processing jobs"
+  ],
+  "root_cause": "Frequent drops in the Redis connection can prevent workers from picking up jobs, leading to workflows being stuck in the queue. This can be caused by misconfigurations in the Redis settings or network issues.",
+  "fix_steps": [
+    "Check and adjust Redis connection timeout settings in your environment variables.",
+    "Ensure that all services are properly configured to maintain a stable connection to Redis."
+  ],
+  "agent_instruction": "Adjust Redis connection settings to ensure stability and prevent drops.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "redis",
+    "queue",
+    "workflow",
+    "AWS",
+    "ECS",
+    "Fargate"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.2.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflows-get-stuck-indefinitely-v2-0-0-queue-external-task-runners/260734"
+  ]
+}

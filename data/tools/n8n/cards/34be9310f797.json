@@ -1,0 +1,39 @@
+{
+  "id": "34be9310f797",
+  "tool": "n8n",
+  "error_signature": "date output is incorrect",
+  "context_key": "clickup-trigger",
+  "title": "Incorrect date output from ClickUp trigger",
+  "symptom": "The date received from the ClickUp trigger is incorrect, showing yesterday's date instead of today's date.",
+  "applies_when": [
+    "Using ClickUp trigger",
+    "Date formatting is applied"
+  ],
+  "not_this_if": [
+    "Date is correct in ClickUp",
+    "No date formatting is applied"
+  ],
+  "root_cause": "The ClickUp API returns dates in UTC format, and if not handled properly, it can lead to incorrect local date representations when converted to ISO format.",
+  "fix_steps": [
+    "Ensure that the date is being converted from UTC to the correct local timezone",
+    "Adjust the date formatting function to account for timezone differences"
+  ],
+  "agent_instruction": "Adjust the date conversion logic to correctly handle UTC dates from ClickUp.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "clickup",
+    "date-formatting",
+    "utc",
+    "timezone"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/date-output-is-different-then-send-value/139094"
+  ]
+}

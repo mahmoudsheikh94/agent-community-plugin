@@ -1,0 +1,41 @@
+{
+  "id": "3716de1c4501",
+  "tool": "n8n",
+  "error_signature": "WebSocket connection lost, code=1006",
+  "context_key": "openai-embeddings-node",
+  "title": "WebSocket connection lost during embedding requests",
+  "symptom": "The n8n UI shows a 'WebSocket connection lost' error while processing embedding requests. This occurs when sending large amounts of data to the OpenAI API.",
+  "applies_when": [
+    "Using OpenAI embeddings API",
+    "Sending multiple chunked data requests"
+  ],
+  "not_this_if": [
+    "Running on a higher resource plan",
+    "No connection issues reported"
+  ],
+  "root_cause": "The n8n server is likely overwhelmed due to the high volume of requests being sent to the OpenAI embeddings API, especially on a low-resource plan. This can cause the WebSocket connection to drop unexpectedly, leading to execution failures.",
+  "fix_steps": [
+    "Add a Wait node or batching mechanism between embedding calls",
+    "Monitor the server's resource usage during execution",
+    "Consider upgrading the n8n plan or running locally if issues persist"
+  ],
+  "agent_instruction": "Implement a delay between embedding requests to reduce server load.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "openai",
+    "websocket",
+    "embeddings",
+    "server-load",
+    "n8n-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.101.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connetion-lost-with-no-much-data-transferring/159162"
+  ]
+}

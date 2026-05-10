@@ -1,0 +1,41 @@
+{
+  "id": "0bb161436b98",
+  "tool": "n8n",
+  "error_signature": "only returns raw JSON call instead of executing tool",
+  "context_key": "AI Agent with GPT-OSS model",
+  "title": "AI Agent not executing tools, only returning JSON",
+  "symptom": "The AI Agent outputs the raw JSON call instead of executing the tool, resulting in no processed output. For example, it shows the input as a JSON string instead of the calculated result.",
+  "applies_when": [
+    "Using AI Agent node",
+    "GPT-OSS model with vLLM"
+  ],
+  "not_this_if": [
+    "Using OpenAI API",
+    "Different model that supports tool execution"
+  ],
+  "root_cause": "The GPT-OSS model requires specific parameters to enable tool execution. Without these parameters, the model defaults to returning the function call payload as JSON instead of executing the tool.",
+  "fix_steps": [
+    "Access the configuration for the GPT-OSS model",
+    "Add the parameters '--enable-auto-tool-choice --tool-call-parser openai'",
+    "Save the changes",
+    "Test the tool execution again"
+  ],
+  "agent_instruction": "Add the required parameters to the GPT-OSS model configuration to enable tool execution.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "AI Agent",
+    "GPT-OSS",
+    "tool-execution",
+    "vLLM"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.118.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-only-outputs-json-instead-of-passing-it-to-a-tool/216907"
+  ]
+}

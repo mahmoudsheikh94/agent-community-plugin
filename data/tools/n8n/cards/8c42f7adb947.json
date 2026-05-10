@@ -1,0 +1,41 @@
+{
+  "id": "8c42f7adb947",
+  "tool": "n8n",
+  "error_signature": "Set up owner account",
+  "context_key": "docker-n8n",
+  "title": "N8N shows 'Set up owner account' despite existing data",
+  "symptom": "Upon starting n8n, the interface displays the 'Set up owner account' screen, indicating it cannot find existing workflows or settings.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Existing data directory is correctly mounted"
+  ],
+  "not_this_if": [
+    "No existing data directory is mounted",
+    "Database file is missing or corrupt"
+  ],
+  "root_cause": "The issue arises when n8n fails to recognize the existing database due to permission issues or incorrect configuration of the mounted volume. Even if the database file is present and intact, improper ownership or permissions can prevent n8n from accessing it.",
+  "fix_steps": [
+    "Ensure the ownership of the mounted data directory is set to UID/GID 1000, which matches the internal user of the n8n Docker container.",
+    "Check the permissions of the `database.sqlite` file and ensure they are set to 0644 or more restrictive.",
+    "Restart the n8n Docker container to apply the changes."
+  ],
+  "agent_instruction": "Verify and adjust the ownership and permissions of the mounted n8n data directory and restart the Docker container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "setup",
+    "permissions",
+    "database"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-v1-94-1-v1-95-2-docker-shows-set-up-owner-account-existing-data-not-loaded-despite-correct-mounts-permissions/126033"
+  ]
+}

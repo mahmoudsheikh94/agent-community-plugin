@@ -1,0 +1,40 @@
+{
+  "id": "0e67fa306e5a",
+  "tool": "n8n",
+  "error_signature": "The selected tools are not supported by 'Conversational Agent'",
+  "context_key": "AI Agent node",
+  "title": "Unsupported tools for Conversational Agent",
+  "symptom": "When executing a workflow with the AI Agent node, an error indicates that the selected tools are not supported by the 'Conversational Agent'.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Workflow execution"
+  ],
+  "not_this_if": [
+    "Using Tools Agent instead",
+    "No tools selected in the node"
+  ],
+  "root_cause": "The error occurs because the version of the AI Agent node being used is outdated and does not support the tools selected for the Conversational Agent. This can happen if the node has not been updated to the latest version that includes support for the required tools.",
+  "fix_steps": [
+    "Update the AI Agent node to the latest version",
+    "Reconfigure the tools in the node if necessary",
+    "Save the workflow and try executing it again"
+  ],
+  "agent_instruction": "Update the AI Agent node to the latest version and reconfigure the tools.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "AI Agent",
+    "Conversational Agent",
+    "node-update",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-selected-tools-are-not-supported-by-conversational-agent-please-use-tools-agent-instead/231645"
+  ]
+}

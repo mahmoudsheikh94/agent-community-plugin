@@ -1,0 +1,38 @@
+{
+  "id": "ad4cda2ae4ce",
+  "tool": "weweb",
+  "error_signature": "data on the page does not refresh after updating",
+  "context_key": "Xano integration",
+  "title": "Page data not refreshing after record update",
+  "symptom": "After updating a record in Xano, the data displayed on the page does not refresh until the page is reloaded or switched.",
+  "applies_when": [
+    "Updating a record in Xano",
+    "Fetching data on page load"
+  ],
+  "not_this_if": [
+    "Data refreshes correctly without manual page reload"
+  ],
+  "root_cause": "The application does not automatically refresh the displayed data after an update because it relies on the initial data fetch without re-fetching the updated data from the server after the update action.",
+  "fix_steps": [
+    "In the submit action, after updating the record, add a fetch action to retrieve the updated collection.",
+    "Ensure that the fetch action is correctly configured to get the latest data."
+  ],
+  "agent_instruction": "Add a fetch action to retrieve the updated data after the record update.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "Xano",
+    "data-refresh",
+    "record-update",
+    "fetch-action"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/refresh-page-data-after-updating/2139"
+  ]
+}

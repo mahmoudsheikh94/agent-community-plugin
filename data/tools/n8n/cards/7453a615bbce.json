@@ -1,0 +1,40 @@
+{
+  "id": "7453a615bbce",
+  "tool": "n8n",
+  "error_signature": "Invalid URL: URL must start with 'http' or 'https'",
+  "context_key": "notion-node",
+  "title": "Invalid URL error in Notion node",
+  "symptom": "The workflow fails with an error stating that the URL must start with 'http' or 'https'. This occurs when the URL provided is incorrectly formatted.",
+  "applies_when": [
+    "Using Notion node",
+    "URL provided is incorrectly formatted"
+  ],
+  "not_this_if": [
+    "URL is correctly formatted with no extra spaces"
+  ],
+  "root_cause": "The error occurs when there is an extra space or invalid character in the URL provided to the Notion node. This can happen after an upgrade or when manually editing the URL.",
+  "fix_steps": [
+    "Check the URL provided in the Notion node settings",
+    "Remove any extra spaces or invalid characters",
+    "Save the workflow",
+    "Try executing the workflow again"
+  ],
+  "agent_instruction": "Ensure the URL in the Notion node is correctly formatted without extra spaces.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "notion",
+    "url",
+    "invalid-url",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/notion-node-throw-url-must-start-with-http-or-https/197711"
+  ]
+}

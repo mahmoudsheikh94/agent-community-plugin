@@ -1,0 +1,40 @@
+{
+  "id": "cd1df66d97f8",
+  "tool": "n8n",
+  "error_signature": "Chat URL remains as localhost",
+  "context_key": "hosted-chat",
+  "title": "Hosted Chat URL incorrectly shows localhost",
+  "symptom": "The 'Chat URL' in the 'When chat message received' node shows 'http://localhost:5678/' instead of the public URL, leading to a 404 error when accessed.",
+  "applies_when": [
+    "Using self-hosted n8n on Render",
+    "N8N_HOST and N8N_PROTOCOL are set correctly"
+  ],
+  "not_this_if": [
+    "Chat URL displays correctly in other environments",
+    "Using a different deployment method"
+  ],
+  "root_cause": "The issue arises because n8n generates the chat URL based on the webhook URL environment variable. If this variable is not set correctly, it defaults to localhost, causing the incorrect URL to be displayed.",
+  "fix_steps": [
+    "Set the environment variable WEBHOOK_URL to your public domain (e.g., https://n8n-y3ej.onrender.com)",
+    "Restart the n8n instance to apply the changes",
+    "Check the 'Chat URL' in the 'When chat message received' node again"
+  ],
+  "agent_instruction": "Update the WEBHOOK_URL environment variable to your public domain and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "hosted-chat",
+    "webhook-url",
+    "self-hosted",
+    "render"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/hosted-chat-url-remains-as-localhost-on-self-hosted-render-instance/108972"
+  ]
+}

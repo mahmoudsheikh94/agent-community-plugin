@@ -1,0 +1,40 @@
+{
+  "id": "0fba1ebcc5cb",
+  "tool": "weweb",
+  "error_signature": "field components not picked up by Form Containers",
+  "context_key": "form-builder",
+  "title": "Field components not recognized in Form Containers",
+  "symptom": "When using custom input components in the new form builder, they do not appear in the Form Container, while regular input fields work fine.",
+  "applies_when": [
+    "Using custom input components",
+    "Working with the new form builder"
+  ],
+  "not_this_if": [
+    "Using only regular input fields",
+    "Form Container recognizes other components"
+  ],
+  "root_cause": "The new form builder has a limitation where custom input components do not automatically register with the Form Container unless they are given specific names. This can lead to inconsistencies in form handling and data binding.",
+  "fix_steps": [
+    "Assign a specific name to each custom input field (e.g., inputField1)",
+    "Ensure that the naming convention is followed for all fields",
+    "Check if the fields now appear in the Form Container"
+  ],
+  "agent_instruction": "Assign specific names to your custom input fields to ensure they are recognized by the Form Container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "form-builder",
+    "input-components",
+    "form-container",
+    "custom-fields"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/new-form-builder-combined-with-components-is-not-working/17202"
+  ]
+}

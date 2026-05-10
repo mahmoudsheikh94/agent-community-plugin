@@ -1,0 +1,40 @@
+{
+  "id": "0fbddbb55e56",
+  "tool": "n8n",
+  "error_signature": "404 Error",
+  "context_key": "multi-stage forms",
+  "title": "404 Error when using multi-stage forms",
+  "symptom": "When attempting to use multi-stage forms, the process leads to a 404 error at the specified URL. The error message displayed is 'Oops, couldn’t find that'.",
+  "applies_when": [
+    "Using multi-stage forms",
+    "Configured with Nginx"
+  ],
+  "not_this_if": [
+    "Using a different web server",
+    "No multi-stage forms in use"
+  ],
+  "root_cause": "The 404 error occurs because the Nginx server is not correctly routing requests for the multi-stage form endpoints. Specifically, the /form/ and /form-waiting/ routes need to be directed to the webhook node to function properly.",
+  "fix_steps": [
+    "Configure Nginx to route /form/ and /form-waiting/ traffic to the webhook node.",
+    "Ensure that /form-test/ traffic remains pointed to the main node.",
+    "Restart Nginx to apply the changes."
+  ],
+  "agent_instruction": "Update the Nginx configuration to route the necessary form traffic to the webhook node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "multi-stage forms",
+    "404 error",
+    "nginx",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.72.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/multi-stage-forms-not-working-404-error/67930"
+  ]
+}

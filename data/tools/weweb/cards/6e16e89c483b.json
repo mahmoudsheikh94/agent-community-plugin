@@ -1,0 +1,41 @@
+{
+  "id": "6e16e89c483b",
+  "tool": "weweb",
+  "error_signature": "project is hanging",
+  "context_key": "weweb-editor",
+  "title": "Project hangs when loading in the editor",
+  "symptom": "The project freezes shortly after loading in the editor, making it unresponsive. Attempts to interact with the project are met with delays or complete freezing.",
+  "applies_when": [
+    "Loading a project in the editor",
+    "Experiencing freezing issues"
+  ],
+  "not_this_if": [
+    "Project loads successfully without freezing",
+    "No components are causing the freeze"
+  ],
+  "root_cause": "The freezing issue may be caused by specific components or workflows that are not compatible or are malfunctioning, leading to performance issues in the editor. Safe Mode allows for troubleshooting by disabling certain functionalities.",
+  "fix_steps": [
+    "Enable Safe Mode in the project settings",
+    "Disable workflows by adding a passthrough set to false",
+    "Set elements to not render to identify the problematic component",
+    "Test the project to see if it still hangs"
+  ],
+  "agent_instruction": "Enable Safe Mode and disable workflows to troubleshoot the freezing issue.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "project-hanging",
+    "safe-mode",
+    "editor-freeze",
+    "troubleshooting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/project-is-frozen-hanging/3853"
+  ]
+}

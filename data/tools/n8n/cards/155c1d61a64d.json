@@ -1,0 +1,39 @@
+{
+  "id": "155c1d61a64d",
+  "tool": "n8n",
+  "error_signature": "Insufficient parameters for OAuth2 callback",
+  "context_key": "excel-node",
+  "title": "OAuth2 callback insufficient parameters for Excel",
+  "symptom": "When attempting to connect n8n to Excel, the error 'Insufficient parameters for OAuth2 callback' is displayed, indicating a failure in the connection process.",
+  "applies_when": [
+    "Using Excel node",
+    "OAuth2 authentication method"
+  ],
+  "not_this_if": [
+    "Error occurs with other nodes or authentication methods"
+  ],
+  "root_cause": "The error occurs because the OAuth2 callback is missing required parameters, often due to insufficient permissions or scopes not being granted during the authorization process.",
+  "fix_steps": [
+    "Check the authorization popup for any permissions checkboxes",
+    "Ensure that the required scopes (Files.Read and/or Files.ReadWrite) are added to your Microsoft App",
+    "Re-attempt the connection to Excel"
+  ],
+  "agent_instruction": "Verify and grant the necessary permissions and scopes for the Excel connection.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "excel",
+    "oauth2",
+    "authentication",
+    "microsoft-app"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.84.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-insufficient-parameters-for-oauth2-callback/95078"
+  ]
+}

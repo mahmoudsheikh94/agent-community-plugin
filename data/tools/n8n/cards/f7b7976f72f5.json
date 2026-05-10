@@ -1,0 +1,41 @@
+{
+  "id": "f7b7976f72f5",
+  "tool": "n8n",
+  "error_signature": "The service was not able to process your request",
+  "context_key": "AI Agent node with HTTP Request tool",
+  "title": "Generic error message from AI Agent on HTTP request failure",
+  "symptom": "When a tool within the AI Agent fails, it returns a generic error message instead of detailed error information. This makes it difficult to understand the cause of the failure.",
+  "applies_when": [
+    "Using AI Agent node",
+    "HTTP Request tool is configured"
+  ],
+  "not_this_if": [
+    "Detailed error messages are already being captured",
+    "Using a different node for HTTP requests"
+  ],
+  "root_cause": "The AI Agent node does not provide detailed error messages by default when an HTTP request fails. Instead, it returns a generic error message, which can hinder debugging and error handling.",
+  "fix_steps": [
+    "Open the settings of the HTTP Request tool within the AI Agent node.",
+    "Enable the 'Include Response Headers and Status' option.",
+    "Enable the 'Never Error' option.",
+    "Save the workflow and test the execution again."
+  ],
+  "agent_instruction": "Enable 'Include Response Headers and Status' and 'Never Error' options in the HTTP Request tool settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "AI Agent",
+    "HTTP Request",
+    "error-handling",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.114.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/getting-detailed-error-messages-when-ai-agent-tools-fail/223783"
+  ]
+}

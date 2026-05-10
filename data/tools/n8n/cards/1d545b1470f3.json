@@ -1,0 +1,42 @@
+{
+  "id": "1d545b1470f3",
+  "tool": "n8n",
+  "error_signature": "403 error due to insufficient permissions",
+  "context_key": "gmail-oauth",
+  "title": "Gmail OAuth fails with 403 error for read-only access",
+  "symptom": "When attempting to authenticate Gmail with read-only scopes, a 403 error occurs if additional scopes are not accepted.",
+  "applies_when": [
+    "Using Gmail node",
+    "Configured with read-only OAuth scopes"
+  ],
+  "not_this_if": [
+    "Full access scopes are accepted",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The built-in Gmail credential in n8n automatically adds additional scopes like gmail.modify and gmail.compose, which are not compatible with a read-only access request. If these scopes are not accepted, Google returns a 403 error.",
+  "fix_steps": [
+    "Go to Credentials → New → OAuth2 API",
+    "Fill in the Auth URL, Access Token URL, Client ID, and Client Secret from your Google Cloud project",
+    "Set Scope to 'readonly'",
+    "Set access_type to 'offline' and prompt to 'consent' in OAuth options"
+  ],
+  "agent_instruction": "Create a new OAuth2 API credential with the specified settings to control requested scopes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "oauth",
+    "403-error",
+    "read-only",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-set-gmail-oauth-for-only-read/144805"
+  ]
+}

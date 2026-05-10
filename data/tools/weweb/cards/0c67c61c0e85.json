@@ -1,0 +1,39 @@
+{
+  "id": "0c67c61c0e85",
+  "tool": "weweb",
+  "error_signature": "records not loaded dynamically based on order_id",
+  "context_key": "supabase-plugin",
+  "title": "Supabase records not loading dynamically with order_id filter",
+  "symptom": "When attempting to filter records based on 'order_id', only records for the last order ID are loaded instead of dynamically updating based on the variable.",
+  "applies_when": [
+    "Using Supabase plugin",
+    "Filtering records based on order_id"
+  ],
+  "not_this_if": [
+    "Records load correctly for other filters",
+    "No filtering is applied"
+  ],
+  "root_cause": "The filtering mechanism in the Supabase plugin may not be correctly set up to respond to dynamic changes in the 'order_id' variable, leading to static results based on the last order ID instead of the current context.",
+  "fix_steps": [
+    "Ensure a fetch collection action is added when loading the order.",
+    "Verify that the filter is correctly configured to use the dynamic 'order_id' variable."
+  ],
+  "agent_instruction": "Add a fetch collection action to load the order and ensure the filter uses the dynamic 'order_id'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "data-fetching",
+    "dynamic-filtering",
+    "pagination"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/supabase-data-fetching-over-1000-items/20174"
+  ]
+}

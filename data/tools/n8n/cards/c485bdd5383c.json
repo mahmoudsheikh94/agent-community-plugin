@@ -1,0 +1,39 @@
+{
+  "id": "c485bdd5383c",
+  "tool": "n8n",
+  "error_signature": "null value inserted into datetime field",
+  "context_key": "dataTable-node",
+  "title": "Null value in datetime field when using $now",
+  "symptom": "Inserting the current datetime using `{{ $now.toISO() }}` results in a null value being inserted into the datetime field.",
+  "applies_when": [
+    "Using the dataTable node",
+    "Current datetime is being inserted with $now"
+  ],
+  "not_this_if": [
+    "Timezone is properly set in workflow settings"
+  ],
+  "root_cause": "The error occurs because the default timezone for the workflow is not set correctly. Without a proper timezone, the $now function cannot generate a valid datetime, leading to null values being inserted.",
+  "fix_steps": [
+    "Open the workflow settings",
+    "Set the default timezone to the desired value",
+    "Re-run the workflow with the updated settings"
+  ],
+  "agent_instruction": "Set the default timezone in the workflow settings and re-run the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "datetime",
+    "dataTable",
+    "timezone",
+    "$now"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.118.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/inserting-current-date-time-with-now-returns-an-error-or-null/219447"
+  ]
+}

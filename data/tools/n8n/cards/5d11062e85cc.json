@@ -1,0 +1,39 @@
+{
+  "id": "5d11062e85cc",
+  "tool": "n8n",
+  "error_signature": "Activation key has already been used",
+  "context_key": "docker-installation",
+  "title": "Activation key already used in Docker installation",
+  "symptom": "When attempting to activate n8n with a license key, the error 'Activation key has already been used' appears.",
+  "applies_when": [
+    "Using n8n installed via Docker",
+    "Entering a license key for activation"
+  ],
+  "not_this_if": [
+    "n8n is already activated without entering a key",
+    "Using a different installation method"
+  ],
+  "root_cause": "The error occurs because the n8n instance has already been activated with the provided license key, and the system does not allow reactivation with the same key. This can happen if the key was previously used or if the activation process was not completed correctly.",
+  "fix_steps": [
+    "Run the command: 'docker exec -u node -it [n8n-container-name] n8n license:clear' to clear the current license.",
+    "Check if n8n is activated without needing to enter the key manually."
+  ],
+  "agent_instruction": "Clear the current license using the provided Docker command and verify activation.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "docker",
+    "activation",
+    "license",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/activation-problem-the-key-has-already-been-used/221032"
+  ]
+}

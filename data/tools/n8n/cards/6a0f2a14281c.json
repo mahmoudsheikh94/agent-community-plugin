@@ -1,0 +1,42 @@
+{
+  "id": "6a0f2a14281c",
+  "tool": "n8n",
+  "error_signature": "Cannot create a string longer than 0x1fffffe8 characters",
+  "context_key": "google-play-download-file-node",
+  "title": "Error uploading large files to YouTube via Google Play node",
+  "symptom": "When attempting to upload a large MP4 file to YouTube using the Google Play node, an error occurs stating 'Cannot create a string longer than 0x1fffffe8 characters'.",
+  "applies_when": [
+    "Using the Google Play node to upload large files",
+    "File size exceeds 1GB"
+  ],
+  "not_this_if": [
+    "File size is below 1GB",
+    "Using a different node for uploads"
+  ],
+  "root_cause": "The error occurs because n8n attempts to handle large binary data in memory, which exceeds the maximum string length limit in Node.js. By switching to filesystem mode for binary data, n8n can handle larger files without running into this limitation.",
+  "fix_steps": [
+    "Set the environment variable N8N_DEFAULT_BINARY_DATA_MODE=filesystem",
+    "Restart the n8n server",
+    "Ensure the server has sufficient RAM for handling large files"
+  ],
+  "agent_instruction": "Set the N8N_DEFAULT_BINARY_DATA_MODE to 'filesystem' and restart the server.",
+  "safety_notes": [
+    "Ensure your server has enough RAM to handle large file uploads."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "google-play",
+    "youtube",
+    "large-files",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-create-a-string-longer-than-0x1fffffe8-characters-on-my-server/216260"
+  ]
+}

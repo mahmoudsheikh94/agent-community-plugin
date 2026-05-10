@@ -1,0 +1,39 @@
+{
+  "id": "3bad37c6ad07",
+  "tool": "weweb",
+  "error_signature": "app doesn’t fetch the correct data from dynamic URLs",
+  "context_key": "dynamic routing",
+  "title": "Dynamic URLs not fetching correct data on page load",
+  "symptom": "When users open a shared direct link, the app fails to fetch the correct data, leaving the collection empty.",
+  "applies_when": [
+    "Using dynamic route parameters in URLs",
+    "Users access the app via shared links"
+  ],
+  "not_this_if": [
+    "Users navigate internally within the app"
+  ],
+  "root_cause": "The app does not automatically read dynamic parameters from the URL on initial page load, which prevents it from fetching the corresponding data from the backend when accessed directly.",
+  "fix_steps": [
+    "Create a URL parameter in the app that corresponds to the dynamic ID (e.g., chat_id).",
+    "Link the collection items on the dynamic page to the created URL parameter variable.",
+    "Test by sharing the URL and ensuring the correct data is populated."
+  ],
+  "agent_instruction": "Create a URL parameter for the dynamic ID and link it to the collection items on the page.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "dynamic-urls",
+    "data-fetching",
+    "routing",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/problem-with-dynamic-urls-and-page-load-in-weweb/18430"
+  ]
+}

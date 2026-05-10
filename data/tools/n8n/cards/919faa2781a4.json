@@ -1,0 +1,41 @@
+{
+  "id": "919faa2781a4",
+  "tool": "n8n",
+  "error_signature": "Error searching for documents: 42702 column reference 'id' is ambiguous",
+  "context_key": "supabase-vector-store-node",
+  "title": "Ambiguous column reference in Supabase query",
+  "symptom": "When querying the vector database in Supabase, an error occurs stating that the column reference 'id' is ambiguous. This prevents successful execution of the query.",
+  "applies_when": [
+    "Using Supabase with vector store integration",
+    "Querying a table with potentially conflicting column names"
+  ],
+  "not_this_if": [
+    "Error does not mention ambiguous column references",
+    "Using a different database setup without naming conflicts"
+  ],
+  "root_cause": "The error arises when there are multiple references to the same column name in the query context, such as a PL/pgSQL variable and a table column. This ambiguity confuses the database engine, leading to execution failure.",
+  "fix_steps": [
+    "Review the PL/pgSQL function used in the Supabase setup for ambiguous column names.",
+    "Rename parameters or columns in the function to avoid conflicts, using explicit aliases where necessary.",
+    "Ensure that the match function aligns with the expected table names and does not use ambiguous identifiers."
+  ],
+  "agent_instruction": "Rename conflicting column references in your Supabase function to resolve ambiguity.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "supabase",
+    "vector-store",
+    "error-42702",
+    "plpgsql",
+    "database-query"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/supabase-setup-causing-error-searching-for-documents-42702/158489"
+  ]
+}

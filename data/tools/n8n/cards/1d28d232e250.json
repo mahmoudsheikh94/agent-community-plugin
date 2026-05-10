@@ -1,0 +1,40 @@
+{
+  "id": "1d28d232e250",
+  "tool": "n8n",
+  "error_signature": "The item has no binary field ‘data’",
+  "context_key": "decompress-node",
+  "title": "Missing binary field in Decompress node",
+  "symptom": "When using the Decompress node, an error occurs stating 'The item has no binary field ‘data’'. This prevents the workflow from processing the compressed file.",
+  "applies_when": [
+    "Using the Decompress node",
+    "Input binary field is incorrectly set"
+  ],
+  "not_this_if": [
+    "Input binary field is correctly set to 'attachment_0'"
+  ],
+  "root_cause": "The Decompress node expects the binary data to be in a specific field named 'attachment_0'. If the field is incorrectly named 'data', the node cannot find the necessary input to perform the decompression.",
+  "fix_steps": [
+    "Open the settings of the Decompress node",
+    "Change the input binary field from 'data' to 'attachment_0'",
+    "Save the workflow",
+    "Re-run the workflow to test"
+  ],
+  "agent_instruction": "Change the input binary field in the Decompress node to 'attachment_0'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "decompress",
+    "binary-data",
+    "node-configuration",
+    "gmail"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/decompress-node/87661"
+  ]
+}

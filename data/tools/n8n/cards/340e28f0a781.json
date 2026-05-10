@@ -1,0 +1,39 @@
+{
+  "id": "340e28f0a781",
+  "tool": "n8n",
+  "error_signature": "Quota of 0 on most API",
+  "context_key": "google-cloud-project",
+  "title": "Google Cloud Project API Quota Issue",
+  "symptom": "The Google Business Profile node does not return data due to a quota of 0 on the API, preventing access to the required information.",
+  "applies_when": [
+    "Using a new Google Cloud project",
+    "Attempting to access Google Business Profile API"
+  ],
+  "not_this_if": [
+    "The project has been approved for API access",
+    "The quota has been increased"
+  ],
+  "root_cause": "New Google Cloud projects are initially set with a quota of 0 for most APIs. Users must submit a form to Google to request basic API access, which is a requirement for first-time users.",
+  "fix_steps": [
+    "Submit the required form to Google for basic API access.",
+    "Obtain your project number using the command 'gcloud projects describe [yourprojectID]'."
+  ],
+  "agent_instruction": "Submit the form for basic API access to Google and retrieve your project number.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "google-cloud",
+    "API-quota",
+    "business-profile",
+    "access-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-business-profile-trigger-list/74193"
+  ]
+}

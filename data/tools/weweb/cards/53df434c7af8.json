@@ -1,0 +1,40 @@
+{
+  "id": "53df434c7af8",
+  "tool": "weweb",
+  "error_signature": "isAuthenticated=false",
+  "context_key": "graphql-authentication",
+  "title": "Authentication status shows false despite valid tokens",
+  "symptom": "The authentication process completes successfully, but the isAuthenticated status remains false, indicating a failure in recognizing the user's authentication state.",
+  "applies_when": [
+    "User is logged in via GraphQL",
+    "Tokens are stored correctly"
+  ],
+  "not_this_if": [
+    "User is not logged in",
+    "Tokens are not stored"
+  ],
+  "root_cause": "The issue arises when the user data is not fetched after storing the authentication token. Without fetching the user data, the application cannot confirm the user's authenticated state, leading to isAuthenticated being false.",
+  "fix_steps": [
+    "Ensure the API request for authentication token is made",
+    "Store the token correctly",
+    "Add a 'Fetch user' action to retrieve the user record from the database after storing the token"
+  ],
+  "agent_instruction": "Add a 'Fetch user' action to your workflow after storing the authentication token.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "graphql",
+    "authentication",
+    "user-data",
+    "login-workflow"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/graphql-authentication-works-but-the-isauthenticated-false/6011"
+  ]
+}

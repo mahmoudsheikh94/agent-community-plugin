@@ -1,0 +1,40 @@
+{
+  "id": "97a1761f0e36",
+  "tool": "n8n",
+  "error_signature": "Bad Request: message is too long",
+  "context_key": "telegram-node",
+  "title": "Telegram message exceeds maximum length",
+  "symptom": "The Telegram node throws an error stating 'Bad Request: message is too long' when attempting to send a message, even if the message appears short.",
+  "applies_when": [
+    "Using Telegram node",
+    "Message length exceeds 4096 characters"
+  ],
+  "not_this_if": [
+    "Message length is under 4096 characters",
+    "Error does not occur"
+  ],
+  "root_cause": "The Telegram API has a strict limit on the length of messages that can be sent, which is 4,096 characters. If the message exceeds this limit, the API will return a 'Bad Request' error, even if the message seems short due to formatting or hidden characters.",
+  "fix_steps": [
+    "Add a Code node before the Telegram node",
+    "Implement logic to split the message into chunks of 4096 characters or less",
+    "Send each chunk in a loop to the Telegram node"
+  ],
+  "agent_instruction": "Use a Code node to split long messages into smaller parts before sending them through the Telegram node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "telegram",
+    "sendMessage",
+    "message-length",
+    "API-limits"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-telegram-node-bad-request-please-check-your-parameters-bad-request-message-is-too-long/209344"
+  ]
+}

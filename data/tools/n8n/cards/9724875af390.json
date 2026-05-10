@@ -1,0 +1,39 @@
+{
+  "id": "9724875af390",
+  "tool": "n8n",
+  "error_signature": "no results returned from the query",
+  "context_key": "postgres-node",
+  "title": "Postgres query parameters not returning results",
+  "symptom": "When using query parameters in a Postgres node, no results are returned, while the full SQL query works fine.",
+  "applies_when": [
+    "Using Postgres node",
+    "Setting query parameters in the edit fields node"
+  ],
+  "not_this_if": [
+    "Full SQL query works without parameters"
+  ],
+  "root_cause": "The issue arises from incorrectly formatted query parameters. Specifically, adding quotes around parameter values in the set node can lead to the Postgres node not recognizing them correctly, resulting in no results being returned.",
+  "fix_steps": [
+    "Open the set node where you define the query parameters",
+    "Remove any quotes around the parameter values",
+    "In the Postgres node, directly link the parameter instead of using the parameter option",
+    "Save the workflow and execute it again"
+  ],
+  "agent_instruction": "Remove quotes from the parameter values in the set node and link them directly in the Postgres node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "query-parameters",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/query-parameters-not-working-with-postgres-connection/131375"
+  ]
+}

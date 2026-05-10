@@ -1,0 +1,40 @@
+{
+  "id": "4d763effe2ae",
+  "tool": "weweb",
+  "error_signature": "Markers not visible on Google Map",
+  "context_key": "Google Map integration",
+  "title": "Custom markers not displaying on Google Map",
+  "symptom": "The custom markers from Supabase are not appearing on the Google Map despite being set correctly in the code.",
+  "applies_when": [
+    "Using custom markers from Supabase",
+    "Markers are defined without full URLs"
+  ],
+  "not_this_if": [
+    "Markers are defined with full URLs",
+    "Static markers are working correctly"
+  ],
+  "root_cause": "Google Maps requires the full URL to the marker images for them to be displayed. Using just the filename without the complete path results in the markers not being rendered on the map.",
+  "fix_steps": [
+    "Update the marker property to include the full URL to the SVG files",
+    "Ensure the URLs are accessible and correctly formatted",
+    "Test the map to confirm markers are now visible"
+  ],
+  "agent_instruction": "Change the marker property to use full URLs for the images.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-map",
+    "custom-markers",
+    "supabase",
+    "url-requirement"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/custom-google-map-markers-from-the-collection-property/8330"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "89fe15009dd7",
+  "tool": "n8n",
+  "error_signature": "Parameter ‘context’ could not be parsed",
+  "context_key": "docxtemplater-node",
+  "title": "Docxtemplater context parsing error",
+  "symptom": "The Docxtemplater node throws an error stating 'Parameter ‘context’ could not be parsed' when attempting to fill a DOCX or PPT template.",
+  "applies_when": [
+    "Using Docxtemplater node",
+    "Providing dynamic content for templates"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or context"
+  ],
+  "root_cause": "The error occurs due to improperly formatted JSON being passed to the Docxtemplater node. Specifically, an extra pair of curly brackets can lead to JSON parsing issues, causing the node to fail.",
+  "fix_steps": [
+    "Check the JSON structure being passed to the Docxtemplater node.",
+    "Remove any extra curly brackets or incorrect formatting.",
+    "Test the workflow again to ensure the error is resolved."
+  ],
+  "agent_instruction": "Ensure the JSON context passed to the Docxtemplater node is correctly formatted without extra curly brackets.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docxtemplater",
+    "json",
+    "template-filling",
+    "error-parsing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-needed-auto-fill-dynamic-content-into-docx-ppt-using-docxtemplater/175185"
+  ]
+}

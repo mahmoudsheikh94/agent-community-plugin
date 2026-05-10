@@ -1,0 +1,40 @@
+{
+  "id": "d5cbbd8d0938",
+  "tool": "weweb",
+  "error_signature": "collection not updating with new URL parameter",
+  "context_key": "dynamic URL parameter on detail page",
+  "title": "Collection not updating on detail page with new product ID",
+  "symptom": "The product detail page does not refresh to show the new product when the URL parameter changes, despite the URL updating correctly.",
+  "applies_when": [
+    "Using a dynamic URL parameter for product ID",
+    "Navigating between products on the detail page"
+  ],
+  "not_this_if": [
+    "The collection updates correctly on navigation",
+    "The 'Preserve on navigation' option is disabled"
+  ],
+  "root_cause": "When the 'Preserve on navigation' option is enabled for a collection, it prevents the collection from being fetched again when navigating to a new product detail page, leading to stale data being displayed.",
+  "fix_steps": [
+    "Open the settings for the collection on the detail page",
+    "Ensure the 'Preserve on navigation' option is disabled",
+    "Save the changes and test the navigation again"
+  ],
+  "agent_instruction": "Disable the 'Preserve on navigation' option in the collection settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "dynamic URL",
+    "collection",
+    "navigation",
+    "product detail"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/collection-not-updating-when-dynamic-url-parameter-changes-on-detail-page/20791"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "014d9619f14e",
+  "tool": "n8n",
+  "error_signature": "403 - Forbidden",
+  "context_key": "http-node",
+  "title": "HTTP node returns 403 Forbidden with AWS Lambda credentials",
+  "symptom": "When using the HTTP node with AWS Lambda credentials, it returns a 403 Forbidden error, indicating that the credentials may not be valid.",
+  "applies_when": [
+    "Using HTTP node",
+    "Configured AWS Lambda credentials"
+  ],
+  "not_this_if": [
+    "AWS Lambda node works without issues",
+    "No authentication is used"
+  ],
+  "root_cause": "The HTTP node may not be properly configured to use AWS IAM credentials, leading to authorization failures. This can occur if the authentication method is not compatible with the HTTP node's requirements.",
+  "fix_steps": [
+    "Disable built-in authentication for the AWS Lambda function by setting Auth type to NONE.",
+    "Add a custom header (e.g., x-custom-header) in the Allow headers list on the Configure Function URL page.",
+    "In the HTTP node, under Headers, add the custom header with the desired value."
+  ],
+  "agent_instruction": "Disable built-in auth for the Lambda function and use a custom header in the HTTP node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "aws-lambda",
+    "403",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-node-not-using-aws-lambda-iam-credentials-from-predefined-credentials-aws-lambda-node-works/107941"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "fa83b120e960",
+  "tool": "n8n",
+  "error_signature": "Import of standard library module ‘json’ is disallowed",
+  "context_key": "python-task-runner",
+  "title": "Python task runner disallows standard and external libraries",
+  "symptom": "The Python task runner throws errors indicating that imports for standard library modules and external packages are disallowed.",
+  "applies_when": [
+    "Using Python task runner",
+    "Custom task runner configuration is set"
+  ],
+  "not_this_if": [
+    "Using default configuration without custom task runner settings"
+  ],
+  "root_cause": "The Python task runner is not loading the custom configuration file due to a filename mismatch. As a result, it defaults to a sandbox mode that restricts access to standard and external libraries.",
+  "fix_steps": [
+    "Rename the configuration file path in the Dockerfile to /etc/n8n-task-runners.json.",
+    "Rebuild the runner image using 'docker compose build n8n-runner'.",
+    "Start the updated runner with 'docker compose up -d'.",
+    "Check the runner logs to ensure the custom task runner config is loaded."
+  ],
+  "agent_instruction": "Rename the configuration file in the Dockerfile and rebuild the runner image.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "python",
+    "task-runner",
+    "docker",
+    "configuration",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.4.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-npm-tasker-runner-set-up-help/253409"
+  ]
+}

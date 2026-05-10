@@ -1,0 +1,40 @@
+{
+  "id": "caa1e9897fcc",
+  "tool": "n8n",
+  "error_signature": "undefined error",
+  "context_key": "json-extraction",
+  "title": "Error extracting JSON string from text file",
+  "symptom": "The workflow returns an 'undefined error' when trying to extract a JSON string from a text file.",
+  "applies_when": [
+    "Using a text file containing a JSON string",
+    "Extracting data with an expression"
+  ],
+  "not_this_if": [
+    "The JSON string is correctly formatted and extracted",
+    "No error occurs during execution"
+  ],
+  "root_cause": "The error occurs because the expression used to extract the JSON string starts with an equals sign, which causes n8n to treat the output as a plain text string instead of evaluating it as an expression. Additionally, the JSON structure may be incorrectly set as a single object instead of an array.",
+  "fix_steps": [
+    "Remove the '=' sign at the beginning of the expression in the node.",
+    "Change the type of the data field to 'Array' in the Edit Fields node.",
+    "Save the workflow and re-run it."
+  ],
+  "agent_instruction": "Adjust the expression and data type in the node settings to correctly extract the JSON.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "json",
+    "text-file",
+    "extraction",
+    "undefined-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-extract-json-string-in-text-file/273323"
+  ]
+}

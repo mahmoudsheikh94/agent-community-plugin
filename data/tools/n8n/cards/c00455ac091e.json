@@ -1,0 +1,39 @@
+{
+  "id": "c00455ac091e",
+  "tool": "n8n",
+  "error_signature": "Default Timezone not valid",
+  "context_key": "timezone-settings",
+  "title": "Invalid default timezone setting",
+  "symptom": "Users encounter 'Default Timezone not valid' when trying to set certain timezones in n8n. This issue arises particularly with timezones like 'Etc/GMT' and 'Australia/Canberra'.",
+  "applies_when": [
+    "Using GENERIC_TIMEZONE environment variable",
+    "Setting timezones in workflow settings"
+  ],
+  "not_this_if": [
+    "Using a valid timezone like 'Australia/Brisbane'",
+    "Timezone set directly in Docker compose without quotes"
+  ],
+  "root_cause": "The error occurs because the timezone names being set are either non-standard or not recognized by the updated timezone data used in n8n. The recent changes to the timezone handling may have removed support for certain 'Etc/' timezones, leading to confusion and errors.",
+  "fix_steps": [
+    "Use a valid timezone name that is recognized, such as 'Australia/Brisbane'.",
+    "Ensure that the timezone is set without quotes in the environment variable."
+  ],
+  "agent_instruction": "Set the timezone to a recognized name like 'Australia/Brisbane' without quotes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "timezone",
+    "GENERIC_TIMEZONE",
+    "n8n",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.51.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/default-timezone-issues/51334"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "6b6949cc001a",
+  "tool": "n8n",
+  "error_signature": "No input connected",
+  "context_key": "webhook-node",
+  "title": "Webhook node returns 'No input connected' error",
+  "symptom": "When trying to access the validationToken in the Webhook node, the error 'No input connected' appears, or it returns undefined.",
+  "applies_when": [
+    "Using Webhook node",
+    "ValidationToken is present in the request"
+  ],
+  "not_this_if": [
+    "ValidationToken is not present in the request",
+    "Using a different node type"
+  ],
+  "root_cause": "The Webhook node may not be properly configured to handle the incoming GET request, leading to the input not being recognized. This can happen if the response settings are not aligned with how the data is being sent in the request.",
+  "fix_steps": [
+    "Ensure the Webhook node is set to 'Respond Immediately'.",
+    "In the Webhook node settings, set the response data to '={{ $json['query']['validationToken'] }}'.",
+    "Test the webhook again with the GET request containing the validationToken."
+  ],
+  "agent_instruction": "Configure the Webhook node to respond immediately and correctly reference the validationToken.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "microsoft-graph",
+    "validationToken",
+    "GET-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/can-t-return-validationtoken-from-webhook-get-to-validate-microsoft-graph-subscription/130921"
+  ]
+}

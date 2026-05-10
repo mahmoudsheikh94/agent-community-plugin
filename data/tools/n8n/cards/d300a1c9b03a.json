@@ -1,0 +1,41 @@
+{
+  "id": "d300a1c9b03a",
+  "tool": "n8n",
+  "error_signature": "Whatsapp trigger does not receive messages",
+  "context_key": "whatsapp-trigger-node",
+  "title": "Whatsapp trigger not receiving messages from production number",
+  "symptom": "The Whatsapp Trigger node fails to receive messages sent to the production phone number, while it works with a test number. No error messages are displayed.",
+  "applies_when": [
+    "Using Whatsapp Trigger node",
+    "Messages sent to production phone number"
+  ],
+  "not_this_if": [
+    "Messages are received on the test number",
+    "No issues with sending messages from the production number"
+  ],
+  "root_cause": "The production phone number's Whatsapp account may not be subscribed to the Meta app, which is necessary for the trigger to receive messages. This can occur even if the account appears correctly configured in Meta's dashboards.",
+  "fix_steps": [
+    "Check the subscription status of the Whatsapp account by sending a GET request to `graph.facebook.com//subscribed_apps`.",
+    "If the response is an empty list, send a POST request to `graph.facebook.com//subscribed_apps` to subscribe the account to the app.",
+    "Verify the subscription by sending another GET request to `graph.facebook.com//subscribed_apps` and ensure it returns the app data."
+  ],
+  "agent_instruction": "Check and update the subscription status of the Whatsapp account in Meta's app.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "whatsapp",
+    "trigger",
+    "meta",
+    "subscription",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.118.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whatsapp-trigger-works-only-with-test-number-but-i-can-send-messages-with-my-own-number/234114"
+  ]
+}

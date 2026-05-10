@@ -1,0 +1,42 @@
+{
+  "id": "90c06b787fa3",
+  "tool": "n8n",
+  "error_signature": "duplicate messages sent during scheduled runs",
+  "context_key": "whatsapp-node",
+  "title": "Duplicate messages sent on WhatsApp during scheduled runs",
+  "symptom": "The workflow sends duplicate messages to WhatsApp groups during scheduled executions, but works correctly during manual tests.",
+  "applies_when": [
+    "Using WhatsApp node",
+    "Scheduled execution of the workflow"
+  ],
+  "not_this_if": [
+    "Manual execution sends only one message",
+    "No duplicate messages in execution history"
+  ],
+  "root_cause": "The issue is often caused by multiple instances of n8n running simultaneously or overlapping workflows that trigger the same action. This can happen if there are old containers, duplicate cron jobs, or if the workflow settings allow for retries on failure.",
+  "fix_steps": [
+    "Turn off the current n8n instance/container and wait for the scheduled time to see if messages are still sent.",
+    "Check for duplicate cron jobs on your server and ensure only one Docker container is active.",
+    "Review the Workflows list for any old versions or backups of the same project and deactivate them.",
+    "Ensure 'On Fail - Retry' is disabled in the Workflow Settings.",
+    "Add a Wait Node (set to 5 seconds) immediately after your Schedule Trigger."
+  ],
+  "agent_instruction": "Check for duplicate instances and workflows, and adjust the settings as needed.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "whatsapp",
+    "duplicate-messages",
+    "scheduled-execution",
+    "workflow-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/my-workflow-execute-1-time-but-send-2-messages-please-help/240302"
+  ]
+}

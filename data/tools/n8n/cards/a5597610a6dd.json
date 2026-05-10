@@ -1,0 +1,40 @@
+{
+  "id": "a5597610a6dd",
+  "tool": "n8n",
+  "error_signature": "missing protocol in OAuth URL",
+  "context_key": "OAuth2 configuration",
+  "title": "OAuth2 URL missing HTTPS protocol",
+  "symptom": "When setting up OAuth2 for services like Twitter or CloudConvert, the generated URLs lack the 'https://' protocol, causing authentication failures.",
+  "applies_when": [
+    "Using OAuth2 for Twitter or CloudConvert",
+    "n8n is configured with a domain"
+  ],
+  "not_this_if": [
+    "OAuth2 setup is working for other services",
+    "URLs are correctly formatted with 'https://'"
+  ],
+  "root_cause": "n8n's configuration may not specify the full URL including the protocol, leading to generated OAuth URLs that are incomplete and thus fail during the authorization process.",
+  "fix_steps": [
+    "Set the WEBHOOK_URL environment variable to include 'https://', e.g., 'WEBHOOK_URL=https://example.com/'",
+    "Restart n8n to apply the configuration changes."
+  ],
+  "agent_instruction": "Ensure the WEBHOOK_URL includes 'https://' and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "oauth2",
+    "twitter",
+    "cloudconvert",
+    "configuration",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.114.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-oauth-failing/204128"
+  ]
+}

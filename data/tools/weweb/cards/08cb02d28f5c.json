@@ -1,0 +1,39 @@
+{
+  "id": "08cb02d28f5c",
+  "tool": "weweb",
+  "error_signature": "Supabase authenticated requests return null in published project",
+  "context_key": "supabase-api",
+  "title": "Supabase requests return null in published WeWeb project",
+  "symptom": "Authenticated API calls to Supabase return null responses in the published WeWeb project, despite working in the editor and Postman.",
+  "applies_when": [
+    "Using Supabase for authentication",
+    "Requests are made from the published WeWeb project"
+  ],
+  "not_this_if": [
+    "Requests work in WeWeb editor or Postman",
+    "Public requests succeed"
+  ],
+  "root_cause": "The issue was caused by an ad blocker (AdGuard) interfering with the requests made from the published WeWeb project, preventing proper authentication headers from being processed.",
+  "fix_steps": [
+    "Disable any ad blockers or browser extensions that may interfere with requests",
+    "Test the published project again to see if authenticated requests succeed"
+  ],
+  "agent_instruction": "Disable any ad blockers and retry the published WeWeb project to check if the issue persists.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "supabase",
+    "authentication",
+    "ad-blocker",
+    "api-calls"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/supabase-api-calls-only-work-in-weweb-editor-and-postman-not-in-published-project/19190"
+  ]
+}

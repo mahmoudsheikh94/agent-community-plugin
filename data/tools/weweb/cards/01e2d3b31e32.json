@@ -1,0 +1,38 @@
+{
+  "id": "01e2d3b31e32",
+  "tool": "weweb",
+  "error_signature": "No valid data found",
+  "context_key": "Excel export script",
+  "title": "No valid data found during Excel export",
+  "symptom": "The script returns 'False' when attempting to export data to Excel, indicating no valid data was found in the collection.",
+  "applies_when": [
+    "Running the Excel export script",
+    "Data collection is expected to have entries"
+  ],
+  "not_this_if": [
+    "Data collection is empty or not defined"
+  ],
+  "root_cause": "The script checks if the data retrieved from the collection is valid and an array. If the data is undefined or not an array, it triggers an error and returns 'False'. This can happen if the variable name is incorrect or the data hasn't been populated correctly.",
+  "fix_steps": [
+    "Verify the variable name used to retrieve data from the collection is correct.",
+    "Ensure that the data is populated in the collection before running the export script."
+  ],
+  "agent_instruction": "Check the variable name and ensure data is present in the collection before executing the export.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "excel-export",
+    "data-validation",
+    "javascript",
+    "weweb"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-excel-export/17234"
+  ]
+}

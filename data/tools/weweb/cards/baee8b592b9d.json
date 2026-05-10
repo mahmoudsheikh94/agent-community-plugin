@@ -1,0 +1,40 @@
+{
+  "id": "baee8b592b9d",
+  "tool": "weweb",
+  "error_signature": "jQuery not available in WeWeb",
+  "context_key": "custom code execution",
+  "title": "jQuery methods not supported in WeWeb",
+  "symptom": "The confetti effect code using jQuery does not execute in WeWeb, while it works in Webflow.",
+  "applies_when": [
+    "Using jQuery methods in custom code",
+    "Trying to trigger events on button clicks"
+  ],
+  "not_this_if": [
+    "Using native JavaScript without jQuery",
+    "Using WeWeb's built-in workflows"
+  ],
+  "root_cause": "WeWeb does not support jQuery, which means any code relying on jQuery methods will fail to execute. Instead, WeWeb provides its own way to handle events and custom scripts.",
+  "fix_steps": [
+    "Remove jQuery code from the custom script",
+    "Use WeWeb's workflow feature to handle button clicks",
+    "Add a custom JavaScript block to execute the confetti logic directly"
+  ],
+  "agent_instruction": "Replace jQuery code with WeWeb's workflow and custom JS block for confetti effect.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "weweb",
+    "jquery",
+    "custom-code",
+    "confetti"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/code-working-with-webflow-but-not-with-weweb/7820"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "fd7841b21c1f",
+  "tool": "weweb",
+  "error_signature": "wwFormulas.if executes all parameters",
+  "context_key": "wwFormulas",
+  "title": "wwFormulas.if executes all parameters regardless of condition",
+  "symptom": "Using wwFormulas.if results in all operations being executed, not just the intended one based on the condition. This leads to unintended behavior in the workflow.",
+  "applies_when": [
+    "Using wwFormulas.if function",
+    "Expecting conditional execution"
+  ],
+  "not_this_if": [
+    "Using standard if-else statements",
+    "No operations are being executed"
+  ],
+  "root_cause": "The wwFormulas.if function does not behave like a traditional if-else statement. Instead, it evaluates all parameters provided to it, executing all operations regardless of the condition, which can lead to unexpected results.",
+  "fix_steps": [
+    "Replace wwFormulas.if with a standard if-else statement",
+    "Ensure that the operations are placed correctly within the if and else blocks",
+    "Test the workflow to confirm that only the intended operation executes based on the condition"
+  ],
+  "agent_instruction": "Change wwFormulas.if to a standard if-else statement to control execution flow.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "wwFormulas",
+    "conditional-execution",
+    "javascript",
+    "workflow"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/all-instructions-in-a-condition-are-executed/797"
+  ]
+}

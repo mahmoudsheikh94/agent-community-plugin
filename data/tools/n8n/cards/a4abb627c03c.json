@@ -1,0 +1,40 @@
+{
+  "id": "a4abb627c03c",
+  "tool": "n8n",
+  "error_signature": "workflow executes multiple times after wait node",
+  "context_key": "wait-node",
+  "title": "Workflow executes multiple times unexpectedly",
+  "symptom": "The workflow runs multiple times after the wait node, leading to repeated calls to leads. This results in leads being contacted multiple times in quick succession.",
+  "applies_when": [
+    "Using a wait node",
+    "Workflow is triggered multiple times"
+  ],
+  "not_this_if": [
+    "Workflow is designed to run only once per trigger"
+  ],
+  "root_cause": "The workflow is likely set to execute multiple times due to the configuration of the nodes following the wait node. If the last node is not set to execute only once, it can lead to multiple executions for each trigger.",
+  "fix_steps": [
+    "Open the last node of your workflow",
+    "Navigate to the settings",
+    "Enable the 'Execute Once' option",
+    "Save the workflow"
+  ],
+  "agent_instruction": "Set the last node to 'Execute Once' to prevent multiple executions.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wait-node",
+    "workflow-execution",
+    "execute-once",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-workflow-executes-multiple-times-after-wait-node/173338"
+  ]
+}

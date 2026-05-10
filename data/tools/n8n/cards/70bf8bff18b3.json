@@ -1,0 +1,40 @@
+{
+  "id": "70bf8bff18b3",
+  "tool": "n8n",
+  "error_signature": "Request failed with status code 400",
+  "context_key": "GHL OAuth v2",
+  "title": "GHL OAuth v2 connection fails with status code 400",
+  "symptom": "When attempting to connect to GHL via OAuth v2, the user receives a 'Request failed with status code 400' error. This occurs despite verifying scopes and settings multiple times.",
+  "applies_when": [
+    "Using GHL OAuth v2 integration",
+    "Correct scopes and settings are configured"
+  ],
+  "not_this_if": [
+    "Error does not occur when using different credentials or apps"
+  ],
+  "root_cause": "The error may stem from improperly formatted scopes when copied from the Marketplace. If the scopes contain unintended line breaks or formatting issues, the OAuth request can fail, resulting in a 400 status code.",
+  "fix_steps": [
+    "Copy the required scopes from the Marketplace",
+    "Use a tool (like ChatGPT) to format the scopes into a single line with spaces",
+    "Paste the formatted scopes into n8n",
+    "Attempt to connect again"
+  ],
+  "agent_instruction": "Ensure the scopes are formatted correctly as a single line before pasting into n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "GHL",
+    "OAuth",
+    "status-code-400",
+    "integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.82.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ghl-oauth-v2-marketplace-app-request-failed-with-status-code-400/87997"
+  ]
+}

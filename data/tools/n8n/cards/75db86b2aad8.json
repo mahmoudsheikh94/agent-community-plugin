@@ -1,0 +1,39 @@
+{
+  "id": "75db86b2aad8",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'httpCode')",
+  "context_key": "github-trigger-node",
+  "title": "GitHub Trigger node returns undefined httpCode error",
+  "symptom": "When trying to activate the GitHub trigger workflow, n8n throws an error stating 'Cannot read properties of undefined (reading 'httpCode')'. This prevents the workflow from executing.",
+  "applies_when": [
+    "Using GitHub trigger node",
+    "Workflow is activated or executed"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or integration"
+  ],
+  "root_cause": "The error indicates that the GitHub trigger node is unable to properly handle the response from GitHub, likely due to a misconfiguration in the webhook or the GitHub API not returning the expected data structure.",
+  "fix_steps": [
+    "Verify that the webhook URL in GitHub matches the Test URL provided by the GitHub trigger node in n8n.",
+    "Check that the access token has the necessary permissions to access the repository and events.",
+    "Ensure that the repository owner and name are correctly specified in the node settings."
+  ],
+  "agent_instruction": "Check the webhook URL and access token permissions for the GitHub trigger node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "github",
+    "trigger",
+    "httpCode",
+    "webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-execute-github-trigger/171910"
+  ]
+}

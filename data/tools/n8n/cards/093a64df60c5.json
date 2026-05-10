@@ -1,0 +1,38 @@
+{
+  "id": "093a64df60c5",
+  "tool": "n8n",
+  "error_signature": "Chatwoot node not sending attachments",
+  "context_key": "chatwoot-node",
+  "title": "Chatwoot node fails to send PDF attachments",
+  "symptom": "The Chatwoot node does not successfully send a PDF file when using base64 encoded data.",
+  "applies_when": [
+    "Using Chatwoot node",
+    "Sending attachments from base64 data"
+  ],
+  "not_this_if": [
+    "Sending text messages or other supported operations"
+  ],
+  "root_cause": "The default Chatwoot node in n8n is designed for basic operations and does not support sending attachments directly from base64 encoded data. This limitation requires a more complex setup using the HTTP Request node to properly format the multipart/form-data request expected by the Chatwoot API.",
+  "fix_steps": [
+    "Add a Move Binary Data node to convert the base64 PDF to binary.",
+    "Set the HTTP Request node to POST with the correct Chatwoot API URL and configure the body parameters for sending the attachment."
+  ],
+  "agent_instruction": "Use the HTTP Request node to send the PDF attachment to Chatwoot after converting it from base64.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "chatwoot",
+    "attachments",
+    "base64",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-returning-a-pdf-file/105330"
+  ]
+}

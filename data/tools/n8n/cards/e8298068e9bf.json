@@ -1,0 +1,42 @@
+{
+  "id": "e8298068e9bf",
+  "tool": "n8n",
+  "error_signature": "Execute Command node is disabled by default",
+  "context_key": "Execute Command node",
+  "title": "Execute Command node disabled in n8n v2",
+  "symptom": "Users trying to delete files using the Execute Command node in n8n v2 encounter issues because the node is disabled by default.",
+  "applies_when": [
+    "Using n8n v2.x",
+    "Trying to use Execute Command node"
+  ],
+  "not_this_if": [
+    "Using n8n v1",
+    "Execute Command node is enabled"
+  ],
+  "root_cause": "In n8n v2.x, the Execute Command node is disabled by default for security reasons, which prevents users from executing shell commands directly within workflows.",
+  "fix_steps": [
+    "Go to the n8n settings.",
+    "Enable the Execute Command node.",
+    "Use the command 'rm -f /tmp/*' in the Execute Command node to delete files."
+  ],
+  "agent_instruction": "Enable the Execute Command node and use it to run the delete command for the specified folder.",
+  "safety_notes": [
+    "Be cautious with the 'rm -f' command as it will permanently delete files without confirmation."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "execute-command",
+    "n8n-v2",
+    "file-deletion",
+    "security"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-auto-delete-this-write-files/262620"
+  ]
+}

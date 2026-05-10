@@ -1,0 +1,41 @@
+{
+  "id": "dbc7cf4ad0fe",
+  "tool": "n8n",
+  "error_signature": "Failed to connect to MCP Server",
+  "context_key": "MCP Client",
+  "title": "MCP Client unable to connect to MCP Server",
+  "symptom": "The MCP Client fails to connect to the MCP Server, resulting in repeated error messages. The workflow enters a loop and cannot proceed.",
+  "applies_when": [
+    "Using MCP Client in a workflow",
+    "Running n8n in a Docker environment"
+  ],
+  "not_this_if": [
+    "Running n8n locally without a reverse proxy",
+    "Using a different execution mode that does not involve SSE"
+  ],
+  "root_cause": "The error occurs due to issues with how Server-Sent Events (SSE) and webhook connections are managed by the hosting environment, particularly when using a reverse proxy like NGINX or Traefik. This can lead to blocked or improperly routed requests.",
+  "fix_steps": [
+    "Change the EXECUTIONS_MODE from 'queue' to 'own' in your n8n configuration.",
+    "Check your reverse proxy settings to ensure that the /sse and /webhook/* routes are not cached, rewritten, or blocked.",
+    "Run the workflow locally to verify if the issue persists."
+  ],
+  "agent_instruction": "Adjust the EXECUTIONS_MODE and check your reverse proxy settings for proper routing.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "MCP",
+    "webhook",
+    "SSE",
+    "Docker",
+    "reverse-proxy"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.93",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/failed-to-connect-to-mcp-server/118901"
+  ]
+}

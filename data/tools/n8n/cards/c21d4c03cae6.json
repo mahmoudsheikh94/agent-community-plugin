@@ -1,0 +1,39 @@
+{
+  "id": "c21d4c03cae6",
+  "tool": "n8n",
+  "error_signature": "webhook response wrapped in iframe",
+  "context_key": "webhook-node",
+  "title": "Webhook response unexpectedly wrapped in iframe",
+  "symptom": "After updating to n8n version 1.103.2, the webhook response is wrapped in an iframe, returning HTML instead of plain text or JSON.",
+  "applies_when": [
+    "Using the Respond to Webhook node",
+    "Updated to n8n version 1.103.2"
+  ],
+  "not_this_if": [
+    "Using a version prior to 1.103.2",
+    "Webhook response is set to return JSON"
+  ],
+  "root_cause": "The update to version 1.103.2 introduced a change where responses from the webhook node are wrapped in an iframe for security reasons. This affects workflows that previously returned plain text or JSON, leading to unexpected output.",
+  "fix_steps": [
+    "Upgrade n8n to version 1.104.2 or later",
+    "Verify that the webhook response is no longer wrapped in an iframe"
+  ],
+  "agent_instruction": "Upgrade n8n to version 1.104.2 to resolve the iframe wrapping issue.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "webhook",
+    "iframe",
+    "response",
+    "n8n-update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.104.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/after-updating-to-1-103-2-webhook-responce-node-add-iframe-wrapper/159087"
+  ]
+}

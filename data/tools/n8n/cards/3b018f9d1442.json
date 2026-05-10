@@ -1,0 +1,39 @@
+{
+  "id": "3b018f9d1442",
+  "tool": "n8n",
+  "error_signature": "Google Doc node won't fire",
+  "context_key": "google-docs-node",
+  "title": "Google Doc node not processing due to missing input",
+  "symptom": "The Google Doc node does not output anything when executed, despite correct configurations. Removing a second output connection from the previous node resolves the issue.",
+  "applies_when": [
+    "Using Google Doc node",
+    "Previous node has multiple outputs"
+  ],
+  "not_this_if": [
+    "Single output from the previous node",
+    "Google Doc node is configured correctly"
+  ],
+  "root_cause": "The Google Doc node requires specific input fields to function correctly. If the input from the previous node is missing or incorrectly referenced, the Google Doc node will skip execution without throwing an error.",
+  "fix_steps": [
+    "Check the output connections of the previous node.",
+    "Remove any unnecessary output connections that may be causing issues.",
+    "Re-run the workflow to see if the Google Doc node processes correctly."
+  ],
+  "agent_instruction": "Remove the second output connection from the previous node to ensure the Google Doc node receives the correct input.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-docs",
+    "node-execution",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/why-wouldnt-a-google-doc-node-fire-lost-my-mind/159247"
+  ]
+}

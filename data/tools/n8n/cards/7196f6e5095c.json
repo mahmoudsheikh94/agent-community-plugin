@@ -1,0 +1,40 @@
+{
+  "id": "7196f6e5095c",
+  "tool": "n8n",
+  "error_signature": "next URL returns null",
+  "context_key": "exact-online-node",
+  "title": "Exact Online next URL returns null",
+  "symptom": "When using pagination in the Exact Online node, the next URL is returning 'null' despite having more pages available.",
+  "applies_when": [
+    "Using Exact Online node",
+    "Pagination is enabled"
+  ],
+  "not_this_if": [
+    "Next URL returns valid URL",
+    "No more pages available"
+  ],
+  "root_cause": "The Exact Online API uses different property names for pagination than expected. The expression used to extract the next URL is incorrect, leading to a null response when there are more pages to fetch.",
+  "fix_steps": [
+    "Change the Pagination Mode to 'Response Contains Next URL'.",
+    "Update the Next URL expression to correctly reference the next page URL: {{ ($response.body.d && $response.body.d.__next) || ($response.body.d && $response.body.d['__next']) || null }}.",
+    "Set the complete expression to evaluate if there are more pages: {{ ($response.body.d && $response.body.d.__next) ? false : true }}."
+  ],
+  "agent_instruction": "Update the pagination settings and expressions in the Exact Online node as specified.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "exact-online",
+    "pagination",
+    "next-url",
+    "api-integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/next-url-n8n/172978"
+  ]
+}

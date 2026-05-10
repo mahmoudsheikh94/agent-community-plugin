@@ -1,0 +1,40 @@
+{
+  "id": "8726df10a041",
+  "tool": "n8n",
+  "error_signature": "Got unexpected type: undefined",
+  "context_key": "postgres-memory-node",
+  "title": "Unexpected type error in Postgres Memory node",
+  "symptom": "When testing a workflow with the Postgres Memory node, n8n outputs 'Got unexpected type: undefined'. This prevents the workflow from executing properly.",
+  "applies_when": [
+    "Using Postgres Memory node",
+    "Testing workflow"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or integration"
+  ],
+  "root_cause": "The error occurs due to an issue with the memory table used by the Postgres Memory node. If the table is corrupted or improperly configured, it can lead to unexpected types being returned during execution.",
+  "fix_steps": [
+    "Access the database where the memory table is stored",
+    "Delete the existing memory table",
+    "Allow n8n to recreate the memory table automatically",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Delete the existing memory table and let n8n recreate it.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "postgres",
+    "memory-node",
+    "error",
+    "workflow-testing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.76.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-error-at-postgres-memory-node/84668"
+  ]
+}

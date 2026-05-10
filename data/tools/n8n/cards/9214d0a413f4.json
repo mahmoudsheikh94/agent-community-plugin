@@ -1,0 +1,40 @@
+{
+  "id": "9214d0a413f4",
+  "tool": "n8n",
+  "error_signature": "400 Bad request - please check your parameters",
+  "context_key": "whatsapp-template",
+  "title": "WhatsApp Template sends 400 Bad Request error",
+  "symptom": "When attempting to send a message using a WhatsApp template, n8n returns a 400 error indicating a bad request due to parameter issues.",
+  "applies_when": [
+    "Using WhatsApp template",
+    "Sending message with parameters"
+  ],
+  "not_this_if": [
+    "Error occurs with other types of messages or templates"
+  ],
+  "root_cause": "The WhatsApp API requires parameters to be formatted in a specific way. If named parameters are used instead of positional parameters, or if the number of parameters does not match the template's requirements, a 400 error will occur.",
+  "fix_steps": [
+    "Open the WhatsApp template settings in your workflow",
+    "Change named parameters in the body text to positional parameters",
+    "Ensure the number of strings matches the number of parameters in the template",
+    "Save the workflow and try sending the message again"
+  ],
+  "agent_instruction": "Switch to positional parameters in the WhatsApp template body text and ensure they match the template's requirements.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "template",
+    "400-error",
+    "parameters"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.69.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whatsapp-template-does-send-message/74581"
+  ]
+}

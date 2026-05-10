@@ -1,0 +1,38 @@
+{
+  "id": "795bf7429f99",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'graphicsmagick'",
+  "context_key": "n8n-worker",
+  "title": "GraphicsMagick module not found in n8n worker",
+  "symptom": "The n8n worker fails to start with an error indicating that the 'graphicsmagick' module cannot be found. This prevents the worker from executing any tasks.",
+  "applies_when": [
+    "Using n8n version 1.103.2",
+    "Running the n8n worker in a Docker container"
+  ],
+  "not_this_if": [
+    "GraphicsMagick is installed correctly and the worker starts without errors"
+  ],
+  "root_cause": "The error occurs because the n8n task runner requires the GraphicsMagick module to be available in the Node.js environment. If it is only installed as a system binary and not as a Node.js module, the task runner will not be able to find it, leading to the MODULE_NOT_FOUND error.",
+  "fix_steps": [
+    "Modify the Dockerfile to include the installation of the GraphicsMagick npm module by adding 'npm install -g gm' in the appropriate section.",
+    "Ensure that the Docker image is rebuilt and the n8n worker is restarted after making these changes."
+  ],
+  "agent_instruction": "Install the GraphicsMagick npm module in your Dockerfile and rebuild the image.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "graphicsmagick",
+    "n8n",
+    "docker",
+    "module-not-found"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-cannot-find-module-graphicsmagick-when-running-n8n-worker-v1-103-2/157782"
+  ]
+}

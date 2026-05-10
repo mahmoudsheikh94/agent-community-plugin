@@ -1,0 +1,41 @@
+{
+  "id": "546acc1d5e75",
+  "tool": "n8n",
+  "error_signature": "only 1 processed when multiple emails arrive",
+  "context_key": "outlook-trigger",
+  "title": "Outlook Trigger processes only one email per minute",
+  "symptom": "When multiple emails arrive within the same minute, n8n only processes one email and ignores the rest.",
+  "applies_when": [
+    "Using Microsoft Outlook Trigger",
+    "Polling interval set to 1 minute"
+  ],
+  "not_this_if": [
+    "Emails arrive at different times",
+    "Polling interval set to less than 1 minute"
+  ],
+  "root_cause": "The Microsoft Outlook Trigger is designed to process only one email per polling interval. When multiple emails arrive within the same minute, the trigger does not handle them all, leading to missed emails.",
+  "fix_steps": [
+    "Use the Outlook Trigger to wake the workflow.",
+    "Immediately call the Outlook 'Get Many' node with a filter based on the last receivedDateTime.",
+    "Split the results into single items and process each one.",
+    "Update the watermark for the next run."
+  ],
+  "agent_instruction": "Implement a workflow that uses 'Get Many' to fetch all emails since the last poll and process them individually.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "outlook",
+    "trigger",
+    "polling",
+    "email-processing"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/outlook-trigger-polling-messages-arriving-in-same-minute-only-1-processed/272424"
+  ]
+}

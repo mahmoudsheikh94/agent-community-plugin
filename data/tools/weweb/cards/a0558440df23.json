@@ -1,0 +1,41 @@
+{
+  "id": "a0558440df23",
+  "tool": "weweb",
+  "error_signature": "CORS issue with trailing slash in domain",
+  "context_key": "xano-cors",
+  "title": "CORS issue due to trailing slash in domain",
+  "symptom": "Requests to Xano fail due to CORS policy when a trailing slash is present in the domain. Users are unable to access data from Weweb.",
+  "applies_when": [
+    "Using Xano for API management",
+    "CORS settings include a domain with a trailing slash"
+  ],
+  "not_this_if": [
+    "CORS settings do not include a trailing slash",
+    "CORS is disabled"
+  ],
+  "root_cause": "Xano's CORS configuration does not accept domains with a trailing slash, which leads to failed requests. The change in Weweb's editor URL structure exacerbates this issue.",
+  "fix_steps": [
+    "Remove the trailing slash from the domain in the CORS settings",
+    "Save the changes",
+    "Test the API requests again"
+  ],
+  "agent_instruction": "Remove the trailing slash from the CORS domain settings in Xano.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "CORS",
+    "Xano",
+    "weweb",
+    "API",
+    "domain-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/cors-xano-issues-with-the-new-weweb-environment/21073"
+  ]
+}

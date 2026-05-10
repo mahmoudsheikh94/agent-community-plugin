@@ -1,0 +1,39 @@
+{
+  "id": "71a401e633e7",
+  "tool": "n8n",
+  "error_signature": "name '_query' is not defined",
+  "context_key": "code-tool",
+  "title": "Undefined variable error in Code Tool",
+  "symptom": "When executing a Python function in the Code Tool, an error occurs stating 'name '_query' is not defined'.",
+  "applies_when": [
+    "Using the Code Tool",
+    "Referencing input variables incorrectly"
+  ],
+  "not_this_if": [
+    "The code does not reference '_query' or uses correct variable names"
+  ],
+  "root_cause": "In the Code Tool, input variables are directly accessible without needing to reference them through a '_query' object. Attempting to use '_query' leads to a NameError since it is not defined in that context.",
+  "fix_steps": [
+    "Remove the '_query' reference from the return statement",
+    "Use the input variable name directly, e.g., return get_jurisdiction(query_location_ids)",
+    "Test the code again to ensure it executes without errors"
+  ],
+  "agent_instruction": "Change the return statement to use the input variable directly instead of '_query'.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-tool",
+    "python",
+    "input-variables",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-structure-a-python-code-tool-for-agent-use/270806"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "f66e0efb7940",
+  "tool": "n8n",
+  "error_signature": "Error 403: access_denied",
+  "context_key": "gmail-api",
+  "title": "Gmail API access denied due to verification process",
+  "symptom": "When attempting to use the Gmail API, an error 403 with 'access_denied' is displayed, indicating that the app is not verified.",
+  "applies_when": [
+    "Using Gmail API",
+    "n8n cloud environment"
+  ],
+  "not_this_if": [
+    "Using a verified app or different API integration"
+  ],
+  "root_cause": "The error occurs because the n8n application has not completed the Google verification process. As a result, access is restricted to only developer-approved testers, preventing normal users from utilizing the API.",
+  "fix_steps": [
+    "Update the API scope in your Google Cloud Project",
+    "Add test users to the project settings",
+    "Create new credentials in n8n using the updated settings",
+    "Test the connection again"
+  ],
+  "agent_instruction": "Update the API scope and add test users in your Google Cloud Project, then create new credentials in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "api",
+    "access_denied",
+    "google-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/gmail-api-problem/64142"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "1173d8765a5d",
+  "tool": "n8n",
+  "error_signature": "Trigger doesn't work when it should start the workflow",
+  "context_key": "facebook-leads-trigger",
+  "title": "Facebook Leads trigger not receiving data",
+  "symptom": "The Facebook Leads trigger is not activating when a test lead is sent, indicating that the workflow is not starting as expected.",
+  "applies_when": [
+    "Using Facebook Leads trigger",
+    "Self-hosted n8n environment"
+  ],
+  "not_this_if": [
+    "Trigger works in cloud environment",
+    "Webhook verification is successful"
+  ],
+  "root_cause": "The issue arises from using the wrong token for webhook verification. The user token was mistakenly used instead of the verify token defined in the Docker compose file, leading to the webhook not being verified correctly.",
+  "fix_steps": [
+    "Open your Docker compose file and locate the line with WEEBHOOK_TUNNEL_VERIFY_TOKEN.",
+    "Set the verify token to a unique string.",
+    "In the Facebook app settings, ensure you select the correct Page and subscribe to the leadgen events.",
+    "Test the webhook again with a test lead."
+  ],
+  "agent_instruction": "Ensure the correct verify token is set in Docker and subscribe to the leadgen events for the correct Page.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "facebook",
+    "leads",
+    "webhook",
+    "docker",
+    "verification"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-self-hosted-facebook-leads-trigger/198372"
+  ]
+}

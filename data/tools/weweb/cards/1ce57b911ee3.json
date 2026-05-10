@@ -1,0 +1,41 @@
+{
+  "id": "1ce57b911ee3",
+  "tool": "weweb",
+  "error_signature": "unable to parse CSV file columns",
+  "context_key": "csv-upload",
+  "title": "Parsing CSV file columns fails",
+  "symptom": "The user is unable to extract data from each column of a CSV file uploaded in WeWeb. They receive no results when attempting to parse the data.",
+  "applies_when": [
+    "Using WeWeb to upload a CSV file",
+    "Trying to parse the CSV data with custom JS"
+  ],
+  "not_this_if": [
+    "CSV file is empty",
+    "Incorrect file format is used"
+  ],
+  "root_cause": "The issue arises when the custom JavaScript code does not properly read or parse the CSV file data. This can happen if the file is not read correctly or if the delimiter used in the split function does not match the CSV format.",
+  "fix_steps": [
+    "Use the FileReader API to read the CSV file as text.",
+    "Split the text data using the correct delimiter (e.g., ',') to parse the columns.",
+    "Ensure that the CSV file is not empty and is in the correct format."
+  ],
+  "agent_instruction": "Implement the provided FileReader code to read and parse the CSV file correctly.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "csv",
+    "file-upload",
+    "javascript",
+    "weweb",
+    "xano"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/upload-csv-file-and-parse-weweb-xano/3614"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "a2ecfeab8386",
+  "tool": "n8n",
+  "error_signature": "controls within nodes have disappeared",
+  "context_key": "google-sheets-node",
+  "title": "Missing 'Add Filter' button in Google Sheets node",
+  "symptom": "After upgrading to n8n version 1.90.2, the 'Add Filter' button is missing from the Google Sheets node's Get Rows functionality. This issue also affects other nodes like Form.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Upgraded to n8n version 1.90.2"
+  ],
+  "not_this_if": [
+    "Using a version earlier than 1.90.2",
+    "The button is present in older workflows"
+  ],
+  "root_cause": "The issue arises from a bug introduced in n8n version 1.90.2 that causes certain controls within nodes to disappear. This affects the usability of nodes like Google Sheets and Form, leading to missing functionalities.",
+  "fix_steps": [
+    "Upgrade n8n to version 1.91.0",
+    "Check the Google Sheets node again for the 'Add Filter' button"
+  ],
+  "agent_instruction": "Upgrade n8n to version 1.91.0 to restore the missing controls in nodes.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "google-sheets",
+    "form-node",
+    "upgrade",
+    "bug"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/new-n8n-workflow-google-sheets-no-add-filter-button/109306"
+  ]
+}

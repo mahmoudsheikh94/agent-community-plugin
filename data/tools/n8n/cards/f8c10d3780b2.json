@@ -1,0 +1,40 @@
+{
+  "id": "f8c10d3780b2",
+  "tool": "n8n",
+  "error_signature": "multiple entries in Google Sheets for each chunk",
+  "context_key": "google-sheets-node",
+  "title": "Duplicate entries in Google Sheets from chunked processing",
+  "symptom": "When logging file information in Google Sheets after processing chunks, multiple entries are created for each chunk instead of a single entry per file.",
+  "applies_when": [
+    "Using Pinecone for chunk-based processing",
+    "Logging to Google Sheets"
+  ],
+  "not_this_if": [
+    "Only one chunk is processed",
+    "Data is logged directly without chunking"
+  ],
+  "root_cause": "The workflow directly connects the output of Pinecone to Google Sheets, resulting in multiple entries for each chunk processed. Each chunk triggers a separate entry in the sheet, leading to duplicates.",
+  "fix_steps": [
+    "Add a Merge node after the download step",
+    "Connect the output of the Merge node to the Google Sheets node",
+    "Configure the Merge node to consolidate data before logging"
+  ],
+  "agent_instruction": "Use a Merge node to combine chunk data before sending it to Google Sheets.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "pinecone",
+    "duplicate-entries",
+    "merge-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/avoiding-duplicate-sheet-entries-when-logging-file-info-after-chunk-based-pinecone-processing-in-a-rag-workflow/152551"
+  ]
+}

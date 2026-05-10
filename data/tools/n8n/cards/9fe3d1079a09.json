@@ -1,0 +1,38 @@
+{
+  "id": "9fe3d1079a09",
+  "tool": "n8n",
+  "error_signature": "$input.all() returning next execution value",
+  "context_key": "code-node",
+  "title": "$input.all() returns incorrect value in code node",
+  "symptom": "The code node using $input.all() sometimes returns the value from the next execution instead of the current run's value.",
+  "applies_when": [
+    "Using $input.all() in a code node",
+    "Executing a loop that processes one item per run"
+  ],
+  "not_this_if": [
+    "No issue with other nodes or when using different expressions"
+  ],
+  "root_cause": "The issue arises from n8n's internal handling of the $input.all() function, which can incorrectly reference the next execution's data instead of the current run's data, leading to unexpected results.",
+  "fix_steps": [
+    "Insert an IF node set to always true between the last node and the code node",
+    "Re-run the workflow to check if the issue persists"
+  ],
+  "agent_instruction": "Add an IF node before the code node to ensure correct data retrieval.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "code-node",
+    "$input.all()",
+    "workflow-issue",
+    "data-retrieval"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.51.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/input-all-is-taking-the-next-item-instead-of-the-current-run/236760"
+  ]
+}

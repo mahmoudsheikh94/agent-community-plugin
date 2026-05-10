@@ -1,0 +1,42 @@
+{
+  "id": "eed02ebcbfcd",
+  "tool": "n8n",
+  "error_signature": "blank screen due to missing/blocked frontend asset",
+  "context_key": "YunoHost",
+  "title": "UI not loading due to incorrect asset paths",
+  "symptom": "The n8n UI does not display anything, resulting in a blank screen. This issue is often caused by the frontend assets being loaded from incorrect paths.",
+  "applies_when": [
+    "Using n8n on YunoHost",
+    "Incorrect paths set in environment variables"
+  ],
+  "not_this_if": [
+    "UI loads correctly on local access",
+    "No issues with asset paths"
+  ],
+  "root_cause": "The UI fails to load because the paths for the frontend assets are incorrectly configured in the environment variables. This can happen if systemd overrides the settings in the `.env` file, leading to the browser receiving HTML instead of the expected JS/CSS files.",
+  "fix_steps": [
+    "Edit the override file located at /etc/systemd/system/n8n.service.d/override.conf to set the correct paths for N8N_PATH, WEBHOOK_URL, and N8N_EDITOR_BASE_URL.",
+    "Run 'sudo systemctl daemon-reload' to apply the changes.",
+    "Restart n8n with 'sudo systemctl restart n8n'.",
+    "Check the local UI to ensure the correct asset paths are being used."
+  ],
+  "agent_instruction": "Update the environment variables in the systemd override file and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "YunoHost",
+    "UI",
+    "frontend",
+    "systemd",
+    "asset-paths"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.116.2~ynh1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8ns-ui-doesnt-shown/235235"
+  ]
+}

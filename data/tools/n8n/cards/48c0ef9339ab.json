@@ -1,0 +1,40 @@
+{
+  "id": "48c0ef9339ab",
+  "tool": "n8n",
+  "error_signature": "ERR_CONNECTION_REFUSED",
+  "context_key": "n8n-container",
+  "title": "n8n container not accessible due to missing port exposure",
+  "symptom": "When trying to access the n8n instance directly, users receive an 'ERR_CONNECTION_REFUSED' error. This indicates that the service is not reachable on the specified port.",
+  "applies_when": [
+    "Using Docker with custom IPvlan network",
+    "n8n container is running"
+  ],
+  "not_this_if": [
+    "Ports are correctly exposed in the Docker configuration"
+  ],
+  "root_cause": "The n8n container is not exposing any ports to the host because the 'ports' setting is missing in the Docker Compose configuration. Without this, external requests cannot reach the n8n service.",
+  "fix_steps": [
+    "Open the `docker-compose.yml` file for the n8n service.",
+    "Add the line `ports: - '5678:5678'` under the n8n service definition.",
+    "Save the changes and restart the Docker containers."
+  ],
+  "agent_instruction": "Add port exposure for the n8n container in the Docker Compose file and restart the containers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "docker",
+    "ipvlan",
+    "connection-refused",
+    "port-exposure"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-not-accessible-when-using-custom-ipvlan-network/211947"
+  ]
+}

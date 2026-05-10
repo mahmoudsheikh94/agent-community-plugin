@@ -1,0 +1,41 @@
+{
+  "id": "d82d304aef53",
+  "tool": "weweb",
+  "error_signature": "first row in the grid disappears after filtering or sorting",
+  "context_key": "datagrid-supabase-view",
+  "title": "First row missing in Datagrid after filtering or sorting",
+  "symptom": "After applying a filter or sorting in the Datagrid, the first row of data is not displayed, despite the footer indicating there are records present.",
+  "applies_when": [
+    "Using Datagrid with Supabase view",
+    "Applying filters or sorting"
+  ],
+  "not_this_if": [
+    "The issue does not occur with regular tables",
+    "No filtering or sorting is applied"
+  ],
+  "root_cause": "The issue is often caused by non-unique IDs in the data being fetched from Supabase, which can lead to rendering problems in the Datagrid. If the IDs are not unique or formatted incorrectly, the Datagrid may fail to display certain rows correctly.",
+  "fix_steps": [
+    "Check the data in Supabase to ensure all records have unique IDs",
+    "Adjust the Data grid settings to bind the correct unique ID field",
+    "Reapply the filter or sorting to verify the first row displays correctly"
+  ],
+  "agent_instruction": "Ensure all records have unique IDs and adjust the Data grid settings accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "datagrid",
+    "supabase",
+    "filtering",
+    "sorting",
+    "unique-ids"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/the-first-row-in-the-grid-disappears-after-filtering-or-sorting-data-from-a-supabase-view/19153"
+  ]
+}

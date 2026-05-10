@@ -1,0 +1,40 @@
+{
+  "id": "2eef5a8f20cf",
+  "tool": "n8n",
+  "error_signature": "JSON parameter needs to be valid JSON [item 7]",
+  "context_key": "http-request-node",
+  "title": "Invalid JSON in HTTP Request Node",
+  "symptom": "When testing the workflow, the HTTP request node throws an error stating 'JSON parameter needs to be valid JSON [item 7]'. This indicates that the JSON input is malformed.",
+  "applies_when": [
+    "Using HTTP request node",
+    "Testing the workflow"
+  ],
+  "not_this_if": [
+    "Error occurs during manual execution of the node"
+  ],
+  "root_cause": "The error occurs because the JSON input provided to the HTTP request node is not properly formatted. Common issues include missing quotes, incorrect brackets, or other syntax errors in the JSON structure.",
+  "fix_steps": [
+    "Check the JSON input for item 7 in the HTTP request node.",
+    "Ensure that all strings are properly quoted and that the JSON structure is valid.",
+    "Use a JSON validator tool if necessary to confirm the format.",
+    "Save the changes and test the workflow again."
+  ],
+  "agent_instruction": "Validate and correct the JSON input for item 7 in the HTTP request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "json",
+    "validation",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/json-parameter-needs-to-be-valid-json-item-7/79382"
+  ]
+}

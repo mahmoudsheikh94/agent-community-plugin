@@ -1,0 +1,42 @@
+{
+  "id": "f683fd93a8e1",
+  "tool": "weweb",
+  "error_signature": "500 error with output indicating it can't resolve the table",
+  "context_key": "Xano OAuth endpoint",
+  "title": "Xano OAuth endpoint returns 500 error",
+  "symptom": "When attempting to authenticate via Google OAuth, a 500 error occurs, indicating the user table cannot be resolved, despite users being created successfully.",
+  "applies_when": [
+    "Using Google OAuth with Xano",
+    "User table exists in Xano"
+  ],
+  "not_this_if": [
+    "No users are created in the user table",
+    "The error does not occur during the OAuth process"
+  ],
+  "root_cause": "The 500 error suggests that there is a misconfiguration in the Xano endpoint, possibly related to the user table being referenced incorrectly or an empty attribute in the request. This can happen if the endpoint is not properly set up to handle the OAuth flow.",
+  "fix_steps": [
+    "Check the Xano endpoint configuration for the OAuth process",
+    "Ensure the user table is correctly referenced and not empty",
+    "Re-select the user table in the Xano settings if necessary",
+    "Test the endpoint again to see if the issue persists"
+  ],
+  "agent_instruction": "Verify and correct the user table reference in the Xano OAuth endpoint settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "OAuth",
+    "Google",
+    "500 error",
+    "user table"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/google-auth-via-xano-through-modal-issues/3960"
+  ]
+}

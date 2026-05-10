@@ -1,0 +1,39 @@
+{
+  "id": "ac60db71aca6",
+  "tool": "n8n",
+  "error_signature": "workflows resetting to an older state",
+  "context_key": "workflow-saving",
+  "title": "Workflows reset to an older state after saving",
+  "symptom": "After saving a workflow and returning later, it appears in an older state than expected, causing loss of recent changes.",
+  "applies_when": [
+    "Using self-hosted n8n",
+    "Saving workflows and returning later"
+  ],
+  "not_this_if": [
+    "Workflow is saved and remains unchanged during the same session"
+  ],
+  "root_cause": "This issue may occur due to improper handling of the encryption key or license settings in the self-hosted environment, leading to workflows not being saved correctly.",
+  "fix_steps": [
+    "Clear the existing license in the n8n settings",
+    "Set up a new encryption key in the .env file",
+    "Restart the n8n service to apply changes"
+  ],
+  "agent_instruction": "Clear the license and configure a new encryption key in the .env file.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow",
+    "saving",
+    "encryption-key",
+    "license"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.90.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflows-saving-but-resetting-to-an-older-state/106712"
+  ]
+}

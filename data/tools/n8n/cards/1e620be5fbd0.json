@@ -1,0 +1,42 @@
+{
+  "id": "1e620be5fbd0",
+  "tool": "n8n",
+  "error_signature": "Request timed out.",
+  "context_key": "embeddingsOpenAi-node",
+  "title": "Request timed out in Supabase Vector Store integration",
+  "symptom": "When querying the Supabase Vector Store, the request takes an excessively long time and eventually times out, displaying 'Request timed out.'",
+  "applies_when": [
+    "Using Supabase Vector Store node",
+    "Embedding node configured with custom settings"
+  ],
+  "not_this_if": [
+    "Embedding node is left with default settings",
+    "No timeout error occurs"
+  ],
+  "root_cause": "The timeout error occurs because the embedding node settings were incorrectly configured. Custom settings can lead to inefficient processing or excessive resource demands, causing the request to exceed the allowed time limit.",
+  "fix_steps": [
+    "Open the Embeddings OpenAI node settings",
+    "Remove any custom settings and keep it clean",
+    "Select only the model you want to use",
+    "Save the workflow and retry the query"
+  ],
+  "agent_instruction": "Reset the Embeddings OpenAI node settings to default and select only the desired model.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "vector-store",
+    "timeout",
+    "embeddings",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/supabase-vector-store-ridicolous-error-case/145267"
+  ]
+}

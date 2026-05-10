@@ -1,0 +1,42 @@
+{
+  "id": "b44bc7fbfc6f",
+  "tool": "n8n",
+  "error_signature": "ERR_SSL_PROTOCOL_ERROR",
+  "context_key": "n8n-oauth2",
+  "title": "ERR_SSL_PROTOCOL_ERROR during YouTube OAuth2 authentication",
+  "symptom": "When attempting to authenticate with YouTube using OAuth2, n8n throws an ERR_SSL_PROTOCOL_ERROR. The redirect URI incorrectly includes port 5678 instead of the default HTTPS port 443.",
+  "applies_when": [
+    "Using n8n behind Nginx",
+    "Configuring OAuth2 for YouTube"
+  ],
+  "not_this_if": [
+    "n8n is not behind a reverse proxy",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The error occurs because n8n is configured with incorrect environment variables that do not align with the Nginx reverse proxy settings. Specifically, the N8N_PROTOCOL should be set to 'http' when Nginx handles SSL termination, and the WEBHOOK_URL must be correctly defined to avoid including the port in the redirect URI.",
+  "fix_steps": [
+    "Change the N8N_PROTOCOL environment variable from 'https' to 'http'.",
+    "Rename the N8N_WEBHOOK_URL environment variable to WEBHOOK_URL.",
+    "Remove unnecessary environment variables like N8N_PATH and VUE_APP_URL_BASE_API.",
+    "Restart the n8n service to apply the changes."
+  ],
+  "agent_instruction": "Update the environment variables in your Docker configuration and restart the n8n service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "oauth2",
+    "nginx",
+    "ssl",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/persistent-err-ssl-protocol-error-and-redirect-uri-including-port-5678-issue-with-n8n-oauth2/84611"
+  ]
+}

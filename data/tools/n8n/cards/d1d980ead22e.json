@@ -1,0 +1,41 @@
+{
+  "id": "d1d980ead22e",
+  "tool": "n8n",
+  "error_signature": "Unsupported post request",
+  "context_key": "instagram-api",
+  "title": "Unsupported Post Request to Instagram API",
+  "symptom": "The workflow fails with an 'Unsupported post request' error when trying to send a message. This indicates that the request is not formatted correctly or is targeting the wrong endpoint.",
+  "applies_when": [
+    "Using Instagram API",
+    "Sending messages to users"
+  ],
+  "not_this_if": [
+    "The request works for other endpoints",
+    "No issues with the API key"
+  ],
+  "root_cause": "This error occurs when the request is sent to an incorrect API endpoint or when the request body does not conform to the expected structure. For instance, using the Facebook Graph API endpoint instead of the Instagram Graph API endpoint can lead to this issue.",
+  "fix_steps": [
+    "Change the API endpoint to the correct Instagram URL",
+    "Ensure the recipient ID is set to the user's ID",
+    "Format the request body according to the Instagram API specifications",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Update the API endpoint and request body structure to match Instagram API requirements.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "instagram",
+    "api",
+    "http-request",
+    "endpoint"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-on-creating-instagram-automatic-dm-responses/87244"
+  ]
+}

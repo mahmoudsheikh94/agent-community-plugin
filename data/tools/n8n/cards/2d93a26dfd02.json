@@ -1,0 +1,39 @@
+{
+  "id": "2d93a26dfd02",
+  "tool": "n8n",
+  "error_signature": "No binary data exists on item!",
+  "context_key": "email-node",
+  "title": "Missing binary data for email attachment",
+  "symptom": "When attempting to send an email with an attachment from a sub-workflow, n8n throws 'No binary data exists on item!'. This prevents the email from being sent with the intended file.",
+  "applies_when": [
+    "Using a sub-workflow to send an email",
+    "File data is passed as binary"
+  ],
+  "not_this_if": [
+    "Binary data is correctly passed to the email node",
+    "No error occurs when sending emails"
+  ],
+  "root_cause": "The error occurs because the binary data is not properly converted or passed between workflows. In this case, the binary file needs to be converted to base64 before being sent to the sub-workflow and then converted back to binary for the email node to recognize it.",
+  "fix_steps": [
+    "In the parent workflow, convert the binary file to base64 format before passing it to the sub-workflow.",
+    "In the sub-workflow, convert the base64 data back to binary format before using it in the email node."
+  ],
+  "agent_instruction": "Ensure to convert the binary file to base64 in the parent workflow and back to binary in the sub-workflow.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "email",
+    "binary-data",
+    "sub-workflow",
+    "base64"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/email-attachment-through-subworkflow/226412"
+  ]
+}

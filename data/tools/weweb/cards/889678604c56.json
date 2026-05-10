@@ -1,0 +1,40 @@
+{
+  "id": "889678604c56",
+  "tool": "weweb",
+  "error_signature": "sidebar does not appear on Apple devices",
+  "context_key": "hamburger-menu",
+  "title": "Sidebar not displaying on Apple mobile devices",
+  "symptom": "When clicking the hamburger menu on Apple devices, the menu does not appear, although the icon disappears. This issue does not occur on Android devices or desktop browsers.",
+  "applies_when": [
+    "Using Apple mobile devices",
+    "Hamburger menu is set to flex"
+  ],
+  "not_this_if": [
+    "Menu works on Android devices",
+    "Menu is set to block"
+  ],
+  "root_cause": "The issue arises from the way iOS Mobile Safari/WebKit handles flex containers. The sidebar menu fails to display correctly when the hamburger menu container is set to flex, as it does not adapt the size properly.",
+  "fix_steps": [
+    "Change the container of the hamburger menu from 'flex' to 'block'",
+    "Test the sidebar functionality on Apple devices to ensure it displays correctly"
+  ],
+  "agent_instruction": "Change the hamburger menu container to 'block' to resolve the display issue on Apple devices.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "sidebar",
+    "hamburger-menu",
+    "iOS",
+    "WebKit",
+    "flex"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/sidebar-does-not-appear-on-apple-devices/18843"
+  ]
+}

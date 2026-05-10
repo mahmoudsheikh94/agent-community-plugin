@@ -1,0 +1,40 @@
+{
+  "id": "7fabb31b9ae9",
+  "tool": "n8n",
+  "error_signature": "credentials window is missing input fields",
+  "context_key": "credentials-settings",
+  "title": "Missing input fields in credentials window",
+  "symptom": "The credentials window does not display input fields, and they briefly appear before disappearing. This issue occurs in both Firefox and Google Chrome.",
+  "applies_when": [
+    "Using n8n version 1.112.3 or 1.113.3",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Using a version earlier than 1.112.3",
+    "Not using Docker"
+  ],
+  "root_cause": "The issue is caused by the environment variable 'N8N_DEFAULT_LOCALE' set in the Docker configuration, which interferes with the rendering of the credentials input fields.",
+  "fix_steps": [
+    "Open your Docker Compose file",
+    "Remove the line setting the 'N8N_DEFAULT_LOCALE' environment variable",
+    "Restart the n8n Docker container"
+  ],
+  "agent_instruction": "Remove the 'N8N_DEFAULT_LOCALE' variable from your Docker Compose file and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "credentials",
+    "docker",
+    "n8n-default-locale",
+    "input-fields"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/credentials-window-is-missing-textfields/197020"
+  ]
+}

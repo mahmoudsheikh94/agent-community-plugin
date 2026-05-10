@@ -1,0 +1,40 @@
+{
+  "id": "9483c6f64197",
+  "tool": "n8n",
+  "error_signature": "new document created instead of updating existing document",
+  "context_key": "firestore-db-node",
+  "title": "Firestore node creates new document instead of updating",
+  "symptom": "When attempting to update a Firestore document using the Firestore 'Create or Update' operation, a new document is created instead of updating the existing one.",
+  "applies_when": [
+    "Using Firestore 'Create or Update' operation",
+    "Document ID is provided in the input"
+  ],
+  "not_this_if": [
+    "Document ID is not correctly mapped",
+    "No input data is provided"
+  ],
+  "root_cause": "The Firestore node requires the correct Document ID to be specified in the input data. If the Document ID is not correctly referenced, it defaults to creating a new document instead of updating the existing one.",
+  "fix_steps": [
+    "Ensure the Document ID is included in the input data",
+    "Use the correct key from the input data (e.g., '_id') for the update operation",
+    "Test the workflow to confirm the document updates correctly"
+  ],
+  "agent_instruction": "Map the Document ID correctly in the Firestore node input to ensure it updates the existing document.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "firestore",
+    "update",
+    "document",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.118.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-do-i-update-a-document-on-my-google-firestore-using-the-firestore-db-node/253026"
+  ]
+}

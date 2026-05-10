@@ -1,0 +1,38 @@
+{
+  "id": "648c1ebae6be",
+  "tool": "weweb",
+  "error_signature": "empty deployment screen",
+  "context_key": "deployment-process",
+  "title": "Empty screen during first deployment",
+  "symptom": "When attempting to deploy a project for the first time, the user sees an empty screen instead of a successful deployment message.",
+  "applies_when": [
+    "First-time deployment",
+    "No GitHub connection established"
+  ],
+  "not_this_if": [
+    "Deployment works after connecting to GitHub"
+  ],
+  "root_cause": "The deployment process requires a connection to a GitHub repository to fetch the project files. Without this connection, the deployment cannot proceed, resulting in an empty screen.",
+  "fix_steps": [
+    "Connect your project to a GitHub repository",
+    "Retry the deployment process"
+  ],
+  "agent_instruction": "Ensure your project is connected to GitHub and attempt the deployment again.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "deployment",
+    "github",
+    "first-time",
+    "empty-screen"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/first-time-deploy-not-working/19560"
+  ]
+}

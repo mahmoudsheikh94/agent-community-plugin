@@ -1,0 +1,40 @@
+{
+  "id": "b8e9498343e9",
+  "tool": "weweb",
+  "error_signature": "variables and formulas being copied randomly",
+  "context_key": "component duplication",
+  "title": "Random duplication of variables and formulas in components",
+  "symptom": "When copying components, variables and formulas are sometimes duplicated unexpectedly, leading to confusion in the project.",
+  "applies_when": [
+    "Creating or copying components",
+    "Using the 'duplicate variable' option"
+  ],
+  "not_this_if": [
+    "No components are being copied",
+    "The 'duplicate variable' option is not selected"
+  ],
+  "root_cause": "When a component is created, the associated variables are also duplicated. If the 'duplicate variable' option is selected when placing the component on the page, it can lead to unintended duplication of those variables and formulas.",
+  "fix_steps": [
+    "Select the component you want to place on the page",
+    "Ensure the 'duplicate variable' option is unselected",
+    "Place the component on the page"
+  ],
+  "agent_instruction": "Unselect the 'duplicate variable' option when placing the component to avoid random duplication.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "component",
+    "variables",
+    "formulas",
+    "duplication"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/variables-and-formulas-being-copied-randomly-copy/16502"
+  ]
+}

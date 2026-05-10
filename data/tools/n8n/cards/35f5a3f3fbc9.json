@@ -1,0 +1,42 @@
+{
+  "id": "35f5a3f3fbc9",
+  "tool": "n8n",
+  "error_signature": "database file size does not change after DELETE",
+  "context_key": "sqlite-database",
+  "title": "SQLite database size not reducing after delete",
+  "symptom": "After executing a DELETE command on the 'insights_raw' table, the database file size remains unchanged.",
+  "applies_when": [
+    "Using SQLite as the database",
+    "Insights feature is turned off"
+  ],
+  "not_this_if": [
+    "Using a different database system",
+    "Insights feature is still active"
+  ],
+  "root_cause": "SQLite does not immediately reduce the file size on disk after a DELETE operation. Instead, it marks the deleted space as empty for future use, which means the file size remains the same until a VACUUM command is executed.",
+  "fix_steps": [
+    "Stop the n8n Docker container to avoid database locking issues.",
+    "Run the command 'DELETE FROM insights_raw;' to delete the data.",
+    "Execute the command 'VACUUM;' to reclaim the disk space."
+  ],
+  "agent_instruction": "Stop the n8n Docker container, delete data from the insights_raw table, and run VACUUM to reduce the database size.",
+  "safety_notes": [
+    "Take a full database backup before performing these operations."
+  ],
+  "fix_type": "api_call",
+  "tags": [
+    "sqlite",
+    "database",
+    "delete",
+    "vacuum"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.9.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/possible-to-reduce-database-size-by-deleting-from-insights-raw-table/270108"
+  ]
+}

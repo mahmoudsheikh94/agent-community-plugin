@@ -1,0 +1,39 @@
+{
+  "id": "8c2680a2006f",
+  "tool": "n8n",
+  "error_signature": "Unable to sign without access token",
+  "context_key": "zoho-desk-api",
+  "title": "Zoho Desk API access token error",
+  "symptom": "When attempting to make an HTTP request to the Zoho Desk API, n8n throws 'Unable to sign without access token'. This occurs even with a successful account authentication.",
+  "applies_when": [
+    "Using Zoho Desk API",
+    "Configured authentication for HTTP request"
+  ],
+  "not_this_if": [
+    "Access token is correctly provided in the request"
+  ],
+  "root_cause": "The error occurs because the Zoho Desk API requires a specific domain format for the access token to be valid. If the domain is not correctly specified, the API cannot sign the request, leading to this error.",
+  "fix_steps": [
+    "Change the API domain to end with '.eu'",
+    "Retry the HTTP request to the Zoho Desk API"
+  ],
+  "agent_instruction": "Ensure the API domain ends with '.eu' and retry the request.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "zoho",
+    "desk",
+    "api",
+    "access-token",
+    "http-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/zoho-desk-api-unable-to-sign-without-access-token/129690"
+  ]
+}

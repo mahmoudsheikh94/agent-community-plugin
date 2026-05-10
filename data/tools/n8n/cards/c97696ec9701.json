@@ -1,0 +1,40 @@
+{
+  "id": "c97696ec9701",
+  "tool": "n8n",
+  "error_signature": "Parse error at line: 1, column: 73: Incorrect syntax near ‘,’",
+  "context_key": "microsoft-sql-node",
+  "title": "Syntax error on multi-row insert in Azure Dedicated SQL pool",
+  "symptom": "When attempting to insert multiple rows into an Azure Dedicated SQL pool, a syntax error occurs indicating an issue near a comma.",
+  "applies_when": [
+    "Using Microsoft SQL node",
+    "Inserting multiple rows into Azure Dedicated SQL pool"
+  ],
+  "not_this_if": [
+    "Inserting a single row",
+    "Using a different database type"
+  ],
+  "root_cause": "Azure Dedicated SQL Pools do not support the same multi-row INSERT syntax that is available in regular SQL Server databases. This leads to syntax errors when trying to execute such queries.",
+  "fix_steps": [
+    "Change the insert query to use multiple single-row INSERT statements instead of a multi-row INSERT.",
+    "Test the modified query to ensure it executes without errors."
+  ],
+  "agent_instruction": "Modify the insert operation to use single-row inserts for Azure Dedicated SQL pool.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "microsoft-sql",
+    "azure",
+    "dedicated-sql-pool",
+    "insert",
+    "syntax-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/syntax-error-when-inserting-multiple-rows-using-microsoft-sql-node-with-azure-dedicated-sql-pool/177352"
+  ]
+}

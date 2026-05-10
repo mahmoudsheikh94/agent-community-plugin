@@ -1,0 +1,40 @@
+{
+  "id": "5e4ca82973f5",
+  "tool": "n8n",
+  "error_signature": "source.on is not a function",
+  "context_key": "http-request-node",
+  "title": "HTTP Request node throws 'source.on is not a function'",
+  "symptom": "After configuring the HTTP Request node, the error 'source.on is not a function' is displayed, preventing execution.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Configured with multipart/form-data"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or context"
+  ],
+  "root_cause": "The error occurs due to incorrect configuration of the input field for binary data in the HTTP Request node. If the input field name is not set correctly, it can lead to this function error.",
+  "fix_steps": [
+    "Open the HTTP Request node settings",
+    "Locate the input field for binary data",
+    "Change the input field name to 'data'",
+    "Save the workflow and try executing again"
+  ],
+  "agent_instruction": "Change the input field name for binary data in the HTTP Request node to 'data'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "multipart-form-data",
+    "binary-data",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-module/114528"
+  ]
+}

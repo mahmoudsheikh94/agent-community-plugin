@@ -1,0 +1,39 @@
+{
+  "id": "1650b0ac2b13",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "http-request-node",
+  "title": "Asana API returns bad request due to null date",
+  "symptom": "When trying to create an Asana project from a template, the HTTP request fails with a 'Bad request - please check your parameters' error. The error details indicate that 'Day cannot be null'.",
+  "applies_when": [
+    "Using HTTP Request node to call Asana API",
+    "Triggering on Pipedrive deal set to WON"
+  ],
+  "not_this_if": [
+    "Using a different API or node",
+    "Date values are correctly formatted"
+  ],
+  "root_cause": "The Asana API requires a valid date format for the requested_dates parameter. If the date is not provided or is null, the API will return a 400 error indicating that the day cannot be null.",
+  "fix_steps": [
+    "In the HTTP Request node, change the date value from {{$now.toISOString().split('T')[0]}} to {{$now.toISO()}}.",
+    "Save the workflow and test the execution again."
+  ],
+  "agent_instruction": "Update the date format in the HTTP Request node to use .toISO() instead of .toISOString().",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "asana",
+    "http-request",
+    "bad-request",
+    "date-format"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.102.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/create-asana-project-from-template/154007"
+  ]
+}

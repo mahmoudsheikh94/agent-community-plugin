@@ -1,0 +1,40 @@
+{
+  "id": "725f590a1793",
+  "tool": "n8n",
+  "error_signature": "RespondToWebhook returns Airtable response instead of AI output",
+  "context_key": "RespondToWebhook node",
+  "title": "Incorrect response returned from RespondToWebhook node",
+  "symptom": "The RespondToWebhook node returns the Airtable response instead of the expected AI output, causing confusion for the user.",
+  "applies_when": [
+    "Using RespondToWebhook node",
+    "Logging to Airtable"
+  ],
+  "not_this_if": [
+    "AI output is correctly mapped",
+    "No logging to Airtable"
+  ],
+  "root_cause": "The mapping of outputs in the RespondToWebhook node may not be set correctly, leading to the wrong data being sent back to the user. This often happens when the node is configured to return the last output instead of the intended AI response.",
+  "fix_steps": [
+    "Open the RespondToWebhook node settings",
+    "Check the output mapping to ensure the AI response is selected",
+    "Save the workflow",
+    "Test the workflow to confirm the correct response is returned"
+  ],
+  "agent_instruction": "Ensure the RespondToWebhook node is correctly mapped to return the AI output instead of the Airtable response.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "respond-to-webhook",
+    "output-mapping",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.94.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/chatbot-ai-agent-latency-on-n8n-cloud/146656"
+  ]
+}

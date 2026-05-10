@@ -1,0 +1,40 @@
+{
+  "id": "6e52d5ae44e6",
+  "tool": "n8n",
+  "error_signature": "Webhook not triggering when closed in editor",
+  "context_key": "webhook-node",
+  "title": "Webhook not triggering outside of editor",
+  "symptom": "The webhook does not execute when sending a POST request after closing the editor. It only works when the workflow is open in the editor.",
+  "applies_when": [
+    "Using a Webhook node",
+    "Workflow is closed in the editor"
+  ],
+  "not_this_if": [
+    "Workflow is active and n8n is running on a server"
+  ],
+  "root_cause": "The Webhook node's 'Test' URL is designed for testing within the editor. For the 'Production' URL to work, the workflow must be activated and n8n must be running on a server or online, not just locally.",
+  "fix_steps": [
+    "Activate the workflow in n8n",
+    "Ensure n8n is running on a server or online",
+    "Copy the 'Production' URL correctly",
+    "Send the POST request to the 'Production' URL"
+  ],
+  "agent_instruction": "Activate the workflow and ensure n8n is running on a server to receive webhook requests.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "node",
+    "production",
+    "trigger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/why-is-my-webhook-node-not-triggering-when-i-send-data-to-it/178994"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "28663b6fb6f0",
+  "tool": "n8n",
+  "error_signature": "Main Agent to Supabase Agent: {}",
+  "context_key": "AI Agent Tool",
+  "title": "Empty query passed to AI Agent Tool",
+  "symptom": "The main agent sends an empty input to the AI Agent Tool despite specific instructions, resulting in no data being queried from the database.",
+  "applies_when": [
+    "Using AI Agent Tool",
+    "Providing specific instructions to the main agent"
+  ],
+  "not_this_if": [
+    "The main agent successfully queries the database with valid input"
+  ],
+  "root_cause": "The main agent fails to format the input correctly for the AI Agent Tool, leading to an empty query being sent. This often occurs when the input is not properly referenced or constructed using the required syntax.",
+  "fix_steps": [
+    "Use the `$fromAI` formula in the main agent's input to reference the AI Agent Tool's output.",
+    "Ensure that the input to the AI Agent Tool is correctly formatted and includes necessary keywords."
+  ],
+  "agent_instruction": "Implement the `$fromAI` formula to correctly pass the input to the AI Agent Tool.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "AI Agent Tool",
+    "query",
+    "Supabase",
+    "input formatting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-passes-empty-query-to-ai-agent-tool-despite-clear-instructions/169927"
+  ]
+}

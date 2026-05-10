@@ -1,0 +1,39 @@
+{
+  "id": "60915c8d9ee8",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters. Unable to process input image.",
+  "context_key": "Veo3 API",
+  "title": "Veo3 API bad request for image input",
+  "symptom": "When attempting to use the Veo3 API with an image input, the response is 'Bad request - please check your parameters. Unable to process input image.'",
+  "applies_when": [
+    "Using Veo3 API",
+    "Sending image data as part of the request"
+  ],
+  "not_this_if": [
+    "Using a model that does not support image inputs",
+    "Payload structure is incorrect"
+  ],
+  "root_cause": "The error occurs because the specific Veo3 model being used does not accept image data in the expected format or at all. This can happen if the model is not designed to handle image inputs or if the payload structure does not meet the API's requirements.",
+  "fix_steps": [
+    "Verify that you are using a Veo3 model that supports image inputs by checking the Google Cloud documentation.",
+    "Adjust your payload structure to ensure it matches the expected format for the model, including the correct fields for image data."
+  ],
+  "agent_instruction": "Check model compatibility and adjust the payload structure for the Veo3 API request.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Veo3",
+    "API",
+    "image-input",
+    "bad-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.112.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/image-to-video-with-veo3-api-nofal-ia/194021"
+  ]
+}

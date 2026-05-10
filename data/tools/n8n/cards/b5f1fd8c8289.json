@@ -1,0 +1,40 @@
+{
+  "id": "b5f1fd8c8289",
+  "tool": "n8n",
+  "error_signature": "SMTP not working on port 587",
+  "context_key": "SMTP configuration",
+  "title": "SMTP not working due to blocked port 587",
+  "symptom": "Users are unable to send reset emails using SMTP settings configured with port 587, resulting in failure to send emails.",
+  "applies_when": [
+    "Using SMTP settings with port 587",
+    "Self-hosted n8n on Digital Ocean"
+  ],
+  "not_this_if": [
+    "Using a different hosting provider",
+    "Using a different SMTP port"
+  ],
+  "root_cause": "Digital Ocean blocks port 587 to prevent spam, which prevents n8n from sending emails through SMTP when configured to use this port.",
+  "fix_steps": [
+    "Change the SMTP port from 587 to 2525 in the .env file",
+    "Restart the n8n service to apply the changes"
+  ],
+  "agent_instruction": "Update the SMTP port to 2525 in the .env file and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "smtp",
+    "sendgrid",
+    "digital-ocean",
+    "email",
+    "port-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/reset-password-smtp-is-not-working/109368"
+  ]
+}

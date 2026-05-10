@@ -1,0 +1,40 @@
+{
+  "id": "722142a8c14b",
+  "tool": "n8n",
+  "error_signature": "previous/current not present in manual execution",
+  "context_key": "google-sheets-trigger",
+  "title": "Mismatch in Google Sheets Trigger output during manual execution",
+  "symptom": "When testing the Google Sheets Trigger manually, the output structure does not include 'previous' and 'current' data, leading to unresolved expressions.",
+  "applies_when": [
+    "Using Google Sheets Trigger",
+    "Testing in manual execution mode"
+  ],
+  "not_this_if": [
+    "Workflow is activated and running in production"
+  ],
+  "root_cause": "Manual executions of the Google Sheets Trigger do not receive real events from Google, resulting in a sample payload that lacks the full structure of a production update event. This is expected behavior and documented for Google triggers.",
+  "fix_steps": [
+    "Activate the workflow to allow the Google Sheets Trigger to run in production mode.",
+    "Update an existing row in the Google Sheet to generate a real event.",
+    "Inspect the execution in the Executions panel to see the real 'previous' and 'current' data.",
+    "Use Debug / Copy to editor to continue building downstream logic with the real data."
+  ],
+  "agent_instruction": "Activate the workflow and update a row in the Google Sheet to capture the real trigger data.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-sheets",
+    "trigger",
+    "manual-execution",
+    "data-structure"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheets-row-update-trigger-test-input-output/260184"
+  ]
+}

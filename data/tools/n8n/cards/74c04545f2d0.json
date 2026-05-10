@@ -1,0 +1,40 @@
+{
+  "id": "74c04545f2d0",
+  "tool": "n8n",
+  "error_signature": "redirect_uri_mismatch",
+  "context_key": "salesforce-oauth",
+  "title": "Salesforce OAuth redirect URI mismatch error",
+  "symptom": "When attempting to create OAuth credentials for Salesforce with a custom domain, the error 'redirect_uri_mismatch' is displayed, indicating a configuration issue.",
+  "applies_when": [
+    "Using Salesforce OAuth for a sandbox environment",
+    "Custom domain is configured"
+  ],
+  "not_this_if": [
+    "Using standard Salesforce domain",
+    "Using JWT instead of OAuth"
+  ],
+  "root_cause": "The 'redirect_uri_mismatch' error occurs when the redirect URI specified in the Salesforce app settings does not match the URI being used in the OAuth request. This often happens when custom domains are involved, and the callback URL is not correctly set in the Salesforce configuration.",
+  "fix_steps": [
+    "Ensure the redirect URI in Salesforce matches the one used in n8n.",
+    "Use the correct callback URL as specified in the n8n documentation for custom domains.",
+    "Save the changes in Salesforce and retry creating the credentials."
+  ],
+  "agent_instruction": "Verify and update the redirect URI in Salesforce to match the one used in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "salesforce",
+    "oauth",
+    "redirect_uri",
+    "custom_domain"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.117.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-connect-credentials-to-salesforce-custom-domain/226956"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ad4628ba4bf6",
+  "tool": "n8n",
+  "error_signature": "bad request - please check your parameters",
+  "context_key": "jira-node",
+  "title": "Jira node returns bad request when updating issue status",
+  "symptom": "When attempting to update the status of a Jira issue using the Jira node, the response is 'bad request - please check your parameters'. This occurs regardless of using status names or IDs.",
+  "applies_when": [
+    "Using Jira node to update issue status",
+    "Providing status name or ID"
+  ],
+  "not_this_if": [
+    "Using the 'Mark as done' option from the dropdown",
+    "Using a valid transition ID"
+  ],
+  "root_cause": "The error occurs because the Jira API requires a transition ID to change the status of an issue, rather than a status ID or name. The transition ID corresponds to the specific action that moves the issue to a new state.",
+  "fix_steps": [
+    "Identify the correct transition ID for the desired status using the Jira API or documentation.",
+    "Use the transition ID in the Jira node configuration instead of the status ID or name.",
+    "Save the workflow and test the update again."
+  ],
+  "agent_instruction": "Use the correct transition ID for updating the Jira issue status in the node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "jira",
+    "update-status",
+    "bad-request",
+    "transition-id"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/update-jira-issue-status/158339"
+  ]
+}

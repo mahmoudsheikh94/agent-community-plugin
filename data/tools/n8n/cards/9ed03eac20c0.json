@@ -1,0 +1,41 @@
+{
+  "id": "9ed03eac20c0",
+  "tool": "n8n",
+  "error_signature": "localhost refused to connect",
+  "context_key": "YouTube OAuth2 API",
+  "title": "Connection refused on localhost for YouTube OAuth2",
+  "symptom": "When attempting to access n8n on localhost:5678, the connection is refused. After changing the host port to 7889, the OAuth2 redirect URL still uses port 5678, leading to connection issues.",
+  "applies_when": [
+    "Running n8n in Docker",
+    "Using YouTube OAuth2 API"
+  ],
+  "not_this_if": [
+    "Using the default port 5678 without changing it",
+    "Using a different OAuth2 provider"
+  ],
+  "root_cause": "The issue arises because n8n auto-generates the OAuth2 redirect URL using the default internal port (5678) instead of the user-defined host port. This leads to a mismatch when the user tries to authenticate, resulting in a connection refusal.",
+  "fix_steps": [
+    "Set the environment variable N8N_PORT to your desired host port (e.g., 7889)",
+    "Update the OAuth2 credentials in Google to use the correct redirect URL with the new port",
+    "Ensure that the webhook URLs are configured correctly as per n8n documentation"
+  ],
+  "agent_instruction": "Change the N8N_PORT environment variable and update the OAuth2 redirect URL accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "youtube",
+    "oauth2",
+    "n8n-port",
+    "connection-refused"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.95.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-access-n8n-on-host-port-5678-while-accessing-it-on-other-ports-interferes-youtube-oauth2-api/128310"
+  ]
+}

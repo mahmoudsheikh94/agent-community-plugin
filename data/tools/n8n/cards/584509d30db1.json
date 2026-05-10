@@ -1,0 +1,39 @@
+{
+  "id": "584509d30db1",
+  "tool": "n8n",
+  "error_signature": "could not connect to ai agent node",
+  "context_key": "reverse-proxy-configuration",
+  "title": "Connection issue with AI Agent node due to CSP",
+  "symptom": "The Chat node cannot connect to the AI Agent node, and no error message is displayed. The AI Agent node does not appear as expected in the interface.",
+  "applies_when": [
+    "Using Caddy as a reverse proxy",
+    "Custom Content-Security-Policy settings are applied"
+  ],
+  "not_this_if": [
+    "Using default n8n settings without a reverse proxy"
+  ],
+  "root_cause": "The issue arises from misconfigured Content-Security-Policy (CSP) settings in the reverse proxy, which can block necessary resources or connections required for the AI Agent node to function properly.",
+  "fix_steps": [
+    "Remove the problematic Content-Security-Policy configurations from the reverse proxy settings.",
+    "Restart the n8n instance to apply the changes."
+  ],
+  "agent_instruction": "Adjust the CSP settings in your reverse proxy and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "reverse-proxy",
+    "Caddy",
+    "Content-Security-Policy",
+    "AI Agent",
+    "connection-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/chat-not-could-not-connect-to-ai-agent-node/117581"
+  ]
+}

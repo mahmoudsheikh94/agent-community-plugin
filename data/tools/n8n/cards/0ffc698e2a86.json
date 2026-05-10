@@ -1,0 +1,40 @@
+{
+  "id": "0ffc698e2a86",
+  "tool": "n8n",
+  "error_signature": "Subscription validation request failed",
+  "context_key": "microsoft-teams-trigger",
+  "title": "Microsoft Teams Trigger subscription validation failure",
+  "symptom": "When activating a workflow with a Microsoft Teams Trigger, n8n throws 'Subscription validation request failed'. This indicates that the notification endpoint is not responding correctly.",
+  "applies_when": [
+    "Using Microsoft Teams Trigger",
+    "Activating the workflow"
+  ],
+  "not_this_if": [
+    "The workflow is already activated",
+    "The trigger is not being used"
+  ],
+  "root_cause": "The error occurs because the Microsoft Teams service sends a validation request to the notification endpoint, which must respond with a 200 OK status. If the endpoint does not respond correctly, the subscription cannot be validated, leading to this error.",
+  "fix_steps": [
+    "Ensure that the notification endpoint is correctly configured and accessible.",
+    "Check that the endpoint responds with a 200 OK status to validation requests from Microsoft Teams.",
+    "Test the endpoint independently to confirm it is functioning as expected."
+  ],
+  "agent_instruction": "Verify the notification endpoint configuration and ensure it responds with a 200 OK status.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "microsoft-teams",
+    "trigger",
+    "subscription-validation",
+    "endpoint-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.100.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/microsoft-teams-trigger-not-working/143904"
+  ]
+}

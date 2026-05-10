@@ -1,0 +1,40 @@
+{
+  "id": "b91f788c80a4",
+  "tool": "n8n",
+  "error_signature": "rest_cannot_update",
+  "context_key": "wordpress-http-request-node",
+  "title": "Unauthorized error when updating WordPress category",
+  "symptom": "When attempting to update a category in WordPress via an HTTP request, a 401 error occurs with the message 'Sorry, you are not allowed to edit this term.'",
+  "applies_when": [
+    "Using HTTP Request node to update a WordPress category",
+    "Using standard login credentials for authentication"
+  ],
+  "not_this_if": [
+    "Using Application Passwords for authentication"
+  ],
+  "root_cause": "The error occurs because WordPress requires the use of Application Passwords for API authentication when performing actions that modify data, such as updating categories. Standard login credentials do not provide the necessary permissions.",
+  "fix_steps": [
+    "Go to your WordPress User Profile",
+    "Locate the Application Passwords section",
+    "Create a new Application Password",
+    "Use this Application Password to authenticate the n8n WordPress node instead of your regular password"
+  ],
+  "agent_instruction": "Authenticate the WordPress node in n8n using an Application Password instead of your regular login password.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wordpress",
+    "http-request",
+    "401-error",
+    "api-authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-401-when-trying-to-update-a-category-in-wordpress/86260"
+  ]
+}

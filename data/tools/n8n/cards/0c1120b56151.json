@@ -1,0 +1,39 @@
+{
+  "id": "0c1120b56151",
+  "tool": "n8n",
+  "error_signature": "toTitleCase does not change uppercase letters",
+  "context_key": "string-manipulation",
+  "title": "toTitleCase does not convert all caps to title case",
+  "symptom": "When using the .toTitleCase() function on an all caps string, the output remains unchanged. The expected output is not achieved.",
+  "applies_when": [
+    "Using .toTitleCase() on an all caps string",
+    "Expecting title case output"
+  ],
+  "not_this_if": [
+    "Input string is not in all caps",
+    "Using a different string manipulation method"
+  ],
+  "root_cause": "The .toTitleCase() function in n8n is designed to preserve uppercase letters to avoid losing information from acronyms and trademarks. Therefore, it does not convert all caps strings to title case as expected.",
+  "fix_steps": [
+    "Convert the input string to lowercase using .toLowerCase()",
+    "Then apply .toTitleCase() on the result"
+  ],
+  "agent_instruction": "Use the expression '{{ $json.input.toLowerCase().toTitleCase() }}' to achieve the desired title case output.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "string-manipulation",
+    "toTitleCase",
+    "lowercase",
+    "n8n"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.63.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-with-capitalization/73788"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "8db7b8eceb55",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'description')",
+  "context_key": "freshservice-api-node",
+  "title": "Error creating ticket in Freshservice API",
+  "symptom": "When attempting to create a ticket using the Freshservice API, the error 'Cannot read properties of undefined (reading 'description')' appears, even when the description field is filled with plain text.",
+  "applies_when": [
+    "Using Freshservice API node",
+    "Creating a ticket"
+  ],
+  "not_this_if": [
+    "The domain is correctly formatted",
+    "The error does not occur"
+  ],
+  "root_cause": "The error occurs because the API call is not correctly formed due to an incorrect domain name. The Freshservice API expects a specific format for the domain, and omitting the '.freshservice.com' part leads to undefined properties being accessed in the request.",
+  "fix_steps": [
+    "Open the Freshservice API node settings",
+    "Enter your domain without the '.freshservice.com' suffix",
+    "Save the workflow",
+    "Try creating the ticket again"
+  ],
+  "agent_instruction": "Ensure the domain is entered correctly in the Freshservice API node settings without the '.freshservice.com' suffix.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "freshservice",
+    "api",
+    "ticket-creation",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.93.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-create-a-ticket-with-freshservice-api/120925"
+  ]
+}

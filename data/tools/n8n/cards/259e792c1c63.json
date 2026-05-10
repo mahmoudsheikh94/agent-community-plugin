@@ -1,0 +1,39 @@
+{
+  "id": "259e792c1c63",
+  "tool": "n8n",
+  "error_signature": "console.log not showing in server logs",
+  "context_key": "code-node",
+  "title": "Console logs not appearing in server logs",
+  "symptom": "Logs added via console.log in a code node are not visible in the server logs. The log level is set to debug, but the expected output is missing.",
+  "applies_when": [
+    "Using a code node",
+    "Workflow is not activated"
+  ],
+  "not_this_if": [
+    "Workflow is active",
+    "CODE_ENABLE_STDOUT is set to true"
+  ],
+  "root_cause": "The console logs from the code node will only appear in the server logs if the workflow is active and the environment variable CODE_ENABLE_STDOUT is set to true. If the workflow is inactive, the logs will not be captured.",
+  "fix_steps": [
+    "Activate the workflow in n8n",
+    "Ensure that the environment variable CODE_ENABLE_STDOUT is set to true",
+    "Re-run the workflow and check the server logs again"
+  ],
+  "agent_instruction": "Activate the workflow and set CODE_ENABLE_STDOUT to true to see console logs.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "logging",
+    "workflow-activation"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.90.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/not-seeing-logs-added-in-code-node-in-server-logs/125849"
+  ]
+}

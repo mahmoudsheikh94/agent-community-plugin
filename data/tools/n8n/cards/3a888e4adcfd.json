@@ -1,0 +1,40 @@
+{
+  "id": "3a888e4adcfd",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "google-calendar-node",
+  "title": "Bad request error in Google Calendar node",
+  "symptom": "When trying to create an event in Google Calendar, n8n throws a 'Bad request - please check your parameters' error.",
+  "applies_when": [
+    "Using Google Calendar node",
+    "Creating an event with parameters"
+  ],
+  "not_this_if": [
+    "Error occurs with other nodes",
+    "No parameters are being passed"
+  ],
+  "root_cause": "The error occurs when the parameters passed to the Google Calendar node are incorrectly formatted, such as including unnecessary spaces or characters that the API does not accept.",
+  "fix_steps": [
+    "Open the Google Calendar node settings",
+    "Check the parameters being passed",
+    "Remove any unnecessary spaces or '=' signs",
+    "Save the workflow and try again"
+  ],
+  "agent_instruction": "Ensure that the parameters for the Google Calendar node are correctly formatted without extra spaces or characters.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-calendar",
+    "bad-request",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-when-create-google-calendar-event/264043"
+  ]
+}

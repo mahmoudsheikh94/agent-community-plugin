@@ -1,0 +1,39 @@
+{
+  "id": "b64b8bd6008e",
+  "tool": "n8n",
+  "error_signature": "Unknown column ‘output’ in ‘SET’",
+  "context_key": "mysql-connector",
+  "title": "MySQL Connector error due to unknown column",
+  "symptom": "When executing an update query in the MySQL Connector, an error occurs stating 'Unknown column ‘output’ in ‘SET’'. This indicates that the query is incorrectly formed.",
+  "applies_when": [
+    "Using MySQL Connector",
+    "Executing an update query"
+  ],
+  "not_this_if": [
+    "The query is correctly formed with valid column names"
+  ],
+  "root_cause": "The error arises because the SQL query is incorrectly structured. Specifically, the assignment in the SET clause is malformed, and the use of NULL in the WHERE clause is incorrect for comparison.",
+  "fix_steps": [
+    "Add a Set Node after the Information extractor",
+    "Set the variables one by one correctly",
+    "Ensure the SQL query uses valid column names and correct syntax"
+  ],
+  "agent_instruction": "Reconfigure the MySQL Connector to use valid column names and correct SQL syntax.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mysql",
+    "connector",
+    "update-query",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-with-the-mysql-connector/153584"
+  ]
+}

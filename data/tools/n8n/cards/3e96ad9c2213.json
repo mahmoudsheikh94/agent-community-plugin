@@ -1,0 +1,44 @@
+{
+  "id": "3e96ad9c2213",
+  "tool": "n8n",
+  "error_signature": "error handler workflow never gets triggered",
+  "context_key": "error-trigger-node",
+  "title": "Error handler not triggered from manual execution",
+  "symptom": "The error handler workflow does not activate when the primary workflow fails during manual execution. No error message is displayed.",
+  "applies_when": [
+    "Using an error trigger node",
+    "Running workflows manually"
+  ],
+  "not_this_if": [
+    "Error handler workflow has a normal trigger",
+    "Error occurs in a scheduled execution"
+  ],
+  "root_cause": "The error trigger node in n8n is designed to capture errors from workflows that are executed in a non-manual context. When workflows are run manually, the error handling mechanism does not activate, leading to the error handler not being triggered.",
+  "fix_steps": [
+    "Replace the manual trigger in the error handler workflow with a scheduler node.",
+    "Set the scheduler to run after a short delay (e.g., 5 seconds).",
+    "Activate the error handler workflow.",
+    "Run the primary workflow to trigger an error.",
+    "Check the executions of the error handler workflow to confirm it was triggered."
+  ],
+  "agent_instruction": "Use a scheduler node instead of a manual trigger in the error handler workflow.",
+  "safety_notes": [
+    "De-activate the error handler workflow after testing to prevent spamming."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "error-handling",
+    "workflow",
+    "error-trigger",
+    "scheduler"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-handling-from-a-separate-workflow-doesnt-work/244473"
+  ]
+}

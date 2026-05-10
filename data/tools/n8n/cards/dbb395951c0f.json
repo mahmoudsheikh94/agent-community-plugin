@@ -1,0 +1,41 @@
+{
+  "id": "dbb395951c0f",
+  "tool": "n8n",
+  "error_signature": "Request failed with status code 404",
+  "context_key": "n8n API with Traefik",
+  "title": "404 error when accessing n8n API through Traefik",
+  "symptom": "When trying to access the n8n API using an API key, a 404 error is returned. The API call fails despite the credentials being valid.",
+  "applies_when": [
+    "Using n8n behind Traefik",
+    "Configured with API key"
+  ],
+  "not_this_if": [
+    "API calls work without Traefik",
+    "Using default n8n configuration without custom .env settings"
+  ],
+  "root_cause": "The 404 error occurs because the n8n instance is not correctly recognizing the API base URL and endpoint due to misconfiguration in the .env file. Commenting out the lines related to the public API base URL and endpoint resolves the issue, indicating that the settings were conflicting with Traefik's routing.",
+  "fix_steps": [
+    "Open the .env file of your n8n instance.",
+    "Comment out the lines for N8N_PUBLIC_API_BASE_URL and N8N_PUBLIC_API_ENDPOINT.",
+    "Restart the n8n instance to apply the changes."
+  ],
+  "agent_instruction": "Comment out the N8N_PUBLIC_API_BASE_URL and N8N_PUBLIC_API_ENDPOINT in the .env file and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "Traefik",
+    "404-error",
+    "API",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-api-working-with-self-hosted-through-traefik/206826"
+  ]
+}

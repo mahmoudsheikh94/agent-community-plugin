@@ -1,0 +1,39 @@
+{
+  "id": "3f4ae2f8d087",
+  "tool": "n8n",
+  "error_signature": "Invalid date",
+  "context_key": "workflow-activation",
+  "title": "Invalid date error when activating workflow",
+  "symptom": "When attempting to activate the 'Official tiktok clipper' workflow, n8n displays an 'Invalid date' error message. The workflow runs fine in manual mode but fails to activate automatically.",
+  "applies_when": [
+    "Using Google Sheets Trigger",
+    "Attempting to activate the workflow"
+  ],
+  "not_this_if": [
+    "Workflow runs successfully in manual execution mode"
+  ],
+  "root_cause": "The 'Invalid date' error typically occurs when the timezone is not set correctly in the Docker environment. If the timezone is not specified or is incorrectly configured, n8n may fail to interpret date values correctly, leading to activation issues.",
+  "fix_steps": [
+    "Open your Docker compose file or the command used to run Docker.",
+    "Add or update the environment variable GENERIC_TIMEZONE to a valid timezone (e.g., 'America/New_York').",
+    "Restart the n8n Docker container to apply the changes."
+  ],
+  "agent_instruction": "Set the GENERIC_TIMEZONE environment variable in your Docker configuration and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "workflow-activation",
+    "timezone",
+    "docker",
+    "invalid-date"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-upon-activating-workflow/168045"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "be190eb3dc80",
+  "tool": "weweb",
+  "error_signature": "unable to extract values from form field component",
+  "context_key": "custom form component",
+  "title": "Cannot extract values from custom form field component",
+  "symptom": "The user is unable to retrieve values entered in a custom form field component when it is used within a collection item.",
+  "applies_when": [
+    "Using a custom form field component",
+    "Values need to be extracted for further processing"
+  ],
+  "not_this_if": [
+    "Values are being extracted correctly from other components",
+    "The component is not used in a collection item"
+  ],
+  "root_cause": "The custom form component does not automatically expose its internal values to the outside context. Without proper variable exposure and event handling, the values remain inaccessible.",
+  "fix_steps": [
+    "Create a component variable within the custom form component and ensure it is visible outside the component.",
+    "Set up an 'on change' event workflow on the input field to execute a workflow that links to the component workflow.",
+    "Create a workflow for the component that triggers on execution and includes an action to change the component variable to the input field's value."
+  ],
+  "agent_instruction": "Follow the steps to create a variable and set up workflows to expose the input values outside the component.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "form-component",
+    "input-field",
+    "workflow",
+    "variable-exposure"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/values-from-form-fields-made-into-components/19460"
+  ]
+}

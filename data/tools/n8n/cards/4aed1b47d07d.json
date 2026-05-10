@@ -1,0 +1,39 @@
+{
+  "id": "4aed1b47d07d",
+  "tool": "n8n",
+  "error_signature": "ENOTFOUND",
+  "context_key": "azure-cosmos-db-node",
+  "title": "Connection error to Azure Cosmos DB",
+  "symptom": "When attempting to connect to Azure Cosmos DB in n8n, the user encounters an 'ENOTFOUND' error.",
+  "applies_when": [
+    "Using Azure Cosmos DB node",
+    "Correct account URL provided"
+  ],
+  "not_this_if": [
+    "Successfully connecting using other methods like PowerShell"
+  ],
+  "root_cause": "The 'ENOTFOUND' error indicates that the specified resource could not be resolved. This often occurs when the account name is not correctly specified in the n8n configuration, leading to an inability to locate the Azure Cosmos DB instance.",
+  "fix_steps": [
+    "Open the Azure Cosmos DB node settings in n8n.",
+    "Enter the name of the Cosmos DB resource in the 'Account' field.",
+    "Save the workflow and attempt to connect again."
+  ],
+  "agent_instruction": "Ensure the Cosmos DB resource name is correctly entered in the node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "azure",
+    "cosmos-db",
+    "connection-error",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.89.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-connect-to-azure-cosmo-db/106163"
+  ]
+}

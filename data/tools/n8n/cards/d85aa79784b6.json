@@ -1,0 +1,40 @@
+{
+  "id": "d85aa79784b6",
+  "tool": "n8n",
+  "error_signature": "Response Error 403",
+  "context_key": "github-trigger-node",
+  "title": "GitHub Trigger Node returns 403 error",
+  "symptom": "When executing the GitHub Trigger Node in test mode, a 'Response Error 403' is encountered. This occurs even when the webhook URL is correctly set.",
+  "applies_when": [
+    "Using GitHub Trigger Node",
+    "Executing in test mode or production mode"
+  ],
+  "not_this_if": [
+    "Webhook is not correctly configured",
+    "Using a valid personal access token with appropriate permissions"
+  ],
+  "root_cause": "The 403 error indicates that the request is forbidden, which can happen if the GitHub webhook is not properly authenticated or if there are too many requests being sent to the ngrok tunnel, leading to rate limiting.",
+  "fix_steps": [
+    "Set the environment variable N8N_DIAGNOSTICS_ENABLED to false",
+    "Check the ngrok account for HTTP request limits",
+    "Ensure the GitHub webhook is correctly configured with the right permissions"
+  ],
+  "agent_instruction": "Disable diagnostics in n8n to reduce HTTP requests and check your ngrok limits.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "github",
+    "trigger-node",
+    "403-error",
+    "ngrok"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/github-trigger-response-403/183853"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "faae1222a610",
+  "tool": "n8n",
+  "error_signature": "no webhook POSTs are received for Instagram comments",
+  "context_key": "instagram-webhook",
+  "title": "Instagram comments webhook not firing",
+  "symptom": "Despite correct setup, no POST requests are received for Instagram comments in n8n. Test payloads work, but real events do not trigger any webhook POSTs.",
+  "applies_when": [
+    "Instagram Creator account is linked to a Facebook Page",
+    "App is in live mode"
+  ],
+  "not_this_if": [
+    "App is not in live mode",
+    "Webhook subscription is not toggled on"
+  ],
+  "root_cause": "Instagram's webhook system requires the app to be in live mode to receive events from role accounts. Previously, events could be received even when the app was not live, but this has changed.",
+  "fix_steps": [
+    "Ensure the app is set to live mode in the Facebook App Dashboard.",
+    "Generate an access token and toggle the webhook subscription to turn it on."
+  ],
+  "agent_instruction": "Set the app to live mode and ensure the webhook subscription is toggled on.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "instagram",
+    "webhook",
+    "comments",
+    "facebook",
+    "live-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/instagram-creator-account-webhook-for-comments-not-firing-to-n8n/182907"
+  ]
+}

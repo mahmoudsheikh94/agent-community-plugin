@@ -1,0 +1,40 @@
+{
+  "id": "53a28dd90246",
+  "tool": "n8n",
+  "error_signature": "Invalid JSON in the response body",
+  "context_key": "respond-to-webhook-node",
+  "title": "Invalid JSON response from webhook",
+  "symptom": "The webhook response body evaluates correctly but throws an 'Invalid JSON' error when sent. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using Respond to Webhook node",
+    "Response body contains new lines"
+  ],
+  "not_this_if": [
+    "Response body is a simple string without new lines",
+    "Error does not occur in production"
+  ],
+  "root_cause": "The presence of new lines in the JSON response body can cause it to be considered invalid. This is due to how JSON formatting rules interpret line breaks, which can lead to parsing errors when the response is sent.",
+  "fix_steps": [
+    "Modify the JSON response to remove any new lines",
+    "Use the `.toJsonString()` method in the expression to ensure proper formatting",
+    "Test the webhook response again"
+  ],
+  "agent_instruction": "Ensure the JSON response is formatted correctly by using `.toJsonString()`.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "webhook",
+    "json",
+    "invalid-json",
+    "respond-to-webhook"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-respond-to-webhook-with-json-giving-invalid-json-error-despite-evaluation-showing-correct-details/151422"
+  ]
+}

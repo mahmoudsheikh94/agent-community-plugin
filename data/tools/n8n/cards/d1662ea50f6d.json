@@ -1,0 +1,40 @@
+{
+  "id": "d1662ea50f6d",
+  "tool": "n8n",
+  "error_signature": "The resource you are requesting could not be found",
+  "context_key": "googleDrive-node",
+  "title": "Google Drive file not found error during rename",
+  "symptom": "When attempting to rename a file in Google Drive, n8n returns a 'resource not found' error with a 404 status code.",
+  "applies_when": [
+    "Using Google Drive node",
+    "File ID is dynamically referenced"
+  ],
+  "not_this_if": [
+    "File ID is hardcoded and correct",
+    "File exists in Google Drive"
+  ],
+  "root_cause": "The error occurs because the file ID being referenced in the Google Drive node is either incorrect or not available in the context of the workflow. This can happen if the ID is not properly passed from a previous node or if the Merge node is not configured correctly.",
+  "fix_steps": [
+    "Ensure the file ID is correctly referenced from the previous node",
+    "Use the Combine option in the Merge node instead of Append",
+    "Test the workflow again to confirm the file can be renamed"
+  ],
+  "agent_instruction": "Check the file ID reference and adjust the Merge node settings to Combine.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "file-rename",
+    "404-error",
+    "merge-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/check-pdf-contents-upload-to-google-drive-rename-at-google-drive/238918"
+  ]
+}

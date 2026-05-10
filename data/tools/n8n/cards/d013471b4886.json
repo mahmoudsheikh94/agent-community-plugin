@@ -1,0 +1,40 @@
+{
+  "id": "d013471b4886",
+  "tool": "n8n",
+  "error_signature": "Callback verification failed with the following errors: curl_errno = 28",
+  "context_key": "whatsapp-trigger",
+  "title": "WhatsApp Trigger callback verification failed",
+  "symptom": "The WhatsApp Trigger fails with a callback verification error indicating a connection timeout. The error message states 'curl_errno = 28; curl_error = Connection timed out after 6000 milliseconds'.",
+  "applies_when": [
+    "Using WhatsApp Trigger",
+    "n8n instance is behind a reverse proxy"
+  ],
+  "not_this_if": [
+    "Webhook is reachable from the public internet"
+  ],
+  "root_cause": "The n8n webhook is not accessible from the public internet due to network configuration issues, such as incorrect proxy settings or firewall rules. This prevents WhatsApp from successfully verifying the callback URL.",
+  "fix_steps": [
+    "Ensure that the n8n webhook URL is publicly accessible.",
+    "Set the WEBHOOK_URL environment variable to the correct public URL.",
+    "Set the N8N_PROXY_HOPS environment variable if using a reverse proxy.",
+    "Test the webhook URL by accessing it directly in a browser to confirm it returns the expected JSON response."
+  ],
+  "agent_instruction": "Configure the WEBHOOK_URL and N8N_PROXY_HOPS environment variables to ensure the webhook is accessible.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "whatsapp",
+    "webhook",
+    "callback-verification",
+    "reverse-proxy"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whatsapp-webhook-not-working/167753"
+  ]
+}

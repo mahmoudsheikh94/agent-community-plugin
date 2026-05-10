@@ -1,0 +1,40 @@
+{
+  "id": "97b5e220b9a1",
+  "tool": "weweb",
+  "error_signature": "OpenGraph data not working",
+  "context_key": "OpenGraph settings",
+  "title": "OpenGraph data not displaying due to pre-rendering setting",
+  "symptom": "The OpenGraph data for the live project is not functioning as expected, leading to issues with link previews.",
+  "applies_when": [
+    "Project is published",
+    "Disable pre-rendering option is enabled"
+  ],
+  "not_this_if": [
+    "Pre-rendering option is disabled",
+    "OpenGraph data was previously working"
+  ],
+  "root_cause": "When the 'Disable pre-rendering' option is enabled, the OpenGraph data may not be generated correctly, preventing it from being displayed in link previews on social media platforms.",
+  "fix_steps": [
+    "Go to the project settings",
+    "Locate the 'Disable pre-rendering' option",
+    "Disable the option",
+    "Republish the project"
+  ],
+  "agent_instruction": "Disable the 'Disable pre-rendering' option and republish the project to restore OpenGraph functionality.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "OpenGraph",
+    "pre-rendering",
+    "project-settings"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/opengraph-data-not-working/3859"
+  ]
+}

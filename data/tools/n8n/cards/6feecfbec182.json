@@ -1,0 +1,39 @@
+{
+  "id": "6feecfbec182",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'dns'",
+  "context_key": "node-function",
+  "title": "DNS module not found despite environment variables set",
+  "symptom": "When trying to require the 'dns' module in a Node.js function, n8n throws 'Cannot find module 'dns''. This occurs even after setting the appropriate environment variables.",
+  "applies_when": [
+    "Using NODE_FUNCTION_ALLOW_BUILTIN=* environment variable",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "The error does not occur when using other built-in modules"
+  ],
+  "root_cause": "The error occurs because the environment variables may not be properly inherited by the worker processes in the Docker container. Even if the variables are set, they might not be applied correctly in the execution context of the Node.js function.",
+  "fix_steps": [
+    "Check if the environment variables are correctly set in the Docker container",
+    "Restart the Docker container to ensure the new environment variables are applied",
+    "Test the module availability again using the Execute node"
+  ],
+  "agent_instruction": "Verify and restart the Docker container to apply the environment variable changes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "node-function",
+    "dns",
+    "docker",
+    "environment-variables"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.104.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-use-node-js-modules-even-though-node-function-allow-builtin/159876"
+  ]
+}

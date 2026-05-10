@@ -1,0 +1,42 @@
+{
+  "id": "4279482732f7",
+  "tool": "n8n",
+  "error_signature": "connect ECONNREFUSED ::1:5678",
+  "context_key": "Get many workflows node",
+  "title": "ECONNREFUSED error in Get many workflows node",
+  "symptom": "The 'Get many workflows' node fails with an ECONNREFUSED error, indicating that the service is unreachable. This prevents the workflow from executing successfully.",
+  "applies_when": [
+    "Using the Get many workflows node",
+    "Self-hosted n8n instance with podman"
+  ],
+  "not_this_if": [
+    "Using a different node or service",
+    "n8n is accessible via a different host configuration"
+  ],
+  "root_cause": "The ECONNREFUSED error occurs when the n8n instance is not reachable at the specified address and port. This can happen if the host configuration is incorrect or if the service is not running on the expected interface.",
+  "fix_steps": [
+    "Identify the IPv4 address of the n8n-main container using 'ifconfig'.",
+    "Update the N8N_HOST environment variable in the n8n-main container to include '/api/v1' at the end.",
+    "Set the N8N_HOST for the worker containers to the identified IPv4 address with '/api/v1'.",
+    "Restart the pod to apply the changes."
+  ],
+  "agent_instruction": "Update the N8N_HOST settings for both the main and worker containers and restart the pod.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "ECONNREFUSED",
+    "Get many workflows",
+    "podman",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/localhost-n8n-instance-econnrefused-error-w-n8n-node/187146"
+  ]
+}

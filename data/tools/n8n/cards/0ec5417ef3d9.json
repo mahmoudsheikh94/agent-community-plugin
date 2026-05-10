@@ -1,0 +1,41 @@
+{
+  "id": "0ec5417ef3d9",
+  "tool": "n8n",
+  "error_signature": "static files path cannot be loaded",
+  "context_key": "n8n subpath configuration",
+  "title": "Static files not loading when accessing n8n in a subpath",
+  "symptom": "When trying to access n8n at a subdirectory, the page appears blank and the console reports that the static files path cannot be loaded.",
+  "applies_when": [
+    "Running n8n locally",
+    "Configured to use a subpath"
+  ],
+  "not_this_if": [
+    "Accessing n8n at the root path",
+    "Using Docker for deployment"
+  ],
+  "root_cause": "When n8n is configured to run in a subpath, the static file paths need to be correctly set in the environment variables and the server configuration. If not configured properly, the application cannot locate the necessary static files, leading to a blank page.",
+  "fix_steps": [
+    "Create a .env file in the packages/cli/bin.env directory with the following content: N8N_PATH=/my_n8n/ and N8N_EDITOR_BASE_URL=http://www.xyz.com/my_n8n/",
+    "Build the project using pnpm build and start it with pnpm start.",
+    "Configure your nginx server with the provided settings to handle the subpath correctly."
+  ],
+  "agent_instruction": "Set up the .env file and nginx configuration as specified to resolve the static file loading issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "subpath",
+    "static-files",
+    "nginx",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-configure-n8n-to-run-in-a-subpath/172387"
+  ]
+}

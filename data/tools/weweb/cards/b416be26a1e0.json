@@ -1,0 +1,39 @@
+{
+  "id": "b416be26a1e0",
+  "tool": "weweb",
+  "error_signature": "date picker seems to be readonly",
+  "context_key": "date-picker",
+  "title": "Date picker is readonly and does not show calendar icon",
+  "symptom": "The date picker linked to a date attribute is readonly and does not display a calendar icon, making it unclear to users that it is a date field.",
+  "applies_when": [
+    "Using a date picker linked to a date attribute",
+    "The date picker is expected to allow user input"
+  ],
+  "not_this_if": [
+    "Date picker is functioning correctly in other contexts",
+    "Date picker is not linked to a data attribute"
+  ],
+  "root_cause": "The date picker may be configured incorrectly or the data attribute it is bound to may not be set up properly, causing it to appear readonly and unresponsive to user interactions.",
+  "fix_steps": [
+    "Check the binding of the date picker to ensure it is linked to a valid date attribute.",
+    "Ensure that the date attribute in the data structure is initialized correctly before the date picker is rendered."
+  ],
+  "agent_instruction": "Verify the binding of the date picker and ensure the date attribute is properly initialized.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "date-picker",
+    "readonly",
+    "user-interface",
+    "data-binding"
+  ],
+  "severity": "degraded",
+  "confidence": 0.825,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/editing-json-data-with-a-nested-list/18658"
+  ]
+}

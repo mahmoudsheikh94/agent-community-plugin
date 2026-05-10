@@ -1,0 +1,39 @@
+{
+  "id": "9419a154e48d",
+  "tool": "n8n",
+  "error_signature": "JSON parameter needs to be valid JSON",
+  "context_key": "toggl-api-http-node",
+  "title": "Invalid JSON format in Toggl API request",
+  "symptom": "When sending a request to the Toggl API, the user encounters an error stating 'JSON parameter needs to be valid JSON'. This prevents the retrieval of time entries.",
+  "applies_when": [
+    "Using the HTTP node to call Toggl API",
+    "Sending JSON parameters in the request body"
+  ],
+  "not_this_if": [
+    "Using a different node or API that does not require JSON formatting"
+  ],
+  "root_cause": "The error occurs because the JSON structure provided in the request body is not correctly formatted. This can happen if the syntax is incorrect or if the JSON keys and values are not properly quoted.",
+  "fix_steps": [
+    "Change the request method to 'Send Body' instead of 'Send Query Parameters'.",
+    "Use the correct JSON format for the body, ensuring all keys and values are properly quoted.",
+    "Set 'start_date' to '{{ $now.minus({ days: 45 }).toISODate() }}' and 'end_date' to '{{ $now.toISODate() }}'."
+  ],
+  "agent_instruction": "Ensure the JSON body is correctly formatted and use 'Send Body' in the HTTP node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "toggl",
+    "api",
+    "http-node",
+    "json-formatting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.75.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-with-toggl-track-api/73091"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "cb17ea3c9455",
+  "tool": "n8n",
+  "error_signature": "OAuth callback will fail",
+  "context_key": "google-api-integration",
+  "title": "Google API OAuth callback failure",
+  "symptom": "Users are unable to activate Google API credentials in n8n due to OAuth callback issues. This results in failed authentication attempts when trying to connect to Google services.",
+  "applies_when": [
+    "Using Google API nodes",
+    "Configured OAuth credentials in Google Cloud Console"
+  ],
+  "not_this_if": [
+    "Credentials are working in other environments",
+    "No OAuth integration is being used"
+  ],
+  "root_cause": "The OAuth callback fails when the `WEBHOOK_URL` or `N8N_HOST` environment variables are incorrectly set in the n8n configuration. This prevents Google from redirecting back to the n8n instance after user authentication.",
+  "fix_steps": [
+    "Open your `docker-compose.yml` or `.env` file.",
+    "Ensure that `N8N_HOST`, `N8N_PORT`, `N8N_PROTOCOL`, and `WEBHOOK_URL` are set correctly.",
+    "Restart your n8n instance to apply the changes."
+  ],
+  "agent_instruction": "Check and correct the environment variables related to the Google API integration in your n8n configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-api",
+    "oauth",
+    "docker",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-with-google-api-credentials-in-my-n8n-web-app/145130"
+  ]
+}

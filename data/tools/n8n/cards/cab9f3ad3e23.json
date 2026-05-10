@@ -1,0 +1,38 @@
+{
+  "id": "cab9f3ad3e23",
+  "tool": "n8n",
+  "error_signature": "Your request is invalid or could not be processed by the service",
+  "context_key": "github-node",
+  "title": "GitHub Node request invalid due to binary data handling",
+  "symptom": "The GitHub node fails with 'Your request is invalid or could not be processed by the service' when trying to upload binary files.",
+  "applies_when": [
+    "Using GitHub node",
+    "Uploading binary files"
+  ],
+  "not_this_if": [
+    "Using n8n version 2.3.0 or later"
+  ],
+  "root_cause": "In n8n version 2.2.6, the GitHub node improperly handles binary data due to changes in how binary data is processed, leading to invalid requests when uploading files.",
+  "fix_steps": [
+    "Upgrade n8n to version 2.3.0 or later",
+    "Test the GitHub node again to ensure it works correctly."
+  ],
+  "agent_instruction": "Upgrade n8n to version 2.3.0 or later to resolve the GitHub node issue.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "github",
+    "binary-data",
+    "upload",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.2.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-github-backup-error/249373"
+  ]
+}

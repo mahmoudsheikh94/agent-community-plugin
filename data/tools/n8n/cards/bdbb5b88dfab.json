@@ -1,0 +1,39 @@
+{
+  "id": "bdbb5b88dfab",
+  "tool": "n8n",
+  "error_signature": "The connection was aborted, perhaps the server is offline",
+  "context_key": "HTTP Request node",
+  "title": "HTTP Request node connection aborted",
+  "symptom": "When executing an HTTP Request node, the error 'The connection was aborted, perhaps the server is offline' appears, indicating a failure to connect to the specified URL.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "The specified URL is incorrect or unreachable"
+  ],
+  "not_this_if": [
+    "The URL is valid and reachable",
+    "The server is confirmed to be online"
+  ],
+  "root_cause": "This error occurs when the HTTP Request node attempts to connect to a URL that does not exist or is unreachable. This can happen due to incorrect URL formatting or the server being down, even if it appears to be functioning.",
+  "fix_steps": [
+    "Check the URL in the HTTP Request node configuration for accuracy",
+    "Ensure the server is online and accessible",
+    "Test the URL in a web browser to confirm it is reachable"
+  ],
+  "agent_instruction": "Verify and correct the URL in the HTTP Request node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "connection-error",
+    "url-validation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.108.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-doing-http-request/179215"
+  ]
+}

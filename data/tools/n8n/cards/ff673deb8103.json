@@ -1,0 +1,40 @@
+{
+  "id": "ff673deb8103",
+  "tool": "n8n",
+  "error_signature": "Connection lost: You have a connection issue or the server is down.",
+  "context_key": "n8n-docker",
+  "title": "Connection lost error in n8n Docker setup",
+  "symptom": "Users encounter a 'Connection lost' error when trying to import workflows in n8n. This prevents further actions from being taken within the application.",
+  "applies_when": [
+    "Using n8n version 1.79.3",
+    "Running n8n in Docker"
+  ],
+  "not_this_if": [
+    "Using a different version of n8n",
+    "Running n8n outside of Docker"
+  ],
+  "root_cause": "The issue appears to be related to a bug introduced in n8n version 1.79.3, which affects the connection stability when running in a Docker environment. Downgrading to a previous version resolves the issue.",
+  "fix_steps": [
+    "Downgrade n8n to version 1.78.1",
+    "Restart the n8n Docker container",
+    "Verify that the connection issue is resolved"
+  ],
+  "agent_instruction": "Downgrade n8n to version 1.78.1 to resolve the connection lost error.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "n8n",
+    "docker",
+    "connection-lost",
+    "version-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-lost-you-have-a-connection-issue-or-the-server-is-down-n8n-should-reconnect-automatically-once-the-issue-is-resolved/80999"
+  ]
+}

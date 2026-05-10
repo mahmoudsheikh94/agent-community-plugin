@@ -1,0 +1,40 @@
+{
+  "id": "bc961500dabe",
+  "tool": "n8n",
+  "error_signature": "user got access to my inbox",
+  "context_key": "gmail-oauth-credentials",
+  "title": "Gmail OAuth credentials allow inbox access to other users",
+  "symptom": "When sharing Gmail OAuth credentials, other users can access the original user's inbox, leading to privacy concerns.",
+  "applies_when": [
+    "Using shared Gmail OAuth credentials",
+    "Multiple users accessing the same credentials"
+  ],
+  "not_this_if": [
+    "Each user has their own OAuth credentials",
+    "No sharing of credentials occurs"
+  ],
+  "root_cause": "When OAuth credentials are shared among users, the authentication allows access to the original user's Gmail account, which can lead to unintended access to personal data.",
+  "fix_steps": [
+    "Add the following lines to your compose.yaml: environment: - CREDENTIALS_OVERWRITE_ENDPOINT=send-credentials - CREDENTIALS_OVERWRITE_ENDPOINT_AUTH_TOKEN=",
+    "Store the OAuth credentials in a separate oauth-credentials.json file in the same directory.",
+    "Ensure that users only see Sign in Buttons when creating new credentials, preventing access to sensitive fields."
+  ],
+  "agent_instruction": "Implement the CREDENTIALS_OVERWRITE_ENDPOINT settings in your n8n configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "oauth",
+    "credentials",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.112.6",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/oauth2-apps-setup-for-org/211012"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "f92ef12c71af",
+  "tool": "n8n",
+  "error_signature": "column User.role does not exist",
+  "context_key": "Postgres database",
+  "title": "User.role column missing in Postgres database",
+  "symptom": "Users are unable to log into the n8n instance, receiving an error stating 'column User.role does not exist'. This prevents access to workflows.",
+  "applies_when": [
+    "Using Postgres as the database",
+    "Running n8n version 1.110.1"
+  ],
+  "not_this_if": [
+    "Using SQLite as the database",
+    "Different n8n version"
+  ],
+  "root_cause": "The error indicates that the database schema is not aligned with the expected structure for the n8n version being used. Specifically, the 'User' table is missing the 'role' column, which is required for user authentication and authorization.",
+  "fix_steps": [
+    "Access the deployment settings for your n8n instance.",
+    "Change the source image to n8nio/n8n:1.110.1 for both primary and worker.",
+    "Click Redeploy to apply the changes."
+  ],
+  "agent_instruction": "Update the source image to n8nio/n8n:1.110.1 and redeploy your n8n instance.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "postgres",
+    "login",
+    "database-schema",
+    "n8n-deployment"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.110.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-logging-in-column-user-role-does-not-exist/184731"
+  ]
+}

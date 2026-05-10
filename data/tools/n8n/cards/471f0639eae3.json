@@ -1,0 +1,39 @@
+{
+  "id": "471f0639eae3",
+  "tool": "n8n",
+  "error_signature": "500 - \"{\\\"error\\\":{\\\"code\\\":500,\\\"message\\\":\\\"Internal Error\\\"}}\"",
+  "context_key": "whapi",
+  "title": "Internal Error when setting group icon via WHAPI",
+  "symptom": "When attempting to set an icon for a group using WHAPI, a 500 Internal Error occurs intermittently.",
+  "applies_when": [
+    "Using WHAPI to set group icon",
+    "Group is not fully initialized"
+  ],
+  "not_this_if": [
+    "Error does not occur when the group is fully initialized"
+  ],
+  "root_cause": "The error occurs because the group is not fully ready for the requested actions. Specifically, the participant list is not yet accessible, leading to a failure when trying to set the icon or perform other actions.",
+  "fix_steps": [
+    "Implement a loop in the workflow to check if the participant list is accessible",
+    "Continue the workflow only when the participant list is populated with numbers"
+  ],
+  "agent_instruction": "Add a loop to your workflow that waits until the participant list is available before proceeding.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "whapi",
+    "axios",
+    "error-500",
+    "group-icon",
+    "workflow-loop"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.99.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/whapi-error-500-axioserror/139034"
+  ]
+}

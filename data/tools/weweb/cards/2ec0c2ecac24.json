@@ -1,0 +1,41 @@
+{
+  "id": "2ec0c2ecac24",
+  "tool": "weweb",
+  "error_signature": "unable to bind success/cancel page in Stripe Checkout",
+  "context_key": "stripe-checkout",
+  "title": "Binding Success/Cancel Page in Stripe Checkout Fails",
+  "symptom": "When attempting to bind a success or cancel page in Stripe Checkout, the provided URLs do not work as expected.",
+  "applies_when": [
+    "Using Stripe Checkout action",
+    "Trying to bind success/cancel pages"
+  ],
+  "not_this_if": [
+    "Using the dropdown menu method for page assignment"
+  ],
+  "root_cause": "The binding method requires a specific format for the URL, which includes the WeWeb page ID. Without this ID, the binding will not function correctly.",
+  "fix_steps": [
+    "Open the WeWeb development settings.",
+    "Click on 'Show dev information' to find the WeWeb page ID.",
+    "Use the format '[WeWebpageID]'/purchase_status?referral=Facebook' in the bind field.",
+    "Test the Stripe Checkout action again."
+  ],
+  "agent_instruction": "Use the correct format with the WeWeb page ID in the bind field for Stripe Checkout.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "stripe",
+    "checkout",
+    "binding",
+    "success-page",
+    "cancel-page"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/stripe-checkout-success-and-cancel-page-issue/8337"
+  ]
+}

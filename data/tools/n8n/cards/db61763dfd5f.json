@@ -1,0 +1,39 @@
+{
+  "id": "db61763dfd5f",
+  "tool": "n8n",
+  "error_signature": "The item has no binary field",
+  "context_key": "gmail-node",
+  "title": "Missing binary field in Gmail node",
+  "symptom": "When attempting to send an email with attachments, n8n throws an error stating 'The item has no binary field'. This indicates that the expected binary data is not being passed correctly.",
+  "applies_when": [
+    "Using Gmail node to send emails",
+    "Attachments are configured in the previous node"
+  ],
+  "not_this_if": [
+    "Attachments are correctly configured and the email sends without errors"
+  ],
+  "root_cause": "The error occurs when the Gmail node is expecting a binary field for attachments, but the field name used does not match the binary data structure from the previous node. This can happen if the wrong property name is referenced or if the binary data is not properly set up.",
+  "fix_steps": [
+    "Check the attachments configuration in the Gmail node.",
+    "Ensure that the binary property name used matches the output from the previous node (e.g., use 'attachment_0' instead of the actual file name).",
+    "Use the expression {{ Object.keys($binary).join(',') }} to reference all binary attachments."
+  ],
+  "agent_instruction": "Verify and correct the binary field names in the Gmail node's attachments configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "attachments",
+    "binary",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pull-attachments-from-gmail-trigger-and-merge-with-revised-content-for-linkedin/225356"
+  ]
+}

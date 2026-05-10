@@ -1,0 +1,40 @@
+{
+  "id": "30561b992141",
+  "tool": "n8n",
+  "error_signature": "spawn /bin/sh EACCES",
+  "context_key": "execute-command-node",
+  "title": "Execute Command node fails with EACCES error",
+  "symptom": "The Execute Command node fails with 'spawn /bin/sh EACCES' after updating n8n. The command works fine when executed directly from the command line.",
+  "applies_when": [
+    "Using Execute Command node",
+    "Running n8n in a Docker container on TrueNAS"
+  ],
+  "not_this_if": [
+    "Running n8n without Docker",
+    "Using a different operating system"
+  ],
+  "root_cause": "The error occurs because the user running the n8n instance in Docker does not have the necessary permissions to execute the /bin/sh shell. This is likely due to a mismatch between the user IDs of the n8n process and the TrueNAS apps user.",
+  "fix_steps": [
+    "Create a custom Docker image based on the n8nio/n8n image.",
+    "Set the user to root and modify the user and group settings to match the TrueNAS apps user.",
+    "Rebuild and deploy the custom Docker image."
+  ],
+  "agent_instruction": "Create and deploy a custom Docker image to resolve permission issues.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "execute-command",
+    "EACCES",
+    "docker",
+    "TrueNAS"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.3.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/execute-command-node-fails-with-spawn-bin-sh-eacces/247900"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "c13283815830",
+  "tool": "n8n",
+  "error_signature": "no output data returned",
+  "context_key": "extract-from-file-node",
+  "title": "No output from Extract from File node with Google Docs",
+  "symptom": "The Extract from File node returns no output data when processing a Google Doc downloaded in HTML format.",
+  "applies_when": [
+    "Using Extract from File node",
+    "Processing a Google Doc"
+  ],
+  "not_this_if": [
+    "Output data is returned when using other file types"
+  ],
+  "root_cause": "The Extract from File node is designed to extract structured tables from files. Since Google Docs typically contain plain text without structured tables, the node fails to return any data.",
+  "fix_steps": [
+    "Replace the Extract from File node with the HTML node",
+    "Set the source to 'Binary File' and use the property name 'data'",
+    "Use 'body' as the CSS selector to grab all text from the document"
+  ],
+  "agent_instruction": "Replace the Extract from File node with the HTML node and configure it to read the Google Doc content.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-docs",
+    "extract-from-file",
+    "html-node",
+    "data-extraction"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-get-a-google-docs-content-as-html-into-a-field/255010"
+  ]
+}

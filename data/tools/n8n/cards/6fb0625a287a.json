@@ -1,0 +1,39 @@
+{
+  "id": "6fb0625a287a",
+  "tool": "n8n",
+  "error_signature": "additionalProperties ‘search_pattern’ not allowed",
+  "context_key": "custom-tool-server",
+  "title": "Custom tool server rejects 'search_pattern' parameter",
+  "symptom": "When connecting n8n to a custom tool server, an error occurs stating 'additionalProperties ‘search_pattern’ not allowed'. This indicates a parameter mismatch.",
+  "applies_when": [
+    "Using a custom tool server",
+    "n8n attempts to discover tools"
+  ],
+  "not_this_if": [
+    "The custom tool server is configured to accept 'search_pattern'"
+  ],
+  "root_cause": "The error occurs because n8n sends a 'search_pattern' parameter that the custom tool server's API schema does not recognize. This mismatch leads to validation failures when n8n tries to communicate with the server.",
+  "fix_steps": [
+    "Update the schema of your custom tool server to accept 'search_pattern'.",
+    "Add 'search_pattern' as an optional property in the schema, e.g., '\"search_pattern\": {\"type\": \"string\"}'",
+    "Restart the custom tool server if necessary."
+  ],
+  "agent_instruction": "Modify your custom tool server's schema to include 'search_pattern' as an optional property.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "custom-tool",
+    "api-schema",
+    "parameter-validation",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-client-node-bad-request-please-check-your-parameters-search-pattern-result/162460"
+  ]
+}

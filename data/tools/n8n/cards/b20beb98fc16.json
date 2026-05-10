@@ -1,0 +1,41 @@
+{
+  "id": "b20beb98fc16",
+  "tool": "n8n",
+  "error_signature": "high token usage in ChatGPT workflow",
+  "context_key": "ChatGPT node",
+  "title": "Excessive token usage in ChatGPT integration",
+  "symptom": "The workflow consumes around 100-150k tokens, which is excessively high for the task at hand.",
+  "applies_when": [
+    "Using ChatGPT node",
+    "Workflow involves multiple vector stores and databases"
+  ],
+  "not_this_if": [
+    "Token usage is within expected limits",
+    "No AI node is involved"
+  ],
+  "root_cause": "High token usage often results from sending excessive context, such as large datasets or multiple rules, which the model processes each time it runs. This can be exacerbated by running the AI node multiple times per item in a loop.",
+  "fix_steps": [
+    "Add a Set or Code node before the ChatGPT node to merge all text and rules into a single field.",
+    "Reduce the memory window to 3 or disable it temporarily to test.",
+    "Set Top K to a lower value, typically between 3 to 5.",
+    "Ensure the AI node runs only once per item instead of multiple times."
+  ],
+  "agent_instruction": "Merge inputs into a single field and adjust settings to reduce token usage.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ChatGPT",
+    "token-usage",
+    "workflow-optimization",
+    "AI-node"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cost-of-using-chatgpt-tokens/262316"
+  ]
+}

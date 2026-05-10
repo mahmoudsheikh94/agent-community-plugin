@@ -1,0 +1,40 @@
+{
+  "id": "fe286f17350d",
+  "tool": "n8n",
+  "error_signature": "event created at the wrong time",
+  "context_key": "outlook-node",
+  "title": "Outlook event created with incorrect time zone",
+  "symptom": "Events created in Outlook appear one hour later than intended. The agent confirms the correct time, but Outlook shows a discrepancy.",
+  "applies_when": [
+    "Creating events in Outlook",
+    "Agent configured with a specific time zone"
+  ],
+  "not_this_if": [
+    "Events are created correctly in other time zones",
+    "No time zone is specified in the agent settings"
+  ],
+  "root_cause": "The discrepancy in event timing is likely due to the n8n server's time zone settings being incorrect, such as being set to UTC instead of the desired local time zone. This causes events to be created with an offset from the intended time.",
+  "fix_steps": [
+    "Access the n8n workflow settings by clicking the top right 3 dots",
+    "Set the time zone to the correct value, such as Europe/Paris",
+    "Check the server's environment variables to ensure the time zone is also set correctly"
+  ],
+  "agent_instruction": "Update the time zone in both the workflow settings and the server environment variables to ensure events are created at the correct time.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "outlook",
+    "timezone",
+    "event-creation",
+    "n8n-settings"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.120.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/outlook-event-created-at-the-wrong-time-1-hour-later/226322"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "030e5dc7899b",
+  "tool": "n8n",
+  "error_signature": "Redis node only returns the last element of the list",
+  "context_key": "redis-node",
+  "title": "Redis node limitation on list retrieval",
+  "symptom": "The Redis node in n8n only retrieves the last element of a list instead of all elements.",
+  "applies_when": [
+    "Using the Redis node",
+    "Trying to fetch all elements from a Redis list"
+  ],
+  "not_this_if": [
+    "Using a community Redis node that supports LRANGE",
+    "Using a Code node to execute custom Redis commands"
+  ],
+  "root_cause": "The built-in Redis node in n8n does not implement the LRANGE command, which is necessary for retrieving all elements from a list. As a result, users can only access the last element of the list or perform SET operations.",
+  "fix_steps": [
+    "Set up a Redis community node that supports list commands like LRANGE.",
+    "Connect it to your existing Redis connection.",
+    "Use the command LRANGE your_list_key 0 -1 to retrieve all items.",
+    "Alternatively, attach a Code node that executes lrange('your:list:key', 0, -1) to fetch all list entries."
+  ],
+  "agent_instruction": "Use a community Redis node or a Code node to retrieve all elements from the Redis list.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "redis",
+    "list-retrieval",
+    "lrange",
+    "community-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/get-all-elements-of-a-redis-list/261074"
+  ]
+}

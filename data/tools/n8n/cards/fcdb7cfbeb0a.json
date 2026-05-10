@@ -1,0 +1,38 @@
+{
+  "id": "fcdb7cfbeb0a",
+  "tool": "n8n",
+  "error_signature": "empty pageContent value returned from Qdrant",
+  "context_key": "qdrant-node",
+  "title": "Empty pageContent in Qdrant query results",
+  "symptom": "When querying the Qdrant vector store, the results return an empty 'pageContent' value, while metadata is populated correctly.",
+  "applies_when": [
+    "Using Qdrant node",
+    "Querying for points with content"
+  ],
+  "not_this_if": [
+    "pageContent is populated in the Qdrant collection"
+  ],
+  "root_cause": "The issue arises when the structure of the points in Qdrant does not match the expected format. Specifically, if the key for the document content is incorrectly labeled, it will not be retrieved correctly during queries.",
+  "fix_steps": [
+    "Change the structure of your points in Qdrant to use 'content' as the key instead of 'synopsis'.",
+    "Ensure that the 'payload' includes the 'content' field with the actual document content."
+  ],
+  "agent_instruction": "Update the Qdrant point structure to use 'content' for the document content.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "qdrant",
+    "pageContent",
+    "metadata",
+    "vector-store"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/qdrant-pagecontent-empty-when-queried-by-ai-agent/130930"
+  ]
+}

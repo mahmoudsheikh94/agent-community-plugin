@@ -1,0 +1,41 @@
+{
+  "id": "bb6749b276be",
+  "tool": "n8n",
+  "error_signature": "Outlook Email Trigger stuck fetching same old email",
+  "context_key": "outlook-email-trigger",
+  "title": "Outlook Email Trigger fetching old emails repeatedly",
+  "symptom": "The Microsoft Outlook Email Trigger keeps fetching the same old email, ignoring new messages. Despite attempts to reset and reconfigure, the issue persists.",
+  "applies_when": [
+    "Using Microsoft Outlook Email Trigger",
+    "Trigger is configured to fetch new emails"
+  ],
+  "not_this_if": [
+    "The trigger is fetching new emails correctly",
+    "Different email accounts are used"
+  ],
+  "root_cause": "The issue arises from the internal delta sync token being cached, which prevents the trigger from recognizing new emails. This can happen if the trigger's configuration does not properly account for changes in the email state.",
+  "fix_steps": [
+    "Open the Outlook Email Trigger node settings",
+    "Add filters for Folders to Include, Read Status, and Sender",
+    "Implement an action to move the message from one folder to another",
+    "Save the workflow and test it again"
+  ],
+  "agent_instruction": "Add filters to the Outlook Email Trigger and implement a message moving action.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "outlook",
+    "email-trigger",
+    "sync-token",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/outlook-email-trigger-stuck-fetching-same-old-email/92552"
+  ]
+}

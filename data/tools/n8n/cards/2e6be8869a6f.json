@@ -1,0 +1,39 @@
+{
+  "id": "2e6be8869a6f",
+  "tool": "n8n",
+  "error_signature": "webhook triggering repeatedly due to no response",
+  "context_key": "webhook-node",
+  "title": "Webhook triggering repeatedly without response",
+  "symptom": "The workflow keeps executing failed executions repeatedly without any error message. This happens because the webhook does not send a response back to the external service.",
+  "applies_when": [
+    "Using a webhook node",
+    "Webhook is at the end of the workflow"
+  ],
+  "not_this_if": [
+    "Webhook is configured to send responses correctly",
+    "No external service is triggering the webhook"
+  ],
+  "root_cause": "When a webhook node is placed at the end of a workflow and an error occurs in a previous node, the workflow fails to send a response back to the external service. This leads the external service to continuously trigger the webhook, thinking it has not received a response.",
+  "fix_steps": [
+    "Move the 'respond to webhook' node immediately after the webhook trigger node",
+    "Ensure that the workflow sends a response back even if there are errors in previous nodes",
+    "Test the workflow to confirm that the external service receives the response"
+  ],
+  "agent_instruction": "Rearrange the workflow to place the 'respond to webhook' node right after the webhook trigger.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "repeated-trigger",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.50.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/erronuous-execution-loop-in-my-workflows/233847"
+  ]
+}

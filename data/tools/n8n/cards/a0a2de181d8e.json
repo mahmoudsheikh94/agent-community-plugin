@@ -1,0 +1,40 @@
+{
+  "id": "a0a2de181d8e",
+  "tool": "n8n",
+  "error_signature": "Could not get parameter",
+  "context_key": "custom-trigger",
+  "title": "Custom trigger fails to activate with parameter error",
+  "symptom": "When attempting to activate a workflow with a custom trigger, n8n displays 'Could not get parameter'. The trigger works fine when invoked manually.",
+  "applies_when": [
+    "Using a custom trigger",
+    "Workflow activation attempt"
+  ],
+  "not_this_if": [
+    "Trigger works in manual execution mode",
+    "No error message is displayed"
+  ],
+  "root_cause": "The error occurs because the custom trigger is not properly configured to handle certain parameters during the workflow activation process. This can happen if the trigger expects parameters that are not provided or are incorrectly defined.",
+  "fix_steps": [
+    "Modify the custom trigger code to ensure all required parameters are correctly defined",
+    "Rebuild and push the modified n8n application to your Docker instance",
+    "Recreate the Docker container to apply changes"
+  ],
+  "agent_instruction": "Ensure all parameters in the custom trigger are correctly defined and rebuild the n8n application.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "custom-trigger",
+    "workflow-activation",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "latest",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/custom-trigger-works-manually-but-workflow-fails-to-activate/169683"
+  ]
+}

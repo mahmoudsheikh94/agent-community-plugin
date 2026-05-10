@@ -1,0 +1,40 @@
+{
+  "id": "e7918eb71b68",
+  "tool": "n8n",
+  "error_signature": "switch only sends matched value",
+  "context_key": "switch-node",
+  "title": "Switch node only outputs matched value",
+  "symptom": "When using a switch node, only the matched value is sent to the next node, while additional required data is missing.",
+  "applies_when": [
+    "Using a switch node",
+    "Need to send multiple pieces of data to a sub-workflow"
+  ],
+  "not_this_if": [
+    "Fallback is used to trigger the workflow"
+  ],
+  "root_cause": "The switch node is designed to output only the matched value by default. If additional data is needed, it must be combined from other nodes, such as a merge node, to ensure all required data is sent together.",
+  "fix_steps": [
+    "Add a merge node after the switch node",
+    "Set the merge node to combine mode",
+    "Select 'Combine By All Possible Combinations' to merge outputs from both branches",
+    "Connect the merge node to the sub-workflow"
+  ],
+  "agent_instruction": "Use a merge node in combine mode to combine outputs from the switch node and send all required data.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "switch",
+    "merge",
+    "sub-workflow",
+    "data-output"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/switch-cannot-output-data-i-want/197607"
+  ]
+}

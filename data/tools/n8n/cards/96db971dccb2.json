@@ -1,0 +1,40 @@
+{
+  "id": "96db971dccb2",
+  "tool": "n8n",
+  "error_signature": "AI Agent only uses the first ID from set node",
+  "context_key": "AI Agent node",
+  "title": "AI Agent not iterating over multiple IDs correctly",
+  "symptom": "The AI Agent node processes multiple emails but only uses the first ID from the set node for all iterations, causing mixed information.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Multiple emails trigger the workflow simultaneously"
+  ],
+  "not_this_if": [
+    "Only one email is processed at a time",
+    "The agent node is correctly placed inside a loop"
+  ],
+  "root_cause": "The AI Agent node was not placed inside a loop, causing it to reference the first item repeatedly instead of iterating over each email's corresponding ID from the set node.",
+  "fix_steps": [
+    "Place the AI Agent node inside a loop that iterates over the incoming emails",
+    "Ensure that the loop correctly references the IDs from the set node for each iteration"
+  ],
+  "agent_instruction": "Reorganize the workflow to place the AI Agent node inside a loop for proper ID referencing.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "AI Agent",
+    "workflow",
+    "loop",
+    "Postgres",
+    "multiple-emails"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.98.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-tool-referencing-only-the-first-variable-although-multiple-input-items-are-given/134590"
+  ]
+}

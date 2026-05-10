@@ -1,0 +1,41 @@
+{
+  "id": "6804bc196b6f",
+  "tool": "n8n",
+  "error_signature": "identical responses causing pagination to stop",
+  "context_key": "HTTP node with Rize.io GraphQL API",
+  "title": "Pagination stops due to identical responses",
+  "symptom": "The HTTP node fails to paginate correctly, returning identical responses multiple times and eventually stopping requests. This leads to server errors after several attempts.",
+  "applies_when": [
+    "Using HTTP node",
+    "Paginating with Rize.io GraphQL API"
+  ],
+  "not_this_if": [
+    "Pagination works with fewer than 5 pages",
+    "Different API or node is used"
+  ],
+  "root_cause": "The 'after' value in the pagination request does not update correctly, causing the same page to be requested repeatedly. After several identical requests, the server responds with errors, such as 500 Internal Server Error.",
+  "fix_steps": [
+    "Ensure the 'after' value is updated correctly in each iteration.",
+    "Add the 'first' parameter to limit the number of tasks returned per request.",
+    "Test the pagination to confirm it retrieves different pages."
+  ],
+  "agent_instruction": "Update the pagination parameters to include a correctly updating 'after' value and add the 'first' parameter.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "pagination",
+    "HTTP node",
+    "Rize.io",
+    "GraphQL",
+    "API"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/rizo-io-pagination-errors/169194"
+  ]
+}

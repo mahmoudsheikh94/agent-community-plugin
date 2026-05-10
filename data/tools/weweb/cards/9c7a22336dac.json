@@ -1,0 +1,41 @@
+{
+  "id": "9c7a22336dac",
+  "tool": "weweb",
+  "error_signature": "undefined value returned in workflow",
+  "context_key": "weweb-js-action",
+  "title": "Undefined value returned from JavaScript action",
+  "symptom": "The JavaScript action in the workflow returns 'undefined', causing subsequent steps to fail. The PDF is generated but not sent as an attachment.",
+  "applies_when": [
+    "Using a JavaScript action in a workflow",
+    "PDF generation is involved"
+  ],
+  "not_this_if": [
+    "The JavaScript action returns a valid value",
+    "The workflow executes without errors"
+  ],
+  "root_cause": "The JavaScript action does not properly handle asynchronous operations. Since the action is asynchronous, it needs to await the result before returning it, otherwise it defaults to returning 'undefined'.",
+  "fix_steps": [
+    "Modify the JavaScript code to use 'await' for the asynchronous operation",
+    "Ensure the function returns the awaited value",
+    "Test the workflow again to confirm the PDF is sent as an attachment"
+  ],
+  "agent_instruction": "Update the JavaScript action to await the value before returning it.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "javascript",
+    "async",
+    "pdf",
+    "weweb",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/uri-format-for-pdf-to-sendgrid/4229"
+  ]
+}

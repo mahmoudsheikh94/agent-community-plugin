@@ -1,0 +1,40 @@
+{
+  "id": "b4b9a0e43de5",
+  "tool": "n8n",
+  "error_signature": "Activation key has already been used on this instance",
+  "context_key": "n8n activation",
+  "title": "Activation key already used error in n8n",
+  "symptom": "When attempting to activate n8n, the user receives an error stating 'Activation key has already been used on this instance'. This prevents the activation of the Community Edition.",
+  "applies_when": [
+    "Using n8n Community Edition",
+    "Attempting to activate with a valid key"
+  ],
+  "not_this_if": [
+    "Activation key is valid and not previously used",
+    "Using a different instance of n8n"
+  ],
+  "root_cause": "This error occurs when the activation key has already been registered to the current instance of n8n. This can happen if the instance was previously activated or if the activation status was not cleared properly after a reinstall.",
+  "fix_steps": [
+    "Run the command `n8n license:clear` in your terminal",
+    "Restart the n8n instance",
+    "Attempt to activate again with the key"
+  ],
+  "agent_instruction": "Run `n8n license:clear` and restart n8n to reset the activation status.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "activation",
+    "community-edition",
+    "license",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/activation-failed-activation-key-has-already-been-used-on-this-instance/86860"
+  ]
+}

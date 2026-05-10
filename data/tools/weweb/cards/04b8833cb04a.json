@@ -1,0 +1,40 @@
+{
+  "id": "04b8833cb04a",
+  "tool": "weweb",
+  "error_signature": "Cannot read properties of null (reading 'reduce')",
+  "context_key": "Webflow API integration",
+  "title": "Error retrieving Webflow CMS collection list",
+  "symptom": "When attempting to retrieve the collection list from the Webflow CMS using the REST API, the error 'Cannot read properties of null (reading 'reduce')' occurs. This does not happen when using Postman.",
+  "applies_when": [
+    "Using Webflow API to retrieve collection list",
+    "Headers or query strings were previously bound and then unbound"
+  ],
+  "not_this_if": [
+    "Using Postman to retrieve the same data without issues"
+  ],
+  "root_cause": "The error occurs due to a conflict in the API integration when headers or query strings are bound and then unbound. This can lead to the API call attempting to access properties of a null object, resulting in the error message.",
+  "fix_steps": [
+    "Re-create the collection in the Webflow API integration",
+    "Avoid clicking on the plug icon to bind headers or query strings during setup",
+    "Test the API call again"
+  ],
+  "agent_instruction": "Re-create the Webflow collection without binding headers or query strings.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "webflow",
+    "api",
+    "collection",
+    "error",
+    "integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/rest-api-get-data-form-webflow-api/5595"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "2d1aaed7f36b",
+  "tool": "weweb",
+  "error_signature": "auth plugin is not configured",
+  "context_key": "supabase-auth",
+  "title": "Supabase auth plugin not configured",
+  "symptom": "When attempting to connect Supabase auth, the user sees a message indicating that the auth plugin is not configured.",
+  "applies_when": [
+    "Trying to set up Supabase auth",
+    "Supabase is not connected as a data source"
+  ],
+  "not_this_if": [
+    "Supabase is already connected as a data source"
+  ],
+  "root_cause": "The Supabase auth plugin requires that Supabase is connected as a data source before the auth flows can be configured. If this prerequisite is not met, the plugin will not function correctly.",
+  "fix_steps": [
+    "Connect Supabase as a data source in your project",
+    "Proceed to set up the Supabase auth flows"
+  ],
+  "agent_instruction": "Ensure Supabase is connected as a data source before configuring the auth plugin.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "auth",
+    "plugin-configuration",
+    "data-source"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/supbase-auth-not-working/18528"
+  ]
+}

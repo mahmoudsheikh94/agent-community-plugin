@@ -1,0 +1,40 @@
+{
+  "id": "d91770a3fd0d",
+  "tool": "n8n",
+  "error_signature": "Node executed successfully, but no data output",
+  "context_key": "IF node",
+  "title": "Incorrect logic in IF node causing no data output",
+  "symptom": "The HTTPS node indicates 'Node executed successfully', but there is no data output and the target app logs show no evidence of the request.",
+  "applies_when": [
+    "Using an IF node to check for a condition",
+    "The condition is incorrectly set"
+  ],
+  "not_this_if": [
+    "Data output is missing due to a different node configuration"
+  ],
+  "root_cause": "The IF node's logic is incorrectly configured to check for a non-existent condition. This leads to the true condition being executed when it should not be, resulting in no data being passed along.",
+  "fix_steps": [
+    "Open the IF node settings",
+    "Change the condition from 'doesn't exist' to 'does exist' or connect the wire to the false condition",
+    "Save the workflow",
+    "Re-run the workflow to check for data output"
+  ],
+  "agent_instruction": "Adjust the logic in the IF node to correctly check for the existence of companyId.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "IF node",
+    "data output",
+    "logic error",
+    "node configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/https-node-runs-but-no-data-output-and-no-evidence-it-ran-in-the-target-app-logs/152071"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "c1c69ad9df50",
+  "tool": "n8n",
+  "error_signature": "Assertion failed: new_time >= loop->time",
+  "context_key": "VMware-n8n",
+  "title": "n8n crashes due to time synchronization issues on VMware",
+  "symptom": "n8n crashes with an assertion error related to time synchronization, especially during long-running workflows. This occurs frequently when processing a large number of items.",
+  "applies_when": [
+    "Running n8n on a VMware virtual machine",
+    "Host time synchronization is disabled or incorrect"
+  ],
+  "not_this_if": [
+    "Host time synchronization is enabled and accurate",
+    "VM is not under heavy load"
+  ],
+  "root_cause": "The error occurs due to a mismatch in time settings between the host and the virtual machine. When the host's time synchronization is disabled or significantly out of sync, it can lead to timing issues in the event loop of n8n, causing crashes during execution.",
+  "fix_steps": [
+    "Enable automatic time synchronization on the host operating system",
+    "Ensure the host's time is accurate and synced with a reliable time server",
+    "Restart the n8n instance and monitor for crashes during execution"
+  ],
+  "agent_instruction": "Enable time synchronization on the host OS and ensure the time is accurate.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "VMware",
+    "time-synchronization",
+    "crash",
+    "event-loop"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.121.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/local-n8n-keeps-crashing-on-vmware-assertion-failed-new-time-loop-time-file-src-win-core-c-line-327/231049"
+  ]
+}

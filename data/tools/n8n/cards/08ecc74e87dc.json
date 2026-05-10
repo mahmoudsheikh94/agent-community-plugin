@@ -1,0 +1,39 @@
+{
+  "id": "08ecc74e87dc",
+  "tool": "n8n",
+  "error_signature": "localhost refused to connect",
+  "context_key": "google-oauth",
+  "title": "Google OAuth callback connection refused",
+  "symptom": "When attempting to use Google OAuth, the error 'localhost refused to connect' appears, indicating that the redirect URL is not reachable.",
+  "applies_when": [
+    "Using Google OAuth with localhost",
+    "Running n8n in a Docker container"
+  ],
+  "not_this_if": [
+    "Using a different host or port for n8n",
+    "Running n8n without Docker"
+  ],
+  "root_cause": "The redirect URL configured in Google OAuth does not match the actual URL where n8n is accessible. This often happens when the port is not included in the redirect URL, leading to connection issues.",
+  "fix_steps": [
+    "Update the OAuth Redirect URL in Google Auth to include the port: http://localhost:5678/rest/oauth2-credential/callback",
+    "Ensure that the n8n configuration in the Docker container has the correct WEBHOOK_URL set to http://localhost:5678."
+  ],
+  "agent_instruction": "Update the Google OAuth Redirect URL to include the port and verify the n8n configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-oauth",
+    "localhost",
+    "docker",
+    "connection-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-oauth-callback-error-localhost-refused-connetion/82646"
+  ]
+}

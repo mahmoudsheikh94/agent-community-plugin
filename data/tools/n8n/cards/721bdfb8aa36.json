@@ -1,0 +1,38 @@
+{
+  "id": "721bdfb8aa36",
+  "tool": "n8n",
+  "error_signature": "not all records processed",
+  "context_key": "looping-node",
+  "title": "Looping node not processing all records",
+  "symptom": "The workflow processes only a subset of records, despite having more available. Initially, only 21 out of 216 pages are processed.",
+  "applies_when": [
+    "Using a looping node",
+    "Multiple records are expected to be processed"
+  ],
+  "not_this_if": [
+    "All records are processed without issue",
+    "No empty outputs from nodes"
+  ],
+  "root_cause": "The looping node may stop processing if it encounters an empty output from any of the items. This can happen if the node settings do not ensure that all items are outputted, leading to incomplete processing.",
+  "fix_steps": [
+    "Check the settings of the looping node and ensure 'always output' is enabled for all nodes involved.",
+    "Add the expression '{{ $('Loop Over Items').context['done'] }}' to ensure the loop processes all items."
+  ],
+  "agent_instruction": "Enable 'always output' for all nodes and use the specified expression in the looping node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "looping",
+    "node-configuration",
+    "record-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.101.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/looping-is-not-processing-all-the-records/147614"
+  ]
+}

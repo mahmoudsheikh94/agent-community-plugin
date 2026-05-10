@@ -1,0 +1,40 @@
+{
+  "id": "5c603f8c5994",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'crypto-js'",
+  "context_key": "code-node",
+  "title": "Crypto-JS module not found in n8n code node",
+  "symptom": "When trying to use the 'crypto-js' module in a code node, n8n throws 'Cannot find module 'crypto-js''. This prevents the execution of the workflow.",
+  "applies_when": [
+    "Using a code node",
+    "Attempting to require 'crypto-js'"
+  ],
+  "not_this_if": [
+    "Using built-in 'crypto' module",
+    "Error occurs in a different context"
+  ],
+  "root_cause": "The 'crypto-js' module is not included by default in n8n's environment. To use it, you need to explicitly allow it as an external module in the environment variables or build a custom n8n image with it installed.",
+  "fix_steps": [
+    "Set the environment variable NODE_FUNCTION_ALLOW_EXTERNAL=crypto-js",
+    "Alternatively, build a custom n8n Docker image with 'crypto-js' installed",
+    "Use the built-in 'crypto' module if possible"
+  ],
+  "agent_instruction": "Set the NODE_FUNCTION_ALLOW_EXTERNAL variable or build a custom n8n image with 'crypto-js'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "crypto-js",
+    "code-node",
+    "module-not-found",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/having-hard-time-using-crypto-js-module-on-code-node/79923"
+  ]
+}

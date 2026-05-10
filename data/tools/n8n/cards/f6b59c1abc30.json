@@ -1,0 +1,40 @@
+{
+  "id": "f6b59c1abc30",
+  "tool": "n8n",
+  "error_signature": "Failed to parse stream",
+  "context_key": "google-gemini-node",
+  "title": "Google Gemini Chat Model stream parsing error",
+  "symptom": "When sending a query through the Google Gemini Chat Model, an error 'Failed to parse stream' appears.",
+  "applies_when": [
+    "Using Google Gemini Chat Model",
+    "Self-hosted n8n version 1.81.4"
+  ],
+  "not_this_if": [
+    "Different chat model is used",
+    "Error does not occur with correct host"
+  ],
+  "root_cause": "The error occurs due to an incorrect host URL being used for the Google Gemini API. The API requires a specific endpoint to function correctly, and using a different host can lead to parsing errors.",
+  "fix_steps": [
+    "Check the host URL for the Google Gemini Chat Model node.",
+    "Ensure it is set to 'https://generativelanguage.googleapis.com'.",
+    "Save the changes and try sending the query again."
+  ],
+  "agent_instruction": "Verify and correct the host URL for the Google Gemini Chat Model node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-gemini",
+    "chat-model",
+    "api-configuration",
+    "stream-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/getting-gemini-1-0-pro-is-not-supported-error/87653"
+  ]
+}

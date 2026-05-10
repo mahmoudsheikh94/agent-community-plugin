@@ -1,0 +1,40 @@
+{
+  "id": "1f84ea65b648",
+  "tool": "n8n",
+  "error_signature": "OAuth2 connection will request the scope (w_organization_social)",
+  "context_key": "linkedin-node",
+  "title": "LinkedIn OAuth2 scope permission issue",
+  "symptom": "The LinkedIn OAuth2 connection fails due to missing permissions for the 'w_organization_social' scope, preventing posting as an organization.",
+  "applies_when": [
+    "Using LinkedIn node",
+    "Attempting to post as an organization"
+  ],
+  "not_this_if": [
+    "The app has the required permissions for the scope",
+    "Posting as an individual user"
+  ],
+  "root_cause": "The LinkedIn API requires specific permissions to post on behalf of an organization. If the app does not have the 'w_organization_social' scope, it will not be able to perform this action, leading to authentication failures.",
+  "fix_steps": [
+    "Go to the LinkedIn Developer Portal and navigate to your app settings.",
+    "Submit your application for the Community Management App Review to gain access to the 'w_organization_social' scope.",
+    "Alternatively, in n8n, go to the LinkedIn credentials settings and toggle off the 'Organization Support' option."
+  ],
+  "agent_instruction": "Submit your LinkedIn app for review or disable organization support in n8n credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "linkedin",
+    "oauth2",
+    "permissions",
+    "organization-support"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-cant-connect-linkedin-to-our-self-hosted-server/98473"
+  ]
+}

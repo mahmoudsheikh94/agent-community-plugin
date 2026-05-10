@@ -1,0 +1,41 @@
+{
+  "id": "8016d35233f9",
+  "tool": "n8n",
+  "error_signature": "Problem loading external hook file",
+  "context_key": "external-hooks",
+  "title": "Error loading external hook file in n8n",
+  "symptom": "When starting n8n, an error occurs stating 'Problem loading external hook file'. This prevents n8n from initializing properly.",
+  "applies_when": [
+    "Using external hooks",
+    "Running n8n on Windows"
+  ],
+  "not_this_if": [
+    "Running n8n in Docker or WSL",
+    "Using a valid path without ':' in it"
+  ],
+  "root_cause": "Windows paths can cause issues when used directly in n8n, especially if they contain colons. This can lead to the application being unable to locate the specified hook file, resulting in the loading error.",
+  "fix_steps": [
+    "Move the hook file to a directory without a ':' in the path (e.g., C:\\n8n\\hook.js).",
+    "Set the environment variable in PowerShell to the new path: $env:EXTERNAL_HOOK_FILES = 'C:\\n8n\\hook.js'.",
+    "Start n8n using the command: n8n start.",
+    "Verify that n8n starts without error messages and that the hooks are registered."
+  ],
+  "agent_instruction": "Move the hook file to a valid path and set the environment variable accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "external-hooks",
+    "windows",
+    "n8n",
+    "hook-file"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.95.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/external-hook-installation/154171"
+  ]
+}

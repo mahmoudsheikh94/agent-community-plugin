@@ -1,0 +1,39 @@
+{
+  "id": "5ae8c9d649f4",
+  "tool": "n8n",
+  "error_signature": "webhook URL not recognized",
+  "context_key": "docker-run-configuration",
+  "title": "Webhook URL not recognized by n8n",
+  "symptom": "n8n does not recognize the provided WEBHOOK_URL and defaults to using a n8n.cloud URL, causing webhook failures.",
+  "applies_when": [
+    "Using n8n with Docker",
+    "Setting WEBHOOK_URL and N8N_HOST environment variables"
+  ],
+  "not_this_if": [
+    "n8n is not using the --tunnel option in the docker run command"
+  ],
+  "root_cause": "The presence of the --tunnel option in the docker run command causes n8n to ignore the provided WEBHOOK_URL and N8N_HOST variables, defaulting to its own cloud URL instead.",
+  "fix_steps": [
+    "Remove the --tunnel option from the docker run command.",
+    "Ensure that the WEBHOOK_URL and N8N_HOST environment variables are correctly set in the docker run command.",
+    "Restart the n8n container to apply the changes."
+  ],
+  "agent_instruction": "Remove the --tunnel option from the docker run command and restart the container.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "webhook",
+    "n8n-host",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.82.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/docker-n8n-on-a-subpath-with-nginx-https-connection-lost/100782"
+  ]
+}

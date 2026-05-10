@@ -1,0 +1,40 @@
+{
+  "id": "cd5d0dffba73",
+  "tool": "n8n",
+  "error_signature": "Request failed with status code 404",
+  "context_key": "audit-resource",
+  "title": "404 error when accessing audit resource",
+  "symptom": "The audit feature in n8n returns a 404 error, indicating the resource could not be found. This occurs after an upgrade, disrupting the workflow.",
+  "applies_when": [
+    "Using the audit feature",
+    "n8n version 1.85.4"
+  ],
+  "not_this_if": [
+    "The audit feature was working before the upgrade",
+    "The URL is correct"
+  ],
+  "root_cause": "The error occurs due to an incorrect URL in the credential settings for the audit resource. This can happen if the URL was modified or not properly configured after an update.",
+  "fix_steps": [
+    "Check the URL in the credential settings for the audit resource",
+    "Correct any typos or errors in the URL",
+    "Save the changes and retry accessing the audit feature"
+  ],
+  "agent_instruction": "Verify and correct the URL in the audit resource credentials.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "audit",
+    "404",
+    "credential-url",
+    "n8n-cloud"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issue-with-n8n-audit-after-updating-fixed/95880"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "bf1f8c4df24e",
+  "tool": "n8n",
+  "error_signature": "406 - Not Acceptable",
+  "context_key": "wordpress-node",
+  "title": "406 error when uploading feature image to WordPress",
+  "symptom": "When attempting to upload a feature image to WordPress, a 406 error is returned, indicating that the request is not acceptable.",
+  "applies_when": [
+    "Using the WordPress node to upload images",
+    "Image format or settings may not be compatible"
+  ],
+  "not_this_if": [
+    "Error does not occur when uploading other types of content"
+  ],
+  "root_cause": "The 406 error is typically caused by server-side security settings, such as ModSecurity, which may block certain requests based on their content type or headers. In this case, the image upload request is being rejected.",
+  "fix_steps": [
+    "Use the 'edit image' node in n8n",
+    "Leave the text operation empty",
+    "Select 'jpeg' format in the options",
+    "Attempt to upload the image again"
+  ],
+  "agent_instruction": "Use the 'edit image' node to convert the image to JPEG format before uploading.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "wordpress",
+    "406-error",
+    "image-upload",
+    "modsecurity"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/406-error-upload-feature-image-wordpress/112210"
+  ]
+}

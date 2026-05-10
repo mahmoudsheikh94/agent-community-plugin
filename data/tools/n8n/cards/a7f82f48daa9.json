@@ -1,0 +1,38 @@
+{
+  "id": "a7f82f48daa9",
+  "tool": "n8n",
+  "error_signature": "Unknown error in Code node",
+  "context_key": "code-node",
+  "title": "Unknown error in Code node due to Set Variables node",
+  "symptom": "The Code node throws an 'Unknown error' when connected to a Set Variables node. Removing the Set Variables node resolves the issue.",
+  "applies_when": [
+    "Using a Code node",
+    "Connected to a Set Variables node"
+  ],
+  "not_this_if": [
+    "Code node is directly connected to the Inputs webhook"
+  ],
+  "root_cause": "The Set Variables node may not be passing the necessary fields or data structure expected by the Code node, leading to an 'Unknown error' when the Code node tries to access the input data.",
+  "fix_steps": [
+    "Ensure the Set Variables node is configured correctly to pass all required fields.",
+    "Use the provided code snippet to handle the input data correctly."
+  ],
+  "agent_instruction": "Check the configuration of the Set Variables node and use the suggested code to process inputs correctly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "set-variables",
+    "unknown-error",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.1.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unknown-error-in-code-node/243619"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "acf7907e5d6d",
+  "tool": "n8n",
+  "error_signature": "Invalid JWT form. A JWT consists of three parts separated by dots.",
+  "context_key": "openrouter",
+  "title": "Invalid JWT token error with OpenRouter",
+  "symptom": "When using the AI agent with OpenRouter, the system returns a 403 error indicating an invalid JWT token. The error message specifies that the JWT format is incorrect.",
+  "applies_when": [
+    "Using AI agent with OpenRouter",
+    "Valid API keys are configured"
+  ],
+  "not_this_if": [
+    "Error occurs without AI agent nodes",
+    "API keys are not configured"
+  ],
+  "root_cause": "The error occurs when the JWT token provided to OpenRouter is malformed or incorrectly formatted. This can happen if the token is not generated properly or if there are issues with the API key configuration.",
+  "fix_steps": [
+    "Verify that the API keys for OpenRouter are correctly configured in n8n.",
+    "Ensure that the JWT token is generated correctly and follows the standard format (three parts separated by dots).",
+    "Test the connection again after making any necessary adjustments."
+  ],
+  "agent_instruction": "Check and correct the API key configuration for OpenRouter in n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "openrouter",
+    "jwt",
+    "api-keys",
+    "error-403"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "LATEST",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-in-aiagentlesson-openrouter-errors-the-jwt/118046"
+  ]
+}

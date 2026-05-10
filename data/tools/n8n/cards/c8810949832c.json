@@ -1,0 +1,40 @@
+{
+  "id": "c8810949832c",
+  "tool": "n8n",
+  "error_signature": "JSON inside body is not parsed correctly",
+  "context_key": "webhook-node",
+  "title": "Malformed JSON in webhook body",
+  "symptom": "The incoming webhook payload contains a malformed JSON object in the body field, causing parsing issues. This prevents the extraction of necessary fields for further processing.",
+  "applies_when": [
+    "Receiving data from an Elasticsearch alert",
+    "Using a webhook node"
+  ],
+  "not_this_if": [
+    "The JSON is valid and correctly formatted",
+    "The issue is not related to the webhook input"
+  ],
+  "root_cause": "The JSON object in the body field is improperly formatted, likely due to double-stringification or corruption. This results in a string that cannot be parsed directly into a JSON object, leading to errors when attempting to access its properties.",
+  "fix_steps": [
+    "Use a Code node to extract the valid JSON string from the body field using a regular expression.",
+    "Parse the cleaned JSON string and return it as part of the output for further processing."
+  ],
+  "agent_instruction": "Implement the provided code snippet in a Code node to clean and parse the malformed JSON.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "webhook",
+    "JSON",
+    "Elasticsearch",
+    "Code node",
+    "data parsing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-fix-and-parse-broken-json-lines-from-webhook-input/117794"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "5cb19eeae0d7",
+  "tool": "weweb",
+  "error_signature": "undefined text for team_type",
+  "context_key": "DataGrid element",
+  "title": "DataGrid not displaying team_type correctly",
+  "symptom": "After refreshing the page, the 'team_type' field shows 'undefined' instead of the expected value.",
+  "applies_when": [
+    "Using DataGrid to display data from Xano",
+    "Page is refreshed or data is reloaded"
+  ],
+  "not_this_if": [
+    "Data is displayed correctly without refresh",
+    "Issue occurs in a different component"
+  ],
+  "root_cause": "The issue arises because the value for 'team_type' was incorrectly set in the cell's Initial Value field instead of the appropriate column settings in the DataGrid element. This misconfiguration leads to the data not being displayed correctly after a refresh.",
+  "fix_steps": [
+    "Open the DataGrid element settings",
+    "Navigate to the column settings for 'team_type'",
+    "Set the value correctly in the column settings",
+    "Save the changes and refresh the page"
+  ],
+  "agent_instruction": "Configure the 'team_type' value in the DataGrid column settings instead of the Initial Value field.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "DataGrid",
+    "Xano",
+    "data-display",
+    "team_type"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/data-from-xano-not-displayed-correctly/5238"
+  ]
+}

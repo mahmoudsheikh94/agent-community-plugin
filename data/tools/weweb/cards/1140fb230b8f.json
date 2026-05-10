@@ -1,0 +1,40 @@
+{
+  "id": "1140fb230b8f",
+  "tool": "weweb",
+  "error_signature": "ERROR_CREATING_CMSDATASET",
+  "context_key": "Xano data source plugin",
+  "title": "Conflict with multiple Xano data source instances",
+  "symptom": "When attempting to publish the app, the user encounters the error 'ERROR_CREATING_CMSDATASET'. This prevents the app from being published successfully.",
+  "applies_when": [
+    "Using Xano data source plugin",
+    "Attempting to publish the app"
+  ],
+  "not_this_if": [
+    "Only one instance of the Xano data source plugin is used"
+  ],
+  "root_cause": "The error occurs when multiple instances of the Xano data source plugin are added to the project, leading to conflicts during the publishing process. This can happen due to user error or a bug in the project setup.",
+  "fix_steps": [
+    "Open the project settings",
+    "Check the list of data source plugins",
+    "Remove any duplicate instances of the Xano data source plugin",
+    "Try publishing the app again"
+  ],
+  "agent_instruction": "Remove duplicate instances of the Xano data source plugin from the project settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "data-source",
+    "publishing",
+    "ERROR_CREATING_CMSDATASET"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/first-publish-but-authentication-roles-are-not-available-in-your-current-plan/4866"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "268cce66fca9",
+  "tool": "n8n",
+  "error_signature": "Node does not have any credentials set for \"googleApi\"",
+  "context_key": "google-chat-node",
+  "title": "Google Chat node missing credentials in production mode",
+  "symptom": "The Google Chat node works in test mode but fails in production with an error about missing credentials.",
+  "applies_when": [
+    "Using Google Chat node",
+    "Running workflow in production mode"
+  ],
+  "not_this_if": [
+    "Workflow runs successfully in production with other nodes",
+    "Error does not occur in test mode"
+  ],
+  "root_cause": "The Google Chat node requires OAuth2 credentials to be set for production execution. These credentials may not be properly configured or linked in the production environment, leading to the error when the workflow is activated.",
+  "fix_steps": [
+    "Open the Google Chat node settings in your workflow",
+    "Ensure that the correct OAuth2 credentials are selected",
+    "Save the workflow",
+    "Test the workflow again in production mode"
+  ],
+  "agent_instruction": "Check and set the OAuth2 credentials for the Google Chat node in production mode.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-chat",
+    "credentials",
+    "oauth2",
+    "production-mode"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-chat-node-works-in-test-mode-but-errors-in-production-mode/78017"
+  ]
+}

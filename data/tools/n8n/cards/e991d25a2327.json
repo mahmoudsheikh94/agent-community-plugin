@@ -1,0 +1,41 @@
+{
+  "id": "e991d25a2327",
+  "tool": "n8n",
+  "error_signature": "NodeApiError: The resource you are requesting could not be found",
+  "context_key": "n8n API",
+  "title": "n8n API resource not found error",
+  "symptom": "When attempting to access the n8n API, the user receives a 'NodeApiError: The resource you are requesting could not be found' message.",
+  "applies_when": [
+    "Using n8n API",
+    "Credentials are set up"
+  ],
+  "not_this_if": [
+    "API requests are successful on another instance",
+    "Credentials are not configured"
+  ],
+  "root_cause": "This error typically occurs when the API endpoint being accessed does not exist or is incorrectly specified. It can also happen if the credentials are not properly configured or if the n8n instance is not correctly set up to handle the request.",
+  "fix_steps": [
+    "Go to the credentials section in n8n",
+    "Ensure that the n8n credentials are correctly set up with the right URL",
+    "If using localhost, ensure the URL includes the correct port",
+    "Save the changes and retry the API request"
+  ],
+  "agent_instruction": "Check and configure the n8n credentials with the correct URL and port settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "API",
+    "NodeApiError",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-connect-to-n8n-api/199676"
+  ]
+}

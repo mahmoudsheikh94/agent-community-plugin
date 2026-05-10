@@ -1,0 +1,39 @@
+{
+  "id": "9903b864aa4a",
+  "tool": "n8n",
+  "error_signature": "Activation key has already been used on this instance",
+  "context_key": "n8n license management",
+  "title": "Activation key error after domain change",
+  "symptom": "After changing the domain from an IP address to a private domain, n8n throws an error stating 'Activation key has already been used on this instance' when trying to apply the activation key.",
+  "applies_when": [
+    "n8n is installed on a new domain",
+    "Activation key was initially registered with an IP address"
+  ],
+  "not_this_if": [
+    "Activation key is being applied for the first time",
+    "No domain change has occurred"
+  ],
+  "root_cause": "When n8n is registered with an IP address, the activation key is tied to that IP. Changing the domain without clearing the previous license causes conflicts, as the system still recognizes the old registration.",
+  "fix_steps": [
+    "Run the command `n8n license:clear` in the terminal",
+    "Restart the n8n service",
+    "Attempt to apply the activation key again"
+  ],
+  "agent_instruction": "Clear the existing license and restart n8n before reapplying the activation key.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "activation-key",
+    "domain-change",
+    "license-management"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/activation-key-on-changed-domain/248510"
+  ]
+}

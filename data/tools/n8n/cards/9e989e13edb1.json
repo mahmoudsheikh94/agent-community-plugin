@@ -1,0 +1,40 @@
+{
+  "id": "9e989e13edb1",
+  "tool": "n8n",
+  "error_signature": "workflow stops when Remove Duplicates outputs nothing",
+  "context_key": "remove-duplicates-node",
+  "title": "Workflow halts on empty output from Remove Duplicates",
+  "symptom": "The workflow stops executing when the Remove Duplicates node processes a feed with no new items, causing no further actions to occur.",
+  "applies_when": [
+    "Using Remove Duplicates node",
+    "Iterating over multiple feeds"
+  ],
+  "not_this_if": [
+    "Remove Duplicates node outputs data without empty entries"
+  ],
+  "root_cause": "When the Remove Duplicates node encounters a feed with no new items, it does not output any data, causing the workflow to halt. This is problematic in a loop where subsequent feeds need to be processed.",
+  "fix_steps": [
+    "Add a Filter node after the Remove Duplicates node and set it to always output data.",
+    "Configure the Filter node to check if the JSON object is not empty.",
+    "Insert an If node after the Filter node to check if the output is empty.",
+    "Connect the If node to the next steps in the workflow accordingly."
+  ],
+  "agent_instruction": "Use a Filter node to ensure the workflow continues even when the Remove Duplicates node outputs nothing.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "remove-duplicates",
+    "filter-node",
+    "if-node",
+    "workflow-logic"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-continue-workflow-when-remove-duplicates-doesnt-output-anything/88858"
+  ]
+}

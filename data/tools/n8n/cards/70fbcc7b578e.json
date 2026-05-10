@@ -1,0 +1,40 @@
+{
+  "id": "70fbcc7b578e",
+  "tool": "n8n",
+  "error_signature": "error:1C800064:Provider routines::bad decrypt",
+  "context_key": "n8n license activation",
+  "title": "Bad decrypt error after activating license key",
+  "symptom": "After applying a new license key, n8n throws a 'bad decrypt' error when trying to load credentials.",
+  "applies_when": [
+    "Using n8n version 1.78.1",
+    "License key has been activated"
+  ],
+  "not_this_if": [
+    "Credentials were not previously encrypted",
+    "No license key was applied"
+  ],
+  "root_cause": "The error occurs because the encryption key used to encrypt the credentials does not match the one currently set in the environment variable. This can happen if the license key changes the encryption key or if the key was altered during the update.",
+  "fix_steps": [
+    "Run the command 'n8n license:clear' to clear the current license.",
+    "Reconfigure your encryption key if necessary.",
+    "Restart n8n to apply the changes."
+  ],
+  "agent_instruction": "Run 'n8n license:clear' to resolve the bad decrypt error.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "license",
+    "encryption",
+    "bad-decrypt",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/errorprovider-routines-bad-decrypt-after-activating-license-key/79325"
+  ]
+}

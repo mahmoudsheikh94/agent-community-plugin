@@ -1,0 +1,39 @@
+{
+  "id": "04fb380ab3c1",
+  "tool": "n8n",
+  "error_signature": "Field type 'hiddenField' in field 1 is not valid for form fields",
+  "context_key": "n8n Form node",
+  "title": "Invalid field type 'hiddenField' in Form node",
+  "symptom": "When attempting to run a workflow with a Form node, an error occurs stating that 'hiddenField' is not a valid field type. The workflow fails to execute.",
+  "applies_when": [
+    "Using n8n Form node",
+    "Defining fields in JSON format"
+  ],
+  "not_this_if": [
+    "Using valid field types as per documentation"
+  ],
+  "root_cause": "The n8n Form node does not support certain field types, including 'hiddenField', 'html', 'checkbox', and 'radio', despite them being mentioned in the documentation. This leads to validation errors when these types are included in the JSON definition.",
+  "fix_steps": [
+    "Remove 'hiddenField', 'html', 'checkbox', and 'radio' from the JSON definition.",
+    "Use only supported field types such as 'text', 'number', or 'dropdown'."
+  ],
+  "agent_instruction": "Remove unsupported field types from the Form node's JSON definition.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "form",
+    "n8n",
+    "hiddenField",
+    "error",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.107.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bug-hiddenfield-not-valid-for-field-type/185058"
+  ]
+}

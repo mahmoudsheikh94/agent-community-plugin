@@ -1,0 +1,40 @@
+{
+  "id": "d95e7b05c888",
+  "tool": "n8n",
+  "error_signature": "There was a problem loading the parameter options from server: '[object Object]'",
+  "context_key": "slack-node",
+  "title": "Slack node channel list not loading",
+  "symptom": "When trying to load the channel list in the Slack node, an error occurs stating there was a problem loading the parameter options from the server.",
+  "applies_when": [
+    "Using Slack node",
+    "Attempting to load channel options"
+  ],
+  "not_this_if": [
+    "Slack node is functioning correctly with other parameters"
+  ],
+  "root_cause": "The error occurs because the Slack app lacks the necessary permissions to read the channel list. Without the correct scopes, the node cannot retrieve the required data from the Slack API.",
+  "fix_steps": [
+    "Open your Slack app settings",
+    "Add the 'metadata.message:read' permission scope",
+    "Save the changes",
+    "Retry loading the channel list in the Slack node"
+  ],
+  "agent_instruction": "Add the 'metadata.message:read' permission scope to your Slack app and save the changes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "slack",
+    "node",
+    "permissions",
+    "channel-list"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.112.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/slack-node-channel-list-not-loading-with-issues-there-was-a-problem-loading-the-parameter-options-from-server-object-object/194115"
+  ]
+}

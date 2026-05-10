@@ -1,0 +1,38 @@
+{
+  "id": "9c62233c989a",
+  "tool": "n8n",
+  "error_signature": "JSON parameter needs to be valid JSON",
+  "context_key": "http-node",
+  "title": "Invalid JSON parameter in HTTP Node",
+  "symptom": "When using the HTTP node with a stringified JSON parameter, the request fails with an error indicating the JSON parameter is invalid. However, manually replacing the string with a valid JSON string works.",
+  "applies_when": [
+    "Using HTTP node",
+    "Stringified JSON parameter is present"
+  ],
+  "not_this_if": [
+    "Using older versions of n8n where the issue does not occur"
+  ],
+  "root_cause": "The issue arises from the way certain characters, like backslashes, are handled in the latest versions of n8n. Stringifying a JSON object with problematic characters can lead to invalid JSON, causing the HTTP request to fail.",
+  "fix_steps": [
+    "Identify and remove problematic characters (e.g., double backslashes) from the JSON string.",
+    "Ensure the JSON string is valid before using it in the HTTP node."
+  ],
+  "agent_instruction": "Clean the JSON string by removing any problematic characters before using it in the HTTP node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-node",
+    "json",
+    "stringify",
+    "api-request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/probable-bug-on-stringify-with-http-node-json-parameter-needs-to-be-valid-json/101973"
+  ]
+}

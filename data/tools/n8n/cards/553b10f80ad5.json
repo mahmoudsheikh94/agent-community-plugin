@@ -1,0 +1,41 @@
+{
+  "id": "553b10f80ad5",
+  "tool": "n8n",
+  "error_signature": "spawn EINVAL",
+  "context_key": "mcp-client-node",
+  "title": "MCP Client node fails with spawn EINVAL error",
+  "symptom": "When executing the MCP Client node, it returns 'spawn EINVAL' error, indicating a failure to connect to the MCP server.",
+  "applies_when": [
+    "Using MCP Client node",
+    "Node version is incompatible (22.13.1)"
+  ],
+  "not_this_if": [
+    "Node version is 18.17.0 or compatible",
+    "Running in a Docker container"
+  ],
+  "root_cause": "The 'spawn EINVAL' error typically occurs when the command being executed is invalid or the environment is not set up correctly. In this case, it seems to be related to the MCP Client node's configuration on Windows, which may require specific parameters to execute properly.",
+  "fix_steps": [
+    "Locate the MCP Client node configuration in your workflow.",
+    "Add the parameter { shell: true } to the execution command.",
+    "Ensure the full path to the MCP executable is specified.",
+    "Save the workflow and try executing it again."
+  ],
+  "agent_instruction": "Update the MCP Client node configuration to include { shell: true } and specify the full path to the executable.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mcp",
+    "spawn-EINVAL",
+    "node-configuration",
+    "windows"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.84.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/mcp-community-node-breaks-on-error-spawn-einval/95394"
+  ]
+}

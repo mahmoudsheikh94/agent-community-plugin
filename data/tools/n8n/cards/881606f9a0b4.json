@@ -1,0 +1,40 @@
+{
+  "id": "881606f9a0b4",
+  "tool": "n8n",
+  "error_signature": "ECONNREFUSED",
+  "context_key": "httpRequest-node",
+  "title": "Connection refused when triggering webhook from HTTP node",
+  "symptom": "When attempting to trigger a webhook from an HTTP node, n8n throws an 'ECONNREFUSED' error. The webhook works when accessed directly via a browser.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "Webhook is triggered successfully from a browser",
+    "Using Execute Sub-workflow node"
+  ],
+  "root_cause": "The ECONNREFUSED error indicates that the HTTP request made by the n8n HTTP node is unable to connect to the specified address and port. This often happens when the service is not running, or the address is incorrect, especially when using localhost in a Docker environment.",
+  "fix_steps": [
+    "Ensure that the n8n service is running and accessible.",
+    "Check the webhook URL in the HTTP node to ensure it points to the correct address.",
+    "If using Docker, replace 'localhost' with the Docker container's network address."
+  ],
+  "agent_instruction": "Verify the n8n service is running and adjust the webhook URL in the HTTP node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "httpRequest",
+    "webhook",
+    "ECONNREFUSED",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.76.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-issue-not-working/77206"
+  ]
+}

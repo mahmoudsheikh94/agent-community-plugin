@@ -1,0 +1,41 @@
+{
+  "id": "09a7c0e6212f",
+  "tool": "n8n",
+  "error_signature": "Authorization failed - please check your credentials",
+  "context_key": "azure-openai-node",
+  "title": "Azure OpenAI authorization failure in self-hosted n8n",
+  "symptom": "When trying to connect to Azure OpenAI in self-hosted n8n, the error 'Authorization failed - please check your credentials' appears. This indicates issues with the subscription key or API endpoint.",
+  "applies_when": [
+    "Using Azure OpenAI node",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "Using n8n cloud",
+    "No error message related to authorization"
+  ],
+  "root_cause": "The error occurs when the provided subscription key is invalid or the API endpoint is incorrect. In self-hosted instances, the configuration may differ from the cloud version, leading to missing fields or incorrect settings.",
+  "fix_steps": [
+    "Update your Docker Compose file to use the latest n8n version.",
+    "Remove all Docker cache and reinstall the n8n instance.",
+    "Verify that the correct API endpoint and subscription key are configured."
+  ],
+  "agent_instruction": "Update your Docker setup to the latest n8n version and ensure correct API configurations.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "azure",
+    "openai",
+    "authorization",
+    "docker",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-find-endpoint-url-for-azure-open-ai-in-self-hosted-n8n/159282"
+  ]
+}

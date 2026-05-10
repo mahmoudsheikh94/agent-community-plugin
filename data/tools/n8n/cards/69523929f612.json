@@ -1,0 +1,39 @@
+{
+  "id": "69523929f612",
+  "tool": "n8n",
+  "error_signature": "400 - type should not be empty, type must be a string",
+  "context_key": "1min.AI API request",
+  "title": "1min.AI API request returns 400 Bad Request",
+  "symptom": "The API request fails with a 400 Bad Request error, indicating that required parameters are missing or incorrectly formatted.",
+  "applies_when": [
+    "Using 1min.AI API",
+    "Sending a request with JSON body"
+  ],
+  "not_this_if": [
+    "All required parameters are correctly included in the request"
+  ],
+  "root_cause": "The API requires specific parameters to be present in the request body. If the 'type' and 'model' parameters are missing or empty, the API will respond with a 400 error indicating that these fields must be provided as strings.",
+  "fix_steps": [
+    "Ensure that both 'type' and 'model' parameters are included in the JSON body of the request.",
+    "Set the 'Content-Type' header to 'application/json'.",
+    "Test the request again to confirm it is successful."
+  ],
+  "agent_instruction": "Include 'type' and 'model' parameters in your API request and set the correct Content-Type header.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "1min.AI",
+    "HTTP request",
+    "API integration",
+    "400 Bad Request"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-needed-issue-with-1min-ai-api-request-in-n8n/77674"
+  ]
+}

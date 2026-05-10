@@ -1,0 +1,42 @@
+{
+  "id": "813a7c4fff5a",
+  "tool": "n8n",
+  "error_signature": "n8n may have run out of memory while running this execution",
+  "context_key": "docker-configuration",
+  "title": "N8N_DEFAULT_BINARY_DATA_MODE not taking effect in Docker",
+  "symptom": "Despite setting N8N_DEFAULT_BINARY_DATA_MODE to filesystem, n8n continues to use RAM, leading to memory exhaustion errors.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Setting N8N_DEFAULT_BINARY_DATA_MODE to filesystem"
+  ],
+  "not_this_if": [
+    "Using a different execution mode or environment"
+  ],
+  "root_cause": "The environment variable N8N_DEFAULT_BINARY_DATA_MODE may not be correctly set in the Docker container, causing n8n to default to using RAM for binary data storage instead of the filesystem.",
+  "fix_steps": [
+    "Ensure N8N_DEFAULT_BINARY_DATA_MODE is set to 'filesystem' in the docker-compose.yml file under the environment section.",
+    "Run 'docker compose down -v' to remove existing volumes.",
+    "Run 'docker compose up -d --build' to restart the container with the new settings.",
+    "Verify the environment variable is set correctly by running 'docker exec -it <container_name> env | grep BINARY'."
+  ],
+  "agent_instruction": "Set N8N_DEFAULT_BINARY_DATA_MODE to 'filesystem' in docker-compose.yml and restart the container.",
+  "safety_notes": [
+    "This process may lead to data loss if volumes are not backed up before removal."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "binary-data",
+    "memory",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.95.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-default-binary-data-mode-filesystem-does-not-take-effect/129553"
+  ]
+}

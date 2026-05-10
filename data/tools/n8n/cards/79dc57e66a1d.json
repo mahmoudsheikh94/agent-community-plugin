@@ -1,0 +1,40 @@
+{
+  "id": "79dc57e66a1d",
+  "tool": "n8n",
+  "error_signature": "IF condition does not match despite true evaluation",
+  "context_key": "if-node",
+  "title": "IF condition fails to match correctly",
+  "symptom": "The IF node indicates a condition is true, but the workflow does not proceed as expected. Users may see a mismatch between the evaluation and the actual behavior.",
+  "applies_when": [
+    "Using IF node",
+    "Condition set to 'contains'"
+  ],
+  "not_this_if": [
+    "Condition is set to 'boolean' or other types"
+  ],
+  "root_cause": "The IF node's 'contains' condition may not behave as intended for certain data types or structures, leading to unexpected results. Switching to a boolean condition can resolve this issue.",
+  "fix_steps": [
+    "Open the IF node settings",
+    "Change the condition from 'contains' to 'boolean'",
+    "Select 'exist' as the boolean option",
+    "Save the workflow and test again"
+  ],
+  "agent_instruction": "Change the IF node condition to 'boolean' and select 'exist'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "if-node",
+    "condition",
+    "boolean",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/if-does-not-match-even-though-it-says-it-matches/267170"
+  ]
+}

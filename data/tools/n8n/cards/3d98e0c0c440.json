@@ -1,0 +1,40 @@
+{
+  "id": "3d98e0c0c440",
+  "tool": "n8n",
+  "error_signature": "the n8n.cloud app did not complete the Google verification process",
+  "context_key": "google-authentication",
+  "title": "Google verification process not completed for n8n.cloud app",
+  "symptom": "When attempting to connect to Google Sheets, the user receives an error stating 'the n8n.cloud app did not complete the Google verification process'.",
+  "applies_when": [
+    "Using n8n Desktop",
+    "Trying to authenticate with Google account"
+  ],
+  "not_this_if": [
+    "The app has been published in Google Cloud console",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The error occurs because the n8n application registered with Google is not publicly available. Google requires applications to be verified and published for general use, or to have specific test users added for authentication.",
+  "fix_steps": [
+    "Go to the Google Cloud console at https://console.cloud.google.com/apis/credentials/consent",
+    "Add the Google user as a 'test' user in the respective section",
+    "Retry the authentication process with the added test user"
+  ],
+  "agent_instruction": "Add the Google user as a test user in the Google Cloud console to allow authentication.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google",
+    "authentication",
+    "n8n.cloud",
+    "verification"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/the-n8n-cloud-app-did-not-complete-the-google-verification-process/18638"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "e241af0ff6a7",
+  "tool": "weweb",
+  "error_signature": "binding a non array value to a div",
+  "context_key": "supabase-auth",
+  "title": "Incorrect binding of user email to text element",
+  "symptom": "The user is unable to display the authenticated user's email on the dashboard due to improper binding of the data source.",
+  "applies_when": [
+    "User is authenticated",
+    "Trying to display user email on a text element"
+  ],
+  "not_this_if": [
+    "User email is displayed correctly",
+    "Using a different data source"
+  ],
+  "root_cause": "The issue arises because the user is attempting to bind a non-array value (the user's email) to a div element that expects an array. This mismatch leads to the failure in displaying the email correctly.",
+  "fix_steps": [
+    "Select the text element where the email should be displayed",
+    "Bind it directly to 'Supabase Auth - ['user'].email'",
+    "Ensure that the binding is not done through a container expecting an array",
+    "Save the changes and refresh the dashboard"
+  ],
+  "agent_instruction": "Bind the text element directly to 'Supabase Auth - ['user'].email'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "supabase",
+    "auth",
+    "user-email",
+    "binding"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/display-auth-user-information/8779"
+  ]
+}

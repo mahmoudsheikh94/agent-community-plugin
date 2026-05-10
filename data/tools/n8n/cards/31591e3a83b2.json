@@ -1,0 +1,39 @@
+{
+  "id": "31591e3a83b2",
+  "tool": "n8n",
+  "error_signature": "No paper text was provided",
+  "context_key": "AI Agent prompt",
+  "title": "AI Agent receives no text input in active mode",
+  "symptom": "When the workflow is active, the AI Agent outputs 'No paper text was provided'. However, it works correctly during testing.",
+  "applies_when": [
+    "Workflow is active",
+    "PDF file is copied to the designated folder"
+  ],
+  "not_this_if": [
+    "Workflow is tested manually without issues"
+  ],
+  "root_cause": "The issue arises because the variable holding the extracted text is an array when the workflow runs in active mode. This causes the AI Agent to receive an incorrect format, leading to the message indicating no text was provided.",
+  "fix_steps": [
+    "Modify the prompt in the AI Agent node to join the array elements into a single string using new lines.",
+    "Update the prompt to explicitly wrap the joined text in quotes."
+  ],
+  "agent_instruction": "Join the array of text into a single string and update the prompt accordingly.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "AI Agent",
+    "prompt",
+    "PDF",
+    "workflow",
+    "data-format"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.92.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-does-not-receive-document-input-from-previous-step-in-active-mode-but-does-when-testing/115820"
+  ]
+}

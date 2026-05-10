@@ -1,0 +1,45 @@
+{
+  "id": "d3887d0e98c4",
+  "tool": "n8n",
+  "error_signature": "502 Bad Gateway",
+  "context_key": "n8n-Docker-Nginx",
+  "title": "502 Bad Gateway after updating n8n on Docker with Nginx",
+  "symptom": "After updating n8n, accessing the UI results in a 502 Bad Gateway error. Restarting the container temporarily resolves the issue, but it returns.",
+  "applies_when": [
+    "Using n8n with Docker and Nginx",
+    "Updated to a newer version of n8n"
+  ],
+  "not_this_if": [
+    "Error occurs without updating n8n",
+    "Using a different hosting setup"
+  ],
+  "root_cause": "The 502 Bad Gateway error typically arises from compatibility issues between the new n8n version and the existing Docker/Nginx setup, or due to insufficient resources allocated to the n8n container after the update.",
+  "fix_steps": [
+    "Check the n8n container logs for specific error messages using 'docker logs n8n --tail 100 -f'.",
+    "Increase memory limits in the docker-compose.yml file to allocate more resources to the n8n container.",
+    "Configure the task runner settings in the docker-compose.yml if using n8n 2.x.",
+    "Update the Nginx configuration to support WebSockets and ensure proper proxy settings.",
+    "Test the Nginx configuration and reload it.",
+    "Check for port conflicts and ensure n8n is running and accessible."
+  ],
+  "agent_instruction": "Follow the steps to check logs, increase memory, configure task runners, and update Nginx settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "docker",
+    "nginx",
+    "502",
+    "bad-gateway",
+    "update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bad-gateway-after-updating-n8n-on-hostinger-vps-help/273349"
+  ]
+}

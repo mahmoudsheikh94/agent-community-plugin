@@ -1,0 +1,41 @@
+{
+  "id": "96a32c05f895",
+  "tool": "n8n",
+  "error_signature": "merge seems to overwrite since both are named 'data'",
+  "context_key": "merge-combine-node",
+  "title": "Binary field name conflict in merge combine",
+  "symptom": "When merging two binary fields named 'data', the merge node overwrites one of them, leading to data loss.",
+  "applies_when": [
+    "Using merge combine node",
+    "Binary fields have the same name"
+  ],
+  "not_this_if": [
+    "Binary fields have unique names",
+    "No merge combine operation is performed"
+  ],
+  "root_cause": "The merge combine node does not handle binary fields with the same name correctly, resulting in one field being overwritten by the other. This occurs when multiple binary data items are processed without unique identifiers.",
+  "fix_steps": [
+    "Identify the binary property name in your workflow",
+    "Use a code node to rename the binary property before merging",
+    "Set the new binary property name to avoid conflicts",
+    "Proceed with the merge combine operation"
+  ],
+  "agent_instruction": "Rename the binary property in a code node before merging to prevent overwriting.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "google-drive",
+    "merge-combine",
+    "binary-data",
+    "data-overwrite"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/changing-binary-field-name-data-google-drive/77753"
+  ]
+}

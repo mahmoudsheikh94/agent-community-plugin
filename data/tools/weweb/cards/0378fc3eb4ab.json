@@ -1,0 +1,39 @@
+{
+  "id": "0378fc3eb4ab",
+  "tool": "weweb",
+  "error_signature": "new variable added instead of updating existing attribute",
+  "context_key": "json-data-binding",
+  "title": "New variable added instead of updating existing JSON attribute",
+  "symptom": "When changing a value in the line item details, a new variable is added to the JSON structure instead of updating the existing attribute.",
+  "applies_when": [
+    "Editing a line item in a repeating container",
+    "The line item is bound to a specific attribute in the JSON"
+  ],
+  "not_this_if": [
+    "The JSON structure is correctly set up to allow updates",
+    "No changes are made to the line item details"
+  ],
+  "root_cause": "The data binding for the line item may not be correctly configured, leading to the creation of new attributes instead of updating the existing ones. This often occurs when the path to the attribute is not correctly specified in the update workflow.",
+  "fix_steps": [
+    "Review the data binding configuration for the line item to ensure it points to the correct attribute.",
+    "Adjust the update workflow to use the correct path to the existing attribute in the JSON."
+  ],
+  "agent_instruction": "Check the data binding and update workflow to ensure they correctly reference the existing JSON attributes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "json",
+    "data-binding",
+    "update",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.825,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/editing-json-data-with-a-nested-list/18658"
+  ]
+}

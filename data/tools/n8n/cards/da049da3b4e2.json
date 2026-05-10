@@ -1,0 +1,40 @@
+{
+  "id": "da049da3b4e2",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'form-data'",
+  "context_key": "http-request-node",
+  "title": "Missing 'form-data' module in HTTP Request Node",
+  "symptom": "When attempting to use the HTTP Request node with binary and JSON data, an error occurs stating that the 'form-data' module cannot be found.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Need to send both binary and JSON data"
+  ],
+  "not_this_if": [
+    "Using the specific YouTube node",
+    "No binary data is required"
+  ],
+  "root_cause": "The 'form-data' module is not included in the default n8n installation. To use it, you need to install the module in your Docker container where n8n is running.",
+  "fix_steps": [
+    "Create a custom Dockerfile with the command to install 'form-data'.",
+    "Modify the docker-compose.yml to build the custom image and allow external modules.",
+    "Run 'docker compose up --no-start && docker compose start' to apply changes."
+  ],
+  "agent_instruction": "Create a custom Dockerfile to install 'form-data' and update your docker-compose.yml accordingly.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "http-request",
+    "form-data",
+    "docker",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.84.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-use-the-form-data-in-http-request-node/93124"
+  ]
+}

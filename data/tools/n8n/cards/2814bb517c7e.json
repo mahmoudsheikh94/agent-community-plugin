@@ -1,0 +1,41 @@
+{
+  "id": "2814bb517c7e",
+  "tool": "n8n",
+  "error_signature": "Google Sheets node updates wrong row",
+  "context_key": "google-sheets-node",
+  "title": "Google Sheets node updates incorrect row",
+  "symptom": "The Google Sheets node sometimes creates a new row or updates the wrong one instead of the intended row matching the order ID.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Updating rows based on order ID"
+  ],
+  "not_this_if": [
+    "Order ID is unique and correctly mapped",
+    "No issues with spreadsheet headers"
+  ],
+  "root_cause": "The Google Sheets node may not correctly identify which row to update if the order ID is not unique or if there are formatting issues such as extra spaces. Without a clear reference, it can lead to incorrect updates.",
+  "fix_steps": [
+    "Add a 'Lookup Row' node before the 'Update Row' node to find the correct row using the order ID.",
+    "Ensure the 'Update Row' node is configured to use the row found by the 'Lookup Row' node.",
+    "Verify that the order ID is set as the unique key in the 'Update Row' node and matches perfectly with no extra spaces.",
+    "Check that your spreadsheet headers are consistent and correctly named."
+  ],
+  "agent_instruction": "Use a 'Lookup Row' node to find the correct row before updating it in Google Sheets.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "update-row",
+    "lookup-row",
+    "order-id"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/why-is-my-google-sheets-node-not-updating-the-correct-row/179007"
+  ]
+}

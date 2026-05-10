@@ -1,0 +1,41 @@
+{
+  "id": "7e2ea55057f5",
+  "tool": "n8n",
+  "error_signature": "You have a connection issue or the server is down.",
+  "context_key": "nginx-reverse-proxy",
+  "title": "WebSocket connection lost due to NGINX misconfiguration",
+  "symptom": "Users see a 'You have a connection issue or the server is down.' message in the UI. This indicates a lost WebSocket connection between the browser and n8n server.",
+  "applies_when": [
+    "Using NGINX as a reverse proxy",
+    "Experiencing WebSocket connection issues"
+  ],
+  "not_this_if": [
+    "No WebSocket connection issues present",
+    "Using a different proxy setup"
+  ],
+  "root_cause": "The error occurs when the WebSocket connection fails to upgrade properly due to misconfigurations in the NGINX reverse proxy settings. This can be caused by missing headers or incorrect proxy settings that prevent WebSocket traffic from being handled correctly.",
+  "fix_steps": [
+    "Update the NGINX configuration to ensure WebSocket traffic is upgraded correctly.",
+    "Add necessary environment variables in the .env file to inform n8n it is behind a proxy.",
+    "Increase memory allocation if running on a low-memory environment.",
+    "Test the WebSocket connection using curl to ensure it is functioning."
+  ],
+  "agent_instruction": "Update your NGINX configuration and environment variables, then test the WebSocket connection.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "websocket",
+    "reverse-proxy",
+    "connection-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/my-ollama-base-url-keeps-resetting-to-http-ollama-11434/91240"
+  ]
+}

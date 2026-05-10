@@ -1,0 +1,40 @@
+{
+  "id": "9db4116c8d63",
+  "tool": "n8n",
+  "error_signature": "form trigger won’t load page",
+  "context_key": "webhook-url-configuration",
+  "title": "Form trigger page not loading due to incorrect webhook URL",
+  "symptom": "The form trigger in the self-hosted n8n instance fails to load, showing a blank page or failing to load entirely.",
+  "applies_when": [
+    "Using self-hosted n8n",
+    "Configured webhook URL incorrectly"
+  ],
+  "not_this_if": [
+    "Using the correct WEBHOOK_URL variable"
+  ],
+  "root_cause": "The issue arises from using the incorrect environment variable for the webhook URL. The documentation specifies 'WEBHOOK_URL', but the user is using 'N8N_WEBHOOK_URL', which may not be recognized by the system.",
+  "fix_steps": [
+    "Open your n8n environment configuration",
+    "Change 'N8N_WEBHOOK_URL' to 'WEBHOOK_URL'",
+    "Restart the n8n instance",
+    "Test the form trigger again"
+  ],
+  "agent_instruction": "Update the webhook URL variable in your n8n configuration and restart the instance.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "form-trigger",
+    "configuration",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.70.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/self-hosted-n8n-form-trigger-won-t-load-page/82240"
+  ]
+}

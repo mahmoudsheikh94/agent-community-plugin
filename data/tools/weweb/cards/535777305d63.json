@@ -1,0 +1,38 @@
+{
+  "id": "535777305d63",
+  "tool": "weweb",
+  "error_signature": "This value must be greater than or equal to 1",
+  "context_key": "stripe-plugin",
+  "title": "Stripe payment intent minimum value error",
+  "symptom": "When attempting to create a payment intent with a price below the minimum threshold, Stripe returns an error stating 'This value must be greater than or equal to 1'.",
+  "applies_when": [
+    "Using the Stripe plugin",
+    "Setting a payment amount below 1 dollar"
+  ],
+  "not_this_if": [
+    "Payment amount is 1 dollar or more"
+  ],
+  "root_cause": "Stripe has a minimum payment amount requirement, which is set to 1 dollar. If the amount specified for the payment intent is below this threshold, the API will reject the request with an error message.",
+  "fix_steps": [
+    "Ensure the payment amount is set to at least 1 dollar",
+    "Update the payment intent creation logic to handle amounts below the minimum"
+  ],
+  "agent_instruction": "Adjust the payment amount to be at least 1 dollar before creating the payment intent.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "stripe",
+    "payment-intent",
+    "minimum-amount",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/stripe-error-cant-solve/5100"
+  ]
+}

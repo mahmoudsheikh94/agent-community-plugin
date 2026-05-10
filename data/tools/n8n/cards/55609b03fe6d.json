@@ -1,0 +1,41 @@
+{
+  "id": "55609b03fe6d",
+  "tool": "n8n",
+  "error_signature": "Cannot connect to Supabase PostgreSQL database",
+  "context_key": "postgres-node",
+  "title": "Connection issue with Supabase PostgreSQL in n8n",
+  "symptom": "Users are unable to connect n8n to their Supabase PostgreSQL database, receiving errors during connection attempts.",
+  "applies_when": [
+    "Using Supabase PostgreSQL",
+    "Configured with connection string or manual settings"
+  ],
+  "not_this_if": [
+    "Connection works with other PostgreSQL databases",
+    "Using default PostgreSQL settings"
+  ],
+  "root_cause": "The connection issues often arise from incorrect configuration details such as the host, port, or credentials. Supabase may also use a non-standard port, which can lead to connection failures if not properly set.",
+  "fix_steps": [
+    "Ensure the host is correctly set to the Supabase provided host without any extra characters.",
+    "Verify that the port is set to the one provided by Supabase, not the default PostgreSQL port.",
+    "Enter the database name, username, and password as specified in the Supabase settings.",
+    "Test the connection to ensure it is successful."
+  ],
+  "agent_instruction": "Double-check the connection settings for the Supabase PostgreSQL database in n8n and ensure all details are correct.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "supabase",
+    "connection",
+    "database"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.81.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-cannot-connect-n8n-postgres-account-to-my-supabase-postgresql-database/86234"
+  ]
+}

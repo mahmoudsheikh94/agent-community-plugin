@@ -1,0 +1,40 @@
+{
+  "id": "b307baa2820c",
+  "tool": "n8n",
+  "error_signature": "Insufficient quota detected",
+  "context_key": "OpenAI API",
+  "title": "OpenAI API insufficient quota error",
+  "symptom": "When executing a workflow that uses the OpenAI API, n8n throws an 'Insufficient quota detected' error, despite having sufficient credits in the account.",
+  "applies_when": [
+    "Using OpenAI API in a workflow",
+    "Account has sufficient credits"
+  ],
+  "not_this_if": [
+    "Error occurs with a different API or service"
+  ],
+  "root_cause": "The error occurs when the OpenAI API does not recognize the credits associated with the API key being used. This can happen if the API key was created before funding the account or if there are issues with the API key itself.",
+  "fix_steps": [
+    "Fund your OpenAI account if not already done",
+    "Create a new API key in the OpenAI dashboard",
+    "Update the OpenAI credentials in n8n with the new API key",
+    "Retry executing the workflow"
+  ],
+  "agent_instruction": "Create a new API key after funding your OpenAI account and update n8n with the new key.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "openai",
+    "api",
+    "quota",
+    "credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.75.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/insufficient-quota-detected-chatgpt/72609"
+  ]
+}

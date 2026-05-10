@@ -1,0 +1,40 @@
+{
+  "id": "96c976a76230",
+  "tool": "n8n",
+  "error_signature": "email content received as a single long line",
+  "context_key": "gmail-node",
+  "title": "Email content not preserving newlines in Telegram",
+  "symptom": "The content forwarded to Telegram from Gmail appears as a single long line, losing paragraph formatting.",
+  "applies_when": [
+    "Using Gmail Trigger and Gmail nodes",
+    "Function node processes email content for Telegram"
+  ],
+  "not_this_if": [
+    "Email body is already formatted correctly in Telegram"
+  ],
+  "root_cause": "The 'Simplify' option in the Gmail nodes causes only a brief snippet of the email to be retrieved, which does not include newlines or full formatting. This results in the loss of paragraph structure when the content is forwarded to Telegram.",
+  "fix_steps": [
+    "Open the settings for both the Gmail Trigger and Gmail nodes",
+    "Disable the 'Simplify' option",
+    "Ensure the Function node processes the full email body correctly",
+    "Test the workflow to confirm newlines are preserved in Telegram"
+  ],
+  "agent_instruction": "Disable the 'Simplify' option in the Gmail nodes to preserve email formatting.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "gmail",
+    "telegram",
+    "newlines",
+    "email-formatting"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/flow-gmail-to-telegram/220921"
+  ]
+}

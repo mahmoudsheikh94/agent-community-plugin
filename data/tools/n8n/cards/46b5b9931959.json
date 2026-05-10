@@ -1,0 +1,40 @@
+{
+  "id": "46b5b9931959",
+  "tool": "n8n",
+  "error_signature": "Request failed with status code 400",
+  "context_key": "youtube-upload-node",
+  "title": "YouTube upload fails with status code 400",
+  "symptom": "When attempting to upload a video to YouTube, n8n returns a 'Request failed with status code 400' error. This indicates a bad request, often due to misconfiguration.",
+  "applies_when": [
+    "Using YouTube upload node",
+    "Video upload parameters are set"
+  ],
+  "not_this_if": [
+    "Error is related to network issues",
+    "Different error codes are returned"
+  ],
+  "root_cause": "The error occurs when the request to upload a video to YouTube is malformed or contains invalid parameters. This can happen if binary data is not properly configured, leading to issues in accessing the video file during the upload process.",
+  "fix_steps": [
+    "Open your .env file or Docker environment configuration.",
+    "Add or update the following lines: N8N_BINARY_DATA_MODE=filesystem, N8N_DEFAULT_BINARY_DATA_MODE=filesystem, N8N_EXECUTIONS_PROCESS=own.",
+    "Restart n8n to apply the changes."
+  ],
+  "agent_instruction": "Update your environment configuration to ensure binary data is stored properly and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "youtube",
+    "upload",
+    "error-400",
+    "binary-data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/in-n8n-workflow-youtube-upload-is-failing/102338"
+  ]
+}

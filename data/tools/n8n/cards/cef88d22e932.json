@@ -1,0 +1,40 @@
+{
+  "id": "cef88d22e932",
+  "tool": "n8n",
+  "error_signature": "Access blocked: authorization error",
+  "context_key": "google-oauth",
+  "title": "Authorization error when setting up Google OAuth",
+  "symptom": "Users encounter an 'Access blocked: authorization error' message when trying to set up Google OAuth for the Gmail trigger in n8n.",
+  "applies_when": [
+    "Using Google OAuth for Gmail trigger",
+    "Configured app in Google Cloud Console"
+  ],
+  "not_this_if": [
+    "No error message is displayed",
+    "Using a different authentication method"
+  ],
+  "root_cause": "The error occurs when the Google OAuth app is not properly configured, particularly if the redirect URI is incorrect or if the app is not verified by Google. This can happen if the app is set to 'Internal' but is being accessed externally, or if required scopes are not properly defined.",
+  "fix_steps": [
+    "Ensure that the redirect URI is set correctly in the Google Cloud Console.",
+    "Check that the app is configured as 'External' if it needs to be accessed by users outside your organization.",
+    "Verify that all required scopes are correctly defined and that the app has been verified by Google if necessary."
+  ],
+  "agent_instruction": "Check and update the Google OAuth app settings, especially the redirect URI and scopes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-oauth",
+    "gmail",
+    "authorization-error",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/access-blocked-authorization-error-when-setting-up-google-oauth/169948"
+  ]
+}

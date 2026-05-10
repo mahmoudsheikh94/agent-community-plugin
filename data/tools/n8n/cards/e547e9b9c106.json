@@ -1,0 +1,37 @@
+{
+  "id": "e547e9b9c106",
+  "tool": "n8n",
+  "error_signature": "No fields - item(s) exist, but they’re empty",
+  "context_key": "code-node",
+  "title": "Empty fields error in code node execution",
+  "symptom": "After testing the code node, the error 'No fields - item(s) exist, but they’re empty' appears, despite visible values when editing the node.",
+  "applies_when": [
+    "Using a code node",
+    "Input data is present but not accessible"
+  ],
+  "not_this_if": [
+    "Node is connected to a trigger and executed properly"
+  ],
+  "root_cause": "The error occurs when the code node is not receiving the expected input data due to misconfiguration or lack of connection to a preceding node that provides the necessary data.",
+  "fix_steps": [
+    "Ensure the code node is connected to a preceding node that outputs data.",
+    "Enable 'Include Other Input Fields' in the code node settings to access previous node data."
+  ],
+  "agent_instruction": "Connect the code node to a preceding node and enable 'Include Other Input Fields'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "input-fields",
+    "data-access"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/no-fields-item-s-exist-but-theyre-empty-error/90093"
+  ]
+}

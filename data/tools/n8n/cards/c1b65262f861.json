@@ -1,0 +1,39 @@
+{
+  "id": "c1b65262f861",
+  "tool": "n8n",
+  "error_signature": "Comparison type expects a dateTime but both fields are a string",
+  "context_key": "IF/FILTER nodes",
+  "title": "Date comparison fails due to string format",
+  "symptom": "When attempting to compare dates in IF or FILTER nodes, an error occurs stating that both fields are strings instead of dateTime objects.",
+  "applies_when": [
+    "Using IF or FILTER nodes",
+    "Comparing dates formatted as strings"
+  ],
+  "not_this_if": [
+    "Dates are already in dateTime format",
+    "Using other comparison types"
+  ],
+  "root_cause": "The error arises because the comparison operation requires dateTime objects, but the provided values are in string format. This happens when using the wrong date parsing function, leading to incorrect data types for comparison.",
+  "fix_steps": [
+    "Use the DateTime.fromFormat() function to convert the formatted date string to a dateTime object.",
+    "Ensure both values being compared are converted to dateTime using the same function."
+  ],
+  "agent_instruction": "Convert both date strings to dateTime objects using DateTime.fromFormat() before comparison.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "date-comparison",
+    "IF-node",
+    "FILTER-node",
+    "Luxon"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-compare-date-format-with-if-filter-nodes/115224"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "36467b4e0b55",
+  "tool": "n8n",
+  "error_signature": "Node has no access to credential",
+  "context_key": "workflow-execution",
+  "title": "Node access issue with credentials in workflow",
+  "symptom": "When running a workflow, n8n fails immediately with 'Node has no access to credential'. The usual execution animation does not appear.",
+  "applies_when": [
+    "Using a workflow with nodes that require credentials",
+    "Credentials are correctly set up in the node"
+  ],
+  "not_this_if": [
+    "The workflow works in a different instance or after re-importing"
+  ],
+  "root_cause": "This error can occur when there is a mismatch or corruption in the workflow's access to the credentials, possibly due to changes in the workflow or the credentials themselves. It may also be related to how n8n manages credential access in the cloud environment.",
+  "fix_steps": [
+    "Export the current workflow",
+    "Import the workflow back into the same instance",
+    "Check if the issue persists after re-importing"
+  ],
+  "agent_instruction": "Try exporting and re-importing the workflow in the same n8n instance to resolve credential access issues.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "credentials",
+    "workflow",
+    "n8n-cloud",
+    "node-access"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/node-has-no-access-to-credential-1-79-1/79397"
+  ]
+}

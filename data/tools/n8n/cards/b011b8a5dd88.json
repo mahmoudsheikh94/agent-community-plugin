@@ -1,0 +1,40 @@
+{
+  "id": "b011b8a5dd88",
+  "tool": "n8n",
+  "error_signature": "This execution failed to be processed too many times",
+  "context_key": "worker-settings",
+  "title": "Execution fails to process due to worker lock duration",
+  "symptom": "Workflows complete successfully, but an error workflow is triggered with a warning about execution processing failures. This occurs multiple times a day.",
+  "applies_when": [
+    "Using longer running workflows",
+    "Error workflow is set up for monitoring"
+  ],
+  "not_this_if": [
+    "Error workflow is not triggered for successful executions"
+  ],
+  "root_cause": "The error occurs because the worker processing the workflow is unable to complete its task within the default lock duration, leading to premature termination and triggering the error workflow despite the main workflow completing successfully.",
+  "fix_steps": [
+    "Access your n8n configuration settings",
+    "Locate the QUEUE_WORKER_LOCK_DURATION setting",
+    "Increase the value from 60 seconds to 120 seconds",
+    "Save the changes and restart n8n"
+  ],
+  "agent_instruction": "Increase the QUEUE_WORKER_LOCK_DURATION to 120 seconds in your n8n configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "worker-settings",
+    "execution",
+    "error-handling",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.82.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/successful-workflows-triggering-the-error-workflow/88285"
+  ]
+}

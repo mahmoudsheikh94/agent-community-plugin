@@ -1,0 +1,38 @@
+{
+  "id": "a63d4dfab4f1",
+  "tool": "weweb",
+  "error_signature": "Text not inserted into rich text editor",
+  "context_key": "rich-text-editor",
+  "title": "Text not inserting into Rich Text Editor",
+  "symptom": "When executing the JavaScript function to insert text, nothing happens in the rich text editor.",
+  "applies_when": [
+    "Using a rich text editor",
+    "Executing JavaScript to insert text"
+  ],
+  "not_this_if": [
+    "Text is inserted correctly after executing the function"
+  ],
+  "root_cause": "The function to insert text into the rich text editor must be called explicitly after defining it. If the function is not executed, the intended action will not occur.",
+  "fix_steps": [
+    "Ensure the function insertTextIntoRichTextInput is defined",
+    "Call the function at the end of your JavaScript code with the desired text"
+  ],
+  "agent_instruction": "Call the insertTextIntoRichTextInput function at the end of your JavaScript code to insert text.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "rich-text-editor",
+    "javascript",
+    "insert-text",
+    "function-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/rich-text-editor-insert-text/9206"
+  ]
+}

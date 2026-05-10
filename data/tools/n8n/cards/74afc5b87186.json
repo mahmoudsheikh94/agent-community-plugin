@@ -1,0 +1,39 @@
+{
+  "id": "74afc5b87186",
+  "tool": "n8n",
+  "error_signature": "Cannot activate workflow - not found",
+  "context_key": "workflow-activation",
+  "title": "Workflow cannot be activated",
+  "symptom": "The user is unable to activate a workflow despite successful execution. An error message indicates that the workflow cannot be activated.",
+  "applies_when": [
+    "Workflow executes successfully",
+    "User attempts to activate the workflow"
+  ],
+  "not_this_if": [
+    "Workflow activation succeeds without errors",
+    "No changes made to the workflow"
+  ],
+  "root_cause": "This issue may arise from how the workflow is saved in n8n's memory. Sometimes, minor changes or duplicating the workflow can refresh its state and resolve activation issues.",
+  "fix_steps": [
+    "Make a small change to the workflow and save it again.",
+    "If that doesn't work, duplicate the workflow, rename it, and save the new version.",
+    "Try to activate the duplicated workflow."
+  ],
+  "agent_instruction": "Make a small change to the workflow and save it, or duplicate and rename it to activate.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "workflow",
+    "activation",
+    "n8n-memory"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cannot-activate-workflow-not-found/226686"
+  ]
+}

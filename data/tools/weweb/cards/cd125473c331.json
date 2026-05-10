@@ -1,0 +1,40 @@
+{
+  "id": "cd125473c331",
+  "tool": "weweb",
+  "error_signature": "Date picker does not show initial value in Date mode",
+  "context_key": "datetime-picker",
+  "title": "Date picker initial value issue in Date mode",
+  "symptom": "The DateTime picker displays 'Select a date' as a placeholder instead of the initial date value when set to Date mode.",
+  "applies_when": [
+    "Using DateTime picker",
+    "Set to Date mode"
+  ],
+  "not_this_if": [
+    "Picker is in Datetime mode",
+    "Initial value is correctly displayed"
+  ],
+  "root_cause": "The DateTime picker is not properly handling the initial value when switched to Date mode, leading to a default placeholder being shown instead of the expected date.",
+  "fix_steps": [
+    "Ensure the input value is formatted correctly as 'YYYY-MM-DD'",
+    "Use the split method to isolate the date part from any timestamp",
+    "Assign the formatted date to the DateTime picker"
+  ],
+  "agent_instruction": "Format the date input to 'YYYY-MM-DD' by splitting the timestamp and assign it to the DateTime picker.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "datetime-picker",
+    "initial-value",
+    "date-mode",
+    "placeholder"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.8,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/datetime-picker-problems-bugs/5104"
+  ]
+}

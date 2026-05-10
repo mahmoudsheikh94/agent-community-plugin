@@ -1,0 +1,40 @@
+{
+  "id": "88920ead9728",
+  "tool": "n8n",
+  "error_signature": "Error fetching options from LinkedIn",
+  "context_key": "linkedin-node",
+  "title": "Error fetching options in LinkedIn node",
+  "symptom": "The LinkedIn node fails to fetch options, displaying an error message. This prevents the node from functioning correctly.",
+  "applies_when": [
+    "Using LinkedIn node",
+    "Organization Support is enabled"
+  ],
+  "not_this_if": [
+    "Organization Support is disabled"
+  ],
+  "root_cause": "The LinkedIn API may not support fetching options when Organization Support is enabled, leading to errors in the node's execution.",
+  "fix_steps": [
+    "Open the LinkedIn node settings",
+    "Recreate the credentials",
+    "Disable the Organization Support option",
+    "Save the changes"
+  ],
+  "agent_instruction": "Recreate the LinkedIn credentials and disable Organization Support in the node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "linkedin",
+    "node",
+    "credentials",
+    "organization-support"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.120.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/linkedin-node-error-fetching-options-from-linkedin/226792"
+  ]
+}

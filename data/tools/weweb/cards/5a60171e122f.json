@@ -1,0 +1,39 @@
+{
+  "id": "5a60171e122f",
+  "tool": "weweb",
+  "error_signature": "No response body will be returned by default",
+  "context_key": "supabase-rest-api",
+  "title": "Missing ID in POST response from Supabase",
+  "symptom": "After a successful POST request to Supabase, the response does not include the newly created record's ID, leading to confusion about accessing it.",
+  "applies_when": [
+    "Using Supabase as the backend",
+    "Making a POST request to create a new record"
+  ],
+  "not_this_if": [
+    "The POST request includes the Prefer header to return the representation"
+  ],
+  "root_cause": "By default, Supabase does not return the created record's ID in the response body after a successful POST request. To receive the full created object, including the ID, a specific HTTP header must be included in the request.",
+  "fix_steps": [
+    "Modify the POST request to include the header 'Prefer: return=representation'.",
+    "Send the modified request to create the new record.",
+    "Check the response to confirm that the newly created record's ID is included."
+  ],
+  "agent_instruction": "Include the Prefer header in your POST request to receive the full created object in the response.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "supabase",
+    "rest-api",
+    "post-request",
+    "prefer-header"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/rest-api-unable-to-get-new-rec-id-from-results-of-post-response/9010"
+  ]
+}

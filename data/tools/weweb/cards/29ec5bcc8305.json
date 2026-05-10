@@ -1,0 +1,38 @@
+{
+  "id": "29ec5bcc8305",
+  "tool": "weweb",
+  "error_signature": "adding a list to a list results in nested arrays",
+  "context_key": "array-manipulation",
+  "title": "Incorrect array merging leads to nested arrays",
+  "symptom": "When attempting to add a list of values to an existing array, the result is a nested array instead of a flat array. This leads to unexpected data structures.",
+  "applies_when": [
+    "Trying to append a list to an existing array",
+    "Using array manipulation functions"
+  ],
+  "not_this_if": [
+    "Appending a single object instead of a list"
+  ],
+  "root_cause": "The issue arises because the operation is treating the list being added as a single entity, resulting in it being nested within the existing array rather than merging the values directly into it.",
+  "fix_steps": [
+    "Use a merge function or method to combine the two arrays",
+    "Ensure that the list being added is flattened into the existing array"
+  ],
+  "agent_instruction": "Merge the new list with the existing array to avoid nesting.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "array",
+    "merge",
+    "list",
+    "data-structure"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/adding-results-on-to-the-end-of-an-array-not-working-as-intended/2908"
+  ]
+}

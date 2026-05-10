@@ -1,0 +1,39 @@
+{
+  "id": "b7cbd9f9c94c",
+  "tool": "n8n",
+  "error_signature": "hyperlink not applied, entire website link shown",
+  "context_key": "google-docs-integration",
+  "title": "Hyperlink not applied in Google Docs",
+  "symptom": "When attempting to hyperlink text in Google Docs, the entire website link is displayed instead of the keyword. This results in a cluttered document with visible URLs.",
+  "applies_when": [
+    "Using Google Docs node",
+    "Attempting to insert hyperlinks"
+  ],
+  "not_this_if": [
+    "Hyperlinks are working in other documents",
+    "No formatting issues in the markdown"
+  ],
+  "root_cause": "The issue arises when the markdown text is not properly parsed into Google Docs API requests, leading to hyperlinks being ignored and the full URL being displayed instead. This can happen if the code handling the conversion does not correctly identify and format the link elements.",
+  "fix_steps": [
+    "Implement a code block that parses markdown text into Google Docs API requests.",
+    "Ensure that the parsing function correctly identifies links and formats them as required by the Google Docs API."
+  ],
+  "agent_instruction": "Add a code block to convert markdown to Google Docs API requests, ensuring links are formatted correctly.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "google-docs",
+    "hyperlink",
+    "markdown",
+    "api-requests"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.97.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/inserting-texts-on-google-doc-and-hyperlink-specific-keywords-from-that-google-doc/131767"
+  ]
+}

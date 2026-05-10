@@ -1,0 +1,41 @@
+{
+  "id": "eebabf947a05",
+  "tool": "n8n",
+  "error_signature": "Chat Trigger workflows fail completely",
+  "context_key": "chat-trigger",
+  "title": "Chat Trigger workflows do not execute",
+  "symptom": "Workflows using a Chat Trigger do not execute at all, with no logs or errors shown in the UI.",
+  "applies_when": [
+    "Using Chat Trigger node",
+    "Self-hosted n8n instance"
+  ],
+  "not_this_if": [
+    "Chat Trigger works in production mode",
+    "No issues with other nodes"
+  ],
+  "root_cause": "The failure of Chat Trigger workflows is linked to the same WebSocket handling issue in the nginx configuration. Without proper connection upgrades, the Chat Trigger cannot communicate effectively with the n8n instance.",
+  "fix_steps": [
+    "Open your nginx configuration file.",
+    "Add or modify the following lines: 'proxy_set_header Connection 'upgrade';' and 'proxy_set_header Upgrade $http_upgrade;'.",
+    "Save the configuration and restart nginx.",
+    "Test the Chat Trigger workflow again to confirm it executes properly."
+  ],
+  "agent_instruction": "Ensure the nginx configuration allows for WebSocket upgrades and restart the service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nginx",
+    "websockets",
+    "chat-trigger",
+    "self-hosted"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-test-mode-chat-trigger-not-working-properly-ui-updates-only-after-refresh/78273"
+  ]
+}

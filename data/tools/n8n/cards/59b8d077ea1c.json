@@ -1,0 +1,39 @@
+{
+  "id": "59b8d077ea1c",
+  "tool": "n8n",
+  "error_signature": "Misconfigured placeholder: 'query'",
+  "context_key": "Perplexity tool node",
+  "title": "Placeholder misconfiguration in Perplexity tool",
+  "symptom": "The Perplexity tool node throws a misconfiguration error when the AI Agent sends nested input instead of a flat string. This prevents the workflow from executing correctly.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Integrating with Perplexity tool"
+  ],
+  "not_this_if": [
+    "AI Agent sends flat string input",
+    "Using a different tool node"
+  ],
+  "root_cause": "The AI Agent sends input wrapped in a nested object, while the Perplexity tool expects a flat string for the placeholder. This mismatch leads to the placeholder not resolving correctly, causing a misconfiguration error.",
+  "fix_steps": [
+    "Set the Placeholder Type in the Perplexity tool node to 'Not Specified' to accept an object.",
+    "Alternatively, adjust the Request Body to reference the nested value directly, like this: { 'role': 'user', 'content': {query} }."
+  ],
+  "agent_instruction": "Adjust the placeholder type or modify the request body to resolve the nested structure issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "perplexity",
+    "AI Agent",
+    "placeholder",
+    "misconfiguration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-sends-nested-input-causing-placeholder-misconfiguration-in-tool-perplexity/105765"
+  ]
+}

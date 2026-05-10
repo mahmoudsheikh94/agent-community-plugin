@@ -1,0 +1,39 @@
+{
+  "id": "e90178a20e7d",
+  "tool": "n8n",
+  "error_signature": "403 - \"Forbidden\"",
+  "context_key": "Forcepoint API",
+  "title": "403 Forbidden error when accessing Forcepoint API",
+  "symptom": "When attempting to access the Forcepoint API from n8n, a 403 Forbidden error is returned, indicating potential credential issues.",
+  "applies_when": [
+    "Using Forcepoint API",
+    "Generating Bearer token in n8n"
+  ],
+  "not_this_if": [
+    "API works in Postman",
+    "Credentials are verified and correct"
+  ],
+  "root_cause": "The 403 Forbidden error typically indicates that the request is not authorized. In this case, it may be due to the Forcepoint API requiring IP whitelisting for access, which is not configured for the IPs used by n8n Cloud.",
+  "fix_steps": [
+    "Contact Forcepoint support to whitelist the IPs used by n8n Cloud.",
+    "Verify that the Bearer token is correctly generated and valid."
+  ],
+  "agent_instruction": "Ensure the n8n Cloud IPs are whitelisted by Forcepoint for API access.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "forcepoint",
+    "403",
+    "api-access",
+    "whitelisting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.9.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-api-forbidden-error-while-it-works-in-postman/269850"
+  ]
+}

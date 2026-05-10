@@ -1,0 +1,39 @@
+{
+  "id": "0812c5841644",
+  "tool": "weweb",
+  "error_signature": "Record ID recYQARb3k8kilhn8 does not exist",
+  "context_key": "airtable-linked-table-input",
+  "title": "Airtable linked record ID does not exist",
+  "symptom": "When attempting to create a record in Airtable with a linked record, an error occurs stating that the record ID does not exist.",
+  "applies_when": [
+    "Creating a record in Airtable",
+    "Using a linked record ID"
+  ],
+  "not_this_if": [
+    "The record ID is valid and exists in Airtable"
+  ],
+  "root_cause": "The error occurs because the provided record ID for the linked record does not match any existing records in the Airtable base. This can happen if the ID is incorrect or if the record has been deleted.",
+  "fix_steps": [
+    "Verify that the record ID you are using is correct and exists in Airtable.",
+    "Ensure that you are sending the record ID as a string in the request.",
+    "Check that you are sending an array of strings to the linked record field."
+  ],
+  "agent_instruction": "Check the record ID and ensure it is sent as a string in an array format.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "airtable",
+    "linked-record",
+    "record-creation",
+    "error-422"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-do-i-insert-value-for-a-airtable-linked-table-input/6097"
+  ]
+}

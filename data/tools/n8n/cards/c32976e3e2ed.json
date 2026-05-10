@@ -1,0 +1,41 @@
+{
+  "id": "c32976e3e2ed",
+  "tool": "n8n",
+  "error_signature": "AI Agent node doesn’t support audio as input",
+  "context_key": "AI Agent node",
+  "title": "AI Agent does not support audio input",
+  "symptom": "When using the AI Agent node with audio input, it returns empty JSON or random values. This indicates that the audio is not being processed correctly.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Providing audio binary as input"
+  ],
+  "not_this_if": [
+    "Using transcription nodes before AI Agent",
+    "Audio input is processed correctly"
+  ],
+  "root_cause": "The AI Agent node is designed to work with text inputs and does not support audio binaries. As a result, any audio input provided is ignored, leading to empty or nonsensical outputs.",
+  "fix_steps": [
+    "Use a custom HTTP Request node to call your LiteLLM STT endpoint with the audio binary.",
+    "Receive the transcribed text from the STT endpoint.",
+    "Pass the resulting text to the AI Agent node for structured data extraction."
+  ],
+  "agent_instruction": "Implement a custom HTTP Request to handle speech-to-text conversion before passing the text to the AI Agent.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "AI Agent",
+    "audio",
+    "transcription",
+    "LiteLLM",
+    "STT"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-unable-to-extract-structured-data-from-audio-url-binary-gemini-3-flash-via-llm-proxy/253438"
+  ]
+}

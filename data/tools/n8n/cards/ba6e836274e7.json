@@ -1,0 +1,41 @@
+{
+  "id": "ba6e836274e7",
+  "tool": "n8n",
+  "error_signature": "AI agent not recognizing the string",
+  "context_key": "webhook-integration",
+  "title": "AI agent string recognition failure due to missing sessionId",
+  "symptom": "The AI agent fails to recognize the string sent from the webhook, leading to integration issues.",
+  "applies_when": [
+    "Using a webhook to send data to an AI agent",
+    "No Chat trigger node is connected"
+  ],
+  "not_this_if": [
+    "Chat trigger node is connected",
+    "Different error occurs"
+  ],
+  "root_cause": "The AI agent requires a `sessionId` to properly process incoming data. Without a connected Chat trigger node, this identifier is not automatically set, causing the agent to not recognize the incoming string.",
+  "fix_steps": [
+    "Add a Set node to your workflow",
+    "Define a sessionId using `$workflow.id`",
+    "Connect the Set node before the webhook node",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Add a Set node to define a sessionId before sending data to the AI agent.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "AI agent",
+    "sessionId",
+    "integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/webhook-configuration-begginer/100130"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "3ee49a8b3102",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'mailparser'",
+  "context_key": "Code node",
+  "title": "Mailparser module not found in Code node",
+  "symptom": "The Code node throws an error stating 'Cannot find module 'mailparser'' when trying to execute the workflow.",
+  "applies_when": [
+    "Using mailparser in a Code node",
+    "Running n8n in a Docker container"
+  ],
+  "not_this_if": [
+    "Mailparser is installed globally and accessible",
+    "Container is not restarted after installation"
+  ],
+  "root_cause": "The error occurs because the mailparser module is not available in the execution context of the Code node. This can happen if the module is not installed in the correct environment or if the container is recreated without the module being installed.",
+  "fix_steps": [
+    "Ensure the mailparser module is installed globally in the n8n Docker container using 'npm install -g mailparser'.",
+    "Set the environment variable 'NODE_FUNCTION_ALLOW_EXTERNAL=mailparser' in your Docker configuration.",
+    "Restart the n8n container to apply the changes."
+  ],
+  "agent_instruction": "Install the mailparser module and set the necessary environment variables in your Docker configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mailparser",
+    "docker",
+    "code-node",
+    "module-not-found"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.103.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-parse-eml-file-in-n8n/157315"
+  ]
+}

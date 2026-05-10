@@ -1,0 +1,38 @@
+{
+  "id": "b3db96d29e96",
+  "tool": "n8n",
+  "error_signature": "The item has no binary field ‘data’ [item 0]",
+  "context_key": "convert-to-csv-node",
+  "title": "Missing binary field 'data' in downstream node",
+  "symptom": "When referencing the CSV output as 'data', the next node throws an error indicating that the item has no binary field 'data'. This prevents the workflow from proceeding.",
+  "applies_when": [
+    "Using Convert to CSV node",
+    "Incorrectly referencing the output in the next node"
+  ],
+  "not_this_if": [
+    "The output is correctly configured and referenced"
+  ],
+  "root_cause": "This error indicates that the downstream node is expecting a binary field named 'data', but it is not present in the output from the Convert to CSV node. This can happen if the output settings are misconfigured.",
+  "fix_steps": [
+    "Verify the output settings of the Convert to CSV node",
+    "Ensure that the output is set to include the binary field 'data'",
+    "Check the configuration of the downstream node to ensure it matches the expected input"
+  ],
+  "agent_instruction": "Verify and correct the output settings in the Convert to CSV node to include the binary field 'data'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "convert-to-csv",
+    "binary-field",
+    "workflow-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.775,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pass-data-csv-from-convert-to-csv-node-to-the-next/169594"
+  ]
+}

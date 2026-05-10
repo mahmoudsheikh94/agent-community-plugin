@@ -1,0 +1,40 @@
+{
+  "id": "3f3ec6edbefc",
+  "tool": "weweb",
+  "error_signature": "checkbox does not toggle on first click",
+  "context_key": "checkbox-component",
+  "title": "Checkbox not toggling on first click due to workflow binding",
+  "symptom": "The checkbox does not change its state when clicked for the first time, but the click event is logged. Subsequent clicks work as expected.",
+  "applies_when": [
+    "Workflow is bound to the checkbox HTML element",
+    "Checkbox is clicked for the first time"
+  ],
+  "not_this_if": [
+    "Workflow is set to 'On change' or 'On Init value change'"
+  ],
+  "root_cause": "Binding the workflow directly to the checkbox HTML element prevents the default toggle behavior on the first click. The event is triggered, but the checkbox state does not update until the second click.",
+  "fix_steps": [
+    "Open the checkbox settings",
+    "Change the workflow binding from the HTML element to the checkbox component",
+    "Select 'On change' or 'On Init value change' for the workflow",
+    "Test the checkbox functionality again"
+  ],
+  "agent_instruction": "Rebind the workflow to the checkbox component instead of the HTML element.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "checkbox",
+    "workflow",
+    "on-click",
+    "component-binding"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/binding-on-click-workflow-on-checkbox-prevents-interrupts-checkbox-from-being-marked-unmarked/9414"
+  ]
+}

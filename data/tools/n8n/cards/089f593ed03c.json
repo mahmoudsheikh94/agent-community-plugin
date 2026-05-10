@@ -1,0 +1,40 @@
+{
+  "id": "089f593ed03c",
+  "tool": "n8n",
+  "error_signature": "This workflow isn’t set to accept any input data",
+  "context_key": "start-trigger",
+  "title": "Start Trigger not accepting input data",
+  "symptom": "The Start Trigger shows an error stating 'This workflow isn’t set to accept any input data' when trying to upload JSON. The workflow cannot be executed due to this issue.",
+  "applies_when": [
+    "Using Start Trigger node",
+    "Input Data Mode is set incorrectly"
+  ],
+  "not_this_if": [
+    "Input Data Mode is already set to 'Define using JSON example'"
+  ],
+  "root_cause": "The Start Trigger node is configured with an incorrect Input Data Mode. It needs to be set to 'Define using JSON example' to properly accept and parse the input data structure from the uploaded JSON.",
+  "fix_steps": [
+    "Open the Start Trigger node settings",
+    "Change the Input Data Mode to 'Define using JSON example'",
+    "Copy and paste the test JSON that reflects the structure of the data you’ll upload",
+    "Save the workflow"
+  ],
+  "agent_instruction": "Change the Input Data Mode in the Start Trigger to 'Define using JSON example' and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "start-trigger",
+    "input-data",
+    "json-upload",
+    "workflow-execution"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.45.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-start-trigger-parameters-inputdatamode-doesnt-load-when-uploading-json/158683"
+  ]
+}

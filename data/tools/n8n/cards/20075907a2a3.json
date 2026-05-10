@@ -1,0 +1,40 @@
+{
+  "id": "20075907a2a3",
+  "tool": "n8n",
+  "error_signature": "IF node always returns true for non-existent file",
+  "context_key": "if-node",
+  "title": "IF node incorrectly evaluates non-existent Google Drive file",
+  "symptom": "The IF node always returns true when checking for a non-existent Google Drive file, leading to incorrect workflow execution.",
+  "applies_when": [
+    "Using Google Drive node",
+    "Using IF node to check file existence"
+  ],
+  "not_this_if": [
+    "File existence check is done correctly with proper conditions"
+  ],
+  "root_cause": "The IF node was incorrectly configured to check for the existence of a file using a direct reference to the ID. When the file does not exist, the ID is undefined, which does not trigger the expected behavior in the IF node.",
+  "fix_steps": [
+    "Open the IF node settings",
+    "Change the condition to use `{{ $json.id || '' }}` with the 'is empty' operator",
+    "Save the workflow",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Update the IF node condition to check if the ID is empty using the provided expression.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-drive",
+    "if-node",
+    "file-existence",
+    "workflow-logic"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-with-if-node-while-searching-for-google-drive-file/119622"
+  ]
+}

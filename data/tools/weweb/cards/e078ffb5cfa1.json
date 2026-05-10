@@ -1,0 +1,39 @@
+{
+  "id": "e078ffb5cfa1",
+  "tool": "weweb",
+  "error_signature": "element not recognizing in overflow container",
+  "context_key": "chat-app",
+  "title": "Element not recognized in overflow container",
+  "symptom": "The JavaScript code fails to recognize the chat box element when trying to scroll to the bottom of the container.",
+  "applies_when": [
+    "Using a chat app with an overflow container",
+    "Trying to scroll to the last element"
+  ],
+  "not_this_if": [
+    "Element is correctly recognized in the DOM"
+  ],
+  "root_cause": "The initial JavaScript code used to select the element may not be compatible with the WeWeb environment, leading to failure in recognizing the element within the overflow container.",
+  "fix_steps": [
+    "Use the WeWeb library to access the document",
+    "Select the correct element by its ID",
+    "Call the scrollIntoView method on the last child element"
+  ],
+  "agent_instruction": "Use the provided code snippet to scroll to the bottom of the chat container.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "chat-app",
+    "scrolling",
+    "overflow",
+    "JavaScript"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-scroll-to-bottom-on-an-overflow/6948"
+  ]
+}

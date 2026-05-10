@@ -1,0 +1,41 @@
+{
+  "id": "5d3de2db312a",
+  "tool": "n8n",
+  "error_signature": "Activation Key has already been used on this instance",
+  "context_key": "n8n-license",
+  "title": "License activation key already used",
+  "symptom": "When attempting to upload the license key for a self-hosted n8n instance, the error 'Activation Key has already been used on this instance' appears.",
+  "applies_when": [
+    "Self-hosted n8n installation",
+    "License key upload attempt"
+  ],
+  "not_this_if": [
+    "License key is valid and not previously used",
+    "Instance is not self-hosted"
+  ],
+  "root_cause": "This error occurs when the n8n instance has already been registered with the provided license key. If the instance is registered, the system prevents reactivation with the same key to avoid misuse.",
+  "fix_steps": [
+    "Check the registration status in Settings → Usage and Plan.",
+    "If it shows [Registered], run the command: `docker exec -u node -it [n8n-container-name] n8n license:clear`.",
+    "Restart the n8n container.",
+    "Re-enter the license key after the container has booted up."
+  ],
+  "agent_instruction": "Clear the existing license and restart the n8n container before re-entering the license key.",
+  "safety_notes": [],
+  "fix_type": "api_call",
+  "tags": [
+    "license",
+    "activation",
+    "self-hosted",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.15.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-with-license-self-hosted/287118"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "e70d371ec191",
+  "tool": "n8n",
+  "error_signature": "tool_use ids were found without tool_result blocks",
+  "context_key": "AI Agent node",
+  "title": "AI Agent tool_use without corresponding tool_result",
+  "symptom": "The AI Agent node throws an error indicating that tool_use IDs are present without corresponding tool_result blocks, preventing the workflow from executing properly.",
+  "applies_when": [
+    "Using AI Agent node",
+    "Workflow includes tool calls"
+  ],
+  "not_this_if": [
+    "No tool calls are present in the workflow"
+  ],
+  "root_cause": "The AI Agent retains memory of previous tool calls, which can lead to errors if the expected tool_result blocks are not present in subsequent messages. This can occur even after modifying or removing tools from the workflow.",
+  "fix_steps": [
+    "Access the Redis database used by n8n",
+    "Clear the memory associated with the AI Agent",
+    "Re-run the workflow"
+  ],
+  "agent_instruction": "Clear the AI Agent's memory in Redis to resolve the tool_use and tool_result mismatch.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "AI Agent",
+    "tool calls",
+    "tool_result",
+    "Redis",
+    "memory management"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.12.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/tools-calls-error-on-ai-agent-node/280816"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "5a71231d84ee",
+  "tool": "n8n",
+  "error_signature": "model list is empty",
+  "context_key": "cometapi-node",
+  "title": "Empty model list in CometAPI integration",
+  "symptom": "When using the CometAPI node in n8n, the model dropdown list is empty, preventing selection of a model.",
+  "applies_when": [
+    "Using CometAPI node",
+    "Credentials are correctly configured"
+  ],
+  "not_this_if": [
+    "Model list is populated in the OpenAI node"
+  ],
+  "root_cause": "The CometAPI node is configured to use the OpenAI model list, which does not populate when using CometAPI credentials. The model selection needs to be done by ID instead of by name.",
+  "fix_steps": [
+    "Change the model selection method to use model ID",
+    "Enter the model ID obtained from CometAPI documentation",
+    "Run the node again to verify it works"
+  ],
+  "agent_instruction": "Switch to using model IDs for the CometAPI node instead of the model list.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "cometapi",
+    "openai",
+    "model-selection",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/integrate-cometapi-in-n8n/122370"
+  ]
+}

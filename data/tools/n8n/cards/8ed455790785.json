@@ -1,0 +1,41 @@
+{
+  "id": "8ed455790785",
+  "tool": "n8n",
+  "error_signature": "queries with parameters return an empty result",
+  "context_key": "postgres-node",
+  "title": "Postgres node returns empty result with parameters",
+  "symptom": "When using parameters in a Postgres query, the result is empty, while hardcoded values work. The query with parameters like $1 or '{{ $json.loja }}' fails to return data.",
+  "applies_when": [
+    "Using Postgres node",
+    "Querying with parameters"
+  ],
+  "not_this_if": [
+    "Query works with hardcoded values",
+    "Using a newer version of the Postgres node"
+  ],
+  "root_cause": "The issue arises from using an outdated version of the Postgres node, which may have bugs affecting parameterized queries. Creating a new node in the latest version resolves the issue.",
+  "fix_steps": [
+    "Delete the existing Postgres node",
+    "Create a new Postgres node using the latest version",
+    "Reconfigure the query with parameters",
+    "Test the query again"
+  ],
+  "agent_instruction": "Delete the old Postgres node and create a new one with the latest version.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgres",
+    "query-parameters",
+    "node-configuration",
+    "version-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-passing-parameters-to-query/175037"
+  ]
+}

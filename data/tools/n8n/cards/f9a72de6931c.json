@@ -1,0 +1,40 @@
+{
+  "id": "f9a72de6931c",
+  "tool": "n8n",
+  "error_signature": "server as 'Offline'",
+  "context_key": "Google Cloud Run",
+  "title": "Workflow editing fails with server reported as 'Offline'",
+  "symptom": "After upgrading to v2.7.4, the n8n editor shows the server as 'Offline', preventing any workflow editing. The browser debug view indicates constant 404 errors when trying to access the /healthz endpoint.",
+  "applies_when": [
+    "Using n8n on Google Cloud Run",
+    "Upgraded to v2.7.4"
+  ],
+  "not_this_if": [
+    "Using a different hosting provider",
+    "Not experiencing 404 errors on /healthz"
+  ],
+  "root_cause": "The upgrade to v2.7.x introduced a breaking change where the default health check endpoint '/healthz' conflicts with reserved paths on Google Cloud Platform, causing the editor to misreport the server status.",
+  "fix_steps": [
+    "Upgrade n8n to version 2.7.5",
+    "Set the environment variable N8N_ENDPOINT_HEALTH to 'health'",
+    "Update any health checks from '/healthz' to '/health'"
+  ],
+  "agent_instruction": "Upgrade to n8n v2.7.5 and configure the health endpoint to resolve the issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-cloud-run",
+    "health-check",
+    "upgrade",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.7.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/psa-v2-7-x-has-bugs-on-gcp-do-not-upgrade/263987"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "a8119ce8c08b",
+  "tool": "n8n",
+  "error_signature": "n8n listening on 127.0.0.1:5678",
+  "context_key": "docker-compose",
+  "title": "n8n not accessible due to local loopback address",
+  "symptom": "When trying to access n8n via the server's IP address, the connection fails with a network error. The service is only reachable from the host machine.",
+  "applies_when": [
+    "Using Docker with Traefik",
+    "n8n configured to listen on 127.0.0.1:5678"
+  ],
+  "not_this_if": [
+    "Accessing n8n from the host machine directly"
+  ],
+  "root_cause": "The n8n service is bound to the local loopback address (127.0.0.1), which means it is not accessible from external IP addresses. This configuration prevents external access to the n8n service.",
+  "fix_steps": [
+    "Change the n8n service port mapping from '127.0.0.1:5678:5678' to '5678:5678' in the docker-compose.yml file.",
+    "Restart the Docker containers using 'docker-compose up -d'.",
+    "Access n8n using 'https://your_ip:5678'."
+  ],
+  "agent_instruction": "Update the n8n port mapping in the docker-compose file to allow external access.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "n8n",
+    "traefik",
+    "port-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/use-another-port-for-installation-with-docker-compose/12391"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "a0a3b4ad33e3",
+  "tool": "n8n",
+  "error_signature": "Need to provide exact ID",
+  "context_key": "google-contacts-node",
+  "title": "Google Contacts GET operation requires exact ID",
+  "symptom": "When attempting to retrieve a contact using the GET operation, n8n returns an error stating 'Need to provide exact ID'. This prevents the retrieval of the specified contact.",
+  "applies_when": [
+    "Using Google Contacts node",
+    "Performing GET operation"
+  ],
+  "not_this_if": [
+    "Using the CREATE operation",
+    "ID is correctly specified"
+  ],
+  "root_cause": "The Google Contacts API requires an exact ID to retrieve a contact. If the ID is not correctly defined or passed in the workflow, the API will return an error indicating that the ID is needed.",
+  "fix_steps": [
+    "Open the Google Contacts node settings",
+    "Ensure the Contact ID field is set to use the correct expression, e.g., `{{ $json.Contact_ID }}`",
+    "Save the workflow",
+    "Try executing the workflow again"
+  ],
+  "agent_instruction": "Set the Contact ID in the Google Contacts node to use the expression `{{ $json.Contact_ID }}`.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-contacts",
+    "get-operation",
+    "contact-id",
+    "api-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/when-i-try-to-get-john-ng-email-it-return-error-msg-need-to-provide-exact-id/90861"
+  ]
+}

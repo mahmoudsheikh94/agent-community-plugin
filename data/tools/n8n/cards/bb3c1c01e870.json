@@ -1,0 +1,38 @@
+{
+  "id": "bb3c1c01e870",
+  "tool": "n8n",
+  "error_signature": "infinite loop in pagination",
+  "context_key": "http-request-node",
+  "title": "Infinite loop in pagination with Agendor API",
+  "symptom": "The HTTP Request node continues to execute indefinitely when trying to paginate through results from the Agendor API.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Pagination mode set to 'Response Contains Next URL'"
+  ],
+  "not_this_if": [
+    "Pagination is correctly configured to stop when no next link exists"
+  ],
+  "root_cause": "The pagination settings are incorrectly configured. The condition to stop pagination is based on the presence of a next link, but the response still contains data even when there is no next link, leading to an infinite loop.",
+  "fix_steps": [
+    "Change the pagination complete condition to check for the absence of the next link using the expression !$response?.body?.links?.next.",
+    "Save the changes and re-run the workflow."
+  ],
+  "agent_instruction": "Update the pagination complete condition to check for the absence of the next link.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "pagination",
+    "agendor",
+    "api"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/pagination-not-working-properly-infinite-loop/222538"
+  ]
+}

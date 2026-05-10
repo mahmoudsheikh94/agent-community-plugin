@@ -1,0 +1,41 @@
+{
+  "id": "256ea32007a7",
+  "tool": "n8n",
+  "error_signature": "Tags not supported in Zoho CRM node",
+  "context_key": "zoho-crm-node",
+  "title": "Zoho CRM node lacks tag support",
+  "symptom": "Users cannot add or update tags when creating or updating records in Zoho CRM using the n8n node.",
+  "applies_when": [
+    "Using Zoho CRM node",
+    "Creating or updating records"
+  ],
+  "not_this_if": [
+    "Tags are not needed for the workflow",
+    "Using a different method to manage tags"
+  ],
+  "root_cause": "The Zoho CRM node in n8n does not implement the API endpoints required to manage tags, which are separate from the standard record operations. This limitation means users must find alternative methods to add or update tags.",
+  "fix_steps": [
+    "Create or update the record using the Zoho CRM node and capture the record ID from its output.",
+    "Add an HTTP Request node configured to call the Zoho API for adding tags using the captured record ID.",
+    "Set the URL to 'https://www.zohoapis.com/crm/v8/{module}/{record_id}/actions/add_tags' for a single record or '.../{module}/actions/add_tags' for multiple records.",
+    "In the JSON Body, supply a 'tags' array with the desired tag names or IDs."
+  ],
+  "agent_instruction": "Use an HTTP Request node to call the Zoho API for adding tags after creating or updating a record.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "zoho-crm",
+    "tags",
+    "http-request",
+    "api-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-do-you-add-or-update-tags-on-zoho-crm-records-via-n8n-workarounds-or-best-practices/162080"
+  ]
+}

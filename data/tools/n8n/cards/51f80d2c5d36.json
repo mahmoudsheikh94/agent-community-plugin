@@ -1,0 +1,41 @@
+{
+  "id": "51f80d2c5d36",
+  "tool": "n8n",
+  "error_signature": "401, API key is requested",
+  "context_key": "ghost-genius-http-request",
+  "title": "API key missing for Ghost Genius HTTP Request",
+  "symptom": "When executing the HTTP request node for Ghost Genius, a '401, API key is requested' error is displayed, indicating that the API key is not being recognized.",
+  "applies_when": [
+    "Using Ghost Genius HTTP Request node",
+    "Configured with Header Auth"
+  ],
+  "not_this_if": [
+    "API key is correctly set in query parameters",
+    "Different authentication method is used"
+  ],
+  "root_cause": "The error occurs because the API key is not being sent correctly in the request. When using Header Auth, the API key must be included in the headers, but it may not be configured properly, leading to the server rejecting the request.",
+  "fix_steps": [
+    "Open the Ghost Genius HTTP Request node settings",
+    "Ensure the API key is set in the headers correctly",
+    "If necessary, switch to using the query parameter for the API key",
+    "Save the workflow and test the request again"
+  ],
+  "agent_instruction": "Check the API key configuration in the Ghost Genius HTTP Request node and ensure it is set correctly in the headers or switch to query parameters.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ghost-genius",
+    "http-request",
+    "api-key",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-need-help-configuring-the-api-key-for-the-ghost-genius-http-request/130151"
+  ]
+}

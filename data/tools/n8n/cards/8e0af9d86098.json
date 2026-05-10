@@ -1,0 +1,41 @@
+{
+  "id": "8e0af9d86098",
+  "tool": "n8n",
+  "error_signature": "Wait node does not trigger at specified time",
+  "context_key": "wait-node",
+  "title": "Wait node fails to trigger at specified time",
+  "symptom": "The wait node does not trigger at the expected date and time when using an expression for the date input.",
+  "applies_when": [
+    "Using a wait node",
+    "Providing a date expression with time"
+  ],
+  "not_this_if": [
+    "Date is hardcoded without expression",
+    "Wait node triggers correctly with other inputs"
+  ],
+  "root_cause": "The expression used for the date and time was incorrectly formatted, leading to the wait node not recognizing the intended trigger time. Specifically, the timezone offset was included in the wrong format.",
+  "fix_steps": [
+    "Edit the wait node's date expression",
+    "Remove the timezone offset from the expression",
+    "Save the workflow",
+    "Test the wait node again"
+  ],
+  "agent_instruction": "Update the wait node's date expression to remove the timezone offset.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "wait-node",
+    "date-time",
+    "expression",
+    "trigger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/date-and-wait-node/95745"
+  ]
+}

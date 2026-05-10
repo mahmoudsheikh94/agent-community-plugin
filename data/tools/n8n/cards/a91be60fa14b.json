@@ -1,0 +1,41 @@
+{
+  "id": "a91be60fa14b",
+  "tool": "n8n",
+  "error_signature": "clipboard access blocked in insecure context",
+  "context_key": "n8n on local server",
+  "title": "Clipboard access blocked due to insecure context",
+  "symptom": "Users are unable to paste nodes in n8n when accessing it over HTTP on a local server. The copy function works, but pasting does not occur.",
+  "applies_when": [
+    "Accessing n8n over HTTP",
+    "Using a modern browser"
+  ],
+  "not_this_if": [
+    "Accessing n8n via HTTPS",
+    "Using localhost"
+  ],
+  "root_cause": "Modern browsers restrict clipboard access to secure contexts, which means that if n8n is accessed over HTTP (not HTTPS), clipboard operations like pasting will be blocked silently by the browser.",
+  "fix_steps": [
+    "Access n8n via 'localhost' if on the same machine.",
+    "Set up a reverse proxy with SSL (e.g., using nginx and Let's Encrypt).",
+    "Alternatively, add your n8n URL to Chrome's insecure origins allowlist by visiting 'chrome://flags/#unsafely-treat-insecure-origin-as-secure'."
+  ],
+  "agent_instruction": "Try accessing n8n via 'localhost' or set up SSL to enable clipboard operations.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "clipboard",
+    "HTTP",
+    "HTTPS",
+    "local-server",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.7.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-copy-and-paste-nodes-on-premises-ubuntu-server/265928"
+  ]
+}

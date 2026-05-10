@@ -1,0 +1,38 @@
+{
+  "id": "05addc2d4c2b",
+  "tool": "n8n",
+  "error_signature": "Cannot read properties of undefined (reading 'map')",
+  "context_key": "json-to-csv conversion",
+  "title": "Error reading properties of undefined during JSON to CSV conversion",
+  "symptom": "The script fails with 'Cannot read properties of undefined (reading 'map')' when trying to process the JSON data.",
+  "applies_when": [
+    "Using JSON data from Twitter API",
+    "Converting JSON to CSV in n8n"
+  ],
+  "not_this_if": [
+    "The JSON data structure is valid and contains expected properties"
+  ],
+  "root_cause": "The error occurs because the code attempts to access properties of an undefined object, likely due to the structure of the input JSON not matching the expected format. Specifically, if 'jsonData.data' is undefined, calling 'map' on it will throw this error.",
+  "fix_steps": [
+    "Ensure that the input JSON structure matches the expected format.",
+    "Add checks to verify that 'jsonData.data' is defined before calling 'map'."
+  ],
+  "agent_instruction": "Check the input JSON structure and add validation for 'jsonData.data'.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "json",
+    "csv",
+    "twitter-api",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.123.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/json-csv-cannot-read-properties-of-undefined-reading-map/234282"
+  ]
+}

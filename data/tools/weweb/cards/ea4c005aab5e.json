@@ -1,0 +1,41 @@
+{
+  "id": "ea4c005aab5e",
+  "tool": "weweb",
+  "error_signature": "verification fails due to CNAME conflict",
+  "context_key": "Paddle.com domain verification",
+  "title": "Domain verification fails with CNAME records",
+  "symptom": "When attempting to verify ownership of a subdomain with Paddle.com, the verification fails due to conflicts with existing CNAME records.",
+  "applies_when": [
+    "Using Paddle.com for payment processing",
+    "Subdomain is configured with CNAME records"
+  ],
+  "not_this_if": [
+    "Using A records instead of CNAME records",
+    "Verification succeeds without DNS changes"
+  ],
+  "root_cause": "Paddle.com requires a TXT record for domain verification, but if a CNAME record is present for the same subdomain, it can prevent the TXT record from being added or recognized, leading to verification failures.",
+  "fix_steps": [
+    "Transfer DNS management to a service like Cloudflare that allows adding TXT records without conflicts.",
+    "In Cloudflare, add the required TXT record for Paddle.com verification.",
+    "Wait for DNS propagation and then attempt the verification again."
+  ],
+  "agent_instruction": "Transfer your DNS management to Cloudflare and add the necessary TXT record for Paddle.com.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "Paddle",
+    "domain-verification",
+    "CNAME",
+    "TXT-record",
+    "Cloudflare"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/uploading-txt-file-to-root-domain-verifying-subdomain-ownership/4916"
+  ]
+}

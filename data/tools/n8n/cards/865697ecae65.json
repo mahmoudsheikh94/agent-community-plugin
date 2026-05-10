@@ -1,0 +1,39 @@
+{
+  "id": "865697ecae65",
+  "tool": "n8n",
+  "error_signature": "This site can’t be reached",
+  "context_key": "hostinger-n8n-setup",
+  "title": "n8n site unreachable due to IP block",
+  "symptom": "When trying to access n8n via the manage app link, the user sees 'This site can’t be reached'. This occurs after a period of successful access.",
+  "applies_when": [
+    "Using Hostinger for self-hosting n8n",
+    "Previously able to access n8n without issues"
+  ],
+  "not_this_if": [
+    "Accessing n8n from a different network or IP address"
+  ],
+  "root_cause": "The user's IP address was blocked by Hostinger, preventing access to the n8n instance. This can happen due to security measures or perceived suspicious activity.",
+  "fix_steps": [
+    "Contact Hostinger support to check if your IP is blocked",
+    "Request unblocking of your IP address",
+    "If prompted, create a new account or reconnect to your original data as needed"
+  ],
+  "agent_instruction": "Check with Hostinger support to ensure your IP is not blocked and follow their instructions to regain access.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "hostinger",
+    "n8n",
+    "IP-block",
+    "self-hosting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/not-able-to-launch-n8n-from-hostinger/175110"
+  ]
+}

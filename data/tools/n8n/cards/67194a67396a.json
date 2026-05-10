@@ -1,0 +1,40 @@
+{
+  "id": "67194a67396a",
+  "tool": "n8n",
+  "error_signature": "Error [TokenInvalid]: An invalid token was provided.",
+  "context_key": "Execute Command node",
+  "title": "Invalid token error when executing NodeJS script",
+  "symptom": "The script crashes with an 'invalid token' error when executed via the Execute Command node. No environment variables are being loaded from the .env file.",
+  "applies_when": [
+    "Using Execute Command node",
+    "Script relies on environment variables from .env"
+  ],
+  "not_this_if": [
+    "Environment variables are correctly set in the execution context"
+  ],
+  "root_cause": "The Execute Command node does not automatically load environment variables from the project's .env file. As a result, when the script attempts to access these variables, it fails, leading to an invalid token error when trying to log in to Discord.",
+  "fix_steps": [
+    "Modify the script to explicitly load the .env file using dotenv with the correct path.",
+    "Use the following code snippet to set the path: dotenv.config({ path: path.join(__dirname, '.env') });",
+    "Ensure the script is executed from the correct directory where the .env file is located."
+  ],
+  "agent_instruction": "Update the script to load the .env file explicitly using the correct path.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "Execute Command",
+    "dotenv",
+    "TokenInvalid",
+    "NodeJS",
+    "Discord"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.78.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/using-project-env-file-in-execute-command/78656"
+  ]
+}

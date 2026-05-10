@@ -1,0 +1,40 @@
+{
+  "id": "1480493c36d0",
+  "tool": "n8n",
+  "error_signature": "data pills unable to differentiate by node",
+  "context_key": "data-pills",
+  "title": "Data pills not differentiating between nodes",
+  "symptom": "When dragging data pills with the same name from different nodes, the expression remains the same, causing confusion.",
+  "applies_when": [
+    "Using multiple nodes with the same output field name",
+    "Dragging data pills from different nodes"
+  ],
+  "not_this_if": [
+    "Data pills have unique names across nodes",
+    "Only one node is used in the workflow"
+  ],
+  "root_cause": "n8n does not automatically differentiate data pills with the same name from different nodes, leading to ambiguity in expressions. This can cause issues when trying to reference specific outputs from multiple nodes.",
+  "fix_steps": [
+    "Identify the node from which you want to reference the data pill",
+    "Modify the expression to include the node name, e.g., {{ $(‘Node Name’).item.json[‘Field Name’] }}",
+    "Save the changes and test the workflow"
+  ],
+  "agent_instruction": "Add the node name to the data pill expression to differentiate between outputs.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "data-pills",
+    "node-references",
+    "workflow-issues",
+    "expression"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/multiple-inputs-with-the-same-name-not-respecting-the-data-pills/79992"
+  ]
+}

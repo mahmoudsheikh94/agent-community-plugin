@@ -1,0 +1,39 @@
+{
+  "id": "47fc089e4853",
+  "tool": "n8n",
+  "error_signature": "window.crypto.randomUUID is not a function",
+  "context_key": "n8n version 1.120.x",
+  "title": "Error with window.crypto.randomUUID in n8n 1.120.x",
+  "symptom": "After updating to n8n version 1.120.x, users encounter the error 'window.crypto.randomUUID is not a function' when adding nodes.",
+  "applies_when": [
+    "Using n8n version 1.120.x",
+    "Adding any nodes"
+  ],
+  "not_this_if": [
+    "Using a version prior to 1.120.x",
+    "The instance is running with HTTPS"
+  ],
+  "root_cause": "The error occurs due to a change in the implementation of the crypto API in n8n version 1.120.x, which affects how random UUIDs are generated. This issue is particularly prevalent in instances running over HTTP rather than HTTPS.",
+  "fix_steps": [
+    "Downgrade n8n to a version prior to 1.120.x",
+    "Ensure the instance is running over HTTPS if possible"
+  ],
+  "agent_instruction": "Downgrade n8n to a version before 1.120.x or switch to HTTPS.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "n8n",
+    "crypto",
+    "randomUUID",
+    "version-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-prompts-with-window-crypto-randomuuid-is-not-a-function-after-i-updated-the-version-to-1-120-3/223583"
+  ]
+}

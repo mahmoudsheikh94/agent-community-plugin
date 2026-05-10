@@ -1,0 +1,38 @@
+{
+  "id": "9ce70bbf321c",
+  "tool": "n8n",
+  "error_signature": "timeout of 10000ms exceeded",
+  "context_key": "http-request-node",
+  "title": "HTTP Request node timeout error",
+  "symptom": "The HTTP Request node fails with 'timeout of 10000ms exceeded' when trying to access certain URLs. This indicates that the request took too long to respond.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Targeting specific URLs that may require longer response times"
+  ],
+  "not_this_if": [
+    "The timeout occurs with fast-responding websites like Google"
+  ],
+  "root_cause": "The 'timeout of 10000ms exceeded' error occurs when the server does not respond within the specified timeout period. This can happen if the server is slow, if there are network issues, or if the server requires a JavaScript engine to render the page, which the HTTP Request node cannot handle.",
+  "fix_steps": [
+    "Increase the timeout setting in the HTTP Request node options.",
+    "Consider using a headless browser tool like Puppeteer or Playwright for pages requiring JavaScript."
+  ],
+  "agent_instruction": "Increase the timeout setting for the HTTP Request node or switch to a headless browser for JavaScript-rendered pages.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "timeout",
+    "axios",
+    "network"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.775,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.95.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-fails-with-getaddrinfo-or-timeout-exceeded-with-urls-that-are-accessible-via-browser/150843"
+  ]
+}

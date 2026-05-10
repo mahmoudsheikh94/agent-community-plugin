@@ -1,0 +1,41 @@
+{
+  "id": "0fa905294d9b",
+  "tool": "n8n",
+  "error_signature": "Unable to connect to Microsoft SQL Server",
+  "context_key": "mssql-node",
+  "title": "Connection failure to Microsoft SQL Server Express",
+  "symptom": "When attempting to connect the Microsoft SQL node to SQL Server Express, the connection fails without a specific error message.",
+  "applies_when": [
+    "Using Microsoft SQL node",
+    "Self-hosted n8n instance in Docker"
+  ],
+  "not_this_if": [
+    "SQL Server Express is not installed",
+    "Using a different database type"
+  ],
+  "root_cause": "The connection issue may arise from Docker's networking configuration, where the n8n instance cannot resolve the local SQL Server Express instance's IP address correctly. Using 'host.docker.internal' allows Docker containers to communicate with the host machine's services.",
+  "fix_steps": [
+    "Open the Microsoft SQL node settings in n8n.",
+    "Change the IP address to 'host.docker.internal'.",
+    "Save the node configuration.",
+    "Test the connection again."
+  ],
+  "agent_instruction": "Change the IP address in the Microsoft SQL node settings to 'host.docker.internal'.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mssql",
+    "docker",
+    "connection",
+    "node-configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-connect-local-ms-sql-express/194806"
+  ]
+}

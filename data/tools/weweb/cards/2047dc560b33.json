@@ -1,0 +1,39 @@
+{
+  "id": "2047dc560b33",
+  "tool": "weweb",
+  "error_signature": "initial value not showing in multi-select",
+  "context_key": "multi-select-component",
+  "title": "Initial value not displaying in multi-select",
+  "symptom": "The multi-select component is not displaying the initial value set for the assigned user ID, despite being bound correctly.",
+  "applies_when": [
+    "Multi-select is bound to a collection",
+    "Initial value is set to the ID of an assigned user"
+  ],
+  "not_this_if": [
+    "Initial value is set incorrectly",
+    "Multi-select is not bound to a valid collection"
+  ],
+  "root_cause": "The initial value for the multi-select may not be correctly referenced. Using the correct object path is crucial for the component to recognize and display the intended value.",
+  "fix_steps": [
+    "Change the initial value to [selectedTask.assignedTo.id]",
+    "Ensure that 'selectedTask' is correctly defined and accessible in the context"
+  ],
+  "agent_instruction": "Update the initial value of the multi-select to [selectedTask.assignedTo.id].",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "multi-select",
+    "initial-value",
+    "binding",
+    "component-configuration"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/multiselect-initial-value-error/8046"
+  ]
+}

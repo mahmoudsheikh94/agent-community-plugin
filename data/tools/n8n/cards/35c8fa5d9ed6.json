@@ -1,0 +1,39 @@
+{
+  "id": "35c8fa5d9ed6",
+  "tool": "n8n",
+  "error_signature": "Connect a trigger to run this node",
+  "context_key": "publish-image-node",
+  "title": "Publish Image node requires a trigger",
+  "symptom": "When testing the 'Publish Image' node, n8n displays 'Connect a trigger to run this node', preventing execution.",
+  "applies_when": [
+    "Using the Publish Image node",
+    "Testing the workflow in manual mode"
+  ],
+  "not_this_if": [
+    "Workflow is triggered by an external event or webhook"
+  ],
+  "root_cause": "The Publish Image node in n8n requires a preceding trigger node to initiate the workflow. Without a trigger, the node cannot execute, even if it receives the correct data from a previous node.",
+  "fix_steps": [
+    "Add a trigger node before the Publish Image node",
+    "Ensure the workflow is properly connected from the trigger to the Publish Image node",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Add a trigger node before the Publish Image node to enable testing.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "publish-image",
+    "trigger",
+    "workflow",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-running-workflow-connect-a-trigger-to-run-this-node/113890"
+  ]
+}

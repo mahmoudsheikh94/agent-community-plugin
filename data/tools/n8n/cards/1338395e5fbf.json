@@ -1,0 +1,40 @@
+{
+  "id": "1338395e5fbf",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "nextcloud-credentials",
+  "title": "Nextcloud connection error due to untrusted domains",
+  "symptom": "When attempting to connect n8n to Nextcloud, the error 'Bad request - please check your parameters' is displayed. This prevents the retrieval of files from Nextcloud.",
+  "applies_when": [
+    "Using Nextcloud node in n8n",
+    "Both n8n and Nextcloud are deployed in Docker"
+  ],
+  "not_this_if": [
+    "Nextcloud is accessible from a browser without issues",
+    "Using a different connection method"
+  ],
+  "root_cause": "Nextcloud requires that the requesting domains are explicitly trusted. If the domain from which n8n is trying to connect is not listed as a trusted domain in Nextcloud's configuration, it will reject the connection, resulting in a bad request error.",
+  "fix_steps": [
+    "Open a terminal and execute the command to set localhost as a trusted domain: docker exec -u www-data -it php occ config:system:set trusted_domains 0 --value=localhost",
+    "Execute the command to add host.docker.internal as a trusted domain: docker exec -u www-data -it php occ config:system:set trusted_domains 1 --value=host.docker.internal",
+    "Optionally, add the container name as a trusted domain if needed."
+  ],
+  "agent_instruction": "Add the necessary trusted domains in Nextcloud's configuration using the provided Docker commands.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nextcloud",
+    "docker",
+    "trusted-domains",
+    "connection-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "11.6.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-cannot-connect-n8n-to-nextcloude-both-deployed-in-docker-desktop/229375"
+  ]
+}

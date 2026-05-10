@@ -1,0 +1,39 @@
+{
+  "id": "5fd3683ccc52",
+  "tool": "weweb",
+  "error_signature": "scroll function not working in modal on data overflow",
+  "context_key": "modal-component",
+  "title": "Scroll function not working in modal with data overflow",
+  "symptom": "Users are unable to scroll within a modal when there is an overflow of data, leading to content being inaccessible.",
+  "applies_when": [
+    "Using the new modal type",
+    "Content exceeds the visible area"
+  ],
+  "not_this_if": [
+    "Height is set to a fixed value that accommodates all content"
+  ],
+  "root_cause": "The new modal implementation may have different default settings for height, which can cause the content div to expand beyond the visible area without a scrollbar appearing. This is often due to the height being set to 'auto' instead of a fixed value.",
+  "fix_steps": [
+    "Open the modal component settings.",
+    "Change the height from 'auto' to 'fixed' or set it to '100vh'.",
+    "Alternatively, use a calculation like 'calc(100vh - 240px)' to adjust the height dynamically."
+  ],
+  "agent_instruction": "Adjust the modal height settings to ensure a scrollbar appears for overflowing content.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "modal",
+    "scroll",
+    "data overflow",
+    "height settings"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/scroll-function-on-data-overflow-not-working-in-the-modal/19121"
+  ]
+}

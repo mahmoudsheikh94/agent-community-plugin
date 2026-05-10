@@ -1,0 +1,40 @@
+{
+  "id": "e5f0852567b5",
+  "tool": "n8n",
+  "error_signature": "executions are queuing up",
+  "context_key": "Docker swarm configuration",
+  "title": "Executions queuing due to command variable conflict",
+  "symptom": "Executions in n8n are entering an eternal queue, and workflows are stopped. The user is unable to run any workflows.",
+  "applies_when": [
+    "Using Docker swarm",
+    "Multiple command variables set incorrectly"
+  ],
+  "not_this_if": [
+    "Single command variable is set correctly",
+    "Using a different execution mode"
+  ],
+  "root_cause": "The issue arises when multiple command variables are set to the same value in the Docker configuration, causing conflicts in how n8n processes executions. This prevents the system from properly handling workflow executions.",
+  "fix_steps": [
+    "Open the Docker configuration file for n8n",
+    "Ensure that each command variable is unique and correctly set",
+    "Restart the n8n service to apply changes"
+  ],
+  "agent_instruction": "Check and correct the command variables in the Docker configuration to ensure they are unique.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "swarm",
+    "execution-queue",
+    "configuration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/executions-entering-eternal-queue/88727"
+  ]
+}

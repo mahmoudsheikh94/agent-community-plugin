@@ -1,0 +1,42 @@
+{
+  "id": "eda4078ec440",
+  "tool": "n8n",
+  "error_signature": "you have reached the maximum of live webhook endpoints",
+  "context_key": "stripe-webhooks",
+  "title": "Maximum live webhook endpoints reached in Stripe",
+  "symptom": "When trying to activate workflows with webhooks, n8n displays 'you have reached the maximum of live webhook endpoints'. This prevents the user from using the workflows.",
+  "applies_when": [
+    "Using Stripe for webhooks",
+    "Have multiple workflows with unique endpoints"
+  ],
+  "not_this_if": [
+    "Using a different service with different webhook limits",
+    "No webhooks are registered"
+  ],
+  "root_cause": "Stripe imposes a limit of 16 live webhook endpoints per account. Even if some endpoints are disabled, they still count towards this limit, causing errors when trying to activate new workflows.",
+  "fix_steps": [
+    "Log in to your Stripe dashboard",
+    "Navigate to Developers → Webhooks",
+    "Review the list of registered endpoints",
+    "Delete any unnecessary endpoints to free up space",
+    "Try activating your workflows again"
+  ],
+  "agent_instruction": "Check and manage your Stripe webhook endpoints to resolve the limit issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "stripe",
+    "webhooks",
+    "endpoint-limit",
+    "automation"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/you-have-reached-the-maximum-of-live-webhook-endpoints/121750"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "94a064b56497",
+  "tool": "n8n",
+  "error_signature": "$binary.data.data becomes undefined",
+  "context_key": "HTTP Request node",
+  "title": "Binary data becomes undefined in HTTP Request node",
+  "symptom": "The HTTP Request node fails to send the PDF, resulting in undefined binary data or an API response indicating 'document has no pages'.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Binary data is expected to be sent as form-data"
+  ],
+  "not_this_if": [
+    "Binary data is correctly passed in other nodes",
+    "The error occurs in a different context"
+  ],
+  "root_cause": "The issue arises when the binary data is not correctly referenced or formatted in the HTTP Request node, often due to syntax errors in expressions or incorrect handling of binary data types.",
+  "fix_steps": [
+    "Remove any leading '=' from the expression referencing the binary data.",
+    "Use the 'Extract from File' node to properly extract the Base64 string if needed.",
+    "Reconfigure the HTTP Request node to ensure it correctly references the binary data."
+  ],
+  "agent_instruction": "Correct the expression syntax and ensure proper extraction of binary data before sending it in the HTTP Request.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "binary-data",
+    "form-data",
+    "pdf",
+    "google-drive"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.8.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/binary-becomes-undefined-after-switch-merge-http-request-cannot-send-pdf-form-data/267839"
+  ]
+}

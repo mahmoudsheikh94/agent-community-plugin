@@ -1,0 +1,40 @@
+{
+  "id": "7cf1ce5eeb6b",
+  "tool": "weweb",
+  "error_signature": "True/False split always goes to True Path",
+  "context_key": "workflow-true-false-split",
+  "title": "True/False split always evaluates to True",
+  "symptom": "The True/False split in workflows consistently directs to the True path regardless of the intended condition.",
+  "applies_when": [
+    "Using a True/False split in workflows",
+    "Formula returns string values"
+  ],
+  "not_this_if": [
+    "Formula returns boolean values directly"
+  ],
+  "root_cause": "The issue arises when the formula used in the True/False split returns string representations of boolean values ('true' or 'false') instead of actual boolean types (true or false). This leads to the split always evaluating to True since non-empty strings are truthy in JavaScript.",
+  "fix_steps": [
+    "Edit the formula used in the True/False split",
+    "Remove the quotes around true and false",
+    "Save the changes",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Update the formula to return boolean values instead of strings.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "workflow",
+    "true-false-split",
+    "boolean",
+    "formula"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/why-true-false-split-always-goes-to-true-path/6412"
+  ]
+}

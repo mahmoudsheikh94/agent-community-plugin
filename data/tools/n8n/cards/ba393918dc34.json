@@ -1,0 +1,40 @@
+{
+  "id": "ba393918dc34",
+  "tool": "n8n",
+  "error_signature": "JSON parameter needs to be valid JSON [item 0]",
+  "context_key": "http-request-node",
+  "title": "Invalid JSON format in HTTP request",
+  "symptom": "When running a workflow with an HTTP request node, the error 'JSON parameter needs to be valid JSON [item 0]' appears. This indicates that the JSON being sent is not properly formatted.",
+  "applies_when": [
+    "Using HTTP request node",
+    "Sending JSON data"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node",
+    "JSON is correctly formatted"
+  ],
+  "root_cause": "The error occurs because the JSON being constructed includes extra quotation marks around expressions, causing it to be invalid. This typically happens when using templating expressions without proper formatting.",
+  "fix_steps": [
+    "Identify the JSON parameters in the HTTP request node that are causing the error.",
+    "Remove any extra quotation marks around expressions and ensure they are wrapped in JSON.stringify() where necessary.",
+    "Test the workflow again to confirm the error is resolved."
+  ],
+  "agent_instruction": "Ensure all expressions in the JSON are properly formatted and wrapped in JSON.stringify() as needed.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "json",
+    "error-handling",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.85.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/error-json-parameter-needs-to-be-valid-json-item-0/97822"
+  ]
+}

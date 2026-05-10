@@ -1,0 +1,40 @@
+{
+  "id": "8f7f70e3a0f4",
+  "tool": "n8n",
+  "error_signature": "invalid input syntax for type bigint",
+  "context_key": "PostgreSQL database",
+  "title": "Invalid input syntax for bigint in PostgreSQL",
+  "symptom": "The workflow fails with an error indicating 'invalid input syntax for type bigint' when trying to insert a value into the database.",
+  "applies_when": [
+    "Using PostgreSQL database",
+    "Inserting data into a field expecting bigint"
+  ],
+  "not_this_if": [
+    "The field accepts string values",
+    "The error occurs in a different context"
+  ],
+  "root_cause": "The error occurs because the PostgreSQL database field is defined to accept only integer values (bigint), but a string value is being passed instead. This mismatch leads to the syntax error.",
+  "fix_steps": [
+    "Identify the field in the database schema that is defined as bigint.",
+    "Ensure that the value being passed to this field is an integer, not a string.",
+    "Modify the workflow to convert the string to an integer if necessary."
+  ],
+  "agent_instruction": "Check the data type of the session_id field and ensure you are passing an integer value.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgresql",
+    "bigint",
+    "data-type",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problems-with-supabase-vector-store-and-posgtres-subnode-for-ai-agen/195298"
+  ]
+}

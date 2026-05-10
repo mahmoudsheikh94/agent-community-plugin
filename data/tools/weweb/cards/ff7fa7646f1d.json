@@ -1,0 +1,38 @@
+{
+  "id": "ff7fa7646f1d",
+  "tool": "weweb",
+  "error_signature": "Unexpected token ‘<’, \"<!doctype \"… is not valid JSON",
+  "context_key": "Mapbox integration",
+  "title": "Invalid JSON error when toggling Mapbox view",
+  "symptom": "When attempting to toggle between satellite and street modes in Mapbox, an error occurs stating 'Unexpected token ‘<’, \"<!doctype \"… is not valid JSON'.",
+  "applies_when": [
+    "Using Mapbox integration",
+    "Attempting to toggle map styles"
+  ],
+  "not_this_if": [
+    "Error does not occur when using valid Mapbox style URLs"
+  ],
+  "root_cause": "This error typically occurs when the response from the server is HTML (often an error page) instead of the expected JSON format. This can happen if the URL for the Mapbox style is incorrect or if there is a network issue.",
+  "fix_steps": [
+    "Ensure the Mapbox style URLs are correct: use 'mapbox://styles/mapbox/streets-v11' for streets and 'mapbox://styles/mapbox/satellite-v9' for satellite.",
+    "Check for any network issues that might be causing an incorrect response."
+  ],
+  "agent_instruction": "Verify and update the Mapbox style URLs in your configuration.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "mapbox",
+    "json-error",
+    "map-styles",
+    "integration"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/mapbox-toggle-satellite-view-as-user/6405"
+  ]
+}

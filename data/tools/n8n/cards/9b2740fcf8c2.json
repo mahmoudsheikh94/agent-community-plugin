@@ -1,0 +1,38 @@
+{
+  "id": "9b2740fcf8c2",
+  "tool": "n8n",
+  "error_signature": "SQLITE_CONSTRAINT: FOREIGN KEY constraint failed",
+  "context_key": "workflow-import",
+  "title": "Workflow import fails due to foreign key constraint",
+  "symptom": "When attempting to import workflows in n8n v1.123.6, an error occurs stating 'SQLITE_CONSTRAINT: FOREIGN KEY constraint failed'. This prevents successful workflow imports.",
+  "applies_when": [
+    "Using n8n version 1.123.6 or later",
+    "Importing workflows from a previous version"
+  ],
+  "not_this_if": [
+    "Using n8n version 2.3.4 or later"
+  ],
+  "root_cause": "The issue arises from changes in how active workflow versions are managed in n8n v1.123.6, leading to foreign key constraints that block the import of workflows that reference non-existent versions.",
+  "fix_steps": [
+    "Upgrade n8n to version 2.3.4 or later",
+    "Retry importing the workflows after the upgrade"
+  ],
+  "agent_instruction": "Upgrade n8n to version 2.3.4 to resolve the workflow import issue.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "workflow-import",
+    "foreign-key-constraint",
+    "n8n-upgrade",
+    "version-issue"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "2.3.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/workflow-import-fails-after-upgrade-to-v1-123-6-due-to-activeversionid-foreign-key-constraints/247512"
+  ]
+}

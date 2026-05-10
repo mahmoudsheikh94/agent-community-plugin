@@ -1,0 +1,38 @@
+{
+  "id": "d21898376fb7",
+  "tool": "n8n",
+  "error_signature": "The service is receiving too many requests from you",
+  "context_key": "HTTP Request node",
+  "title": "HTTP Request fails due to rate limiting",
+  "symptom": "When making multiple HTTP requests in quick succession, n8n throws a 'too many requests' error. This prevents further requests from being processed.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Making multiple requests in a short time"
+  ],
+  "not_this_if": [
+    "Requests are spaced out properly according to API limits"
+  ],
+  "root_cause": "The API being called has a rate limit of 60 requests per minute. If requests exceed this limit, the API responds with a 429 error, indicating that the client is sending too many requests too quickly.",
+  "fix_steps": [
+    "Adjust the batching settings in the HTTP Request node to include a longer interval between requests, such as 10000ms.",
+    "Test the workflow again to ensure it no longer hits the rate limit."
+  ],
+  "agent_instruction": "Increase the batch interval to 10000ms in the HTTP Request node settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "rate-limit",
+    "API",
+    "error-429"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-http-request-failing-due-to-rate-limits-possible-solutions/82750"
+  ]
+}

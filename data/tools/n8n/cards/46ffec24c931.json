@@ -1,0 +1,41 @@
+{
+  "id": "46ffec24c931",
+  "tool": "n8n",
+  "error_signature": "Cannot find module 'nodemailer'",
+  "context_key": "nodemailer-integration",
+  "title": "Nodemailer module not found error",
+  "symptom": "When executing a node that requires the 'nodemailer' module, n8n throws 'Cannot find module 'nodemailer''. This prevents the workflow from executing properly.",
+  "applies_when": [
+    "Using nodemailer in a custom node",
+    "Environment variables are set correctly"
+  ],
+  "not_this_if": [
+    "Nodemailer is installed globally and accessible",
+    "Running in a different environment without proxy settings"
+  ],
+  "root_cause": "The error occurs because the 'nodemailer' module is not found in the expected node_modules directory. This can happen if the module is not installed correctly or if the environment variables needed for the node to access external modules are not set properly.",
+  "fix_steps": [
+    "Ensure that 'nodemailer' is listed in the package.json dependencies.",
+    "Add the required environment variables in the Coolify UI under the compose file settings.",
+    "Restart the n8n service to apply the changes.",
+    "Verify that the environment variables are correctly set by checking with 'printenv' in the terminal."
+  ],
+  "agent_instruction": "Add 'nodemailer' to the environment variables in the Coolify UI and restart the service.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "nodemailer",
+    "coolify",
+    "environment-variables",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/installing-module-nodemailer/197187"
+  ]
+}

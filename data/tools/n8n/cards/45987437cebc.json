@@ -1,0 +1,40 @@
+{
+  "id": "45987437cebc",
+  "tool": "n8n",
+  "error_signature": "error on the append block",
+  "context_key": "notion-api",
+  "title": "Error appending blocks to Notion page",
+  "symptom": "When attempting to append blocks to a Notion page, an error occurs, indicating that the formatting or structure of the blocks is incorrect.",
+  "applies_when": [
+    "Using Notion API to append blocks",
+    "Output exceeds 2k character limit"
+  ],
+  "not_this_if": [
+    "Appending blocks works without errors",
+    "Output is under 2k characters"
+  ],
+  "root_cause": "The error arises from incorrect formatting of the blocks being sent to the Notion API. Specifically, the type and structure of the blocks must adhere to the Notion Block API requirements, and any deviation can lead to failures in appending the blocks.",
+  "fix_steps": [
+    "Ensure each block is formatted correctly according to the Notion Block API specifications.",
+    "Use the correct expressions for block types, such as $json.blocks.blocks[0].type for heading_2.",
+    "Drag and drop the block types in the workflow to auto-populate the correct expressions."
+  ],
+  "agent_instruction": "Verify and correct the block formatting and expressions before appending to the Notion page.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "notion",
+    "api",
+    "append-block",
+    "block-formatting"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/notion-append-block-formatting-using-loop-still-no-luck/225097"
+  ]
+}

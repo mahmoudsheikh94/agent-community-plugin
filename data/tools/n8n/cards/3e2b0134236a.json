@@ -1,0 +1,41 @@
+{
+  "id": "3e2b0134236a",
+  "tool": "n8n",
+  "error_signature": "still get v.1.93.0 instead of 1.94.1",
+  "context_key": "docker-compose",
+  "title": "Docker not pulling the latest n8n image",
+  "symptom": "Despite specifying 'n8nio/n8n:latest', the container runs version 1.93.0 instead of the expected 1.94.1.",
+  "applies_when": [
+    "Using Docker Compose",
+    "Specifying 'n8nio/n8n:latest' in the YAML"
+  ],
+  "not_this_if": [
+    "The latest version is already running",
+    "No legacy images exist"
+  ],
+  "root_cause": "Docker may not pull the latest image if there are existing legacy images or if permissions are not set correctly. This can prevent the update from occurring as expected.",
+  "fix_steps": [
+    "Run 'docker-compose pull' to fetch the latest images.",
+    "Run 'docker-compose up -d --force-recreate' to recreate the containers.",
+    "Check for legacy images using 'docker images' and remove them with 'docker rmi <image_id>'.",
+    "Ensure you have the necessary permissions in Hyper V Admin and security policies."
+  ],
+  "agent_instruction": "Ensure to pull the latest image and remove any legacy images before recreating the container.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "docker",
+    "n8n",
+    "image-pull",
+    "version-update"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-self-hosted-docker-compose-latest-version/122310"
+  ]
+}

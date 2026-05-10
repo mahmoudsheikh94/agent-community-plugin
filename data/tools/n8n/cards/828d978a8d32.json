@@ -1,0 +1,40 @@
+{
+  "id": "828d978a8d32",
+  "tool": "n8n",
+  "error_signature": "Invalid domain: must be a private top-level domain",
+  "context_key": "Google API OAuth2",
+  "title": "Invalid domain for Google API OAuth2 authorization",
+  "symptom": "When setting up Google Drive credentials, an error message appears stating 'Invalid domain: must be a private top-level domain'. This prevents successful configuration.",
+  "applies_when": [
+    "Using Google API OAuth2",
+    "Setting authorization domain in Google Cloud Console"
+  ],
+  "not_this_if": [
+    "Using a valid top-level domain",
+    "Not using Hostinger subdomain"
+  ],
+  "root_cause": "Google's OAuth2 requires a valid top-level domain for authorization. The provided domain includes subdomains, which are not acceptable for this purpose.",
+  "fix_steps": [
+    "Identify the top-level domain from your current subdomain (e.g., hstgr.cloud)",
+    "Enter the top-level domain in the Google Cloud Console's Branding section",
+    "Save the changes and retry the OAuth2 setup"
+  ],
+  "agent_instruction": "Use the top-level domain 'hstgr.cloud' for the authorization domain in Google Cloud Console.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-api",
+    "oauth2",
+    "authorization-domain",
+    "hostinger"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/cant-use-self-hosted-hostinger-url-for-authorization-domain-in-google-api-oauth2/125046"
+  ]
+}

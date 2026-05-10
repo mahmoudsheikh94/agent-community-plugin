@@ -1,0 +1,39 @@
+{
+  "id": "d43d1bcd22e0",
+  "tool": "weweb",
+  "error_signature": "Xano Auth doesn't log in user after account creation",
+  "context_key": "Xano Auth integration",
+  "title": "Xano Auth fails to log in user after account creation",
+  "symptom": "When using Google login, the user account is created in Xano, but the user is not logged in. This results in a failed login experience despite account creation.",
+  "applies_when": [
+    "Using Google login with Xano Auth",
+    "User table is incorrectly named"
+  ],
+  "not_this_if": [
+    "User table is correctly named as 'user'"
+  ],
+  "root_cause": "The Xano Auth integration relies on a specific naming convention for the user table. Renaming the table from 'user' to 'users' disrupts the login process, causing the system to create an account without logging in the user.",
+  "fix_steps": [
+    "Access the Xano database settings",
+    "Rename the 'users' table back to 'user'",
+    "Test the Google login again to ensure it works"
+  ],
+  "agent_instruction": "Rename the Xano user table back to 'user' to restore login functionality.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "xano",
+    "auth",
+    "google-login",
+    "user-table"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/social-login-creates-account-but-doesnt-login-in-the-user-xano-auth/3555"
+  ]
+}

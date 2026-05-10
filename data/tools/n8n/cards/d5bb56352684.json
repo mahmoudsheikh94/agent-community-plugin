@@ -1,0 +1,45 @@
+{
+  "id": "d5bb56352684",
+  "tool": "n8n",
+  "error_signature": "EPROTO error",
+  "context_key": "google-sheets-node",
+  "title": "EPROTO error when executing Google Sheets node",
+  "symptom": "When executing a workflow with the Google Sheets node, an EPROTO error occurs, indicating a TLS/SSL protocol issue.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Running in a Docker environment"
+  ],
+  "not_this_if": [
+    "Error occurs outside of Docker",
+    "Different node or integration is used"
+  ],
+  "root_cause": "The EPROTO error is typically caused by network or certificate issues within the Docker environment, such as incorrect system time, outdated Docker images, or misconfigured DNS settings.",
+  "fix_steps": [
+    "Update n8n to the latest version using 'docker pull n8nio/n8n:latest'.",
+    "Check and sync the system time on the Docker host.",
+    "Add Google's DNS to your docker-compose.yml.",
+    "Set Node.js TLS options cautiously if necessary.",
+    "Verify Google API access from within the container."
+  ],
+  "agent_instruction": "Follow the steps to update n8n and check system time to resolve the EPROTO error.",
+  "safety_notes": [
+    "Using NODE_TLS_REJECT_UNAUTHORIZED=0 disables certificate validation; use only for testing."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "docker",
+    "EPROTO",
+    "TLS",
+    "SSL"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-do-i-fix-this-eproto-error-on-docker/272759"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "1375430d3cf8",
+  "tool": "n8n",
+  "error_signature": "column “history” does not exist",
+  "context_key": "postgresql-node",
+  "title": "PostgreSQL query fails due to incorrect quoting",
+  "symptom": "Executing a query in the PostgreSQL node results in an error stating 'column “history” does not exist'. This occurs when trying to call a function with incorrectly quoted parameters.",
+  "applies_when": [
+    "Using PostgreSQL node",
+    "Executing a query that calls a Supabase function"
+  ],
+  "not_this_if": [
+    "The query executes successfully without errors",
+    "Different error messages are displayed"
+  ],
+  "root_cause": "In PostgreSQL, identifiers (like column names) should be enclosed in double quotes, while string literals should be enclosed in single quotes. Using double quotes for string literals leads to the error indicating that the column does not exist.",
+  "fix_steps": [
+    "Open the PostgreSQL node settings",
+    "Change the double quotes around the string parameter to single quotes",
+    "Save the workflow",
+    "Try executing the query again"
+  ],
+  "agent_instruction": "Replace double quotes with single quotes around string parameters in the query.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "postgresql",
+    "query-execution",
+    "supabase",
+    "function-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgresql-node-execute-query/85578"
+  ]
+}

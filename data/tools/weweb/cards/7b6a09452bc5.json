@@ -1,0 +1,40 @@
+{
+  "id": "7b6a09452bc5",
+  "tool": "weweb",
+  "error_signature": "errors in console in the live app",
+  "context_key": "stripe-confirm-payment",
+  "title": "Errors during Stripe payment confirmation",
+  "symptom": "When attempting to confirm a payment with a page ID in the URL, errors appear in the console of the live app.",
+  "applies_when": [
+    "Using Stripe Elements for payment confirmation",
+    "Page ID is included in the URL"
+  ],
+  "not_this_if": [
+    "No errors occur when using a static return URL"
+  ],
+  "root_cause": "The default confirm payment action in WeWeb does not support dynamic parameters in the return URL, leading to errors when trying to bind the page ID and UUID manually.",
+  "fix_steps": [
+    "Implement the provided JavaScript workaround for confirming payments.",
+    "Ensure the return_url is set correctly based on the environment (editor or published).",
+    "Test the payment confirmation in both the editor and live environments."
+  ],
+  "agent_instruction": "Use the JavaScript workaround to set the return URL dynamically based on the environment.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "stripe",
+    "payment",
+    "return-url",
+    "javascript",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.8,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/stripe-elements-confirm-payment-page-with-id-in-url/5671"
+  ]
+}

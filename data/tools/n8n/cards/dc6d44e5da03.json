@@ -1,0 +1,38 @@
+{
+  "id": "dc6d44e5da03",
+  "tool": "n8n",
+  "error_signature": "redirect_uri_mismatch",
+  "context_key": "google-sheets-oauth2",
+  "title": "Google Sheets OAuth2 redirect URI mismatch error",
+  "symptom": "When attempting to connect to Google Sheets via OAuth2, the user encounters a 'redirect_uri_mismatch' error message.",
+  "applies_when": [
+    "Using Google Sheets node",
+    "Attempting to authenticate via OAuth2"
+  ],
+  "not_this_if": [
+    "Using a self-hosted instance with manual credential entry"
+  ],
+  "root_cause": "The 'redirect_uri_mismatch' error occurs when the redirect URI specified in the Google API console does not match the URI that n8n is using to authenticate. This can happen due to a bug in earlier versions of n8n that has since been resolved.",
+  "fix_steps": [
+    "Upgrade your n8n instance to version 2.1.4 from the admin panel.",
+    "Retry connecting to Google Sheets using OAuth2."
+  ],
+  "agent_instruction": "Upgrade n8n to version 2.1.4 and attempt to connect to Google Sheets again.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-sheets",
+    "oauth2",
+    "redirect-uri",
+    "authentication"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.1.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/google-sheets-oauth2-api/240932"
+  ]
+}

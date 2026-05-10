@@ -1,0 +1,39 @@
+{
+  "id": "0fa5ce3a6753",
+  "tool": "n8n",
+  "error_signature": "end: read ECONNRESET",
+  "context_key": "ftp-node",
+  "title": "ECONNRESET error when connecting to FTP server",
+  "symptom": "When attempting to connect to the FTP server, the node returns 'end: read ECONNRESET'. Additionally, testing the credentials results in a permanent testing loop.",
+  "applies_when": [
+    "Using FTP node",
+    "n8n version is 1.109.2 or higher"
+  ],
+  "not_this_if": [
+    "Using a version of ssh2-sftp-client below 10.0.3"
+  ],
+  "root_cause": "The error occurs due to compatibility issues with the ssh2-sftp-client package versions above 10.0.3 when connecting to certain FTP servers, particularly those running on Windows. This results in connection resets during the handshake process.",
+  "fix_steps": [
+    "Downgrade the ssh2-sftp-client package to version 10.0.3 or below",
+    "Restart the n8n instance to apply the changes",
+    "Test the FTP connection again"
+  ],
+  "agent_instruction": "Downgrade the ssh2-sftp-client package to version 10.0.3 or below and restart n8n.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "ftp",
+    "sftp",
+    "ECONNRESET",
+    "ssh2-sftp-client"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.109.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/issues-connecting-to-ftp/181637"
+  ]
+}

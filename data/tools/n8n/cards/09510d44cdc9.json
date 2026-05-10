@@ -1,0 +1,40 @@
+{
+  "id": "09510d44cdc9",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "whatsapp-trigger-node",
+  "title": "WhatsApp Trigger node invalid parameter error",
+  "symptom": "After updating to n8n 1.88.0, activating a specific workflow results in a 'Bad request - please check your parameters' error related to the WhatsApp Trigger node.",
+  "applies_when": [
+    "Using WhatsApp Trigger node",
+    "n8n version 1.88.0"
+  ],
+  "not_this_if": [
+    "Error occurs in workflows not using the WhatsApp Trigger node"
+  ],
+  "root_cause": "The error occurs because the webhook for the WhatsApp Trigger node requires a secure HTTPS connection. If n8n is running over HTTP, it can lead to invalid parameter errors when trying to activate the workflow.",
+  "fix_steps": [
+    "Ensure that your n8n instance is deployed with HTTPS enabled",
+    "Redeploy n8n to apply the changes",
+    "Try activating the workflow again"
+  ],
+  "agent_instruction": "Deploy n8n with HTTPS enabled and then activate the workflow.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "whatsapp",
+    "trigger-node",
+    "http",
+    "https",
+    "deployment"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.88.0",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/i-cant-activate-my-workflow-after-updating-to-1-88-0/103096"
+  ]
+}

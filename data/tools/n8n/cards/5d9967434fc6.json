@@ -1,0 +1,41 @@
+{
+  "id": "5d9967434fc6",
+  "tool": "n8n",
+  "error_signature": "TimeoutError: The operation was aborted due to timeout",
+  "context_key": "posthog-node",
+  "title": "Timeout error after upgrading n8n",
+  "symptom": "After upgrading n8n, the application hangs and throws a timeout error, preventing workflows from loading.",
+  "applies_when": [
+    "Upgrading from n8n 1.84.3 to 1.97.1 or 1.98.1",
+    "Using posthog-node integration"
+  ],
+  "not_this_if": [
+    "Running a version earlier than 1.87",
+    "No timeout errors are reported"
+  ],
+  "root_cause": "The upgrade to versions 1.87 and later introduced changes that may have caused compatibility issues with the posthog-node integration, leading to websocket timeouts and application hangs.",
+  "fix_steps": [
+    "Downgrade n8n to version 1.84.3 or 1.86.1",
+    "Restart the n8n container",
+    "Verify that workflows load correctly"
+  ],
+  "agent_instruction": "Downgrade n8n to version 1.86.1 or earlier to resolve the timeout issue.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "timeout",
+    "posthog",
+    "upgrade",
+    "n8n",
+    "websocket"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/upgraded-n8n-1-84-3-1-97-1-now-issues-n8n-hangs-after-a-minute-or-two/133322"
+  ]
+}

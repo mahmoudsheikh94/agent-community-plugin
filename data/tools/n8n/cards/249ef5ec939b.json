@@ -1,0 +1,40 @@
+{
+  "id": "249ef5ec939b",
+  "tool": "n8n",
+  "error_signature": "sending the same quote every day",
+  "context_key": "google-sheets-node",
+  "title": "Workflow sends the same quote daily",
+  "symptom": "The workflow runs successfully but sends the same quote every day instead of iterating through a list.",
+  "applies_when": [
+    "Using Google Sheets to store quotes",
+    "Scheduled trigger for daily execution"
+  ],
+  "not_this_if": [
+    "Quotes are being fetched from a different source",
+    "Workflow is not set to run daily"
+  ],
+  "root_cause": "The workflow does not track which quote has been sent previously, leading to the same quote being selected each time it runs. Without a mechanism to update the status of sent quotes, the workflow cannot differentiate between them.",
+  "fix_steps": [
+    "Add a column named 'Status' in your Google Sheets to track sent quotes.",
+    "Configure the Google Sheets node to only retrieve rows where Status is not 'sent'.",
+    "After sending the email, add an Update Row node to mark the quote as 'sent' using the Row ID."
+  ],
+  "agent_instruction": "Implement a status tracking system in your Google Sheets to manage sent quotes.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "google-sheets",
+    "email",
+    "workflow",
+    "quote-sending"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/first-workflow-extracting-pdf-data-via-google-document-ai-http-request/241355"
+  ]
+}

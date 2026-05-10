@@ -1,0 +1,38 @@
+{
+  "id": "c3ad349996ef",
+  "tool": "n8n",
+  "error_signature": "Model output doesn’t fit required format",
+  "context_key": "Ollama model output",
+  "title": "Ollama model output format error",
+  "symptom": "When executing the workflow with the Ollama model, n8n throws an error indicating that the model output doesn’t fit the required format.",
+  "applies_when": [
+    "Using Ollama model",
+    "Expecting structured output"
+  ],
+  "not_this_if": [
+    "Output is correctly formatted as per the JSON schema"
+  ],
+  "root_cause": "The error occurs because the output from the Ollama model does not conform to the expected JSON schema. If the model returns empty values or unexpected types, it will trigger validation errors against the defined schema.",
+  "fix_steps": [
+    "Modify the JSON schema to allow null values for fields that may be empty.",
+    "Update the schema definition to include 'nullable' types where necessary."
+  ],
+  "agent_instruction": "Adjust the JSON schema to accept null values for fields that may not always have data.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Ollama",
+    "JSON schema",
+    "model output",
+    "error handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/replacing-chat-model-from-gpt-to-ollama-produces-wrong-format/92562"
+  ]
+}

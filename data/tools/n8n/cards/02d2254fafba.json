@@ -1,0 +1,41 @@
+{
+  "id": "02d2254fafba",
+  "tool": "n8n",
+  "error_signature": "Request failed with status code 429",
+  "context_key": "replicate-api",
+  "title": "Replicate API request limit exceeded",
+  "symptom": "The HTTP Request Node returns an AxiosError with status code 429, indicating too many requests. Despite this, the API processes requests correctly when checked manually.",
+  "applies_when": [
+    "Using Replicate API",
+    "Balance is below $5"
+  ],
+  "not_this_if": [
+    "Balance is above $5",
+    "Requests are within the normal rate limit"
+  ],
+  "root_cause": "Replicate API enforces a stricter rate limit of 6 requests per minute when the account balance falls below $5. This limit is not clearly communicated through the API response, leading to confusion.",
+  "fix_steps": [
+    "Check your Replicate account balance",
+    "Top up your balance to above $5",
+    "Retry the API requests"
+  ],
+  "agent_instruction": "Ensure your Replicate account balance is above $5 to avoid rate limiting.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "replicate",
+    "http-request",
+    "axios",
+    "error-429",
+    "api-rate-limit"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.119.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-constantly-returns-response-code-429-axioserror/222258"
+  ]
+}

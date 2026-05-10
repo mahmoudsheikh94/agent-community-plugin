@@ -1,0 +1,40 @@
+{
+  "id": "585798edb94c",
+  "tool": "n8n",
+  "error_signature": "100% CPU usage by n8n container",
+  "context_key": "google-nodes",
+  "title": "High CPU usage due to Google nodes",
+  "symptom": "The n8n container suddenly spikes to 100% CPU usage, particularly when running Google Drive nodes. No logs are visible to diagnose the issue.",
+  "applies_when": [
+    "Running n8n in a Docker container",
+    "Using Google nodes"
+  ],
+  "not_this_if": [
+    "CPU usage is normal or below 100%",
+    "No Google nodes are being executed"
+  ],
+  "root_cause": "A common cause for high CPU usage with Google nodes is an authentication error loop, where the node continuously attempts to authenticate without success, leading to excessive resource consumption.",
+  "fix_steps": [
+    "Restart the n8n container to break the loop",
+    "Check the Docker logs for any authentication errors"
+  ],
+  "agent_instruction": "Restart the n8n container and review the logs for authentication issues.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "n8n",
+    "docker",
+    "google-nodes",
+    "cpu-usage",
+    "authentication-error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-container-takes-100-cpu-all-of-a-sudden/178885"
+  ]
+}

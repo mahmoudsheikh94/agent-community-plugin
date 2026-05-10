@@ -1,0 +1,40 @@
+{
+  "id": "102336ac17c4",
+  "tool": "weweb",
+  "error_signature": "redirects back to the sign-in page",
+  "context_key": "Xano roles configuration",
+  "title": "Redirecting to sign-in page due to role configuration",
+  "symptom": "After logging in, the user is redirected to the dashboard but is then sent back to the sign-in page when navigating to other pages.",
+  "applies_when": [
+    "Using Xano for user roles",
+    "Roles are set up as an enum list"
+  ],
+  "not_this_if": [
+    "User has all required roles for access",
+    "Access works in the editor but not on the published site"
+  ],
+  "root_cause": "The configuration requires users to have all roles defined in a user group to access certain pages, which is an AND condition. If a user does not meet this requirement, they will be redirected to the sign-in page.",
+  "fix_steps": [
+    "Create a separate user group for each role in Xano",
+    "Assign the appropriate user group to each page with an OR condition",
+    "Test the access for users with different roles"
+  ],
+  "agent_instruction": "Create individual user groups for each role and adjust page access conditions accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "Xano",
+    "roles",
+    "user groups",
+    "access control"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/xano-roles-and-private-pages/2564"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "069983fd3cd3",
+  "tool": "n8n",
+  "error_signature": "400 Bad Request",
+  "context_key": "http-request-node",
+  "title": "HTTP Request Node fails with 400 Bad Request",
+  "symptom": "The HTTP Request node in n8n fails with a 400 Bad Request error while a similar cURL command succeeds with a 200 OK status.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Sending a POST request with JSON body"
+  ],
+  "not_this_if": [
+    "The request works in cURL or PowerShell",
+    "The body is correctly formatted"
+  ],
+  "root_cause": "The error occurs because the JavaScript code used to construct the request body is placed directly in the HTTP Request node's body field, which leads to improper formatting. The n8n HTTP Request node expects a properly formatted JSON string, and using raw JavaScript can cause issues in how the body is interpreted.",
+  "fix_steps": [
+    "Move the JavaScript code that constructs the request body to a separate Code node.",
+    "Return the constructed JSON string from the Code node.",
+    "Use the output of the Code node as the body for the HTTP Request node."
+  ],
+  "agent_instruction": "Construct the request body in a separate Code node and pass it to the HTTP Request node.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "http-request",
+    "400-error",
+    "json",
+    "api-call"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.106.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-fails-with-400-error-while-curl-powershell-succeed/180261"
+  ]
+}

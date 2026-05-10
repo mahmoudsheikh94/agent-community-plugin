@@ -1,0 +1,39 @@
+{
+  "id": "e99ce20f974a",
+  "tool": "n8n",
+  "error_signature": "Pass Programs node does not receive all data",
+  "context_key": "Pass Programs node",
+  "title": "Data loss in Pass Programs node from Extract Details",
+  "symptom": "The Pass Programs node only outputs 326 items instead of the expected 7,621 items from the Extract Details node.",
+  "applies_when": [
+    "Using a loop in the workflow",
+    "Data is being passed from Extract Details to Pass Programs"
+  ],
+  "not_this_if": [
+    "Data is correctly passed in other workflows",
+    "No loop is involved"
+  ],
+  "root_cause": "The Pass Programs node clears its internal buffer at the start of each loop iteration, which causes it to only retain the last output from the loop instead of all outputs from the Extract Details node.",
+  "fix_steps": [
+    "Modify the workflow to ensure data is accumulated across iterations",
+    "Use a method to merge or collect all outputs before passing to the Pass Programs node"
+  ],
+  "agent_instruction": "Adjust the workflow to accumulate data across loop iterations before passing it to the Pass Programs node.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "loop",
+    "data-passing",
+    "workflow",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-in-passing-data-of-previous-node-to-the-current-node/239648"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "c45ffcb01afa",
+  "tool": "n8n",
+  "error_signature": "Invalid input for 'multiselect1' [item 0]",
+  "context_key": "airtable-create-record",
+  "title": "Invalid input for Airtable multi-select column",
+  "symptom": "When attempting to create a record in Airtable with a multi-select column, an error is returned stating that the input is invalid because it expects an array but receives a string.",
+  "applies_when": [
+    "Using Airtable create record tool",
+    "Mapping multi-select columns"
+  ],
+  "not_this_if": [
+    "Input is correctly formatted as an array",
+    "Error occurs in a different context"
+  ],
+  "root_cause": "The Airtable create record tool requires multi-select fields to be provided as arrays. If a string is passed instead, it results in an error indicating that the input type does not match the expected schema.",
+  "fix_steps": [
+    "Modify the expression for the multi-select field to ensure it is enclosed in square brackets.",
+    "For example, change the input from 'multiselect1': 'yyyyy' to 'multiselect1': ['yyyyy'].",
+    "Save the changes and re-run the workflow."
+  ],
+  "agent_instruction": "Ensure that the multi-select field input is formatted as an array by enclosing it in square brackets.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "airtable",
+    "multi-select",
+    "create-record",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ai-agent-with-airtable-create-record-tool-not-working-with-multi-select-columns/101445"
+  ]
+}

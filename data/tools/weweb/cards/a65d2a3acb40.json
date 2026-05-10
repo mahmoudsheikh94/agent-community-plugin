@@ -1,0 +1,40 @@
+{
+  "id": "a65d2a3acb40",
+  "tool": "weweb",
+  "error_signature": "data is not refreshing directly",
+  "context_key": "dynamic links",
+  "title": "Dynamic links not refreshing data in preview mode",
+  "symptom": "When navigating to a detail page via a dynamic link, the data does not refresh automatically. The correct data only appears after manually refreshing the data collections.",
+  "applies_when": [
+    "Using dynamic links to navigate between pages",
+    "In preview mode"
+  ],
+  "not_this_if": [
+    "Data refreshes correctly in production mode"
+  ],
+  "root_cause": "The 'preserve on navigation' setting retains the previous state of the data when navigating to a new page, preventing the automatic refresh of data collections on the detail page.",
+  "fix_steps": [
+    "Open the navigation settings for the project",
+    "Locate the 'preserve on navigation' option",
+    "Disable the 'preserve on navigation' setting",
+    "Test the dynamic link again in preview mode"
+  ],
+  "agent_instruction": "Disable the 'preserve on navigation' setting in the project navigation settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "dynamic-links",
+    "data-refresh",
+    "preview-mode",
+    "navigation-settings"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/testing-dynamic-links-in-oreview-mode/1965"
+  ]
+}

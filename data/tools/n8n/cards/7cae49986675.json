@@ -1,0 +1,40 @@
+{
+  "id": "7cae49986675",
+  "tool": "n8n",
+  "error_signature": "getaddrinfo EAI_AGAIN",
+  "context_key": "http-request-node",
+  "title": "getaddrinfo EAI_AGAIN error in HTTP Request node",
+  "symptom": "The HTTP Request node fails with 'getaddrinfo EAI_AGAIN' when trying to access certain corporate websites. This indicates a DNS resolution issue.",
+  "applies_when": [
+    "Using HTTP Request node",
+    "Targeting specific corporate websites"
+  ],
+  "not_this_if": [
+    "The error occurs with publicly accessible websites like Google"
+  ],
+  "root_cause": "The 'getaddrinfo EAI_AGAIN' error typically occurs when the DNS resolution fails, which can happen due to network issues, incorrect DNS settings, or the target server being unreachable. This can also be influenced by firewall settings or corporate network restrictions.",
+  "fix_steps": [
+    "Check the network connection and DNS settings.",
+    "Ensure that the target website is reachable from the server running n8n.",
+    "Consider using a different DNS server if issues persist."
+  ],
+  "agent_instruction": "Verify network connectivity and DNS settings for the HTTP Request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "getaddrinfo",
+    "EAI_AGAIN",
+    "dns",
+    "network"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.775,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.95.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-request-node-fails-with-getaddrinfo-or-timeout-exceeded-with-urls-that-are-accessible-via-browser/150843"
+  ]
+}

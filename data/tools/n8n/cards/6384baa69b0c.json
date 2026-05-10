@@ -1,0 +1,38 @@
+{
+  "id": "6384baa69b0c",
+  "tool": "n8n",
+  "error_signature": "$json.text is null",
+  "context_key": "basic-llm-chain-node",
+  "title": "Basic LLM Chain output format change causes NULL response",
+  "symptom": "Users see that the output from the Basic LLM Chain node is returning NULL for $json.text due to a change in the output format.",
+  "applies_when": [
+    "Using Basic LLM Chain node",
+    "n8n version prior to 1.85.3"
+  ],
+  "not_this_if": [
+    "Using n8n version 1.85.3 or later"
+  ],
+  "root_cause": "In version 1.85.3, a bug was introduced where the output of the Basic LLM Chain node was wrapped in an additional 'response' object, which broke compatibility with workflows expecting the original output structure. This caused the expected data to be inaccessible, resulting in NULL values.",
+  "fix_steps": [
+    "Upgrade n8n to version 1.85.3 or later",
+    "Verify the output format of the Basic LLM Chain node to ensure it matches the expected structure"
+  ],
+  "agent_instruction": "Upgrade n8n to version 1.85.3 to resolve the output format issue.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "basic-llm-chain",
+    "output-format",
+    "bug-fix",
+    "n8n-upgrade"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.83.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/llm-basic-chain-output-format/90943"
+  ]
+}

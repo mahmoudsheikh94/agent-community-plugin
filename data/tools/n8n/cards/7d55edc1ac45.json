@@ -1,0 +1,41 @@
+{
+  "id": "7d55edc1ac45",
+  "tool": "n8n",
+  "error_signature": "you must specify a unique_id header and value",
+  "context_key": "http-request-node",
+  "title": "Missing unique_id header in HTTP request",
+  "symptom": "When executing the HTTP request node, an error message states 'you must specify a unique_id header and value'.",
+  "applies_when": [
+    "Using HTTP request node",
+    "Executing the node with required parameters"
+  ],
+  "not_this_if": [
+    "The unique_id header is already set correctly"
+  ],
+  "root_cause": "The HTTP request node requires a specific header named 'unique_id' to be included in the request. If this header is missing or incorrectly named, the request will fail with the specified error message.",
+  "fix_steps": [
+    "Open the HTTP request node settings",
+    "Locate the 'Name' field for headers",
+    "Enter 'unique_id' as the header name",
+    "Provide the appropriate value for the unique_id",
+    "Save the workflow and re-execute the node"
+  ],
+  "agent_instruction": "Ensure the 'unique_id' header is correctly set in the HTTP request node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-request",
+    "unique_id",
+    "header",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/problem-executing-the-http-request-in-lesson-1-getting-data-from-the-data-warehouse/279543"
+  ]
+}

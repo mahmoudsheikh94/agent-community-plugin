@@ -1,0 +1,42 @@
+{
+  "id": "1bc59589dabf",
+  "tool": "weweb",
+  "error_signature": "search bar fetches collection too frequently",
+  "context_key": "search bar",
+  "title": "Search bar fetches collection too frequently",
+  "symptom": "The search bar fetches data from the API even when no input is typed, leading to glitches and incorrect search results.",
+  "applies_when": [
+    "Using a search bar with an 'on change' workflow",
+    "Fetching data from a REST API"
+  ],
+  "not_this_if": [
+    "Debounce feature is already implemented",
+    "Search bar is not connected to an API"
+  ],
+  "root_cause": "The search bar's default behavior may trigger API calls too frequently without proper debouncing, causing performance issues and incorrect data fetching.",
+  "fix_steps": [
+    "Create a search variable to hold the search input value.",
+    "Set up a workflow with an 'on change' trigger on the search bar.",
+    "Update the search variable with the current value of the search bar.",
+    "Refetch the collection using the search variable.",
+    "Customize the debounce time in the search settings to optimize performance."
+  ],
+  "agent_instruction": "Implement a search variable and adjust the debounce settings for the search bar.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "search-bar",
+    "REST-API",
+    "debounce",
+    "workflow"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/rest-api-searching-glitches/508"
+  ]
+}

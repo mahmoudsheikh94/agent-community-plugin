@@ -1,0 +1,41 @@
+{
+  "id": "18fe6f4de170",
+  "tool": "n8n",
+  "error_signature": "could not parse the JSON body",
+  "context_key": "gpt-node",
+  "title": "GPT node JSON parsing error in production",
+  "symptom": "In production mode, the GPT node throws an error stating 'could not parse the JSON body'. This issue does not occur in test workflows.",
+  "applies_when": [
+    "Using GPT node",
+    "Running in production mode"
+  ],
+  "not_this_if": [
+    "Error occurs in test workflows",
+    "Worker instance is up to date"
+  ],
+  "root_cause": "The error arises when there is a version mismatch between the main n8n instance and the worker instance. If the worker instance is outdated, it may not support the JSON structure expected by the GPT node, leading to parsing errors.",
+  "fix_steps": [
+    "Check the version of the worker instance",
+    "Update the worker instance to match the main n8n instance",
+    "Redeploy the worker instance",
+    "Test the workflow again in production"
+  ],
+  "agent_instruction": "Ensure the worker instance is updated to the latest version and redeploy it.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "gpt",
+    "json-parsing",
+    "production",
+    "worker-instance"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.77.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/test-workflow-works-fine-production-causes-gpt-node-error-could-not-parse-the-json-body/80539"
+  ]
+}

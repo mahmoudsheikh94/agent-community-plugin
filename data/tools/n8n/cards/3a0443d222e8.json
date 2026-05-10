@@ -1,0 +1,40 @@
+{
+  "id": "3a0443d222e8",
+  "tool": "n8n",
+  "error_signature": "only take ONE attachment",
+  "context_key": "httpRequest-node",
+  "title": "Unable to retrieve multiple attachments from NocoDB",
+  "symptom": "When attempting to fetch attachments from NocoDB, only one attachment is retrieved instead of all available attachments.",
+  "applies_when": [
+    "Using HTTP node to fetch attachments",
+    "Multiple attachments exist in the NocoDB item"
+  ],
+  "not_this_if": [
+    "Only one attachment is present in the NocoDB item"
+  ],
+  "root_cause": "The HTTP node processes the data as a single item, which results in only one attachment being fetched. n8n needs to loop through each attachment to retrieve them all, which requires a split operation before the HTTP request.",
+  "fix_steps": [
+    "Add a 'SplitInBatches' node before the HTTP node",
+    "Configure the 'SplitInBatches' node to split the attachments array",
+    "Connect the output of the 'SplitInBatches' node to the HTTP node"
+  ],
+  "agent_instruction": "Insert a 'SplitInBatches' node before the HTTP node to handle multiple attachments.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "n8n",
+    "NocoDB",
+    "HTTP",
+    "attachments",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/take-all-attachments-from-nocodb-in-n8n/120851"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "d6179067d031",
+  "tool": "weweb",
+  "error_signature": "cannot save a single object list as an object variable",
+  "context_key": "API variable handling",
+  "title": "Incompatible variable type when saving API response",
+  "symptom": "The workflow indicates success for variable updates, but only the first variable is updated. The second variable remains unchanged despite the workflow reporting success.",
+  "applies_when": [
+    "Using API calls to fetch data",
+    "Expecting a single object but receiving an array"
+  ],
+  "not_this_if": [
+    "The API response is correctly formatted as a single object"
+  ],
+  "root_cause": "The issue arises when an API call returns a list containing a single object, which cannot be saved as an object variable in WeWeb. The workflow does not flag this as an error during testing, leading to confusion.",
+  "fix_steps": [
+    "Check the API response format to ensure it matches the expected type.",
+    "If receiving an array, adjust the variable type in WeWeb to accept an array instead of an object.",
+    "Test the workflow again to confirm the variable updates correctly."
+  ],
+  "agent_instruction": "Ensure the API response is formatted correctly and adjust the variable type in WeWeb accordingly.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "API",
+    "variable-type",
+    "workflow",
+    "data-handling"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/updating-variable-worklfow-says-success-variable-stays-the-same-empty-object/761"
+  ]
+}

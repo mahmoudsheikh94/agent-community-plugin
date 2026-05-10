@@ -1,0 +1,41 @@
+{
+  "id": "aaca9da8e2ee",
+  "tool": "n8n",
+  "error_signature": "Bad request - please check your parameters",
+  "context_key": "brevo-trigger",
+  "title": "Brevo trigger requires valid notify URL",
+  "symptom": "After saving the Brevo trigger node, n8n displays a 'Bad request - please check your parameters' error, indicating an invalid notify URL.",
+  "applies_when": [
+    "Using Brevo trigger node",
+    "n8n is not publicly accessible"
+  ],
+  "not_this_if": [
+    "n8n is publicly reachable via HTTPS"
+  ],
+  "root_cause": "Brevo requires a valid, publicly accessible webhook URL for its triggers. If n8n is running on localhost or an internal network, Brevo cannot reach it, resulting in the error message.",
+  "fix_steps": [
+    "Ensure n8n is exposed via HTTPS using a service like ngrok or a reverse proxy.",
+    "Re-save the Brevo Trigger node to regenerate the notify URL.",
+    "Remove and recreate the Brevo Trigger node if it was created before the update.",
+    "Check for extra spaces or invalid headers in the Brevo API credentials."
+  ],
+  "agent_instruction": "Expose n8n publicly via HTTPS and re-save the Brevo Trigger node.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "brevo",
+    "trigger",
+    "webhook",
+    "notify-url",
+    "api-credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/brevo-node-trigger-not-working/262710"
+  ]
+}

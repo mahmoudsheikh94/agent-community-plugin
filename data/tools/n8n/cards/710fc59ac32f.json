@@ -1,0 +1,38 @@
+{
+  "id": "710fc59ac32f",
+  "tool": "n8n",
+  "error_signature": "/bin/sh: 1: source: not found",
+  "context_key": "Execute Command node",
+  "title": "Error activating virtual environment in Execute Command node",
+  "symptom": "When trying to activate a Python virtual environment using the Execute Command node, n8n throws an error stating 'source: not found'. This prevents the script from running as expected.",
+  "applies_when": [
+    "Using Execute Command node",
+    "Trying to activate a Python virtual environment"
+  ],
+  "not_this_if": [
+    "Using a different shell or command execution method"
+  ],
+  "root_cause": "The Execute Command node in n8n uses /bin/sh by default, which does not support the 'source' command as it is a bash-specific built-in. This leads to the error when attempting to activate a virtual environment.",
+  "fix_steps": [
+    "Replace 'source' with a dot (.) in the command to activate the virtual environment.",
+    "Update the command in the Execute Command node to '. /path/to/your/venv/bin/activate'."
+  ],
+  "agent_instruction": "Change 'source' to '.' in your command to activate the virtual environment.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "execute-command",
+    "python",
+    "virtual-environment",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.0.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-run-python-script-in-virtual-environment/238195"
+  ]
+}

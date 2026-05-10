@@ -1,0 +1,40 @@
+{
+  "id": "57ad7022f095",
+  "tool": "n8n",
+  "error_signature": "this.getWorkflowStaticData is not a function",
+  "context_key": "code-node",
+  "title": "getWorkflowStaticData function not recognized in code node",
+  "symptom": "The code node throws an error stating 'this.getWorkflowStaticData is not a function' when executed.",
+  "applies_when": [
+    "Using a code node",
+    "n8n version 1.86"
+  ],
+  "not_this_if": [
+    "Using a different version of n8n",
+    "Not using a code node"
+  ],
+  "root_cause": "The error occurs because the syntax used to access the workflow static data is incorrect. The correct method to retrieve static data in n8n is to use the global context with the appropriate syntax.",
+  "fix_steps": [
+    "Replace the incorrect syntax with 'const workflowStaticData = $getWorkflowStaticData('global');'",
+    "Save the changes to the code node",
+    "Re-execute the workflow"
+  ],
+  "agent_instruction": "Update the code node to use the correct syntax for accessing workflow static data.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "code-node",
+    "getWorkflowStaticData",
+    "n8n",
+    "error-fix"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.86",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/code-node-this-getworkflowstaticdata-is-not-a-function-on-v1-86-0-docker-on-windows-persists-after-reinstall/99137"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "ab88a9f84f3a",
+  "tool": "n8n",
+  "error_signature": "duplicate customer data saved",
+  "context_key": "Router Agent",
+  "title": "Duplicate customer data issue in Router Agent",
+  "symptom": "The Router Agent saves duplicate entries for customer data, leading to multiple rows with incomplete information in Airtable.",
+  "applies_when": [
+    "Using Router Agent to save customer data",
+    "Customer data may be incomplete"
+  ],
+  "not_this_if": [
+    "All required fields are always filled before saving"
+  ],
+  "root_cause": "The AI agent saves customer data without checking if all required fields (name, number, interest) are present. This can lead to incomplete records being saved multiple times, resulting in duplicates.",
+  "fix_steps": [
+    "Modify the prompt to include a condition: 'Only save customer data if all required fields (name, number, interest) are present.'",
+    "Add a check in the workflow to detect existing records before saving new data."
+  ],
+  "agent_instruction": "Update the prompt and add a duplicate check in the workflow for customer data.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "Router Agent",
+    "duplicate data",
+    "Airtable",
+    "customer data"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/is-simple-memory-is-enough/163582"
+  ]
+}

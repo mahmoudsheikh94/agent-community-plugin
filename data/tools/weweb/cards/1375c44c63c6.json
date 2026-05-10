@@ -1,0 +1,39 @@
+{
+  "id": "1375c44c63c6",
+  "tool": "weweb",
+  "error_signature": "undefined",
+  "context_key": "multi-step form",
+  "title": "Form fields not updating in Result object",
+  "symptom": "The form fields are filled with user input, but the Result object shows 'undefined' instead of the actual values entered.",
+  "applies_when": [
+    "Using the multi-step form template",
+    "Next workflow is not configured correctly"
+  ],
+  "not_this_if": [
+    "Result object updates correctly in other workflows"
+  ],
+  "root_cause": "The issue arises when the Next workflow is not set up to properly update the Result object with the values from the form fields. This can happen if the workflow does not include the necessary steps to capture and assign the input values.",
+  "fix_steps": [
+    "Open the workflow settings for the multi-step form",
+    "Ensure that the Next workflow includes steps to update the Result object with the form field values",
+    "Test the form again to verify that the Result object is updated correctly"
+  ],
+  "agent_instruction": "Check and adjust the Next workflow to ensure it updates the Result object with the form inputs.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "multi-step form",
+    "workflow",
+    "result object",
+    "undefined"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/multi-step-form-insurio-template/7296"
+  ]
+}

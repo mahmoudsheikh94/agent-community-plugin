@@ -1,0 +1,41 @@
+{
+  "id": "b5b46ed190dd",
+  "tool": "n8n",
+  "error_signature": "Migration timestamp mismatch",
+  "context_key": "import:entities command",
+  "title": "Migration timestamp mismatch during import",
+  "symptom": "When attempting to import data using the import:entities command, an error indicates a migration timestamp mismatch. This prevents the import from proceeding.",
+  "applies_when": [
+    "Upgrading from n8n 1.x to 2.x",
+    "Changing database type from SQLite to PostgreSQL"
+  ],
+  "not_this_if": [
+    "Using import:workflow or import:credentials commands"
+  ],
+  "root_cause": "The import:entities command is sensitive to the database schema version and requires the source data and target database to be in the exact same migration state. Major upgrades introduce breaking schema changes, and changing database types is not supported for entity imports.",
+  "fix_steps": [
+    "Upgrade the old n8n instance to the latest 1.x version.",
+    "Export data using the commands: n8n export:workflow and n8n export:credentials.",
+    "Set up the new n8n 2.x instance with PostgreSQL.",
+    "Import the exported data using: n8n import:workflow and n8n import:credentials."
+  ],
+  "agent_instruction": "Follow the documented migration path for upgrading from 1.x to 2.x and changing database types.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "migration",
+    "import:entities",
+    "version-upgrade",
+    "PostgreSQL",
+    "SQLite"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unable-to-import-version-1-x-data-via-entities-after-upgrading-n8n-to-2-x/257358"
+  ]
+}

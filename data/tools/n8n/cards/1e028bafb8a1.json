@@ -1,0 +1,41 @@
+{
+  "id": "1e028bafb8a1",
+  "tool": "n8n",
+  "error_signature": "Error [ERR_REQUIRE_ESM]: require() of ES Module",
+  "context_key": "node-fetch",
+  "title": "Node-fetch requires ESM instead of CommonJS",
+  "symptom": "The workflow fails with an error indicating that 'require() of ES Module' is not supported. This occurs after updating n8n and using node-fetch version 3.x.",
+  "applies_when": [
+    "Using node-fetch version 3.x",
+    "n8n version 1.79.4 or later"
+  ],
+  "not_this_if": [
+    "Using node-fetch version 2.x",
+    "n8n version prior to 1.79.4"
+  ],
+  "root_cause": "Node-fetch version 3.x is an ES Module and cannot be imported using CommonJS's require() syntax. This change in module format can lead to compatibility issues when used in environments expecting CommonJS modules.",
+  "fix_steps": [
+    "Downgrade node-fetch to version 2.7.0",
+    "Update your package.json or EXTRA_NODE_MODULES environment variable accordingly",
+    "Reinstall dependencies"
+  ],
+  "agent_instruction": "Downgrade node-fetch to version 2.7.0 to resolve the ESM compatibility issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "node-fetch",
+    "ESM",
+    "CommonJS",
+    "n8n",
+    "error"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.79.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/node-fetch-error-err-require-esm-require-of-es-module/101185"
+  ]
+}

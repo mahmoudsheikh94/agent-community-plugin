@@ -1,0 +1,44 @@
+{
+  "id": "8193343c2611",
+  "tool": "n8n",
+  "error_signature": "SQLITE_CONSTRAINT: UNIQUE constraint failed: workflow_history.versionId",
+  "context_key": "database-migration",
+  "title": "Database migration error due to duplicate versionId",
+  "symptom": "After updating to n8n version 2.0, the instance fails to start with a 'bad gateway' error. The logs indicate a UNIQUE constraint violation in the workflow_history table.",
+  "applies_when": [
+    "Upgrading from n8n version 1.x to 2.0",
+    "Using SQLite as the database"
+  ],
+  "not_this_if": [
+    "Using a different database like PostgreSQL",
+    "No migration attempt has been made"
+  ],
+  "root_cause": "The error occurs because the database migration process requires unique versionId entries in the workflow_history table. If duplicates exist, the migration cannot proceed, preventing n8n from launching.",
+  "fix_steps": [
+    "Access the SQLite database using a database management tool.",
+    "Run a query to identify and remove duplicate entries in the workflow_history table for versionId.",
+    "Update the Docker Compose file to use the correct n8n image version: 'docker.n8n.io/n8nio/n8n:2.0.0'.",
+    "Restart the n8n instance."
+  ],
+  "agent_instruction": "Remove duplicate versionId entries from the workflow_history table and update the Docker image to v2.0.0.",
+  "safety_notes": [
+    "Ensure to back up the database before making changes to avoid data loss."
+  ],
+  "fix_type": "config_change",
+  "tags": [
+    "database",
+    "migration",
+    "sqlite",
+    "n8n",
+    "docker"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bad-gateway-after-n8n-update-to-version-2-0/239775"
+  ]
+}

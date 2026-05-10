@@ -1,0 +1,40 @@
+{
+  "id": "764c09f0a4a6",
+  "tool": "n8n",
+  "error_signature": "The first argument must be of type string or an instance of Buffer",
+  "context_key": "XOR decryption workflow",
+  "title": "Invalid argument type for XOR decryption",
+  "symptom": "When attempting to decrypt webp images, an error occurs stating that the first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array.",
+  "applies_when": [
+    "Using XOR decryption in the workflow",
+    "Images are downloaded and processed"
+  ],
+  "not_this_if": [
+    "Error does not occur during decryption",
+    "Using a different image format"
+  ],
+  "root_cause": "The error arises because the workflow is passing an incorrect data type to the decryption function. Specifically, the binary data is not being extracted correctly, leading to an object being passed instead of the expected string or buffer.",
+  "fix_steps": [
+    "Add an 'Extract from file' node to get the base64 of the image.",
+    "Ensure that the output of the code node is correctly attached back to the incoming of the 'loop over items' node."
+  ],
+  "agent_instruction": "Use the 'Extract from file' node to obtain the base64 representation of the image before decryption.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "XOR",
+    "decryption",
+    "webp",
+    "binary-data",
+    "workflow"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.98.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-do-xor-image-decryption-webp/237818"
+  ]
+}

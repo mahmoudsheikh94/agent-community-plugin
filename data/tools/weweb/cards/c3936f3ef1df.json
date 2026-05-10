@@ -1,0 +1,39 @@
+{
+  "id": "c3936f3ef1df",
+  "tool": "weweb",
+  "error_signature": "unable to download project files",
+  "context_key": "project settings",
+  "title": "Cannot download project files on Essential Plan",
+  "symptom": "Users on the Essential plan may find that the option to download project files is not visible in their project settings.",
+  "applies_when": [
+    "On the Essential seat plan",
+    "Attempting to download project files"
+  ],
+  "not_this_if": [
+    "The download option is visible in project settings"
+  ],
+  "root_cause": "The download option for project files is not directly available unless the user first generates a code export. This step is necessary to unlock the download functionality.",
+  "fix_steps": [
+    "Open the project in the WeWeb editor",
+    "Select the option to generate code export",
+    "Check the project deployments for the available files"
+  ],
+  "agent_instruction": "Generate a code export from the editor to enable project file downloads.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "project-download",
+    "essential-plan",
+    "code-export",
+    "project-settings"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/unable-to-download-project-files-on-essential-plan-monthly-billing/16843"
+  ]
+}

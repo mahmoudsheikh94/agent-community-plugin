@@ -1,0 +1,40 @@
+{
+  "id": "6ead5d7b1ee9",
+  "tool": "weweb",
+  "error_signature": "binding variable doesn't filter collection correctly",
+  "context_key": "collection-filtering",
+  "title": "Binding variable fails to filter collection by Image ID",
+  "symptom": "When attempting to filter a collection using a bound variable for Image ID, no results are returned, while using a static number works as expected.",
+  "applies_when": [
+    "Using a bound variable for filtering",
+    "Filtering a collection with Image IDs"
+  ],
+  "not_this_if": [
+    "Static number filtering works",
+    "Using a different filtering method"
+  ],
+  "root_cause": "The issue arises because the filtering logic requires a specific condition to be met. In this case, using 'HAS ANY OF' instead of 'CONTAIN' allows the filter to correctly interpret the bound variable as part of an array, leading to successful filtering.",
+  "fix_steps": [
+    "Change the filter condition from 'CONTAIN' to 'HAS ANY OF'",
+    "Ensure the array includes the bound variable (e.g., [id])",
+    "Test the filter to confirm it works as expected"
+  ],
+  "agent_instruction": "Use 'HAS ANY OF' for filtering with a bound variable in the collection.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "collection",
+    "filtering",
+    "binding-variable",
+    "image-id"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/resolved-filtering-collection-binding-var-doesnt-work-but-same-number-works/1637"
+  ]
+}

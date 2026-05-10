@@ -1,0 +1,41 @@
+{
+  "id": "553072f278c7",
+  "tool": "n8n",
+  "error_signature": "Connection Lost",
+  "context_key": "websocket-connection",
+  "title": "Websocket connection lost in n8n on Synology NAS",
+  "symptom": "Users experience a 'Connection Lost' message in n8n, indicating frequent disconnections. The network log shows repeated disconnects, suggesting a Websocket issue.",
+  "applies_when": [
+    "Using n8n on Synology NAS",
+    "Configured with a Reverse Proxy"
+  ],
+  "not_this_if": [
+    "Running n8n without a Reverse Proxy",
+    "No Websocket issues reported"
+  ],
+  "root_cause": "The Websocket connection is not properly established due to the absence of a Websocket configuration in the Reverse Proxy setup on Synology DSM. This can lead to frequent disconnections and a poor user experience.",
+  "fix_steps": [
+    "Access the Reverse Proxy settings in Synology DSM",
+    "Create a Websocket rule for the n8n service",
+    "Save the configuration and restart the Reverse Proxy",
+    "Check the n8n interface for connection stability"
+  ],
+  "agent_instruction": "Set up a Websocket rule in the Reverse Proxy settings on Synology DSM.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "websocket",
+    "reverse-proxy",
+    "synology",
+    "n8n"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.91.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/connection-lost-websocket-issue-on-tailscale-and-synology/112773"
+  ]
+}

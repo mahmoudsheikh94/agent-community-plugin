@@ -1,0 +1,40 @@
+{
+  "id": "510c0678c6b7",
+  "tool": "n8n",
+  "error_signature": "400 Bad Request - Your client has issued a malformed or illegal request",
+  "context_key": "http-requests-node",
+  "title": "HTTP Request to PineCone Assistance returns 400 Bad Request",
+  "symptom": "When attempting to upload files using the HTTP Requests node for PineCone Assistance, the user receives a '400 Bad Request' error indicating a malformed request.",
+  "applies_when": [
+    "Using HTTP Requests node",
+    "Attempting to upload files to PineCone Assistance"
+  ],
+  "not_this_if": [
+    "Using predefined credentials for Pinecone Vector Store node",
+    "No error occurs when calling other endpoints"
+  ],
+  "root_cause": "The error occurs because the request parameters are not correctly formatted or the required headers are not properly set. Specifically, using the wrong type of credentials or missing necessary API keys can lead to this issue.",
+  "fix_steps": [
+    "Switch from using Predefined Credential for PineconeApi to Generic Credential Type.",
+    "Add the 'Api-Key' to the request headers with the correct value.",
+    "Ensure the JSON body is formatted according to PineCone's API documentation."
+  ],
+  "agent_instruction": "Change the credential type to Generic and set the correct API key in the headers.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "http-requests",
+    "pinecone",
+    "400-bad-request",
+    "api-credentials"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "1.113.3",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/http-requests-node-for-pinecone-assistance-management/206256"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "a09394692cbc",
+  "tool": "weweb",
+  "error_signature": "scroll position tracking not working with symbols in ID",
+  "context_key": "scroll tracking",
+  "title": "Scroll position tracking fails with symbols in ID",
+  "symptom": "The scroll position tracking does not trigger as expected when IDs contain symbols or punctuation. Users see no data being captured from the scroll position.",
+  "applies_when": [
+    "Using scroll position tracking feature",
+    "IDs of elements contain symbols or punctuation"
+  ],
+  "not_this_if": [
+    "IDs are alphanumeric without symbols",
+    "Scroll tracking works as intended"
+  ],
+  "root_cause": "The scroll position tracking feature has a bug that prevents it from functioning correctly when element IDs contain symbols or punctuation. This leads to empty data being captured during scroll events.",
+  "fix_steps": [
+    "Review the IDs of the elements involved in scroll tracking",
+    "Remove any symbols or punctuation from the IDs",
+    "Test the scroll position tracking again"
+  ],
+  "agent_instruction": "Ensure all element IDs used for scroll tracking are alphanumeric without symbols.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "scroll-position",
+    "tracking",
+    "unique-id",
+    "advanced-interactions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/how-to-use-track-scroll-position-in-advanced-interactions/4950"
+  ]
+}

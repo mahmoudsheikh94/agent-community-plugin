@@ -1,0 +1,39 @@
+{
+  "id": "d9b5c34b55b1",
+  "tool": "weweb",
+  "error_signature": "Failed to load resource: the server responded with a status of 404 ()",
+  "context_key": "custom HTML element",
+  "title": "404 error when loading resources in custom HTML element",
+  "symptom": "The console displays a 404 error when trying to load resources linked in a custom HTML element on the published website.",
+  "applies_when": [
+    "Using custom HTML element",
+    "Resources linked in the page head and body"
+  ],
+  "not_this_if": [
+    "Resources load correctly in development mode"
+  ],
+  "root_cause": "The 404 error occurs because the resource URL is incorrectly formed, possibly due to the 'refresh on resize' feature causing the element to reload improperly, leading to a request for a null resource.",
+  "fix_steps": [
+    "Open the settings for the custom HTML element",
+    "Disable the 'refresh on resize' option",
+    "Save the changes and republish the project"
+  ],
+  "agent_instruction": "Disable the 'refresh on resize' option in the custom HTML element settings.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "custom-html",
+    "404-error",
+    "algolia",
+    "resource-loading"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/custom-code-not-working-on-published-website-failed-to-load-resource-the-server-responded-with-a-status-of-404/793"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "94fbc38344f5",
+  "tool": "n8n",
+  "error_signature": "column “content” of relation “viko_embeddings_openai” does not exist",
+  "context_key": "create-embeddings-node",
+  "title": "PostgreSQL column 'content' does not exist error",
+  "symptom": "When trying to insert embeddings into a PostgreSQL table, n8n throws an error stating that the column 'content' does not exist.",
+  "applies_when": [
+    "Using Create Embeddings node",
+    "Targeting a PostgreSQL table with a custom schema"
+  ],
+  "not_this_if": [
+    "Table created automatically by n8n",
+    "Column names match exactly with the expected names"
+  ],
+  "root_cause": "The error occurs because the PostgreSQL table was manually created without the necessary specifications that n8n expects. Specifically, the Create Embeddings node may require certain default settings for columns, which are not present in manually created tables.",
+  "fix_steps": [
+    "Allow n8n to automatically create the PostgreSQL table",
+    "Verify that the table structure matches the expected schema",
+    "Move the table to the desired schema if necessary"
+  ],
+  "agent_instruction": "Let n8n create the PostgreSQL table automatically to ensure proper column specifications.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "postgresql",
+    "create-embeddings",
+    "schema",
+    "error-handling"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/postgres-vector-db-insert-unsuccesful/135751"
+  ]
+}

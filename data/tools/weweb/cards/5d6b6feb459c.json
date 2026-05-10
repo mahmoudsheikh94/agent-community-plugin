@@ -1,0 +1,40 @@
+{
+  "id": "5d6b6feb459c",
+  "tool": "weweb",
+  "error_signature": "staging page redirects are not working",
+  "context_key": "superbase-auth-plugin",
+  "title": "Staging page redirects fail after workspace move",
+  "symptom": "Users are not redirected to the Home page upon authentication in the staging environment after moving the project to a different workspace.",
+  "applies_when": [
+    "Project moved to a different workspace",
+    "Using Superbase Auth for authentication"
+  ],
+  "not_this_if": [
+    "Redirects work in the editor",
+    "No workspace change occurred"
+  ],
+  "root_cause": "When a project is moved to a different workspace, the configurations and integrations, such as the Superbase Auth Plugin, may not be properly linked or may require reconfiguration to function correctly in the new environment.",
+  "fix_steps": [
+    "Remove the Superbase Auth Plugin from the project",
+    "Re-add the Superbase Auth Plugin to the project",
+    "Test the authentication flow again"
+  ],
+  "agent_instruction": "Reconfigure the Superbase Auth Plugin by removing and re-adding it to the project.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "superbase",
+    "auth",
+    "workspace",
+    "redirects"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.weweb.io/t/weweb-staging-page-redirects-are-not-working/6769"
+  ]
+}

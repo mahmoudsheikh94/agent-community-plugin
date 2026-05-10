@@ -1,0 +1,39 @@
+{
+  "id": "8b36f04db6a0",
+  "tool": "n8n",
+  "error_signature": "both outputs sent from Switch1 node",
+  "context_key": "switch1-node",
+  "title": "Unexpected multiple outputs from Switch1 node",
+  "symptom": "The Switch1 node is sending both outputs instead of just one, causing confusion in the workflow.",
+  "applies_when": [
+    "Using Switch1 node",
+    "Node settings configured to Always Output Data"
+  ],
+  "not_this_if": [
+    "Switch node is used instead of Switch1 node"
+  ],
+  "root_cause": "The Switch1 node's setting 'Always Output Data' is enabled, which forces the node to output data even when there is no result, leading to both outputs being sent.",
+  "fix_steps": [
+    "Open the settings of the Switch1 node",
+    "Disable the 'Always Output Data' option",
+    "Save the workflow",
+    "Test the workflow again"
+  ],
+  "agent_instruction": "Disable the 'Always Output Data' setting in the Switch1 node and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "switch1",
+    "node-configuration",
+    "output-issue"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 90,
+  "source_type": "community",
+  "verified_on": "1.103.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/switch1-node-output/154843"
+  ]
+}

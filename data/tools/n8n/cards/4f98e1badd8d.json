@@ -1,0 +1,40 @@
+{
+  "id": "4f98e1badd8d",
+  "tool": "n8n",
+  "error_signature": "Code node shows both JavaScript and Python editors",
+  "context_key": "code-node",
+  "title": "Code node displays incorrect editors for Python",
+  "symptom": "When using the Code node with Python specified, both JavaScript and Python editors are shown instead of just the Python editor.",
+  "applies_when": [
+    "Using Code node with Python language",
+    "Workflow registered via API"
+  ],
+  "not_this_if": [
+    "Using JavaScript language in the Code node"
+  ],
+  "root_cause": "The Code node's versioning system may not properly handle the language setting when the typeVersion is set to an outdated version. This leads to the display of both editors instead of the intended single editor.",
+  "fix_steps": [
+    "Open the Code node settings",
+    "Set the `typeVersion` property to `2`",
+    "Save the workflow",
+    "Check the Code node to ensure only the Python editor is displayed"
+  ],
+  "agent_instruction": "Set the `typeVersion` of the Code node to `2` to resolve the editor display issue.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "code-node",
+    "python",
+    "typeVersion",
+    "api"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.10.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/unexpected-behavior-for-the-code-node/275504"
+  ]
+}

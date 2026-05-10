@@ -1,0 +1,38 @@
+{
+  "id": "af05ded9a237",
+  "tool": "n8n",
+  "error_signature": "failed to bind host port 0.0.0.0:11434/tcp: address already in use",
+  "context_key": "docker",
+  "title": "Port conflict when starting n8n with Docker",
+  "symptom": "When trying to run n8n in Docker, an error occurs stating that the address is already in use. This prevents n8n from starting properly.",
+  "applies_when": [
+    "Using Docker to run n8n",
+    "Port 11434 is already in use"
+  ],
+  "not_this_if": [
+    "Using a different port that is not in use"
+  ],
+  "root_cause": "The error occurs because the specified port (11434) is already occupied by another service (ollama). Docker cannot bind the container to this port, leading to a failure in starting the n8n service.",
+  "fix_steps": [
+    "Change the port mapping in the Docker run command from -p 11434:11434 to -p 5678:5678",
+    "Access n8n using http://localhost:5678"
+  ],
+  "agent_instruction": "Update the Docker run command to use port 5678 instead of 11434.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "port-conflict",
+    "n8n",
+    "ollama"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.875,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/ollama-credentials-error/255514"
+  ]
+}

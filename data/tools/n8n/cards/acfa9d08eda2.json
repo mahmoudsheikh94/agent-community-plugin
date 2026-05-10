@@ -1,0 +1,39 @@
+{
+  "id": "acfa9d08eda2",
+  "tool": "n8n",
+  "error_signature": "malformed array literal",
+  "context_key": "postgresql-update",
+  "title": "PostgreSQL malformed array literal error",
+  "symptom": "When trying to upsert a JSONB array in PostgreSQL, an error 'malformed array literal' occurs due to improper escaping of characters.",
+  "applies_when": [
+    "Using PostgreSQL for JSONB operations",
+    "Inserting or updating JSONB arrays"
+  ],
+  "not_this_if": [
+    "Using valid JSON strings without escaped characters",
+    "Not using PostgreSQL"
+  ],
+  "root_cause": "The error arises because PostgreSQL expects a specific syntax for JSONB arrays, and improperly escaped characters, such as quotes, lead to misinterpretation of the input as an array literal instead of valid JSON.",
+  "fix_steps": [
+    "Use a valid JSON string instead of a JSONB array for insertion.",
+    "If using JSONB, ensure all characters are properly escaped according to PostgreSQL syntax."
+  ],
+  "agent_instruction": "Convert your JSONB array to a valid JSON string or ensure proper escaping for PostgreSQL.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "postgresql",
+    "jsonb",
+    "array-literal",
+    "escaping-characters"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/how-to-deal-with-escaped-characters-especially-in-nested-jsonb-arrays-for-postgressql-update/117896"
+  ]
+}
