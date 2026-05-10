@@ -2,6 +2,7 @@
 import {
   htmlToText
 } from "./chunk-EB42U7WB.js";
+import "./chunk-NSPRIPOP.js";
 
 // src/ingest/cli.ts
 import {
@@ -314,10 +315,10 @@ async function handleTransform(args) {
   if (dryRun) {
     console.log("Dry run \u2014 no cards will be saved.");
   }
-  const { ThreadTransformer } = await import("./thread-to-cards-BGD4MRB6.js");
-  const { Deduplicator } = await import("./dedup-TOEDAT2E.js");
-  const { validateCard, generateCardId } = await import("./validation-OBICJGLK.js");
-  const { saveCard, rebuildToolIndex } = await import("./store-LW7NALVY.js");
+  const { ThreadTransformer } = await import("./thread-to-cards-KRLZSZDC.js");
+  const { Deduplicator } = await import("./dedup-Q6QRUJHP.js");
+  const { validateCard, generateCardId } = await import("./validation-EZTO4GDF.js");
+  const { saveCard, rebuildToolIndex } = await import("./store-LLLG3RQQ.js");
   const { appendFileSync } = await import("fs");
   const transformer = new ThreadTransformer(apiKey, { concurrency });
   const deduplicator = new Deduplicator();
@@ -496,7 +497,7 @@ async function handleImport(args) {
   }
   console.log(`Title: ${topic.title}`);
   console.log(`Posts: ${topic.posts_count}`);
-  const { htmlToText: htmlToText2 } = await import("./html-to-text-J46TMICC.js");
+  const { htmlToText: htmlToText2 } = await import("./html-to-text-CKLJBPSA.js");
   const posts = topic.post_stream.posts;
   const answerPost = posts.find((p) => p.accepted_answer);
   const opPost = posts.find((p) => p.post_number === 1);
@@ -525,7 +526,7 @@ async function handleImport(args) {
   if (apiKey) {
     console.log(`
 Transforming with LLM...`);
-    const { ThreadTransformer } = await import("./thread-to-cards-BGD4MRB6.js");
+    const { ThreadTransformer } = await import("./thread-to-cards-KRLZSZDC.js");
     const transformer = new ThreadTransformer(apiKey, { concurrency: 1 });
     const results = await transformer.transform(thread);
     if (results.skipped) {
@@ -546,7 +547,7 @@ Transforming with LLM...`);
 }
 async function handlePush() {
   const { readdirSync: readdirSync2, readFileSync: readFileSync2 } = await import("fs");
-  const { upsertCards } = await import("./supabase-DHQDATNT.js");
+  const { upsertCards } = await import("./supabase-3JYE66DS.js");
   const cardsDir = join(resolve("data"), "tools", "n8n", "cards");
   if (!existsSync(cardsDir)) {
     console.error("No cards found. Run 'ingest transform' first.");

@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "../chunk-W7RPM4FB.js";
+} from "../chunk-HW6KKSOW.js";
 import {
   appendTrace,
   redactText
-} from "../chunk-7KHDCBXI.js";
-import "../chunk-SDA3ARN5.js";
+} from "../chunk-UT4NC2QC.js";
+import "../chunk-5AWDKVXE.js";
+import "../chunk-NSPRIPOP.js";
 
 // src/hooks/post-tool-use-failure.ts
 import { readFileSync } from "fs";

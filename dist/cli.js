@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "./chunk-W7RPM4FB.js";
+} from "./chunk-HW6KKSOW.js";
 import {
   validateCard
-} from "./chunk-IGIPA46E.js";
+} from "./chunk-EFNDYZRJ.js";
 import {
   redactText
-} from "./chunk-7KHDCBXI.js";
-import "./chunk-SDA3ARN5.js";
+} from "./chunk-UT4NC2QC.js";
+import "./chunk-5AWDKVXE.js";
+import "./chunk-NSPRIPOP.js";
 
 // src/cli.ts
 import { readFileSync } from "fs";
@@ -83,7 +84,7 @@ Safety notes:`);
   }
   case "ingest": {
     const subcommand = args[1];
-    const { handleIngestCommand } = await import("./cli-PRWGVIHT.js");
+    const { handleIngestCommand } = await import("./cli-WYYPPZQC.js");
     await handleIngestCommand(subcommand, args.slice(2));
     break;
   }

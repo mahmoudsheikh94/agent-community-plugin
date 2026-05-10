@@ -7,7 +7,8 @@ import {
   isSupabaseEnabled,
   submitCard,
   upsertCards
-} from "./chunk-SDA3ARN5.js";
+} from "./chunk-5AWDKVXE.js";
+import "./chunk-NSPRIPOP.js";
 export {
   fetchUpdatedCards,
   getSupabaseClient,

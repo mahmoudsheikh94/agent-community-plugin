@@ -1,4 +1,14 @@
 #!/usr/bin/env node
+import {
+  fetchUpdatedCards,
+  insertTrace,
+  isSupabaseEnabled
+} from "./chunk-5AWDKVXE.js";
+
+// src/store/index.ts
+import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync, statSync, renameSync } from "fs";
+import { join, resolve } from "path";
+import { randomUUID } from "crypto";
 
 // src/redaction/index.ts
 var PATTERNS = [
@@ -79,69 +89,7 @@ function redactText(text) {
   return { redacted, redactions };
 }
 
-// src/store/supabase.ts
-import { createClient } from "@supabase/supabase-js";
-var client = null;
-function getSupabaseClient() {
-  if (client) return client;
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) return null;
-  client = createClient(url, key);
-  return client;
-}
-function isSupabaseEnabled() {
-  return getSupabaseClient() !== null;
-}
-var PAGE_SIZE = 500;
-async function fetchUpdatedCards(since) {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-  const all = [];
-  let offset = 0;
-  while (true) {
-    const { data, error } = await sb.from("fix_cards").select("*").gt("updated_at", since).order("tool").range(offset, offset + PAGE_SIZE - 1);
-    if (error) throw error;
-    const page = data ?? [];
-    all.push(...page);
-    if (page.length < PAGE_SIZE) break;
-    offset += PAGE_SIZE;
-  }
-  return all;
-}
-var traceErrorCount = 0;
-async function insertTrace(trace) {
-  const sb = getSupabaseClient();
-  if (!sb) return;
-  const traceType = "error" in trace && trace.error ? "failure" : "success";
-  const { error } = await sb.from("traces").insert({
-    ...trace,
-    trace_type: traceType
-  });
-  if (error) {
-    traceErrorCount++;
-    if (traceErrorCount % 100 === 0) {
-      console.error(`[agent-community] ${traceErrorCount} trace insert failures so far`);
-    }
-    throw error;
-  }
-}
-async function submitCard(cardData, submittedBy) {
-  const sb = getSupabaseClient();
-  if (!sb) throw new Error("Supabase is not configured");
-  const { data, error } = await sb.from("card_submissions").insert({
-    submitted_by: submittedBy ?? "anonymous",
-    card_data: cardData,
-    status: "pending"
-  }).select("id").single();
-  if (error) throw error;
-  return data.id;
-}
-
 // src/store/index.ts
-import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync, statSync, renameSync } from "fs";
-import { join, resolve } from "path";
-import { randomUUID } from "crypto";
 function getDataDir() {
   if (process.env.AGENT_COMMUNITY_DATA_DIR) {
     return resolve(process.env.AGENT_COMMUNITY_DATA_DIR);
@@ -285,121 +233,14 @@ async function syncFromSupabase(dataDir) {
   return { updated: cards.length, tools: toolsList };
 }
 
-// src/search/index.ts
-function tokenize(text) {
-  return text.toLowerCase().replace(/[^a-z0-9_-]/g, " ").split(/\s+/).filter((t) => t.length > 1);
-}
-function substringMatch(haystack, needle) {
-  return haystack.toLowerCase().includes(needle.toLowerCase());
-}
-function tokenOverlap(tokensA, tokensB) {
-  if (tokensA.length === 0 || tokensB.length === 0) return 0;
-  const setB = new Set(tokensB);
-  const matches = tokensA.filter((t) => setB.has(t)).length;
-  const union = (/* @__PURE__ */ new Set([...tokensA, ...tokensB])).size;
-  return union > 0 ? matches / union : 0;
-}
-function scoreEntry(entry, errorText, errorTokens, toolName) {
-  const matched_on = [];
-  let signatureScore = 0;
-  let toolScore = 0;
-  let tagScore = 0;
-  let titleScore = 0;
-  if (substringMatch(errorText, entry.error_signature)) {
-    signatureScore = 0.5;
-    matched_on.push("error_signature");
-  }
-  if (toolName) {
-    const normalized = normalizeToolName(toolName) ?? toolName.toLowerCase();
-    if (entry.tool.toLowerCase() === normalized) {
-      toolScore = 0.2;
-      matched_on.push("tool");
-    }
-  }
-  const tagTokens = entry.tags.map((t) => t.toLowerCase());
-  const tagOverlap = errorTokens.filter((t) => tagTokens.includes(t)).length;
-  if (tagOverlap > 0) {
-    tagScore = Math.min(0.15, 0.05 * tagOverlap);
-    matched_on.push("tags");
-  }
-  const titleTokens = tokenize(entry.title);
-  const titleOv = tokenOverlap(errorTokens, titleTokens);
-  if (titleOv > 0) {
-    titleScore = 0.15 * titleOv;
-    matched_on.push("title");
-  }
-  const total = Math.min(1, signatureScore + toolScore + tagScore + titleScore);
-  return { signatureScore, toolScore, tagScore, titleScore, total, matched_on };
-}
-function normalizeToolName(raw) {
-  const lower = raw.toLowerCase();
-  const pluginMatch = lower.match(/^mcp__plugin_[^_]+_([^_]+)__/);
-  if (pluginMatch) return pluginMatch[1];
-  const cloudMatch = lower.match(/^mcp__claude_ai_([^_]+)__/);
-  if (cloudMatch) return cloudMatch[1];
-  const simpleMatch = lower.match(/^mcp__([^_]+)__/);
-  if (simpleMatch) return simpleMatch[1];
-  if (!lower.startsWith("mcp__")) return null;
-  return null;
-}
-function searchKnownFix(params, dataDir) {
-  const { tool, error, task, context } = params;
-  const errorTokens = tokenize(
-    [error, task, context].filter(Boolean).join(" ")
-  );
-  const errorText = [error, task, context].filter(Boolean).join(" ");
-  const availableTools = listTools(dataDir);
-  const toolsToSearch = [];
-  if (tool) {
-    const normalized = normalizeToolName(tool) ?? tool.toLowerCase();
-    if (availableTools.includes(normalized)) {
-      toolsToSearch.push(normalized);
-    } else {
-      toolsToSearch.push(...availableTools);
-    }
-  } else {
-    toolsToSearch.push(...availableTools);
-  }
-  if (!toolsToSearch.includes("_general")) {
-    toolsToSearch.push("_general");
-  }
-  const candidates = [];
-  for (const t of toolsToSearch) {
-    const index = loadToolIndex(t, dataDir);
-    for (const entry of index) {
-      const score = scoreEntry(entry, errorText, errorTokens, tool ?? null);
-      if (score.total >= 0.1) {
-        candidates.push({ entry, score });
-      }
-    }
-  }
-  candidates.sort((a, b) => b.score.total - a.score.total);
-  const top = candidates.slice(0, 5);
-  const results = [];
-  for (const { entry, score } of top) {
-    const card = loadCard(entry.tool, entry.id, dataDir);
-    if (!card) continue;
-    results.push({
-      id: card.id,
-      title: card.title,
-      score: Math.round(score.total * 100) / 100,
-      agent_instruction: card.agent_instruction,
-      fix_steps: card.fix_steps,
-      safety_notes: card.safety_notes,
-      confidence: card.confidence,
-      matched_on: score.matched_on
-    });
-  }
-  return results;
-}
-
 export {
   redactText,
-  isSupabaseEnabled,
-  submitCard,
+  getDataDir,
+  listTools,
   loadToolIndex,
+  loadCard,
   saveCard,
   appendTrace,
-  syncFromSupabase,
-  searchKnownFix
+  rebuildToolIndex,
+  syncFromSupabase
 };
