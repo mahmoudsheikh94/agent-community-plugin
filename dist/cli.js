@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "./chunk-HW6KKSOW.js";
+} from "./chunk-GZG5ARJ7.js";
 import {
   validateCard
-} from "./chunk-EFNDYZRJ.js";
+} from "./chunk-SODTX4IE.js";
 import {
   redactText
-} from "./chunk-UT4NC2QC.js";
+} from "./chunk-YHIXLTVA.js";
 import "./chunk-5AWDKVXE.js";
 import "./chunk-NSPRIPOP.js";
 
@@ -84,7 +84,7 @@ Safety notes:`);
   }
   case "ingest": {
     const subcommand = args[1];
-    const { handleIngestCommand } = await import("./cli-WYYPPZQC.js");
+    const { handleIngestCommand } = await import("./cli-KJ2BPFDI.js");
     await handleIngestCommand(subcommand, args.slice(2));
     break;
   }

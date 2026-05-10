@@ -8,7 +8,7 @@ import {
   rebuildToolIndex,
   saveCard,
   syncFromSupabase
-} from "./chunk-UT4NC2QC.js";
+} from "./chunk-YHIXLTVA.js";
 import "./chunk-5AWDKVXE.js";
 import "./chunk-NSPRIPOP.js";
 export {

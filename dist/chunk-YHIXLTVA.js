@@ -95,7 +95,7 @@ function getDataDir() {
     return resolve(process.env.AGENT_COMMUNITY_DATA_DIR);
   }
   if (process.env.CLAUDE_PLUGIN_ROOT) {
-    return resolve(process.env.CLAUDE_PLUGIN_ROOT, "..", "data");
+    return resolve(process.env.CLAUDE_PLUGIN_ROOT, "data");
   }
   return resolve("data");
 }

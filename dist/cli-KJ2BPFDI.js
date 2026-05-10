@@ -316,9 +316,9 @@ async function handleTransform(args) {
     console.log("Dry run \u2014 no cards will be saved.");
   }
   const { ThreadTransformer } = await import("./thread-to-cards-KRLZSZDC.js");
-  const { Deduplicator } = await import("./dedup-Q6QRUJHP.js");
-  const { validateCard, generateCardId } = await import("./validation-EZTO4GDF.js");
-  const { saveCard, rebuildToolIndex } = await import("./store-LLLG3RQQ.js");
+  const { Deduplicator } = await import("./dedup-PS6NJUP2.js");
+  const { validateCard, generateCardId } = await import("./validation-BXKZKAOL.js");
+  const { saveCard, rebuildToolIndex } = await import("./store-2LDB3EYT.js");
   const { appendFileSync } = await import("fs");
   const transformer = new ThreadTransformer(apiKey, { concurrency });
   const deduplicator = new Deduplicator();
