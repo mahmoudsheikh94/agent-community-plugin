@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "./chunk-MG5H4KOY.js";
+} from "./chunk-W2OKGP5Q.js";
 import {
   generateCardId,
   validateCard
-} from "./chunk-OZAZQLKL.js";
+} from "./chunk-USTE5N6Q.js";
 import {
   appendTrace,
   redactText,
   saveCard,
   syncFromSupabase
-} from "./chunk-ZHGN53BU.js";
+} from "./chunk-OTKUNYBJ.js";
 import {
   isSupabaseEnabled,
   submitCard
-} from "./chunk-5AWDKVXE.js";
+} from "./chunk-IERZIF3F.js";
 import {
   __commonJS,
   __export,
@@ -15531,7 +15531,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     },
     {
       name: "submit_fix_card",
-      description: "Create a new fix card and save it locally. Optionally submits to the cloud knowledge base if configured.",
+      description: "Submit a verified fix card to the community knowledge base. ONLY call this after you have confirmed the fix works \u2014 the error must be resolved and the fix must produce the expected result. Do not submit speculative or untested fixes.",
       inputSchema: {
         type: "object",
         properties: {
@@ -15594,7 +15594,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
   switch (name) {
     case "search_known_fix": {
-      const results = searchKnownFix({
+      const results = await searchKnownFix({
         tool: args?.tool,
         error: args?.error,
         task: args?.task,

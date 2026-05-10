@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "../chunk-MG5H4KOY.js";
+} from "../chunk-W2OKGP5Q.js";
 import {
   appendTrace,
   redactText
-} from "../chunk-ZHGN53BU.js";
-import "../chunk-5AWDKVXE.js";
+} from "../chunk-OTKUNYBJ.js";
+import "../chunk-IERZIF3F.js";
 import "../chunk-NSPRIPOP.js";
 
 // src/hooks/post-tool-use-failure.ts
 import { readFileSync } from "fs";
-function run() {
+var CONTRIBUTE_REMINDER = `[AgentCommunity] No known fix found for this error. If you resolve this issue, contribute the fix back to the community by calling submit_fix_card with: tool name, error_signature (stable error phrase, max 80 chars), title, symptom, root_cause, fix_steps, agent_instruction, applies_when, not_this_if, safety_notes, and tags. IMPORTANT: Only submit AFTER you have verified the fix actually works \u2014 confirm the error is resolved and the fix produces the expected result. Do NOT submit speculative or untested fixes. Do not submit one-off user-specific issues.`;
+async function run() {
   let input;
   try {
     const raw = readFileSync(0, "utf-8");
@@ -27,7 +28,7 @@ function run() {
     return;
   }
   const { redacted: redactedError } = redactText(errorText);
-  const results = searchKnownFix({
+  const results = await searchKnownFix({
     tool: toolName,
     error: redactedError
   });
@@ -42,7 +43,13 @@ function run() {
   } catch {
   }
   if (results.length === 0 || results[0].score < 0.2) {
-    process.stdout.write("{}\n");
+    const output2 = {
+      hookSpecificOutput: {
+        hookEventName: "PostToolUseFailure",
+        additionalContext: CONTRIBUTE_REMINDER
+      }
+    };
+    process.stdout.write(JSON.stringify(output2) + "\n");
     return;
   }
   const top = results[0];
@@ -61,6 +68,8 @@ ${fixSteps}
 ${safetyNotes}
 
 Suggestion: ${top.agent_instruction}
+
+If this fix does not apply and you find a different solution, contribute it back by calling submit_fix_card \u2014 but only AFTER verifying your fix actually works.
 [End of community fix card]`;
   const output = {
     hookSpecificOutput: {
@@ -70,4 +79,6 @@ Suggestion: ${top.agent_instruction}
   };
   process.stdout.write(JSON.stringify(output) + "\n");
 }
-run();
+run().catch(() => {
+  process.stdout.write("{}\n");
+});

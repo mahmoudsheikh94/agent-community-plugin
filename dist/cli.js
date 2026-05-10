@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "./chunk-MG5H4KOY.js";
+} from "./chunk-W2OKGP5Q.js";
 import {
   validateCard
-} from "./chunk-OZAZQLKL.js";
+} from "./chunk-USTE5N6Q.js";
 import {
   listTools,
   redactText,
   validateIndex
-} from "./chunk-ZHGN53BU.js";
-import "./chunk-5AWDKVXE.js";
+} from "./chunk-OTKUNYBJ.js";
+import "./chunk-IERZIF3F.js";
 import "./chunk-NSPRIPOP.js";
 
 // src/cli.ts
@@ -29,7 +29,7 @@ switch (command) {
       console.error("Usage: agent-community search --tool <tool> --error <error>");
       process.exit(1);
     }
-    const results = searchKnownFix({ tool, error });
+    const results = await searchKnownFix({ tool, error });
     if (results.length === 0) {
       console.log("No matching fix cards found.");
     } else {
@@ -108,7 +108,7 @@ Safety notes:`);
   }
   case "ingest": {
     const subcommand = args[1];
-    const { handleIngestCommand } = await import("./cli-65MFTTNV.js");
+    const { handleIngestCommand } = await import("./cli-2LORHUVO.js");
     await handleIngestCommand(subcommand, args.slice(2));
     break;
   }

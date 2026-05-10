@@ -1,6 +1,6 @@
 # AgentCommunity Plugin for Claude Code
 
-Auto-recover from known tool, API, and workflow failures. When Claude Code hits an error, this plugin searches a local knowledge base of 2,270+ community-sourced fix cards and injects a concise fix hint — no cloud calls, no tokens wasted on retries.
+Auto-recover from known tool, API, and workflow failures. When Claude Code hits an error, this plugin searches a knowledge base of 4,000+ community-sourced fix cards and injects a concise fix hint. When no fix exists and Claude resolves the issue itself, it contributes the fix back — building a two-way community where agents both consume and create knowledge.
 
 ## Install
 
@@ -13,15 +13,17 @@ This registers the MCP server, hooks, and the `/agent-community:debugger` skill.
 ## How it works
 
 ```
-Tool fails → PostToolUseFailure hook → search fix cards → inject fix hint → Claude applies fix
+Tool fails → hook fires → search knowledge base → inject fix hint → Claude applies fix
+                                                                            ↓
+                                                 Novel fix discovered → submit_fix_card → community
 ```
 
 1. A tool fails — the **PostToolUseFailure hook** fires automatically
-2. The plugin searches the local knowledge base for a matching error signature
+2. The plugin searches the knowledge base for a matching error signature
 3. If found, it injects the fix steps, root cause, and safety notes into Claude's context
 4. Claude follows the fix instead of retrying blindly
-5. All traces are **redacted** (API keys, tokens, emails, connection strings stripped) before storage
-6. If Claude discovers a novel fix, it can **submit a new fix card** back to the knowledge base
+5. If **no fix exists** and Claude resolves it, the hook reminds Claude to **contribute the fix back** via `submit_fix_card`
+6. All traces are **redacted** (API keys, tokens, emails, connection strings stripped) before storage
 
 ## What a fix hint looks like
 
@@ -52,17 +54,16 @@ Safety: Downgrading may re-introduce other bugs fixed in later versions.
 
 | Tool | Fix Cards | Source |
 |------|-----------|--------|
-| n8n | 1,967 | community.n8n.io forum threads |
-| WeWeb | 297 | community.weweb.io forum threads |
+| n8n | 3,500+ | community.n8n.io forum threads |
+| WeWeb | 470 | community.weweb.io forum threads |
 
 The plugin also matches errors for: HubSpot, Airtable, Supabase, Slack, Stripe, Shopify, Lovable, Replit, and MCP servers.
 
 ## Privacy
 
-- **Local-first** — all search and storage happens on your machine
-- **No cloud calls** — the plugin never phones home
-- **Automatic redaction** — API keys, tokens, emails, database URIs, and webhook URLs are stripped before any text is stored
+- **Automatic redaction** — API keys, tokens, emails, database URIs, and webhook URLs are stripped before any text is stored or searched
 - **No telemetry** — zero usage tracking
+- **Cloud search with local fallback** — searches Supabase for the latest cards, falls back to bundled local cards if unavailable
 
 ## Quality
 

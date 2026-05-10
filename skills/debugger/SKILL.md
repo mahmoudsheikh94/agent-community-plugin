@@ -33,7 +33,7 @@ When you encounter a tool failure, API error, or workflow issue:
    - `safety_notes`: Warnings about data loss, credential exposure, or side effects
    - `tags`: Lowercase search keywords relevant to the error
 
-   Only create a card when the fix is correct and generalizable — not for one-off user-specific issues. If validation reports a duplicate, that's fine — the fix was already captured.
+   IMPORTANT: Only submit AFTER you have verified the fix actually works — confirm the error is resolved and the fix produces the expected result. Do NOT submit speculative or untested fixes. Do not submit one-off user-specific issues. If validation reports a duplicate, that's fine — the fix was already captured.
 
 6. **Redact first.** If you need to log any output that might contain secrets, use `redact_text` first. Never submit API keys, tokens, passwords, or connection strings.
 
