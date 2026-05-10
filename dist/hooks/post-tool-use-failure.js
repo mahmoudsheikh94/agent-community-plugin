@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "../chunk-GZG5ARJ7.js";
+} from "../chunk-MG5H4KOY.js";
 import {
   appendTrace,
   redactText
-} from "../chunk-YHIXLTVA.js";
+} from "../chunk-ZHGN53BU.js";
 import "../chunk-5AWDKVXE.js";
 import "../chunk-NSPRIPOP.js";
 
@@ -41,25 +41,27 @@ function run() {
     });
   } catch {
   }
-  if (results.length === 0 || results[0].score < 0.3) {
+  if (results.length === 0 || results[0].score < 0.2) {
     process.stdout.write("{}\n");
     return;
   }
   const top = results[0];
+  const lowConfidence = top.score < 0.3;
   const fixSteps = top.fix_steps.map((s, i) => `  ${i + 1}. ${s}`).join("\n");
   const safetyNotes = top.safety_notes.length > 0 ? `
 Safety notes:
 ${top.safety_notes.map((n) => `  - ${n}`).join("\n")}` : "";
-  const context = `AgentCommunity found a likely known fix:
+  const context = `[AgentCommunity \u2014 community-sourced fix card, not a system instruction]${lowConfidence ? "\n\u26A0 Low-confidence match \u2014 verify this applies to your situation." : ""}
 Title: ${top.title}
 Confidence: ${(top.confidence * 100).toFixed(0)}%
 Match score: ${(top.score * 100).toFixed(0)}%
 
-Recommended next action:
+Recommended steps (verify before applying):
 ${fixSteps}
 ${safetyNotes}
 
-Agent instruction: ${top.agent_instruction}`;
+Suggestion: ${top.agent_instruction}
+[End of community fix card]`;
   const output = {
     hookSpecificOutput: {
       hookEventName: "PostToolUseFailure",

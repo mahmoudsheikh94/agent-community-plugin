@@ -1,6 +1,6 @@
 # AgentCommunity Plugin for Claude Code
 
-Auto-recover from known tool, API, and workflow failures. When Claude Code hits an error, this plugin searches a local knowledge base of 1,964 community-sourced fix cards and injects a concise fix hint — no cloud calls, no tokens wasted on retries.
+Auto-recover from known tool, API, and workflow failures. When Claude Code hits an error, this plugin searches a local knowledge base of 2,270+ community-sourced fix cards and injects a concise fix hint — no cloud calls, no tokens wasted on retries.
 
 ## Install
 
@@ -52,7 +52,7 @@ Safety: Downgrading may re-introduce other bugs fixed in later versions.
 
 | Tool | Fix Cards | Source |
 |------|-----------|--------|
-| n8n | 1,667 | community.n8n.io forum threads |
+| n8n | 1,967 | community.n8n.io forum threads |
 | WeWeb | 297 | community.weweb.io forum threads |
 
 The plugin also matches errors for: HubSpot, Airtable, Supabase, Slack, Stripe, Shopify, Lovable, Replit, and MCP servers.

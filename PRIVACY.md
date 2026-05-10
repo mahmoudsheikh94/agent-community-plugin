@@ -23,12 +23,14 @@ AgentCommunity collects **failure and success traces** when Claude Code encounte
 
 All text passes through a redaction layer before storage that strips:
 
-- AWS access keys, OpenAI/Slack API keys
+- AWS access keys
+- OpenAI, Anthropic, and Google API keys
+- Slack, Stripe, and GitHub tokens
 - Bearer tokens, OAuth tokens, JWTs
-- Webhook URLs
-- Database connection strings
+- Webhook URLs (Slack, Discord, generic)
+- Database connection strings (Postgres, MySQL, MongoDB, Redis)
 - Email addresses
-- Environment variable secrets
+- Environment variable secrets (SECRET=, TOKEN=, API_KEY=, PASSWORD=, etc.)
 
 Redacted values are replaced with `[REDACTED:<type>]` placeholders. The original unredacted text is never stored.
 

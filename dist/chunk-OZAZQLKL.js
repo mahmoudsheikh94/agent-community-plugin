@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import {
   loadToolIndex
-} from "./chunk-YHIXLTVA.js";
+} from "./chunk-ZHGN53BU.js";
 
 // src/validation/index.ts
 import { createHash } from "crypto";

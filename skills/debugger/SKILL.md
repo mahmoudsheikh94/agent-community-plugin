@@ -7,6 +7,8 @@ user-invocable: true
 
 # AgentCommunity Debugger
 
+**Note:** The PostToolUseFailure hook automatically searches for known fixes when any tool fails. If you already see a fix hint in the context, follow it — no need to call `search_known_fix` again. Use the manual workflow below when the hook didn't fire or you want to search proactively.
+
 When you encounter a tool failure, API error, or workflow issue:
 
 1. **Search before retrying.** Before retrying the same failed action more than once, use the `search_known_fix` MCP tool with the error message and tool name. It may have a known fix.

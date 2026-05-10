@@ -63,6 +63,26 @@ var PATTERNS = [
     replacement: "[REDACTED:email]"
   },
   {
+    name: "github_token",
+    pattern: /\b(?:ghp|gho|ghs|ghu|ghr)_[A-Za-z0-9_]{36,}\b/g,
+    replacement: "[REDACTED:github_token]"
+  },
+  {
+    name: "stripe_key",
+    pattern: /\b(?:sk|pk|rk)_(?:live|test)_[A-Za-z0-9]{10,}\b/g,
+    replacement: "[REDACTED:stripe_key]"
+  },
+  {
+    name: "anthropic_key",
+    pattern: /\bsk-ant-[a-zA-Z0-9_\-]{20,}\b/g,
+    replacement: "[REDACTED:api_key]"
+  },
+  {
+    name: "google_api_key",
+    pattern: /\bAIza[A-Za-z0-9_\-]{35}\b/g,
+    replacement: "[REDACTED:google_api_key]"
+  },
+  {
     name: "generic_api_key",
     pattern: /(?:api[_-]?key|apikey|api[_-]?secret)\s*[:=]\s*["']?[a-zA-Z0-9_\-]{16,}["']?/gi,
     replacement: "[REDACTED:api_key]"
@@ -119,17 +139,20 @@ function loadToolIndex(tool, dataDir) {
   indexCache.set(cacheKey, { entries, ts: Date.now() });
   return entries;
 }
+function sanitizeName(name) {
+  return name.replace(/[^a-z0-9_-]/gi, "");
+}
 function loadCard(tool, id, dataDir) {
-  const cardPath = join(dataDir ?? getDataDir(), "tools", tool, "cards", `${id}.json`);
+  const cardPath = join(dataDir ?? getDataDir(), "tools", sanitizeName(tool), "cards", `${sanitizeName(id)}.json`);
   if (!existsSync(cardPath)) return null;
   return JSON.parse(readFileSync(cardPath, "utf-8"));
 }
 function saveCard(card, dataDir) {
   const base = dataDir ?? getDataDir();
-  const toolDir = join(base, "tools", card.tool);
+  const toolDir = join(base, "tools", sanitizeName(card.tool));
   const cardsDir = join(toolDir, "cards");
   mkdirSync(cardsDir, { recursive: true });
-  writeFileSync(join(cardsDir, `${card.id}.json`), JSON.stringify(card, null, 2) + "\n");
+  writeFileSync(join(cardsDir, `${sanitizeName(card.id)}.json`), JSON.stringify(card, null, 2) + "\n");
   const indexEntry = {
     id: card.id,
     tool: card.tool,
@@ -165,11 +188,15 @@ function appendTrace(trace, dataDir) {
     if (stats.size > 10 * 1024 * 1024) {
       renameSync(tracesPath, join(base, "traces.old.jsonl"));
     }
-  } catch {
+  } catch (err) {
+    process.stderr.write(`[agent-community] trace rotation failed: ${err}
+`);
   }
   appendFileSync(tracesPath, JSON.stringify(redactedTrace) + "\n");
   if (isSupabaseEnabled()) {
-    insertTrace(redactedTrace).catch(() => {
+    insertTrace(redactedTrace).catch((err) => {
+      process.stderr.write(`[agent-community] remote trace insert failed: ${err}
+`);
     });
   }
   return traceId;
@@ -197,6 +224,28 @@ function rebuildToolIndex(tool, dataDir) {
   writeFileSync(indexPath, entries.join("\n") + (entries.length > 0 ? "\n" : ""));
   indexCache.delete(`${base}:${tool}`);
 }
+function validateIndex(tool, dataDir) {
+  const base = dataDir ?? getDataDir();
+  const cardsDir = join(base, "tools", tool, "cards");
+  const indexEntries = loadToolIndex(tool, base);
+  const indexIds = new Set(indexEntries.map((e) => e.id));
+  const diskIds = /* @__PURE__ */ new Set();
+  if (existsSync(cardsDir)) {
+    for (const file of readdirSync(cardsDir)) {
+      if (!file.endsWith(".json")) continue;
+      diskIds.add(file.replace(".json", ""));
+    }
+  }
+  const orphanedCards = [...diskIds].filter((id) => !indexIds.has(id));
+  const missingCards = [...indexIds].filter((id) => !diskIds.has(id));
+  return {
+    valid: orphanedCards.length === 0 && missingCards.length === 0,
+    orphanedCards,
+    missingCards,
+    totalIndexed: indexIds.size,
+    totalOnDisk: diskIds.size
+  };
+}
 async function syncFromSupabase(dataDir) {
   if (!isSupabaseEnabled()) {
     return { updated: 0, tools: [] };
@@ -211,7 +260,9 @@ async function syncFromSupabase(dataDir) {
   let cards;
   try {
     cards = await fetchUpdatedCards(lastSyncedAt);
-  } catch {
+  } catch (err) {
+    process.stderr.write(`[agent-community] sync fetch failed: ${err}
+`);
     return { updated: 0, tools: [] };
   }
   if (cards.length === 0) {
@@ -219,9 +270,9 @@ async function syncFromSupabase(dataDir) {
   }
   const affectedTools = /* @__PURE__ */ new Set();
   for (const card of cards) {
-    const cardsDir = join(base, "tools", card.tool, "cards");
+    const cardsDir = join(base, "tools", sanitizeName(card.tool), "cards");
     mkdirSync(cardsDir, { recursive: true });
-    writeFileSync(join(cardsDir, `${card.id}.json`), JSON.stringify(card, null, 2) + "\n");
+    writeFileSync(join(cardsDir, `${sanitizeName(card.id)}.json`), JSON.stringify(card, null, 2) + "\n");
     affectedTools.add(card.tool);
   }
   for (const tool of affectedTools) {
@@ -242,5 +293,6 @@ export {
   saveCard,
   appendTrace,
   rebuildToolIndex,
+  validateIndex,
   syncFromSupabase
 };

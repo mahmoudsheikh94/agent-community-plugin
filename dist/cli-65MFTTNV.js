@@ -164,7 +164,8 @@ var DiscourseCrawler = class {
     for (let attempt = 0; attempt < retries; attempt++) {
       try {
         const response = await fetch(url, {
-          headers: { Accept: "application/json" }
+          headers: { Accept: "application/json" },
+          signal: AbortSignal.timeout(3e4)
         });
         if (response.status === 429) {
           const retryAfter = parseInt(response.headers.get("Retry-After") ?? "60", 10) * 1e3;
@@ -378,9 +379,9 @@ async function handleTransform(args) {
     console.log("Dry run \u2014 no cards will be saved.");
   }
   const { ThreadTransformer } = await import("./thread-to-cards-627VFPSR.js");
-  const { Deduplicator } = await import("./dedup-JTXA4HSH.js");
-  const { validateCard, generateCardId } = await import("./validation-EJ2A6LZP.js");
-  const { saveCard, rebuildToolIndex } = await import("./store-2LDB3EYT.js");
+  const { Deduplicator } = await import("./dedup-JGLPGVHA.js");
+  const { validateCard, generateCardId } = await import("./validation-2B3ZKZJU.js");
+  const { saveCard, rebuildToolIndex } = await import("./store-3DNF4RD7.js");
   const { appendFileSync } = await import("fs");
   const transformer = new ThreadTransformer(apiKey, { concurrency, tool, model });
   const deduplicator = new Deduplicator(tool);

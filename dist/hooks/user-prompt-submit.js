@@ -15,6 +15,36 @@ var TOOL_KEYWORDS = [
   "stripe",
   "shopify"
 ];
+var ERROR_SIGNALS = [
+  "error",
+  "fail",
+  "failed",
+  "failure",
+  "broken",
+  "not working",
+  "doesn't work",
+  "does not work",
+  "issue",
+  "bug",
+  "crash",
+  "exception",
+  "timeout",
+  "refused",
+  "denied",
+  "unauthorized",
+  "403",
+  "404",
+  "500",
+  "502",
+  "503",
+  "econnrefused",
+  "enotfound",
+  "cannot read",
+  "undefined",
+  "null",
+  "missing",
+  "invalid"
+];
 function run() {
   let prompt;
   try {
@@ -30,10 +60,15 @@ function run() {
     process.stdout.write("{}\n");
     return;
   }
+  const hasErrorSignal = ERROR_SIGNALS.some((sig) => prompt.includes(sig));
+  if (!hasErrorSignal) {
+    process.stdout.write("{}\n");
+    return;
+  }
   const output = {
     hookSpecificOutput: {
       hookEventName: "UserPromptSubmit",
-      additionalContext: `IMPORTANT \u2014 AgentCommunity plugin detected ${mentionedTools.join(", ")} in this prompt. You MUST call the search_known_fix MCP tool FIRST before doing anything else (before web search, before asking questions, before any other action). This tool searches a curated knowledge base of verified fixes. Call it with the tool name and error text from the user's message. Only proceed to other approaches if search_known_fix returns no results.`
+      additionalContext: `AgentCommunity has a knowledge base of verified fixes for ${mentionedTools.join(", ")}. Consider calling search_known_fix with the tool name and error text to check for a known solution before other approaches.`
     }
   };
   process.stdout.write(JSON.stringify(output) + "\n");

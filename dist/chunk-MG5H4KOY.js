@@ -3,7 +3,7 @@ import {
   listTools,
   loadCard,
   loadToolIndex
-} from "./chunk-YHIXLTVA.js";
+} from "./chunk-ZHGN53BU.js";
 
 // src/search/index.ts
 function tokenize(text) {
@@ -28,6 +28,13 @@ function scoreEntry(entry, errorText, errorTokens, toolName) {
   if (substringMatch(errorText, entry.error_signature)) {
     signatureScore = 0.5;
     matched_on.push("error_signature");
+  } else {
+    const sigTokens = tokenize(entry.error_signature);
+    const overlap = tokenOverlap(errorTokens, sigTokens);
+    if (overlap > 0.3) {
+      signatureScore = 0.3 * overlap;
+      matched_on.push("error_signature_fuzzy");
+    }
   }
   if (toolName) {
     const normalized = normalizeToolName(toolName) ?? toolName.toLowerCase();
@@ -99,6 +106,11 @@ function searchKnownFix(params, dataDir) {
   for (const { entry, score } of top) {
     const card = loadCard(entry.tool, entry.id, dataDir);
     if (!card) continue;
+    if (card.not_this_if && card.not_this_if.length > 0 && card.not_this_if.some(
+      (condition) => errorText.toLowerCase().includes(condition.toLowerCase())
+    )) {
+      continue;
+    }
     results.push({
       id: card.id,
       title: card.title,

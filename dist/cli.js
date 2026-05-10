@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 import {
   searchKnownFix
-} from "./chunk-GZG5ARJ7.js";
+} from "./chunk-MG5H4KOY.js";
 import {
   validateCard
-} from "./chunk-QAQNMOTQ.js";
+} from "./chunk-OZAZQLKL.js";
 import {
-  redactText
-} from "./chunk-YHIXLTVA.js";
+  listTools,
+  redactText,
+  validateIndex
+} from "./chunk-ZHGN53BU.js";
 import "./chunk-5AWDKVXE.js";
 import "./chunk-NSPRIPOP.js";
 
@@ -74,6 +76,28 @@ Safety notes:`);
     process.exit(result.valid ? 0 : 1);
     break;
   }
+  case "validate-index": {
+    const tool = getFlag("--tool");
+    const tools = tool ? [tool] : listTools();
+    let allValid = true;
+    for (const t of tools) {
+      const result = validateIndex(t);
+      const status = result.valid ? "OK" : "ISSUES FOUND";
+      console.log(`
+[${t}] ${status}`);
+      console.log(`  Indexed: ${result.totalIndexed}  On disk: ${result.totalOnDisk}`);
+      if (result.orphanedCards.length > 0) {
+        console.log(`  Orphaned cards (on disk, not in index): ${result.orphanedCards.join(", ")}`);
+        allValid = false;
+      }
+      if (result.missingCards.length > 0) {
+        console.log(`  Missing cards (in index, not on disk): ${result.missingCards.join(", ")}`);
+        allValid = false;
+      }
+    }
+    process.exit(allValid ? 0 : 1);
+    break;
+  }
   case "hook:post-tool-use-failure": {
     await import("./hooks/post-tool-use-failure.js");
     break;
@@ -84,7 +108,7 @@ Safety notes:`);
   }
   case "ingest": {
     const subcommand = args[1];
-    const { handleIngestCommand } = await import("./cli-NYQDHYQH.js");
+    const { handleIngestCommand } = await import("./cli-65MFTTNV.js");
     await handleIngestCommand(subcommand, args.slice(2));
     break;
   }
@@ -92,10 +116,11 @@ Safety notes:`);
     console.log(`AgentCommunity CLI v0.1.0
 
 Commands:
-  search    --tool <tool> --error <error>   Search for known fixes
-  redact    --text <text>                   Redact secrets from text
-  validate  --file <path>                   Validate a fix card JSON file
-  ingest    <subcommand>                    Ingest community knowledge
-  hook:post-tool-use-failure                Run PostToolUseFailure hook (stdin)
-  hook:user-prompt-submit                   Run UserPromptSubmit hook (stdin)`);
+  search          --tool <tool> --error <error>   Search for known fixes
+  redact          --text <text>                   Redact secrets from text
+  validate        --file <path>                   Validate a fix card JSON file
+  validate-index  [--tool <tool>]                 Check index/card consistency
+  ingest          <subcommand>                    Ingest community knowledge
+  hook:post-tool-use-failure                      Run PostToolUseFailure hook (stdin)
+  hook:user-prompt-submit                         Run UserPromptSubmit hook (stdin)`);
 }

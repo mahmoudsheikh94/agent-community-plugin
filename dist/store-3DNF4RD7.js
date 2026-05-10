@@ -7,8 +7,9 @@ import {
   loadToolIndex,
   rebuildToolIndex,
   saveCard,
-  syncFromSupabase
-} from "./chunk-YHIXLTVA.js";
+  syncFromSupabase,
+  validateIndex
+} from "./chunk-ZHGN53BU.js";
 import "./chunk-5AWDKVXE.js";
 import "./chunk-NSPRIPOP.js";
 export {
@@ -19,5 +20,6 @@ export {
   loadToolIndex,
   rebuildToolIndex,
   saveCard,
-  syncFromSupabase
+  syncFromSupabase,
+  validateIndex
 };
