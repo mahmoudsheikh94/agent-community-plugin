@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 import {
-  validateCard
-} from "./chunk-KJEDYEFE.js";
-import {
-  redactText,
   searchKnownFix
-} from "./chunk-H5DBXSUI.js";
+} from "./chunk-W7RPM4FB.js";
+import {
+  validateCard
+} from "./chunk-IGIPA46E.js";
+import {
+  redactText
+} from "./chunk-7KHDCBXI.js";
+import "./chunk-SDA3ARN5.js";
 
 // src/cli.ts
 import { readFileSync } from "fs";
@@ -78,6 +81,12 @@ Safety notes:`);
     await import("./hooks/user-prompt-submit.js");
     break;
   }
+  case "ingest": {
+    const subcommand = args[1];
+    const { handleIngestCommand } = await import("./cli-PRWGVIHT.js");
+    await handleIngestCommand(subcommand, args.slice(2));
+    break;
+  }
   default:
     console.log(`AgentCommunity CLI v0.1.0
 
@@ -85,6 +94,7 @@ Commands:
   search    --tool <tool> --error <error>   Search for known fixes
   redact    --text <text>                   Redact secrets from text
   validate  --file <path>                   Validate a fix card JSON file
+  ingest    <subcommand>                    Ingest community knowledge
   hook:post-tool-use-failure                Run PostToolUseFailure hook (stdin)
   hook:user-prompt-submit                   Run UserPromptSubmit hook (stdin)`);
 }

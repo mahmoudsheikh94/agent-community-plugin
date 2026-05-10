@@ -1,0 +1,41 @@
+{
+  "id": "41719c1dc7a5",
+  "tool": "n8n",
+  "error_signature": "undefined when using .item in expressions",
+  "context_key": "set-node",
+  "title": "Undefined fields when using .item after a branch",
+  "symptom": "Fields show as undefined when using .item in expressions after a branch/merge, even though data exists in previous nodes.",
+  "applies_when": [
+    "Using a node after a branch/merge",
+    "Referencing fields from upstream nodes"
+  ],
+  "not_this_if": [
+    "Using .first() in expressions",
+    "No branches or merges in the workflow"
+  ],
+  "root_cause": "When a node is placed after a branch or merge, n8n may lose track of which item corresponds to the upstream node's output. This results in expressions using .item returning undefined, despite the data being present.",
+  "fix_steps": [
+    "Add a Set node before the final step",
+    "Pull the necessary fields into the main item using the Set node",
+    "Reference the fields directly from $json in the final node"
+  ],
+  "agent_instruction": "Insert a Set node before the last step to consolidate fields and reference them directly from $json.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "branch",
+    "merge",
+    "set-node",
+    "undefined-fields",
+    "expressions"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.17.7",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/fields-showing-undefined-just-in-one-node/291963"
+  ]
+}

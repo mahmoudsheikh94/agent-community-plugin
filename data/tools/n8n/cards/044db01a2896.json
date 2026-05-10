@@ -1,0 +1,39 @@
+{
+  "id": "044db01a2896",
+  "tool": "n8n",
+  "error_signature": "workflow fails to resume safely after partial execution",
+  "context_key": "http-request-node",
+  "title": "Workflow fails to resume after failure",
+  "symptom": "When a workflow processing large datasets fails, it restarts from the beginning, causing duplicates and skipped records.",
+  "applies_when": [
+    "Processing large datasets",
+    "Workflow fails midway"
+  ],
+  "not_this_if": [
+    "Workflow completes successfully without errors"
+  ],
+  "root_cause": "The workflow lacks state management, leading to a complete restart on failure. Without checkpointing, it cannot track progress, resulting in duplicate processing or skipped records when rerun.",
+  "fix_steps": [
+    "Store the last processed page number in a database after each successful batch.",
+    "Use upsert operations in the database to prevent duplicates when writing data.",
+    "Implement a mechanism to fetch the last processed page on restart and continue from there."
+  ],
+  "agent_instruction": "Implement checkpointing and idempotent writes in your workflow.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "checkpointing",
+    "idempotency",
+    "workflow-resilience",
+    "data-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-workflow-fails-to-resume-safely-after-partial-execution-idempotency-checkpointing-issue/293072"
+  ]
+}

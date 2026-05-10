@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 import {
-  appendTrace,
-  redactText,
   searchKnownFix
-} from "../chunk-H5DBXSUI.js";
+} from "../chunk-W7RPM4FB.js";
+import {
+  appendTrace,
+  redactText
+} from "../chunk-7KHDCBXI.js";
+import "../chunk-SDA3ARN5.js";
 
 // src/hooks/post-tool-use-failure.ts
 import { readFileSync } from "fs";
@@ -58,6 +61,7 @@ ${safetyNotes}
 Agent instruction: ${top.agent_instruction}`;
   const output = {
     hookSpecificOutput: {
+      hookEventName: "PostToolUseFailure",
       additionalContext: context
     }
   };

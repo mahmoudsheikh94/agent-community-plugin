@@ -1,0 +1,40 @@
+{
+  "id": "425d7d19fde2",
+  "tool": "n8n",
+  "error_signature": "terminated",
+  "context_key": "ollama-embeddings-qdrant-toolVectorStore",
+  "title": "Execution terminated due to tool description length",
+  "symptom": "The workflow returns a 'terminated' error when using the Embeddings Ollama node connected to Qdrant. The AI Agent node does not call the LLM, and there are no relevant logs indicating a crash.",
+  "applies_when": [
+    "Using Ollama Embeddings node",
+    "Connected to Qdrant Vector Store"
+  ],
+  "not_this_if": [
+    "Short tool description is used",
+    "Execution completes without errors"
+  ],
+  "root_cause": "The AI Agent in n8n can terminate execution if the description of the tool exceeds a certain character limit. In this case, a description of 3300 characters was too long, causing the tool to break and the execution to terminate without a clear error log.",
+  "fix_steps": [
+    "Reduce the length of the tool description to under 600 characters",
+    "Save the changes",
+    "Re-run the workflow to verify it executes successfully"
+  ],
+  "agent_instruction": "Shorten the tool description to under 600 characters and save the workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "ollama",
+    "qdrant",
+    "terminated",
+    "tool-description"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.18.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/bug-terminated-error-with-ollama-embeddings-qdrant-toolvectorstore-no-crash-no-sigterm-in-logs/292590"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "22279f22793f",
+  "tool": "n8n",
+  "error_signature": "workflow executes old version instead of updated nodes",
+  "context_key": "webhook-trigger",
+  "title": "Webhook triggers old workflow version",
+  "symptom": "The webhook from Airtable executes the workflow, but the downstream nodes do not reflect the latest updates made in the editor.",
+  "applies_when": [
+    "Using webhook trigger from Airtable",
+    "Changes made in the n8n editor"
+  ],
+  "not_this_if": [
+    "Changes were published after editing",
+    "No changes were made in the editor"
+  ],
+  "root_cause": "The n8n editor requires users to publish changes to update the live version of the workflow. If changes are made but not published, the webhook will continue to execute the previous version of the workflow.",
+  "fix_steps": [
+    "Make changes in the n8n editor",
+    "Click the 'Publish' button to apply changes",
+    "Trigger the webhook again from Airtable"
+  ],
+  "agent_instruction": "Ensure to click 'Publish' after making changes in the n8n editor to update the live workflow.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "webhook",
+    "airtable",
+    "publish",
+    "workflow-update"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.15.1",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/n8n-webhook-trigger-from-airtable-executes-old-workflow-instead-of-updated-nodes/291082"
+  ]
+}

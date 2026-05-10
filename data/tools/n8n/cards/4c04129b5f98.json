@@ -1,0 +1,39 @@
+{
+  "id": "4c04129b5f98",
+  "tool": "n8n",
+  "error_signature": "[undefined]",
+  "context_key": "http-request-node",
+  "title": "Expression returns [undefined] instead of value",
+  "symptom": "When trying to access a value from a previous node using an expression, the output is [undefined]. This occurs intermittently, causing confusion.",
+  "applies_when": [
+    "Using expressions to access previous node data",
+    "Data structure may vary between executions"
+  ],
+  "not_this_if": [
+    "The expression correctly references a valid path",
+    "The data structure is consistent across executions"
+  ],
+  "root_cause": "The error occurs because the expression is referencing a path that does not exist on the current item. Even if the data is present in a previous node, the current execution context may not have the same structure, leading to undefined values.",
+  "fix_steps": [
+    "Check the execution preview to confirm the current item's structure",
+    "Adjust the expression to match the correct path, e.g., {{$json.id}} or {{$node[“Set”].json[“user”][“id”]}}"
+  ],
+  "agent_instruction": "Verify the data structure in the execution preview and update the expression accordingly.",
+  "safety_notes": [],
+  "fix_type": "code_change",
+  "tags": [
+    "http-request",
+    "expressions",
+    "undefined",
+    "data-structure"
+  ],
+  "severity": "silent_wrong_result",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/expression-returning-undefined-instead-of-value/292230"
+  ]
+}

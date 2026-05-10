@@ -32,6 +32,7 @@ function run() {
   }
   const output = {
     hookSpecificOutput: {
+      hookEventName: "UserPromptSubmit",
       additionalContext: `AgentCommunity: If you encounter errors with ${mentionedTools.join(", ")}, use the search_known_fix MCP tool to check for known fixes before retrying.`
     }
   };

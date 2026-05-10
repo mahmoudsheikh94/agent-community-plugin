@@ -1,0 +1,39 @@
+{
+  "id": "5a5e752777a1",
+  "tool": "n8n",
+  "error_signature": "[400 Bad Request] This model only supports Interactions API",
+  "context_key": "google-gemini-chat-model-node",
+  "title": "Google Gemini model only supports Interactions API",
+  "symptom": "When using the Google Gemini Chat Model node with the deep-research-max-preview-04-2026 model, a 400 Bad Request error occurs indicating that the model only supports the Interactions API.",
+  "applies_when": [
+    "Using Google Gemini Chat Model node",
+    "Attempting to use deep-research-max-preview-04-2026 model"
+  ],
+  "not_this_if": [
+    "Using a standard Gemini model",
+    "Using a different node for API calls"
+  ],
+  "root_cause": "The deep-research-max-preview-04-2026 model is designed to work exclusively with the Interactions API, while the current implementation of the Google Gemini Chat Model node in n8n is not configured to support this specific API, leading to the 400 Bad Request error.",
+  "fix_steps": [
+    "Switch to a standard Google Gemini model in the node",
+    "Alternatively, use the HTTP Request node to directly call the Google Interactions API"
+  ],
+  "agent_instruction": "Use a standard Gemini model or the HTTP Request node to access the Interactions API directly.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "google-gemini",
+    "interactions-api",
+    "http-request-node",
+    "error-400"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.17.7",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/interactions-api-google/291432"
+  ]
+}

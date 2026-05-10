@@ -1,0 +1,41 @@
+{
+  "id": "83b8c545281b",
+  "tool": "n8n",
+  "error_signature": "No file(s) found",
+  "context_key": "read-write-file-node",
+  "title": "Unable to read/write files in n8n on Docker",
+  "symptom": "When attempting to read/write files in n8n running on Docker, the error 'No file(s) found' occurs.",
+  "applies_when": [
+    "Using n8n in Docker on Windows",
+    "Configured to read/write files"
+  ],
+  "not_this_if": [
+    "Files are correctly mounted and accessible in the container"
+  ],
+  "root_cause": "The error occurs because the file paths used in the n8n node must correspond to the container's file system, not the host's. If the paths are not correctly set, n8n cannot locate the files, leading to this error.",
+  "fix_steps": [
+    "Modify the Docker run command to use the full Windows path for the volume mount, e.g., '-v C:\\n8n-disk-files:/files'.",
+    "Ensure the environment variable 'N8N_RESTRICT_FILE_ACCESS_TO' is set to '/files'.",
+    "Place a test file (e.g., test.txt) in the C:\\n8n-disk-files directory on the host.",
+    "Run the workflow again to check if the file can be accessed."
+  ],
+  "agent_instruction": "Update the Docker run command and environment variable, then test file access.",
+  "safety_notes": [],
+  "fix_type": "config_change",
+  "tags": [
+    "docker",
+    "windows",
+    "file-access",
+    "n8n",
+    "read-write-file-node"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.16.2",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/in-windows-docker-desktop-n8n-image-installed-unable-to-read-write-from-disk/291121"
+  ]
+}

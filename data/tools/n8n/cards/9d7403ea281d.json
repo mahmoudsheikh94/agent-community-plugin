@@ -1,0 +1,39 @@
+{
+  "id": "9d7403ea281d",
+  "tool": "n8n",
+  "error_signature": "credential test error",
+  "context_key": "openai-node",
+  "title": "OpenAI credential test error despite valid API key",
+  "symptom": "Users encounter a 'credential test error' when trying to connect OpenAI credentials, even though the API key is valid. This error may cause confusion as workflows can still execute successfully.",
+  "applies_when": [
+    "Using OpenAI node",
+    "Valid API key provided"
+  ],
+  "not_this_if": [
+    "Error occurs in a different node or integration"
+  ],
+  "root_cause": "This issue appears to be a bug in n8n where the credential test fails even when the API key is valid. The error message may mislead users into thinking their credentials are incorrect, while workflows can still function normally.",
+  "fix_steps": [
+    "Ignore the credential test error message",
+    "Proceed to trigger the workflow with the valid API key",
+    "Consider using the OpenAI Chat Model node as an alternative if issues persist"
+  ],
+  "agent_instruction": "Ignore the credential test error and trigger the workflow with the valid API key.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "openai",
+    "credentials",
+    "node-configuration",
+    "bug"
+  ],
+  "severity": "degraded",
+  "confidence": 0.8,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.19.4",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/help-connecting-openai-credential/294736"
+  ]
+}

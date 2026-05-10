@@ -1,0 +1,38 @@
+{
+  "id": "ba59a3ee55b6",
+  "tool": "n8n",
+  "error_signature": "duplicate records in the database",
+  "context_key": "webhook-trigger",
+  "title": "Duplicate records due to webhook retries",
+  "symptom": "When the same webhook event is received multiple times, duplicate records are created in the database. This leads to unintended duplicate actions downstream.",
+  "applies_when": [
+    "Using webhook-triggered workflows",
+    "External service retries webhook events"
+  ],
+  "not_this_if": [
+    "Database already has unique constraints in place"
+  ],
+  "root_cause": "The webhook-triggered workflow processes events without tracking previously processed events, leading to duplicate entries when the same event is received multiple times due to retries from the external service.",
+  "fix_steps": [
+    "Create a database table with a UNIQUE constraint on event_id.",
+    "Insert the event_id and payload into the database using an INSERT statement with ON CONFLICT to handle duplicates."
+  ],
+  "agent_instruction": "Implement a database table with a UNIQUE constraint on event_id to prevent duplicate processing.",
+  "safety_notes": [],
+  "fix_type": "architecture",
+  "tags": [
+    "webhook",
+    "database",
+    "idempotency",
+    "duplicate-records"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 65,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/handling-exactly-once-processing-with-webhooks/294568"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "01493e2473c7",
+  "tool": "n8n",
+  "error_signature": "execution data persists despite save settings",
+  "context_key": "queue-mode",
+  "title": "Execution data persists in queue mode despite settings",
+  "symptom": "Execution data is written to the database even when the settings to disable it are applied. The data remains in the execution_data table after workflow completion.",
+  "applies_when": [
+    "Using n8n in queue mode",
+    "EXECUTIONS_DATA_SAVE_ON_SUCCESS is set to 'none'"
+  ],
+  "not_this_if": [
+    "Execution data is being cleaned up as expected",
+    "Not using Docker for n8n"
+  ],
+  "root_cause": "In queue mode, the worker processes are separate from the main process, leading to execution data being written to the database regardless of the save settings. The expected cleanup of execution data is not occurring, which may indicate a bug or misconfiguration.",
+  "fix_steps": [
+    "Add a scheduled query to clean up execution_data rows where the status is 'success' or 'error'.",
+    "Monitor the execution_data table to ensure that rows are being removed as expected."
+  ],
+  "agent_instruction": "Implement a scheduled cleanup query for execution_data in your database.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "queue-mode",
+    "execution-data",
+    "postgres",
+    "docker"
+  ],
+  "severity": "degraded",
+  "confidence": 0.9,
+  "quality_score": 100,
+  "source_type": "community",
+  "verified_on": "2.18.5",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/execution-data-is-written-to-the-database-even-when-it-is-disabled/292512"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "fbcc114d38a8",
+  "tool": "n8n",
+  "error_signature": "File not found",
+  "context_key": "openai-node",
+  "title": "OpenAI node reports 'File not found'",
+  "symptom": "The OpenAI node fails to process the file and returns 'File not found'. This occurs when the webhook node has no binary data attached.",
+  "applies_when": [
+    "Using OpenAI node",
+    "Webhook node has pinned data"
+  ],
+  "not_this_if": [
+    "Webhook node has valid binary data",
+    "Error occurs in a different node"
+  ],
+  "root_cause": "The webhook node's pinned data does not include binary content, which is necessary for the OpenAI node to function correctly. When data is pinned, it only retains headers and an empty body, leading to the OpenAI node's inability to find the required file.",
+  "fix_steps": [
+    "Right-click on the webhook node and select 'Unpin Data'",
+    "Trigger a fresh test request from Postman to send the actual file",
+    "Ensure the OpenAI node is configured to look for the correct binary property"
+  ],
+  "agent_instruction": "Unpin the data in the webhook node and re-trigger the request with the file attached.",
+  "safety_notes": [],
+  "fix_type": "workaround",
+  "tags": [
+    "openai",
+    "webhook",
+    "binary-data",
+    "file-processing"
+  ],
+  "severity": "blocks_execution",
+  "confidence": 0.9,
+  "quality_score": 75,
+  "source_type": "community",
+  "verified_on": "",
+  "created": "2026-05-10",
+  "version_notes": [
+    "https://community.n8n.io/t/having-trouble-with-openai-node/292285"
+  ]
+}
