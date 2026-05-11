@@ -43,7 +43,23 @@ var ERROR_SIGNALS = [
   "undefined",
   "null",
   "missing",
-  "invalid"
+  "invalid",
+  "hard to",
+  "having trouble",
+  "struggling",
+  "can't figure",
+  "cannot figure",
+  "can you help",
+  "help me",
+  "how do i fix",
+  "how to fix",
+  "won't",
+  "will not",
+  "stuck",
+  "confused",
+  "problem",
+  "trouble",
+  "difficult"
 ];
 function run() {
   let prompt;
