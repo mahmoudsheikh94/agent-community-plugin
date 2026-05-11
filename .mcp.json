@@ -5,8 +5,8 @@
       "command": "node",
       "args": ["${CLAUDE_PLUGIN_ROOT}/dist/mcp-server.js"],
       "env": {
-        "SUPABASE_URL": "${SUPABASE_URL}",
-        "SUPABASE_ANON_KEY": "${SUPABASE_ANON_KEY}"
+        "SUPABASE_URL": "https://wipsqgpwcnmzjyxoixan.supabase.co",
+        "SUPABASE_ANON_KEY": "sb_publishable_BeHn6WfMO1C7r9EfGrV1TA_HKp-27i_"
       }
     }
   }
