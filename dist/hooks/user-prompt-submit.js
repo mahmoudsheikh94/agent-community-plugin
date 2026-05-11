@@ -15,52 +15,6 @@ var TOOL_KEYWORDS = [
   "stripe",
   "shopify"
 ];
-var ERROR_SIGNALS = [
-  "error",
-  "fail",
-  "failed",
-  "failure",
-  "broken",
-  "not working",
-  "doesn't work",
-  "does not work",
-  "issue",
-  "bug",
-  "crash",
-  "exception",
-  "timeout",
-  "refused",
-  "denied",
-  "unauthorized",
-  "403",
-  "404",
-  "500",
-  "502",
-  "503",
-  "econnrefused",
-  "enotfound",
-  "cannot read",
-  "undefined",
-  "null",
-  "missing",
-  "invalid",
-  "hard to",
-  "having trouble",
-  "struggling",
-  "can't figure",
-  "cannot figure",
-  "can you help",
-  "help me",
-  "how do i fix",
-  "how to fix",
-  "won't",
-  "will not",
-  "stuck",
-  "confused",
-  "problem",
-  "trouble",
-  "difficult"
-];
 function run() {
   let prompt;
   try {
@@ -73,11 +27,6 @@ function run() {
   }
   const mentionedTools = TOOL_KEYWORDS.filter((kw) => prompt.includes(kw));
   if (mentionedTools.length === 0) {
-    process.stdout.write("{}\n");
-    return;
-  }
-  const hasErrorSignal = ERROR_SIGNALS.some((sig) => prompt.includes(sig));
-  if (!hasErrorSignal) {
     process.stdout.write("{}\n");
     return;
   }
