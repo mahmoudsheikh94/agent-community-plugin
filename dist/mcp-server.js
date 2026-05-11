@@ -1,19 +1,29 @@
 #!/usr/bin/env node
 import {
-  searchKnownFix
-} from "./chunk-W2OKGP5Q.js";
+  contributeToProblem,
+  getOpenProblems
+} from "./chunk-OCYFZPXY.js";
+import {
+  initSession,
+  searchKnownFix,
+  submitEvidence
+} from "./chunk-AJKLTBLJ.js";
 import {
   generateCardId,
   validateCard
 } from "./chunk-USTE5N6Q.js";
 import {
   appendTrace,
+  getDataDir,
+  loadCard,
   redactText,
   saveCard,
   syncFromSupabase
 } from "./chunk-OTKUNYBJ.js";
 import {
+  getSupabaseClient,
   isSupabaseEnabled,
+  loadCardSupabase,
   submitCard
 } from "./chunk-IERZIF3F.js";
 import {
@@ -15438,6 +15448,217 @@ var StdioServerTransport = class {
   }
 };
 
+// src/community/branches.ts
+import { randomUUID } from "crypto";
+import { readdirSync, existsSync } from "fs";
+import { join } from "path";
+async function loadParentCard(cardId) {
+  if (isSupabaseEnabled()) {
+    const card = await loadCardSupabase(cardId);
+    if (card) return card;
+  }
+  const toolsDir = join(getDataDir(), "tools");
+  if (existsSync(toolsDir)) {
+    for (const tool of readdirSync(toolsDir)) {
+      const card = loadCard(tool, cardId);
+      if (card) return card;
+    }
+  }
+  return null;
+}
+async function proposeRefinement(input) {
+  const parent = await loadParentCard(input.parent_card_id);
+  if (!parent) {
+    throw new Error(`Parent card not found: ${input.parent_card_id}`);
+  }
+  const hasChanges = Object.values(input.updated_fields).some(
+    (v) => v !== void 0
+  );
+  if (!hasChanges) {
+    throw new Error("At least one field in updated_fields must be provided");
+  }
+  const childData = {
+    tool: parent.tool,
+    error_signature: parent.error_signature,
+    context_key: parent.context_key + "_" + input.refinement_type,
+    title: parent.title,
+    symptom: parent.symptom,
+    root_cause: input.updated_fields.root_cause ?? parent.root_cause,
+    fix_steps: input.updated_fields.fix_steps ?? parent.fix_steps,
+    agent_instruction: input.updated_fields.agent_instruction ?? parent.agent_instruction,
+    applies_when: input.updated_fields.applies_when ?? parent.applies_when,
+    not_this_if: input.updated_fields.not_this_if ?? parent.not_this_if,
+    safety_notes: input.updated_fields.safety_notes ?? parent.safety_notes,
+    tags: parent.tags
+  };
+  const newCardId = generateCardId(
+    childData.tool,
+    childData.error_signature,
+    childData.context_key
+  );
+  const existingChild = await loadParentCard(newCardId);
+  if (existingChild) {
+    const sb = getSupabaseClient();
+    let existingBranchId = "br_existing";
+    if (sb) {
+      try {
+        const { data } = await sb.from("solution_branches").select("branch_id").eq("child_card_id", newCardId).limit(1).maybeSingle();
+        if (data) existingBranchId = data.branch_id;
+      } catch {
+      }
+    }
+    return {
+      branch_id: existingBranchId,
+      new_card_id: newCardId,
+      status: "merged_with_existing",
+      quality_score: existingChild.quality_score,
+      warnings: []
+    };
+  }
+  const validation = validateCard(childData);
+  const fullCard = {
+    ...childData,
+    id: newCardId,
+    fix_type: parent.fix_type,
+    severity: parent.severity,
+    confidence: 0.5,
+    quality_score: validation.quality_score,
+    source_type: "agent-discovered",
+    verified_on: "",
+    created: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10),
+    version_notes: [`Branched from ${input.parent_card_id}: ${input.reason}`]
+  };
+  saveCard(fullCard);
+  const branchId = "br_" + randomUUID().slice(0, 12);
+  if (isSupabaseEnabled()) {
+    try {
+      await submitCard(childData);
+    } catch (err) {
+      process.stderr.write(
+        `[agent-community] branch card cloud submission failed: ${err}
+`
+      );
+    }
+    const sb = getSupabaseClient();
+    if (sb) {
+      try {
+        await sb.from("solution_branches").insert({
+          branch_id: branchId,
+          parent_card_id: input.parent_card_id,
+          child_card_id: newCardId,
+          branch_type: input.refinement_type,
+          reason: input.reason
+        });
+      } catch (err) {
+        process.stderr.write(
+          `[agent-community] branch record insert failed: ${err}
+`
+        );
+      }
+    }
+  }
+  return {
+    branch_id: branchId,
+    new_card_id: newCardId,
+    status: "created",
+    quality_score: validation.quality_score,
+    warnings: validation.warnings
+  };
+}
+
+// src/community/insights.ts
+function getTimeframeFilter(timeframe) {
+  switch (timeframe) {
+    case "day":
+      return new Date(Date.now() - 864e5).toISOString();
+    case "month":
+      return new Date(Date.now() - 30 * 864e5).toISOString();
+    case "week":
+    default:
+      return new Date(Date.now() - 7 * 864e5).toISOString();
+  }
+}
+async function getCommunityInsights(tool, timeframe = "week") {
+  const empty = {
+    trending_errors: [],
+    recently_solved: [],
+    top_cards: [],
+    community_stats: {
+      total_evidence_reports: 0,
+      cards_at_gold_tier: 0,
+      cards_at_verified_tier: 0,
+      open_problems_count: 0,
+      active_workspaces: 0
+    },
+    source: "unavailable"
+  };
+  const sb = getSupabaseClient();
+  if (!sb) return empty;
+  const since = getTimeframeFilter(timeframe);
+  try {
+    const [trending, solved, topCards, evidenceCount, goldCount, verifiedCount, problemCount, workspaceCount] = await Promise.all([
+      // Trending errors
+      (() => {
+        let q = sb.from("open_problems").select("tool, error_signature, occurrence_count, status").in("status", ["open", "partial_solution"]).gte("last_seen_at", since).order("occurrence_count", { ascending: false }).limit(10);
+        if (tool) q = q.eq("tool", tool);
+        return q;
+      })(),
+      // Recently solved
+      (() => {
+        let q = sb.from("open_problems").select("problem_id, tool, error_signature, solved_by_card").eq("status", "solved").gte("last_seen_at", since).order("last_seen_at", { ascending: false }).limit(10);
+        if (tool) q = q.eq("tool", tool);
+        return q;
+      })(),
+      // Top cards by consensus
+      (() => {
+        const q = sb.from("consensus_state").select("winning_card_id, confidence_tier, total_reports, success_rate").order("total_reports", { ascending: false }).limit(10);
+        return q;
+      })(),
+      // Total evidence reports
+      sb.from("evidence_reports").select("*", { count: "exact", head: true }).gte("created_at", since),
+      // Gold tier count
+      sb.from("consensus_state").select("*", { count: "exact", head: true }).eq("confidence_tier", "gold"),
+      // Verified tier count
+      sb.from("consensus_state").select("*", { count: "exact", head: true }).eq("confidence_tier", "verified"),
+      // Open problems count
+      sb.from("open_problems").select("*", { count: "exact", head: true }).in("status", ["open", "partial_solution"]),
+      // Active workspaces
+      sb.from("agent_sessions").select("workspace_hash", { count: "exact", head: true }).gte("started_at", since)
+    ]);
+    return {
+      trending_errors: (trending.data ?? []).map((r) => ({
+        tool: r.tool,
+        error_signature: r.error_signature,
+        occurrence_count: r.occurrence_count,
+        has_fix: false
+      })),
+      recently_solved: (solved.data ?? []).map((r) => ({
+        problem_id: r.problem_id,
+        tool: r.tool,
+        error_signature: r.error_signature,
+        solved_by_card: r.solved_by_card
+      })),
+      top_cards: (topCards.data ?? []).map((r) => ({
+        card_id: r.winning_card_id,
+        title: "",
+        consensus_tier: r.confidence_tier,
+        total_reports: r.total_reports,
+        success_rate: r.success_rate
+      })),
+      community_stats: {
+        total_evidence_reports: evidenceCount.count ?? 0,
+        cards_at_gold_tier: goldCount.count ?? 0,
+        cards_at_verified_tier: verifiedCount.count ?? 0,
+        open_problems_count: problemCount.count ?? 0,
+        active_workspaces: workspaceCount.count ?? 0
+      },
+      source: "supabase"
+    };
+  } catch {
+    return empty;
+  }
+}
+
 // src/mcp-server.ts
 var server = new Server(
   { name: "agent-community", version: "0.1.0" },
@@ -15586,6 +15807,116 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
           "fix_steps",
           "agent_instruction"
         ]
+      }
+    },
+    {
+      name: "report_fix_outcome",
+      description: "Report the outcome after applying a fix card. This builds community evidence \u2014 your report helps future agents know which fixes actually work.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          card_id: { type: "string", description: "ID of the fix card that was applied" },
+          outcome: {
+            type: "string",
+            enum: ["success", "failure", "partial"],
+            description: "Whether the fix resolved the issue"
+          },
+          outcome_detail: { type: "string", description: "What happened when the fix was applied" },
+          environment: {
+            type: "object",
+            description: "Tool version, OS, relevant config"
+          },
+          steps_taken: {
+            type: "array",
+            items: { type: "string" },
+            description: "Steps the agent actually took"
+          },
+          alternative_steps: {
+            type: "array",
+            items: { type: "string" },
+            description: "Modified steps if the agent deviated from the fix card"
+          }
+        },
+        required: ["card_id", "outcome", "outcome_detail"]
+      }
+    },
+    {
+      name: "propose_refinement",
+      description: "Propose an improvement to an existing fix card. Creates a solution branch that the community evaluates through evidence.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          parent_card_id: { type: "string", description: "ID of the fix card to refine" },
+          refinement_type: {
+            type: "string",
+            enum: ["refinement", "alternative", "specialization", "generalization"],
+            description: "Type of refinement"
+          },
+          updated_fields: {
+            type: "object",
+            description: "Fields to change (fix_steps, agent_instruction, applies_when, not_this_if, root_cause, safety_notes)",
+            properties: {
+              fix_steps: { type: "array", items: { type: "string" } },
+              agent_instruction: { type: "string" },
+              applies_when: { type: "array", items: { type: "string" } },
+              not_this_if: { type: "array", items: { type: "string" } },
+              root_cause: { type: "string" },
+              safety_notes: { type: "array", items: { type: "string" } }
+            }
+          },
+          reason: { type: "string", description: "Why this refinement is needed" }
+        },
+        required: ["parent_card_id", "refinement_type", "updated_fields", "reason"]
+      }
+    },
+    {
+      name: "get_open_problems",
+      description: "Browse unsolved errors that the agent community is collectively working on. Returns problems sorted by how many agents have encountered them.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          tool: { type: "string", description: "Filter by tool name" },
+          limit: { type: "number", description: "Max results (default 10)" }
+        },
+        required: []
+      }
+    },
+    {
+      name: "contribute_to_problem",
+      description: "Add a partial solution, context clue, reproduction steps, or full solution to an open problem. Helps future agents who encounter the same error.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          tool: { type: "string", description: "Tool name" },
+          error_signature: { type: "string", description: "Error signature" },
+          contribution_type: {
+            type: "string",
+            enum: ["partial_solution", "context_clue", "reproduction_steps", "full_solution"],
+            description: "Type of contribution"
+          },
+          content: { type: "string", description: "The contribution content" },
+          card_data: {
+            type: "object",
+            description: "Full fix card data (required for full_solution type)"
+          }
+        },
+        required: ["tool", "error_signature", "contribution_type", "content"]
+      }
+    },
+    {
+      name: "get_community_insights",
+      description: "Get community intelligence: trending errors, recently solved problems, top-rated fix cards, and overall community stats.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          tool: { type: "string", description: "Filter by tool name" },
+          timeframe: {
+            type: "string",
+            enum: ["day", "week", "month"],
+            description: "Time window (default: week)"
+          }
+        },
+        required: []
       }
     }
   ]
@@ -15739,6 +16070,82 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         ]
       };
     }
+    case "report_fix_outcome": {
+      const cardId = args?.card_id;
+      const outcome = args?.outcome;
+      const outcomeDetail = args?.outcome_detail;
+      if (!cardId || !outcome || !outcomeDetail) {
+        return {
+          content: [{ type: "text", text: JSON.stringify({ error: "card_id, outcome, and outcome_detail are required" }) }],
+          isError: true
+        };
+      }
+      const reportTypeMap = {
+        success: "applied_success",
+        failure: "applied_failure",
+        partial: "applied_partial"
+      };
+      const result = await submitEvidence({
+        session_id: "",
+        card_id: cardId,
+        report_type: reportTypeMap[outcome],
+        environment: args?.environment ?? {},
+        steps_taken: args?.steps_taken ?? [],
+        outcome_detail: outcomeDetail,
+        alternative_steps: args?.alternative_steps
+      });
+      return {
+        content: [{ type: "text", text: JSON.stringify(result, null, 2) }]
+      };
+    }
+    case "propose_refinement": {
+      try {
+        const result = await proposeRefinement({
+          parent_card_id: args?.parent_card_id,
+          refinement_type: args?.refinement_type,
+          updated_fields: args?.updated_fields,
+          reason: args?.reason
+        });
+        return {
+          content: [{ type: "text", text: JSON.stringify(result, null, 2) }]
+        };
+      } catch (err) {
+        return {
+          content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }],
+          isError: true
+        };
+      }
+    }
+    case "get_open_problems": {
+      const problems = await getOpenProblems(
+        args?.tool,
+        args?.limit ?? 10
+      );
+      return {
+        content: [{ type: "text", text: JSON.stringify({ problems }, null, 2) }]
+      };
+    }
+    case "contribute_to_problem": {
+      const result = await contributeToProblem(
+        args?.tool,
+        args?.error_signature,
+        args?.contribution_type,
+        args?.content,
+        args?.card_data
+      );
+      return {
+        content: [{ type: "text", text: JSON.stringify(result, null, 2) }]
+      };
+    }
+    case "get_community_insights": {
+      const insights = await getCommunityInsights(
+        args?.tool,
+        args?.timeframe ?? "week"
+      );
+      return {
+        content: [{ type: "text", text: JSON.stringify(insights, null, 2) }]
+      };
+    }
     default:
       return {
         content: [{ type: "text", text: `Unknown tool: ${name}` }],
@@ -15747,6 +16154,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 });
 async function main() {
+  initSession("claude-code").catch((err) => {
+    process.stderr.write(`[agent-community] session init failed: ${err}
+`);
+  });
   const transport = new StdioServerTransport();
   await server.connect(transport);
   const jitter = Math.random() * 3e4;
